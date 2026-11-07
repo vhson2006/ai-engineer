@@ -1,0 +1,70 @@
+# Voluntary disruptions (node upgrades, drains, autoscaler) may never take the last replica.
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: krakend
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: krakend
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: keycloak
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: keycloak
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: deployment-service
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: deployment-service
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: notification-service
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: notification-service
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: portfolio-web
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: portfolio-web
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: admin-web
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: admin-web
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: edge-nginx
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      gateway.networking.k8s.io/gateway-name: edge

@@ -1,0 +1,14 @@
+# portfolio-web runs on the host (`npm run dev`, :3000), not in the cluster. This Service gives
+# it an in-cluster name the Gateway can route to (same trick KrakenD uses for deployment-service).
+# Once the web app is containerised, replace this with its own Deployment + ClusterIP Service.
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-web
+spec:
+  type: ExternalName
+  externalName: host.docker.internal
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000

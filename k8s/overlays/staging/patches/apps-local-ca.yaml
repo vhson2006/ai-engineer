@@ -1,0 +1,64 @@
+# The apps call https://auth.staging.localtest.me (portfolio-web, admin-web: OIDC discovery, code exchange,
+# refresh) and https://s3.staging.localtest.me (deployment-service: object storage), whose
+# certificates come from the local CA. ConfigMap "local-ca" (the CA certificate only, no key) is
+# created by `npm run staging:up`; NODE_EXTRA_CA_CERTS (env files) points Node at it.
+# The web apps also get the label the Redis NetworkPolicy admits (components/local-data/redis).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-web
+spec:
+  template:
+    metadata:
+      labels:
+        redis-client: 'true'
+    spec:
+      containers:
+        - name: portfolio-web
+          volumeMounts:
+            - name: local-ca
+              mountPath: /etc/local-ca
+              readOnly: true
+      volumes:
+        - name: local-ca
+          configMap:
+            name: local-ca
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-web
+spec:
+  template:
+    metadata:
+      labels:
+        redis-client: 'true'
+    spec:
+      containers:
+        - name: admin-web
+          volumeMounts:
+            - name: local-ca
+              mountPath: /etc/local-ca
+              readOnly: true
+      volumes:
+        - name: local-ca
+          configMap:
+            name: local-ca
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: deployment-service
+          volumeMounts:
+            - name: local-ca
+              mountPath: /etc/local-ca
+              readOnly: true
+      volumes:
+        - name: local-ca
+          configMap:
+            name: local-ca

@@ -1,0 +1,111 @@
+# Keycloak (identity provider), backed by Postgres (database "keycloak").
+#
+# Each overlay sets (patches/keycloak.yaml):
+#   KC_HOSTNAME        public URL; every token gets  iss = <KC_HOSTNAME>/realms/<realm>, no matter
+#                      how Keycloak is reached. KrakenD and the services may fetch the JWKS through
+#                      the in-cluster URL (KC_HOSTNAME_BACKCHANNEL_DYNAMIC) and the issuer still matches.
+#   KC_HOSTNAME_ADMIN  admin console URL, never published on the Gateway (port-forward / VPN only).
+# and generates the ConfigMap "keycloak-realm" (realm JSON, imported on startup ONLY if the realm
+# doesn't exist yet; later changes are ignored, see k8s/README.md) and the Secrets
+# "keycloak-admin" / "keycloak-db".
+# `start-dev` is for local use; a production overlay switches to `start --optimized`.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      enableServiceLinks: false
+      initContainers:
+        # Idempotent: creates the "keycloak" role and database in Postgres if missing.
+        - name: create-database
+          image: postgres:16-alpine
+          envFrom:
+            - secretRef:
+                name: postgres-credentials
+            - secretRef:
+                name: keycloak-db
+          command: ['sh', '-c']
+          args:
+            - |
+              set -e
+              export PGPASSWORD="$POSTGRES_PASSWORD"
+              until pg_isready -h postgres -U "$POSTGRES_USER" -q; do echo "waiting for postgres"; sleep 2; done
+              psql -h postgres -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 \
+                -v kc_user="$KC_DB_USERNAME" -v kc_pass="$KC_DB_PASSWORD" <<'SQL'
+              SELECT format('CREATE ROLE %I LOGIN PASSWORD %L', :'kc_user', :'kc_pass')
+              WHERE NOT EXISTS (SELECT FROM pg_roles WHERE rolname = :'kc_user')\gexec
+              SELECT format('CREATE DATABASE keycloak OWNER %I', :'kc_user')
+              WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'keycloak')\gexec
+              SQL
+              echo "keycloak database ready"
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:26.4.7
+          args: ['start-dev', '--import-realm']
+          env:
+            - name: KC_DB
+              value: postgres
+            - name: KC_DB_URL
+              value: jdbc:postgresql://postgres:5432/keycloak
+            # Trust X-Forwarded-* from the Gateway (client IP for brute-force detection and events).
+            # Only the Gateway and port-forwards can reach this pod.
+            - name: KC_PROXY_HEADERS
+              value: xforwarded
+            - name: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
+              value: 'true'
+            - name: KC_HTTP_ENABLED
+              value: 'true'
+            # Management interface (port 9000): /health/* and /metrics.
+            - name: KC_HEALTH_ENABLED
+              value: 'true'
+            - name: KC_METRICS_ENABLED
+              value: 'true'
+          envFrom:
+            - secretRef:
+                name: keycloak-admin
+            - secretRef:
+                name: keycloak-db
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: management
+              containerPort: 9000
+          volumeMounts:
+            - name: realm
+              mountPath: /opt/keycloak/data/import
+              readOnly: true
+          startupProbe:
+            httpGet:
+              path: /health/started
+              port: management
+            periodSeconds: 5
+            failureThreshold: 60 # first start (DB schema + realm import) can take a while
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: management
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: management
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 250m
+              memory: 768Mi
+            limits:
+              memory: 1536Mi
+      volumes:
+        - name: realm
+          configMap:
+            name: keycloak-realm

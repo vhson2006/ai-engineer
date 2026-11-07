@@ -1,0 +1,57 @@
+# Applies pending Prisma migrations to the deployment AND notification databases BEFORE the new
+# version rolls out.
+# Argo CD runs it as a PreSync hook on every sync: if it fails, the sync stops and the running
+# version keeps serving. The Job is deleted and recreated each time (BeforeHookCreation).
+# Image: Dockerfile --target migrate (same commit as deployment-service, set in kustomization.yaml).
+# Migrations must stay backward compatible with the version still running (expand -> contract).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: deployment-db-migrate
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app: deployment-db-migrate
+    spec:
+      restartPolicy: Never
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: migrate
+          image: deployment-migrate
+          envFrom:
+            - secretRef:
+                name: deployment-db # DB_* incl. DB_SSLMODE=require
+            - secretRef:
+                name: notification-db # NOTIFICATION_DB_* incl. NOTIFICATION_DB_SSLMODE=require
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi

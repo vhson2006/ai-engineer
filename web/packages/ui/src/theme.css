@@ -1,0 +1,125 @@
+/*
+ * Shared design tokens (both web apps). Every component uses these semantic colors
+ * (bg-surface, text-muted, bg-brand…), never raw palette colors, except for status badges.
+ * An app imports this after tailwindcss and may override the variables (e.g. its own --brand).
+ */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --fg: #0f172a;
+  --muted: #475569;
+  --subtle: #64748b;
+  --brand: #4f46e5;
+  --brand-hover: #4338ca;
+  --brand-fg: #ffffff;
+  --brand-soft: #eef2ff;
+  --brand-soft-fg: #3730a3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --surface: #111827;
+    --surface-2: #1a2333;
+    --border: #243045;
+    --fg: #e5e7eb;
+    --muted: #a3acbb;
+    --subtle: #8b95a7;
+    --brand: #818cf8;
+    --brand-hover: #a5b4fc;
+    --brand-fg: #0b1020;
+    --brand-soft: rgb(129 140 248 / 0.14);
+    --brand-soft-fg: #c7d2fe;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-fg: var(--brand-fg);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-soft-fg: var(--brand-soft-fg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--brand-soft-fg);
+}
+
+/* Enter/exit animations of overlays (dialog, popover, menu, tooltip): Radix sets data-state. */
+@theme {
+  --animate-fade-in: fade-in 150ms ease-out;
+  --animate-fade-out: fade-out 120ms ease-in;
+  --animate-zoom-in: zoom-in 150ms ease-out;
+  --animate-zoom-out: zoom-out 120ms ease-in;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  @keyframes zoom-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes zoom-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.96); }
+  }
+}
+
+/* Calendar (@daypicker/react) in the design tokens. */
+.rdp-root {
+  --rdp-accent-color: var(--brand);
+  --rdp-accent-background-color: var(--brand-soft);
+  --rdp-day-height: 38px;
+  --rdp-day-width: 38px;
+  --rdp-day_button-height: 36px;
+  --rdp-day_button-width: 36px;
+  --rdp-day_button-border-radius: 0.5rem;
+  --rdp-today-color: var(--brand);
+  font-size: 0.875rem;
+}
+
+/* Rich text (Tiptap editor content, and sanitized rich text when displayed). */
+.rich-text { line-height: 1.65; }
+.rich-text > * + * { margin-top: 0.6em; }
+.rich-text h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
+.rich-text h3 { font-size: 1.05rem; font-weight: 600; }
+.rich-text ul { list-style: disc; padding-left: 1.4em; }
+.rich-text ol { list-style: decimal; padding-left: 1.4em; }
+.rich-text blockquote { border-left: 3px solid var(--border); padding-left: 0.9em; color: var(--muted); }
+.rich-text code { border-radius: 0.3rem; background: var(--surface-2); padding: 0.1em 0.35em; font-family: var(--font-mono); font-size: 0.9em; }
+.rich-text pre { border-radius: 0.6rem; background: var(--surface-2); padding: 0.8em 1em; overflow-x: auto; }
+.rich-text pre code { background: none; padding: 0; }
+.rich-text a { color: var(--brand); text-decoration: underline; text-underline-offset: 2px; }
+.rich-text p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--subtle);
+}

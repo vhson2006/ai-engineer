@@ -1,0 +1,5 @@
+user default off
+user healthcheck on nopass -@all +ping
+user web on >web-dev-redis-password resetkeys ~web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user admin-web on >admin-web-dev-redis-password resetkeys ~admin-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user admin on >admin-dev-redis-password ~* &* +@all

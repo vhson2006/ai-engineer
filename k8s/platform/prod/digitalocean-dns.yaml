@@ -1,0 +1,18 @@
+# DigitalOcean API token used by cert-manager for DNS-01 challenges. It must live in the
+# cert-manager namespace (where ClusterIssuers look for their Secrets).
+# Secret manager entry: nest-microservice-prod-digitalocean-dns, field access-token.
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: digitalocean-dns
+  namespace: cert-manager
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: prod-secrets
+  target:
+    name: digitalocean-dns
+  dataFrom:
+    - extract:
+        key: nest-microservice-prod-digitalocean-dns

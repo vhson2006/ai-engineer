@@ -1,0 +1,66 @@
+# Staging runs its data stores IN the cluster (prod uses managed services outside it), so on top of
+# the shared default-deny policies (components/network-policies) they need their own allow rules.
+# Redis already has one (components/local-data/redis: pods labelled redis-client=true).
+#
+#   deployment-service, notification-service, keycloak, db-migrate ─▶ postgres :5432
+#   edge-nginx ─▶ seaweedfs :8333   (https://s3.staging.localtest.me: browsers and deployment-service)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: postgres-from-apps
+spec:
+  podSelector:
+    matchLabels:
+      app: postgres
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: deployment-service
+        - podSelector:
+            matchLabels:
+              app: notification-service
+        - podSelector:
+            matchLabels:
+              app: keycloak
+        - podSelector:
+            matchLabels:
+              app: db-migrate
+      ports:
+        - port: 5432
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: seaweedfs-from-edge
+spec:
+  podSelector:
+    matchLabels:
+      app: seaweedfs
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              gateway.networking.k8s.io/gateway-name: edge
+      ports:
+        - port: 8333
+          protocol: TCP
+---
+# The shared policy edge-from-internet opens 80 and 443 (prod). Staging's plain-HTTP listener is
+# on 8001 (port 80 belongs to Windows on this machine): open it too.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-http-8001
+spec:
+  podSelector:
+    matchLabels:
+      gateway.networking.k8s.io/gateway-name: edge
+  policyTypes: ['Ingress']
+  ingress:
+    - ports:
+        - port: 8001
+          protocol: TCP

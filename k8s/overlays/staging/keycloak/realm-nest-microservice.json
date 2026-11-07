@@ -1,0 +1,256 @@
+{
+  "realm": "nest-microservice",
+  "displayName": "nest-microservice",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "resetPasswordAllowed": false,
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxTemporaryLockouts": 0,
+  "bruteForceStrategy": "MULTIPLE",
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "maxDeltaTimeSeconds": 43200,
+  "quickLoginCheckMilliSeconds": 1000,
+  "minimumQuickLoginWaitSeconds": 60,
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 36000,
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 0,
+  "roles": {
+    "client": {
+      "deployments-api": [
+        {
+          "name": "deployment:read",
+          "description": "List and read deployments"
+        },
+        {
+          "name": "deployment:write",
+          "description": "Create deployments; update and delete your own"
+        },
+        {
+          "name": "deployment:admin",
+          "description": "Update and delete anyone's deployment"
+        }
+      ],
+      "admin-web": [
+        {
+          "name": "admin",
+          "description": "May sign in to the admin site (admin-web)"
+        }
+      ]
+    }
+  },
+  "groups": [
+    {
+      "name": "viewers",
+      "clientRoles": {
+        "deployments-api": [
+          "deployment:read"
+        ]
+      }
+    },
+    {
+      "name": "developers",
+      "clientRoles": {
+        "deployments-api": [
+          "deployment:read",
+          "deployment:write"
+        ]
+      }
+    },
+    {
+      "name": "admins",
+      "clientRoles": {
+        "deployments-api": [
+          "deployment:read",
+          "deployment:write",
+          "deployment:admin"
+        ],
+        "admin-web": [
+          "admin"
+        ]
+      }
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "deployments-api",
+      "name": "Deployments API (resource server: holds the roles, used as token audience)",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false
+    },
+    {
+      "clientId": "web",
+      "name": "Next.js frontend (BFF, confidential)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "web-dev-secret",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "https://www.staging.localtest.me/*"
+      ],
+      "webOrigins": [
+        "https://www.staging.localtest.me"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "https://www.staging.localtest.me/*"
+      },
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-deployments-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "deployments-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "admin-web",
+      "name": "Admin site (BFF, confidential): admins only, password + OTP",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "admin-web-dev-secret",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "https://admin.staging.localtest.me/*"
+      ],
+      "webOrigins": [
+        "https://admin.staging.localtest.me"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "https://admin.staging.localtest.me/*",
+        "client.session.idle.timeout": "900",
+        "client.session.max.lifespan": "28800"
+      },
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-deployments-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "deployments-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "dev-cli",
+      "name": "DEV ONLY: password grant for curl tests. Never enable outside local dev.",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-deployments-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "deployments-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "alice",
+      "email": "alice@example.com",
+      "firstName": "Alice",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        },
+        {
+          "type": "otp",
+          "userLabel": "dev authenticator (DEV ONLY secret, README)",
+          "secretData": "{\"value\":\"dev-only-alice-otp-secret\"}",
+          "credentialData": "{\"subType\":\"totp\",\"digits\":6,\"counter\":0,\"period\":30,\"algorithm\":\"HmacSHA1\"}"
+        }
+      ],
+      "groups": [
+        "/admins"
+      ]
+    },
+    {
+      "username": "bob",
+      "email": "bob@example.com",
+      "firstName": "Bob",
+      "lastName": "Developer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/developers"
+      ]
+    },
+    {
+      "username": "carol",
+      "email": "carol@example.com",
+      "firstName": "Carol",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/viewers"
+      ]
+    }
+  ]
+}

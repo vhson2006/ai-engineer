@@ -1,0 +1,11 @@
+# Data plane of the staging Gateway: one nginx replica (NGF creates Service "edge-nginx" in this
+# namespace; in-cluster clients reach https://*.staging.localtest.me through it, see the CoreDNS
+# rule installed by `npm run staging:up`).
+apiVersion: gateway.nginx.org/v1alpha2
+kind: NginxProxy
+metadata:
+  name: edge-proxy
+spec:
+  kubernetes:
+    deployment:
+      replicas: 1

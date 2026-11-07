@@ -1,0 +1,247 @@
+{
+  "meta": {
+    "title": "Administration",
+    "description": "Administration of the nest-microservice platform."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "language": "Language",
+    "brand": "Admin",
+    "brandTagline": "Control panel",
+    "close": "Close",
+    "cancel": "Cancel",
+    "requestId": "Request id"
+  },
+  "nav": {
+    "label": "Main",
+    "overview": "Overview",
+    "deployments": "Deployments",
+    "designSystem": "Design system"
+  },
+  "userMenu": {
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "overview": {
+    "title": "Overview",
+    "eyebrow": "Administration",
+    "welcome": "Hello, {name}",
+    "subtitle": "Everything here acts on production data with your administrator rights. Take care.",
+    "security": {
+      "title": "Protected session",
+      "text": "Signed in with password and one-time code. The session ends after 15 minutes of inactivity and after 8 hours at most."
+    },
+    "stats": {
+      "deployments": "Deployments",
+      "deploymentsHint": "all owners",
+      "running": "Running",
+      "failed": "Failed",
+      "latestHint": "among the latest {count}"
+    },
+    "recent": {
+      "title": "Latest deployments",
+      "name": "Name",
+      "version": "Version",
+      "environment": "Environment",
+      "status": "Status",
+      "owner": "Owner",
+      "created": "Created",
+      "empty": "No deployments yet."
+    },
+    "status": {
+      "pending": "pending",
+      "running": "running",
+      "succeeded": "succeeded",
+      "failed": "failed"
+    },
+    "roles": {
+      "title": "Your roles",
+      "none": "no API roles"
+    },
+    "errors": {
+      "title": "The deployment API didn’t answer correctly",
+      "requestId": "Request id"
+    },
+    "charts": {
+      "status": "Status of the latest {count}",
+      "statusLabel": "Bar chart: number of deployments per status among the latest {count}.",
+      "activity": "Created per day, last 14 days",
+      "activityLabel": "Area chart: deployments created per day over the last 14 days.",
+      "series": "Deployments"
+    }
+  },
+  "login": {
+    "title": "Administrator sign-in",
+    "intro": "Restricted area. Sign in with an administrator account: a password and a one-time code from your authenticator app are required.",
+    "continueWithKeycloak": "Continue with Keycloak",
+    "signedInAs": "You’re signed in as {name}.",
+    "continue": "Continue",
+    "otpHint": "First sign-in? Keycloak shows a QR code: scan it with an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password…).",
+    "errors": {
+      "denied": "Sign-in was cancelled.",
+      "expired": "The sign-in attempt expired. Please try again.",
+      "failed": "We couldn’t complete the sign-in. Please try again.",
+      "unavailable": "The identity server is unavailable right now. Please try again in a moment.",
+      "session_unavailable": "Sign-in is temporarily unavailable on our side. Please try again in a moment.",
+      "rate_limited": "Too many sign-in attempts from your network. Please wait a few minutes and try again.",
+      "forbidden": "This account isn’t an administrator. Sign in with an administrator account."
+    },
+    "testAccounts": {
+      "title": "Local test account",
+      "alice": "administrator: password “password”, one-time code from the dev OTP secret (README)"
+    }
+  },
+  "notFound": {
+    "title": "This page doesn’t exist",
+    "text": "The link may be broken, or the page may have moved.",
+    "back": "Back to the overview"
+  },
+  "deployments": {
+    "title": "Deployments",
+    "subtitle": "Every deployment, all owners. Search by name or version.",
+    "search": {
+      "label": "Search deployments",
+      "placeholder": "Search name or version…"
+    },
+    "empty": "No deployments yet.",
+    "emptySearch": "No deployment matches “{search}”.",
+    "total": "{count} in total",
+    "columns": {
+      "name": "Name",
+      "environment": "Environment",
+      "status": "Status",
+      "owner": "Owner",
+      "created": "Created"
+    },
+    "pagination": {
+      "nav": "Pagination",
+      "previous": "Previous",
+      "next": "Next",
+      "status": "Page {page} of {total}"
+    },
+    "create": {
+      "button": "New deployment",
+      "title": "New deployment",
+      "description": "It starts as “pending”. You are recorded as its owner.",
+      "name": "Name",
+      "namePlaceholder": "checkout-api",
+      "version": "Version",
+      "versionHint": "Semantic version, e.g. 1.4.0",
+      "environment": "Environment",
+      "environments": {
+        "development": "Development",
+        "staging": "Staging",
+        "production": "Production"
+      },
+      "notes": "Notes",
+      "notesPlaceholder": "What changes in this release (optional)",
+      "submit": "Create deployment",
+      "submitting": "Creating…",
+      "success": "Deployment “{name}” created."
+    },
+    "export": {
+      "button": "Export to Excel",
+      "sheet": "Deployments",
+      "version": "Version",
+      "description": "Notes",
+      "id": "Id",
+      "tooMany": "Too many exports. Please wait a few minutes.",
+      "failed": "The export failed: the deployment API didn’t answer correctly.",
+      "signIn": "Please sign in again."
+    }
+  },
+  "validation": {
+    "required": "This field is required.",
+    "tooLong": "This is too long.",
+    "invalidVersion": "Use a version like 1.4.0.",
+    "invalid": "This value is not valid."
+  },
+  "designSystem": {
+    "title": "Design system",
+    "subtitle": "Every component of @web/ui, in this app’s theme. Import them as @web/ui/<name>; both sites share them.",
+    "sections": {
+      "buttons": "Buttons",
+      "badges": "Badges",
+      "fields": "Form fields",
+      "overlays": "Overlays and feedback",
+      "charts": "Charts",
+      "editor": "Rich text editor",
+      "sortable": "Drag and drop",
+      "table": "Data table",
+      "motion": "Motion"
+    },
+    "samples": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "ghost": "Ghost",
+      "destructive": "Delete",
+      "link": "Link",
+      "small": "Small",
+      "large": "Large",
+      "input": "Text input",
+      "inputPlaceholder": "Type something…",
+      "textarea": "Text area",
+      "select": "Select",
+      "selectPlaceholder": "Choose an environment",
+      "combobox": "Combobox",
+      "comboboxPlaceholder": "Choose a service",
+      "comboboxSearch": "Search services…",
+      "comboboxEmpty": "No service found.",
+      "date": "Date picker",
+      "datePlaceholder": "Pick a date",
+      "checkbox": "Notify the team on Slack",
+      "tabs": {
+        "overview": "Overview",
+        "activity": "Activity",
+        "settings": "Settings"
+      },
+      "tabsContent": "Tabs switch panels without leaving the page.",
+      "openDialog": "Open dialog",
+      "dialogTitle": "Confirm the rollout",
+      "dialogText": "Dialogs trap focus, close with Escape and restore focus on close.",
+      "confirm": "Confirm",
+      "menu": "Actions",
+      "menuEdit": "Edit",
+      "menuDuplicate": "Duplicate",
+      "menuDelete": "Delete",
+      "popover": "Popover",
+      "popoverText": "Popovers hold small forms or details.",
+      "tooltip": "Hover or focus me",
+      "tooltipText": "Tooltips explain icons and short labels.",
+      "toastSuccess": "Success toast",
+      "toastError": "Error toast",
+      "toastSuccessText": "Saved.",
+      "toastErrorText": "Something went wrong.",
+      "chartBar": "Deployments per environment",
+      "chartArea": "Deployments per week",
+      "series": "Deployments",
+      "editorPlaceholder": "Write release notes…",
+      "editorOutput": "HTML output (sanitize it on the server before displaying it)",
+      "sortableHint": "Drag the handles, or focus one and use Space and the arrow keys.",
+      "motionText": "This card faded in when it scrolled into view (motion), unless you prefer reduced motion."
+    },
+    "editor": {
+      "toolbar": "Formatting",
+      "bold": "Bold",
+      "italic": "Italic",
+      "underline": "Underline",
+      "strike": "Strikethrough",
+      "code": "Inline code",
+      "heading2": "Heading",
+      "heading3": "Subheading",
+      "bulletList": "Bulleted list",
+      "orderedList": "Numbered list",
+      "quote": "Quote",
+      "undo": "Undo",
+      "redo": "Redo"
+    },
+    "sortable": {
+      "handle": "Drag to reorder {name}",
+      "instructions": "To pick up an item, press Space. Use the arrow keys to move it, Space to drop it, Escape to cancel.",
+      "pickedUp": "Picked up {name} at position {position}.",
+      "movedTo": "{name} moved to position {position}.",
+      "dropped": "{name} dropped at position {position}.",
+      "cancelled": "Moving {name} was cancelled."
+    }
+  }
+}

@@ -1,0 +1,162 @@
+# Zero trust inside the namespace: nothing may connect to a pod unless a rule below allows it.
+# Allowed flows (everything else is dropped):
+#
+#   Internet ─▶ edge-nginx :80/:443
+#   edge-nginx ─▶ portfolio-web :3000, admin-web :3000, keycloak :8080  (KrakenD is NOT reachable from the edge)
+#   portfolio-web, admin-web ─▶ krakend :8080  (server-side API calls; tokens never leave the server)
+#   krakend ─▶ deployment-service :3001
+#   krakend, deployment-service ─▶ keycloak :8080   (JWKS)
+#   keycloak ◀─▶ keycloak (all ports)         (cluster cache between replicas)
+#   deployment-service, notification-service ─▶ nats :4222
+#
+# Egress is not restricted here (managed Postgres/Valkey, DNS, Let's Encrypt are outside the
+# cluster). Probes come from the kubelet on the node and are not affected on DOKS (Cilium).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+spec:
+  podSelector: {}
+  policyTypes: ['Ingress']
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: edge-from-internet
+spec:
+  podSelector:
+    matchLabels:
+      gateway.networking.k8s.io/gateway-name: edge
+  policyTypes: ['Ingress']
+  ingress:
+    - ports:
+        - port: 80
+          protocol: TCP
+        - port: 443
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: portfolio-web-from-edge
+spec:
+  podSelector:
+    matchLabels:
+      app: portfolio-web
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              gateway.networking.k8s.io/gateway-name: edge
+      ports:
+        - port: 3000
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: admin-web-from-edge
+spec:
+  podSelector:
+    matchLabels:
+      app: admin-web
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              gateway.networking.k8s.io/gateway-name: edge
+      ports:
+        - port: 3000
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: krakend-from-web
+spec:
+  podSelector:
+    matchLabels:
+      app: krakend
+  policyTypes: ['Ingress']
+  ingress:
+    # The API is private: only the web apps' servers. Even if an api.<domain> route were added
+    # to the Gateway by mistake, nginx couldn't reach KrakenD.
+    - from:
+        - podSelector:
+            matchLabels:
+              app: portfolio-web
+        - podSelector:
+            matchLabels:
+              app: admin-web
+      ports:
+        - port: 8080
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deployment-service-from-krakend
+spec:
+  podSelector:
+    matchLabels:
+      app: deployment-service
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: krakend
+      ports:
+        - port: 3001
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: keycloak-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: keycloak
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              gateway.networking.k8s.io/gateway-name: edge
+        - podSelector:
+            matchLabels:
+              app: krakend
+        - podSelector:
+            matchLabels:
+              app: deployment-service
+      ports:
+        - port: 8080
+          protocol: TCP
+    - from: # replicas form one cache cluster (JGroups)
+        - podSelector:
+            matchLabels:
+              app: keycloak
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: nats-from-services
+spec:
+  podSelector:
+    matchLabels:
+      app: nats
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: deployment-service
+        - podSelector:
+            matchLabels:
+              app: notification-service
+      ports:
+        - port: 4222
+          protocol: TCP

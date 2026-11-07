@@ -1,0 +1,15 @@
+# Telemetry to Grafana Cloud (ADR 0023): Grafana Alloy + its NetworkPolicies. Used by the staging
+# and prod overlays. The overlay adds ConfigMap "alloy-env" (CLUSTER_NAME) and the Secret
+# "grafana-cloud" (staging: k8s/.grafana-cloud.env via staging.sh; prod: External Secrets), and
+# points the apps at http://alloy:4318 (OTEL_EXPORTER_OTLP_ENDPOINT in their env files).
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - alloy.yaml
+  - networkpolicies.yaml
+
+configMapGenerator:
+  - name: alloy-config # hashed name: a config change rolls Alloy
+    files:
+      - config.alloy

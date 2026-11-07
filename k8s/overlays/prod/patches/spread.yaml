@@ -1,0 +1,11 @@
+# Applied to every Deployment (see kustomization.yaml): spread the replicas of one Deployment
+# over different nodes when possible, so losing a node never loses all replicas.
+# matchLabelKeys [pod-template-hash] limits the count to the pods of the same Deployment revision.
+- op: add
+  path: /spec/template/spec/topologySpreadConstraints
+  value:
+    - maxSkew: 1
+      topologyKey: kubernetes.io/hostname
+      whenUnsatisfiable: ScheduleAnyway
+      labelSelector: {}
+      matchLabelKeys: ['pod-template-hash']

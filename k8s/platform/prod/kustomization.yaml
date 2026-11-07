@@ -1,0 +1,12 @@
+# Cluster-level resources of the production cluster, applied ONCE after installing NGINX Gateway
+# Fabric, cert-manager, External Secrets Operator and Argo CD (k8s/README.md#production):
+#   kubectl apply -k k8s/platform/prod
+# No `namespace:` here on purpose: these objects live in their own namespaces (cert-manager,
+# argocd) or are cluster-scoped.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - cluster-issuers.yaml
+  - digitalocean-dns.yaml
+  - argocd-application.yaml

@@ -1,0 +1,29 @@
+# Production data plane of the "edge" Gateway: two nginx replicas behind the DigitalOcean Load
+# Balancer that NGF creates for the Gateway's LoadBalancer Service.
+apiVersion: gateway.nginx.org/v1alpha2
+kind: NginxProxy
+metadata:
+  name: edge-proxy
+spec:
+  kubernetes:
+    deployment:
+      replicas: 2
+---
+# Plain HTTP only redirects: every http://*.example.com request -> https, 301.
+# (Certificates come from DNS-01, so no HTTP challenge route is needed.)
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: https-redirect
+spec:
+  parentRefs:
+    - name: edge
+      sectionName: http
+  hostnames:
+    - '*.example.com'
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301

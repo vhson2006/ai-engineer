@@ -1,0 +1,33 @@
+# What every environment runs: edge Gateway + routes, KrakenD (API gateway), Keycloak (identity).
+# Not deployable on its own: an overlay (overlays/<env>) adds the environment's values:
+#   - ConfigMap "krakend-settings"  (KrakenD settings/env.json: issuer, JWKS, backends)
+#   - ConfigMap "keycloak-realm", Secrets "keycloak-admin" / "keycloak-db"
+#   - host names and listeners of the Gateway, Keycloak's KC_HOSTNAME
+#   - data stores (dev: components/local-data; elsewhere: managed services)
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nest-microservice
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: nest-microservice
+    includeSelectors: false
+
+resources:
+  - namespace.yaml
+  - krakend/deployment.yaml
+  - krakend/service.yaml
+  - keycloak/deployment.yaml
+  - keycloak/service.yaml
+  - gateway/gateway.yaml
+  - gateway/routes.yaml
+
+# KrakenD Flexible Configuration -> ConfigMaps with a content hash in their names, so every change
+# rolls the KrakenD pods on `npm run k8s:up`.
+configMapGenerator:
+  - name: krakend-config
+    files:
+      - krakend/config/krakend.tmpl
+  - name: krakend-templates
+    files:
+      - krakend/config/templates/endpoint.tmpl

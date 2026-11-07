@@ -1,0 +1,94 @@
+# LOCAL STAGING: the whole system in the local cluster, built and run like production, with HTTPS.
+#   npm run staging:build   build the 5 production images and load them into the cluster nodes
+#   npm run staging:up      cert-manager + local CA, CoreDNS rule, scale dev to 0, apply this, migrate
+#   npm run staging:trust-ca   trust the local CA in Windows once (padlock without warnings)
+#   npm run staging:down    remove staging (data too); `npm run k8s:up` brings dev back
+#
+#   https://www.staging.localtest.me    portfolio-web (in the cluster, production image)
+#   https://admin.staging.localtest.me  admin-web (admins only: role + password + one-time code)
+#   https://auth.staging.localtest.me   Keycloak (app realm only, production mode `start`)
+#   https://s3.staging.localtest.me     object storage (SeaweedFS), for presigned URLs
+#   http://*.staging.localtest.me:8001  → 301 to https (port 80 is taken by Windows on this machine)
+#
+# Same as prod: production images, Keycloak `start`, KrakenD private, NetworkPolicies default deny,
+# TLS at the Gateway issued by cert-manager from the Gateway annotation, HSTS, Secure / __Host-
+# cookies, a migration Job before the apps. Different: data stores in the cluster
+# (components/local-data), a private CA instead of Let's Encrypt, dev credentials in plain Secrets,
+# 1 replica each, telemetry to Grafana Cloud only when k8s/.grafana-cloud.env exists. Its own namespace: dev's data in nest-microservice is untouched.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nest-staging
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: nest-microservice
+      app.kubernetes.io/instance: staging-local
+    includeSelectors: false
+
+resources:
+  - ../../base
+  - secrets.yaml # LOCAL STAGING ONLY credentials (same dev values, never production)
+  - gateway/edge-proxy.yaml
+  - gateway/https-redirect.yaml
+  - gateway/s3-route.yaml
+  - migration-job.yaml
+  - networkpolicies-local-data.yaml
+
+components:
+  - ../../components/local-data
+  - ../../components/nats
+  - ../../components/apps
+  - ../../components/network-policies
+  - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
+
+# Built by `npm run staging:build` (Docker Desktop's cluster sees the local image store). The tag
+# `staging` is replaced at deploy time by the image id (staging.sh), so a rebuild is always picked up.
+images:
+  - name: deployment-service
+    newName: local/deployment-service
+    newTag: staging
+  - name: notification-service
+    newName: local/notification-service
+    newTag: staging
+  - name: deployment-migrate
+    newName: local/deployment-migrate
+    newTag: staging
+  - name: portfolio-web
+    newName: local/portfolio-web
+    newTag: staging
+  - name: admin-web
+    newName: local/admin-web
+    newTag: staging
+
+configMapGenerator:
+  - name: krakend-settings
+    files:
+      - krakend/settings/env.json
+  - name: keycloak-realm # dev realm with the staging URLs (test users, dev-cli: local only)
+    files:
+      - keycloak/realm-nest-microservice.json
+  - name: deployment-service-env
+    envs:
+      - env/deployment-service.env
+  - name: notification-service-env
+    envs:
+      - env/notification-service.env
+  - name: portfolio-web-env
+    envs:
+      - env/portfolio-web.env
+  - name: admin-web-env
+    envs:
+      - env/admin-web.env
+  - name: alloy-env
+    literals:
+      - CLUSTER_NAME=staging-local
+
+patches:
+  - path: patches/gateway.yaml # https on 443 (local CA), http 8001 → redirect, *.staging.localtest.me
+  - path: patches/routes-https.yaml # www, admin, auth on https only, HSTS
+    target:
+      kind: HTTPRoute
+      name: ^(www|admin|auth)$
+  - path: patches/keycloak.yaml # production mode `start`, https hostname
+  - path: patches/apps-local-ca.yaml # apps trust the local CA (calls to https://auth / https://s3)
+  - path: patches/seaweedfs-cors.yaml # browsers on https://www.staging.localtest.me may PUT

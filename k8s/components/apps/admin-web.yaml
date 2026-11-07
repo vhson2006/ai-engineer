@@ -1,0 +1,90 @@
+# admin-web (the admin site, ADR 0019; Next.js standalone, :3000), image built from
+# web/apps/admin-web/Dockerfile (context web/). Same hardening as portfolio-web.
+# The overlay provides:
+#   ConfigMap "admin-web-env"  APP_URL, API_URL, KEYCLOAK_ISSUER, KEYCLOAK_CLIENT_ID,
+#                              KEYCLOAK_REQUIRED_ROLE, REDIS_KEY_PREFIX
+#   Secret    "admin-web"      KEYCLOAK_CLIENT_SECRET, SESSION_ENCRYPTION_KEY, REDIS_URL
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-web
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: admin-web
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: admin-web
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: admin-web
+          image: admin-web
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: admin-web-env
+            - secretRef:
+                name: admin-web
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 192Mi
+            limits:
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: next-cache # the only path Next writes to at runtime
+              mountPath: /app/apps/admin-web/.next/cache
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: next-cache
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: tmp
+          emptyDir:
+            sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-web
+spec:
+  selector:
+    app: admin-web
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http

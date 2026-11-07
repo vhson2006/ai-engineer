@@ -1,0 +1,47 @@
+# LOCAL MACHINE ONLY (never applied to production; prod uses Let's Encrypt, platform/prod).
+# A private CA for the local staging overlay, so the browser shows a valid HTTPS padlock for
+# https://*.staging.localtest.me after you trust this CA once (`npm run staging:trust-ca`).
+#
+# Name constraints: the CA can ONLY sign names under localtest.me. Even if its private key (the
+# Secret cert-manager/local-ca) leaked, it couldn't impersonate any other site to your browser.
+#
+#   selfsigned-bootstrap (ClusterIssuer) ─signs─▶ local-ca (CA certificate, 10 years)
+#   local-ca (ClusterIssuer) ─signs─▶ the staging Gateway's wildcard certificate (cert-manager
+#                                     reads the Gateway annotation, exactly like prod)
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-bootstrap
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: local-ca
+  namespace: cert-manager
+spec:
+  isCA: true
+  commonName: Local staging CA (localtest.me only)
+  subject:
+    organizations: ['nest-microservice local staging']
+  secretName: local-ca
+  duration: 87600h # 10 years
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  nameConstraints:
+    critical: true
+    permitted:
+      dnsDomains: ['localtest.me']
+  issuerRef:
+    kind: ClusterIssuer
+    name: selfsigned-bootstrap
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: local-ca
+spec:
+  ca:
+    secretName: local-ca

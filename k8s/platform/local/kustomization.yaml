@@ -1,0 +1,7 @@
+# Cluster-level pieces for the LOCAL staging overlay (Docker Desktop). Applied by
+# `npm run staging:up` after cert-manager is installed. Never used by production.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - local-ca.yaml

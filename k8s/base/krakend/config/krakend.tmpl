@@ -1,0 +1,127 @@
+{{- /*
+  KrakenD Flexible Configuration: the API, written once for every environment. PRIVATE: only
+  portfolio-web's server calls it (no Gateway route, no CORS: no browser ever calls it directly).
+  Rendered at startup with FC_ENABLE=1 (see base/krakend/deployment.yaml):
+    .env.*                 settings/env.json, provided by each overlay (issuer, JWKS URL, backends, rate limits)
+    templates/*.tmpl       reusable blocks: endpoint.tmpl (token check + rate limits of one endpoint)
+  Go text/template + Sprig functions. `marshal` writes a value as JSON (quotes and escaping included).
+  Check the rendered result:  npm run krakend:check   (prints errors, writes nothing)
+*/ -}}
+{
+  "$schema": "https://www.krakend.io/schema/v2.10/krakend.json",
+  "version": 3,
+  "name": "nest-microservice API gateway",
+  "port": 8080,
+  "timeout": "5s",
+  "cache_ttl": "0s",
+  "extra_config": {
+    "telemetry/logging": {
+      "level": {{ marshal .env.log_level }},
+      "prefix": "[KRAKEND]",
+      "stdout": true
+    }
+  },
+  "endpoints": [
+    {
+      "@comment": "List deployments (paginated). Only these query params are forwarded.",
+      "endpoint": "/api/deployments",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["page", "limit", "search", "environment"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Create a deployment: 201 + Location are passed through unchanged.",
+      "endpoint": "/api/deployments",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/deployments/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Role check only; 'only the creator or an admin' is enforced by the service. If-Match is required by the service (optimistic concurrency, 428/412).",
+      "endpoint": "/api/deployments/{id}",
+      "method": "PATCH",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "If-Match", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Role check only; 'only the creator or an admin' is enforced by the service.",
+      "endpoint": "/api/deployments/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Files: start an upload. Answers a presigned URL; the bytes go straight to object storage, never through KrakenD.",
+      "endpoint": "/api/files/uploads",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files/uploads", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Files: confirm an upload (owner only, checked by the service).",
+      "endpoint": "/api/files/{id}/complete",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files/{id}/complete", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Files: attachments of a deployment (deploymentId) or my files.",
+      "endpoint": "/api/files",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["page", "limit", "deploymentId", "purpose"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Files: metadata + a fresh URL (public CDN or presigned). Visibility rules in the service.",
+      "endpoint": "/api/files/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Files: short-lived link to the bytes (JSON). Not a redirect: KrakenD CE would follow it and stream the file itself.",
+      "endpoint": "/api/files/{id}/download-url",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["disposition"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files/{id}/download-url", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Files: delete (owner or admin, checked by the service).",
+      "endpoint": "/api/files/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files/{id}", "encoding": "no-op" }]
+    }
+  ]
+}

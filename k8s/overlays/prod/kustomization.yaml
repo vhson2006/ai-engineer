@@ -1,0 +1,91 @@
+# Production on DigitalOcean Kubernetes (DOKS), deployed by Argo CD (never `kubectl apply` by hand:
+# the migration Job is an Argo CD PreSync hook). Bootstrap and checklist: k8s/README.md#production.
+#
+#   https://www.example.com   portfolio-web
+#   https://admin.example.com admin-web (admins only: client role + password + one-time code, ADR 0019)
+#   https://auth.example.com  Keycloak (app realm only; admin console via port-forward)
+#   KrakenD and the services are NOT public: only the web apps' servers call KrakenD (in cluster).
+#
+# Replace example.com everywhere in this folder (and in the realm JSON) with the real domain.
+# Data: DigitalOcean managed Postgres (databases "deployment", "notification" and "keycloak") and managed Valkey;
+# NATS runs in the cluster. Secrets come from the secret manager through External Secrets.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nest-microservice
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: nest-microservice
+    includeSelectors: false
+
+resources:
+  - ../../base
+  - secrets/external-secrets.yaml
+  - gateway/edge.yaml
+  - resilience.yaml
+  - migration-job.yaml
+
+components:
+  - ../../components/nats
+  - ../../components/apps
+  - ../../components/network-policies
+  - ../../components/observability # Alloy → Grafana Cloud (ADR 0023)
+
+# CI sets the tags to the commit SHA (`kustomize edit set image ...`) and commits; Argo CD syncs.
+images:
+  - name: deployment-service
+    newName: ghcr.io/your-github-user/nest-microservice/deployment-service
+    newTag: replace-with-commit-sha
+  - name: notification-service
+    newName: ghcr.io/your-github-user/nest-microservice/notification-service
+    newTag: replace-with-commit-sha
+  - name: deployment-migrate
+    newName: ghcr.io/your-github-user/nest-microservice/deployment-migrate
+    newTag: replace-with-commit-sha
+  - name: portfolio-web
+    newName: ghcr.io/your-github-user/portfolio-web
+    newTag: replace-with-commit-sha
+  - name: admin-web
+    newName: ghcr.io/your-github-user/admin-web
+    newTag: replace-with-commit-sha
+
+configMapGenerator:
+  - name: krakend-settings
+    files:
+      - krakend/settings/env.json
+  - name: keycloak-realm # no test users, no dev-cli, no client secret (see k8s/README.md)
+    files:
+      - keycloak/realm-nest-microservice.json
+  - name: deployment-service-env
+    envs:
+      - env/deployment-service.env
+  - name: notification-service-env
+    envs:
+      - env/notification-service.env
+  - name: portfolio-web-env
+    envs:
+      - env/portfolio-web.env
+  - name: admin-web-env
+    envs:
+      - env/admin-web.env
+  - name: alloy-env
+    literals:
+      - CLUSTER_NAME=prod
+
+patches:
+  - path: patches/gateway.yaml # HTTPS listener + wildcard certificate, real host names
+  - path: patches/routes-https.yaml # app routes on https only, HSTS
+    target:
+      kind: HTTPRoute
+      name: ^(www|admin|auth)$
+  - path: patches/keycloak.yaml # production mode, 2 replicas, managed DB over TLS
+  - target: # managed Postgres: the database and user are created once, by hand (README)
+      kind: Deployment
+      name: keycloak
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/initContainers
+  - path: patches/replicas.yaml
+  - path: patches/spread.yaml
+    target:
+      kind: Deployment

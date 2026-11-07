@@ -1,0 +1,8 @@
+# Zero-trust NetworkPolicies of the in-cluster apps (default deny + the allowed flows, see the
+# comment in networkpolicies.yaml). Used by prod and by the local staging overlay; staging adds
+# rules for its in-cluster data stores (prod uses managed Postgres / Valkey outside the cluster).
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - networkpolicies.yaml

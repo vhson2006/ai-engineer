@@ -1,0 +1,24 @@
+# Data stores running inside the cluster: Postgres, Redis and SeaweedFS (S3 for uploaded files). For local development only
+# (dev passwords, single replicas, no backups). Production uses DigitalOcean managed Postgres /
+# Valkey instead and leaves this component out. NATS is its own component (components/nats).
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - postgres/secret.yaml
+  - postgres/statefulset.yaml
+  - postgres/service.yaml
+  - redis/statefulset.yaml
+  - redis/networkpolicy.yaml
+  - redis/service.yaml
+  - seaweedfs/statefulset.yaml
+
+# Redis ACL users file -> Secret with a content hash: editing users.acl rolls the Redis pod.
+secretGenerator:
+  - name: redis-acl
+    files:
+      - redis/users.acl
+  # SeaweedFS S3 identities (dev credentials) -> Secret with a content hash.
+  - name: seaweedfs-s3
+    files:
+      - seaweedfs/s3.json

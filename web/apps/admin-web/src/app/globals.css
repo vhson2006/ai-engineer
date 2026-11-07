@@ -1,0 +1,27 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles (packages/ui/src/theme.css). */
+@import "@web/ui/theme.css";
+/* Tailwind only generates classes it finds: also scan the shared components. */
+@source "../../../../packages/ui/src";
+
+/*
+ * Admin look: teal instead of the public site's indigo, so an administrator always knows which
+ * site they are on (and a look-alike phishing page of the public site stands out).
+ */
+:root {
+  --brand: #0f766e;
+  --brand-hover: #115e59;
+  --brand-fg: #ffffff;
+  --brand-soft: #e6f6f4;
+  --brand-soft-fg: #115e59;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: #2dd4bf;
+    --brand-hover: #5eead4;
+    --brand-fg: #04201d;
+    --brand-soft: rgb(45 212 191 / 0.14);
+    --brand-soft-fg: #99f6e4;
+  }
+}

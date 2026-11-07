@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+spec:
+  serviceName: redis
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          # AOF persistence so data survives a pod restart.
+          # Authentication: ACL users from redis/users.acl (that file can't hold comments):
+          #   default      disabled (no more password-less access)
+          #   healthcheck  no password, PING only (readiness probe)
+          #   web          portfolio-web sessions + rate-limit counters: keys web:* only, GET/SET/DEL/GETDEL/INCR/EXPIRE/PING only
+          #   admin-web    admin-web, same commands, keys admin-web:* only (REDIS_KEY_PREFIX=admin-web:)
+          #   admin        operators via redis-cli (full access; sessions are encrypted)
+          # DEV-ONLY passwords. An API service that needs Redis gets its own user, e.g.
+          #   user api on >… resetkeys ~api:* resetchannels -@all +@read +@write -@dangerous
+          args: ['--appendonly', 'yes', '--save', '60', '1000', '--aclfile', '/etc/redis/users.acl']
+          ports:
+            - name: redis
+              containerPort: 6379
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: acl
+              mountPath: /etc/redis
+              readOnly: true
+          readinessProbe:
+            exec:
+              # The "healthcheck" user can only PING (no password: it can't read anything).
+              command: ['redis-cli', '--user', 'healthcheck', '--pass', 'x', '--no-auth-warning', 'ping']
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: redis
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              memory: 256Mi
+      volumes:
+        - name: acl
+          secret:
+            secretName: redis-acl
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 1Gi

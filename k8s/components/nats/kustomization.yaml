@@ -1,0 +1,11 @@
+# NATS (core + JetStream, no auth) as a single-node StatefulSet with a 1Gi volume. Used by dev and
+# prod. Production follow-ups: the official NATS Helm chart (3-node cluster, streams with
+# replicas: 3, so losing one node loses nothing), a StorageClass with reclaimPolicy Retain, and
+# NATS credentials. Until then, prod's NetworkPolicy only lets the two services reach port 4222.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - configmap.yaml
+  - statefulset.yaml
+  - service.yaml

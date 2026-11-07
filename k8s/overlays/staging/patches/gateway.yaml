@@ -1,0 +1,61 @@
+# TLS terminated at the Gateway, like prod (overlays/prod/patches/gateway.yaml), but the
+# certificate comes from the LOCAL CA (k8s/platform/local) instead of Let's Encrypt. cert-manager
+# sees the annotation, issues a certificate for the https listener's hostname into the Secret named
+# in certificateRefs, and renews it.
+# Ports: 443 (free on this machine) so URLs carry no port, like prod; plain HTTP on 8001 because
+# Windows' HTTP.sys holds port 80. Docker Desktop publishes the LoadBalancer ports on localhost.
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: edge
+  annotations:
+    cert-manager.io/cluster-issuer: local-ca
+spec:
+  infrastructure:
+    parametersRef:
+      group: gateway.nginx.org
+      kind: NginxProxy
+      name: edge-proxy
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 8001
+      hostname: '*.staging.localtest.me'
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: '*.staging.localtest.me'
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: wildcard-staging-localtest-me-tls
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: auth
+spec:
+  hostnames:
+    - auth.staging.localtest.me
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: www
+spec:
+  hostnames:
+    - www.staging.localtest.me
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: admin
+spec:
+  hostnames:
+    - admin.staging.localtest.me

@@ -1,0 +1,58 @@
+# Two replicas of everything stateless, so a node drain, a crash or a rollout never takes a
+# component down (with the PodDisruptionBudgets in resilience.yaml and maxUnavailable: 0).
+# Keycloak's replicas are set in keycloak.yaml. NATS stays at 1 until it moves to the NATS
+# Helm chart (3-node cluster), see components/nats.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krakend
+spec:
+  replicas: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-service
+spec:
+  replicas: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+spec:
+  replicas: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-web
+spec:
+  replicas: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-web
+spec:
+  replicas: 2
+---
+# Verified TLS to managed Postgres: the CA certificate is mounted and trusted by Node
+# (NODE_EXTRA_CA_CERTS + PGSSLMODE=verify-full in env/deployment-service.env).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: deployment-service
+          volumeMounts:
+            - name: db-ca
+              mountPath: /etc/db-ca
+              readOnly: true
+      volumes:
+        - name: db-ca
+          secret:
+            secretName: db-ca

@@ -1,0 +1,34 @@
+// Schema of the notification-service database. Only this service connects to it.
+// Connection settings for the CLI: ../prisma.config.ts. Runtime: src/prisma/prisma.service.ts.
+//
+//   npm run prisma:generate          # both services' clients
+//   npm run migration:dev:notification -- --name <change_name>
+//   npm run migration:run            # both services (prisma migrate deploy)
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Inbox (ADR 0007, libs/common/src/messaging/inbox.ts): ids of the messages this service has
+/// already processed, written in the SAME transaction as the processing. A redelivered message
+/// finds its id here and is only acked. Idempotent-consumer variant: ids only, no payloads
+/// (JetStream keeps, redelivers and dead-letters the messages).
+model InboxMessage {
+  /// Durable consumer that processed it (several consumers in one service stay independent).
+  consumer    String   @db.VarChar(100)
+  /// Producer's outbox id (Nats-Msg-Id).
+  messageId   String   @map("message_id") @db.VarChar(200)
+  subject     String   @db.VarChar(200)
+  processedAt DateTime @default(now()) @map("processed_at") @db.Timestamptz(3)
+
+  @@id([consumer, messageId], map: "pk_inbox_messages")
+  /// Cleanup of old ids (older than the stream's max_age: they can't be redelivered any more).
+  @@index([processedAt], map: "ix_inbox_messages_processed_at")
+  @@map("inbox_messages")
+}

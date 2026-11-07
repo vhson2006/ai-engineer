@@ -1,0 +1,14 @@
+# Merged over the GatewayClass defaults (nginx-gateway/nginx-gateway-proxy-config) for the "edge"
+# Gateway (see patches/gateway.yaml). The DNS resolver is what lets nginx route to an ExternalName
+# Service (portfolio-web.yaml -> host.docker.internal).
+apiVersion: gateway.nginx.org/v1alpha2
+kind: NginxProxy
+metadata:
+  name: edge-proxy
+spec:
+  dnsResolver:
+    addresses:
+      - type: Hostname
+        value: kube-dns.kube-system.svc.cluster.local
+    disableIPv6: true
+    cacheTTL: 30s

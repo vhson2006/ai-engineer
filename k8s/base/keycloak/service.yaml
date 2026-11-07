@@ -1,0 +1,19 @@
+# In-cluster:
+#   http://keycloak.nest-microservice.svc.cluster.local:8080   OIDC endpoints, JWKS, Admin Console
+#   http://keycloak.nest-microservice.svc.cluster.local:9000   management: /health/*, /metrics
+# From your machine: http://auth.localtest.me:8000 (edge Gateway, app realm only);
+# admin console http://localhost:8180/admin and management http://localhost:9000 via port-forward
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak
+spec:
+  selector:
+    app: keycloak
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: management
+      port: 9000
+      targetPort: management

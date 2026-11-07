@@ -1,0 +1,39 @@
+# Production Keycloak:
+#  - `start` (production mode: strict hostname, no dev defaults); the realm JSON is imported once.
+#  - two replicas: Keycloak 26 clusters through its database (JDBC_PING, the default cache stack),
+#    so no extra discovery Service is needed; NetworkPolicy lets the pods talk to each other.
+#  - managed Postgres over verified TLS: KC_DB_URL (with sslmode=verify-full and the CA path)
+#    comes from the keycloak-db Secret, the CA from the db-ca Secret.
+#  - admin console never published: KC_HOSTNAME_ADMIN is only reachable with
+#    `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080`.
+# Follow-up: an optimized image (`kc.sh build` in CI) + `start --optimized` for faster starts.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: keycloak
+          args: ['start', '--import-realm']
+          env:
+            - name: KC_HOSTNAME
+              value: https://auth.example.com
+            - name: KC_HOSTNAME_ADMIN
+              value: http://localhost:8180
+            - name: KC_DB_URL
+              value: null
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-db
+                  key: KC_DB_URL
+          volumeMounts:
+            - name: db-ca
+              mountPath: /etc/db-ca
+              readOnly: true
+      volumes:
+        - name: db-ca
+          secret:
+            secretName: db-ca

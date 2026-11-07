@@ -1,0 +1,10 @@
+# Used by BuildKit for Dockerfile (context = web/). Keep the context small and free of secrets
+# (.env.local holds real dev secrets).
+**/node_modules
+**/.next
+**/.env
+**/.env.*
+!**/.env.example
+**/*.md
+**/Dockerfile*
+**/tsconfig.tsbuildinfo

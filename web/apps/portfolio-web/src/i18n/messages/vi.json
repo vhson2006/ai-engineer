@@ -1,0 +1,196 @@
+{
+  "common": {
+    "skipToContent": "Chuyển đến nội dung",
+    "language": "Ngôn ngữ"
+  },
+  "nav": {
+    "label": "Điều hướng chính",
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "dashboard": "Bảng điều khiển"
+  },
+  "userMenu": {
+    "signIn": "Đăng nhập",
+    "signOut": "Đăng xuất"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Xin chào, tôi là {name}.",
+      "seeSkills": "Xem kỹ năng",
+      "aboutMe": "Về tôi"
+    },
+    "skills": {
+      "eyebrow": "Kỹ năng",
+      "title": "Công nghệ tôi sử dụng",
+      "intro": "Những công cụ và phương pháp tôi dùng để thiết kế, xây dựng và vận hành hệ thống production."
+    },
+    "strengths": {
+      "eyebrow": "Dành cho đội của bạn",
+      "title": "Những gì tôi mang đến",
+      "intro": "Không chỉ viết code: những thói quen giúp đội làm nhanh hơn và hệ thống an toàn hơn."
+    },
+    "project": {
+      "eyebrow": "Dự án tiêu biểu",
+      "openDashboard": "Mở bảng điều khiển trực tiếp",
+      "moreAboutMe": "Tìm hiểu thêm về tôi"
+    },
+    "cta": {
+      "title": "Cùng xây dựng những hệ thống đáng tin cậy",
+      "text": "Tôi đang tìm kiếm cơ hội mới. Hãy kể cho tôi về đội của bạn và những bài toán bạn đang giải quyết."
+    }
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "description": "Kinh nghiệm, học vấn và thông tin liên hệ của {name}, {role}.",
+    "eyebrow": "Về tôi",
+    "hello": "Xin chào, tôi là {name}",
+    "email": "Email",
+    "phone": "Điện thoại",
+    "experience": "Kinh nghiệm",
+    "education": "Học vấn",
+    "interests": "Ngoài công việc"
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "intro": "Bảng điều khiển hiển thị dữ liệu trực tiếp từ deployment API. Hãy đăng nhập bằng tài khoản công ty, được quản lý bởi Keycloak.",
+    "continueWithKeycloak": "Tiếp tục với Keycloak",
+    "signedInAs": "Bạn đang đăng nhập với tên {name}.",
+    "continue": "Tiếp tục",
+    "errors": {
+      "denied": "Bạn đã huỷ đăng nhập.",
+      "expired": "Phiên đăng nhập đã hết hạn. Vui lòng thử lại.",
+      "failed": "Không thể hoàn tất đăng nhập. Vui lòng thử lại.",
+      "unavailable": "Máy chủ định danh hiện không phản hồi. Vui lòng thử lại sau ít phút.",
+      "session_unavailable": "Hệ thống đăng nhập của chúng tôi đang tạm gián đoạn. Vui lòng thử lại sau ít phút.",
+      "rate_limited": "Mạng của bạn đã thử đăng nhập quá nhiều lần. Vui lòng đợi vài phút rồi thử lại."
+    },
+    "testAccounts": {
+      "title": "Tài khoản thử nghiệm (mật khẩu: password)",
+      "carol": "chỉ xem",
+      "bob": "tạo và sửa deployment của mình",
+      "alice": "quản trị viên"
+    }
+  },
+  "dashboard": {
+    "title": "Bảng điều khiển",
+    "eyebrow": "Bảng điều khiển",
+    "welcome": "Chào mừng trở lại, {name}",
+    "subtitle": "Danh sách deployment trực tiếp từ deployment-service, qua cổng KrakenD.",
+    "stats": {
+      "deployments": "Deployment",
+      "matching": "khớp với “{search}”",
+      "inTotal": "tổng cộng",
+      "access": "Quyền của bạn",
+      "page": "Trang",
+      "perPage": "{limit} mục mỗi trang"
+    },
+    "access": {
+      "admin": "Quản trị",
+      "readWrite": "Đọc & ghi",
+      "readOnly": "Chỉ đọc",
+      "none": "Không có"
+    },
+    "roles": {
+      "label": "Vai trò của bạn",
+      "none": "chưa có vai trò API"
+    },
+    "list": {
+      "title": "Deployment",
+      "name": "Tên",
+      "version": "Phiên bản",
+      "environment": "Môi trường",
+      "status": "Trạng thái",
+      "owner": "Người tạo",
+      "created": "Ngày tạo",
+      "you": "Bạn",
+      "someoneElse": "Người khác"
+    },
+    "status": {
+      "pending": "đang chờ",
+      "running": "đang chạy",
+      "succeeded": "thành công",
+      "failed": "thất bại"
+    },
+    "search": {
+      "label": "Tìm theo tên hoặc phiên bản",
+      "placeholder": "Tìm tên hoặc phiên bản…",
+      "button": "Tìm"
+    },
+    "pagination": {
+      "label": "Phân trang",
+      "previous": "Trước",
+      "next": "Sau",
+      "pageOf": "Trang {page} / {total}"
+    },
+    "empty": {
+      "noMatch": "Không có deployment nào khớp với tìm kiếm.",
+      "none": "Chưa có deployment nào.",
+      "clear": "Xoá tìm kiếm",
+      "hint": "Tạo một deployment qua API, nó sẽ xuất hiện ở đây."
+    },
+    "errors": {
+      "expiredTitle": "Phiên của bạn đã hết hạn",
+      "expiredHelp": "Hãy đăng nhập lại để tiếp tục.",
+      "forbiddenTitle": "Bạn không có quyền xem deployment",
+      "forbiddenHelp": "Tài khoản của bạn cần vai trò deployment:read. Hãy liên hệ quản trị viên.",
+      "failedTitle": "Không thể tải danh sách deployment",
+      "failedHelp": "Deployment API không phản hồi đúng. Vui lòng thử lại sau ít phút.",
+      "requestId": "Mã yêu cầu",
+      "signInAgain": "Đăng nhập lại"
+    }
+  },
+  "notFound": {
+    "title": "Trang này không tồn tại",
+    "text": "Đường dẫn có thể bị hỏng, hoặc trang đã được chuyển đi nơi khác.",
+    "back": "Về trang chủ"
+  },
+  "profile": {
+    "role": "Kỹ sư Backend & Platform",
+    "availability": "Sẵn sàng cho cơ hội mới",
+    "tagline": "Tôi thiết kế và xây dựng các nền tảng microservice an toàn, dễ quan sát — từ API gateway, định danh cho đến cơ sở dữ liệu và cụm Kubernetes mà chúng chạy trên đó.",
+    "bio": [
+      "«Viết 2–3 câu về bạn là ai và kiểu công việc kỹ thuật bạn yêu thích.»",
+      "«Gần đây bạn đang làm gì, và những bài toán bạn thích giải quyết.»",
+      "«Bạn tìm kiếm điều gì ở công việc tiếp theo.»"
+    ],
+    "personal": [
+      { "label": "Họ và tên", "value": "«Họ và tên đầy đủ»" },
+      { "label": "Nơi ở", "value": "«Thành phố, Quốc gia»" },
+      { "label": "Kinh nghiệm", "value": "«N năm»" },
+      { "label": "Ngôn ngữ", "value": "«Tiếng Việt (bản ngữ), Tiếng Anh (chuyên nghiệp)»" },
+      { "label": "Hình thức làm việc", "value": "«Từ xa / Kết hợp / Tại văn phòng»" }
+    ],
+    "skills": [
+      { "group": "Backend", "items": ["TypeScript", "Node.js", "NestJS", "Thiết kế REST API", "Validation & xử lý lỗi"] },
+      { "group": "Kiến trúc & messaging", "items": ["Microservices", "API gateway (KrakenD)", "Sự kiện NATS JetStream", "Transactional outbox & inbox"] },
+      { "group": "Bảo mật & định danh", "items": ["Keycloak / OpenID Connect", "JWT (RS256, JWKS)", "RBAC & quyền sở hữu dữ liệu", "Phiên BFF"] },
+      { "group": "Dữ liệu", "items": ["PostgreSQL", "Prisma & migration", "Redis"] },
+      { "group": "Cloud & DevOps", "items": ["Docker", "Kubernetes", "Kustomize", "Argo CD", "Log có cấu trúc (pino)"] },
+      { "group": "Frontend", "items": ["React", "Next.js (App Router)", "Tailwind CSS", "Đa ngôn ngữ (i18n)"] }
+    ],
+    "strengths": [
+      { "title": "Làm chủ service từ đầu đến cuối", "text": "Từ contract và schema cơ sở dữ liệu đến test, route trên gateway và manifest Kubernetes." },
+      { "title": "Bảo mật ngay từ thiết kế", "text": "Token được xác thực ở gateway và một lần nữa trong từng service, kết hợp vai trò với quy tắc ở mức dữ liệu, không để lộ bí mật trong log." },
+      { "title": "Dễ vận hành", "text": "Health check, log JSON kèm request id, contract lỗi rõ ràng — để sự cố được tìm ra trong vài phút, không phải vài ngày." },
+      { "title": "Quy ước rõ ràng, kiến thức được chia sẻ", "text": "Tôi ghi lại những quy tắc cả đội thống nhất và giữ chúng luôn đúng, để thành viên mới bắt nhịp nhanh." }
+    ],
+    "project": {
+      "name": "Nền tảng nest-microservice",
+      "summary": "Một nền tảng microservice NestJS: KrakenD làm API gateway, Keycloak quản lý định danh, các REST service dùng Prisma/PostgreSQL, sự kiện qua NATS JetStream, toàn bộ chạy trên Kubernetes. Bảng điều khiển của trang này chính là client trực tiếp của nó.",
+      "points": [
+        "JWT được xác thực cục bộ ở gateway và trong từng service (RS256 + JWKS, không dùng secret chung)",
+        "Phân quyền theo vai trò cùng quy tắc “chỉ người tạo hoặc quản trị viên”",
+        "Sự kiện at-least-once: transactional outbox, JetStream và inbox idempotent",
+        "Toàn bộ hệ thống trên Kubernetes với Kustomize, có staging cục bộ chạy HTTPS giống production"
+      ]
+    },
+    "experience": [
+      { "period": "«2023 — Nay»", "title": "«Chức danh»", "company": "«Công ty»", "text": "«Một hai dòng về phần việc bạn phụ trách và kết quả đạt được.»" },
+      { "period": "«2020 — 2023»", "title": "«Chức danh»", "company": "«Công ty»", "text": "«Một hai dòng về phần việc bạn phụ trách và kết quả đạt được.»" }
+    ],
+    "education": [
+      { "period": "«2016 — 2020»", "title": "«Bằng cấp»", "school": "«Trường đại học»" }
+    ],
+    "interests": ["«Sở thích 1»", "«Sở thích 2»", "«Sở thích 3»"]
+  }
+}

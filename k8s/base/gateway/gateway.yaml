@@ -1,0 +1,29 @@
+# Edge proxy for everything a browser reaches, by host name (Gateway API, NGINX Gateway Fabric).
+#
+#   www.<domain>   -> the user site (portfolio-web)
+#   admin.<domain> -> the admin site (admin-web): admins only, password + OTP (ADR 0019)
+#   auth.<domain>  -> Keycloak, ONLY the app realm + static resources (routes.yaml)
+#
+# KrakenD (the API) is NOT published: only the web apps' servers call it, inside the cluster.
+#
+# Placeholder host names (example.com) and a plain HTTP listener: each overlay sets its own
+# domain and listeners (dev: *.localtest.me on :8000; prod: :443 with a TLS certificate).
+#
+# NGF turns this Gateway into an nginx Deployment + a LoadBalancer Service named "edge-nginx".
+#
+# Never published here (port-forward / VPN only): Keycloak's admin console and master realm,
+# management port 9000, Postgres, Redis, NATS.
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: edge
+spec:
+  gatewayClassName: nginx
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      hostname: '*.example.com'
+      allowedRoutes:
+        namespaces:
+          from: Same

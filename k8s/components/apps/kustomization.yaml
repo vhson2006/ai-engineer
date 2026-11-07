@@ -1,0 +1,12 @@
+# The applications running IN the cluster (production; later also a containerised dev
+# loop). Hardened by default: non-root, read-only root filesystem, no capabilities, no service
+# account token, rolling updates without downtime. The overlay supplies env ConfigMaps, Secrets,
+# image names/tags, replicas and the "ghcr-pull" image pull Secret.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - deployment-service.yaml
+  - notification-service.yaml
+  - portfolio-web.yaml
+  - admin-web.yaml

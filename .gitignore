@@ -1,0 +1,20 @@
+# Monorepo root. Each part keeps its own .gitignore (nest-microservice/, web/apps/*/).
+
+# Separate repository (reference project with its own GitHub remote), not part of this one.
+/advanced-architecture/
+
+# Backups of the two former repositories' .git folders (merged into this repo on 2026-11-06).
+/.git-backups/
+
+# KrakenD Flexible Configuration output (npm run krakend:check)
+/k8s/.krakend-rendered.*.json
+# Grafana Cloud credentials for the local staging (k8s/grafana-cloud.env.example)
+/k8s/.grafana-cloud.env
+# Local staging CA certificate (exported by npm run staging:up; public cert only)
+/k8s/.local-ca.crt
+
+node_modules/
+.DS_Store
+*.log
+.claude/settings.local.json
+**/.claude/settings.local.json

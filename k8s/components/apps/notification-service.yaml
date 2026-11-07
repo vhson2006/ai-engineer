@@ -1,0 +1,76 @@
+# notification-service (JetStream durable consumer + inbox, ADR 0007; HTTP only for /health and
+# /metrics on :3002), image built with --target notification-service. Replicas share the durable consumer
+# (each message goes to one of them). The overlay provides ConfigMap "notification-service-env"
+# (NATS_URL, LOG_LEVEL, NOTIFICATION_HEALTH_PORT) and Secret "notification-db" (NOTIFICATION_DB_*:
+# its own database, the inbox). No Service: nothing calls it.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: notification-service
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: notification-service
+      annotations: # GET /metrics, scraped by Alloy (components/observability, ADR 0023)
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3002'
+        prometheus.io/path: /metrics
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: notification-service
+          image: notification-service
+          ports:
+            - name: health
+              containerPort: 3002
+          envFrom:
+            - configMapRef:
+                name: notification-service-env
+            - secretRef:
+                name: notification-db # NOTIFICATION_DB_* (its own database)
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: health
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: health
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 16Mi

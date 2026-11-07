@@ -1,0 +1,29 @@
+# Argo CD watches k8s/overlays/prod on the main branch and keeps the cluster equal to it.
+# CI never touches the cluster: it builds the images and commits the new tags to the overlay.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nest-microservice-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-github-user/nest-microservice.git
+    targetRevision: main
+    path: k8s/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nest-microservice
+  syncPolicy:
+    automated:
+      prune: true # resources removed from git are removed from the cluster
+      selfHeal: true # manual changes in the cluster are reverted
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 5m

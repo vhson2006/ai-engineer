@@ -1,0 +1,38 @@
+{
+  "name": "@web/core",
+  "version": "0.0.0",
+  "private": true,
+  "description": "BFF core shared by the web apps: API client, sessions and OIDC, CSRF, security headers, rate limits, Server Action helpers, file uploads. Server-side except files/ and auth/cookies.",
+  "exports": {
+    "./api": "./src/api/index.ts",
+    "./files": "./src/files/index.ts",
+    "./*": "./src/*.ts",
+    "./validation": "./src/validation/index.ts",
+    "./export": "./src/export/xlsx.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "ioredis": "^5.11.1",
+    "openid-client": "^6.8.9",
+    "server-only": "^0.0.1",
+    "write-excel-file": "^4.1.1",
+    "zod": "^4.6.7"
+  },
+  "peerDependencies": {
+    "next": "16.4.5",
+    "react": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "typescript": "^5",
+    "vitest": "^5.1.0",
+    "fflate": "^0.8.2"
+  }
+}

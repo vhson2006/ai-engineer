@@ -1,0 +1,15 @@
+# admin-web runs on the host (`npm run dev -w admin-web`, :3100), not in the cluster. Same trick as
+# portfolio-web.yaml: an ExternalName Service the Gateway can route to. An ExternalName Service
+# has no targetPort mapping, so the port is the host's (3100) and the dev route is patched to it
+# (kustomization.yaml).
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-web
+spec:
+  type: ExternalName
+  externalName: host.docker.internal
+  ports:
+    - name: http
+      port: 3100
+      targetPort: 3100

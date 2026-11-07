@@ -1,0 +1,46 @@
+# Local development on Docker Desktop (or kind/minikube).
+#   Apply:   npm run k8s:up     (installs NGINX Gateway Fabric if needed, then kubectl apply -k k8s/overlays/dev)
+#   Remove:  npm run k8s:down   (PVCs are deleted too -> data is lost)
+#
+# Public URLs (edge Gateway, :8000):  http://www.localtest.me:8000  http://admin.localtest.me:8000
+#                                     http://auth.localtest.me:8000
+# KrakenD is private like in prod: http://localhost:8080 through npm run k8s:forward.
+# The Nest apps and Next.js run on your machine; the cluster reaches them via host.docker.internal.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nest-microservice
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: nest-microservice
+    includeSelectors: false
+
+resources:
+  - ../../base
+  - keycloak/secret.yaml # DEV ONLY credentials
+  - gateway-proxy.yaml # DNS resolver for the ExternalName backend below
+  - portfolio-web.yaml # Service -> Next.js on the host
+  - admin-web.yaml # Service -> the admin Next.js on the host (:3100)
+
+components:
+  - ../../components/local-data # Postgres, Redis in the cluster
+  - ../../components/nats
+
+configMapGenerator:
+  - name: krakend-settings
+    files:
+      - krakend/settings/env.json
+  - name: keycloak-realm # imported on Keycloak's first start only
+    files:
+      - keycloak/realm-nest-microservice.json
+
+patches:
+  - path: patches/gateway.yaml # *.localtest.me, port 8000
+  - path: patches/keycloak.yaml # KC_HOSTNAME, KC_HOSTNAME_ADMIN
+  - target: # admin-web runs on the host on :3100 (admin-web.yaml)
+      kind: HTTPRoute
+      name: admin
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/backendRefs/0/port
+        value: 3100

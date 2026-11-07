@@ -1,0 +1,133 @@
+# Grafana Alloy (ADR 0023): one agent per namespace, config in config.alloy. Reads ONLY this
+# namespace (Role, not ClusterRole): pod discovery + pod logs through the API server. No hostPath,
+# no DaemonSet, no node access. The overlay provides:
+#   ConfigMap "alloy-env"      CLUSTER_NAME (staging-local, prod)
+#   Secret    "grafana-cloud"  GRAFANA_CLOUD_* (k8s/grafana-cloud.env.example)
+# Debug UI (read-only): kubectl -n <ns> port-forward deploy/alloy 12345 → http://localhost:12345.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: alloy
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: alloy
+rules:
+  - apiGroups: ['']
+    resources: ['pods']
+    verbs: ['get', 'list', 'watch']
+  - apiGroups: ['']
+    resources: ['pods/log']
+    verbs: ['get']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: alloy
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: alloy
+subjects:
+  - kind: ServiceAccount
+    name: alloy
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alloy
+spec:
+  # ONE replica: two would scrape and ship every log line twice.
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: alloy
+  strategy:
+    type: Recreate # never two at once (duplicate logs and series)
+  template:
+    metadata:
+      labels:
+        app: alloy
+    spec:
+      serviceAccountName: alloy # needs its token: it talks to the API server
+      enableServiceLinks: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 473 # the image runs as root by default
+        runAsGroup: 473
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: alloy
+          image: grafana/alloy:v1.21.2
+          args:
+            - run
+            - /etc/alloy/config.alloy
+            - --server.http.listen-addr=0.0.0.0:12345
+            - --storage.path=/tmp/alloy
+            - --disable-reporting # no usage stats sent to Grafana Labs
+          ports:
+            - name: otlp-http
+              containerPort: 4318
+            - name: ui
+              containerPort: 12345 # no Service: port-forward only (ADR 0004)
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          envFrom:
+            - configMapRef:
+                name: alloy-env
+            - secretRef:
+                name: grafana-cloud
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: ui
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: ui
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 384Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: config
+              mountPath: /etc/alloy
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: config
+          configMap:
+            name: alloy-config
+        - name: tmp
+          emptyDir:
+            sizeLimit: 256Mi # write-ahead log of metrics and log positions
+---
+# OTLP/HTTP for the apps' traces. Cluster-internal only.
+apiVersion: v1
+kind: Service
+metadata:
+  name: alloy
+spec:
+  selector:
+    app: alloy
+  ports:
+    - name: otlp-http
+      port: 4318
+      targetPort: otlp-http

@@ -1,0 +1,20 @@
+# NATS server config. Core NATS (request/reply, plain pub/sub) works exactly as before; JetStream
+# only stores messages whose subject belongs to a stream. Streams are created by the apps.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nats-config
+data:
+  nats.conf: |
+    server_name: nats-0
+    port: 4222
+    http_port: 8222
+    max_payload: 1MB
+
+    jetstream {
+      store_dir: /data
+      # Server-wide caps. Each stream also sets its own max_bytes / max_age, smaller than these,
+      # so a full stream rejects or drops old messages instead of filling the disk.
+      max_file_store: 800MB # PVC is 1Gi
+      max_memory_store: 64MB
+    }

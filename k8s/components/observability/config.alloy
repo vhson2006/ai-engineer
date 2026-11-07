@@ -1,0 +1,223 @@
+// Grafana Alloy (ADR 0023): the ONE telemetry agent of this namespace. It
+//   - scrapes /metrics of the pods annotated prometheus.io/scrape=true (our services), every 60 s,
+//     keeps only the allow-listed metrics, and remote-writes them to Grafana Cloud (Prometheus);
+//   - tails the logs of every pod of the namespace through the Kubernetes API (no hostPath, no
+//     DaemonSet), parses our JSON lines, and pushes them to Grafana Cloud (Loki);
+//   - receives OTLP/HTTP traces on :4318 from the apps and forwards them to Grafana Cloud (Tempo).
+// Every signal carries cluster=<CLUSTER_NAME> (staging-local, prod).
+//
+// Env: POD_NAMESPACE (downward API), CLUSTER_NAME (ConfigMap alloy-env, from the overlay),
+// GRAFANA_CLOUD_* (Secret grafana-cloud: k8s/grafana-cloud.env.example). Nothing calls into the
+// cluster from Grafana Cloud. Debug UI: kubectl port-forward deploy/alloy 12345 → localhost:12345.
+
+logging {
+	level  = "info"
+	format = "logfmt"
+}
+
+// ---- where everything goes: Grafana Cloud ------------------------------------------------------
+
+prometheus.remote_write "cloud" {
+	endpoint {
+		url = sys.env("GRAFANA_CLOUD_PROMETHEUS_URL")
+
+		basic_auth {
+			username = sys.env("GRAFANA_CLOUD_PROMETHEUS_USER")
+			password = sys.env("GRAFANA_CLOUD_TOKEN")
+		}
+	}
+	external_labels = {
+		cluster = sys.env("CLUSTER_NAME"),
+	}
+}
+
+loki.write "cloud" {
+	endpoint {
+		url = sys.env("GRAFANA_CLOUD_LOKI_URL")
+
+		basic_auth {
+			username = sys.env("GRAFANA_CLOUD_LOKI_USER")
+			password = sys.env("GRAFANA_CLOUD_TOKEN")
+		}
+	}
+	external_labels = {
+		cluster = sys.env("CLUSTER_NAME"),
+	}
+}
+
+otelcol.auth.basic "cloud" {
+	username = sys.env("GRAFANA_CLOUD_OTLP_USER")
+	password = sys.env("GRAFANA_CLOUD_TOKEN")
+}
+
+otelcol.exporter.otlphttp "cloud" {
+	client {
+		endpoint = sys.env("GRAFANA_CLOUD_OTLP_URL")
+		auth     = otelcol.auth.basic.cloud.handler
+	}
+}
+
+// ---- the pods of THIS namespace only (namespaced Role) ------------------------------------------
+
+discovery.kubernetes "pods" {
+	role = "pod"
+
+	namespaces {
+		names = [sys.env("POD_NAMESPACE")]
+	}
+}
+
+// ---- metrics ------------------------------------------------------------------------------------
+
+discovery.relabel "metrics" {
+	targets = discovery.kubernetes.pods.targets
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_annotation_prometheus_io_scrape"]
+		regex         = "true"
+		action        = "keep"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_phase"]
+		regex         = "Running"
+		action        = "keep"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_ip", "__meta_kubernetes_pod_annotation_prometheus_io_port"]
+		separator     = ":"
+		target_label  = "__address__"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_annotation_prometheus_io_path"]
+		regex         = "(.+)"
+		target_label  = "__metrics_path__"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_namespace"]
+		target_label  = "namespace"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_name"]
+		target_label  = "pod"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_label_app"]
+		target_label  = "job"
+	}
+}
+
+prometheus.scrape "apps" {
+	targets    = discovery.relabel.metrics.output
+	forward_to = [prometheus.relabel.allowlist.receiver]
+	// Grafana Cloud bills data points per minute: 60 s = 1 DPM per series.
+	scrape_interval = "60s"
+}
+
+// Allow-list (Grafana Cloud Free: ~10k active series). A new metric we want on a dashboard is
+// added HERE too; anything else is dropped before it leaves the cluster.
+prometheus.relabel "allowlist" {
+	forward_to = [prometheus.remote_write.cloud.receiver]
+
+	rule {
+		source_labels = ["__name__"]
+		regex         = "up|http_server_request_duration_seconds_(bucket|sum|count)|messaging_.+|process_cpu_seconds_total|process_resident_memory_bytes|process_start_time_seconds|nodejs_eventloop_lag_p99_seconds|nodejs_heap_size_used_bytes|nodejs_heap_size_total_bytes"
+		action        = "keep"
+	}
+}
+
+// ---- logs ---------------------------------------------------------------------------------------
+
+discovery.relabel "logs" {
+	targets = discovery.kubernetes.pods.targets
+
+	rule {
+		source_labels = ["__meta_kubernetes_namespace"]
+		target_label  = "namespace"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_name"]
+		target_label  = "pod"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_container_name"]
+		target_label  = "container"
+	}
+
+	rule {
+		source_labels = ["__meta_kubernetes_pod_label_app"]
+		target_label  = "app"
+	}
+}
+
+loki.source.kubernetes "pods" {
+	targets    = discovery.relabel.logs.output
+	forward_to = [loki.process.json.receiver]
+}
+
+// Our services write JSON lines (pino): `level` becomes a label (few values), `trace_id`
+// structured metadata (one value per request: never a label), so Grafana links a log to its trace.
+loki.process "json" {
+	forward_to = [loki.write.cloud.receiver]
+
+	stage.match {
+		selector = "{app=~\"deployment-service|notification-service\"}"
+
+		stage.json {
+			expressions = {
+				level    = "level",
+				trace_id = "trace_id",
+			}
+		}
+
+		stage.labels {
+			values = {
+				level = "",
+			}
+		}
+
+		stage.structured_metadata {
+			values = {
+				trace_id = "",
+			}
+		}
+	}
+}
+
+// ---- traces -------------------------------------------------------------------------------------
+
+otelcol.receiver.otlp "apps" {
+	http {
+		endpoint = "0.0.0.0:4318"
+	}
+
+	output {
+		traces = [otelcol.processor.transform.cluster.input]
+	}
+}
+
+otelcol.processor.transform "cluster" {
+	error_mode = "ignore"
+
+	trace_statements {
+		context    = "resource"
+		statements = ["set(attributes[\"k8s.cluster.name\"], \"" + sys.env("CLUSTER_NAME") + "\")"]
+	}
+
+	output {
+		traces = [otelcol.processor.batch.cloud.input]
+	}
+}
+
+otelcol.processor.batch "cloud" {
+	output {
+		traces = [otelcol.exporter.otlphttp.cloud.input]
+	}
+}

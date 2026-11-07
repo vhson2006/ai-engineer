@@ -1,0 +1,34 @@
+{{- /*
+  Security of ONE endpoint: token check + rate limits. Every endpoint uses it, so none can miss either.
+  Usage:  "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }}
+
+  auth/validator: the Keycloak token, verified locally with the realm's public keys (JWKS).
+    Issuer, JWKS URL and audience come from settings/env.json (auth.*): identical on every endpoint
+    by construction. A user needs ANY ONE of the roles.
+  qos/ratelimit/router: limits from settings/env.json (ratelimit.<limit>, "read" or "write"):
+    max_rate         requests per `every` for the whole endpoint (protects the service)
+    client_max_rate  requests per `every` per access token (= per user session). Not per IP: the
+                     only caller is the web app's server, so every request comes from its pod IP.
+    Over the limit → 429 from KrakenD, the service isn't called. Counters are per KrakenD replica.
+*/ -}}
+{{- $limit := index .env.ratelimit .limit -}}
+{
+  "auth/validator": {
+    "alg": "RS256",
+    "jwk_url": {{ marshal .env.auth.jwk_url }},
+    "disable_jwk_security": {{ .env.auth.jwk_over_plain_http }},
+    "cache": true,
+    "issuer": {{ marshal .env.auth.issuer }},
+    "audience": [{{ marshal .env.auth.audience }}],
+    "roles_key": {{ printf "resource_access.%s.roles" .env.auth.audience | marshal }},
+    "roles_key_is_nested": true,
+    "roles": {{ marshal .roles }}
+  },
+  "qos/ratelimit/router": {
+    "max_rate": {{ $limit.max_rate }},
+    "client_max_rate": {{ $limit.client_max_rate }},
+    "every": {{ marshal $limit.every }},
+    "strategy": "header",
+    "key": "Authorization"
+  }
+}

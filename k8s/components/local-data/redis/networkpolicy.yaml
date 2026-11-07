@@ -1,0 +1,21 @@
+# Only pods labelled redis-client: "true" may open a connection to Redis (today: none in the cluster).
+# A new in-cluster client must add that label to its pod template, AND have its own ACL user.
+# Note: kubectl port-forward (used by the apps running on your machine) doesn't go through the
+# pod network, so it isn't affected; it is protected by the ACL passwords instead.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: redis-allow-clients
+spec:
+  podSelector:
+    matchLabels:
+      app: redis
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              redis-client: 'true'
+      ports:
+        - port: 6379
+          protocol: TCP

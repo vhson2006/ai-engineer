@@ -1,0 +1,74 @@
+# Applies the Prisma migrations of both databases (deployment, notification) with the production
+# migrate image, like prod's PreSync Job (overlays/prod/migration-job.yaml). Here there is no
+# Argo CD: `npm run staging:up` deletes the previous Job, applies, and waits for it before the apps
+# are considered ready. The init container creates the notification database if missing (in prod
+# the managed databases are created once by hand).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+spec:
+  backoffLimit: 4
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app: db-migrate
+    spec:
+      restartPolicy: OnFailure
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: create-databases
+          image: postgres:16-alpine
+          envFrom:
+            - secretRef:
+                name: postgres-credentials
+          command: ['sh', '-c']
+          args:
+            - |
+              set -e
+              export PGPASSWORD="$POSTGRES_PASSWORD"
+              until pg_isready -h postgres -U "$POSTGRES_USER" -q; do echo "waiting for postgres"; sleep 2; done
+              psql -h postgres -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 <<'SQL'
+              SELECT 'CREATE DATABASE notification' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'notification')\gexec
+              SQL
+              echo "databases ready"
+          securityContext:
+            runAsUser: 70 # postgres user of the alpine image
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ['ALL']
+      containers:
+        - name: migrate
+          image: deployment-migrate
+          envFrom:
+            - secretRef:
+                name: deployment-db
+            - secretRef:
+                name: notification-db
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi

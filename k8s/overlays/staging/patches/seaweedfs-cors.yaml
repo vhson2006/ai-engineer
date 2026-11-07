@@ -1,0 +1,21 @@
+# Browsers on https://www.staging.localtest.me PUT to presigned URLs (same args as
+# components/local-data, only the allowed origin differs).
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: seaweedfs
+spec:
+  template:
+    spec:
+      containers:
+        - name: seaweedfs
+          args:
+            - server
+            - -dir=/data
+            - -ip.bind=0.0.0.0
+            - -master.volumeSizeLimitMB=64
+            - -s3
+            - -s3.port=8333
+            - -s3.config=/etc/seaweedfs/s3.json
+            - -s3.autoCreateBucket
+            - -s3.allowedOrigins=https://www.staging.localtest.me

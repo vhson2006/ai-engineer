@@ -1,0 +1,196 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "language": "Language"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "about": "About",
+    "dashboard": "Dashboard"
+  },
+  "userMenu": {
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I’m {name}.",
+      "seeSkills": "See my skills",
+      "aboutMe": "About me"
+    },
+    "skills": {
+      "eyebrow": "Skills",
+      "title": "What I work with",
+      "intro": "The tools and practices I use to design, build and run production systems."
+    },
+    "strengths": {
+      "eyebrow": "For your team",
+      "title": "What I bring to a new role",
+      "intro": "Beyond writing code: the habits that make a team faster and a system safer."
+    },
+    "project": {
+      "eyebrow": "Featured project",
+      "openDashboard": "Open the live dashboard",
+      "moreAboutMe": "More about me"
+    },
+    "cta": {
+      "title": "Let’s build something reliable together",
+      "text": "I’m open to new opportunities. Tell me about your team and the problems you’re solving."
+    }
+  },
+  "about": {
+    "title": "About",
+    "description": "Experience, education and contact details of {name}, {role}.",
+    "eyebrow": "About me",
+    "hello": "Hello, I’m {name}",
+    "email": "Email",
+    "phone": "Phone",
+    "experience": "Experience",
+    "education": "Education",
+    "interests": "Outside of work"
+  },
+  "login": {
+    "title": "Sign in",
+    "intro": "The dashboard shows live data from the deployment API. Sign in with your company account, managed by Keycloak.",
+    "continueWithKeycloak": "Continue with Keycloak",
+    "signedInAs": "You’re signed in as {name}.",
+    "continue": "Continue",
+    "errors": {
+      "denied": "Sign-in was cancelled.",
+      "expired": "The sign-in attempt expired. Please try again.",
+      "failed": "We couldn’t complete the sign-in. Please try again.",
+      "unavailable": "The identity server is unavailable right now. Please try again in a moment.",
+      "session_unavailable": "Sign-in is temporarily unavailable on our side. Please try again in a moment.",
+      "rate_limited": "Too many sign-in attempts from your network. Please wait a few minutes and try again."
+    },
+    "testAccounts": {
+      "title": "Local test accounts (password: password)",
+      "carol": "can read",
+      "bob": "can create and edit their own",
+      "alice": "admin"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "eyebrow": "Dashboard",
+    "welcome": "Welcome back, {name}",
+    "subtitle": "Live deployments from deployment-service, through the KrakenD gateway.",
+    "stats": {
+      "deployments": "Deployments",
+      "matching": "matching “{search}”",
+      "inTotal": "in total",
+      "access": "Your access",
+      "page": "Page",
+      "perPage": "{limit} per page"
+    },
+    "access": {
+      "admin": "Admin",
+      "readWrite": "Read & write",
+      "readOnly": "Read only",
+      "none": "None"
+    },
+    "roles": {
+      "label": "Your roles",
+      "none": "no API roles"
+    },
+    "list": {
+      "title": "Deployments",
+      "name": "Name",
+      "version": "Version",
+      "environment": "Environment",
+      "status": "Status",
+      "owner": "Owner",
+      "created": "Created",
+      "you": "You",
+      "someoneElse": "Someone else"
+    },
+    "status": {
+      "pending": "pending",
+      "running": "running",
+      "succeeded": "succeeded",
+      "failed": "failed"
+    },
+    "search": {
+      "label": "Search by name or version",
+      "placeholder": "Search name or version…",
+      "button": "Search"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {page} of {total}"
+    },
+    "empty": {
+      "noMatch": "No deployment matches your search.",
+      "none": "No deployments yet.",
+      "clear": "Clear the search",
+      "hint": "Create one through the API and it will show up here."
+    },
+    "errors": {
+      "expiredTitle": "Your session has expired",
+      "expiredHelp": "Sign in again to continue.",
+      "forbiddenTitle": "You don’t have access to deployments",
+      "forbiddenHelp": "Your account needs the deployment:read role. Ask an administrator.",
+      "failedTitle": "We couldn’t load the deployments",
+      "failedHelp": "The deployment API didn’t answer correctly. Try again in a moment.",
+      "requestId": "Request id",
+      "signInAgain": "Sign in again"
+    }
+  },
+  "notFound": {
+    "title": "This page doesn’t exist",
+    "text": "The link may be broken, or the page may have moved.",
+    "back": "Back to home"
+  },
+  "profile": {
+    "role": "Backend & Platform Engineer",
+    "availability": "Open to new opportunities",
+    "tagline": "I design and build secure, observable microservice platforms — from the API gateway and identity to the database and the cluster they run on.",
+    "bio": [
+      "«Write 2–3 sentences about who you are and what kind of engineering you enjoy.»",
+      "«What you have been working on recently, and the problems you like solving.»",
+      "«What you are looking for in your next role.»"
+    ],
+    "personal": [
+      { "label": "Full name", "value": "«Your Full Name»" },
+      { "label": "Location", "value": "«City, Country»" },
+      { "label": "Experience", "value": "«N years»" },
+      { "label": "Languages", "value": "«Vietnamese (native), English (professional)»" },
+      { "label": "Work mode", "value": "«Remote / Hybrid / On-site»" }
+    ],
+    "skills": [
+      { "group": "Backend", "items": ["TypeScript", "Node.js", "NestJS", "REST API design", "Validation & error handling"] },
+      { "group": "Architecture & messaging", "items": ["Microservices", "API gateway (KrakenD)", "NATS JetStream events", "Transactional outbox & inbox"] },
+      { "group": "Security & identity", "items": ["Keycloak / OpenID Connect", "JWT (RS256, JWKS)", "RBAC & ownership rules", "BFF sessions"] },
+      { "group": "Data", "items": ["PostgreSQL", "Prisma & migrations", "Redis"] },
+      { "group": "Cloud & DevOps", "items": ["Docker", "Kubernetes", "Kustomize", "Argo CD", "Structured logging (pino)"] },
+      { "group": "Frontend", "items": ["React", "Next.js (App Router)", "Tailwind CSS", "Internationalization"] }
+    ],
+    "strengths": [
+      { "title": "Ship services end to end", "text": "From the contract and the database schema to tests, the gateway route and the Kubernetes manifest." },
+      { "title": "Secure by default", "text": "Token verification at the gateway and again in every service, roles plus data-level rules, no secrets in logs." },
+      { "title": "Built to be operated", "text": "Health checks, JSON logs with request ids, clear error contracts — so problems are found in minutes, not days." },
+      { "title": "Clear conventions, shared knowledge", "text": "I write down the rules a team agrees on and keep them true, so new teammates are productive fast." }
+    ],
+    "project": {
+      "name": "nest-microservice platform",
+      "summary": "A NestJS microservice platform: KrakenD as the API gateway, Keycloak for identity, REST services with Prisma/PostgreSQL, NATS JetStream events, and Kubernetes for the whole stack. The dashboard of this site is its live client.",
+      "points": [
+        "JWTs verified locally at the gateway and in each service (RS256 + JWKS, no shared secret)",
+        "Role-based access plus “only the creator or an admin” ownership rules",
+        "At-least-once events: transactional outbox, JetStream and an idempotent inbox",
+        "The whole system on Kubernetes via Kustomize, with a production-like local staging over HTTPS"
+      ]
+    },
+    "experience": [
+      { "period": "«2023 — Present»", "title": "«Job title»", "company": "«Company»", "text": "«One or two lines on what you owned and the impact you had.»" },
+      { "period": "«2020 — 2023»", "title": "«Job title»", "company": "«Company»", "text": "«One or two lines on what you owned and the impact you had.»" }
+    ],
+    "education": [
+      { "period": "«2016 — 2020»", "title": "«Degree»", "school": "«University»" }
+    ],
+    "interests": ["«Interest 1»", "«Interest 2»", "«Interest 3»"]
+  }
+}

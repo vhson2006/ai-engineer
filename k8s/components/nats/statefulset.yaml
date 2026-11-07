@@ -1,0 +1,67 @@
+# NATS with JetStream. A StatefulSet (not a Deployment) so that pod nats-0 always gets back its
+# own volume data-nats-0: streams and consumer positions survive restarts, rollouts and OOM kills.
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nats
+spec:
+  serviceName: nats
+  replicas: 1 # JetStream clustering needs 3 (R3): see kustomization.yaml
+  selector:
+    matchLabels:
+      app: nats
+  template:
+    metadata:
+      labels:
+        app: nats
+    spec:
+      containers:
+        - name: nats
+          image: nats:2.10-alpine
+          args: ['-c', '/etc/nats/nats.conf']
+          env:
+            # Go GC target below the container limit: JetStream caches use memory too.
+            - name: GOMEMLIMIT
+              value: 200MiB
+          ports:
+            - name: client
+              containerPort: 4222
+            - name: monitor
+              containerPort: 8222
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nats
+            - name: data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              # Also fails while JetStream is still recovering its streams after a restart.
+              path: /healthz
+              port: monitor
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              # Server only: a slow JetStream recovery must not get the pod killed in a loop.
+              path: /healthz?js-enabled-only=true
+              port: monitor
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              memory: 256Mi
+      volumes:
+        - name: config
+          configMap:
+            name: nats-config
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 1Gi # keep jetstream.max_file_store (nats.conf) below this

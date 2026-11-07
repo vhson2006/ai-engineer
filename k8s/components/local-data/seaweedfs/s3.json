@@ -1,0 +1,13 @@
+{
+  "identities": [
+    {
+      "name": "app",
+      "credentials": [{ "accessKey": "dev-storage-key", "secretKey": "dev-storage-secret" }],
+      "actions": ["Read", "Write", "List", "Tagging", "Admin"]
+    },
+    {
+      "name": "anonymous",
+      "actions": ["Read:dev-public-files"]
+    }
+  ]
+}

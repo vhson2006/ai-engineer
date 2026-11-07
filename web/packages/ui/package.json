@@ -1,0 +1,54 @@
+{
+  "name": "@web/ui",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Design system of the web apps (ADR 0022): shadcn/ui-style components on Radix + Tailwind tokens, one per file (@web/ui/<name>), forms (react-hook-form + zod), data tables (TanStack Table), design tokens (theme.css).",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./theme.css": {
+      "style": "./src/theme.css",
+      "default": "./src/theme.css"
+    },
+    "./*": "./src/components/*.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
+  },
+  "peerDependencies": {
+    "next": "16.4.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@daypicker/react": "^10.0.2",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@hookform/resolvers": "^7.0.3",
+    "@tanstack/react-table": "^9.3.1",
+    "@tiptap/extensions": "^3.33.0",
+    "@tiptap/pm": "^3.33.0",
+    "@tiptap/react": "^3.33.0",
+    "@tiptap/starter-kit": "^3.33.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.4.0",
+    "lucide-react": "^1.70.0",
+    "motion": "^14.10.1",
+    "radix-ui": "^1.8.1",
+    "react-hook-form": "^7.91.0",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.8",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7"
+  }
+}

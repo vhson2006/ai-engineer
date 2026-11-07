@@ -1,0 +1,40 @@
+# Architecture Decision Records
+
+ONE log for the whole system (API, web app, infrastructure). One file per decision that shapes
+the system and that the code alone doesn't explain: the context, what was decided, what it costs,
+and what was rejected. Agents and reviewers read the relevant ADR before proposing to undo a
+decision.
+
+- Number sequentially: `NNNN-short-title.md`. Never renumber or delete; a reversed decision gets
+  status `Superseded by NNNN` and a new ADR explains why.
+- Status: `Proposed` → `Accepted` (→ `Superseded by NNNN` / `Deprecated`). `Accepted, partly
+  implemented` says what is still missing.
+- Keep it short (one screen). HOW belongs in `CLAUDE.md`, `.claude/rules/` or READMEs; the ADR
+  says WHY. Paths are relative to the repository root.
+- Template: [0000-template.md](0000-template.md).
+
+| # | Decision | Area | Status |
+|---|---|---|---|
+| [0001](0001-krakend-rest-and-nats-events.md) | KrakenD gateway, REST for requests, NATS events between services | API | Accepted |
+| [0002](0002-keycloak-tokens-verified-twice.md) | Keycloak OIDC, RS256 tokens verified locally by KrakenD and by each service | API | Accepted |
+| [0003](0003-private-api-public-surface.md) | The API is private: only the web app's server calls it | Infra | Accepted |
+| [0004](0004-keycloak-admin-private.md) | Keycloak: only the app realm is public; admin through port-forward | Infra | Accepted |
+| [0005](0005-optimistic-concurrency-etag.md) | No lost updates: `revision` + ETag / If-Match | API | Accepted |
+| [0006](0006-files-presigned-urls.md) | Files: bytes go straight between browser and object storage | API | Accepted |
+| [0007](0007-jetstream-outbox-no-bullmq.md) | Events at-least-once: outbox + NATS JetStream + inbox, no BullMQ | API / Infra | Accepted, implemented |
+| [0008](0008-nats-reconnect-forever.md) | NATS clients reconnect forever | API | Accepted |
+| [0009](0009-delivery-github-argocd-kustomize.md) | Delivery: GitHub + Argo CD, Kustomize base / components / overlays | Infra | Accepted, environments on hold |
+| [0010](0010-bff-server-side-sessions.md) | BFF: tokens stay on the server, the browser holds a session id | Web | Accepted |
+| [0011](0011-single-flight-token-refresh.md) | Token refresh: single-flight with a Redis lock; only `invalid_grant` signs out | Web | Accepted |
+| [0012](0012-one-api-client.md) | One API client (`apiFetch`): retries only what is safe, never throws | Web | Accepted |
+| [0013](0013-mutations-server-actions-csrf-idempotency.md) | Mutations: Server Actions + origin check + `once()` | Web | Accepted |
+| [0014](0014-browser-uploads-to-storage.md) | Uploads go from the browser straight to storage | Web | Accepted |
+| [0015](0015-monorepo-k8s-at-root.md) | One repository; infrastructure (`k8s/`) at the root | Repo | Accepted |
+| [0016](0016-csp-without-nonces.md) | Content-Security-Policy from the proxy, without nonces | Web | Accepted |
+| [0017](0017-http-protection-by-layer.md) | Rate limits, security headers, compression, CORS: each at the layer that sees the threat | All | Accepted, partly implemented |
+| [0018](0018-local-staging-with-https.md) | Local staging: the production setup in the local cluster, with HTTPS | Infra | Accepted |
+| [0019](0019-web-workspace-and-admin-site.md) | Web apps in one npm workspace with shared packages; admin is a separate public app (admins + OTP) | Web | Accepted, implemented |
+| [0020](0020-i18n-sub-path-json-dictionaries.md) | Languages: sub-path routing (`/en`, `/vi`) and JSON dictionaries, no i18n library | Web | Accepted |
+| [0021](0021-seo-build-time-site-url.md) | SEO: `SITE_URL` baked at build, per-language metadata, sitemap, JSON-LD, link previews, icons | Web | Accepted |
+| [0022](0022-ui-stack-shadcn-radix-zod.md) | UI stack: shadcn/ui-style on Radix, react-hook-form + zod, TanStack Table, nuqs, `features/` structure | Web | Accepted |
+| [0023](0023-observability-grafana-cloud-alloy.md) | Observability: Grafana Cloud fed by Alloy (one per namespace); `/metrics`, OpenTelemetry traces, JSON logs with `trace_id` | All | Accepted, partly implemented |

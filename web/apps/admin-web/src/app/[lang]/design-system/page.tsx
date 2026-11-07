@@ -1,0 +1,35 @@
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
+import { getSessionUser } from '@web/core/auth/session';
+import { Container } from '@web/ui';
+import { Skeleton } from '@web/ui/skeleton';
+import { DesignSystemShowcase } from '@/features/design-system/showcase';
+import { href, LOCALES, type Locale } from '@/i18n/locales';
+import { getLocale, getMessages, type Messages } from '@/i18n/messages';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return { title: (await getMessages()).designSystem.title };
+}
+
+/** A living catalogue of @web/ui (admins only, like every page here). */
+export default async function DesignSystemPage() {
+  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
+  return (
+    <Container className="py-10 sm:py-14">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight">{t.designSystem.title}</h1>
+        <p className="mt-2 max-w-3xl text-pretty text-muted">{t.designSystem.subtitle}</p>
+      </header>
+      <Suspense fallback={<Skeleton className="h-[40rem] rounded-2xl" />}>
+        <Showcase t={t} locale={locale} />
+      </Suspense>
+    </Container>
+  );
+}
+
+async function Showcase({ t, locale }: { t: Messages; locale: Locale }) {
+  const user = await getSessionUser().catch(() => null);
+  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(href(locale, '/design-system'))}`);
+  return <DesignSystemShowcase t={t.designSystem} lang={locale} intlLocale={LOCALES[locale].intl} />;
+}

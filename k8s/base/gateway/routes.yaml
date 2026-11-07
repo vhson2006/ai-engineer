@@ -1,0 +1,58 @@
+# Host-based routes on the "edge" Gateway (gateway.yaml). Anything that matches no rule gets 404
+# from nginx, so only what is listed here is reachable from outside the cluster.
+# Host names are placeholders: each overlay patches them (overlays/<env>/patches/gateway.yaml).
+#
+# KrakenD has NO route on purpose: the API is private. Only the web apps' servers call it, inside
+# the cluster (prod NetworkPolicy krakend-from-web). Never add an api.<domain> route here.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: auth
+spec:
+  parentRefs:
+    - name: edge
+  hostnames:
+    - auth.example.com
+  rules:
+    # Keycloak's recommended public paths, narrowed to OUR realm: login pages, token, certs (JWKS),
+    # logout, userinfo, account. /admin, /realms/master, /metrics and /health stay private.
+    - matches:
+        - path: { type: PathPrefix, value: /realms/nest-microservice }
+        - path: { type: PathPrefix, value: /resources }
+      backendRefs:
+        - name: keycloak
+          port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: www
+spec:
+  parentRefs:
+    - name: edge
+  hostnames:
+    - www.example.com
+  rules:
+    - matches:
+        - path: { type: PathPrefix, value: / }
+      backendRefs:
+        - name: portfolio-web
+          port: 3000
+---
+# The admin site (ADR 0019): public host, but only administrators can sign in (client "admin-web":
+# role admin-web:admin + password AND one-time code, short sessions). Never indexed (X-Robots-Tag).
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: admin
+spec:
+  parentRefs:
+    - name: edge
+  hostnames:
+    - admin.example.com
+  rules:
+    - matches:
+        - path: { type: PathPrefix, value: / }
+      backendRefs:
+        - name: admin-web
+          port: 3000

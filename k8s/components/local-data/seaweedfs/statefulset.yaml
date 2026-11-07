@@ -1,0 +1,82 @@
+# Local S3-compatible object storage for uploaded files (SeaweedFS, single node). DEV ONLY: in
+# production the files live in DigitalOcean Spaces / AWS S3 / Cloudflare R2 (STORAGE_PROVIDER).
+#
+# Identities (s3.json, generated into the Secret "seaweedfs-s3"):
+#   app        dev-storage-key / dev-storage-secret: everything (the deployment-service)
+#   anonymous  read-only on dev-public-files: the "public bucket" behaviour of the CDN in prod
+# Buckets dev-public-files and dev-private-files are created on the first upload
+# (-s3.autoCreateBucket). CORS allows the web origins, so browsers can PUT to presigned URLs.
+# Reached from your machine at http://localhost:8333 (npm run k8s:forward): the service signs
+# URLs for that host, and the browser uses them as-is.
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: seaweedfs
+spec:
+  serviceName: seaweedfs
+  replicas: 1
+  selector:
+    matchLabels:
+      app: seaweedfs
+  template:
+    metadata:
+      labels:
+        app: seaweedfs
+    spec:
+      enableServiceLinks: false
+      containers:
+        - name: seaweedfs
+          image: chrislusf/seaweedfs:4.48
+          args:
+            - server
+            - -dir=/data
+            - -ip.bind=0.0.0.0
+            - -master.volumeSizeLimitMB=64
+            - -s3
+            - -s3.port=8333
+            - -s3.config=/etc/seaweedfs/s3.json
+            - -s3.autoCreateBucket
+            - -s3.allowedOrigins=http://www.localtest.me:8000,http://localhost:3000
+          ports:
+            - name: s3
+              containerPort: 8333
+          readinessProbe:
+            tcpSocket:
+              port: s3
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: s3-config
+              mountPath: /etc/seaweedfs
+              readOnly: true
+      volumes:
+        - name: s3-config
+          secret:
+            secretName: seaweedfs-s3
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: seaweedfs
+spec:
+  selector:
+    app: seaweedfs
+  ports:
+    - name: s3
+      port: 8333
+      targetPort: s3

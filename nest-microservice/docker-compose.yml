@@ -1,0 +1,51 @@
+# Local infrastructure only. The Nest apps run on your machine with `npm run start:dev`.
+# Alternative: the same stack on Kubernetes, see ../k8s/README.md. Don't run both at once.
+# NOTE: Keycloak only exists on Kubernetes. KrakenD's auth/validator fetches the JWKS from the
+# in-cluster Keycloak URL, so with docker compose every /api call answers 401. Use k8s for auth.
+services:
+  krakend:
+    image: krakend:2.10.2
+    command: ['run', '-c', '/etc/krakend/config/krakend.tmpl']
+    environment: # Flexible Configuration: same template + dev settings as k8s/overlays/dev
+      FC_ENABLE: '1'
+      FC_SETTINGS: /etc/krakend/settings
+      FC_TEMPLATES: /etc/krakend/config/templates
+    volumes:
+      - ../k8s/base/krakend/config:/etc/krakend/config:ro
+      - ../k8s/overlays/dev/krakend/settings:/etc/krakend/settings:ro
+    ports:
+      - '8080:8080' # public API: http://localhost:8080/api/...
+    extra_hosts:
+      - 'host.docker.internal:host-gateway' # reach the Nest apps on the host (needed on Linux)
+    restart: unless-stopped
+
+  nats:
+    image: nats:2.10-alpine
+    command: ['--jetstream', '--store_dir', '/data', '--http_port', '8222'] # same as k8s
+    volumes:
+      - natsdata:/data
+    ports:
+      - '4222:4222' # client connections
+      - '8222:8222' # monitoring: http://localhost:8222
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deployment
+    ports:
+      - '5432:5432' # stop any local Postgres first: it would clash on 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  natsdata:

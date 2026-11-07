@@ -1,0 +1,91 @@
+# deployment-service (REST, :3001) running in the cluster, from the image built by the Dockerfile
+# (--target deployment-service). The overlay provides:
+#   ConfigMap "deployment-service-env"  NATS_URL, LOG_LEVEL, DEPLOYMENT_PORT, AUTH_*
+#   Secret    "deployment-db"           DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME, DB_SSLMODE
+#   Secret    "deployment-storage"      STORAGE_ACCESS_KEY_ID, STORAGE_SECRET_ACCESS_KEY (object storage)
+# and the image name/tag (kustomization `images:`).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: deployment-service
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: deployment-service
+      annotations: # GET /metrics, scraped by Alloy (components/observability, ADR 0023)
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3001'
+        prometheus.io/path: /metrics
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: deployment-service
+          image: deployment-service
+          ports:
+            - name: http
+              containerPort: 3001
+          envFrom:
+            - configMapRef:
+                name: deployment-service-env
+            - secretRef:
+                name: deployment-db
+            - secretRef:
+                name: deployment-storage
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: 100m
+              memory: 160Mi
+            limits:
+              memory: 384Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deployment-service
+spec:
+  selector:
+    app: deployment-service
+  ports:
+    - name: http
+      port: 3001
+      targetPort: http

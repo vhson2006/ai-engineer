@@ -1,0 +1,6 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles (packages/ui/src/theme.css). Override a variable here to
+   give this app its own look, e.g. :root { --brand: ... }. */
+@import "@web/ui/theme.css";
+/* Tailwind only generates classes it finds: also scan the shared components. */
+@source "../../../../packages/ui/src";

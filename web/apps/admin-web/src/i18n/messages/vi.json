@@ -1,0 +1,247 @@
+{
+  "meta": {
+    "title": "Quản trị",
+    "description": "Trang quản trị nền tảng nest-microservice."
+  },
+  "common": {
+    "skipToContent": "Chuyển đến nội dung",
+    "language": "Ngôn ngữ",
+    "brand": "Quản trị",
+    "brandTagline": "Bảng điều khiển",
+    "close": "Đóng",
+    "cancel": "Huỷ",
+    "requestId": "Mã yêu cầu"
+  },
+  "nav": {
+    "label": "Điều hướng chính",
+    "overview": "Tổng quan",
+    "deployments": "Deployment",
+    "designSystem": "Design system"
+  },
+  "userMenu": {
+    "signIn": "Đăng nhập",
+    "signOut": "Đăng xuất"
+  },
+  "overview": {
+    "title": "Tổng quan",
+    "eyebrow": "Quản trị",
+    "welcome": "Xin chào, {name}",
+    "subtitle": "Mọi thao tác ở đây tác động lên dữ liệu thật bằng quyền quản trị của bạn. Hãy cẩn thận.",
+    "security": {
+      "title": "Phiên được bảo vệ",
+      "text": "Đăng nhập bằng mật khẩu và mã dùng một lần. Phiên tự kết thúc sau 15 phút không hoạt động và tối đa sau 8 giờ."
+    },
+    "stats": {
+      "deployments": "Deployment",
+      "deploymentsHint": "của mọi người dùng",
+      "running": "Đang chạy",
+      "failed": "Thất bại",
+      "latestHint": "trong {count} mục mới nhất"
+    },
+    "recent": {
+      "title": "Deployment mới nhất",
+      "name": "Tên",
+      "version": "Phiên bản",
+      "environment": "Môi trường",
+      "status": "Trạng thái",
+      "owner": "Người tạo",
+      "created": "Ngày tạo",
+      "empty": "Chưa có deployment nào."
+    },
+    "status": {
+      "pending": "đang chờ",
+      "running": "đang chạy",
+      "succeeded": "thành công",
+      "failed": "thất bại"
+    },
+    "roles": {
+      "title": "Vai trò của bạn",
+      "none": "chưa có vai trò API"
+    },
+    "errors": {
+      "title": "Deployment API không phản hồi đúng",
+      "requestId": "Mã yêu cầu"
+    },
+    "charts": {
+      "status": "Trạng thái của {count} deployment mới nhất",
+      "statusLabel": "Biểu đồ cột: số deployment theo trạng thái trong {count} mục mới nhất.",
+      "activity": "Số deployment tạo mỗi ngày, 14 ngày qua",
+      "activityLabel": "Biểu đồ vùng: số deployment được tạo mỗi ngày trong 14 ngày qua.",
+      "series": "Deployment"
+    }
+  },
+  "login": {
+    "title": "Đăng nhập quản trị",
+    "intro": "Khu vực hạn chế. Hãy đăng nhập bằng tài khoản quản trị: cần mật khẩu và mã dùng một lần từ ứng dụng xác thực.",
+    "continueWithKeycloak": "Tiếp tục với Keycloak",
+    "signedInAs": "Bạn đang đăng nhập với tên {name}.",
+    "continue": "Tiếp tục",
+    "otpHint": "Lần đầu đăng nhập? Keycloak sẽ hiện mã QR: hãy quét bằng ứng dụng xác thực (Google Authenticator, Microsoft Authenticator, 1Password…).",
+    "errors": {
+      "denied": "Bạn đã huỷ đăng nhập.",
+      "expired": "Phiên đăng nhập đã hết hạn. Vui lòng thử lại.",
+      "failed": "Không thể hoàn tất đăng nhập. Vui lòng thử lại.",
+      "unavailable": "Máy chủ định danh hiện không phản hồi. Vui lòng thử lại sau ít phút.",
+      "session_unavailable": "Hệ thống đăng nhập của chúng tôi đang tạm gián đoạn. Vui lòng thử lại sau ít phút.",
+      "rate_limited": "Mạng của bạn đã thử đăng nhập quá nhiều lần. Vui lòng đợi vài phút rồi thử lại.",
+      "forbidden": "Tài khoản này không phải quản trị viên. Hãy đăng nhập bằng tài khoản quản trị."
+    },
+    "testAccounts": {
+      "title": "Tài khoản thử nghiệm",
+      "alice": "quản trị viên: mật khẩu “password”, mã dùng một lần sinh từ OTP secret dành cho dev (xem README)"
+    }
+  },
+  "notFound": {
+    "title": "Trang này không tồn tại",
+    "text": "Đường dẫn có thể bị hỏng, hoặc trang đã được chuyển đi nơi khác.",
+    "back": "Về trang tổng quan"
+  },
+  "deployments": {
+    "title": "Deployment",
+    "subtitle": "Toàn bộ deployment của mọi người dùng. Tìm theo tên hoặc phiên bản.",
+    "search": {
+      "label": "Tìm deployment",
+      "placeholder": "Tìm tên hoặc phiên bản…"
+    },
+    "empty": "Chưa có deployment nào.",
+    "emptySearch": "Không có deployment nào khớp với “{search}”.",
+    "total": "tổng cộng {count}",
+    "columns": {
+      "name": "Tên",
+      "environment": "Môi trường",
+      "status": "Trạng thái",
+      "owner": "Người tạo",
+      "created": "Ngày tạo"
+    },
+    "pagination": {
+      "nav": "Phân trang",
+      "previous": "Trước",
+      "next": "Sau",
+      "status": "Trang {page} / {total}"
+    },
+    "create": {
+      "button": "Tạo deployment",
+      "title": "Tạo deployment mới",
+      "description": "Deployment bắt đầu ở trạng thái “đang chờ”. Bạn được ghi nhận là người tạo.",
+      "name": "Tên",
+      "namePlaceholder": "checkout-api",
+      "version": "Phiên bản",
+      "versionHint": "Phiên bản dạng semver, ví dụ 1.4.0",
+      "environment": "Môi trường",
+      "environments": {
+        "development": "Phát triển",
+        "staging": "Staging",
+        "production": "Production"
+      },
+      "notes": "Ghi chú",
+      "notesPlaceholder": "Bản phát hành này thay đổi gì (không bắt buộc)",
+      "submit": "Tạo deployment",
+      "submitting": "Đang tạo…",
+      "success": "Đã tạo deployment “{name}”."
+    },
+    "export": {
+      "button": "Xuất Excel",
+      "sheet": "Deployment",
+      "version": "Phiên bản",
+      "description": "Ghi chú",
+      "id": "Mã",
+      "tooMany": "Bạn đã xuất quá nhiều lần. Vui lòng đợi vài phút.",
+      "failed": "Xuất file thất bại: deployment API không phản hồi đúng.",
+      "signIn": "Vui lòng đăng nhập lại."
+    }
+  },
+  "validation": {
+    "required": "Vui lòng nhập trường này.",
+    "tooLong": "Nội dung quá dài.",
+    "invalidVersion": "Hãy dùng phiên bản dạng 1.4.0.",
+    "invalid": "Giá trị không hợp lệ."
+  },
+  "designSystem": {
+    "title": "Design system",
+    "subtitle": "Toàn bộ component của @web/ui theo giao diện của trang này. Import bằng @web/ui/<tên>; cả hai trang dùng chung.",
+    "sections": {
+      "buttons": "Nút bấm",
+      "badges": "Nhãn trạng thái",
+      "fields": "Trường nhập liệu",
+      "overlays": "Lớp phủ và phản hồi",
+      "charts": "Biểu đồ",
+      "editor": "Trình soạn thảo",
+      "sortable": "Kéo thả",
+      "table": "Bảng dữ liệu",
+      "motion": "Chuyển động"
+    },
+    "samples": {
+      "primary": "Chính",
+      "secondary": "Phụ",
+      "ghost": "Nhẹ",
+      "destructive": "Xoá",
+      "link": "Liên kết",
+      "small": "Nhỏ",
+      "large": "Lớn",
+      "input": "Ô nhập chữ",
+      "inputPlaceholder": "Nhập gì đó…",
+      "textarea": "Vùng nhập nhiều dòng",
+      "select": "Danh sách chọn",
+      "selectPlaceholder": "Chọn môi trường",
+      "combobox": "Combobox",
+      "comboboxPlaceholder": "Chọn một service",
+      "comboboxSearch": "Tìm service…",
+      "comboboxEmpty": "Không tìm thấy service.",
+      "date": "Chọn ngày",
+      "datePlaceholder": "Chọn một ngày",
+      "checkbox": "Báo cho cả đội qua Slack",
+      "tabs": {
+        "overview": "Tổng quan",
+        "activity": "Hoạt động",
+        "settings": "Cài đặt"
+      },
+      "tabsContent": "Tabs chuyển nội dung mà không rời khỏi trang.",
+      "openDialog": "Mở hộp thoại",
+      "dialogTitle": "Xác nhận triển khai",
+      "dialogText": "Hộp thoại giữ focus bên trong, đóng bằng Escape và trả focus về chỗ cũ khi đóng.",
+      "confirm": "Xác nhận",
+      "menu": "Thao tác",
+      "menuEdit": "Sửa",
+      "menuDuplicate": "Nhân bản",
+      "menuDelete": "Xoá",
+      "popover": "Popover",
+      "popoverText": "Popover dùng cho form nhỏ hoặc thông tin chi tiết.",
+      "tooltip": "Rê chuột hoặc focus vào đây",
+      "tooltipText": "Tooltip giải thích icon và nhãn ngắn.",
+      "toastSuccess": "Thông báo thành công",
+      "toastError": "Thông báo lỗi",
+      "toastSuccessText": "Đã lưu.",
+      "toastErrorText": "Đã có lỗi xảy ra.",
+      "chartBar": "Deployment theo môi trường",
+      "chartArea": "Deployment theo tuần",
+      "series": "Deployment",
+      "editorPlaceholder": "Viết ghi chú phát hành…",
+      "editorOutput": "HTML đầu ra (phải làm sạch trên server trước khi hiển thị)",
+      "sortableHint": "Kéo tay nắm, hoặc focus vào một tay nắm rồi dùng phím Space và các phím mũi tên.",
+      "motionText": "Thẻ này hiện dần khi cuộn tới (motion), trừ khi bạn bật chế độ giảm chuyển động."
+    },
+    "editor": {
+      "toolbar": "Định dạng",
+      "bold": "In đậm",
+      "italic": "In nghiêng",
+      "underline": "Gạch chân",
+      "strike": "Gạch ngang",
+      "code": "Mã nội dòng",
+      "heading2": "Tiêu đề",
+      "heading3": "Tiêu đề phụ",
+      "bulletList": "Danh sách dấu chấm",
+      "orderedList": "Danh sách đánh số",
+      "quote": "Trích dẫn",
+      "undo": "Hoàn tác",
+      "redo": "Làm lại"
+    },
+    "sortable": {
+      "handle": "Kéo để sắp xếp lại {name}",
+      "instructions": "Nhấn Space để nhấc một mục. Dùng phím mũi tên để di chuyển, Space để thả, Escape để huỷ.",
+      "pickedUp": "Đã nhấc {name} ở vị trí {position}.",
+      "movedTo": "{name} đã chuyển tới vị trí {position}.",
+      "dropped": "Đã thả {name} ở vị trí {position}.",
+      "cancelled": "Đã huỷ di chuyển {name}."
+    }
+  }
+}

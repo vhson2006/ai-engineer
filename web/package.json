@@ -1,0 +1,20 @@
+{
+  "name": "web",
+  "private": true,
+  "description": "Web workspace (ADR 0019): the Next.js BFF apps and the packages they share. Install and run everything from here: npm install, npm run dev (all apps), npm test.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:portfolio": "npm run dev -w portfolio-web",
+    "dev:admin": "npm run dev -w admin-web",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "icons": "node scripts/generate-icons.mjs"
+  }
+}
