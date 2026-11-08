@@ -40,4 +40,13 @@ Open https://www.staging.localtest.me (sign in `bob` / `password`) and
 https://admin.staging.localtest.me (`alice` + one-time code). `npm run staging:down` removes
 it, `npm run k8s:up` brings dev back. Details: [`k8s/README.md`](k8s/README.md#local-staging), ADR 0018.
 
+## CI (GitHub Actions)
+
+Every pull request to `main` and every push to `main` runs [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+only the parts the change touches (`nest-microservice/`: lint, format, unit + e2e tests, build;
+`web/`: `npm run check`; `k8s/`: render every overlay, validate KrakenD). Branch protection
+requires the single check **`ci-ok`**. Dependabot ([`.github/dependabot.yml`](.github/dependabot.yml))
+proposes dependency updates weekly, once a release is at least 14 days old. Same commands locally:
+the package READMEs.
+
 Agents: start with [`CLAUDE.md`](CLAUDE.md).

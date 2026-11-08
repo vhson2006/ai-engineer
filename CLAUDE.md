@@ -66,6 +66,13 @@ cd web && npm install && npm run dev         # both apps: www.localtest.me:8000 
                                              # web/apps/admin-web/README.md); tests: npm test / npm run check
 ```
 
+## CI
+
+`.github/workflows/ci.yml` (PRs and pushes to `main`) runs, per changed part, the same commands as
+above (api: `lint:check`, `format:check`, `test`, `test:e2e`, `build`; web: `check`; k8s: kustomize
+render of every overlay + `krakend-check.sh`). Required check: `ci-ok`. A new check or package goes
+into that workflow in the same change; run the commands locally before pushing.
+
 ## Keep this file true
 
 If a convention changes, update this file, the package files and the rules in the same change.
