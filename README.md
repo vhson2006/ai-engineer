@@ -49,4 +49,9 @@ requires the single check **`ci-ok`**. Dependabot ([`.github/dependabot.yml`](.g
 proposes dependency updates weekly, once a release is at least 14 days old. Same commands locally:
 the package READMEs.
 
+After CI passes on `main`, [`.github/workflows/images.yml`](.github/workflows/images.yml) builds
+the images whose code changed, pushes them to GHCR (`ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`,
+private) and commits the new tags to `k8s/overlays/prod/kustomization.yaml` (Argo CD deploys from
+there). Details: [`k8s/README.md`](k8s/README.md#images).
+
 Agents: start with [`CLAUDE.md`](CLAUDE.md).

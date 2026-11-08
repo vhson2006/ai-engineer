@@ -1,0 +1,183 @@
+# Production images (ADR 0009, roadmap step 2). After CI passes on main, builds the images whose
+# source changed, pushes them to GHCR (ghcr.io/<owner>/<repo>/<name>:<commit sha>, private like the
+# repository) and commits the new tags to k8s/overlays/prod/kustomization.yaml. Argo CD deploys
+# from that file; CI never touches a cluster.
+#
+# "Changed" = compared with the commit each image is CURRENTLY tagged with in the prod overlay,
+# not with the previous push: a failed run is caught up by the next one, and a placeholder tag
+# builds everything. Run it by hand (Actions → Images → Run workflow) to rebuild everything.
+#
+# portfolio-web bakes its public origin in at build time (SEO, ADR 0021): set the repository
+# variable PROD_SITE_URL (Settings → Secrets and variables → Actions → Variables). Until then it
+# uses https://www.example.com, like the rest of the prod overlay.
+name: Images
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One run at a time, oldest first; a newer run supersedes a queued older one (it builds the same
+# changes and more).
+concurrency:
+  group: images
+  cancel-in-progress: false
+
+env:
+  OVERLAY: k8s/overlays/prod/kustomization.yaml
+
+jobs:
+  plan:
+    name: Plan images to build
+    # Only for a successful CI of a push to main (not a PR run that happened to target main).
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.plan.outputs.sha }}
+      matrix: ${{ steps.plan.outputs.matrix }}
+      any: ${{ steps.plan.outputs.any }}
+    steps:
+      - uses: actions/checkout@v5.0.0
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+      - id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          OWNER_REPO: ${{ github.repository }}
+          SITE_URL: ${{ vars.PROD_SITE_URL || 'https://www.example.com' }}
+        run: |
+          sha=$(git rev-parse HEAD)
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          registry="ghcr.io/${OWNER_REPO,,}" # GHCR names must be lower case
+
+          # true when files matching $2 (minus docs) changed since the commit the image $1 runs.
+          changed() {
+            local deployed
+            deployed=$(yq ".images[] | select(.name == \"$1\") | .newTag" "$OVERLAY")
+            if [ "$EVENT" = "workflow_dispatch" ] || ! git cat-file -e "$deployed^{commit}" 2>/dev/null; then
+              echo true; return
+            fi
+            if git diff --name-only "$deployed" HEAD | grep -E "$2" | grep -qvE '\.md$|/docs/|/\.claude/'; then
+              echo true
+            else
+              echo false
+            fi
+          }
+          api=$(changed deployment-service '^nest-microservice/')
+          portfolio=$(changed portfolio-web '^web/(packages/|apps/portfolio-web/|package(-lock)?\.json|tsconfig)')
+          admin=$(changed admin-web '^web/(packages/|apps/admin-web/|package(-lock)?\.json|tsconfig)')
+          echo "api=$api portfolio-web=$portfolio admin-web=$admin"
+
+          if [ "$SITE_URL" = "https://www.example.com" ] && [ "$portfolio" = true ]; then
+            echo "::warning::Repository variable PROD_SITE_URL is not set: portfolio-web is built for https://www.example.com"
+          fi
+
+          # One entry per image. The three API images share one commit (deployment-migrate must
+          # match deployment-service: ADR 0007/migration Job), so they are built together.
+          matrix=$(jq -cn \
+            --arg r "$registry" --arg site "$SITE_URL" \
+            --argjson api "$api" --argjson portfolio "$portfolio" --argjson admin "$admin" '
+            [
+              ($api | if . then
+                {name:"deployment-service",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"deployment-service",   args:""},
+                {name:"notification-service", context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"notification-service", args:""},
+                {name:"deployment-migrate",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"migrate",              args:""}
+              else empty end),
+              ($portfolio | if . then
+                {name:"portfolio-web", context:"web", file:"web/apps/portfolio-web/Dockerfile", target:"", args:("SITE_URL=" + $site)}
+              else empty end),
+              ($admin | if . then
+                {name:"admin-web", context:"web", file:"web/apps/admin-web/Dockerfile", target:"", args:""}
+              else empty end)
+            ] | map(. + {image: ($r + "/" + .name)})')
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "any=$([ "$matrix" = "[]" ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+          echo "$matrix" | jq .
+
+  build:
+    name: Build ${{ matrix.name }}
+    needs: plan
+    if: needs.plan.outputs.any == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # push to GHCR with the workflow's own token (no personal token)
+    strategy:
+      fail-fast: true # one failed image = no tag bump at all
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v5.0.0
+        with:
+          ref: ${{ needs.plan.outputs.sha }}
+      - uses: docker/setup-buildx-action@v3.10.0
+      - uses: docker/login-action@v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6.15.0
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.file }}
+          target: ${{ matrix.target }}
+          build-args: ${{ matrix.args }}
+          push: true
+          tags: ${{ matrix.image }}:${{ needs.plan.outputs.sha }}
+          # source links the package to this repository (same visibility and access).
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ needs.plan.outputs.sha }}
+            org.opencontainers.image.title=${{ matrix.name }}
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,scope=${{ matrix.name }},mode=max
+
+  bump:
+    name: Commit the new tags to the prod overlay
+    needs: [plan, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the tag commit to main (a GITHUB_TOKEN push starts no workflow: no loop)
+    steps:
+      - uses: actions/checkout@v5.0.0
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set the tags and push
+        env:
+          SHA: ${{ needs.plan.outputs.sha }}
+          NAMES: ${{ join(fromJSON(needs.plan.outputs.matrix).*.name, ' ') }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            for name in $NAMES; do
+              current=$(yq ".images[] | select(.name == \"$name\") | .newTag" "$OVERLAY")
+              # Never move an image back: skip if main already runs a newer commit of it.
+              if git cat-file -e "$current^{commit}" 2>/dev/null && git merge-base --is-ancestor "$SHA" "$current"; then
+                echo "$name: already at $current (newer or equal), kept"; continue
+              fi
+              # awk, not yq -i: rewrites only that newTag line (yq drops the file's blank lines).
+              awk -v n="$name" -v t="$SHA" '
+                $0 ~ "^  - name: " n "$" { hit = 1 }
+                hit && /^    newTag: / { sub(/newTag: .*/, "newTag: " t); hit = 0 }
+                { print }' "$OVERLAY" > "$OVERLAY.tmp" && mv "$OVERLAY.tmp" "$OVERLAY"
+              [ "$(yq ".images[] | select(.name == \"$name\") | .newTag" "$OVERLAY")" = "$SHA" ] \
+                || { echo "could not set the tag of $name"; exit 1; }
+              echo "$name: $current → $SHA"
+            done
+            git diff --quiet && { echo "nothing to commit"; exit 0; }
+            git commit -qam "chore(prod): images ${SHA:0:7} ($NAMES)"
+            git push -q origin HEAD:main && exit 0
+            echo "push rejected (main moved), retrying"; sleep 5
+          done
+          exit 1

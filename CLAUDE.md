@@ -72,6 +72,9 @@ cd web && npm install && npm run dev         # both apps: www.localtest.me:8000 
 above (api: `lint:check`, `format:check`, `test`, `test:e2e`, `build`; web: `check`; k8s: kustomize
 render of every overlay + `krakend-check.sh`). Required check: `ci-ok`. A new check or package goes
 into that workflow in the same change; run the commands locally before pushing.
+`.github/workflows/images.yml` (after a green CI on `main`) builds the changed images to GHCR and
+commits their tags to `k8s/overlays/prod/kustomization.yaml`: never edit those `newTag` lines by
+hand; a new image = a new matrix entry there + an `images:` entry in the overlay.
 
 ## Keep this file true
 
