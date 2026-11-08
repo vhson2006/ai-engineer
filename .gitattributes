@@ -1,0 +1,8 @@
+# LF everywhere in the repository and the working tree, whatever core.autocrlf says: shell scripts
+# run in Linux containers and CI, and prettier checks line endings.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary

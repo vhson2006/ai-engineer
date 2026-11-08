@@ -1,0 +1,131 @@
+# CI for the monorepo (ADR 0015, roadmap step 1). Runs on every pull request to main and on every
+# push to main. Only the parts a change touches are checked (job "changes"); pushes to main check
+# everything. Branch protection requires ONE check, "ci-ok", which passes when every job that ran
+# passed and skipped jobs count as passed: path filters can't leave a PR waiting for a check that
+# never starts.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  NODE_VERSION: '24' # same major as the images (node:24-alpine in the Dockerfiles)
+
+jobs:
+  changes:
+    name: Detect changed parts
+    runs-on: ubuntu-latest
+    outputs:
+      api: ${{ steps.diff.outputs.api }}
+      web: ${{ steps.diff.outputs.web }}
+      k8s: ${{ steps.diff.outputs.k8s }}
+    steps:
+      - uses: actions/checkout@v5.0.0
+        with:
+          fetch-depth: 0
+      - id: diff
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$EVENT" != "pull_request" ]; then
+            echo "api=true" >> "$GITHUB_OUTPUT"; echo "web=true" >> "$GITHUB_OUTPUT"; echo "k8s=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          files=$(git diff --name-only "$BASE_SHA...$HEAD_SHA")
+          echo "$files"
+          has() { if echo "$files" | grep -qE "$1"; then echo true; else echo false; fi; }
+          # The workflow itself counts for every part: a CI change must prove it still works.
+          ci='^\.github/workflows/ci\.yml$'
+          echo "api=$(has "^nest-microservice/|$ci")" >> "$GITHUB_OUTPUT"
+          echo "web=$(has "^web/|$ci")" >> "$GITHUB_OUTPUT"
+          # KrakenD forwards what the web app sends (root CLAUDE.md rule 6): k8s/ is rendered and
+          # validated as well when the contracts or the web API helpers change.
+          echo "k8s=$(has "^k8s/|^nest-microservice/libs/common/src/contracts/|^web/packages/core/src/api/|$ci")" >> "$GITHUB_OUTPUT"
+
+  api:
+    name: API (nest-microservice)
+    needs: changes
+    if: needs.changes.outputs.api == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nest-microservice
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - uses: actions/setup-node@v5.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: nest-microservice/package-lock.json
+      - run: npm ci # postinstall generates the Prisma clients
+      - run: npm run lint:check
+      - run: npm run format:check
+      - run: npm test
+      - run: npm run test:e2e # Prisma, NATS and storage are mocked: no services needed
+      - run: npm run build
+
+  web:
+    name: Web (portfolio-web, admin-web, packages)
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - uses: actions/setup-node@v5.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run check # typecheck + lint + tests of every workspace
+
+  k8s:
+    name: Kubernetes manifests + KrakenD
+    needs: changes
+    if: needs.changes.outputs.k8s == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - name: Render every overlay (kubectl kustomize)
+        run: |
+          for overlay in dev staging prod; do
+            echo "::group::$overlay"
+            kubectl kustomize "k8s/overlays/$overlay" > "/tmp/$overlay.yaml"
+            echo "$(grep -c '^kind:' "/tmp/$overlay.yaml") resources"
+            echo "::endgroup::"
+          done
+      - name: Validate the KrakenD configuration of every overlay
+        run: |
+          chmod a+w k8s # the KrakenD container writes the rendered JSON there
+          for overlay in dev staging prod; do bash k8s/scripts/krakend-check.sh "$overlay"; done
+
+  ci-ok:
+    name: ci-ok
+    needs: [changes, api, web, k8s]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every job that ran passed
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "results: $RESULTS"
+          for r in $RESULTS; do
+            case "$r" in success|skipped) ;; *) echo "a job ended with: $r"; exit 1 ;; esac
+          done

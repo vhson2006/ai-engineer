@@ -1,0 +1,36 @@
+# Dependency update PRs (checked by CI like any other PR). The cooldown keeps the repo rule
+# "pin versions at least two weeks old": a release is proposed only after 14 days. Minor and patch
+# updates are grouped into one PR per ecosystem and folder; majors come one by one (read the
+# changelog, they may need code changes).
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /nest-microservice
+    schedule: { interval: weekly, day: monday }
+    cooldown: { default-days: 14 }
+    open-pull-requests-limit: 5
+    groups:
+      api-minor-patch: { update-types: [minor, patch] }
+
+  - package-ecosystem: npm
+    directory: /web # one lockfile for the whole workspace
+    schedule: { interval: weekly, day: monday }
+    cooldown: { default-days: 14 }
+    open-pull-requests-limit: 5
+    groups:
+      web-minor-patch: { update-types: [minor, patch] }
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly, day: monday }
+    cooldown: { default-days: 14 }
+    groups:
+      actions: { update-types: [minor, patch] }
+
+  # Base images (ARG NODE_IMAGE in the Dockerfiles).
+  - package-ecosystem: docker
+    directories: [/nest-microservice, /web/apps/portfolio-web, /web/apps/admin-web]
+    schedule: { interval: weekly, day: monday }
+    cooldown: { default-days: 14 }
+    groups:
+      node-image: { patterns: ['*'] }
