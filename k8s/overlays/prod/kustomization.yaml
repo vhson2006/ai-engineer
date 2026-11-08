@@ -31,22 +31,23 @@ components:
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud (ADR 0023)
 
-# CI sets the tags to the commit SHA (`kustomize edit set image ...`) and commits; Argo CD syncs.
+# .github/workflows/images.yml sets each newTag to the commit SHA it built and commits; Argo CD syncs.
+# Images are private (GHCR, like the repository): pods pull them with the Secret "ghcr-pull".
 images:
   - name: deployment-service
-    newName: ghcr.io/your-github-user/nest-microservice/deployment-service
+    newName: ghcr.io/vhson2006/ai-engineer/deployment-service
     newTag: replace-with-commit-sha
   - name: notification-service
-    newName: ghcr.io/your-github-user/nest-microservice/notification-service
+    newName: ghcr.io/vhson2006/ai-engineer/notification-service
     newTag: replace-with-commit-sha
   - name: deployment-migrate
-    newName: ghcr.io/your-github-user/nest-microservice/deployment-migrate
+    newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
     newTag: replace-with-commit-sha
   - name: portfolio-web
-    newName: ghcr.io/your-github-user/portfolio-web
+    newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
     newTag: replace-with-commit-sha
   - name: admin-web
-    newName: ghcr.io/your-github-user/admin-web
+    newName: ghcr.io/vhson2006/ai-engineer/admin-web
     newTag: replace-with-commit-sha
 
 configMapGenerator:

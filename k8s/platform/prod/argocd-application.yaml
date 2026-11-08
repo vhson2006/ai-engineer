@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-github-user/nest-microservice.git
+    repoURL: https://github.com/vhson2006/ai-engineer.git
     targetRevision: main
     path: k8s/overlays/prod
   destination:

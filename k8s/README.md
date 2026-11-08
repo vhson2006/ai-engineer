@@ -365,9 +365,17 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 | Resilience | 2 replicas (KrakenD, Keycloak, apps, nginx), PodDisruptionBudgets, spread over nodes, `maxUnavailable: 0`, probes, resource requests/limits |
 | Isolation | `overlays/prod/networkpolicies.yaml`: default deny + only the flows listed in the file |
 | Telemetry | `components/observability`: Alloy → Grafana Cloud, label `cluster=prod` ([Observability](#observability-grafana-cloud)) |
-| Images | `kustomization.yaml` `images:`: CI sets the tags to the commit SHA |
+| Images | `kustomization.yaml` `images:`: `.github/workflows/images.yml` sets the tags to the commit SHA |
 
 ### Images
+
+Built by CI, not by hand: after CI passes on `main`, `.github/workflows/images.yml` builds every
+image whose code changed since the commit it is tagged with in `overlays/prod/kustomization.yaml`
+(the 3 API images always together), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`
+(private, like the repository; pods pull with the Secret `ghcr-pull`) and commits the new
+`newTag`s to `main` as `github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all.
+portfolio-web needs the repository variable `PROD_SITE_URL` (its public origin, ADR 0021);
+without it the image is built for `https://www.example.com`. What the workflow runs:
 
 ```bash
 # nest-microservice
@@ -415,8 +423,9 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    never. With AWS S3 or R2 instead, make the public bucket readable as a whole (bucket policy /
    R2 public domain), unset that variable, and set `STORAGE_PROVIDER` / `STORAGE_REGION` /
    `STORAGE_R2_ACCOUNT_ID`.
-5. **Replace placeholders**: `example.com` (overlay, realm JSON, ClusterIssuer email),
-   `your-github-user` (images, Argo CD Application).
+5. **Replace placeholders**: `example.com` (overlay, realm JSON, ClusterIssuer email) and set the
+   repository variable `PROD_SITE_URL`, then *Run workflow* on Images. The GitHub repository is
+   private: give Argo CD read access (a deploy key or a read-only token, `argocd repo add`).
 6. `kubectl apply -k k8s/platform/prod`: ClusterIssuers, DNS token, Argo CD Application. Argo CD
    then syncs `overlays/prod`.
 7. **DNS**: `www`, `admin`, `auth` → the external IP of Service `edge-nginx` (no `api`: the API is private)

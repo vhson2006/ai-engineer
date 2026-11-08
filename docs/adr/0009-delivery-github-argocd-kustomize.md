@@ -1,6 +1,6 @@
 # 0009. Delivery: GitHub + Argo CD, Kustomize base / components / overlays
 
-- **Status:** Accepted, environments on hold (PR CI done 2026-11-08: `.github/workflows/ci.yml`; images and Argo CD to do)
+- **Status:** Accepted, environments on hold (done 2026-11-08: PR CI `.github/workflows/ci.yml`, images to GHCR + tag commit `.github/workflows/images.yml`; Argo CD to do)
 - **Date:** 2026-11-05
 - **Related:** `k8s/README.md` (production), `k8s/overlays/`, `k8s/components/`
 
