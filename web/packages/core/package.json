@@ -16,7 +16,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "ioredis": "^5.11.1",
+    "ioredis": "^6.0.0",
     "openid-client": "^6.8.9",
     "server-only": "^0.0.1",
     "write-excel-file": "^4.1.1",
