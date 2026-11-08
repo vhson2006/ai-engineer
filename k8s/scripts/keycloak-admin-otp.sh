@@ -48,13 +48,16 @@ fi
 
 q create authentication/flows -s alias=$F -s "description=Admins only, password AND one-time code (client admin-web, ADR 0019)" \
   -s providerId=basic-flow -s topLevel=true -s builtIn=false
-q create authentication/flows/$F/executions/execution -s provider=auth-cookie
-q create authentication/flows/$F/executions/flow -s alias=$F-forms -s type=basic-flow -s "description=Password, admin role, one-time code"
-q create authentication/flows/$F-forms/executions/execution -s provider=auth-username-password-form
-q create authentication/flows/$F-forms/executions/flow -s alias=$F-non-admins -s type=basic-flow -s "description=Refuse users without admin-web.admin"
-q create authentication/flows/$F-non-admins/executions/execution -s provider=conditional-user-role
-q create authentication/flows/$F-non-admins/executions/execution -s provider=deny-access-authenticator
-q create authentication/flows/$F-forms/executions/execution -s provider=auth-otp-form
+# Explicit priorities: Keycloak 26 orders the steps of a flow by priority, and steps created without one
+# all get 0, so their order is arbitrary (the role check could run before the password form, with
+# no user yet, and refuse everyone with "Invalid username or password").
+q create authentication/flows/$F/executions/execution -s provider=auth-cookie -s priority=10
+q create authentication/flows/$F/executions/flow -s alias=$F-forms -s type=basic-flow -s priority=20   -s "description=Password, admin role, one-time code"
+q create authentication/flows/$F-forms/executions/execution -s provider=auth-username-password-form -s priority=10
+q create authentication/flows/$F-forms/executions/flow -s alias=$F-non-admins -s type=basic-flow -s priority=20   -s "description=Refuse users without admin-web.admin"
+q create authentication/flows/$F-non-admins/executions/execution -s provider=conditional-user-role -s priority=10
+q create authentication/flows/$F-non-admins/executions/execution -s provider=deny-access-authenticator -s priority=20
+q create authentication/flows/$F-forms/executions/execution -s provider=auth-otp-form -s priority=30
 
 # Executions are created DISABLED: set each requirement; configure the role condition (negated).
 k get authentication/flows/$F/executions --fields id,providerId,displayName --format csv --noquotes |
@@ -77,6 +80,14 @@ while IFS=, read -r id provider display; do
   q update authentication/flows/$F/executions -b "{\"id\":\"$id\",\"requirement\":\"$req\"}"
   echo "  $display: $req"
 done
+
+# Fail loudly if the order is still not the one above (a Keycloak upgrade changing how priority works).
+ORDER=$(k get authentication/flows/$F/executions --fields providerId,displayName --format csv --noquotes | cut -d, -f1,2 | tr "
+" " ")
+case "$ORDER" in
+  *auth-cookie*"$F-forms"*auth-username-password-form*"$F-non-admins"*conditional-user-role*deny-access-authenticator*auth-otp-form*) ;;
+  *) echo "unexpected step order in $F: $ORDER" >&2; exit 1 ;;
+esac
 
 q update clients/$CID -s "authenticationFlowBindingOverrides.browser=$(flow_id $F)"
 echo "client admin-web: browser flow = $F (admins only, password + OTP)"'
