@@ -36,19 +36,19 @@ components:
 images:
   - name: deployment-service
     newName: ghcr.io/vhson2006/ai-engineer/deployment-service
-    newTag: replace-with-commit-sha
+    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
   - name: notification-service
     newName: ghcr.io/vhson2006/ai-engineer/notification-service
-    newTag: replace-with-commit-sha
+    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
-    newTag: replace-with-commit-sha
+    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
-    newTag: replace-with-commit-sha
+    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
-    newTag: replace-with-commit-sha
+    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
 
 configMapGenerator:
   - name: krakend-settings
