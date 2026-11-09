@@ -36,6 +36,11 @@ describe('content security policy', () => {
     expect(csp).not.toContain('ws:');
   });
 
+  it('a site without sign-in: forms post only to itself', () => {
+    const csp = contentSecurityPolicy({ ...prod, keycloakIssuer: undefined });
+    expect(directive(csp, 'form-action')).toBe("form-action 'self'");
+  });
+
   it('dev: eval for React debugging, HMR websocket, no HTTPS upgrade on plain HTTP', () => {
     const csp = contentSecurityPolicy(dev);
     expect(directive(csp, 'script-src')).toBe("script-src 'self' 'unsafe-inline' 'unsafe-eval'");

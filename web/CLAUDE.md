@@ -7,6 +7,10 @@ the code they share. Run everything from this folder.
 |---|---|---|
 | `apps/portfolio-web/` | The user site (www.*) | `apps/portfolio-web/CLAUDE.md` |
 | `apps/admin-web/` | The admin site (admin.*): admins only, password + OTP | `apps/admin-web/CLAUDE.md` |
+| `apps/nails-web/` | Envy Nail Spa (Wendell, NC) landing page: menu data hard-coded until the API exists, no sign-in, not deployed yet | `apps/nails-web/CLAUDE.md` |
+| `apps/wine-web/` | Khang Hưng Tửu winery (Long An) landing page: data hard-coded until the API exists, no sign-in, not deployed yet | `apps/wine-web/CLAUDE.md` |
+| `apps/laundry-web/` | Giặt sấy SFaster laundry landing page (+ price estimator): data hard-coded until the API exists, no sign-in, not deployed yet | `apps/laundry-web/CLAUDE.md` |
+| `apps/wedding-web/` | Online wedding invitation (Hải Sơn & Trúc Giang): countdown, lunar date, add-to-calendar, album; noindex, not deployed yet | `apps/wedding-web/CLAUDE.md` |
 | `packages/core/` (`@web/core`) | BFF core: API client, sessions/OIDC and the `/auth/*` Route Handlers, CSRF, CSP, rate limits, Server Action helpers, uploads, i18n routing | the rules below |
 | `packages/ui/` (`@web/ui`) | Design system (ADR 0022): shadcn/ui-style components on Radix, one per file (`@web/ui/button`, `/dialog`, `/form`, `/data-table`…), design tokens (`theme.css`) | `.claude/rules/ui.md` |
 
@@ -66,7 +70,11 @@ npm install                    # once: the whole workspace (one package-lock.jso
 npm run dev                    # ALL apps, prefixed logs (scripts/dev.mjs); Ctrl+C stops them all
                                #   portfolio-web :3000 → http://www.localtest.me:8000
                                #   admin-web     :3100 → http://admin.localtest.me:8000
-npm run dev:portfolio          # one app (or: npm run dev -- admin-web)
+                               #   nails-web     :3200 → http://localhost:3200 (hard-coded data, no stack needed)
+                               #   wine-web      :3300 → http://localhost:3300 (hard-coded data, no stack needed)
+                               #   laundry-web   :3400 → http://localhost:3400 (hard-coded data, no stack needed)
+                               #   wedding-web   :3500 → http://localhost:3500 (hard-coded data, no stack needed)
+npm run dev:portfolio          # one app (or: npm run dev -- admin-web, dev:nails, dev:wine, dev:laundry, dev:wedding)
                                # (needs: root npm run k8s:up + k8s:forward, nest-microservice start:dev)
 npm test                       # Vitest in every workspace
 npm run check                  # typecheck (next typegen + tsc) + lint + test, all workspaces

@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "title": "SFaster Laundry · One customer, one machine · Clean, fresh, fast",
+    "description": "SFaster laundry at 68 Lê Hồng Phong: wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–19:00 every day."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "language": "Language",
+    "call": "Call {phone}",
+    "callNow": "Call now",
+    "zalo": "Message on Zalo",
+    "directions": "Get directions",
+    "viewPrices": "See prices",
+    "from": "From {price}",
+    "units": {
+      "load": "/ load",
+      "kg": "/ kg",
+      "set": "/ set",
+      "piece": "/ item",
+      "halfKilo": "/ 500 g",
+      "pair": "/ pair"
+    }
+  },
+  "topBar": {
+    "loyalty": "Wash 7 times, get 1 free",
+    "hours": "Open {open} – {close} every day"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "SFaster home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "prices": "Prices",
+    "services": "Services",
+    "process": "How it works",
+    "tips": "Before you drop off",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "brand": {
+    "laundry": "Laundry",
+    "tagline": "Clean · Fresh · Fast",
+    "oneMachine": "One customer, one machine"
+  },
+  "hero": {
+    "eyebrow": "Wash & dry · 68 Lê Hồng Phong",
+    "title": "Clean, fresh laundry,",
+    "titleAccent": "never mixed with anyone else's.",
+    "text": "At SFaster every customer gets their own machine: your clothes are washed and dried on their own, then bagged and labelled with your name. Priced by weight, from 35,000 ₫ a load.",
+    "imageAlt": "A row of white Electrolux washers with dryers stacked on top, at the SFaster shop",
+    "machines": "Electrolux washers & dryers",
+    "fromPrice": "Wash & dry from"
+  },
+  "highlights": {
+    "label": "Why SFaster",
+    "items": {
+      "oneMachine": { "title": "One customer, one machine", "text": "Your laundry is never washed with anyone else's." },
+      "clean": { "title": "Clean & fresh", "text": "Branded detergent, softener and dryer sheets in every load." },
+      "fast": { "title": "Fast", "text": "Front-loading washers and dryers, washed and dried in one visit." },
+      "labelled": { "title": "Bagged & labelled", "text": "Each customer's laundry is bagged separately with its own ticket." }
+    }
+  },
+  "prices": {
+    "eyebrow": "Price list",
+    "title": "Clear prices, by weight or by item",
+    "intro": "Prices include washing and drying. Your laundry is weighed when you drop it off.",
+    "note": "Prices from the shop's price board. Weights between 6 and 7 kg: please ask the shop.",
+    "tables": {
+      "clothes": {
+        "title": "Wash & dry: clothes",
+        "items": {
+          "under2": "Under 2 kg",
+          "from2to3": "2 to 3 kg",
+          "from3to4": "3 to 4 kg",
+          "from4to5": "4 to 5 kg",
+          "from5to6": "5 to 6 kg",
+          "from7": "7 kg and over"
+        }
+      },
+      "bedding": {
+        "title": "Wash & dry: duvets, curtains, bed sheets",
+        "items": {
+          "under1": "Under 1 kg",
+          "from1": "1 kg and over"
+        }
+      },
+      "dryClean": {
+        "title": "Dry cleaning",
+        "items": {
+          "suit": "Suit",
+          "dress": "Long skirt, dress",
+          "delicate": "Wool, fur, leather, silk",
+          "everyday": "Jeans, T-shirt, shirt"
+        }
+      },
+      "extras": {
+        "title": "Other services",
+        "items": {
+          "plush": "Plush toys",
+          "topper": "Mattress topper",
+          "shoes": "Shoe cleaning",
+          "handWash": "Hand wash",
+          "ironing": "Ironing",
+          "helmet": "Motorbike helmet"
+        }
+      }
+    }
+  },
+  "estimate": {
+    "title": "Estimate your price",
+    "intro": "Pick what you're bringing and roughly how much it weighs.",
+    "kind": "Type of laundry",
+    "clothes": "Clothes",
+    "bedding": "Duvets & bedding",
+    "weight": "Weight",
+    "kg": "{count} kg",
+    "decrease": "Less weight",
+    "increase": "More weight",
+    "result": "Estimated price",
+    "perLoad": "one price for the load",
+    "perKg": "{kg} kg × {price} / kg",
+    "ask": "6–7 kg isn't on the price board: please ask the shop.",
+    "disclaimer": "An estimate only: the final price is based on the weight measured at the shop."
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "More than everyday laundry",
+    "intro": "From work shirts to winter duvets, sneakers and your child's favourite teddy.",
+    "items": {
+      "clothes": { "name": "Wash & dry clothes", "text": "Everyday clothes, priced by weight per load." },
+      "bedding": { "name": "Duvets & bedding", "text": "Duvets, curtains and bed sheets, priced by the kilo." },
+      "dryClean": { "name": "Dry cleaning", "text": "Suits, dresses, wool, silk and leather that need extra care." },
+      "shoes": { "name": "Shoe cleaning", "text": "Sneakers and everyday shoes, per pair." },
+      "plush": { "name": "Plush toys", "text": "Teddy bears and soft toys, priced per 500 g." },
+      "topper": { "name": "Mattress toppers", "text": "Toppers washed and dried, priced by the kilo." },
+      "helmet": { "name": "Helmet cleaning", "text": "Motorbike helmets, per helmet." },
+      "handWash": { "name": "Hand wash", "text": "For items that shouldn't go in a machine." },
+      "ironing": { "name": "Ironing", "text": "Crisp shirts and trousers, per item." }
+    }
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title": "Drop off, we wash, you pick up",
+    "imageAlt": "Shelves of finished laundry in separate white bags, each with its own ticket",
+    "steps": [
+      { "title": "Drop off", "text": "Bring your laundry to the shop, or call or message us on Zalo first." },
+      { "title": "Weigh & ticket", "text": "We weigh your laundry and write you a ticket with the price." },
+      { "title": "Your own machine", "text": "Your laundry is washed and dried on its own: one customer, one machine." },
+      { "title": "Bag, label, pick up", "text": "Clean laundry is bagged with your ticket, ready for you to collect." }
+    ]
+  },
+  "loyalty": {
+    "eyebrow": "Loyalty",
+    "title": "Wash 7 times, get 1 free",
+    "text": "Every eighth wash is on us. Ask at the counter for the details.",
+    "card": "Loyalty card: 7 paid washes, the 8th free",
+    "free": "Free"
+  },
+  "tips": {
+    "eyebrow": "Before you drop off",
+    "title": "A few checks for the best result",
+    "items": [
+      "Empty every pocket: money, papers, earphones, lighters.",
+      "Tell us about clothes that may bleed colour or need washing separately.",
+      "Choose dry cleaning for wool, silk, leather and suits.",
+      "Point out tough stains (oil, ink, makeup) when you drop off.",
+      "Keep your ticket: it's how we match your bag when you pick up."
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Common questions",
+    "items": [
+      { "q": "Is my laundry washed with other people's?", "a": "No. SFaster works on one customer, one machine: each customer's laundry is washed and dried on its own." },
+      { "q": "How is the price calculated?", "a": "Clothes and bedding are priced by the weight measured when you drop off; dry cleaning and other services are priced per item, pair or kilo (see the price list)." },
+      { "q": "Can wool, silk, leather or suits go in the machine?", "a": "Those are better in our dry cleaning service, which keeps their shape and material. See the dry cleaning prices." },
+      { "q": "When can I pick my laundry up?", "a": "It depends on how much you bring and the service. Call or message us on Zalo and we'll tell you when it will be ready." },
+      { "q": "How does wash 7 times, get 1 free work?", "a": "After 7 paid washes, your next one is free. Ask at the counter for the details." },
+      { "q": "When is the shop open?", "a": "Every day from 7:00 to 19:00, except public holidays (Lễ, Tết)." }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Drop by the shop",
+    "text": "Come straight in during opening hours, or call or message us on Zalo first.",
+    "address": "Address",
+    "hours": "Opening hours",
+    "hoursValue": "{open} – {close} every day",
+    "holidays": "Closed on public holidays (Lễ, Tết)",
+    "phone": "Hotline & Zalo",
+    "imageAlt": "The SFaster shop sign: Giặt sấy SFaster, one customer one machine, clean, fresh, fast"
+  },
+  "footer": {
+    "tagline": "Wash & dry laundry: one customer, one machine. Clean, fresh, fast.",
+    "explore": "Explore",
+    "contact": "Contact",
+    "rights": "© {year} {name}. All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  }
+}

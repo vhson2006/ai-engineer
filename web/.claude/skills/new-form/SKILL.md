@@ -70,7 +70,7 @@ export async function submitOrder(input: unknown): Promise<ActionResult<{ id: st
   pieces (`Form`, `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage`) with
   `translate={(key) => t.validation[key] ?? key}`; inputs from `@web/ui/*` (Input, Select,
   Combobox, DatePicker…).
-- A `submissionId` (`crypto.randomUUID()`) in the default values, renewed after a success.
+- A `submissionId` (`newSubmissionId()` from `@web/core/actions/submission-id`, never `crypto.randomUUID()`: undefined on plain http outside localhost, e.g. the dev sites) in the default values, renewed after a success.
 - Call the action through `useActionState` (pending → disable the submit button, spinner) and
   handle the result inside that function, not in an effect: success → `toast.success`, close /
   navigate, reset; failure → `applyActionErrors(form, result.errors)` for the field errors, and

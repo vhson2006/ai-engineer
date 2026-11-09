@@ -18,8 +18,11 @@
 export interface SecurityHeaderOptions {
   /** APP_URL: this site. */
   appUrl: string;
-  /** KEYCLOAK_ISSUER: logout is a form POST that redirects there (form-action applies to redirects). */
-  keycloakIssuer: string;
+  /**
+   * KEYCLOAK_ISSUER: logout is a form POST that redirects there (form-action applies to redirects).
+   * Omitted by a site without sign-in (e.g. nails-web): forms then post only to the site itself.
+   */
+  keycloakIssuer?: string;
   /** STORAGE_ORIGINS: object storage / CDN origins (presigned PUT uploads, images, inline files). */
   storageOrigins: string[];
   /** `next dev`: React needs eval for debugging, HMR needs a websocket. */
@@ -46,7 +49,7 @@ export function contentSecurityPolicy(options: SecurityHeaderOptions): string {
     'manifest-src': ["'self'"],
     'object-src': ["'none'"],
     'base-uri': ["'self'"],
-    'form-action': ["'self'", origin(options.keycloakIssuer)],
+    'form-action': ["'self'", ...(options.keycloakIssuer ? [origin(options.keycloakIssuer)] : [])],
     'frame-ancestors': ["'none'"],
   };
   const policy = Object.entries(directives).map(([name, values]) => `${name} ${[...new Set(values)].join(' ')}`);

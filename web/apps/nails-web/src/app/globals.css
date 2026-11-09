@@ -1,0 +1,93 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, then this site's own look on top. */
+@import "@web/ui/theme.css";
+@source "../../../../packages/ui/src";
+
+/*
+ * Envy Nail Spa, from the salon's printed menu and business card: deep forest green, gold
+ * (the EN monogram), soft sage watercolor (pastel green) and warm white.
+ * - `--brand` forest green: buttons, menu banners, strong accents.
+ * - `--gold`: lines, monogram, eyebrows on dark backgrounds; never body text on white.
+ * - `--sage` / `--surface-2`: pastel green section backgrounds.
+ * - `--deep`: the dark tropical-leaf sections (hero, policy, footer).
+ */
+:root {
+  --bg: #fbfaf6;
+  --surface: #ffffff;
+  --surface-2: #eef4ec;
+  --border: #dde6d9;
+  --fg: #17261c;
+  --muted: #4a5c50;
+  --subtle: #6b7c70;
+  --brand: #22502f;
+  --brand-hover: #1a3f25;
+  --brand-fg: #ffffff;
+  --brand-soft: #e4eee2;
+  --brand-soft-fg: #22502f;
+  --brand-strong: #22502f;
+  --sage: #dbe8d6;
+  --gold: #b8902f;
+  --gold-light: #e6c66f;
+  --gold-soft: #f5edd8;
+  --deep: #0e2216;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1912;
+    --surface: #12221a;
+    --surface-2: #172b20;
+    --border: #253c2e;
+    --fg: #edf3ec;
+    --muted: #b1c1b5;
+    --subtle: #8fa395;
+    --brand: #a8cfa3;
+    --brand-hover: #bfdcbb;
+    --brand-fg: #0d1912;
+    --brand-soft: rgb(168 207 163 / 0.12);
+    --brand-soft-fg: #c4e0bf;
+    --brand-strong: #b5d8b0;
+    --sage: #172b20;
+    --gold: #d9b65c;
+    --gold-light: #ecd08a;
+    --gold-soft: rgb(217 182 92 / 0.12);
+    --deep: #08140d;
+  }
+}
+
+@theme inline {
+  --color-brand-strong: var(--brand-strong);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-soft: var(--gold-soft);
+  --color-deep: var(--deep);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-serif);
+  --font-script: var(--font-script-hand);
+}
+
+/* Anchored sections land below the sticky header. */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Gold foil text, like the monogram on the business card. */
+.text-gold-foil {
+  background: linear-gradient(100deg, #b8892c 0%, #f3d77f 35%, #c99a35 55%, #f0d27a 80%, #a97a22 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The certificate's security-paper pattern (gift card). */
+.guilloche {
+  background-color: #fffdf7;
+  background-image:
+    repeating-radial-gradient(circle at 20% 30%, rgb(184 144 47 / 0.07) 0 1px, transparent 1px 9px),
+    repeating-radial-gradient(circle at 80% 70%, rgb(34 80 47 / 0.06) 0 1px, transparent 1px 11px);
+}

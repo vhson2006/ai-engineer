@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Khang Hưng Tửu · Traditional rice and herbal wines from Long An since 1991",
+    "description": "Khang Hưng Tửu winery in Bến Lức, Long An: traditional Gò Đen rice wine, herbal wines, Central Highlands jar wine and steamed wine since 1991. Registered trademark. For adults 18+."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "language": "Language",
+    "callNow": "Call to order",
+    "call": "Call {phone}",
+    "zalo": "Message on Zalo",
+    "viewProducts": "See our products",
+    "directions": "Get directions",
+    "perXi": "/ xị"
+  },
+  "legal": {
+    "age": "Not for people under 18 or pregnant women.",
+    "drive": "If you drink, don't drive."
+  },
+  "topBar": {
+    "orderOnly": "Order only through the number printed on our cans: {phone}"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Khang Hưng Tửu home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "products": "Products",
+    "range": "Our range",
+    "partners": "For restaurants",
+    "about": "About us",
+    "contact": "Contact"
+  },
+  "brand": {
+    "tagline": "Long An · Since 1991",
+    "trademark": "Registered trademark",
+    "premium": "Premium quality"
+  },
+  "hero": {
+    "eyebrow": "Long An winery · since 1991",
+    "title": "Khang Hưng Tửu",
+    "titleAccent": "Traditional flavour, three decades on",
+    "text": "From the famous Gò Đen rice-wine country of Bến Lức, Khang Hưng Tửu has steeped and crafted traditional rice and herbal wines since 1991, under its own registered trademark.",
+    "imageAlt": "The Khang Hưng Tửu showroom: large glass jars of steeped wine on wooden cabinets, with bottles and woven jugs below"
+  },
+  "trust": {
+    "label": "Why Khang Hưng Tửu",
+    "items": {
+      "since": { "title": "Since 1991", "text": "More than thirty years of winemaking in Long An." },
+      "trademark": { "title": "Registered trademark", "text": "An exclusive, registered brand: look for our label and seal." },
+      "quality": { "title": "Own quality control", "text": "Dedicated steeping rooms and an R&D and quality-control (KCS) lab." },
+      "partners": { "title": "Partner with restaurants", "text": "Display stands, cabinets and visits from our team, wherever you are." }
+    }
+  },
+  "featured": {
+    "eyebrow": "Signature line",
+    "title": "Tinh Dược Khang Hưng Tửu",
+    "intro": "Our best-known wines, in gift bottles and in the large cans that carry our one ordering number.",
+    "bottles": "Bottles",
+    "cans": "Cans",
+    "items": {
+      "khangDuoc": "Our flagship herbal wine in its signature red bottle.",
+      "ngocDuong": "A classic herbal blend in a gourd-shaped bottle.",
+      "samHanQuoc": "Steeped with Korean ginseng.",
+      "chuoiHot": "Steeped with dried seeded bananas, a southern Vietnamese tradition.",
+      "canNgocDuong": "Our Ngọc Dương blend, in a can for restaurants and families.",
+      "nepGoDen": "Clear rice wine from Gò Đen glutinous rice, the pride of Long An.",
+      "hapNong": "Wine made to be served warm (see how below)."
+    }
+  },
+  "jars": {
+    "eyebrow": "From the showroom",
+    "title": "Steeped in glass, poured by the xị",
+    "intro": "Our steeping jars are on display at the showroom. Taste and buy by the xị at the company price, or take home a 5-litre bottle.",
+    "price": "Company price",
+    "imageAlt": "Three 5-litre glass jars of Soái Dương Tửu, Minh Lăng Tửu and Xuân Trùng Thảo above matching red bottles",
+    "items": {
+      "soaiDuong": "Steeped herbal wine, in 5-litre jars and red bottles.",
+      "minhLang": "Steeped herbal wine, in 5-litre jars and red bottles.",
+      "xuanTrungThao": "Steeped herbal wine, in 5-litre jars and red bottles."
+    }
+  },
+  "range": {
+    "eyebrow": "Our range",
+    "title": "A rich and varied cellar",
+    "intro": "Beyond the signature line, Khang Hưng Tửu offers a wide range for restaurants, gifts and family gatherings.",
+    "signatureTitle": "Our most valuable brands",
+    "bottledTitle": "Bottled wines",
+    "ingredientsNote": "Each wine is steeped from its own blend of herbs. Ask us for the full ingredients of any product."
+  },
+  "serving": {
+    "eyebrow": "How to enjoy",
+    "hapNong": {
+      "title": "Steamed wine (rượu hấp nóng)",
+      "text": "Our steamed wine is served warm. Two ways to heat it:",
+      "steps": [
+        "Method 1: heat it in a double boiler.",
+        "Method 2: stand the bottle in boiling water for 5 minutes.",
+        "Once heated, pour and enjoy straight away: no mixing needed."
+      ]
+    },
+    "ruouCan": {
+      "title": "Central Highlands jar wine (rượu cần)",
+      "text": "Jar wines in the styles of the Highlands' peoples, drunk through long bamboo straws. Add spring water to the jar before drinking.",
+      "styles": "Jar styles",
+      "imageAlt": "Four woven jars of rượu cần in different ethnic styles"
+    }
+  },
+  "partners": {
+    "eyebrow": "Welcome to cooperation",
+    "title": "Khang Hưng Tửu is delighted to partner with restaurants",
+    "intro": "We invest in, display and advertise our wines alongside you. Our staff will visit you in person to discuss every detail.",
+    "items": {
+      "tower": { "title": "Wine tower stand", "text": "A wooden tower that showcases our bottles at your counter.", "imageAlt": "Wooden wine tower stand with bottles" },
+      "cabinet": { "title": "Wine cabinet", "text": "A display cabinet for your dining room.", "imageAlt": "Black wine display cabinet" }
+    },
+    "cta": "Call to discuss"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "Crafted in Long Hiệp, Bến Lức",
+    "text": "Our winery sits on National Route 1A in the Gò Đen hamlet, home of one of Vietnam's best-known rice wines. Every batch is steeped in our own immersion rooms and checked by our research and quality-control lab before it leaves.",
+    "storefrontAlt": "The Khang Hưng Tửu winery entrance on National Route 1A",
+    "factoryAlt": "Steeping vats in the immersion department and shelves of samples in the R&D lab",
+    "departments": ["Immersion & processing department", "R&D and quality-control (KCS) lab"]
+  },
+  "counterfeit": {
+    "title": "Protect yourself from imitations",
+    "text": "When ordering, please call the company directly. Our phone number is printed right on every can: {phone}. It is our only ordering number."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Order or visit the winery",
+    "text": "Call or message us on Zalo to order. Restaurants and resellers are welcome: we'll come to you.",
+    "address": "Address",
+    "phone": "Phone",
+    "online": "Online",
+    "phones": {
+      "order": "Orders (on every can)",
+      "owner": "Business owner",
+      "hotline": "Hotline",
+      "care": "Customer care"
+    }
+  },
+  "footer": {
+    "tagline": "Traditional rice and herbal wines from Bến Lức, Long An, since 1991.",
+    "explore": "Explore",
+    "contact": "Contact",
+    "rights": "© {year} {name}. All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  }
+}
