@@ -1,41 +1,74 @@
 import Link from 'next/link';
+import { Mail } from 'lucide-react';
 import { Suspense } from 'react';
-import { Container } from '@web/ui';
-import { LocaleSwitcher } from '@web/ui/locale-switcher';
+import { Container, buttonVariants, cn } from '@web/ui';
+import { LocaleSwitcher, LocaleToggle } from '@web/ui/locale-switcher';
+import { NavLinks } from '@web/ui/nav-links';
+import { MobileNav } from '@web/ui/section-nav';
 import { profile } from '@/content/profile';
 import { href, LOCALE_OPTIONS } from '@/i18n/locales';
+import { ACCOUNT_ENABLED } from '@/site';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { NavLinks } from '@web/ui/nav-links';
 import { UserMenu, UserMenuFallback } from './user-menu';
 
 /** Static per language (part of the prerendered shell); only the user menu streams in. */
 export async function SiteHeader() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  const links = [
-    { href: href(locale, '/'), label: t.nav.home, exact: true },
-    { href: href(locale, '/about'), label: t.nav.about },
-    { href: href(locale, '/dashboard'), label: t.nav.dashboard },
+  const home = href(locale, '/');
+  // One rule: every menu item is a page. Contact is the footer block that every page has.
+  const pages = [
+    { id: 'work', href: home, label: t.nav.work, exact: true },
+    { id: 'about', href: href(locale, '/about'), label: t.nav.about },
+    ...(ACCOUNT_ENABLED ? [{ id: 'dashboard', href: href(locale, '/dashboard'), label: t.nav.dashboard }] : []),
   ];
+  // Drawer: the pages, then Contact (no href: scrolls to the footer of the current page).
+  const drawerLinks = [...pages.map(({ id, href: to, label }) => ({ id, href: to, label })), { id: 'contact', label: t.nav.contact }];
+  const logo = (
+    <span className="flex items-baseline gap-2 font-display text-xl font-medium tracking-tight">
+      {profile.name}
+      <span aria-hidden className="size-1.5 rounded-full bg-brand" />
+    </span>
+  );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
-      <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3">
-        <Link href={href(locale, '/')} className="group flex items-center gap-2.5 font-semibold tracking-tight">
-          <span className="inline-flex size-8 items-center justify-center rounded-lg bg-brand text-xs font-bold text-brand-fg shadow-sm transition-transform group-hover:scale-105">
-            {profile.initials}
-          </span>
-          <span className="hidden sm:inline">{profile.name}</span>
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
+      <Container className="flex items-center justify-between gap-4 py-3">
+        <Link href={home} className="group rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+          {logo}
         </Link>
 
-        <div className="order-3 w-full overflow-x-auto sm:order-none sm:w-auto">
-          <NavLinks links={links} label={t.nav.label} />
+        <div className="hidden lg:block">
+          <NavLinks links={pages} label={t.nav.label} />
         </div>
 
         <div className="flex items-center gap-2">
-          <LocaleSwitcher current={locale} locales={LOCALE_OPTIONS} label={t.common.language} />
-          <Suspense fallback={<UserMenuFallback />}>
-            <UserMenu />
-          </Suspense>
+          <div className="hidden items-center gap-3 lg:flex">
+            <LocaleSwitcher current={locale} locales={LOCALE_OPTIONS} label={t.common.language} />
+            <a href="#contact" className={cn(buttonVariants({ size: 'sm' }), 'rounded-full px-4')}>
+              {t.nav.contact}
+            </a>
+          </div>
+          {ACCOUNT_ENABLED && (
+            <Suspense fallback={<UserMenuFallback />}>
+              <UserMenu />
+            </Suspense>
+          )}
+          <MobileNav
+            links={drawerLinks}
+            pagePath={home}
+            labels={{ open: t.nav.openMenu, close: t.nav.closeMenu, title: t.nav.label }}
+            header={logo}
+            className="lg:hidden"
+            footer={
+              <>
+                <LocaleToggle current={locale} locales={LOCALE_OPTIONS} label={t.common.language} />
+                <a href={`mailto:${profile.contact.email}`} className={cn(buttonVariants({ size: 'lg' }), 'w-full rounded-full')}>
+                  <Mail aria-hidden />
+                  {t.contact.email}
+                </a>
+              </>
+            }
+          />
         </div>
       </Container>
     </header>

@@ -1,174 +1,129 @@
-import Link from 'next/link';
-import { Card, Chip, Container, Section, buttonClass } from '@web/ui';
-import { Reveal } from '@web/ui/reveal';
-import { profile } from '@/content/profile';
-import { format } from '@web/core/i18n/format';
-import { href, type Locale } from '@/i18n/locales';
-import { getLocale, getMessages, type Messages } from '@/i18n/messages';
-import { JsonLd } from '@/components/json-ld';
-import { publicPageMetadata, structuredData } from '@/seo';
 import type { Metadata } from 'next';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { Container, buttonVariants, cn } from '@web/ui';
+import { Reveal } from '@web/ui/reveal';
+import { JsonLd } from '@/components/json-ld';
+import { profile } from '@/content/profile';
+import { inkLink, SectionHeading } from '@/features/editorial/section-heading';
+import { ArchitectureDiagram } from '@/features/home/architecture-diagram';
+import { SampleSites } from '@/features/freelance/sample-sites';
+import { getLocale, getMessages, type Messages } from '@/i18n/messages';
+import { publicPageMetadata, structuredData } from '@/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return publicPageMetadata({ t, locale, path: '/', description: t.profile.tagline, type: 'profile' });
 }
 
-/** Fully static: prerendered at build time once per language, served instantly. */
+/** The CV's figures, as of the build year. */
+const YEAR = 2026;
+
+/**
+ * The Freelancer page (home): hero, the sample sites, how we work together. The
+ * platform and the CV are on the Resume page (/about); contact sits in the footer of every page.
+ */
 export default async function HomePage() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  const p = t.profile;
   return (
     <>
       <JsonLd data={structuredData(t, locale, { path: '/' })} />
-      <Hero t={t} locale={locale} />
-
+      <Hero t={t} />
       <Reveal>
-        <Section
-          id="skills"
-          eyebrow={t.home.skills.eyebrow}
-          title={t.home.skills.title}
-          intro={t.home.skills.intro}
-        >
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {p.skills.map((group) => (
-              <Card key={group.group}>
-                <h3 className="font-semibold">{group.group}</h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <li key={item}>
-                      <Chip>{item}</Chip>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-        </Section>
+        <SampleSites t={t} locale={locale} />
       </Reveal>
-
       <Reveal>
-        <div className="border-y border-border bg-surface">
-          <Section
-            eyebrow={t.home.strengths.eyebrow}
-            title={t.home.strengths.title}
-            intro={t.home.strengths.intro}
-          >
-            <div className="grid gap-6 sm:grid-cols-2">
-              {p.strengths.map((item, index) => (
-                <div key={item.title} className="flex gap-4">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft font-mono text-sm font-semibold text-brand-soft-fg">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{item.title}</h3>
-                    <p className="mt-1.5 leading-relaxed text-muted">{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Section>
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <Section eyebrow={t.home.project.eyebrow} title={p.project.name} intro={p.project.summary}>
-          <Card className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <ul className="grid gap-3">
-              {p.project.points.map((point) => (
-                <li key={point} className="flex gap-3">
-                  <CheckIcon />
-                  <span className="text-muted">{point}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <Link href={href(locale, '/dashboard')} className={buttonClass.primary}>
-                {t.home.project.openDashboard}
-              </Link>
-              <Link href={href(locale, '/about')} className={buttonClass.secondary}>
-                {t.home.project.moreAboutMe}
-              </Link>
-            </div>
-          </Card>
-        </Section>
-      </Reveal>
-
-      <Reveal>
-        <Container className="pb-20">
-          <div className="rounded-3xl bg-brand px-6 py-12 text-center text-brand-fg sm:px-12">
-            <h2 className="text-2xl font-bold tracking-tight text-balance sm:text-3xl">{t.home.cta.title}</h2>
-            <p className="mx-auto mt-3 max-w-xl text-pretty opacity-90">{t.home.cta.text}</p>
-            <a
-              href={`mailto:${profile.contact.email}`}
-              className="mt-6 inline-flex rounded-lg bg-brand-fg px-5 py-2.5 text-sm font-semibold text-brand transition-opacity hover:opacity-90"
-            >
-              {profile.contact.email}
-            </a>
-          </div>
-        </Container>
+        <Process t={t} />
       </Reveal>
     </>
   );
 }
 
-function Hero({ t, locale }: { t: Messages; locale: Locale }) {
-  return (
-    <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -top-40 h-[28rem] bg-[radial-gradient(ellipse_at_top,var(--brand-soft),transparent_65%)]"
-      />
-      <Container className="relative grid gap-12 py-20 sm:py-28 lg:grid-cols-[1.3fr_1fr] lg:items-center">
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-sm text-muted">
-            <span className="size-2 rounded-full bg-emerald-500" aria-hidden />
-            {t.profile.availability}
-          </p>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-balance sm:text-6xl">
-            {format(t.home.hero.greeting, { name: profile.name })}
-            <span className="mt-2 block text-brand">{t.profile.role}</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted">{t.profile.tagline}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#skills" className={buttonClass.primary}>
-              {t.home.hero.seeSkills}
-            </Link>
-            <Link href={href(locale, '/about')} className={buttonClass.secondary}>
-              {t.home.hero.aboutMe}
-            </Link>
-          </div>
-        </div>
+/* ─────────────────────────────── Hero ─────────────────────────────── */
 
-        <Card className="font-mono text-sm">
-          <div className="mb-4 flex gap-1.5" aria-hidden>
-            <span className="size-3 rounded-full bg-red-400" />
-            <span className="size-3 rounded-full bg-amber-400" />
-            <span className="size-3 rounded-full bg-emerald-400" />
+function Hero({ t }: { t: Messages }) {
+  const h = t.home.hero;
+  return (
+    <section className="relative">
+      <Container className="pt-10 pb-16 sm:pt-14 sm:pb-20">
+        <p className="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-border pb-4 font-mono text-xs tracking-widest text-subtle uppercase">
+          <span>{t.profile.role}</span>
+          <span>{h.basedIn}</span>
+          <span className="flex items-center gap-2 text-fg">
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
+            {t.profile.availability}
+          </span>
+        </p>
+
+        <h1 className="mt-12 max-w-6xl font-display text-5xl leading-[0.98] font-medium tracking-tight text-balance sm:text-7xl xl:text-[7.5rem]">
+          {h.headline} <em className="font-normal text-brand">{h.headlineAccent}</em>
+        </h1>
+
+        <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+          <div>
+            <p className="max-w-xl text-lg leading-relaxed text-pretty text-muted">
+              <span className="font-medium text-fg">{profile.name}.</span> {t.profile.tagline}
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a href="#samples" className={cn(buttonVariants({ size: 'lg' }), 'rounded-full')}>
+                {h.seeSamples}
+                <ArrowDown aria-hidden className="size-4" />
+              </a>
+              <a href="#contact" className={inkLink}>
+                {h.contact}
+                <ArrowUpRight aria-hidden className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </div>
+            <dl aria-label={t.home.stats.label} className="mt-14 flex gap-12">
+              <div className="flex flex-col-reverse">
+                <dt className="mt-1 max-w-32 text-sm leading-snug text-muted">{t.home.stats.coding}</dt>
+                <dd className="font-display text-5xl font-medium">{YEAR - profile.stats.codingSince}+</dd>
+              </div>
+              <div className="flex flex-col-reverse">
+                <dt className="mt-1 max-w-32 text-sm leading-snug text-muted">{t.home.stats.companies}</dt>
+                <dd className="font-display text-5xl font-medium">{profile.stats.companies}</dd>
+              </div>
+            </dl>
           </div>
-          <pre className="overflow-x-auto leading-relaxed text-muted">
-            <span className="text-brand">const</span> engineer = {'{'}
-            {'\n'}  focus: <span className="text-emerald-600 dark:text-emerald-400">&apos;platforms&apos;</span>,
-            {'\n'}  gateway: <span className="text-emerald-600 dark:text-emerald-400">&apos;KrakenD&apos;</span>,
-            {'\n'}  identity: <span className="text-emerald-600 dark:text-emerald-400">&apos;Keycloak&apos;</span>,
-            {'\n'}  runsOn: <span className="text-emerald-600 dark:text-emerald-400">&apos;Kubernetes&apos;</span>,
-            {'\n'}  ships: <span className="text-brand">true</span>,
-            {'\n'}{'}'};
-          </pre>
-        </Card>
+
+          <ArchitectureDiagram label={t.home.diagram.label} hint={t.home.diagram.hint} nodes={t.home.diagram.nodes} />
+        </div>
       </Container>
     </section>
   );
 }
 
-function CheckIcon() {
+/* ─────────────────────────────── How we work together ─────────────────────────────── */
+
+function Process({ t }: { t: Messages }) {
+  const s = t.services;
   return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden className="mt-0.5 size-5 shrink-0 text-brand">
-      <path
-        fillRule="evenodd"
-        d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z"
-        clipRule="evenodd"
-      />
-    </svg>
+    <section>
+      <Container className="py-16 sm:py-20">
+        <SectionHeading eyebrow={s.processEyebrow} title={s.processTitle} />
+        <div className="mt-12 grid gap-16 lg:grid-cols-[1.4fr_1fr]">
+          <ol className="space-y-8">
+            {s.process.map((step, index) => (
+              <li key={step.title} className="grid grid-cols-[3rem_1fr] gap-4">
+                <span className="font-display text-3xl text-brand italic">{index + 1}</span>
+                <div>
+                  <h3 className="text-lg font-semibold">{step.title}</h3>
+                  <p className="mt-1 leading-relaxed text-muted">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div className="self-start border-t border-fg pt-6">
+            <h3 className="font-mono text-xs tracking-widest text-subtle uppercase">{s.includedTitle}</h3>
+            <ul className="mt-6 divide-y divide-border">
+              {s.included.map((item) => (
+                <li key={item} className="py-3">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }

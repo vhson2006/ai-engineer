@@ -2,25 +2,25 @@
  * ─────────────────────────────────────────────────────────────────────────────
  *  THE SITE'S PERSONAL DATA THAT DOESN'T DEPEND ON THE LANGUAGE.
  *
- *  Everything you write in sentences (role, tagline, bio, skills, strengths, project,
+ *  Everything you write in sentences (role, tagline, bio, skills, project,
  *  experience, education, interests) is translated, so it lives in
  *  src/i18n/messages/<language>.json under "profile". Edit it there, in every language.
- *
- *  Values in «angle quotes» are PLACEHOLDERS: replace them with your real data.
- *  Empty lists hide their section.
+ *  Projects: src/content/projects.ts. Empty lists hide their section.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 export const profile = {
-  name: '«Your Name»',
-  initials: '«YN»',
+  name: 'Văn Hải Sơn',
+  initials: 'HS',
 
   contact: {
-    email: '«you@example.com»',
-    phone: '«+84 …»',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/«your-username»' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/«your-profile»' },
-    ],
+    email: 'vhson2006@gmail.com',
+    phone: '+84 984 763 100',
+    phoneHref: 'tel:+84984763100',
+    zaloHref: 'https://zalo.me/0984763100',
+    links: [{ label: 'GitHub', href: 'https://github.com/vhson2006' }],
   },
+
+  /** Hero figures (facts from the CV: building software since 2015). */
+  stats: { codingSince: 2015, companies: 8 },
 } as const;

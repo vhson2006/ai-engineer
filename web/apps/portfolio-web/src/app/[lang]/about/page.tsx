@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
-import { Avatar, Card, Chip, Container } from '@web/ui';
+import { Container } from '@web/ui';
 import { Reveal } from '@web/ui/reveal';
 import { format } from '@web/core/i18n/format';
 import { profile } from '@/content/profile';
 import { getLocale, getMessages } from '@/i18n/messages';
 import { JsonLd } from '@/components/json-ld';
+import { inkLink, SectionHeading } from '@/features/editorial/section-heading';
+import { SelectedWork } from '@/features/resume/selected-work';
 import { publicPageMetadata, structuredData } from '@/seo';
 import { BUILT_AT } from '@/site';
 
@@ -20,129 +22,136 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-/** Fully static: prerendered at build time per language. Text: messages/<lang>.json "profile". */
+/** The Resume page (menu: Resume): bio, selected work, experience, skills, education. Fully static per language. */
 export default async function AboutPage() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   const p = t.profile;
   return (
-    <Container className="py-16 sm:py-20">
+    <Container className="pt-12 pb-24 sm:pt-20">
       <JsonLd data={structuredData(t, locale, { path: '/about', profilePage: { name: t.about.title, modified: BUILT_AT } })} />
-      <div className="grid gap-10 lg:grid-cols-[20rem_1fr]">
-        <aside className="lg:sticky lg:top-24 lg:self-start">
-          <Card>
-            <div className="flex flex-col items-center text-center">
-              <Avatar initials={profile.initials} size="lg" />
-              <h1 className="mt-4 text-xl font-bold">{profile.name}</h1>
-              <p className="text-muted">{p.role}</p>
-            </div>
 
-            <dl className="mt-6 divide-y divide-border border-t border-border text-sm">
-              {p.personal.map((item) => (
-                <div key={item.label} className="flex justify-between gap-4 py-3">
-                  <dt className="text-subtle">{item.label}</dt>
-                  <dd className="text-right font-medium">{item.value}</dd>
-                </div>
-              ))}
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="text-subtle">{t.about.email}</dt>
-                <dd className="text-right font-medium">
-                  <a className="text-brand hover:underline" href={`mailto:${profile.contact.email}`}>
-                    {profile.contact.email}
-                  </a>
-                </dd>
-              </div>
-              <div className="flex justify-between gap-4 py-3">
-                <dt className="text-subtle">{t.about.phone}</dt>
-                <dd className="text-right font-medium">{profile.contact.phone}</dd>
-              </div>
-            </dl>
+      <SectionHeading as="h1" eyebrow={t.about.eyebrow} title={format(t.about.hello, { name: profile.name })} />
 
-            <ul className="mt-4 flex flex-wrap justify-center gap-2">
-              {profile.contact.links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-lg border border-border px-3 py-1.5 text-sm hover:bg-surface-2"
-                  >
+      <div className="mt-14 grid gap-14 lg:grid-cols-[1fr_18rem]">
+        <div className="space-y-6 text-lg leading-relaxed text-pretty text-muted">
+          {p.bio.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+
+        <aside className="self-start lg:sticky lg:top-24">
+          <dl className="divide-y divide-border border-y border-fg text-sm">
+            {p.personal.map((item) => (
+              <div key={item.label} className="py-3">
+                <dt className="font-mono text-[11px] tracking-widest text-subtle uppercase">{item.label}</dt>
+                <dd className="mt-1 font-medium">{item.value}</dd>
+              </div>
+            ))}
+            <div className="py-3">
+              <dt className="font-mono text-[11px] tracking-widest text-subtle uppercase">{t.about.contact}</dt>
+              <dd className="mt-2 flex flex-col items-start gap-2">
+                <a className={inkLink} href={`mailto:${profile.contact.email}`}>
+                  {profile.contact.email}
+                </a>
+                <a className={inkLink} href={profile.contact.phoneHref}>
+                  {profile.contact.phone}
+                </a>
+                {profile.contact.links.map((link) => (
+                  <a key={link.href} className={inkLink} href={link.href} target="_blank" rel="noopener noreferrer">
                     {link.label}
                   </a>
+                ))}
+              </dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+
+      <Reveal>
+        <div className="mt-24">
+          <SelectedWork t={t} locale={locale} index={1} />
+        </div>
+      </Reveal>
+
+      {p.experience.length > 0 && (
+        <Reveal>
+          <section className="mt-24">
+            <SectionHeading index={2} title={t.about.experience} />
+            <ol className="mt-12">
+              {p.experience.map((job) => (
+                <li key={`${job.period}-${job.company}`} className="grid gap-x-10 gap-y-3 border-t border-border py-8 lg:grid-cols-[14rem_1fr]">
+                  <div>
+                    <p className="font-mono text-xs text-subtle">{job.period}</p>
+                    <h3 className="mt-2 font-display text-2xl font-medium tracking-tight">{job.company}</h3>
+                    <p className="text-sm text-muted">{job.title}</p>
+                  </div>
+                  <div>
+                    <p className="leading-relaxed">{job.text}</p>
+                    {job.achievements.length > 0 && (
+                      <div className="mt-4">
+                        <h4 className="sr-only">{t.about.achievements}</h4>
+                        <ul className="space-y-2">
+                          {job.achievements.map((item) => (
+                            <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted">
+                              <span aria-hidden className="mt-2.5 h-px w-4 shrink-0 bg-brand" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {job.stack.length > 0 && (
+                      <p className="mt-4 font-mono text-xs text-subtle">
+                        <span className="sr-only">{t.about.stack}: </span>
+                        {job.stack.join(' · ')}
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </Reveal>
+      )}
+
+      <Reveal>
+        <section id="skills" className="mt-24 scroll-mt-20">
+          <SectionHeading index={3} title={t.about.skills} />
+          <dl className="mt-12">
+            {p.skills.map((group) => (
+              <div key={group.group} className="grid gap-x-10 gap-y-2 border-t border-border py-6 lg:grid-cols-[14rem_1fr]">
+                <dt className="font-mono text-xs tracking-widest text-subtle uppercase">{group.group}</dt>
+                <dd className="font-display text-xl leading-relaxed tracking-tight">{group.items.join(' / ')}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </Reveal>
+
+      {p.education.length > 0 && (
+        <Reveal>
+          <section className="mt-24">
+            <SectionHeading index={4} title={t.about.education} />
+            <ul className="mt-12">
+              {p.education.map((item) => (
+                <li key={item.title} className="border-t border-border py-6">
+                  <h3 className="font-display text-2xl font-medium tracking-tight">{item.title}</h3>
+                  <p className="mt-1 text-muted">{item.school}</p>
                 </li>
               ))}
             </ul>
-          </Card>
-        </aside>
-
-        <div className="space-y-14">
-          <section>
-            <p className="text-sm font-semibold uppercase tracking-wider text-brand">{t.about.eyebrow}</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-balance">{format(t.about.hello, { name: profile.name })}</h2>
-            <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
-              {p.bio.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
           </section>
+        </Reveal>
+      )}
 
-          {p.experience.length > 0 && (
-            <Reveal>
-              <section>
-                <h2 className="text-2xl font-bold tracking-tight">{t.about.experience}</h2>
-                <ol className="mt-6 space-y-8 border-l border-border pl-6">
-                  {p.experience.map((job) => (
-                    <li key={`${job.period}-${job.company}`} className="relative">
-                      <span
-                        aria-hidden
-                        className="absolute -left-[1.85rem] top-1.5 size-3 rounded-full border-2 border-bg bg-brand"
-                      />
-                      <p className="text-sm text-subtle">{job.period}</p>
-                      <h3 className="mt-1 font-semibold">
-                        {job.title} · <span className="text-muted">{job.company}</span>
-                      </h3>
-                      <p className="mt-2 leading-relaxed text-muted">{job.text}</p>
-                    </li>
-                  ))}
-                </ol>
-              </section>
-            </Reveal>
-          )}
-
-          {p.education.length > 0 && (
-            <Reveal>
-              <section>
-                <h2 className="text-2xl font-bold tracking-tight">{t.about.education}</h2>
-                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {p.education.map((item) => (
-                    <li key={item.title}>
-                      <Card>
-                        <p className="text-sm text-subtle">{item.period}</p>
-                        <h3 className="mt-1 font-semibold">{item.title}</h3>
-                        <p className="text-muted">{item.school}</p>
-                      </Card>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            </Reveal>
-          )}
-
-          {p.interests.length > 0 && (
-            <Reveal>
-              <section>
-                <h2 className="text-2xl font-bold tracking-tight">{t.about.interests}</h2>
-                <ul className="mt-6 flex flex-wrap gap-2">
-                  {p.interests.map((interest) => (
-                    <li key={interest}>
-                      <Chip>{interest}</Chip>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            </Reveal>
-          )}
-        </div>
-      </div>
+      {p.interests.length > 0 && (
+        <Reveal>
+          <section className="mt-24">
+            <SectionHeading index={5} title={t.about.interests} />
+            <p className="mt-12 font-display text-2xl">{p.interests.join(' / ')}</p>
+          </section>
+        </Reveal>
+      )}
     </Container>
   );
 }
