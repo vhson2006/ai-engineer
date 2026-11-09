@@ -28,6 +28,15 @@
         "tsConfigPath": "apps/notification-service/tsconfig.app.json"
       }
     },
+    "nats-setup": {
+      "type": "application",
+      "root": "apps/nats-setup",
+      "entryFile": "main",
+      "sourceRoot": "apps/nats-setup/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nats-setup/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",

@@ -120,7 +120,7 @@ up() {
   say "Deploying k8s/overlays/staging into $NS"
   kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
   kubectl -n "$NS" create configmap local-ca --from-file=ca.crt="$CA_FILE" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
-  kubectl -n "$NS" delete job db-migrate --ignore-not-found >/dev/null # a Job's template is immutable
+  kubectl -n "$NS" delete job db-migrate nats-setup --ignore-not-found >/dev/null # a Job's template is immutable
   # Content-addressed tags: a node that already has local/<img>:staging keeps its OLD copy
   # (IfNotPresent), so each build is deployed as local/<img>:<image id>; a rebuild changes the tag,
   # which also rolls the Deployments.
@@ -134,9 +134,9 @@ up() {
   kubectl kustomize k8s/overlays/staging | sed "${rewrite[@]}" | kubectl apply -f - >/dev/null
   telemetry
 
-  say "Waiting for the data stores, the migrations and the apps"
+  say "Waiting for the data stores, the migrations, the JetStream streams and the apps"
   kubectl -n "$NS" rollout status statefulset/postgres statefulset/redis statefulset/nats statefulset/seaweedfs --timeout=300s
-  kubectl -n "$NS" wait job/db-migrate --for=condition=Complete --timeout=600s
+  kubectl -n "$NS" wait job/db-migrate job/nats-setup --for=condition=Complete --timeout=600s
   kubectl -n "$NS" rollout status deploy/keycloak --timeout=600s
   kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/portfolio-web deploy/admin-web --timeout=300s
   kubectl -n "$NS" wait certificate --all --for=condition=Ready --timeout=180s

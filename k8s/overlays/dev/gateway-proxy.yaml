@@ -6,6 +6,13 @@ kind: NginxProxy
 metadata:
   name: edge-proxy
 spec:
+  kubernetes:
+    service:
+      # Cluster, not NGF's default Local: Docker Desktop's cluster has several nodes and its load
+      # balancer may send to any of them; with Local only the node running nginx answers, so most
+      # requests hang (seen after a cluster restart, 2026-11-09). Costs the client IP (fine here);
+      # prod keeps Local (cloud LB health-checks nodes, real client IPs).
+      externalTrafficPolicy: Cluster
   dnsResolver:
     addresses:
       - type: Hostname

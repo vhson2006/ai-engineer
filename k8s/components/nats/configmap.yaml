@@ -1,5 +1,5 @@
 # NATS server config. Core NATS (request/reply, plain pub/sub) works exactly as before; JetStream
-# only stores messages whose subject belongs to a stream. Streams are created by the apps.
+# only stores messages whose subject belongs to a stream. Streams are created by nats-setup (ADR 0024).
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -14,7 +14,9 @@ data:
     jetstream {
       store_dir: /data
       # Server-wide caps. Each stream also sets its own max_bytes / max_age, smaller than these,
-      # so a full stream rejects or drops old messages instead of filling the disk.
+      # so a full stream rejects or drops old messages instead of filling the disk. JetStream
+      # RESERVES every stream's max_bytes × replicas up front: Σ must fit max_file_store, which must
+      # fit the PVC (≤ 90 %). Checked by nest-microservice/libs/common/src/messaging/streams.spec.ts.
       max_file_store: 800MB # PVC is 1Gi
       max_memory_store: 64MB
     }

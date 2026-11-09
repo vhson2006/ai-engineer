@@ -2,7 +2,8 @@
 # One Dockerfile, three images (pick with --target):
 #   docker build --target deployment-service   -t deployment-service .
 #   docker build --target notification-service -t notification-service .
-#   docker build --target migrate              -t deployment-migrate .   (prisma migrate deploy of BOTH databases, run as a Job)
+#   docker build --target migrate              -t deployment-migrate .   (run as Jobs: prisma migrate deploy of BOTH
+#                                                                         databases; with `node dist/apps/nats-setup/main`: the JetStream streams)
 # Runtime images: production node_modules only, non-root user, no source, no .env.
 ARG NODE_IMAGE=node:24.22.1-alpine
 
@@ -55,8 +56,11 @@ EXPOSE 3002
 CMD ["node", "dist/apps/notification-service/main"]
 
 # ---- migrate: prisma migrate deploy (needs the Prisma CLI, a dev dependency) --------------------
+# Also carries nats-setup (the one owner of the JetStream streams, ADR 0024): same image, the Job
+# `nats-setup` overrides the command.
 FROM deps AS migrate
 ENV NODE_ENV=production
+COPY --from=build /app/dist/apps/nats-setup ./dist/apps/nats-setup
 # Numeric uid (= the image's "node" user): Kubernetes can only enforce runAsNonRoot with a
 # numeric USER ("node" → CreateContainerConfigError). Found by the local staging (ADR 0018).
 USER 1000:1000

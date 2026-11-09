@@ -25,7 +25,7 @@ npm install
 # or, with Docker instead of Kubernetes: npm run infra:up
 
 npm run migration:run     # prisma migrate deploy
-npm run start:dev         # deployment-service :3001, notification-service :3002
+npm run start:dev         # nats:setup (JetStream streams, ADR 0024), then deployment-service :3001, notification-service :3002
 ```
 
 Then get a token from Keycloak and call the API **through KrakenD** (`localhost:8080`, from `k8s:forward`):

@@ -62,7 +62,7 @@ A new environment = a new `overlays/<env>/` with its own settings, patches and s
 | NATS | `nats:2.10-alpine` | `nats://nats.nest-microservice.svc.cluster.local:4222` | `localhost:4222`, monitoring `http://localhost:8222` (JetStream: `/jsz`) |
 
 > **Dev only.** Passwords are in plain Secrets (`postgres`/`postgres`, Keycloak admin `admin`/`admin`,
-> test users `password`), Redis has no password, and the admin UIs have no login. NATS has JetStream (1Gi volume `data-nats-0`): streams `EVENTS` (7 days) and `DLQ` (30 days), created by the apps at startup; durable consumer `notification` (ADR 0007).
+> test users `password`), Redis has no password, and the admin UIs have no login. NATS has JetStream (1Gi volume `data-nats-0`): streams `EVENTS` (7 days) and `DLQ` (30 days), created by `nats-setup` only (Job in staging/prod, `npm run nats:setup` in dev; the services wait for them); durable consumer `notification` (ADRs 0007, 0024).
 
 ## Start
 

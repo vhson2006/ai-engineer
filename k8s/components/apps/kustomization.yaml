@@ -10,3 +10,4 @@ resources:
   - notification-service.yaml
   - portfolio-web.yaml
   - admin-web.yaml
+  - nats-setup-job.yaml # JetStream streams, before / with the services (ADR 0024)
