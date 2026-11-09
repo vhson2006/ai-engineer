@@ -9,7 +9,7 @@ import {
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { connect, type JetStreamClient, type JetStreamManager, type NatsConnection } from 'nats';
 import { natsConnectionOptions } from '../nats/nats-options';
-import { ensureStreams } from './streams';
+import { waitForStreams } from './streams';
 
 export const JETSTREAM = Symbol('JETSTREAM');
 
@@ -35,7 +35,7 @@ class JetStreamCloser implements OnApplicationShutdown {
 /**
  * `imports: [JetStreamModule.forRoot('deployment-service')]` → inject `@Inject(JETSTREAM)`.
  * Connects with natsConnectionOptions (reconnects forever, waits for NATS at startup, ADR 0008)
- * and makes sure the streams exist (streams.ts).
+ * and waits for the streams (created by nats-setup, never by a service: ADR 0024).
  */
 @Module({})
 export class JetStreamModule {
@@ -53,7 +53,10 @@ export class JetStreamModule {
               natsConnectionOptions(config.getOrThrow<string>('NATS_URL'), connectionName),
             );
             const jsm = await nc.jetstreamManager();
-            await ensureStreams(jsm);
+            await waitForStreams(jsm, {
+              onWait: (missing) =>
+                logger.warn(`Waiting for JetStream streams ${missing.join(', ')} (nats-setup)`),
+            });
             logger.log(`Connected to ${nc.getServer()} as ${connectionName}; streams ready`);
             return { nc, js: nc.jetstream(), jsm };
           },

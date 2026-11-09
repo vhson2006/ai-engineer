@@ -1,0 +1,55 @@
+# Creates / updates the JetStream streams (EVENTS, DLQ), then exits: the ONE owner of the streams
+# (ADR 0024). The services never create or change a stream; at startup they wait (up to 2 min, then
+# restart) until the streams exist. Same image as the database migrations (Dockerfile --target
+# migrate), another command. The script waits for NATS itself, so it may start before NATS is up.
+#
+# prod (Argo CD): a Sync hook, applied together with NATS and the apps, recreated on every sync
+#   (BeforeHookCreation). Not PreSync: on the first install NATS doesn't exist yet at PreSync.
+# staging: `npm run staging:up` deletes the previous Job, applies, and waits for it.
+# dev: no Job, `npm run nats:setup` on the host (part of `npm run start:dev`).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nats-setup
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 4
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app: nats-setup # allowed to reach nats :4222 (components/network-policies)
+    spec:
+      restartPolicy: OnFailure
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: nats-setup
+          image: deployment-migrate
+          command: ['node', 'dist/apps/nats-setup/main']
+          env:
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: deployment-service-env
+                  key: NATS_URL
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']

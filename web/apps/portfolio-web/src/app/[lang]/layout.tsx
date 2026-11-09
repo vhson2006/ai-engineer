@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { localizedPath } from '@web/core/i18n/paths';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { SmoothScroll } from '@web/ui/smooth-scroll';
+import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { profile } from '@/content/profile';
@@ -13,6 +14,8 @@ import '../globals.css';
 // `vietnamese` adds the precomposed letters (ạ, ế, ữ…): without it they fall back to another font.
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin', 'latin-ext', 'vietnamese'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin', 'vietnamese'] });
+/** Display serif for headlines (editorial look); italic for the accent words. */
+const fraunces = Fraunces({ variable: '--font-fraunces', subsets: ['latin', 'latin-ext', 'vietnamese'], style: ['normal', 'italic'] });
 
 /** Every page is prerendered once per language (Cache Components needs a value per root param). */
 export function generateStaticParams() {
@@ -41,8 +44,8 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Browser UI color (address bar on mobile) following the page's light/dark tokens. */
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
-    { media: '(prefers-color-scheme: dark)', color: '#0b1020' },
+    { media: '(prefers-color-scheme: light)', color: '#f4f1ea' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f0e0c' },
   ],
   colorScheme: 'light dark',
 };
@@ -50,7 +53,7 @@ export const viewport: Viewport = {
 export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <a
           href="#content"
@@ -63,6 +66,7 @@ export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
           {children}
         </main>
         <SiteFooter />
+        <SmoothScroll />
       </body>
     </html>
   );

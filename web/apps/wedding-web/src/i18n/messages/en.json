@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Hải Sơn & Trúc Giang · Wedding invitation",
+    "description": "You are warmly invited to celebrate the wedding of Văn Hải Sơn and Trần Thị Trúc Giang on {date}."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "language": "Language",
+    "directions": "Open the map",
+    "addToCalendar": "Add to calendar",
+    "googleCalendar": "Google Calendar",
+    "icsCalendar": "Apple / Outlook (.ics)",
+    "close": "Close",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "viewPhoto": "View larger: {title}",
+    "photoCount": "Photo {index} of {total}"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Back to the top",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "invitation": "Invitation",
+    "couple": "The couple",
+    "story": "Our story",
+    "events": "The wedding",
+    "album": "Album"
+  },
+  "hero": {
+    "saveTheDate": "Save the date",
+    "announce": "We're getting married!",
+    "scroll": "Open the invitation"
+  },
+  "countdown": {
+    "label": "Countdown to the wedding",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "today": "Today is our wedding day!",
+    "after": "Thank you for celebrating with us."
+  },
+  "invitation": {
+    "eyebrow": "Invitation",
+    "quote": "Happiness is walking through the most ordinary days together.",
+    "intro": "Together with our families",
+    "guest": "you and your family",
+    "text": "are warmly invited to celebrate the wedding of",
+    "and": "and",
+    "on": "At {time}, {date}",
+    "lunar": "Lunar date: day {day}, month {month}, year of {yearName}",
+    "presence": "Your presence would be the greatest gift to our families."
+  },
+  "couple": {
+    "eyebrow": "The couple",
+    "title": "Two pieces, one journey",
+    "groomRole": "The groom",
+    "brideRole": "The bride",
+    "groomText": "Gentle, in love with music, and always able to make her laugh.",
+    "brideText": "Soft-spoken, fond of white tulips and peaceful afternoons."
+  },
+  "story": {
+    "eyebrow": "Our story",
+    "title": "Our journey together",
+    "items": {
+      "met": { "title": "When we met", "text": "A shy hold of hands, and from then on every ordinary day felt special." },
+      "together": { "title": "Making music together", "text": "He plays bass, she's learning drums: a little off the beat, always the same song." },
+      "proposal": { "title": "The proposal", "text": "A little box, a bouquet of white tulips and one answer: yes." },
+      "wedding": { "title": "One home", "text": "And now we'd love you to be there on the most important day of all." }
+    }
+  },
+  "events": {
+    "eyebrow": "The wedding",
+    "title": "When & where",
+    "intro": "We would love to welcome you to one or both celebrations.",
+    "time": "{start} – {end}",
+    "calendarTitle": "Wedding of {groom} & {bride}",
+    "calendarDetails": "You are warmly invited to celebrate with {groom} & {bride}.",
+    "items": {
+      "ceremony": { "name": "Wedding ceremony", "text": "An intimate family ceremony honouring our ancestors." },
+      "reception": { "name": "Wedding reception", "text": "Dinner and celebration with family and friends." }
+    }
+  },
+  "schedule": {
+    "title": "Reception programme",
+    "items": {
+      "welcome": "Welcome & photos",
+      "ceremony": "Ceremony on stage",
+      "dinner": "Dinner is served",
+      "party": "Music & celebration"
+    }
+  },
+  "photos": {
+    "bouquet": "The bride and groom resting their heads together behind a bouquet of white tulips, on green grass",
+    "corridor": "The bride and groom holding hands and looking back in a warmly lit stone corridor",
+    "window": "The bride and groom gazing at each other in the sunlight by a window",
+    "stairs": "The groom embracing the bride on stone stairs, white tulips in her hands",
+    "ring": "The groom kneeling to offer the bride a ring on the steps",
+    "music": "The groom on bass and the bride on drums, both laughing",
+    "hands": "Two hands with wedding rings linked by their little fingers"
+  },
+  "album": {
+    "eyebrow": "Album",
+    "title": "Our favourite moments",
+    "intro": "Tap a photo to see it larger."
+  },
+  "closing": {
+    "quote": "Thank you for being part of our story.",
+    "thanks": "We can't wait to see you!",
+    "signature": "With love,"
+  },
+  "footer": {
+    "rights": "© {year} {names}"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to the invitation"
+  }
+}

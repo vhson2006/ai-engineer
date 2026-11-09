@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Khang Hưng Tửu · Rượu truyền thống Long An từ 1991",
+    "description": "Hãng rượu Khang Hưng Tửu tại Bến Lức, Long An: rượu nếp Gò Đen, rượu ngâm thảo mộc, rượu cần Tây Nguyên và rượu hấp nóng từ năm 1991. Nhãn hiệu cầu chứng độc quyền. Dành cho người từ 18 tuổi."
+  },
+  "common": {
+    "skipToContent": "Chuyển đến nội dung",
+    "language": "Ngôn ngữ",
+    "callNow": "Gọi đặt hàng",
+    "call": "Gọi {phone}",
+    "zalo": "Nhắn Zalo",
+    "viewProducts": "Xem sản phẩm",
+    "directions": "Chỉ đường",
+    "perXi": "/ xị"
+  },
+  "legal": {
+    "age": "Sản phẩm không dành cho người dưới 18 tuổi và phụ nữ mang thai.",
+    "drive": "Đã uống rượu, bia thì không lái xe."
+  },
+  "topBar": {
+    "orderOnly": "Chỉ đặt hàng qua số điện thoại in trên can rượu: {phone}"
+  },
+  "nav": {
+    "label": "Mục chính",
+    "home": "Trang chủ Khang Hưng Tửu",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "products": "Sản phẩm",
+    "range": "Danh mục",
+    "partners": "Hợp tác nhà hàng",
+    "about": "Về chúng tôi",
+    "contact": "Liên hệ"
+  },
+  "brand": {
+    "tagline": "Long An · Since 1991",
+    "trademark": "Nhãn hiệu cầu chứng độc quyền",
+    "premium": "Premium · Chất lượng tuyệt hảo"
+  },
+  "hero": {
+    "eyebrow": "Hãng rượu Long An · từ 1991",
+    "title": "Khang Hưng Tửu",
+    "titleAccent": "Hương vị truyền thống hơn ba thập kỷ",
+    "text": "Từ vùng rượu nếp Gò Đen nổi tiếng của Bến Lức, Khang Hưng Tửu ngâm ủ và chế biến rượu truyền thống, rượu thảo mộc từ năm 1991, dưới nhãn hiệu cầu chứng độc quyền.",
+    "imageAlt": "Phòng trưng bày Khang Hưng Tửu: các hũ rượu ngâm thủy tinh lớn trên tủ gỗ, bên dưới là chai và bình rượu đan mây"
+  },
+  "trust": {
+    "label": "Vì sao chọn Khang Hưng Tửu",
+    "items": {
+      "since": { "title": "Từ năm 1991", "text": "Hơn ba mươi năm làm rượu tại Long An." },
+      "trademark": { "title": "Nhãn hiệu cầu chứng", "text": "Thương hiệu độc quyền đã đăng ký: hãy nhận diện nhãn và tem của hãng." },
+      "quality": { "title": "Kiểm soát chất lượng", "text": "Phòng ngâm tẩm chế biến riêng và phòng nghiên cứu, thí nghiệm, KCS." },
+      "partners": { "title": "Hợp tác nhà hàng", "text": "Tháp rượu, tủ rượu trưng bày và nhân viên đến tận nơi tư vấn." }
+    }
+  },
+  "featured": {
+    "eyebrow": "Dòng sản phẩm chủ lực",
+    "title": "Tinh Dược Khang Hưng Tửu",
+    "intro": "Những dòng rượu nổi tiếng nhất của hãng, đóng chai làm quà và đóng can lớn in số đặt hàng duy nhất.",
+    "bottles": "Rượu chai",
+    "cans": "Rượu can",
+    "items": {
+      "khangDuoc": "Rượu thảo mộc chủ lực trong chai đỏ đặc trưng của hãng.",
+      "ngocDuong": "Công thức thảo mộc truyền thống trong chai hồ lô.",
+      "samHanQuoc": "Rượu ngâm sâm Hàn Quốc.",
+      "chuoiHot": "Rượu ngâm chuối hột sấy khô, nét truyền thống miền Nam.",
+      "canNgocDuong": "Công thức Ngọc Dương đóng can cho nhà hàng và gia đình.",
+      "nepGoDen": "Rượu trắng nấu từ nếp Gò Đen, niềm tự hào của Long An.",
+      "hapNong": "Rượu dùng nóng (xem cách hấp bên dưới)."
+    }
+  },
+  "jars": {
+    "eyebrow": "Tại phòng trưng bày",
+    "title": "Ngâm trong hũ, rót theo xị",
+    "intro": "Các hũ rượu ngâm được trưng bày tại cửa hàng. Mua theo xị với giá công ty, hoặc mang về bình 5 lít.",
+    "price": "Giá công ty",
+    "imageAlt": "Ba hũ thủy tinh 5 lít Soái Dương Tửu, Minh Lăng Tửu và Xuân Trùng Thảo phía trên các bình đỏ cùng loại",
+    "items": {
+      "soaiDuong": "Rượu ngâm thảo mộc, có hũ 5 lít và bình đỏ.",
+      "minhLang": "Rượu ngâm thảo mộc, có hũ 5 lít và bình đỏ.",
+      "xuanTrungThao": "Rượu ngâm thảo mộc, có hũ 5 lít và bình đỏ."
+    }
+  },
+  "range": {
+    "eyebrow": "Danh mục",
+    "title": "Sản phẩm rất đa dạng và phong phú",
+    "intro": "Ngoài dòng chủ lực, Khang Hưng Tửu có nhiều sản phẩm cho nhà hàng, quà biếu và tiệc gia đình.",
+    "signatureTitle": "Các loại rượu tiêu thụ mạnh trên thị trường",
+    "bottledTitle": "Rượu đóng chai",
+    "ingredientsNote": "Mỗi loại rượu được ngâm từ công thức thảo mộc riêng. Liên hệ hãng để biết thành phần đầy đủ của từng sản phẩm."
+  },
+  "serving": {
+    "eyebrow": "Cách thưởng thức",
+    "hapNong": {
+      "title": "Rượu hấp nóng",
+      "text": "Rượu hấp nóng dùng khi còn ấm. Có hai cách hâm:",
+      "steps": [
+        "Phương pháp 1: đun cách thủy.",
+        "Phương pháp 2: ngâm bình rượu trong nước sôi 5 phút.",
+        "Sau khi hâm, rót dùng trực tiếp, không cần pha chế."
+      ]
+    },
+    "ruouCan": {
+      "title": "Rượu cần Tây Nguyên",
+      "text": "Rượu cần theo phong cách của các dân tộc Tây Nguyên, uống bằng cần trúc. Sản phẩm dùng bằng nước suối: châm nước vào bình trước khi uống.",
+      "styles": "Kiểu bình",
+      "imageAlt": "Bốn bình rượu cần đan mây theo phong cách các dân tộc"
+    }
+  },
+  "partners": {
+    "eyebrow": "Hoan hỷ hợp tác",
+    "title": "Khang Hưng Tửu hoan hỷ hợp tác cùng các nhà hàng",
+    "intro": "Hãng cùng đầu tư, trưng bày và quảng cáo cùng quý khách. Nhân viên của hãng sẽ đến tận nơi bàn bạc chi tiết.",
+    "items": {
+      "tower": { "title": "Tháp rượu", "text": "Tháp gỗ trưng bày chai rượu ngay tại quầy của quý khách.", "imageAlt": "Tháp rượu bằng gỗ trưng bày chai" },
+      "cabinet": { "title": "Tủ rượu", "text": "Tủ trưng bày rượu cho không gian nhà hàng.", "imageAlt": "Tủ trưng bày rượu màu đen" }
+    },
+    "cta": "Gọi để trao đổi"
+  },
+  "about": {
+    "eyebrow": "Về chúng tôi",
+    "title": "Chế biến tại Long Hiệp, Bến Lức",
+    "text": "Hãng rượu nằm trên Quốc lộ 1A tại ấp Gò Đen, quê hương của một trong những loại rượu nếp nổi tiếng nhất Việt Nam. Mỗi mẻ rượu được ngâm tại phòng ngâm tẩm riêng và kiểm tra tại phòng nghiên cứu, thí nghiệm, KCS trước khi xuất xưởng.",
+    "storefrontAlt": "Cổng hãng rượu Khang Hưng Tửu trên Quốc lộ 1A",
+    "factoryAlt": "Thùng ngâm tại phòng ngâm tẩm và kệ mẫu tại phòng nghiên cứu",
+    "departments": ["Phòng ngâm tẩm chế biến rượu", "Phòng nghiên cứu, thí nghiệm, KCS"]
+  },
+  "counterfeit": {
+    "title": "Cảnh giác hàng nhái",
+    "text": "Khi đặt hàng, quý khách vui lòng điện thoại trực tiếp công ty. Số điện thoại nằm ngay trên can rượu: {phone}. Đây là số đặt hàng duy nhất."
+  },
+  "contact": {
+    "eyebrow": "Liên hệ",
+    "title": "Đặt hàng hoặc ghé thăm hãng",
+    "text": "Gọi điện hoặc nhắn Zalo để đặt hàng. Nhà hàng và đại lý được hãng đến tận nơi tư vấn.",
+    "address": "Địa chỉ",
+    "phone": "Điện thoại",
+    "online": "Trực tuyến",
+    "phones": {
+      "order": "Đặt hàng (in trên can)",
+      "owner": "Chủ doanh nghiệp",
+      "hotline": "Hotline",
+      "care": "Chăm sóc khách hàng"
+    }
+  },
+  "footer": {
+    "tagline": "Rượu truyền thống và rượu thảo mộc từ Bến Lức, Long An, từ năm 1991.",
+    "explore": "Khám phá",
+    "contact": "Liên hệ",
+    "rights": "© {year} {name}. Bảo lưu mọi quyền."
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
+    "back": "Về trang chủ"
+  }
+}

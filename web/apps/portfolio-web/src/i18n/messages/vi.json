@@ -5,9 +5,12 @@
   },
   "nav": {
     "label": "Điều hướng chính",
-    "home": "Trang chủ",
-    "about": "Giới thiệu",
-    "dashboard": "Bảng điều khiển"
+    "work": "Freelancer",
+    "about": "Hồ sơ",
+    "contact": "Liên hệ",
+    "dashboard": "Bảng điều khiển",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu"
   },
   "userMenu": {
     "signIn": "Đăng nhập",
@@ -15,40 +18,231 @@
   },
   "home": {
     "hero": {
-      "greeting": "Xin chào, tôi là {name}.",
-      "seeSkills": "Xem kỹ năng",
-      "aboutMe": "Về tôi"
+      "headline": "Phần mềm vững vàng,",
+      "headlineAccent": "từ cơ sở dữ liệu đến từng pixel.",
+      "seeSamples": "Website mẫu",
+      "contact": "Liên hệ",
+      "basedIn": "Sống tại Việt Nam"
     },
-    "skills": {
-      "eyebrow": "Kỹ năng",
-      "title": "Công nghệ tôi sử dụng",
-      "intro": "Những công cụ và phương pháp tôi dùng để thiết kế, xây dựng và vận hành hệ thống production."
+    "stats": {
+      "label": "Tóm tắt",
+      "coding": "năm phát triển phần mềm",
+      "companies": "công ty & đội sản phẩm"
     },
-    "strengths": {
-      "eyebrow": "Dành cho đội của bạn",
-      "title": "Những gì tôi mang đến",
-      "intro": "Không chỉ viết code: những thói quen giúp đội làm nhanh hơn và hệ thống an toàn hơn."
+    "diagram": {
+      "label": "Đường đi của một request qua nền tảng tôi xây dựng",
+      "hint": "Rê chuột hoặc focus vào một ô để xem vai trò của nó.",
+      "nodes": {
+        "browser": {
+          "name": "Trình duyệt",
+          "text": "Chỉ giữ cookie phiên httpOnly: không bao giờ có token, không biết địa chỉ API."
+        },
+        "gateway": {
+          "name": "Edge gateway",
+          "text": "Cổng công khai duy nhất: định tuyến các host www, admin và auth."
+        },
+        "bff": {
+          "name": "Next.js BFF",
+          "text": "Trang render phía server và Server Actions: phần code duy nhất gọi API."
+        },
+        "keycloak": {
+          "name": "Keycloak",
+          "text": "Đăng nhập OpenID Connect; quản trị viên cần mật khẩu và OTP."
+        },
+        "redis": {
+          "name": "Redis",
+          "text": "Token niêm phong phía server, chỉ làm mới một lần kể cả khi nhiều request đến cùng lúc."
+        },
+        "krakend": {
+          "name": "KrakenD",
+          "text": "API gateway riêng tư: xác minh mọi JWT trước khi chuyển tiếp."
+        },
+        "api": {
+          "name": "NestJS API",
+          "text": "Xác minh JWT lần nữa, kiểm tra vai trò và quyền sở hữu, ghi dữ liệu qua Prisma."
+        },
+        "postgres": {
+          "name": "PostgreSQL",
+          "text": "Dữ liệu và outbox được ghi trong cùng một transaction."
+        },
+        "nats": {
+          "name": "NATS JetStream",
+          "text": "Giao mỗi sự kiện từ outbox ít nhất một lần."
+        },
+        "notify": {
+          "name": "Thông báo",
+          "text": "Nhận sự kiện qua inbox idempotent: không việc gì bị xử lý hai lần."
+        },
+        "storage": {
+          "name": "Object storage",
+          "text": "File đi thẳng giữa trình duyệt và storage bằng presigned URL."
+        }
+      }
+    },
+    "work": {
+      "title": "Làm trọn từ đầu đến cuối",
+      "platformLabel": "Nền tảng đứng sau trang này",
+      "sitesEyebrow": "Website mẫu",
+      "sitesTitle": "Website cho doanh nghiệp địa phương",
+      "sitesIntro": "Các site mẫu dựng từ menu, bảng hiệu và hình ảnh thật của từng cửa hàng: song ngữ, ưu tiên điện thoại, tải nhanh.",
+      "sample": "Mẫu",
+      "caseStudy": "Case study",
+      "viewCode": "Mã nguồn"
     },
     "project": {
-      "eyebrow": "Dự án tiêu biểu",
-      "openDashboard": "Mở bảng điều khiển trực tiếp",
-      "moreAboutMe": "Tìm hiểu thêm về tôi"
-    },
-    "cta": {
-      "title": "Cùng xây dựng những hệ thống đáng tin cậy",
-      "text": "Tôi đang tìm kiếm cơ hội mới. Hãy kể cho tôi về đội của bạn và những bài toán bạn đang giải quyết."
+      "openDashboard": "Mở bảng điều khiển trực tiếp"
     }
   },
+  "services": {
+    "processEyebrow": "Quy trình",
+    "processTitle": "Cách chúng ta làm việc",
+    "process": [
+      {
+        "title": "Trao đổi",
+        "text": "Gửi tôi menu, bảng giá, hình ảnh và logo. Chúng ta thống nhất các trang và mục tiêu."
+      },
+      {
+        "title": "Bản xem trước",
+        "text": "Sau vài ngày bạn có bản chạy thật trên điện thoại, không phải hình mẫu tĩnh."
+      },
+      {
+        "title": "Hoàn thiện",
+        "text": "Cùng chỉnh nội dung và thiết kế cho đến khi đúng chất cửa hàng của bạn."
+      },
+      {
+        "title": "Ra mắt & chăm sóc",
+        "text": "Cài đặt tên miền, HTTPS và thống kê; tôi luôn sẵn sàng cập nhật khi bạn cần."
+      }
+    ],
+    "includedTitle": "Mọi website đều có",
+    "included": [
+      "Tiếng Việt & tiếng Anh",
+      "Nhanh trên điện thoại",
+      "Nút gọi, Zalo & bản đồ",
+      "SEO cơ bản & ảnh xem trước khi chia sẻ",
+      "Tên miền riêng & HTTPS",
+      "Dùng được bằng bàn phím và trình đọc màn hình"
+    ],
+    "cta": "Trao đổi về website của bạn"
+  },
+  "contact": {
+    "eyebrow": "Liên hệ",
+    "title": "Cùng làm điều gì đó",
+    "titleAccent": "thật vững vàng.",
+    "text": "Bạn đang tuyển vị trí AI hoặc Senior Fullstack, hay cần website cho doanh nghiệp? Hãy viết cho tôi.",
+    "email": "Gửi email",
+    "call": "Gọi",
+    "zalo": "Zalo"
+  },
   "about": {
-    "title": "Giới thiệu",
-    "description": "Kinh nghiệm, học vấn và thông tin liên hệ của {name}, {role}.",
-    "eyebrow": "Về tôi",
+    "title": "Hồ sơ",
+    "description": "Kinh nghiệm, kỹ năng, học vấn và thông tin liên hệ của {name}, {role}.",
+    "eyebrow": "Hồ sơ",
     "hello": "Xin chào, tôi là {name}",
     "email": "Email",
     "phone": "Điện thoại",
     "experience": "Kinh nghiệm",
+    "achievements": "Thành tựu nổi bật",
+    "stack": "Công nghệ",
     "education": "Học vấn",
-    "interests": "Ngoài công việc"
+    "interests": "Ngoài công việc",
+    "skills": "Kỹ năng",
+    "contact": "Liên hệ"
+  },
+  "projects": {
+    "eyebrow": "Chi tiết dự án",
+    "back": "Tất cả website mẫu",
+    "sample": "Dự án mẫu: thông tin cửa hàng thật, xây dựng để minh họa",
+    "brief": "Bài toán",
+    "built": "Những gì tôi đã làm",
+    "decisions": "Quyết định kỹ thuật",
+    "stack": "Công nghệ",
+    "screens": "Máy tính & điện thoại",
+    "desktopAlt": "{name}: trang chủ trên màn hình máy tính",
+    "mobileAlt": "{name}: trang chủ trên điện thoại",
+    "liveDemo": "Mở bản demo",
+    "viewCode": "Xem mã nguồn",
+    "next": "Dự án tiếp theo",
+    "ctaTitle": "Muốn có website như thế này cho cửa hàng của bạn?",
+    "ctaText": "Gửi tôi menu, hình ảnh và logo: vài ngày sau bạn sẽ có bản xem trước chạy thật.",
+    "items": {
+      "nails": {
+        "name": "Envy Nail Spa",
+        "kind": "Tiệm nail · Wendell, North Carolina",
+        "category": "Làm đẹp",
+        "summary": "Từ menu in và danh thiếp thành website song ngữ có đầy đủ bảng giá.",
+        "brief": "Tiệm có menu in, danh thiếp và phiếu quà tặng rất đẹp, nhưng không có gì khách mở được trên điện thoại. Mục tiêu: tìm được mọi giá và dịch vụ trong vài giây, gọi điện hay đặt lịch chỉ một chạm.",
+        "features": [
+          "Toàn bộ menu in thành bảng giá 8 tab, có đường chấm dẫn giống bản giấy",
+          "Bảy gói pedicure kèm “gồm những gì”, từ Basic đến Royal Herbal Detox",
+          "Phiếu quà tặng, quy định của tiệm và giờ mở cửa theo định dạng của người xem (12 giờ ở bản tiếng Anh)",
+          "Đổi nhận diện theo bản in: xanh rừng, chữ vàng ánh kim và monogram “EN” vẽ lại bằng SVG",
+          "Menu ngăn kéo trên mobile có đánh dấu mục đang xem, cuộn mượt và nút gọi luôn hiển thị"
+        ],
+        "decisions": [
+          "Dữ liệu và giá là dữ liệu có kiểu, chữ nằm trong từ điển từng ngôn ngữ: thiếu bản dịch là build lỗi",
+          "Không bịa nội dung: bỏ đánh giá, số sao và tên thợ giả vì đây là cửa hàng thật",
+          "Mục nào trên menu không đọc rõ thì bỏ ra và ghi chú lại, không đoán"
+        ]
+      },
+      "laundry": {
+        "name": "Giặt sấy SFaster",
+        "kind": "Tiệm giặt sấy · Việt Nam",
+        "category": "Dịch vụ",
+        "summary": "Website giặt sấy tươi vui với công cụ ước tính giá dựng từ bảng giá của tiệm.",
+        "brief": "Điểm mạnh nhất của tiệm (“mỗi người 1 máy”) và bảng giá chỉ nằm trên biển hiệu. Khách cần biết một lần giặt tốn bao nhiêu trước khi mang đồ tới.",
+        "features": [
+          "Ước tính giá: chọn quần áo hoặc mền drap, kéo cân nặng, giá hiện ngay",
+          "Đủ bốn bảng giá (giặt sấy, mền drap, giặt hấp, dịch vụ khác) định dạng theo đồng",
+          "Quy trình, thẻ tích điểm (giặt 7 lần tặng 1), lưu ý gửi đồ và hỏi đáp",
+          "Nhận diện lấy từ biển hiệu: xanh lá, chữ vàng viền đậm, điểm nhấn đỏ",
+          "Nút Zalo và gọi điện luôn trong tầm tay trên điện thoại"
+        ],
+        "decisions": [
+          "Công cụ ước tính là hàm thuần, có test ở mọi mốc ranh giới (3 kg, khoảng trống 6–7 kg, 7 kg)",
+          "Chỉ tính trong trình duyệt, không gửi dữ liệu đi: không cần server action hay lưu trữ",
+          "Ảnh điện thoại được thu nhỏ và xoay đúng chiều theo EXIF"
+        ]
+      },
+      "wine": {
+        "name": "Khang Hưng Tửu",
+        "kind": "Hãng rượu truyền thống · Long An, từ 1991",
+        "category": "Ẩm thực & đồ uống",
+        "summary": "Website thương hiệu lâu năm tông đỏ may mắn và vàng hoàng kim, làm theo quy định quảng cáo đồ uống có cồn.",
+        "brief": "Một hãng rượu 30 năm với brochure in dày đặc và nạn hàng nhái: khách cần biết số đặt hàng thật duy nhất là số in trên can rượu.",
+        "features": [
+          "Dòng sản phẩm chủ lực với ảnh cắt từ brochure, đặt trên đúng mã màu vàng (#ffe500) của bản gốc",
+          "Hũ rượu ngâm kèm giá công ty theo xị, hướng dẫn dùng rượu hấp nóng và rượu cần Tây Nguyên",
+          "Cảnh báo hàng nhái và số đặt hàng duy nhất lặp lại ở những chỗ cần thiết",
+          "Mục hợp tác nhà hàng (tháp rượu, tủ rượu trưng bày)",
+          "Cảnh báo bắt buộc 18+, phụ nữ mang thai và không lái xe đặt cạnh mọi nút mua hàng"
+        ],
+        "decisions": [
+          "Không có tuyên bố về công dụng sức khỏe, theo luật Việt Nam về đồ uống có cồn",
+          "Chưa đăng thành phần cho đến khi chủ hãng xác nhận: bản scan có chỗ không đọc được",
+          "Tên sản phẩm giữ nguyên như bản in ở mọi ngôn ngữ; phần còn lại được dịch"
+        ]
+      },
+      "wedding": {
+        "name": "Hải Sơn & Trúc Giang",
+        "kind": "Thiệp cưới online",
+        "category": "Sự kiện",
+        "summary": "Website thiệp cưới có đếm ngược, ngày âm lịch, thêm vào lịch và album ảnh.",
+        "brief": "Thiệp giấy không có ảnh, bản đồ hay đếm ngược, và khách hay làm mất. Thiệp này nằm ở một đường link: mọi thứ khách cần, bằng tiếng Việt hoặc tiếng Anh.",
+        "features": [
+          "Hero toàn màn hình với đồng hồ đếm ngược đến giờ khai tiệc",
+          "Lời mời theo văn phong thiệp cưới Việt, ngày âm lịch được tính tự động",
+          "Thẻ lễ thành hôn và tiệc cưới có bản đồ, nút Google Calendar và Apple/Outlook (.ics)",
+          "Dòng thời gian chuyện tình yêu và album masonry có lightbox dùng được bằng bàn phím",
+          "Riêng tư theo link: không hiện trên công cụ tìm kiếm"
+        ],
+        "decisions": [
+          "Mọi ngày giờ theo giờ Việt Nam bất kể thiết bị của khách, có test bao phủ",
+          "Ngày âm lịch lấy từ lịch Trung Hoa của Intl cộng tên năm can chi (Bính Ngọ)",
+          "Đồng hồ đếm ngược hiện placeholder trên server rồi mới điền sau khi hydrate: không lệch trên trang prerender"
+        ]
+      }
+    }
   },
   "login": {
     "title": "Đăng nhập",
@@ -145,52 +339,228 @@
     "back": "Về trang chủ"
   },
   "profile": {
-    "role": "Kỹ sư Backend & Platform",
-    "availability": "Sẵn sàng cho cơ hội mới",
-    "tagline": "Tôi thiết kế và xây dựng các nền tảng microservice an toàn, dễ quan sát — từ API gateway, định danh cho đến cơ sở dữ liệu và cụm Kubernetes mà chúng chạy trên đó.",
+    "role": "AI Engineer · Senior Fullstack Engineer",
+    "availability": "Sẵn sàng cho vị trí AI Engineer & dự án freelance",
+    "tagline": "Tôi xây dựng hệ thống web production trọn vẹn, từ cơ sở dữ liệu đến Kubernetes, và đưa AI agent, RAG từ prototype thành sản phẩm ổn định, an toàn.",
     "bio": [
-      "«Viết 2–3 câu về bạn là ai và kiểu công việc kỹ thuật bạn yêu thích.»",
-      "«Gần đây bạn đang làm gì, và những bài toán bạn thích giải quyết.»",
-      "«Bạn tìm kiếm điều gì ở công việc tiếp theo.»"
+      "Tôi là Senior Fullstack Engineer với hơn 10 năm xây dựng sản phẩm web, tại các công ty như Lazada, FUTA Bus Lines và OneSecure, và từng dẫn dắt đội 10 người tại Urbanos. Trước đó tôi có bốn năm làm tư vấn kỹ thuật cho các sản phẩm bảo mật doanh nghiệp.",
+      "Tôi làm việc trên toàn bộ hệ thống: tối ưu PostgreSQL trên bảng hàng triệu dòng, microservice NestJS, frontend Next.js, và Kubernetes, GitOps, giám sát để giữ chúng vận hành. Nền tảng đứng sau trang này cho thấy cách tôi làm: API riêng tư sau gateway, token được xác minh hai lần, sự kiện gửi qua outbox, CI cho mọi pull request, và mọi quyết định đều được ghi lại.",
+      "Hiện tôi tập trung vào AI Engineering: agent, RAG và tool calling với LangGraph, LangChain trên OpenAI và Azure OpenAI, được làm an toàn, dễ giám sát và kiểm soát chi phí khi chạy production. Tôi sẵn sàng cho vị trí AI Engineer hoặc Senior Fullstack, và nhận làm website, web app cho doanh nghiệp theo hình thức freelance."
     ],
     "personal": [
-      { "label": "Họ và tên", "value": "«Họ và tên đầy đủ»" },
-      { "label": "Nơi ở", "value": "«Thành phố, Quốc gia»" },
-      { "label": "Kinh nghiệm", "value": "«N năm»" },
-      { "label": "Ngôn ngữ", "value": "«Tiếng Việt (bản ngữ), Tiếng Anh (chuyên nghiệp)»" },
-      { "label": "Hình thức làm việc", "value": "«Từ xa / Kết hợp / Tại văn phòng»" }
+      {
+        "label": "Họ tên",
+        "value": "Văn Hải Sơn (Van Hai Son)"
+      },
+      {
+        "label": "Nơi ở",
+        "value": "Việt Nam"
+      },
+      {
+        "label": "Kinh nghiệm",
+        "value": "10+ năm phát triển phần mềm (từ 2015)"
+      },
+      {
+        "label": "Học vấn",
+        "value": "Kỹ thuật Máy tính, ĐH Bách Khoa TP.HCM"
+      },
+      {
+        "label": "Sẵn sàng cho",
+        "value": "AI / Senior Fullstack, freelance"
+      }
     ],
     "skills": [
-      { "group": "Backend", "items": ["TypeScript", "Node.js", "NestJS", "Thiết kế REST API", "Validation & xử lý lỗi"] },
-      { "group": "Kiến trúc & messaging", "items": ["Microservices", "API gateway (KrakenD)", "Sự kiện NATS JetStream", "Transactional outbox & inbox"] },
-      { "group": "Bảo mật & định danh", "items": ["Keycloak / OpenID Connect", "JWT (RS256, JWKS)", "RBAC & quyền sở hữu dữ liệu", "Phiên BFF"] },
-      { "group": "Dữ liệu", "items": ["PostgreSQL", "Prisma & migration", "Redis"] },
-      { "group": "Cloud & DevOps", "items": ["Docker", "Kubernetes", "Kustomize", "Argo CD", "Log có cấu trúc (pino)"] },
-      { "group": "Frontend", "items": ["React", "Next.js (App Router)", "Tailwind CSS", "Đa ngôn ngữ (i18n)"] }
-    ],
-    "strengths": [
-      { "title": "Làm chủ service từ đầu đến cuối", "text": "Từ contract và schema cơ sở dữ liệu đến test, route trên gateway và manifest Kubernetes." },
-      { "title": "Bảo mật ngay từ thiết kế", "text": "Token được xác thực ở gateway và một lần nữa trong từng service, kết hợp vai trò với quy tắc ở mức dữ liệu, không để lộ bí mật trong log." },
-      { "title": "Dễ vận hành", "text": "Health check, log JSON kèm request id, contract lỗi rõ ràng — để sự cố được tìm ra trong vài phút, không phải vài ngày." },
-      { "title": "Quy ước rõ ràng, kiến thức được chia sẻ", "text": "Tôi ghi lại những quy tắc cả đội thống nhất và giữ chúng luôn đúng, để thành viên mới bắt nhịp nhanh." }
+      {
+        "group": "AI & LLM",
+        "items": [
+          "LangGraph",
+          "LangChain",
+          "OpenAI",
+          "Azure OpenAI",
+          "RAG & embeddings",
+          "Function / tool calling",
+          "Vector search",
+          "Agent workflows",
+          "Prompt engineering"
+        ]
+      },
+      {
+        "group": "Kỹ thuật phần mềm",
+        "items": [
+          "TypeScript",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "NestJS",
+          "REST APIs",
+          "Microservices",
+          "System design",
+          "Next.js BFF & Server Actions"
+        ]
+      },
+      {
+        "group": "Dữ liệu",
+        "items": [
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "Redis",
+          "Elasticsearch",
+          "Prisma"
+        ]
+      },
+      {
+        "group": "Platform & DevOps",
+        "items": [
+          "Docker",
+          "Kubernetes",
+          "Kustomize",
+          "Argo CD",
+          "CI/CD (GitHub Actions)",
+          "KrakenD",
+          "NATS JetStream",
+          "Grafana Cloud"
+        ]
+      },
+      {
+        "group": "Cloud & bảo mật",
+        "items": [
+          "Azure",
+          "AWS",
+          "Cloudflare",
+          "DNS, RDAP & WHOIS",
+          "Keycloak / OpenID Connect",
+          "Monitoring & observability",
+          "JWT (RS256 + JWKS)",
+          "CSP & security headers"
+        ]
+      }
     ],
     "project": {
-      "name": "Nền tảng nest-microservice",
-      "summary": "Một nền tảng microservice NestJS: KrakenD làm API gateway, Keycloak quản lý định danh, các REST service dùng Prisma/PostgreSQL, sự kiện qua NATS JetStream, toàn bộ chạy trên Kubernetes. Bảng điều khiển của trang này chính là client trực tiếp của nó.",
+      "name": "Nền tảng microservice với các website BFF",
+      "summary": "Repository đứng sau trang này, do tôi tự thiết kế và xây dựng: các microservice NestJS sau gateway KrakenD riêng tư, định danh bằng Keycloak, PostgreSQL, sự kiện NATS JetStream và sáu website Next.js theo mô hình BFF, tất cả chạy trên Kubernetes với GitOps và telemetry.",
       "points": [
-        "JWT được xác thực cục bộ ở gateway và trong từng service (RS256 + JWKS, không dùng secret chung)",
-        "Phân quyền theo vai trò cùng quy tắc “chỉ người tạo hoặc quản trị viên”",
+        "JWT được xác minh ở gateway và lần nữa ở từng service (RS256 + JWKS); token không bao giờ tới trình duyệt",
+        "Phân quyền theo vai trò cộng quy tắc sở hữu “chỉ người tạo hoặc admin”; trang quản trị yêu cầu mật khẩu + OTP",
         "Sự kiện at-least-once: transactional outbox, JetStream và inbox idempotent",
-        "Toàn bộ hệ thống trên Kubernetes với Kustomize, có staging cục bộ chạy HTTPS giống production"
+        "Optimistic concurrency với ETag, làm mới token single-flight, file tải thẳng từ trình duyệt lên storage",
+        "CI cho mọi pull request, image lên GHCR, GitOps với Argo CD và telemetry Grafana",
+        "24 bản ghi quyết định kiến trúc (ADR) và quy ước viết sẵn mà cả người lẫn AI coding agent đều tuân theo"
       ]
     },
     "experience": [
-      { "period": "«2023 — Nay»", "title": "«Chức danh»", "company": "«Công ty»", "text": "«Một hai dòng về phần việc bạn phụ trách và kết quả đạt được.»" },
-      { "period": "«2020 — 2023»", "title": "«Chức danh»", "company": "«Công ty»", "text": "«Một hai dòng về phần việc bạn phụ trách và kết quả đạt được.»" }
+      {
+        "period": "2025 — Nay",
+        "title": "Senior Fullstack Engineer",
+        "company": "OneSecure",
+        "text": "Phát triển ứng dụng web doanh nghiệp và dịch vụ backend cho khối lượng lớn và dữ liệu lớn; dẫn dắt tính năng từ frontend đến backend; nâng độ ổn định qua giám sát, tối ưu hiệu năng và xử lý sự cố.",
+        "achievements": [
+          "Tối ưu dịch vụ backend và truy vấn cơ sở dữ liệu, cải thiện hiệu năng ứng dụng đáng kể",
+          "Thiết kế chiến lược cơ sở dữ liệu có khả năng mở rộng cho dữ liệu tăng trưởng nhanh",
+          "Giảm sự cố production nhờ cải thiện observability và quy trình vận hành",
+          "Tham gia các sáng kiến bảo mật liên quan đến hạ tầng tên miền và dịch vụ Cloudflare"
+        ],
+        "stack": []
+      },
+      {
+        "period": "11/2022 — 04/2024",
+        "title": "Full Stack Developer",
+        "company": "FUTA Bus Lines",
+        "text": "Phát triển API và tính năng frontend cho nền tảng ERP, và phần frontend cho ứng dụng CRM.",
+        "achievements": [],
+        "stack": [
+          "Node.js",
+          "React",
+          "MongoDB",
+          "MySQL"
+        ]
+      },
+      {
+        "period": "05/2021 — 11/2022",
+        "title": "Full Stack Developer",
+        "company": "Texo Design",
+        "text": "Xây dựng ứng dụng web cho khách hàng Úc, gồm prototype quản lý tài sản và cổng Alliance Farmers; làm trang chiến dịch và email template từ tài liệu thiết kế.",
+        "achievements": [],
+        "stack": [
+          "NestJS",
+          "React",
+          "Laravel",
+          "PostgreSQL",
+          "AWS SNS",
+          "Nginx"
+        ]
+      },
+      {
+        "period": "05/2020 — 05/2021",
+        "title": "Full Stack Developer · Trưởng nhóm",
+        "company": "Urbanos",
+        "text": "Dẫn dắt đội 10 người làm ứng dụng web và mobile quản lý căn hộ; chuyển yêu cầu sản phẩm và thiết kế Figma thành thiết kế API và giải pháp kỹ thuật.",
+        "achievements": [],
+        "stack": [
+          "Laravel",
+          "React",
+          "React Native",
+          "MySQL",
+          "Amazon EC2",
+          "Nginx"
+        ]
+      },
+      {
+        "period": "05/2018 — 11/2019",
+        "title": "Full Stack Developer",
+        "company": "Lazada",
+        "text": "Tối ưu truy vấn PostgreSQL trên bảng hàng triệu bản ghi để tạo báo cáo vận hành theo giờ, và tự động gửi báo cáo qua DingTalk bằng cron job Node.js.",
+        "achievements": [],
+        "stack": [
+          "Node.js / Express",
+          "PostgreSQL",
+          "AWS",
+          "DingTalk API"
+        ]
+      },
+      {
+        "period": "07/2017 — 05/2018",
+        "title": "Senior PHP Developer",
+        "company": "NFQ Asia",
+        "text": "Phát triển backend trong một đội phát triển đa chức năng.",
+        "achievements": [],
+        "stack": [
+          "PHP / Symfony",
+          "MySQL",
+          "Elasticsearch",
+          "Emarsys",
+          "Amazon SQS"
+        ]
+      },
+      {
+        "period": "05/2015 — 07/2017",
+        "title": "PHP Developer",
+        "company": "Lampart",
+        "text": "Phát triển tính năng cho hệ sinh thái phân phối và bán nước của Nhật Bản.",
+        "achievements": [],
+        "stack": [
+          "PHP / CodeIgniter",
+          "MySQL",
+          "jQuery",
+          "Bootstrap"
+        ]
+      },
+      {
+        "period": "05/2011 — 05/2015",
+        "title": "Technical Consultant",
+        "company": "Misoft",
+        "text": "Làm việc với các sản phẩm bảo mật doanh nghiệp, gồm firewall Check Point và Entrust OTP.",
+        "achievements": [],
+        "stack": []
+      }
     ],
     "education": [
-      { "period": "«2016 — 2020»", "title": "«Bằng cấp»", "school": "«Trường đại học»" }
+      {
+        "title": "Kỹ sư Kỹ thuật Máy tính",
+        "school": "Trường Đại học Bách Khoa TP. Hồ Chí Minh"
+      }
     ],
-    "interests": ["«Sở thích 1»", "«Sở thích 2»", "«Sở thích 3»"]
+    "interests": []
   }
 }

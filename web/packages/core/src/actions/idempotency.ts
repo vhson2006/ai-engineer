@@ -8,7 +8,7 @@ import { hashedKey } from '../security/sealed';
  * Once-only execution of a create (order, booking, payment) per submission, so a double click, a
  * resubmit or a retried request can't create it twice (.claude/rules/forms.md, rule 6).
  *
- * The form carries a random key generated when it is rendered (`crypto.randomUUID()`, hidden
+ * The form carries a random key generated when it is rendered (`newSubmissionId()`, hidden
  * input). The first submission with that key runs `action` and stores its successful result; any
  * later one gets that same result back without running anything. While the first is still
  * running, others get 409 `duplicate_submission`. A FAILED result is not stored: fixing the input

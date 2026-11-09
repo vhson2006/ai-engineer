@@ -2,7 +2,7 @@
 
 - **Status:** Accepted, implemented (2026-11-06)
 - **Date:** 2026-11-06
-- **Related:** 0001, 0008, `libs/common/src/messaging/`, `nest-microservice/.claude/rules/microservice.md`
+- **Related:** 0024 (stream ownership and storage budget), 0001, 0008, `libs/common/src/messaging/`, `nest-microservice/.claude/rules/microservice.md`
   ("Events"), `k8s/components/nats/`
 
 ## Context
@@ -32,7 +32,8 @@ OutboxRelay ─ publish(Nats-Msg-Id=id) ──▶│ ──────── de
   id, marks them published after the PubAck, stops a batch at the first failure (order kept,
   `attempts` / `last_error` recorded), deletes published rows after 7 days.
 - **JetStream:** stream `EVENTS` (`events.>`, 7 days, 10-minute duplicate window: a republished
-  row is stored once) and `DLQ` (`dlq.>`, 30 days), created/updated by the apps at startup.
+  row is stored once) and `DLQ` (`dlq.>`, 30 days). ~~Created/updated by the apps at startup.~~
+  Replaced by ADR 0024: created/updated by `nats-setup` only; services wait for them.
 - **Inbox (consumer), idempotent-consumer variant:** `handleOnce(prisma, consumer, messageId, …)`
   inserts `(consumer, message_id)` into `inbox_messages` in the SAME transaction as the work; a
   duplicate does nothing. Only ids are stored: JetStream keeps, redelivers and dead-letters.

@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { Container, buttonClass } from '@web/ui';
+import { ArrowRight } from 'lucide-react';
+import { Container } from '@web/ui';
+import { inkLink } from '@/features/editorial/section-heading';
 import { href } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 
@@ -7,16 +9,17 @@ import { getLocale, getMessages } from '@/i18n/messages';
 export default async function NotFound() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <Container className="relative py-28 text-center">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-64 max-w-xl bg-[radial-gradient(ellipse_at_center,var(--brand-soft),transparent_70%)]"
-      />
-      <p className="font-mono text-7xl font-bold tracking-tighter text-brand/80 sm:text-8xl">404</p>
-      <h1 className="mt-4 text-3xl font-bold tracking-tight text-balance">{t.notFound.title}</h1>
-      <p className="mt-3 text-pretty text-muted">{t.notFound.text}</p>
-      <Link href={href(locale, '/')} className={`${buttonClass.primary} mt-8`}>
+    <Container className="py-20 sm:py-28">
+      <p aria-hidden className="font-display text-[8rem] leading-none text-brand italic sm:text-[12rem]">
+        404
+      </p>
+      <h1 className="mt-8 max-w-2xl border-t border-fg pt-6 font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl">
+        {t.notFound.title}
+      </h1>
+      <p className="mt-4 max-w-xl text-lg text-pretty text-muted">{t.notFound.text}</p>
+      <Link href={href(locale, '/')} className={`${inkLink} mt-10`}>
         {t.notFound.back}
+        <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
       </Link>
     </Container>
   );

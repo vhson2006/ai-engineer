@@ -4,3 +4,60 @@
 @import "@web/ui/theme.css";
 /* Tailwind only generates classes it finds: also scan the shared components. */
 @source "../../../../packages/ui/src";
+
+/* ── Editorial look: warm paper, ink, one vermilion accent (contrast ≥ 4.5:1 for text). ── */
+:root {
+  --bg: #f4f1ea;
+  --surface: #fbfaf6;
+  --surface-2: #ebe7dd;
+  --border: #d9d3c5;
+  --fg: #16140f;
+  --muted: #4a463d;
+  --subtle: #6b6455;
+  --brand: #c2381a;
+  --brand-hover: #a32e14;
+  --brand-fg: #ffffff;
+  --brand-soft: #f6dfd5;
+  --brand-soft-fg: #7a2410;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0e0c;
+    --surface: #171613;
+    --surface-2: #211f1b;
+    --border: #2e2b25;
+    --fg: #ede8de;
+    --muted: #b5ad9d;
+    --subtle: #8d8676;
+    --brand: #ff6a45;
+    --brand-hover: #ff8a6b;
+    --brand-fg: #0f0e0c;
+    --brand-soft: rgb(255 106 69 / 0.14);
+    --brand-soft-fg: #ffb59f;
+  }
+}
+
+@theme inline {
+  --font-display: var(--font-fraunces);
+}
+
+/* The request and the event travelling through the architecture diagram (home hero). */
+@keyframes flow-request {
+  0% { transform: translateY(0); opacity: 0; }
+  5% { opacity: 1; }
+  55% { transform: translateY(350px); opacity: 1; }
+  62%, 100% { transform: translateY(350px); opacity: 0; }
+}
+@keyframes flow-event {
+  0%, 45% { transform: translate(0, 0); opacity: 0; }
+  47% { opacity: 1; }
+  75% { transform: translate(190px, 0); }
+  88% { transform: translate(190px, 70px); opacity: 1; }
+  95%, 100% { transform: translate(190px, 70px); opacity: 0; }
+}
+.flow-request { animation: flow-request 6s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+.flow-event { animation: flow-event 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .flow-request, .flow-event { display: none; }
+}

@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Hải Sơn & Trúc Giang · Thiệp cưới",
+    "description": "Trân trọng kính mời bạn đến chung vui trong ngày cưới của Văn Hải Sơn và Trần Thị Trúc Giang, {date}."
+  },
+  "common": {
+    "skipToContent": "Chuyển đến nội dung",
+    "language": "Ngôn ngữ",
+    "directions": "Xem bản đồ",
+    "addToCalendar": "Thêm vào lịch",
+    "googleCalendar": "Google Calendar",
+    "icsCalendar": "Apple / Outlook (.ics)",
+    "close": "Đóng",
+    "previous": "Ảnh trước",
+    "next": "Ảnh sau",
+    "viewPhoto": "Xem ảnh lớn: {title}",
+    "photoCount": "Ảnh {index} / {total}"
+  },
+  "nav": {
+    "label": "Mục chính",
+    "home": "Về đầu thiệp",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "invitation": "Thiệp mời",
+    "couple": "Cô dâu & chú rể",
+    "story": "Chuyện tình yêu",
+    "events": "Lễ cưới",
+    "album": "Album ảnh"
+  },
+  "hero": {
+    "saveTheDate": "Save the date",
+    "announce": "Chúng mình cưới!",
+    "scroll": "Mở thiệp"
+  },
+  "countdown": {
+    "label": "Đếm ngược đến ngày cưới",
+    "days": "Ngày",
+    "hours": "Giờ",
+    "minutes": "Phút",
+    "seconds": "Giây",
+    "today": "Hôm nay là ngày vui của chúng mình!",
+    "after": "Cảm ơn bạn đã cùng chung vui với chúng mình."
+  },
+  "invitation": {
+    "eyebrow": "Thiệp mời",
+    "quote": "Hạnh phúc là được cùng nhau đi qua những ngày bình thường nhất.",
+    "intro": "Trân trọng kính mời",
+    "guest": "Quý khách cùng gia đình",
+    "text": "tới dự buổi tiệc chung vui cùng gia đình chúng tôi trong ngày thành hôn của",
+    "and": "và",
+    "on": "Vào lúc {time}, {date}",
+    "lunar": "Tức ngày {day} tháng {month} năm {yearName}",
+    "presence": "Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi."
+  },
+  "couple": {
+    "eyebrow": "Cô dâu & chú rể",
+    "title": "Hai mảnh ghép, một hành trình",
+    "groomRole": "Chú rể",
+    "brideRole": "Cô dâu",
+    "groomText": "Người đàn ông hiền lành, mê âm nhạc và luôn biết cách làm cô ấy cười.",
+    "brideText": "Cô gái dịu dàng, yêu hoa tulip trắng và những buổi chiều bình yên."
+  },
+  "story": {
+    "eyebrow": "Chuyện tình yêu",
+    "title": "Hành trình của chúng mình",
+    "items": {
+      "met": { "title": "Lần đầu gặp gỡ", "text": "Một cái nắm tay rất khẽ, và từ đó mọi ngày bình thường đều trở nên đặc biệt." },
+      "together": { "title": "Cùng nhau chơi nhạc", "text": "Anh chơi bass, em tập trống: lệch nhịp một chút nhưng luôn chung một bài hát." },
+      "proposal": { "title": "Lời cầu hôn", "text": "Một chiếc hộp nhỏ, một bó tulip trắng và một câu trả lời: Em đồng ý." },
+      "wedding": { "title": "Về chung một nhà", "text": "Và bây giờ, chúng mình muốn bạn có mặt trong ngày quan trọng nhất." }
+    }
+  },
+  "events": {
+    "eyebrow": "Lễ cưới",
+    "title": "Thời gian & địa điểm",
+    "intro": "Chúng mình rất mong được đón bạn tại một hoặc cả hai buổi lễ.",
+    "time": "{start} – {end}",
+    "calendarTitle": "Đám cưới {groom} & {bride}",
+    "calendarDetails": "Trân trọng kính mời bạn tới chung vui cùng {groom} & {bride}.",
+    "items": {
+      "ceremony": { "name": "Lễ thành hôn", "text": "Lễ gia tiên ấm cúng cùng hai bên gia đình." },
+      "reception": { "name": "Tiệc cưới", "text": "Bữa tiệc chung vui cùng người thân và bạn bè." }
+    }
+  },
+  "schedule": {
+    "title": "Chương trình tiệc cưới",
+    "items": {
+      "welcome": "Đón khách & chụp ảnh",
+      "ceremony": "Làm lễ trên sân khấu",
+      "dinner": "Khai tiệc",
+      "party": "Giao lưu & âm nhạc"
+    }
+  },
+  "photos": {
+    "bouquet": "Cô dâu chú rể tựa đầu vào nhau sau bó hoa tulip trắng, trên bãi cỏ xanh",
+    "corridor": "Cô dâu chú rể nắm tay, quay lại nhìn trong hành lang đá ấm áp ánh đèn",
+    "window": "Cô dâu chú rể nhìn nhau trong ánh nắng bên khung cửa sổ",
+    "stairs": "Chú rể ôm cô dâu ngồi trên bậc thang đá, cô dâu cầm hoa tulip",
+    "ring": "Chú rể quỳ trao nhẫn cầu hôn cho cô dâu trên bậc thềm",
+    "music": "Chú rể chơi đàn bass, cô dâu chơi trống, cả hai cùng cười",
+    "hands": "Hai bàn tay đeo nhẫn cưới móc ngón út vào nhau"
+  },
+  "album": {
+    "eyebrow": "Album ảnh",
+    "title": "Những khoảnh khắc của chúng mình",
+    "intro": "Chạm vào ảnh để xem lớn hơn."
+  },
+  "closing": {
+    "quote": "Cảm ơn bạn đã là một phần trong câu chuyện của chúng mình.",
+    "thanks": "Rất mong được gặp bạn!",
+    "signature": "Thương mến,"
+  },
+  "footer": {
+    "rights": "© {year} {names}"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
+    "back": "Về thiệp cưới"
+  }
+}

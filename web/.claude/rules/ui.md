@@ -14,8 +14,10 @@ Decision: ADR 0022. Look and feel: the tokens in `packages/ui/src/theme.css`.
 - Components come from `@web/ui/<name>` (one file per component in `packages/ui/src/components/`):
   button, badge, card, input (+ Textarea), label, checkbox, select, dialog, dropdown-menu,
   popover, tooltip, tabs, command (+ Combobox), calendar (+ DatePicker), form, data-table,
-  pagination, toaster, skeleton (+ Separator), locale-switcher, nav-links, chart (BarChart,
-  AreaChart, ChartFrame), reveal, rich-text-editor, sortable-list. Live catalogue: admin
+  pagination, toaster, skeleton (+ Separator), locale-switcher (+ LocaleToggle for menus),
+  nav-links, chart (BarChart, AreaChart, ChartFrame), reveal, rich-text-editor, sortable-list,
+  section-nav (SectionNav + MobileNav drawer, scrollspy) and smooth-scroll (`<SmoothScroll />` in
+  the layout) for single-page sites. Live catalogue: admin
   `/design-system` (`apps/admin-web/src/features/design-system/showcase.tsx`): add new components there. `@web/ui` (index)
   re-exports the common ones plus Container, Section, Chip, Avatar, `cn`, `richText`.
 - Icons: `lucide-react`. Toasts: `toast` from `@web/ui/toaster` (one `<Toaster />` in the layout).

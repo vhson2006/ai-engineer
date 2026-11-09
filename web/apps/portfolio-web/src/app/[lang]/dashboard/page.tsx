@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { Badge, Card, Container, buttonClass, cn } from '@web/ui';
 import { listDeployments, type Deployment, type DeploymentStatus } from '@web/core/api';
@@ -8,6 +8,7 @@ import { getSessionUser, type SessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
 import { href, LOCALES, type Locale } from '@/i18n/locales';
 import { privatePageRobots } from '@/seo';
+import { ACCOUNT_ENABLED } from '@/site';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,6 +19,7 @@ type SearchParams = PageProps<'/[lang]/dashboard'>['searchParams'];
 type T = Messages['dashboard'];
 
 export default async function DashboardPage({ searchParams }: PageProps<'/[lang]/dashboard'>) {
+  if (!ACCOUNT_ENABLED) notFound(); // temporarily off (src/site.ts)
   const [messages, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
     <Container className="py-12 sm:py-16">

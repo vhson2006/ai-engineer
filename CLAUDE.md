@@ -6,7 +6,7 @@ each package's `CLAUDE.md`, `.claude/rules/` and skills load when you work on it
 | Part | What | Own instructions |
 |---|---|---|
 | `nest-microservice/` | NestJS API: deployment-service (REST + Prisma/Postgres), notification-service (NATS consumer), `libs/common` (contracts, auth, errors, storage, NATS) | `nest-microservice/CLAUDE.md` |
-| `web/` | npm workspace (ADR 0019): Next.js 16 BFF apps (`apps/portfolio-web` = user site, `apps/admin-web` = admin site) + shared `packages/core` (`@web/core`: sessions, auth routes, API client, security, i18n) and `packages/ui`; call the API from the server only | `web/CLAUDE.md` |
+| `web/` | npm workspace (ADR 0019): Next.js 16 BFF apps (`apps/portfolio-web` = user site, `apps/admin-web` = admin site, `apps/nails-web` = Envy Nail Spa site, `apps/wine-web` = Khang Hưng Tửu winery site, `apps/laundry-web` = SFaster laundry site, `apps/wedding-web` = wedding invitation; these four use hard-coded data) + shared `packages/core` (`@web/core`: sessions, auth routes, API client, security, i18n) and `packages/ui`; call the API from the server only | `web/CLAUDE.md` |
 | `k8s/` | Infrastructure for BOTH (Kustomize): edge Gateway, KrakenD, Keycloak, NATS, data stores, the apps, Grafana Alloy (telemetry → Grafana Cloud, ADR 0023); dev, staging and prod overlays | `k8s/README.md`, `.claude/rules/infrastructure.md`, `.claude/rules/krakend.md` |
 | `docs/adr/` | ONE decision log for the whole system | read before undoing a decision |
 | `advanced-architecture/` | Separate reference repository (own remote), ignored here | don't modify |

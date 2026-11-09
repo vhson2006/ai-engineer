@@ -25,6 +25,13 @@ export interface LocaleSwitcherProps {
  * the hash and the scroll position. Links are never prefetched: the proxy saves the language of
  * a visited page, and a prefetch is not a visit.
  */
+/** The same page in another language: '/vi/about' → '/en/about'. */
+function localeHref(pathname: string, code: string): string {
+  const segments = pathname.split('/');
+  segments[1] = code; // pathname always starts with /<locale> under app/[lang]
+  return segments.join('/') || `/${code}`;
+}
+
 export function LocaleSwitcher({ current, locales, label }: LocaleSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
@@ -50,11 +57,7 @@ export function LocaleSwitcher({ current, locales, label }: LocaleSwitcherProps)
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [open]);
 
-  const hrefFor = (code: string) => {
-    const segments = pathname.split('/');
-    segments[1] = code; // pathname always starts with /<locale> under app/[lang]
-    return segments.join('/') || `/${code}`;
-  };
+  const hrefFor = (code: string) => localeHref(pathname, code);
 
   const items = () => Array.from(rootRef.current?.querySelectorAll<HTMLAnchorElement>('[data-locale-option]') ?? []);
 
@@ -181,6 +184,58 @@ export function LocaleSwitcher({ current, locales, label }: LocaleSwitcherProps)
           })}
         </ul>
       </div>
+    </div>
+  );
+}
+
+/**
+ * The languages side by side (segmented control): for menus and drawers, where a dropdown would
+ * be awkward. Real links like LocaleSwitcher; with JavaScript, keeps the query string and hash.
+ */
+export function LocaleToggle({ current, locales, label, className }: LocaleSwitcherProps & { className?: string }) {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const onChoose = (event: MouseEvent<HTMLAnchorElement>, code: string) => {
+    if (code === current) {
+      event.preventDefault();
+      return;
+    }
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    router.push(`${localeHref(pathname, code)}${window.location.search}${window.location.hash}`, { scroll: false });
+  };
+
+  return (
+    <div role="group" aria-label={label} className={cn('flex items-center gap-1 rounded-full border border-border bg-surface p-1 shadow-sm', className)}>
+      <span className="pr-1 pl-2 text-subtle">
+        <GlobeIcon />
+      </span>
+      {locales.map((locale) => {
+        const active = locale.code === current;
+        return (
+          <Link
+            key={locale.code}
+            href={localeHref(pathname, locale.code)}
+            hrefLang={locale.code}
+            lang={locale.code}
+            prefetch={false}
+            scroll={false}
+            aria-current={active ? 'true' : undefined}
+            onClick={(event) => onChoose(event, locale.code)}
+            className={cn(
+              'flex flex-1 items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors',
+              'focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand',
+              active ? 'bg-brand text-brand-fg shadow-sm' : 'text-muted hover:bg-surface-2 hover:text-fg',
+            )}
+          >
+            <span aria-hidden className="font-mono text-xs font-bold uppercase">
+              {locale.code}
+            </span>
+            <span className="truncate">{locale.name}</span>
+          </Link>
+        );
+      })}
     </div>
   );
 }

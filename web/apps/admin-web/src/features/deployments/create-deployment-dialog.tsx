@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { newSubmissionId } from '@web/core/actions/submission-id';
 import { format } from '@web/core/i18n/format';
 import { Button } from '@web/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@web/ui/dialog';
@@ -36,7 +37,7 @@ export interface CreateDeploymentLabels {
 }
 
 const blank = (): CreateDeploymentValues => ({
-  submissionId: crypto.randomUUID(),
+  submissionId: newSubmissionId(),
   name: '',
   version: '',
   environment: 'development',

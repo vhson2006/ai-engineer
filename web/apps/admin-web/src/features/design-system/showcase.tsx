@@ -19,17 +19,21 @@ import {
 } from '@web/ui/dropdown-menu';
 import { Input, Textarea } from '@web/ui/input';
 import { Label } from '@web/ui/label';
+import { LocaleToggle } from '@web/ui/locale-switcher';
 import { Popover, PopoverContent, PopoverTrigger } from '@web/ui/popover';
 import { Reveal } from '@web/ui/reveal';
 import { RichTextEditor } from '@web/ui/rich-text-editor';
+import { MobileNav } from '@web/ui/section-nav';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
 import { SortableList } from '@web/ui/sortable-list';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@web/ui/tabs';
 import { toast } from '@web/ui/toaster';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@web/ui/tooltip';
 import { ChevronDownIcon, CopyIcon, InfoIcon, PencilIcon, RocketIcon, Trash2Icon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { useState, type ReactNode } from 'react';
 import type { Messages } from '@/i18n/dictionaries';
+import { LOCALE_OPTIONS } from '@/i18n/locales';
 
 type T = Messages['designSystem'];
 
@@ -45,6 +49,7 @@ const BY_WEEK = [6, 9, 7, 12, 10, 15, 13, 18].map((count, i) => ({ week: `W${i +
 
 export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: string; intlLocale: string }) {
   const s = t.samples;
+  const pathname = usePathname();
   const [combo, setCombo] = useState<string>();
   const [date, setDate] = useState<Date>();
   const [html, setHtml] = useState('<h2>Release 2.0</h2><p>Faster <strong>checkout</strong> and a new <em>billing</em> worker.</p>');
@@ -52,7 +57,7 @@ export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: stri
 
   return (
     <div className="grid gap-6">
-      <Block title={t.sections.buttons}>
+      <Block id="ds-buttons" title={t.sections.buttons}>
         <div className="flex flex-wrap items-center gap-3">
           <Button>
             <RocketIcon />
@@ -209,10 +214,23 @@ export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: stri
           <Button variant="secondary" onClick={() => toast.error(s.toastErrorText)}>
             {s.toastError}
           </Button>
+
+          {/* Single-page sites (section-nav + smooth-scroll): links scroll to the blocks of this page. */}
+          <MobileNav
+            links={[
+              { id: 'ds-buttons', label: t.sections.buttons },
+              { id: 'ds-charts', label: t.sections.charts },
+              { id: 'ds-motion', label: t.sections.motion },
+            ]}
+            pagePath={pathname}
+            labels={{ open: s.drawerOpen, close: s.drawerClose, title: s.drawer }}
+            footer={<LocaleToggle current={lang} locales={LOCALE_OPTIONS} label={s.language} />}
+          />
+          <span className="text-sm text-muted">{s.drawerHint}</span>
         </div>
       </Block>
 
-      <Block title={t.sections.charts}>
+      <Block id="ds-charts" title={t.sections.charts}>
         <div className="grid gap-6 lg:grid-cols-2">
           <div>
             <p className="text-sm font-medium text-muted">{s.chartBar}</p>
@@ -251,7 +269,7 @@ export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: stri
       </Block>
 
       <Reveal>
-        <Block title={t.sections.motion}>
+        <Block id="ds-motion" title={t.sections.motion}>
           <p className="text-sm text-muted">{s.motionText}</p>
         </Block>
       </Reveal>
@@ -259,9 +277,9 @@ export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: stri
   );
 }
 
-function Block({ title, children }: { title: string; children: ReactNode }) {
+function Block({ id, title, children }: { id?: string; title: string; children: ReactNode }) {
   return (
-    <Card>
+    <Card id={id} className="scroll-mt-24">
       <h2 className="mb-5 text-lg font-semibold tracking-tight">{title}</h2>
       {children}
     </Card>

@@ -57,8 +57,8 @@ async function render(locale: Locale): Promise<ImageResponse> {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px 80px',
-          background: 'linear-gradient(135deg, #0b1020 0%, #111a3a 55%, #1e1b4b 100%)',
-          color: '#e5e7eb',
+          background: '#16140f',
+          color: '#ede8de',
           fontFamily: 'Geist',
           position: 'relative',
         }}
@@ -72,7 +72,7 @@ async function render(locale: Locale): Promise<ImageResponse> {
             width: 640,
             height: 640,
             borderRadius: 9999,
-            background: 'radial-gradient(circle, rgba(99,102,241,0.45) 0%, rgba(99,102,241,0) 70%)',
+            background: 'radial-gradient(circle, rgba(255,106,69,0.28) 0%, rgba(255,106,69,0) 70%)',
           }}
         />
 
@@ -82,7 +82,7 @@ async function render(locale: Locale): Promise<ImageResponse> {
               width: 64,
               height: 64,
               borderRadius: 16,
-              background: 'linear-gradient(135deg, #6366f1, #4338ca)',
+              background: '#ff6a45',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -102,27 +102,27 @@ async function render(locale: Locale): Promise<ImageResponse> {
               borderRadius: 9999,
               border: '1px solid rgba(255,255,255,0.18)',
               fontSize: 24,
-              color: '#c7d2fe',
+              color: '#ede8de',
             }}
           >
-            <div style={{ width: 10, height: 10, borderRadius: 9999, background: '#34d399' }} />
+            <div style={{ width: 10, height: 10, borderRadius: 9999, background: '#ff6a45' }} />
             {t.profile.availability}
           </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 76, fontWeight: 700, letterSpacing: -2, color: '#ffffff', lineHeight: 1.05 }}>{profile.name}</div>
-          <div style={{ fontSize: 46, fontWeight: 700, color: '#a5b4fc', marginTop: 10, letterSpacing: -1 }}>{t.profile.role}</div>
-          <div style={{ fontSize: 28, lineHeight: 1.45, color: '#cbd5e1', marginTop: 28, maxWidth: 960 }}>{t.profile.tagline}</div>
+          <div style={{ fontSize: 46, fontWeight: 700, color: '#ff6a45', marginTop: 10, letterSpacing: -1 }}>{t.profile.role}</div>
+          <div style={{ fontSize: 28, lineHeight: 1.45, color: '#b5ad9d', marginTop: 28, maxWidth: 960 }}>{t.profile.tagline}</div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 24, color: '#94a3b8' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 24, color: '#8d8676' }}>
           <div style={{ display: 'flex' }}>{host}</div>
           <div style={{ display: 'flex', gap: 12 }}>
             {t.profile.skills.slice(0, 3).map((group) => (
               <div
                 key={group.group}
-                style={{ display: 'flex', padding: '6px 16px', borderRadius: 9999, background: 'rgba(255,255,255,0.08)', color: '#e2e8f0' }}
+                style={{ display: 'flex', padding: '6px 16px', borderRadius: 9999, background: 'rgba(255,255,255,0.08)', color: '#ede8de' }}
               >
                 {group.group}
               </div>

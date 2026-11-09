@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Card, Container, buttonClass, richText } from '@web/ui';
@@ -6,6 +7,7 @@ import { safeReturnTo } from '@web/core/auth/safe-redirect';
 import { getSessionUser } from '@web/core/auth/session';
 import { href, type Locale } from '@/i18n/locales';
 import { privatePageRobots } from '@/seo';
+import { ACCOUNT_ENABLED } from '@/site';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -16,6 +18,7 @@ type LoginError = keyof Messages['login']['errors'];
 
 /** The card is static; the part that depends on the request (error, session) streams in. */
 export default async function LoginPage({ searchParams }: PageProps<'/[lang]/login'>) {
+  if (!ACCOUNT_ENABLED) notFound(); // temporarily off (src/site.ts)
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
     <Container className="flex justify-center py-20 sm:py-28">

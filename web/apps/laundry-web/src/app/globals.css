@@ -1,0 +1,100 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, then this site's own look on top. */
+@import "@web/ui/theme.css";
+@source "../../../../packages/ui/src";
+
+/*
+ * Giặt sấy SFaster, from the shop sign: fresh green, sunny yellow (the "SFaster" lettering),
+ * cherry red ("GIẶT SẤY") and clean white.
+ * - `--brand` green: buttons, headings, frames.  - `--sun`: highlights on green.
+ * - `--cherry`: small accents only.               - `--deep`: dark green sections.
+ */
+:root {
+  --bg: #f5fbf6;
+  --surface: #ffffff;
+  --surface-2: #e9f6ec;
+  --border: #d2e9d8;
+  --fg: #0f2a1a;
+  --muted: #476052;
+  --subtle: #6a8273;
+  --brand: #13883a;
+  --brand-hover: #0e6f2f;
+  --brand-fg: #ffffff;
+  --brand-soft: #e1f4e6;
+  --brand-soft-fg: #0e6f2f;
+  --brand-strong: #0f7a33;
+  --sun: #ffd400;
+  --sun-deep: #f2a900;
+  --cherry: #e3262f;
+  --deep: #0a5124;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a1810;
+    --surface: #0f2217;
+    --surface-2: #14301f;
+    --border: #1f4430;
+    --fg: #eaf6ee;
+    --muted: #a9c6b3;
+    --subtle: #87a693;
+    --brand: #3cc266;
+    --brand-hover: #5fd383;
+    --brand-fg: #04170b;
+    --brand-soft: rgb(60 194 102 / 0.14);
+    --brand-soft-fg: #a6ebbd;
+    --brand-strong: #7fdc9c;
+    --cherry: #ff6b6b;
+    --deep: #06200f;
+  }
+}
+
+@theme inline {
+  --color-brand-strong: var(--brand-strong);
+  --color-sun: var(--sun);
+  --color-sun-deep: var(--sun-deep);
+  --color-cherry: var(--cherry);
+  --color-deep: var(--deep);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-round);
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* The sign's lettering: yellow fill, dark green outline, soft drop shadow. */
+.sign-letters {
+  color: var(--sun);
+  -webkit-text-stroke: 0.09em #0b4a20;
+  paint-order: stroke fill;
+  text-shadow: 0 0.06em 0 #0b4a20, 0 0.12em 0.2em rgb(0 0 0 / 0.25);
+}
+
+/* Soap bubbles (decoration on green bands). */
+.bubbles {
+  background-image:
+    radial-gradient(circle at 12% 30%, rgb(255 255 255 / 0.16) 0 26px, transparent 27px),
+    radial-gradient(circle at 18% 70%, rgb(255 255 255 / 0.1) 0 12px, transparent 13px),
+    radial-gradient(circle at 82% 22%, rgb(255 255 255 / 0.12) 0 40px, transparent 41px),
+    radial-gradient(circle at 90% 75%, rgb(255 255 255 / 0.09) 0 18px, transparent 19px),
+    radial-gradient(circle at 55% 88%, rgb(255 255 255 / 0.08) 0 30px, transparent 31px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+  .float-slower {
+    animation: float 8s ease-in-out -2s infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

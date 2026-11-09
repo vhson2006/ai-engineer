@@ -5,9 +5,12 @@
   },
   "nav": {
     "label": "Main",
-    "home": "Home",
-    "about": "About",
-    "dashboard": "Dashboard"
+    "work": "Freelancer",
+    "about": "Resume",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "userMenu": {
     "signIn": "Sign in",
@@ -15,40 +18,231 @@
   },
   "home": {
     "hero": {
-      "greeting": "Hi, I’m {name}.",
-      "seeSkills": "See my skills",
-      "aboutMe": "About me"
+      "headline": "Software that holds up,",
+      "headlineAccent": "from the database to the pixel.",
+      "seeSamples": "Sample websites",
+      "contact": "Get in touch",
+      "basedIn": "Based in Vietnam"
     },
-    "skills": {
-      "eyebrow": "Skills",
-      "title": "What I work with",
-      "intro": "The tools and practices I use to design, build and run production systems."
+    "stats": {
+      "label": "At a glance",
+      "coding": "years building software",
+      "companies": "companies & product teams"
     },
-    "strengths": {
-      "eyebrow": "For your team",
-      "title": "What I bring to a new role",
-      "intro": "Beyond writing code: the habits that make a team faster and a system safer."
+    "diagram": {
+      "label": "How a request travels through the platform I built",
+      "hint": "Hover or focus a box to see what it does.",
+      "nodes": {
+        "browser": {
+          "name": "Browser",
+          "text": "Holds only an httpOnly session cookie: never a token, never the API address."
+        },
+        "gateway": {
+          "name": "Edge gateway",
+          "text": "The one public entry: routes the www, admin and auth hosts."
+        },
+        "bff": {
+          "name": "Next.js BFF",
+          "text": "Server-rendered pages and Server Actions: the only code that calls the API."
+        },
+        "keycloak": {
+          "name": "Keycloak",
+          "text": "OpenID Connect sign-in; administrators need a password and an OTP."
+        },
+        "redis": {
+          "name": "Redis",
+          "text": "Tokens sealed on the server and refreshed once, even under concurrent requests."
+        },
+        "krakend": {
+          "name": "KrakenD",
+          "text": "The private API gateway: verifies every JWT before forwarding."
+        },
+        "api": {
+          "name": "NestJS API",
+          "text": "Verifies the JWT again, enforces roles and ownership, writes through Prisma."
+        },
+        "postgres": {
+          "name": "PostgreSQL",
+          "text": "The data and its outbox, written in one transaction."
+        },
+        "nats": {
+          "name": "NATS JetStream",
+          "text": "Delivers every event from the outbox at least once."
+        },
+        "notify": {
+          "name": "Notifications",
+          "text": "Consumes events through an idempotent inbox: nothing is handled twice."
+        },
+        "storage": {
+          "name": "Object storage",
+          "text": "File bytes go straight between browser and storage with presigned URLs."
+        }
+      }
+    },
+    "work": {
+      "title": "Built end to end",
+      "platformLabel": "The platform behind this site",
+      "sitesEyebrow": "Sample websites",
+      "sitesTitle": "Websites for local businesses",
+      "sitesIntro": "Sample sites built from each business’s real menu, signage and photos: bilingual, mobile-first and fast.",
+      "sample": "Sample",
+      "caseStudy": "Case study",
+      "viewCode": "Source code"
     },
     "project": {
-      "eyebrow": "Featured project",
-      "openDashboard": "Open the live dashboard",
-      "moreAboutMe": "More about me"
-    },
-    "cta": {
-      "title": "Let’s build something reliable together",
-      "text": "I’m open to new opportunities. Tell me about your team and the problems you’re solving."
+      "openDashboard": "Open the live dashboard"
     }
   },
+  "services": {
+    "processEyebrow": "Process",
+    "processTitle": "How we work together",
+    "process": [
+      {
+        "title": "Talk",
+        "text": "Send me your menu, price list, photos and logo. We agree on the pages and the goal."
+      },
+      {
+        "title": "Live preview",
+        "text": "Within days you get a working preview on your phone, not a static mock-up."
+      },
+      {
+        "title": "Build & refine",
+        "text": "We adjust content and design together until it feels like your business."
+      },
+      {
+        "title": "Launch & care",
+        "text": "Your domain, HTTPS and analytics set up; I stay available for updates."
+      }
+    ],
+    "includedTitle": "Included in every site",
+    "included": [
+      "Vietnamese & English",
+      "Fast on phones",
+      "Click-to-call, Zalo & map",
+      "SEO basics & link previews",
+      "Your own domain & HTTPS",
+      "Accessible by keyboard and screen readers"
+    ],
+    "cta": "Talk about your website"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let’s build something",
+    "titleAccent": "that holds up.",
+    "text": "Hiring for an AI or senior fullstack role, or need a website for your business? Write to me.",
+    "email": "Email me",
+    "call": "Call",
+    "zalo": "Zalo"
+  },
   "about": {
-    "title": "About",
-    "description": "Experience, education and contact details of {name}, {role}.",
-    "eyebrow": "About me",
+    "title": "Resume",
+    "description": "Experience, skills, education and contact details of {name}, {role}.",
+    "eyebrow": "Resume",
     "hello": "Hello, I’m {name}",
     "email": "Email",
     "phone": "Phone",
     "experience": "Experience",
+    "achievements": "Key achievements",
+    "stack": "Stack",
     "education": "Education",
-    "interests": "Outside of work"
+    "interests": "Outside of work",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "projects": {
+    "eyebrow": "Case study",
+    "back": "All sample websites",
+    "sample": "Sample project: real business details, built as a demonstration",
+    "brief": "The brief",
+    "built": "What I built",
+    "decisions": "Engineering decisions",
+    "stack": "Stack",
+    "screens": "Desktop & mobile",
+    "desktopAlt": "{name}: the home page on a desktop screen",
+    "mobileAlt": "{name}: the home page on a phone",
+    "liveDemo": "Open the live demo",
+    "viewCode": "View the source",
+    "next": "Next project",
+    "ctaTitle": "Want a site like this for your business?",
+    "ctaText": "Send me your menu, photos and logo: you’ll get a live preview within days.",
+    "items": {
+      "nails": {
+        "name": "Envy Nail Spa",
+        "kind": "Nail salon · Wendell, North Carolina",
+        "category": "Beauty",
+        "summary": "From a printed menu and business card to a bilingual salon website with the full price list.",
+        "brief": "The salon had a beautiful printed menu, a business card and a gift certificate, but nothing a customer could open on a phone. The goal: make every price and service findable in seconds, and make calling or booking one tap away.",
+        "features": [
+          "The complete printed menu as an 8-tab price list, with dotted leaders like the paper version",
+          "Seven signature pedicures with “what’s included”, from Basic to Royal Herbal Detox",
+          "Gift certificates, salon policy and opening hours in the visitor’s format (12-hour in English)",
+          "Brand restyle from the print: forest green, gold foil and the “EN” monogram redrawn in SVG",
+          "Mobile drawer menu with scroll-spy, smooth scrolling and a sticky call button"
+        ],
+        "decisions": [
+          "Facts and prices as typed data, words in per-language dictionaries: a missing translation fails the build",
+          "No invented content: reviews, ratings and staff were removed because the business is real",
+          "Unreadable menu items are left out and flagged instead of guessed"
+        ]
+      },
+      "laundry": {
+        "name": "SFaster Laundry",
+        "kind": "Neighbourhood laundry · Vietnam",
+        "category": "Services",
+        "summary": "A cheerful laundry site with a live price estimator built from the shop’s price board.",
+        "brief": "The shop’s strongest selling point (“one customer, one machine”) and its price board only lived on the street sign. Customers needed to know what a load would cost before walking in.",
+        "features": [
+          "Price estimator: pick clothes or bedding, slide the weight, see the price instantly",
+          "All four price tables (wash & dry, bedding, dry cleaning, extras) formatted in đồng",
+          "How it works, loyalty card (wash 7 times, get 1 free), drop-off tips and FAQ",
+          "Visual identity taken from the shop sign: green, yellow lettering, red accents",
+          "Zalo and call buttons always within reach on phones"
+        ],
+        "decisions": [
+          "The estimator is a pure function tested on every tier boundary (3 kg, 6–7 kg gap, 7 kg)",
+          "It only computes in the browser: nothing is sent, so no server action or data storage is needed",
+          "Phone photos resized with their EXIF rotation applied"
+        ]
+      },
+      "wine": {
+        "name": "Khang Hưng Tửu",
+        "kind": "Traditional winery · Long An, since 1991",
+        "category": "Food & drink",
+        "summary": "A heritage brand site in lucky red and imperial yellow, built with alcohol-advertising rules in mind.",
+        "brief": "A 30-year-old winery with a dense printed brochure and a counterfeit problem: customers had to be told that the only real ordering number is the one printed on the can.",
+        "features": [
+          "Signature product line with photos cut from the brochure, on the exact yellow (#ffe500) of the originals",
+          "Showroom jars with the company price per xị, serving guides for steamed wine and Highlands jar wine",
+          "Anti-counterfeit notice and the single ordering number repeated where it matters",
+          "Restaurant partnership section (display towers and cabinets)",
+          "Mandatory 18+, pregnancy and drink-driving warnings next to every call to buy"
+        ],
+        "decisions": [
+          "No health or medicinal claims, as Vietnamese law requires for alcoholic drinks",
+          "Ingredient lists withheld until the owner confirms them: the scans are unreadable in places",
+          "Product names kept as printed in every language; everything else translated"
+        ]
+      },
+      "wedding": {
+        "name": "Hải Sơn & Trúc Giang",
+        "kind": "Online wedding invitation",
+        "category": "Events",
+        "summary": "A wedding invitation website with countdown, lunar date, add-to-calendar and a photo album.",
+        "brief": "A paper invitation can’t show photos, a map or a countdown, and guests lose it. This invitation lives at a link: everything a guest needs, in Vietnamese or English.",
+        "features": [
+          "Full-screen hero with a live countdown to the reception",
+          "Traditional invitation wording with the lunar date (âm lịch) computed automatically",
+          "Ceremony and reception cards with map, Google Calendar and Apple/Outlook (.ics) buttons",
+          "Our story timeline and a masonry album with a keyboard-friendly lightbox",
+          "Private by link: hidden from search engines"
+        ],
+        "decisions": [
+          "All dates in Vietnam time whatever the guest’s device says, covered by tests",
+          "Lunar date from Intl’s Chinese calendar plus the can chi year name (Bính Ngọ)",
+          "The countdown renders placeholders on the server and fills in after hydration: no mismatch on a prerendered page"
+        ]
+      }
+    }
   },
   "login": {
     "title": "Sign in",
@@ -145,52 +339,228 @@
     "back": "Back to home"
   },
   "profile": {
-    "role": "Backend & Platform Engineer",
-    "availability": "Open to new opportunities",
-    "tagline": "I design and build secure, observable microservice platforms — from the API gateway and identity to the database and the cluster they run on.",
+    "role": "AI Engineer · Senior Fullstack Engineer",
+    "availability": "Open to AI engineering roles & freelance projects",
+    "tagline": "I build production web systems end to end, from the database to Kubernetes, and take AI agents and RAG from prototype to reliable, secure production.",
     "bio": [
-      "«Write 2–3 sentences about who you are and what kind of engineering you enjoy.»",
-      "«What you have been working on recently, and the problems you like solving.»",
-      "«What you are looking for in your next role.»"
+      "I’m a senior fullstack engineer with 10+ years building web products, at companies including Lazada, FUTA Bus Lines and OneSecure, and I led a 10-person team at Urbanos. Before that I spent four years as a technical consultant on enterprise security products.",
+      "I work across the whole stack: PostgreSQL tuning on million-row tables, NestJS microservices, Next.js frontends, and the Kubernetes, GitOps and monitoring that keep them running. The platform behind this site shows how I build: a private API behind a gateway, tokens verified twice, events delivered through an outbox, CI on every pull request, and every decision written down.",
+      "My current focus is AI engineering: agents, RAG and tool calling with LangGraph and LangChain on OpenAI and Azure OpenAI, made secure, observable and cost-aware in production. I’m open to AI or senior fullstack roles, and I build websites and web apps for businesses as a freelancer."
     ],
     "personal": [
-      { "label": "Full name", "value": "«Your Full Name»" },
-      { "label": "Location", "value": "«City, Country»" },
-      { "label": "Experience", "value": "«N years»" },
-      { "label": "Languages", "value": "«Vietnamese (native), English (professional)»" },
-      { "label": "Work mode", "value": "«Remote / Hybrid / On-site»" }
+      {
+        "label": "Full name",
+        "value": "Văn Hải Sơn (Van Hai Son)"
+      },
+      {
+        "label": "Location",
+        "value": "Vietnam"
+      },
+      {
+        "label": "Experience",
+        "value": "10+ years in software (since 2015)"
+      },
+      {
+        "label": "Education",
+        "value": "Computer Engineering, HCMUT"
+      },
+      {
+        "label": "Open to",
+        "value": "AI / Senior Fullstack roles, freelance"
+      }
     ],
     "skills": [
-      { "group": "Backend", "items": ["TypeScript", "Node.js", "NestJS", "REST API design", "Validation & error handling"] },
-      { "group": "Architecture & messaging", "items": ["Microservices", "API gateway (KrakenD)", "NATS JetStream events", "Transactional outbox & inbox"] },
-      { "group": "Security & identity", "items": ["Keycloak / OpenID Connect", "JWT (RS256, JWKS)", "RBAC & ownership rules", "BFF sessions"] },
-      { "group": "Data", "items": ["PostgreSQL", "Prisma & migrations", "Redis"] },
-      { "group": "Cloud & DevOps", "items": ["Docker", "Kubernetes", "Kustomize", "Argo CD", "Structured logging (pino)"] },
-      { "group": "Frontend", "items": ["React", "Next.js (App Router)", "Tailwind CSS", "Internationalization"] }
-    ],
-    "strengths": [
-      { "title": "Ship services end to end", "text": "From the contract and the database schema to tests, the gateway route and the Kubernetes manifest." },
-      { "title": "Secure by default", "text": "Token verification at the gateway and again in every service, roles plus data-level rules, no secrets in logs." },
-      { "title": "Built to be operated", "text": "Health checks, JSON logs with request ids, clear error contracts — so problems are found in minutes, not days." },
-      { "title": "Clear conventions, shared knowledge", "text": "I write down the rules a team agrees on and keep them true, so new teammates are productive fast." }
+      {
+        "group": "AI & LLM",
+        "items": [
+          "LangGraph",
+          "LangChain",
+          "OpenAI",
+          "Azure OpenAI",
+          "RAG & embeddings",
+          "Function / tool calling",
+          "Vector search",
+          "Agent workflows",
+          "Prompt engineering"
+        ]
+      },
+      {
+        "group": "Software engineering",
+        "items": [
+          "TypeScript",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "NestJS",
+          "REST APIs",
+          "Microservices",
+          "System design",
+          "Next.js BFF & Server Actions"
+        ]
+      },
+      {
+        "group": "Data",
+        "items": [
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "Redis",
+          "Elasticsearch",
+          "Prisma"
+        ]
+      },
+      {
+        "group": "Platform & DevOps",
+        "items": [
+          "Docker",
+          "Kubernetes",
+          "Kustomize",
+          "Argo CD",
+          "CI/CD (GitHub Actions)",
+          "KrakenD",
+          "NATS JetStream",
+          "Grafana Cloud"
+        ]
+      },
+      {
+        "group": "Cloud & security",
+        "items": [
+          "Azure",
+          "AWS",
+          "Cloudflare",
+          "DNS, RDAP & WHOIS",
+          "Keycloak / OpenID Connect",
+          "Monitoring & observability",
+          "JWT (RS256 + JWKS)",
+          "CSP & security headers"
+        ]
+      }
     ],
     "project": {
-      "name": "nest-microservice platform",
-      "summary": "A NestJS microservice platform: KrakenD as the API gateway, Keycloak for identity, REST services with Prisma/PostgreSQL, NATS JetStream events, and Kubernetes for the whole stack. The dashboard of this site is its live client.",
+      "name": "Microservice platform with BFF websites",
+      "summary": "The repository behind this site, designed and built alone: NestJS microservices behind a private KrakenD gateway, Keycloak identity, PostgreSQL, NATS JetStream events and six Next.js BFF websites, all on Kubernetes with GitOps and telemetry.",
       "points": [
-        "JWTs verified locally at the gateway and in each service (RS256 + JWKS, no shared secret)",
-        "Role-based access plus “only the creator or an admin” ownership rules",
+        "JWTs verified at the gateway and again in each service (RS256 + JWKS); tokens never reach the browser",
+        "Role-based access plus “only the creator or an admin” ownership rules; admin site behind password + OTP",
         "At-least-once events: transactional outbox, JetStream and an idempotent inbox",
-        "The whole system on Kubernetes via Kustomize, with a production-like local staging over HTTPS"
+        "Optimistic concurrency with ETags, single-flight token refresh, file uploads straight from browser to storage",
+        "CI on every pull request, images to GHCR, Argo CD GitOps and Grafana telemetry",
+        "24 architecture decision records and written conventions that people and AI coding agents both follow"
       ]
     },
     "experience": [
-      { "period": "«2023 — Present»", "title": "«Job title»", "company": "«Company»", "text": "«One or two lines on what you owned and the impact you had.»" },
-      { "period": "«2020 — 2023»", "title": "«Job title»", "company": "«Company»", "text": "«One or two lines on what you owned and the impact you had.»" }
+      {
+        "period": "2025 — Present",
+        "title": "Senior Fullstack Engineer",
+        "company": "OneSecure",
+        "text": "Enterprise web applications and backend services for high-volume workloads and large datasets; feature leadership across frontend and backend; reliability through monitoring, performance work and incident resolution.",
+        "achievements": [
+          "Optimized backend services and database queries, significantly improving application performance",
+          "Designed scalable database strategies for rapidly growing datasets",
+          "Reduced production issues through better observability and operational practices",
+          "Contributed to security initiatives involving domain infrastructure and Cloudflare services"
+        ],
+        "stack": []
+      },
+      {
+        "period": "11/2022 — 04/2024",
+        "title": "Full Stack Developer",
+        "company": "FUTA Bus Lines",
+        "text": "APIs and frontend features for an ERP platform, and frontend implementation for a CRM application.",
+        "achievements": [],
+        "stack": [
+          "Node.js",
+          "React",
+          "MongoDB",
+          "MySQL"
+        ]
+      },
+      {
+        "period": "05/2021 — 11/2022",
+        "title": "Full Stack Developer",
+        "company": "Texo Design",
+        "text": "Web applications for Australian clients, including an asset management prototype and the Alliance Farmers portal; campaign sites and email templates from design documents.",
+        "achievements": [],
+        "stack": [
+          "NestJS",
+          "React",
+          "Laravel",
+          "PostgreSQL",
+          "AWS SNS",
+          "Nginx"
+        ]
+      },
+      {
+        "period": "05/2020 — 05/2021",
+        "title": "Full Stack Developer · Team lead",
+        "company": "Urbanos",
+        "text": "Led a 10-member team delivering web and mobile apps for apartment management; turned product requirements and Figma designs into API designs and technical solutions.",
+        "achievements": [],
+        "stack": [
+          "Laravel",
+          "React",
+          "React Native",
+          "MySQL",
+          "Amazon EC2",
+          "Nginx"
+        ]
+      },
+      {
+        "period": "05/2018 — 11/2019",
+        "title": "Full Stack Developer",
+        "company": "Lazada",
+        "text": "Optimized PostgreSQL queries over tables with millions of records for hourly operational reports, and automated their delivery to DingTalk with Node.js cron jobs.",
+        "achievements": [],
+        "stack": [
+          "Node.js / Express",
+          "PostgreSQL",
+          "AWS",
+          "DingTalk API"
+        ]
+      },
+      {
+        "period": "07/2017 — 05/2018",
+        "title": "Senior PHP Developer",
+        "company": "NFQ Asia",
+        "text": "Backend development in a cross-functional team.",
+        "achievements": [],
+        "stack": [
+          "PHP / Symfony",
+          "MySQL",
+          "Elasticsearch",
+          "Emarsys",
+          "Amazon SQS"
+        ]
+      },
+      {
+        "period": "05/2015 — 07/2017",
+        "title": "PHP Developer",
+        "company": "Lampart",
+        "text": "Features for a Japanese water distribution and sales ecosystem.",
+        "achievements": [],
+        "stack": [
+          "PHP / CodeIgniter",
+          "MySQL",
+          "jQuery",
+          "Bootstrap"
+        ]
+      },
+      {
+        "period": "05/2011 — 05/2015",
+        "title": "Technical Consultant",
+        "company": "Misoft",
+        "text": "Enterprise security products, including Check Point firewalls and Entrust OTP.",
+        "achievements": [],
+        "stack": []
+      }
     ],
     "education": [
-      { "period": "«2016 — 2020»", "title": "«Degree»", "school": "«University»" }
+      {
+        "title": "Bachelor of Computer Engineering",
+        "school": "Ho Chi Minh City University of Technology"
+      }
     ],
-    "interests": ["«Interest 1»", "«Interest 2»", "«Interest 3»"]
+    "interests": []
   }
 }

@@ -10,7 +10,7 @@ paths:
 `k8s/` describes the infrastructure of the WHOLE system (both packages): edge Gateway, KrakenD,
 Keycloak, NATS, data stores, the apps. Layout and commands: `k8s/README.md`. Decisions:
 `docs/adr/` (0003 private API, 0004 Keycloak admin, 0007 JetStream, 0009 delivery, 0019 admin site,
-0023 observability).
+0023 observability, 0024 JetStream streams: one owner, storage budget).
 
 ## Exposure (what the Internet can reach)
 - **Public surface = `www.*` (portfolio-web) + `admin.*` (admin-web) + `auth.*` (Keycloak app realm

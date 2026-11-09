@@ -38,3 +38,4 @@ decision.
 | [0021](0021-seo-build-time-site-url.md) | SEO: `SITE_URL` baked at build, per-language metadata, sitemap, JSON-LD, link previews, icons | Web | Accepted |
 | [0022](0022-ui-stack-shadcn-radix-zod.md) | UI stack: shadcn/ui-style on Radix, react-hook-form + zod, TanStack Table, nuqs, `features/` structure | Web | Accepted |
 | [0023](0023-observability-grafana-cloud-alloy.md) | Observability: Grafana Cloud fed by Alloy (one per namespace); `/metrics`, OpenTelemetry traces, JSON logs with `trace_id` | All | Accepted, partly implemented |
+| [0024](0024-jetstream-streams-one-owner.md) | JetStream streams: one owner (`nats-setup`), one shared `EVENTS` stream, a checked storage budget | API / Infra | Accepted, implemented |
