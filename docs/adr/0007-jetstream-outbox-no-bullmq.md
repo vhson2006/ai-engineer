@@ -57,7 +57,8 @@ OutboxRelay ─ publish(Nats-Msg-Id=id) ──▶│ ──────── de
 - Delivery is at-least-once, effect once on the consumer's database. Side effects outside it (an
   email) can repeat in a crash window between the side effect and the commit.
 - Order is kept per producer by the relay, but redeliveries can reorder events at the consumer:
-  handlers that care compare versions (`revision`) instead of assuming order.
+  handlers that care compare `occurredAt` or re-read the source instead of assuming order
+  (no `revision` since ADR 0029).
 - One more table per producer and per consumer; NATS becomes stateful (prod: 3-node cluster,
   streams `num_replicas: 3`, `Retain` StorageClass).
 

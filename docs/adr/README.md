@@ -19,7 +19,7 @@ decision.
 | [0002](0002-keycloak-tokens-verified-twice.md) | Keycloak OIDC, RS256 tokens verified locally by KrakenD and by each service | API | Accepted |
 | [0003](0003-private-api-public-surface.md) | The API is private: only the web app's server calls it | Infra | Accepted |
 | [0004](0004-keycloak-admin-private.md) | Keycloak: only the app realm is public; admin through port-forward | Infra | Accepted |
-| [0005](0005-optimistic-concurrency-etag.md) | No lost updates: `revision` + ETag / If-Match | API | Accepted |
+| [0005](0005-optimistic-concurrency-etag.md) | No lost updates: `revision` + ETag / If-Match | API | Superseded by 0029 |
 | [0006](0006-files-presigned-urls.md) | Files: bytes go straight between browser and object storage | API | Accepted |
 | [0007](0007-jetstream-outbox-no-bullmq.md) | Events at-least-once: outbox + NATS JetStream + inbox, no BullMQ | API / Infra | Accepted, implemented |
 | [0008](0008-nats-reconnect-forever.md) | NATS clients reconnect forever | API | Accepted |
@@ -39,3 +39,12 @@ decision.
 | [0022](0022-ui-stack-shadcn-radix-zod.md) | UI stack: shadcn/ui-style on Radix, react-hook-form + zod, TanStack Table, nuqs, `features/` structure | Web | Accepted |
 | [0023](0023-observability-grafana-cloud-alloy.md) | Observability: Grafana Cloud fed by Alloy (one per namespace); `/metrics`, OpenTelemetry traces, JSON logs with `trace_id` | All | Accepted, partly implemented |
 | [0024](0024-jetstream-streams-one-owner.md) | JetStream streams: one owner (`nats-setup`), one shared `EVENTS` stream, a checked storage budget | API / Infra | Accepted, implemented |
+| [0025](0025-multi-site-tenancy.md) | Many client sites: a Keycloak realm per site for customers, one admin realm, shared databases with `site_id` | All | Accepted, partly implemented (`site_id` in content; realms: interim 0028) |
+| [0026](0026-business-services-split.md) | Business services: content, commerce, crm, marketing, notification, social | API | Accepted, partly implemented (content) |
+| [0027](0027-public-webhook-ingress.md) | A public, signature-checked ingress for platform webhooks (`hooks.*`) | Infra / API | Accepted, not implemented |
+| [0028](0028-content-access-interim.md) | Content access until the realm split: `content-api` roles + `/sites/<id>` groups in the current realm | API / Infra | Accepted, interim |
+| [0029](0029-no-optimistic-concurrency.md) | No optimistic concurrency: no `revision`, ETag or If-Match; the last write wins | API / Web | Accepted, implemented |
+| [0030](0030-admin-site-for-site-admins.md) | The admin site serves site admins too (password); only superadmins need a one-time code | Web / Infra | Accepted, partly implemented |
+| [0031](0031-article-body-sanitized-html.md) | Article bodies are HTML, sanitized by content-service with an allow-list | API / Web | Accepted, implemented |
+| [0032](0032-public-sites-read-content-with-service-account.md) | Public sites read their published content with their own service account (client credentials) | Web / Infra | Accepted, implemented (laundry-web, dev) |
+| [0033](0033-article-layout-blocks.md) | Article bodies may contain layout blocks from a fixed vocabulary (`tpl-*` classes, site images) | API / Web | Accepted, partly implemented (no admin editor blocks yet) |
