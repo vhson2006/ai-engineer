@@ -80,7 +80,7 @@ jobs:
             echo "::warning::Repository variable PROD_SITE_URL is not set: portfolio-web is built for https://www.example.com"
           fi
 
-          # One entry per image. The three API images share one commit (deployment-migrate must
+          # One entry per image. The API images share one commit (deployment-migrate must
           # match deployment-service: ADR 0007/migration Job), so they are built together.
           matrix=$(jq -cn \
             --arg r "$registry" --arg site "$SITE_URL" \
@@ -89,6 +89,7 @@ jobs:
               ($api | if . then
                 {name:"deployment-service",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"deployment-service",   args:""},
                 {name:"notification-service", context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"notification-service", args:""},
+                {name:"content-service",      context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"content-service",      args:""},
                 {name:"deployment-migrate",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"migrate",              args:""}
               else empty end),
               ($portfolio | if . then

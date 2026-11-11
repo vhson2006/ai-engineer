@@ -7,7 +7,7 @@
 #   KrakenD and the services are NOT public: only the web apps' servers call KrakenD (in cluster).
 #
 # Replace example.com everywhere in this folder (and in the realm JSON) with the real domain.
-# Data: DigitalOcean managed Postgres (databases "deployment", "notification" and "keycloak") and managed Valkey;
+# Data: DigitalOcean managed Postgres (databases "deployment", "notification", "content" and "keycloak") and managed Valkey;
 # NATS runs in the cluster. Secrets come from the secret manager through External Secrets.
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -40,6 +40,9 @@ images:
   - name: notification-service
     newName: ghcr.io/vhson2006/ai-engineer/notification-service
     newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
+  - name: content-service
+    newName: ghcr.io/vhson2006/ai-engineer/content-service
+    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52 # first build replaces it (images.yml)
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
     newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
@@ -63,6 +66,9 @@ configMapGenerator:
   - name: notification-service-env
     envs:
       - env/notification-service.env
+  - name: content-service-env
+    envs:
+      - env/content-service.env
   - name: portfolio-web-env
     envs:
       - env/portfolio-web.env

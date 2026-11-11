@@ -1,0 +1,90 @@
+# content-service (REST, :3003, ADR 0026) running in the cluster, from the image built by the
+# Dockerfile (--target content-service). Articles of the client sites; publishes scheduled articles
+# every minute (safe with several replicas: FOR UPDATE SKIP LOCKED). The overlay provides:
+#   ConfigMap "content-service-env"  NATS_URL, LOG_LEVEL, CONTENT_PORT, AUTH_ISSUER, AUTH_JWKS_URL,
+#                                    CONTENT_AUTH_AUDIENCE (content-api)
+#   Secret    "content-db"           CONTENT_DB_HOST, _PORT, _USER, _PASSWORD, _NAME, _SSLMODE
+# and the image name/tag (kustomization `images:`).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: content-service
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: content-service
+      annotations: # GET /metrics, scraped by Alloy (components/observability, ADR 0023)
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3003'
+        prometheus.io/path: /metrics
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: content-service
+          image: content-service
+          ports:
+            - name: http
+              containerPort: 3003
+          envFrom:
+            - configMapRef:
+                name: content-service-env
+            - secretRef:
+                name: content-db
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 320Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-service
+spec:
+  selector:
+    app: content-service
+  ports:
+    - name: http
+      port: 3003
+      targetPort: http

@@ -50,6 +50,9 @@ images:
   - name: notification-service
     newName: local/notification-service
     newTag: staging
+  - name: content-service
+    newName: local/content-service
+    newTag: staging
   - name: deployment-migrate
     newName: local/deployment-migrate
     newTag: staging
@@ -73,6 +76,9 @@ configMapGenerator:
   - name: notification-service-env
     envs:
       - env/notification-service.env
+  - name: content-service-env
+    envs:
+      - env/content-service.env
   - name: portfolio-web-env
     envs:
       - env/portfolio-web.env

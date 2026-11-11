@@ -1,6 +1,6 @@
 {{- /*
   KrakenD Flexible Configuration: the API, written once for every environment. PRIVATE: only
-  portfolio-web's server calls it (no Gateway route, no CORS: no browser ever calls it directly).
+  the web apps' servers call it (no Gateway route, no CORS: no browser ever calls it directly).
   Rendered at startup with FC_ENABLE=1 (see base/krakend/deployment.yaml):
     .env.*                 settings/env.json, provided by each overlay (issuer, JWKS URL, backends, rate limits)
     templates/*.tmpl       reusable blocks: endpoint.tmpl (token check + rate limits of one endpoint)
@@ -50,11 +50,11 @@
       "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments/{id}", "encoding": "no-op" }]
     },
     {
-      "@comment": "Role check only; 'only the creator or an admin' is enforced by the service. If-Match is required by the service (optimistic concurrency, 428/412).",
+      "@comment": "Role check only; 'only the creator or an admin' is enforced by the service.",
       "endpoint": "/api/deployments/{id}",
       "method": "PATCH",
       "output_encoding": "no-op",
-      "input_headers": ["Content-Type", "If-Match", "Authorization", "X-Request-Id"],
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
       "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
       "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/deployments/{id}", "encoding": "no-op" }]
     },
@@ -122,6 +122,165 @@
       "input_headers": ["Authorization", "X-Request-Id"],
       "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:write" "deployment:admin") "limit" "write") }},
       "backend": [{ "host": [{{ marshal .env.services.deployment }}], "url_pattern": "/api/files/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "content-service (ADR 0026), its own audience content-api. Sites the caller manages (site rule in the service).",
+      "endpoint": "/api/content/sites",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/content/sites/{siteId}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Create a site: content:admin only.",
+      "endpoint": "/api/content/sites",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Change a site (languages...): content:admin.",
+      "endpoint": "/api/content/sites/{siteId}",
+      "method": "PATCH",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/content/sites/{siteId}/categories",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/categories", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/content/sites/{siteId}/categories/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/categories/{id}", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/content/sites/{siteId}/categories",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/categories", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/content/sites/{siteId}/categories/{id}",
+      "method": "PATCH",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/categories/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "In use by an article: 422 from the service.",
+      "endpoint": "/api/content/sites/{siteId}/categories/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/categories/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Articles as admins see them (drafts too). Only these query params are forwarded.",
+      "endpoint": "/api/content/sites/{siteId}/articles",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["page", "limit", "status", "categoryId", "search"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles", "encoding": "no-op" }]
+    },
+    {
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Create a draft: 201 + Location pass through unchanged.",
+      "endpoint": "/api/content/sites/{siteId}/articles",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Drafts: content:write; scheduled or live articles: content:publish (checked by the service).",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}",
+      "method": "PATCH",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Publish now or schedule (`at`). Every language of the site required (422).",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}/publish",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}/publish", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Back to draft (off the site, or schedule cancelled).",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}/unpublish",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}/unpublish", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Delete for good. Drafts: content:write; otherwise content:publish (service).",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "What a site shows: published articles in one language.",
+      "endpoint": "/api/content/sites/{siteId}/published-articles",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["locale", "category", "page", "limit"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/published-articles", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "One published article by slug; an old slug answers the current one (the site redirects, never the API).",
+      "endpoint": "/api/content/sites/{siteId}/published-articles/by-slug",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["locale", "slug"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/published-articles/by-slug", "encoding": "no-op" }]
     }
   ]
 }

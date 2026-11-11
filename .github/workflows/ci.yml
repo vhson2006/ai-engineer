@@ -75,7 +75,7 @@ jobs:
       - run: npm run lint:check
       - run: npm run format:check
       - run: npm test
-      - run: npm run test:e2e # Prisma, NATS and storage are mocked: no services needed
+      - run: npm run test:integration # Prisma, NATS and storage are mocked: no services needed
       - run: npm run build
 
   web:

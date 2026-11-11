@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Admin site sign-in = an administrator, with password AND one-time code (ADR 0019), enforced by
-# Keycloak in the browser flow "browser-admin-otp" of realm nest-microservice:
+# Admin site sign-in (ADRs 0019, 0030): admins only; superadmins with password AND one-time code,
+# site admins with their password. Enforced by Keycloak in the browser flow "browser-admin-otp" of
+# realm nest-microservice:
 #
 #   Cookie                                   ALTERNATIVE  (an existing SSO session)
 #   browser-admin-otp-forms                  ALTERNATIVE
@@ -8,7 +9,9 @@
 #     browser-admin-otp-non-admins           CONDITIONAL
 #       Condition - user role                REQUIRED     (NOT admin-web.admin)
 #       Deny access                          REQUIRED     → refused before any OTP step
-#     OTP Form                               REQUIRED     (an admin without OTP must set it up: QR)
+#     browser-admin-otp-superadmins          CONDITIONAL
+#       Condition - user role                REQUIRED     (admin-web.superadmin)
+#       OTP Form                             REQUIRED     (a superadmin without OTP must set it up: QR)
 #
 # Non-admins are refused right after their password, so trying the admin site never enrolls them
 # in OTP. The flow is bound to the client "admin-web" only (authentication flow override):
@@ -46,7 +49,7 @@ if [ -n "$OLD" ]; then
   q delete authentication/flows/$OLD
 fi
 
-q create authentication/flows -s alias=$F -s "description=Admins only, password AND one-time code (client admin-web, ADR 0019)" \
+q create authentication/flows -s alias=$F -s "description=Admins only; superadmins also a one-time code (client admin-web, ADRs 0019, 0030)" \
   -s providerId=basic-flow -s topLevel=true -s builtIn=false
 # Explicit priorities: Keycloak 26 orders the steps of a flow by priority, and steps created without one
 # all get 0, so their order is arbitrary (the role check could run before the password form, with
@@ -57,15 +60,19 @@ q create authentication/flows/$F-forms/executions/execution -s provider=auth-use
 q create authentication/flows/$F-forms/executions/flow -s alias=$F-non-admins -s type=basic-flow -s priority=20   -s "description=Refuse users without admin-web.admin"
 q create authentication/flows/$F-non-admins/executions/execution -s provider=conditional-user-role -s priority=10
 q create authentication/flows/$F-non-admins/executions/execution -s provider=deny-access-authenticator -s priority=20
-q create authentication/flows/$F-forms/executions/execution -s provider=auth-otp-form -s priority=30
+q create authentication/flows/$F-forms/executions/flow -s alias=$F-superadmins -s type=basic-flow -s priority=30 -s "description=One-time code for admin-web.superadmin"
+q create authentication/flows/$F-superadmins/executions/execution -s provider=conditional-user-role -s priority=10
+q create authentication/flows/$F-superadmins/executions/execution -s provider=auth-otp-form -s priority=20
 
-# Executions are created DISABLED: set each requirement; configure the role condition (negated).
+# Executions are created DISABLED: set each requirement; configure the two role conditions. They
+# are told apart by order: the first is the (negated) admin check, the second the superadmin one.
+SEEN_ROLE=
 k get authentication/flows/$F/executions --fields id,providerId,displayName --format csv --noquotes |
 while IFS=, read -r id provider display; do
   case "$provider:$display" in
     auth-cookie:*) req=ALTERNATIVE ;;
     *:$F-forms) req=ALTERNATIVE ;;
-    *:$F-non-admins) req=CONDITIONAL ;;
+    *:$F-non-admins|*:$F-superadmins) req=CONDITIONAL ;;
     auth-username-password-form:*|auth-otp-form:*) req=REQUIRED ;;
     deny-access-authenticator:*)
       req=REQUIRED
@@ -73,8 +80,14 @@ while IFS=, read -r id provider display; do
         -s "config.denyErrorMessage=This account is not an administrator. / Tài khoản này không phải quản trị viên." ;;
     conditional-user-role:*)
       req=REQUIRED
-      q create authentication/executions/$id/config -s alias=$F-not-admin \
-        -s config.condUserRole=admin-web.admin -s config.negate=true ;;
+      if [ -z "$SEEN_ROLE" ]; then
+        SEEN_ROLE=1
+        q create authentication/executions/$id/config -s alias=$F-not-admin \
+          -s config.condUserRole=admin-web.admin -s config.negate=true
+      else
+        q create authentication/executions/$id/config -s alias=$F-superadmin \
+          -s config.condUserRole=admin-web.superadmin -s config.negate=false
+      fi ;;
     *) continue ;;
   esac
   q update authentication/flows/$F/executions -b "{\"id\":\"$id\",\"requirement\":\"$req\"}"
@@ -85,9 +98,9 @@ done
 ORDER=$(k get authentication/flows/$F/executions --fields providerId,displayName --format csv --noquotes | cut -d, -f1,2 | tr "
 " " ")
 case "$ORDER" in
-  *auth-cookie*"$F-forms"*auth-username-password-form*"$F-non-admins"*conditional-user-role*deny-access-authenticator*auth-otp-form*) ;;
+  *auth-cookie*"$F-forms"*auth-username-password-form*"$F-non-admins"*conditional-user-role*deny-access-authenticator*"$F-superadmins"*conditional-user-role*auth-otp-form*) ;;
   *) echo "unexpected step order in $F: $ORDER" >&2; exit 1 ;;
 esac
 
 q update clients/$CID -s "authenticationFlowBindingOverrides.browser=$(flow_id $F)"
-echo "client admin-web: browser flow = $F (admins only, password + OTP)"'
+echo "client admin-web: browser flow = $F (admins only; superadmins + OTP)"'
