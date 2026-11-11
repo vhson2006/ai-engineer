@@ -36,23 +36,23 @@ components:
 images:
   - name: deployment-service
     newName: ghcr.io/vhson2006/ai-engineer/deployment-service
-    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
+    newTag: f995df3a63cc57fce11e70e975d94d4ae0a9ec1a
   - name: notification-service
     newName: ghcr.io/vhson2006/ai-engineer/notification-service
-    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
+    newTag: f995df3a63cc57fce11e70e975d94d4ae0a9ec1a
   - name: content-service
     newName: ghcr.io/vhson2006/ai-engineer/content-service
     # Not a commit: images.yml builds every API image on the next run and writes the real tag.
     newTag: placeholder
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
-    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
+    newTag: f995df3a63cc57fce11e70e975d94d4ae0a9ec1a
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
-    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
+    newTag: f995df3a63cc57fce11e70e975d94d4ae0a9ec1a
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
-    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
+    newTag: f995df3a63cc57fce11e70e975d94d4ae0a9ec1a
 
 configMapGenerator:
   - name: krakend-settings
