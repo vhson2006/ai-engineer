@@ -372,7 +372,7 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 
 Built by CI, not by hand: after CI passes on `main`, `.github/workflows/images.yml` builds every
 image whose code changed since the commit it is tagged with in `overlays/prod/kustomization.yaml`
-(the 3 API images always together), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`
+(the 4 API images always together; one of them changed or on `newTag: placeholder` rebuilds all), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`
 (private, like the repository; pods pull with the Secret `ghcr-pull`) and commits the new
 `newTag`s to `main` as `github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all.
 portfolio-web needs the repository variable `PROD_SITE_URL` (its public origin, ADR 0021);

@@ -60,6 +60,7 @@ OTP, `web/apps/admin-web/README.md`).
 `check`; k8s: render every overlay + `krakend-check.sh`); required check `ci-ok`. A new package or
 check goes into it in the same change. `images.yml` builds changed images to GHCR and commits
 their `newTag` in `k8s/overlays/prod/kustomization.yaml`: never edit those lines by hand; a new
-image = a matrix entry + an `images:` entry.
+image = a matrix entry + an `images:` entry with `newTag: placeholder` (never another image's sha:
+the next run builds it and writes the real tag).
 
 If a convention changes, update this file, the package files and the rules in the same change.

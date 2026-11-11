@@ -42,7 +42,8 @@ images:
     newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52
   - name: content-service
     newName: ghcr.io/vhson2006/ai-engineer/content-service
-    newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52 # first build replaces it (images.yml)
+    # Not a commit: images.yml builds every API image on the next run and writes the real tag.
+    newTag: placeholder
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
     newTag: dab267b793d4ba5e5409906291fd35f9dfd17b52

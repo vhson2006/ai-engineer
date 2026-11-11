@@ -71,7 +71,12 @@ jobs:
               echo false
             fi
           }
-          api=$(changed deployment-service '^nest-microservice/')
+          # The API images are built together (one commit): any of them changed, or still on a
+          # placeholder tag (a new image), rebuilds all of them.
+          api=false
+          for image in deployment-service notification-service content-service deployment-migrate; do
+            if [ "$(changed "$image" '^nest-microservice/')" = true ]; then api=true; fi
+          done
           portfolio=$(changed portfolio-web '^web/(packages/|apps/portfolio-web/|package(-lock)?\.json|tsconfig)')
           admin=$(changed admin-web '^web/(packages/|apps/admin-web/|package(-lock)?\.json|tsconfig)')
           echo "api=$api portfolio-web=$portfolio admin-web=$admin"
