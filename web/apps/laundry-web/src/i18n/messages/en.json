@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "SFaster Laundry · One customer, one machine · Clean, fresh, fast",
-    "description": "SFaster laundry at 68 Lê Hồng Phong: wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–19:00 every day."
+    "description": "SFaster laundry, two branches in Ho Chi Minh City (40 Cửu Long and 68 Lê Hồng Phong): wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–20:00 every day."
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -28,6 +28,7 @@
   "nav": {
     "label": "Main",
     "home": "SFaster home",
+    "top": "Home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "prices": "Prices",
@@ -35,7 +36,8 @@
     "process": "How it works",
     "tips": "Before you drop off",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "articles": "Articles"
   },
   "brand": {
     "laundry": "Laundry",
@@ -43,7 +45,7 @@
     "oneMachine": "One customer, one machine"
   },
   "hero": {
-    "eyebrow": "Wash & dry · 68 Lê Hồng Phong",
+    "eyebrow": "Wash & dry · 2 branches in Ho Chi Minh City",
     "title": "Clean, fresh laundry,",
     "titleAccent": "never mixed with anyone else's.",
     "text": "At SFaster every customer gets their own machine: your clothes are washed and dried on their own, then bagged and labelled with your name. Priced by weight, from 35,000 ₫ a load.",
@@ -176,25 +178,55 @@
       { "q": "Can wool, silk, leather or suits go in the machine?", "a": "Those are better in our dry cleaning service, which keeps their shape and material. See the dry cleaning prices." },
       { "q": "When can I pick my laundry up?", "a": "It depends on how much you bring and the service. Call or message us on Zalo and we'll tell you when it will be ready." },
       { "q": "How does wash 7 times, get 1 free work?", "a": "After 7 paid washes, your next one is free. Ask at the counter for the details." },
-      { "q": "When is the shop open?", "a": "Every day from 7:00 to 19:00, except public holidays (Lễ, Tết)." }
+      { "q": "When is the shop open?", "a": "Every day from 7:00 to 20:00 at both branches, except public holidays (Lễ, Tết)." }
     ]
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Drop by the shop",
-    "text": "Come straight in during opening hours, or call or message us on Zalo first.",
+    "text": "Two branches in Ho Chi Minh City. Come to the nearest one during opening hours, or call or message us on Zalo first.",
+    "branch": "Branch {number}",
+    "branchesLabel": "Branches",
     "address": "Address",
     "hours": "Opening hours",
     "hoursValue": "{open} – {close} every day",
     "holidays": "Closed on public holidays (Lễ, Tết)",
     "phone": "Hotline & Zalo",
-    "imageAlt": "The SFaster shop sign: Giặt sấy SFaster, one customer one machine, clean, fresh, fast"
+    "imageAlt": "The SFaster sign: one customer one machine, clean, fresh, fast; branches at 40 Cửu Long and 68 Lê Hồng Phong, hotline 0984 763 100",
+    "posterTitle": "Opening hours",
+    "posterDaily": "Every day",
+    "posterZalo": "Call or message on Zalo"
   },
   "footer": {
     "tagline": "Wash & dry laundry: one customer, one machine. Clean, fresh, fast.",
     "explore": "Explore",
     "contact": "Contact",
     "rights": "© {year} {name}. All rights reserved."
+  },
+  "articles": {
+    "eyebrow": "Articles",
+    "title": "Laundry tips & shop notes",
+    "intro": "Drop-off tips, choosing the right service and how we price your laundry, from SFaster.",
+    "metaTitle": "Articles: laundry tips and shop notes",
+    "metaDescription": "Tips for dropping off laundry, when to choose dry cleaning, and how SFaster prices laundry by weight or by item.",
+    "home": "Home",
+    "breadcrumb": "Breadcrumb",
+    "all": "All",
+    "categoriesLabel": "Topics",
+    "categoryTitle": "{category}",
+    "categoryDescription": "Articles about {category} from SFaster laundry.",
+    "featured": "Featured",
+    "readMore": "Read more",
+    "minutes": "{count} min read",
+    "latest": "New articles",
+    "latestIntro": "Small tips for cleaner laundry, and answers before you drop off.",
+    "viewAll": "All articles",
+    "back": "Back to articles",
+    "related": "Keep reading",
+    "empty": "No articles in this topic yet.",
+    "none": "No article has been published yet.",
+    "ctaTitle": "Laundry to do today?",
+    "ctaText": "Bring it to the shop, or call or message us on Zalo first."
   },
   "notFound": {
     "title": "Page not found",

@@ -1,9 +1,10 @@
 # syntax=docker/dockerfile:1
-# One Dockerfile, three images (pick with --target):
+# One Dockerfile, four images (pick with --target):
 #   docker build --target deployment-service   -t deployment-service .
 #   docker build --target notification-service -t notification-service .
-#   docker build --target migrate              -t deployment-migrate .   (run as Jobs: prisma migrate deploy of BOTH
-#                                                                         databases; with `node dist/apps/nats-setup/main`: the JetStream streams)
+#   docker build --target content-service      -t content-service .
+#   docker build --target migrate              -t deployment-migrate .   (run as Jobs: prisma migrate deploy of EVERY
+#                                                                         database; with `node dist/apps/nats-setup/main`: the JetStream streams)
 # Runtime images: production node_modules only, non-root user, no source, no .env.
 ARG NODE_IMAGE=node:24.22.1-alpine
 
@@ -11,14 +12,16 @@ ARG NODE_IMAGE=node:24.22.1-alpine
 FROM ${NODE_IMAGE} AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-# postinstall runs `prisma generate` for both services, which needs their schemas and configs.
+# postinstall runs `prisma generate` for every service, which needs their schemas and configs.
 COPY apps/deployment-service/prisma.config.ts apps/deployment-service/
 COPY apps/deployment-service/prisma apps/deployment-service/prisma
 COPY apps/notification-service/prisma.config.ts apps/notification-service/
 COPY apps/notification-service/prisma apps/notification-service/prisma
+COPY apps/content-service/prisma.config.ts apps/content-service/
+COPY apps/content-service/prisma apps/content-service/prisma
 RUN npm ci
 
-# ---- build both apps (webpack bundles the app code and the generated Prisma client into dist/) --
+# ---- build every app (webpack bundles the app code and the generated Prisma client into dist/) --
 FROM deps AS build
 COPY . .
 RUN npm run build
@@ -55,6 +58,12 @@ COPY --from=build /app/dist/apps/notification-service ./dist/apps/notification-s
 EXPOSE 3002
 CMD ["node", "dist/apps/notification-service/main"]
 
+# ---- content-service (REST, :3003; publishes scheduled articles every minute) -----------------
+FROM runtime AS content-service
+COPY --from=build /app/dist/apps/content-service ./dist/apps/content-service
+EXPOSE 3003
+CMD ["node", "dist/apps/content-service/main"]
+
 # ---- migrate: prisma migrate deploy (needs the Prisma CLI, a dev dependency) --------------------
 # Also carries nats-setup (the one owner of the JetStream streams, ADR 0024): same image, the Job
 # `nats-setup` overrides the command.
@@ -64,5 +73,5 @@ COPY --from=build /app/dist/apps/nats-setup ./dist/apps/nats-setup
 # Numeric uid (= the image's "node" user): Kubernetes can only enforce runAsNonRoot with a
 # numeric USER ("node" → CreateContainerConfigError). Found by the local staging (ADR 0018).
 USER 1000:1000
-# Each service owns its database: deployment (DB_*) and notification (NOTIFICATION_DB_*).
-CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy --config apps/deployment-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/notification-service/prisma.config.ts"]
+# Each service owns its database: deployment (DB_*), notification (NOTIFICATION_DB_*), content (CONTENT_DB_*).
+CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy --config apps/deployment-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/notification-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/content-service/prisma.config.ts"]

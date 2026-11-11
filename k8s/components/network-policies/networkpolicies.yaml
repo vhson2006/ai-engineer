@@ -4,10 +4,10 @@
 #   Internet ─▶ edge-nginx :80/:443
 #   edge-nginx ─▶ portfolio-web :3000, admin-web :3000, keycloak :8080  (KrakenD is NOT reachable from the edge)
 #   portfolio-web, admin-web ─▶ krakend :8080  (server-side API calls; tokens never leave the server)
-#   krakend ─▶ deployment-service :3001
-#   krakend, deployment-service ─▶ keycloak :8080   (JWKS)
+#   krakend ─▶ deployment-service :3001, content-service :3003
+#   krakend, deployment-service, content-service ─▶ keycloak :8080   (JWKS)
 #   keycloak ◀─▶ keycloak (all ports)         (cluster cache between replicas)
-#   deployment-service, notification-service, nats-setup (Job) ─▶ nats :4222
+#   deployment-service, notification-service, content-service, nats-setup (Job) ─▶ nats :4222
 #
 # Egress is not restricted here (managed Postgres/Valkey, DNS, Let's Encrypt are outside the
 # cluster). Probes come from the kubelet on the node and are not affected on DOKS (Cilium).
@@ -115,6 +115,24 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
+  name: content-service-from-krakend
+spec:
+  podSelector:
+    matchLabels:
+      app: content-service
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: krakend
+      ports:
+        - port: 3003
+          protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
   name: keycloak-ingress
 spec:
   podSelector:
@@ -132,6 +150,9 @@ spec:
         - podSelector:
             matchLabels:
               app: deployment-service
+        - podSelector:
+            matchLabels:
+              app: content-service
       ports:
         - port: 8080
           protocol: TCP
@@ -157,6 +178,9 @@ spec:
         - podSelector:
             matchLabels:
               app: notification-service
+        - podSelector:
+            matchLabels:
+              app: content-service
         - podSelector:
             matchLabels:
               app: nats-setup # Job: creates the streams (ADR 0024)

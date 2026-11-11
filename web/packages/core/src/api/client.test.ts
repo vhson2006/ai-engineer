@@ -100,9 +100,9 @@ describe('apiFetch: errors', () => {
     expect(await client()('/a')).toMatchObject({ ok: false, status: 403, code: 'forbidden', message: "You don't have permission to do this." });
   });
 
-  it('412 / 409 / 404 keep the API code', async () => {
-    fetchMock.mockResolvedValue(problem(412, 'precondition_failed', 'Modified since you read it'));
-    expect(await client()('/a', { method: 'PATCH', body: {} })).toMatchObject({ status: 412, code: 'precondition_failed' });
+  it('409 / 422 / 404 keep the API code', async () => {
+    fetchMock.mockResolvedValue(problem(422, 'missing_translations', 'Every language of the site is needed'));
+    expect(await client()('/a', { method: 'PATCH', body: {} })).toMatchObject({ status: 422, code: 'missing_translations' });
   });
 
   it('5xx details are never shown to users', async () => {

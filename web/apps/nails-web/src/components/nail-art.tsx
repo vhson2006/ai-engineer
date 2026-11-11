@@ -35,7 +35,7 @@ export function NailArt({
   className?: string;
 }) {
   const gradient = `${id}-g`;
-  const fill = pattern === 'chrome' || pattern === 'ombre' ? `url(#${gradient})` : base;
+  const fill = pattern === 'chrome' || pattern === 'ombre' || pattern === 'aura' ? `url(#${gradient})` : base;
   return (
     <svg
       viewBox="0 0 200 120"
@@ -58,6 +58,14 @@ export function NailArt({
             <stop offset="0" stopColor={accent} />
             <stop offset="1" stopColor={base} />
           </linearGradient>
+        )}
+        {pattern === 'aura' && (
+          // A soft glow from the middle of each nail (airbrushed "aura" nails).
+          <radialGradient id={gradient} cx="0.5" cy="0.55" r="0.6">
+            <stop offset="0" stopColor={accent} />
+            <stop offset="0.45" stopColor={accent} stopOpacity="0.55" />
+            <stop offset="1" stopColor={base} />
+          </radialGradient>
         )}
         {FAN.map((nail, index) => (
           <clipPath key={index} id={`${id}-c${index}`}>

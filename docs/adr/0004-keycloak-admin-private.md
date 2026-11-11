@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-11-06
-- **Related:** `.claude/rules/infrastructure.md`, `k8s/base/gateway/routes.yaml`,
+- **Related:** 0025 (a public realm per client site + one admin realm; `master` stays private), `.claude/rules/infrastructure.md`, `k8s/base/gateway/routes.yaml`,
   `k8s/scripts/keycloak-admin-url.sh`, `k8s/README.md` (prod bootstrap step 8)
 
 ## Context

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Be_Vietnam_Pro, Playfair_Display } from 'next/font/google';
-import { localizedPath } from '@web/core/i18n/paths';
 import { SmoothScroll } from '@web/ui/smooth-scroll';
 import { MobileActionBar } from '@/components/mobile-action-bar';
 import { SiteFooter } from '@/components/site-footer';
@@ -8,6 +7,8 @@ import { SiteHeader } from '@/components/site-header';
 import { winery } from '@/content/winery';
 import { LOCALE_CODES } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
+import { publicPageMetadata } from '@/seo';
+import { SITE_URL } from '@/site';
 import '../globals.css';
 
 // Both fonts ship Vietnamese glyphs (ạ, ế, ữ…); next/font self-hosts them (CSP: font-src 'self').
@@ -27,14 +28,13 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return {
+    // Relative URLs in metadata (canonical, hreflang, Open Graph images) resolve against SITE_URL.
+    metadataBase: new URL(SITE_URL),
     title: { default: t.meta.title, template: `%s · ${winery.name}` },
-    description: t.meta.description,
     applicationName: winery.name,
-    alternates: {
-      canonical: localizedPath(locale, '/'),
-      languages: Object.fromEntries(LOCALE_CODES.map((code) => [code, localizedPath(code, '/')])),
-    },
     formatDetection: { telephone: false, address: false, email: false },
+    // The home page's complete metadata; every other page returns its own (publicPageMetadata).
+    ...publicPageMetadata({ locale, path: '/', description: t.meta.description }),
   };
 }
 

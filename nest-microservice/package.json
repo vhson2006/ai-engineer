@@ -6,32 +6,37 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "npm run prisma:generate",
-    "build": "nest build deployment-service && nest build notification-service && nest build nats-setup",
+    "build": "nest build deployment-service && nest build notification-service && nest build content-service && nest build nats-setup",
     "start:deployment": "nest start deployment-service --watch",
     "start:notification": "nest start notification-service --watch",
+    "start:content": "nest start content-service --watch",
     "nats:setup": "nest start nats-setup",
-    "start:dev": "npm run nats:setup && concurrently -k -n deployment,notification -c green,magenta \"npm:start:deployment\" \"npm:start:notification\"",
+    "start:dev": "npm run nats:setup && concurrently -k -n deployment,notification,content -c green,magenta,cyan \"npm:start:deployment\" \"npm:start:notification\" \"npm:start:content\"",
     "start:prod:deployment": "node dist/apps/deployment-service/main",
     "start:prod:notification": "node dist/apps/notification-service/main",
+    "start:prod:content": "node dist/apps/content-service/main",
     "start:prod:nats-setup": "node dist/apps/nats-setup/main",
     "infra:up": "docker compose up -d",
     "infra:down": "docker compose down",
     "postinstall": "npm run prisma:generate",
-    "prisma:generate": "prisma generate --config apps/deployment-service/prisma.config.ts && prisma generate --config apps/notification-service/prisma.config.ts",
+    "prisma:generate": "prisma generate --config apps/deployment-service/prisma.config.ts && prisma generate --config apps/notification-service/prisma.config.ts && prisma generate --config apps/content-service/prisma.config.ts",
     "prisma:studio": "prisma studio --config apps/deployment-service/prisma.config.ts",
     "migration:dev": "prisma migrate dev --config apps/deployment-service/prisma.config.ts",
     "migration:create": "prisma migrate dev --create-only --config apps/deployment-service/prisma.config.ts",
     "migration:dev:notification": "prisma migrate dev --config apps/notification-service/prisma.config.ts",
-    "migration:run": "prisma migrate deploy --config apps/deployment-service/prisma.config.ts && prisma migrate deploy --config apps/notification-service/prisma.config.ts",
-    "migration:status": "prisma migrate status --config apps/deployment-service/prisma.config.ts && prisma migrate status --config apps/notification-service/prisma.config.ts",
+    "migration:dev:content": "prisma migrate dev --config apps/content-service/prisma.config.ts",
+    "migration:create:content": "prisma migrate dev --create-only --config apps/content-service/prisma.config.ts",
+    "migration:run": "prisma migrate deploy --config apps/deployment-service/prisma.config.ts && prisma migrate deploy --config apps/notification-service/prisma.config.ts && prisma migrate deploy --config apps/content-service/prisma.config.ts",
+    "migration:status": "prisma migrate status --config apps/deployment-service/prisma.config.ts && prisma migrate status --config apps/notification-service/prisma.config.ts && prisma migrate status --config apps/content-service/prisma.config.ts",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "format:check": "prettier --check \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "lint": "eslint \"{apps,libs}/**/*.ts\" --fix",
     "lint:check": "eslint \"{apps,libs}/**/*.ts\"",
+    "seed:article-templates": "ts-node -r tsconfig-paths/register --project apps/content-service/tsconfig.app.json apps/content-service/scripts/seed-article-templates.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:e2e": "jest --config apps/deployment-service/test/jest-e2e.json --runInBand"
+    "test:integration": "jest --config apps/deployment-service/test/jest-integration.json --runInBand && jest --config apps/content-service/test/jest-integration.json --runInBand"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1155.0",
@@ -69,7 +74,8 @@
     "pino-http": "^11.0.0",
     "prom-client": "15.1.3",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sanitize-html": "^2.18.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
@@ -79,6 +85,7 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.7",
+    "@types/sanitize-html": "^2.16.2",
     "@types/supertest": "^6.0.2",
     "concurrently": "^9.1.2",
     "eslint": "^9.18.0",
@@ -111,7 +118,18 @@
     ],
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
+      "^.+\\.ts$": "ts-jest",
+      "^.+\\.js$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "allowJs": true,
+            "module": "commonjs",
+            "esModuleInterop": true
+          },
+          "isolatedModules": true
+        }
+      ]
     },
     "collectCoverageFrom": [
       "apps/**/src/**/*.ts",
@@ -124,6 +142,9 @@
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src$1"
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(htmlparser2|domhandler|domutils|dom-serializer|domelementtype|entities)/)"
+    ]
   }
 }

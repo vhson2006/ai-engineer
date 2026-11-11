@@ -35,6 +35,14 @@ const nextConfig: NextConfig = {
   // In dev the site is served through the edge Gateway (http://www.localtest.me:8000), not
   // localhost:3000; Next blocks dev assets/HMR for other origins unless they are listed here.
   allowedDevOrigins: ['www.localtest.me'],
+  experimental: {
+    serverActions: {
+      // Dev only: the browser is on www.localtest.me:8000 but the Gateway forwards the host WITHOUT the
+      // port (x-forwarded-host), so Next's same-origin check refuses every Server Action. Staging
+      // and prod are on 443 (no port): nothing to allow there, the check stays strict.
+      allowedOrigins: process.env.NODE_ENV === 'development' ? ['www.localtest.me:8000'] : [],
+    },
+  },
   turbopack: {
     // Only web/ (not the whole repo: nest-microservice/node_modules would be watched too).
     root: workspaceRoot,

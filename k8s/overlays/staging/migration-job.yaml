@@ -39,6 +39,7 @@ spec:
               until pg_isready -h postgres -U "$POSTGRES_USER" -q; do echo "waiting for postgres"; sleep 2; done
               psql -h postgres -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 <<'SQL'
               SELECT 'CREATE DATABASE notification' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'notification')\gexec
+              SELECT 'CREATE DATABASE content' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'content')\gexec
               SQL
               echo "databases ready"
           securityContext:
@@ -54,6 +55,8 @@ spec:
                 name: deployment-db
             - secretRef:
                 name: notification-db
+            - secretRef:
+                name: content-db
           resources:
             requests:
               cpu: 100m

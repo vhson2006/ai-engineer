@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { format } from '@web/core/i18n/format';
 import { Container } from '@web/ui';
-import { shop } from '@/content/shop';
+import { branchAddress, branchMapsHref, shop } from '@/content/shop';
 import { href } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 import { formatTime } from '@/lib/format';
@@ -34,10 +34,20 @@ export async function SiteFooter() {
               </a>
             </li>
           ))}
+          <li>
+            <a href={href(locale, '/bai-viet')} className={linkClass}>
+              {t.nav.articles}
+            </a>
+          </li>
         </FooterColumn>
         <FooterColumn title={t.footer.contact}>
-          {shop.addressLines.map((line) => (
-            <li key={line}>{line}</li>
+          {shop.branches.map((branch, index) => (
+            <li key={branch.id}>
+              <span className="font-semibold text-white">{format(t.contact.branch, { number: index + 1 })}:</span>{' '}
+              <a href={branchMapsHref(branch)} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                {branchAddress(branch)}
+              </a>
+            </li>
           ))}
           <li>
             <a href={shop.phone.href} className={linkClass}>

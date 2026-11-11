@@ -31,5 +31,5 @@ If the owning service, the HTTP method/status, the request/response fields, or *
 13. E2e in `apps/<service>/test/` with signed tokens: happy-path status + headers, 401 without token, 403 without the role (nothing written), validation 400, and each error status the route can return.
 
 ## 5. Check
-14. Run `npm run lint:check`, `npm test` and `npm run test:e2e`, then call the route through KrakenD (`http://localhost:8080/api/...`, from `npm run k8s:forward`) with tokens for `carol`/`bob`/`alice` (see README) and check status + headers. Report the real output; if something can't run, say so.
+14. Run `npm run lint:check`, `npm test` and `npm run test:integration`, then call the route through KrakenD (`http://localhost:8080/api/...`, from `npm run k8s:forward`) with tokens for `carol`/`bob`/`alice` (see README) and check status + headers. Report the real output; if something can't run, say so.
 15. Summarize: route, roles, ownership rule, status codes, KrakenD endpoint, events, files changed, and anything you assumed.

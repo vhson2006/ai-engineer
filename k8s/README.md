@@ -32,7 +32,7 @@ k8s/
 ├── components/
 │   ├── local-data/              # Postgres, Redis (ACL users), SeaweedFS (S3 for files) in the cluster: dev only
 │   ├── nats/                    # NATS (single instance): dev and prod
-│   ├── apps/                    # deployment-service, notification-service, portfolio-web IN the cluster: prod
+│   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster: staging, prod
 │   ├── network-policies/        # default deny + allowed flows: staging and prod
 │   └── observability/           # Grafana Alloy → Grafana Cloud (metrics, logs, traces; ADR 0023): staging and prod
 ├── overlays/
@@ -71,7 +71,7 @@ kubectl config current-context        # make sure you are on the local cluster (
 npm run k8s:up                        # installs NGINX Gateway Fabric once, then kubectl apply -k k8s/overlays/dev
 npm run k8s:status                    # wait until all 6 pods are Running 1/1 (Keycloak: ~1-2 min)
 npm run keycloak:admin-url             # once per fresh cluster: Keycloak admin console (ADR 0004)
-npm run keycloak:admin-otp             # once per fresh cluster: admin site = admins + OTP (ADR 0019)
+npm run keycloak:admin-otp             # once per fresh cluster: admin site = admins; superadmins + OTP (ADRs 0019, 0030)
 npm run k8s:forward                   # Postgres/Redis/NATS for the apps + admin UIs (Ctrl+C to stop)
 ```
 
@@ -163,19 +163,20 @@ The realm is imported from [`keycloak/realm-nest-microservice.json`](overlays/de
 |---|---|
 | `deployments-api` | Resource server: owns the roles `deployment:read`, `deployment:write`, `deployment:admin`; it's the token audience |
 | `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `http://www.localtest.me:8000/*` and `http://localhost:3000/*`) |
-| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `http://admin.localtest.me:8000/*`, `http://localhost:3100/*`); owns the role `admin`; sessions 15 min idle / 8 h max; browser flow **`browser-admin-otp`** |
+| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `http://admin.localtest.me:8000/*`, `http://localhost:3100/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 15 min idle / 8 h max; browser flow **`browser-admin-otp`** |
 | `dev-cli` | **Dev only**: password grant for curl tests |
 
 | Group | Roles | Test user (password `password`) |
 |---|---|---|
 | `viewers` | read | `carol` |
 | `developers` | read, write | `bob` |
-| `admins` | read, write, admin + `admin-web:admin` | `alice` (also has a **dev-only OTP**: see `web/apps/admin-web/README.md`) |
+| `admins` | read, write, admin + `admin-web:admin`, `admin-web:superadmin`, `content:admin` | `alice` (also has a **dev-only OTP**: see `web/apps/admin-web/README.md`) |
+| `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `dana` (`/sites/nails`), `erin` (`/sites/wine`) |
 
-**Admin site sign-in** (ADR 0019): `npm run keycloak:admin-otp`, once per fresh cluster (after
+**Admin site sign-in** (ADRs 0019, 0030): `npm run keycloak:admin-otp`, once per fresh cluster (after
 `k8s:up`; `staging:up` runs it), creates the flow `browser-admin-otp` and binds it to the client
 `admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
-then the one-time code (an admin without OTP is made to set it up). portfolio-web keeps the
+then the one-time code for `admin-web:superadmin` only (a superadmin without OTP is made to set it up). portfolio-web keeps the
 realm's default flow. Re-running it rebuilds the flow (idempotent).
 
 Get a token for testing (access token lives 5 minutes):
@@ -371,7 +372,7 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 
 Built by CI, not by hand: after CI passes on `main`, `.github/workflows/images.yml` builds every
 image whose code changed since the commit it is tagged with in `overlays/prod/kustomization.yaml`
-(the 3 API images always together), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`
+(the 4 API images always together; one of them changed or on `newTag: placeholder` rebuilds all), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`
 (private, like the repository; pods pull with the Secret `ghcr-pull`) and commits the new
 `newTag`s to `main` as `github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all.
 portfolio-web needs the repository variable `PROD_SITE_URL` (its public origin, ADR 0021);
@@ -392,7 +393,7 @@ All run as non-root with a read-only root filesystem; configuration comes from e
 ### Bootstrap (once per cluster)
 
 1. **DigitalOcean**: DOKS cluster; the domain in DO DNS; managed Postgres with databases
-   `deployment`, `notification` and `keycloak` (one user each); managed Valkey with one ACL user
+   `deployment`, `notification`, `content` and `keycloak` (one user each); managed Valkey with one ACL user
    per web app (`web` on `~web:*`, `admin-web` on `~admin-web:*`, commands as in
    `components/local-data/redis/users.acl`); an API token with domain read/write (for cert-manager).
 2. **Cluster add-ons**:

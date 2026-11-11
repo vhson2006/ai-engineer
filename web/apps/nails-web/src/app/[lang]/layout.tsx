@@ -1,29 +1,27 @@
 import type { Metadata, Viewport } from 'next';
-import { Be_Vietnam_Pro, Cormorant_Garamond, Great_Vibes } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import { format } from '@web/core/i18n/format';
 import { localizedPath } from '@web/core/i18n/paths';
 import { SmoothScroll } from '@web/ui/smooth-scroll';
-import { MobileActionBar } from '@/components/mobile-action-bar';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { salon } from '@/content/salon';
-import { LOCALE_CODES } from '@/i18n/locales';
-import { getLocale, getMessages } from '@/i18n/messages';
+import { menuTables, menuTabs, salon, type Price } from '@/content/salon';
+import { BookingProvider } from '@/features/booking/booking-provider';
+import type { BookingData } from '@/features/booking/booking-dialog';
+import { QuickBookingBar } from '@/features/booking/quick-bar';
+import { LOCALE_CODES, type Locale } from '@/i18n/locales';
+import { getLocale, getMessages, type Messages } from '@/i18n/messages';
+import { formatPrice } from '@/lib/format';
+import { SITE_URL } from '@/site';
 import '../globals.css';
 
-// All fonts ship Vietnamese glyphs (ạ, ế, ữ…); next/font self-hosts them (CSP: font-src 'self').
-const body = Be_Vietnam_Pro({
+// Ships Vietnamese glyphs (ạ, ế, ữ…); next/font self-hosts it (CSP: font-src 'self'). Heavy
+// weights for the bold, tight headlines of the bento cards.
+const body = Plus_Jakarta_Sans({
   variable: '--font-body',
   subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
 });
-// The printed menu's look: a Garamond serif for headings, a calligraphic script for accents.
-const display = Cormorant_Garamond({
-  variable: '--font-display-serif',
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-});
-const script = Great_Vibes({ variable: '--font-script-hand', subsets: ['latin', 'vietnamese'], weight: '400' });
 
 export function generateStaticParams() {
   return LOCALE_CODES.map((lang) => ({ lang }));
@@ -32,6 +30,8 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return {
+    // Absolute URLs for the link preview image (app/[lang]/opengraph-image.tsx).
+    metadataBase: new URL(SITE_URL),
     title: { default: t.meta.title, template: `%s · ${salon.name}` },
     description: t.meta.description,
     applicationName: salon.name,
@@ -45,29 +45,61 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0e2216' },
-    { media: '(prefers-color-scheme: dark)', color: '#08140d' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111618' },
   ],
   colorScheme: 'light dark',
 };
 
+/** The booking dialog's services: each bookable menu page's first table, priced from its first column. */
+function bookingData(t: Messages, locale: Locale): BookingData {
+  return {
+    locale,
+    hours: salon.hours,
+    phone: salon.phones[0],
+    bookingUrl: salon.bookingUrl,
+    labels: t.booking,
+    groups: menuTabs
+      .filter((tab) => tab.bookable)
+      .map((tab) => {
+        const tableId = tab.tables[0];
+        const names = t.menu.tables[tableId].items as Record<string, string>;
+        const rows = menuTables[tableId] as { id: string; prices: (Price | null)[] }[];
+        return {
+          id: tab.id,
+          name: t.menu.tabs[tab.id],
+          services: rows.map((row) => {
+            const price = formatPrice(locale, row.prices[0] ?? { amount: 0 });
+            return {
+              id: `${tableId}.${row.id}`,
+              name: names[row.id],
+              price: row.prices.length > 1 ? format(t.common.from, { price }) : price,
+            };
+          }),
+        };
+      }),
+  };
+}
+
 export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <html lang={locale} className={`${body.variable} ${display.variable} ${script.variable} h-full antialiased`}>
+    <html lang={locale} className={`${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <a
           href="#content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-4 focus:py-2"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-surface-2 focus:px-4 focus:py-2"
         >
           {t.common.skipToContent}
         </a>
-        <SiteHeader />
-        <main id="content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
-        <MobileActionBar />
+        <BookingProvider data={bookingData(t, locale)}>
+          <SiteHeader />
+          <main id="content" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+          <QuickBookingBar labels={t.quick} />
+        </BookingProvider>
         <SmoothScroll />
       </body>
     </html>

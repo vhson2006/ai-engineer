@@ -2,7 +2,7 @@
 
 - **Status:** Accepted, implemented
 - **Date:** 2026-11-07
-- **Related:** 0002, 0003, 0004, 0010, 0013, 0015, 0016, 0017, 0020, `web/CLAUDE.md`,
+- **Related:** amended by 0030 (site admins sign in too, OTP for superadmins only); 0025 (the admin site serves every client site, admins in one admin realm), 0002, 0003, 0004, 0010, 0013, 0015, 0016, 0017, 0020, `web/CLAUDE.md`,
   `web/.claude/rules/`, `web/apps/admin-web/README.md`, `k8s/scripts/keycloak-admin-otp.sh`
 
 ## Context

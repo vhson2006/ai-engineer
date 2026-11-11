@@ -19,6 +19,8 @@ export async function SiteHeader() {
     { id: 'partners', label: t.nav.partners },
     { id: 'about', label: t.nav.about },
     { id: 'contact', label: t.nav.contact },
+    // Another page: SectionNav follows `href` instead of scrolling.
+    { id: 'articles', label: t.nav.articles, href: href(locale, '/bai-viet') },
   ];
 
   return (

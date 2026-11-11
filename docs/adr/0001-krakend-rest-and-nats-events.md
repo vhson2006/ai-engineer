@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-11-05 (recorded 2026-11-06)
-- **Related:** `nest-microservice/CLAUDE.md` non-negotiables 1–3 and 8, `.claude/rules/krakend.md`, `nest-microservice/.claude/rules/microservice.md`
+- **Related:** `nest-microservice/CLAUDE.md` non-negotiables 1 and 5, `.claude/rules/krakend.md`, `nest-microservice/.claude/rules/microservice.md`
 
 ## Context
 

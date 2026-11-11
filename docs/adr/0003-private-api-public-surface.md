@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-11-06
-- **Related:** 0019 (adds the admin site admin.* to the public surface), `nest-microservice/CLAUDE.md` non-negotiable 1, `.claude/rules/krakend.md`, `.claude/rules/infrastructure.md`,
+- **Related:** 0019 (adds the admin site admin.* to the public surface), 0027 (adds `hooks.*` for signed platform webhooks), root `CLAUDE.md` non-negotiable 1, `.claude/rules/krakend.md`, `.claude/rules/infrastructure.md`,
   `k8s/base/gateway/routes.yaml`, `k8s/overlays/prod/networkpolicies.yaml`, ADR 0010
 
 ## Context

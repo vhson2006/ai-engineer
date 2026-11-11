@@ -18,7 +18,7 @@ behind each item are in `CLAUDE.md` and `.claude/rules/` (`forms.md`, `api.md`, 
 - [ ] Every argument is validated on the server; the API body is built field by field (no spread of the input); ids from the client pass `isUuid()` before going into an API path.
 - [ ] Ids of the user, prices, totals and ownership never come from the client.
 - [ ] Every state-changing Server Action starts with `limitAction(...)` (rate limit per user).
-- [ ] Creates are wrapped in `once()` with a per-user scope and a form `submissionId`; updates send `If-Match` with the revision.
+- [ ] Creates are wrapped in `once()` with a per-user scope and a form `submissionId`; updates send only the changed fields.
 - [ ] Actions return an `ActionResult` (`fromApiFailure` / `invalidInput`); `'use server'` files export only async functions.
 
 **Sessions and auth**
@@ -51,5 +51,5 @@ Group by severity, most severe first. Give each finding a `file:line`, what goes
 concrete scenario, and the rule it breaks.
 
 1. **Critical**: a token, session id or secret reaching the browser or the logs; the API called from (or exposed to) the browser; a mutation without the CSRF origin check, without a session re-check, or on GET; user id, price or ownership taken from client input; an open redirect; file bytes proxied through Next.js; a user signed out on a temporary failure.
-2. **Should fix**: missing server-side validation of a field, input spread into an API body, a create without `once()`, an update without `If-Match`, a raw `fetch` to the API, upstream details shown to users, a bare 500 when Redis/Keycloak is down, missing tests.
+2. **Should fix**: missing server-side validation of a field, input spread into an API body, a create without `once()` a raw `fetch` to the API, upstream details shown to users, a bare 500 when Redis/Keycloak is down, missing tests.
 3. **Suggestion**: readability or naming improvements that don't block merging.

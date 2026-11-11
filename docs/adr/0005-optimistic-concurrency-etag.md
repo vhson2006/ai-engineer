@@ -1,6 +1,6 @@
 # 0005. No lost updates: `revision` + ETag / If-Match
 
-- **Status:** Accepted
+- **Status:** Superseded by 0029 (2026-11-11: no revision, ETag or If-Match; the last write wins)
 - **Date:** 2026-11-06 (recorded)
 - **Related:** `nest-microservice/.claude/rules/microservice.md` ("No lost updates"), `nest-microservice/libs/common/src/http/conditional-requests.ts`
 

@@ -1,10 +1,8 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   addToOutbox,
-  assertIfMatch,
   AuthUser,
   CreateDeploymentDto,
-  entityTag,
   DEPLOYMENT_EVENTS,
   DEPLOYMENT_ROLES,
   DeploymentCreatedEvent,
@@ -15,7 +13,6 @@ import {
   OutboxRelay,
   paginate,
   Paginated,
-  staleResource,
   UpdateDeploymentDto,
 } from '@app/common';
 import { Deployment, Prisma } from '../generated/prisma/client';
@@ -89,25 +86,17 @@ export class DeploymentsService {
   }
 
   /**
-   * Optimistic concurrency: `ifMatch` must carry the revision the client read (ETag). The write
-   * is conditional on that revision, so two concurrent PATCHes can't both win: the second one
-   * gets 412 instead of silently overwriting the first (lost update). This also makes
-   * `previousStatus` in the event exact.
+   * Partial update (JSON merge semantics). The last write wins: there is no optimistic
+   * concurrency (ADR 0029). `previousStatus` in the event is the status read just before.
    */
-  async update(
-    id: string,
-    data: UpdateDeploymentDto,
-    user: AuthUser,
-    ifMatch: string | undefined,
-  ): Promise<DeploymentResponse> {
+  async update(id: string, data: UpdateDeploymentDto, user: AuthUser): Promise<DeploymentResponse> {
     const current = await this.getOrFail(id);
     assertCanModify(current, user);
-    assertIfMatch(ifMatch, entityTag(current.revision)); // 428 / 412, after 404 / 403
 
     const saved = await this.prisma.$transaction(async (tx) => {
       const [row] = await tx.deployment.updateManyAndReturn({
-        where: { id, revision: current.revision, ...NOT_DELETED },
-        data: { ...data, revision: { increment: 1 } },
+        where: { id, ...NOT_DELETED },
+        data,
       });
       if (row && data.status && data.status !== current.status) {
         await addToOutbox(tx, DEPLOYMENT_EVENTS.STATUS_CHANGED, {
@@ -121,9 +110,7 @@ export class DeploymentsService {
       return row;
     });
     if (!saved) {
-      // Changed (or deleted) between our read and our write.
-      await this.getOrFail(id); // deleted → 404
-      throw staleResource(); // changed → 412
+      throw new NotFoundException(`Deployment ${id} not found`); // deleted in between
     }
     this.outbox.poke();
 
@@ -174,7 +161,6 @@ function toResponse(row: Deployment): DeploymentResponse {
     status: row.status as DeploymentStatus, // varchar column, values guaranteed by the DTOs
     description: row.description,
     createdBy: row.createdBy,
-    revision: row.revision,
     createdAt: row.createdAt.toISOString(),
     updatedAt: row.updatedAt.toISOString(),
   };

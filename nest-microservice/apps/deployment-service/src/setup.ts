@@ -1,4 +1,5 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
 import {
@@ -12,7 +13,7 @@ import {
 } from '@app/common';
 
 /**
- * Global HTTP setup, shared by main.ts AND the e2e tests, so tests run against
+ * Global HTTP setup, shared by main.ts AND the integration tests, so tests run against
  * exactly the same pipeline as the running service.
  *
  * - Business routes live under /api (the same path KrakenD publishes, so Location headers
@@ -23,6 +24,9 @@ import {
 export function configureApp(app: INestApplication): void {
   app.useLogger(app.get(Logger)); // every Nest Logger call goes through pino (JSON + requestId)
   // currentRequestId() for the whole request: HttpClient forwards it to upstreams as X-Request-Id.
+  // No ETags at all (ADR 0029): Express would add a weak ETag to every body and answer 304 to
+  // If-None-Match. Responses are `no-store` anyway.
+  (app as NestExpressApplication).set('etag', false);
   app.use(httpMetricsMiddleware); // first: rejected requests (413, 415) are measured too
   app.use(requestContextMiddleware);
   app.use(noStoreCache); // authenticated responses: never stored by a shared cache

@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-11-05 (recorded 2026-11-06)
-- **Related:** `nest-microservice/CLAUDE.md` non-negotiable 11, `nest-microservice/.claude/rules/security.md`, ADR 0010
+- **Related:** 0025 (several realms, so several issuers), root `CLAUDE.md` non-negotiable 3, `nest-microservice/CLAUDE.md` non-negotiable 2, `nest-microservice/.claude/rules/security.md`, ADR 0010
 
 ## Context
 

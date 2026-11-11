@@ -42,6 +42,16 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
+  name: content-service
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: content-service
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
   name: portfolio-web
 spec:
   minAvailable: 1

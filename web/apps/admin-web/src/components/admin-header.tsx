@@ -1,25 +1,20 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { Container } from '@web/ui';
 import { LocaleSwitcher } from '@web/ui/locale-switcher';
-import { NavLinks } from '@web/ui/nav-links';
-import { href, LOCALE_OPTIONS } from '@/i18n/locales';
-import { getLocale, getMessages } from '@/i18n/messages';
+import { href, LOCALE_OPTIONS, type Locale } from '@/i18n/locales';
+import type { Messages } from '@/i18n/messages';
+import { AdminMobileNav } from './admin-sidebar';
 import { UserMenu, UserMenuFallback } from './user-menu';
 
-/** Static per language; only the user menu (session) streams in. */
-export async function AdminHeader() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  const links = [
-    { href: href(locale, '/'), label: t.nav.overview, exact: true },
-    { href: href(locale, '/deployments'), label: t.nav.deployments },
-    { href: href(locale, '/design-system'), label: t.nav.designSystem },
-  ];
-
+/** Full width above the side menu. Static per language; the menu button and the user stream in. */
+export function AdminHeader({ t, locale }: { t: Messages; locale: Locale }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
-      <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3">
-        <div className="flex items-center gap-6">
+    <header className="sticky top-0 z-40 h-16 border-b border-border bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
+      <div className="relative flex h-full items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="flex items-center gap-2">
+          <Suspense fallback={null}>
+            <AdminMobileNav t={t} locale={locale} />
+          </Suspense>
           <Link href={href(locale, '/')} className="group flex items-center gap-2.5">
             <span className="inline-flex size-8 items-center justify-center rounded-lg bg-brand text-brand-fg shadow-sm transition-transform group-hover:scale-105">
               <ShieldIcon />
@@ -29,16 +24,19 @@ export async function AdminHeader() {
               <span className="block text-xs text-subtle">{t.common.brandTagline}</span>
             </span>
           </Link>
-          <NavLinks links={links} label={t.nav.label} />
         </div>
 
         <div className="flex items-center gap-2">
-          <LocaleSwitcher current={locale} locales={LOCALE_OPTIONS} label={t.common.language} />
+          {/* Reads the URL (usePathname): under /sites/[siteId]/... it is only known per request,
+              so it needs its own boundary (cacheComponents), or the route can't prerender. */}
+          <Suspense fallback={<div aria-hidden className="h-10 w-24 rounded-lg" />}>
+            <LocaleSwitcher current={locale} locales={LOCALE_OPTIONS} label={t.common.language} />
+          </Suspense>
           <Suspense fallback={<UserMenuFallback />}>
             <UserMenu />
           </Suspense>
         </div>
-      </Container>
+      </div>
     </header>
   );
 }

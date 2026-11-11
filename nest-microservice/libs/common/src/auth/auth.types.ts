@@ -6,6 +6,11 @@ export interface AuthUser {
   email?: string;
   /** Client roles of the API (`resource_access.<AUTH_ROLES_CLIENT>.roles`). */
   roles: string[];
+  /**
+   * Keycloak group paths (`groups` claim, e.g. `/sites/nails`), when the client maps them. Used for
+   * data rules such as "which sites may this user manage" (content-service, ADR 0025); empty otherwise.
+   */
+  groups: string[];
 }
 
 /** DI token of the JWKS key resolver. Tests override it with a local key set. */

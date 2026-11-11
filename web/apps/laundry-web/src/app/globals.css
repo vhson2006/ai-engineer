@@ -1,6 +1,7 @@
 @import "tailwindcss";
 /* Shared design tokens and base styles, then this site's own look on top. */
 @import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
 @source "../../../../packages/ui/src";
 
 /*
@@ -97,4 +98,64 @@ details summary::-webkit-details-marker {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+/*
+ * An article body: HTML from content-service (sanitized there, ADR 0031/0033), in the look the
+ * sample blocks had: display-font headings, a sun-bordered quote, each top-level bullet as a small
+ * card. Layout blocks (tpl-*) come from @web/ui/article-layout.css, in the shop's colours.
+ */
+.article-body {
+  --article-accent: var(--sun-deep);
+  --article-accent-text: var(--brand-strong);
+  --article-accent-light: var(--sun);
+  --article-highlight: var(--sun);
+  --article-dark: var(--deep);
+  @apply text-lg leading-[1.8] text-pretty;
+}
+.article-body > * + * {
+  @apply mt-6;
+}
+.article-body h2 {
+  @apply font-display text-3xl leading-tight font-extrabold text-brand-strong;
+}
+.article-body > h2 {
+  @apply !mt-14;
+}
+.article-body h3 {
+  @apply font-display text-2xl leading-snug font-bold text-brand-strong;
+}
+.article-body > h3 {
+  @apply !mt-10;
+}
+.article-body > blockquote {
+  @apply !my-10 rounded-2xl border-l-4 border-sun bg-brand-soft py-5 pr-6 pl-7 font-display text-2xl leading-snug font-bold text-brand-soft-fg;
+}
+.article-body > ul {
+  @apply space-y-3;
+}
+.article-body > ul > li {
+  @apply relative rounded-2xl border border-border bg-surface p-4 pl-12 text-base;
+}
+.article-body > ul > li::before {
+  content: "✓";
+  @apply absolute top-4 left-4 inline-flex size-5 items-center justify-center rounded-full bg-brand-soft text-xs font-bold text-brand-strong;
+}
+.article-body > ol {
+  @apply list-decimal space-y-2 pl-6 marker:font-bold marker:text-brand-strong;
+}
+.article-body a {
+  @apply font-semibold text-brand-strong underline underline-offset-2 hover:text-brand-hover;
+}
+.article-body code {
+  @apply rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[0.9em];
+}
+.article-body pre {
+  @apply overflow-x-auto rounded-2xl bg-deep p-5 text-sm text-white;
+}
+.article-body pre code {
+  @apply bg-transparent p-0;
+}
+.article-body hr {
+  @apply my-12 border-border;
 }

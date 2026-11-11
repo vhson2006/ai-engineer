@@ -61,7 +61,7 @@ export interface ApiRequestOptions {
   query?: Record<string, string | number | boolean | undefined>;
   /** Sent as JSON. */
   body?: unknown;
-  /** Extra request headers (e.g. If-Match). KrakenD forwards only the headers it lists. */
+  /** Extra request headers. KrakenD forwards only the headers it lists per endpoint. */
   headers?: Record<string, string>;
   /** Makes a POST/PATCH retryable: sent as Idempotency-Key, the API must deduplicate on it. */
   idempotencyKey?: string;
@@ -113,11 +113,9 @@ const DEFAULT_MESSAGES: Record<number, string> = {
   403: "You don't have permission to do this.",
   404: 'Not found.',
   409: 'This conflicts with the current state. Refresh and try again.',
-  412: 'Someone else changed this in the meantime. Refresh and try again.',
   413: 'The request is too large.',
   415: 'Unsupported content type.',
   422: 'The request could not be processed.',
-  428: 'This change must be based on the latest version. Refresh and try again.',
   429: 'Too many requests. Please wait a moment and try again.',
   500: 'Something went wrong on our side.',
   502: 'A service is not responding correctly. Try again in a moment.',
@@ -326,11 +324,9 @@ const CODES: Record<number, string> = {
   403: 'forbidden',
   404: 'not_found',
   409: 'conflict',
-  412: 'precondition_failed',
   413: 'payload_too_large',
   415: 'unsupported_media_type',
   422: 'unprocessable_entity',
-  428: 'precondition_required',
   429: 'too_many_requests',
   500: 'internal_error',
   502: 'bad_gateway',

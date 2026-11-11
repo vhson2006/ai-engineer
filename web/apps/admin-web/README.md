@@ -2,18 +2,19 @@
 
 The admin site of the web workspace ([`web/`](../../README.md), ADR 0019): a Next.js 16 BFF like
 portfolio-web (same `@web/core` and `@web/ui`), public at `admin.<domain>` but only usable by
-administrators.
+administrators: **superadmins** (every site + system pages) and **site admins** (their own sites
+only), ADR 0030.
 
 ```
 Browser ──session-id cookie──▶ admin.<domain> ─▶ admin-web (Next.js server) ──Bearer──▶ KrakenD (private) ──▶ services
-   └── sign-in ──▶ Keycloak, client "admin-web": password → admins only → one-time code (OTP)
+   └── sign-in ──▶ Keycloak, client "admin-web": password → admins only → one-time code (superadmins)
 ```
 
 ## Who can get in (three locks, all enforced)
 
 | Lock | Where |
 |---|---|
-| Keycloak browser flow `browser-admin-otp`, bound to the client `admin-web` only: password, then **users without `admin-web:admin` are refused**, then the **one-time code** (an admin without OTP must set it up first) | `npm run keycloak:admin-otp` (repo root), once per fresh cluster |
+| Keycloak browser flow `browser-admin-otp`, bound to the client `admin-web` only: password, then **users without `admin-web:admin` are refused**, then, for `admin-web:superadmin` only, the **one-time code** (a superadmin without OTP must set it up first) | `npm run keycloak:admin-otp` (repo root), once per fresh cluster |
 | The app itself refuses a token without the role (`KEYCLOAK_REQUIRED_ROLE=admin-web:admin`), at sign-in AND on every token refresh: removing the role ends the session within minutes | `@web/core/auth/session` |
 | Short sessions: 15 min idle, 8 h at most (client settings of `admin-web`) | realm JSON |
 
@@ -41,6 +42,7 @@ MRSXMLLPNZWHSLLBNRUWGZJNN52HALLTMVRXEZLU      (TOTP, SHA-1, 6 digits, 30 s)
 
 or print the current code: `node -e "const c=require('crypto'),k=Buffer.from('dev-only-alice-otp-secret'),b=Buffer.alloc(8);b.writeBigUInt64BE(BigInt(Math.floor(Date.now()/30000)));const h=c.createHmac('sha1',k).update(b).digest(),o=h[19]&15;console.log(String((h.readUInt32BE(o)&0x7fffffff)%1e6).padStart(6,'0'))"`.
 
+Site admins (password only, no OTP): **`dana`** (Nails) and **`erin`** (Wine), password `password`.
 `bob` and `carol` are refused by Keycloak right after their password (not administrators).
 Staging: https://admin.staging.localtest.me (same accounts).
 

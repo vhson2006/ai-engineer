@@ -36,6 +36,13 @@ describe('content security policy', () => {
     expect(csp).not.toContain('ws:');
   });
 
+  it('frames: none by default, only the listed origins otherwise (no path, no wildcard)', () => {
+    expect(directive(contentSecurityPolicy(prod), 'frame-src')).toBeUndefined();
+    const csp = contentSecurityPolicy({ ...prod, frameOrigins: ['https://www.google.com/maps'] });
+    expect(directive(csp, 'frame-src')).toBe("frame-src 'self' https://www.google.com");
+    expect(directive(csp, 'frame-ancestors')).toBe("frame-ancestors 'none'");
+  });
+
   it('a site without sign-in: forms post only to itself', () => {
     const csp = contentSecurityPolicy({ ...prod, keycloakIssuer: undefined });
     expect(directive(csp, 'form-action')).toBe("form-action 'self'");

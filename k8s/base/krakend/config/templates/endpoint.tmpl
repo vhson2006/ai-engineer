@@ -1,10 +1,14 @@
 {{- /*
   Security of ONE endpoint: token check + rate limits. Every endpoint uses it, so none can miss either.
   Usage:  "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "roles" (list "deployment:read") "limit" "read") }}
+          another API (its own Keycloak resource server), e.g. content-service:
+          (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read")
 
   auth/validator: the Keycloak token, verified locally with the realm's public keys (JWKS).
     Issuer, JWKS URL and audience come from settings/env.json (auth.*): identical on every endpoint
-    by construction. A user needs ANY ONE of the roles.
+    by construction. A user needs ANY ONE of the roles. `audience` (optional, default auth.audience)
+    names the API's Keycloak client: the token must be issued for it, and the roles are its client
+    roles (resource_access.<audience>.roles), exactly like the service's AuthGuard checks them.
   qos/ratelimit/router: limits from settings/env.json (ratelimit.<limit>, "read" or "write"):
     max_rate         requests per `every` for the whole endpoint (protects the service)
     client_max_rate  requests per `every` per access token (= per user session). Not per IP: the
@@ -12,6 +16,7 @@
     Over the limit → 429 from KrakenD, the service isn't called. Counters are per KrakenD replica.
 */ -}}
 {{- $limit := index .env.ratelimit .limit -}}
+{{- $audience := .audience | default .env.auth.audience -}}
 {
   "auth/validator": {
     "alg": "RS256",
@@ -19,8 +24,8 @@
     "disable_jwk_security": {{ .env.auth.jwk_over_plain_http }},
     "cache": true,
     "issuer": {{ marshal .env.auth.issuer }},
-    "audience": [{{ marshal .env.auth.audience }}],
-    "roles_key": {{ printf "resource_access.%s.roles" .env.auth.audience | marshal }},
+    "audience": [{{ marshal $audience }}],
+    "roles_key": {{ printf "resource_access.%s.roles" $audience | marshal }},
     "roles_key_is_nested": true,
     "roles": {{ marshal .roles }}
   },

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { listDeployments } from '@web/core/api';
+import { isSuperadmin } from '@web/core/auth/roles';
 import { getSessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
 import { Container } from '@web/ui';
@@ -45,6 +46,7 @@ async function Deployments({
   const self = href(locale, '/deployments');
   const user = await getSessionUser().catch(() => null);
   if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(self)}`);
+  if (!isSuperadmin(user)) notFound(); // a system page (ADR 0030); the API refuses site admins anyway
 
   const params = await loadDeploymentsParams(searchParams);
   const search = params.search.trim().slice(0, 100);

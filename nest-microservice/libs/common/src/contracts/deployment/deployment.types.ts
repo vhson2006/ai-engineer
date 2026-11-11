@@ -14,11 +14,6 @@ export interface DeploymentResponse {
   description: string | null;
   /** Keycloak user id (`sub`) of the creator; null for rows created before authentication. */
   createdBy: string | null;
-  /**
-   * Incremented by every update; also sent as the ETag header ("<revision>"). To update, send it
-   * back: `If-Match: "<revision>"`. 412 = someone changed it since: GET again and retry.
-   */
-  revision: number;
   createdAt: string;
   updatedAt: string;
 }

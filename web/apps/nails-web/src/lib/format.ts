@@ -23,3 +23,12 @@ export function formatTime(locale: Locale, hhmm: string): string {
 export function formatHours(locale: Locale, open: string, close: string): string {
   return `${formatTime(locale, open)} – ${formatTime(locale, close)}`;
 }
+
+/** A publication date "2026-11-10" in the visitor's language: "November 10, 2026" / "10 tháng 11, 2026". */
+export function formatDate(locale: Locale, isoDate: string): string {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  // A calendar date, not an instant: format it in UTC so no time zone shifts the day.
+  return new Intl.DateTimeFormat(LOCALES[locale].intl, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
+    new Date(Date.UTC(year, month - 1, day)),
+  );
+}

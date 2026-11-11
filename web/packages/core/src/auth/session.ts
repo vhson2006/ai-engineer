@@ -42,6 +42,10 @@ export interface SessionUser {
   username: string;
   email?: string;
   roles: string[]; // client roles of deployments-api
+  /** Client roles per client (`resource_access`), e.g. { 'admin-web': ['admin'], 'content-api': [...] }. */
+  clientRoles?: Record<string, string[]>;
+  /** Keycloak group paths (`groups` claim), e.g. '/sites/nails'. Absent in sessions created before. */
+  groups?: string[];
 }
 
 interface StoredSession {
@@ -216,6 +220,13 @@ function toStored(
       username: String(access.preferred_username ?? idClaims?.preferred_username ?? ''),
       email: (access.email ?? idClaims?.email) as string | undefined,
       roles: Array.isArray(roles) ? roles : [],
+      clientRoles: Object.fromEntries(
+        Object.entries(resourceAccess ?? {}).map(([client, value]) => [
+          client,
+          Array.isArray(value?.roles) ? value.roles.map(String) : [],
+        ]),
+      ),
+      groups: Array.isArray(access.groups) ? access.groups.map(String) : [],
     },
     accessToken: tokens.access_token,
     refreshToken: tokens.refresh_token ?? previous?.refreshToken,

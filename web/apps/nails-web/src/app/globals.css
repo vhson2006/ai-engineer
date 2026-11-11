@@ -4,90 +4,93 @@
 @source "../../../../packages/ui/src";
 
 /*
- * Envy Nail Spa, from the salon's printed menu and business card: deep forest green, gold
- * (the EN monogram), soft sage watercolor (pastel green) and warm white.
- * - `--brand` forest green: buttons, menu banners, strong accents.
- * - `--gold`: lines, monogram, eyebrows on dark backgrounds; never body text on white.
- * - `--sage` / `--surface-2`: pastel green section backgrounds.
- * - `--deep`: the dark tropical-leaf sections (hero, policy, footer).
+ * Envy Nail Spa: bento grid on porcelain white. Content sits in 24px-radius cards (`rounded-3xl`)
+ * filled with four soft pastels; text is a deep blue-grey, never pure black.
+ * - `bg-mint`, `bg-rose`, `bg-baby`, `bg-lilac`: card fills. Text on them is always `--fg`.
+ * - `*-strong`: the same hues, saturated, for small accents (dots, swatches, the "open" pulse).
+ * - `--brand` = the ink (primary buttons).
  */
 :root {
-  --bg: #fbfaf6;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #eef4ec;
-  --border: #dde6d9;
-  --fg: #17261c;
-  --muted: #4a5c50;
-  --subtle: #6b7c70;
-  --brand: #22502f;
-  --brand-hover: #1a3f25;
+  --surface-2: #f4f6f7;
+  --border: #e3e8eb;
+  --fg: #263238;
+  --muted: #546e7a;
+  --subtle: #78909c;
+  --brand: #263238;
+  --brand-hover: #37474f;
   --brand-fg: #ffffff;
-  --brand-soft: #e4eee2;
-  --brand-soft-fg: #22502f;
-  --brand-strong: #22502f;
-  --sage: #dbe8d6;
-  --gold: #b8902f;
-  --gold-light: #e6c66f;
-  --gold-soft: #f5edd8;
-  --deep: #0e2216;
+  --brand-soft: #e0f2f1;
+  --brand-soft-fg: #263238;
+  --mint: #e0f2f1;
+  --rose: #fce4ec;
+  --baby: #e3f2fd;
+  --lilac: #f3e5f5;
+  --mint-strong: #4db6ac;
+  --rose-strong: #f06292;
+  --baby-strong: #64b5f6;
+  --lilac-strong: #ba68c8;
+  /* Section bands: very light washes of the pastels, alternating with white. */
+  --wash-mint: #f3faf9;
+  --wash-rose: #fdf6f9;
+  --wash-baby: #f4f9fe;
+  --wash-lilac: #faf5fb;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0d1912;
-    --surface: #12221a;
-    --surface-2: #172b20;
-    --border: #253c2e;
-    --fg: #edf3ec;
-    --muted: #b1c1b5;
-    --subtle: #8fa395;
-    --brand: #a8cfa3;
-    --brand-hover: #bfdcbb;
-    --brand-fg: #0d1912;
-    --brand-soft: rgb(168 207 163 / 0.12);
-    --brand-soft-fg: #c4e0bf;
-    --brand-strong: #b5d8b0;
-    --sage: #172b20;
-    --gold: #d9b65c;
-    --gold-light: #ecd08a;
-    --gold-soft: rgb(217 182 92 / 0.12);
-    --deep: #08140d;
+    --bg: #111618;
+    --surface: #182024;
+    --surface-2: #1d262b;
+    --border: #2a353b;
+    --fg: #eceff1;
+    --muted: #b0bec5;
+    --subtle: #90a4ae;
+    --brand: #eceff1;
+    --brand-hover: #ffffff;
+    --brand-fg: #263238;
+    --brand-soft: #1c2e2c;
+    --brand-soft-fg: #eceff1;
+    --mint: #1b2d2b;
+    --rose: #32222a;
+    --baby: #1b2a37;
+    --lilac: #2c2232;
+    --wash-mint: #141c1d;
+    --wash-rose: #1a1619;
+    --wash-baby: #141a20;
+    --wash-lilac: #19161c;
   }
 }
 
 @theme inline {
-  --color-brand-strong: var(--brand-strong);
-  --color-sage: var(--sage);
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-gold-soft: var(--gold-soft);
-  --color-deep: var(--deep);
+  --color-mint: var(--mint);
+  --color-rose: var(--rose);
+  --color-baby: var(--baby);
+  --color-lilac: var(--lilac);
+  --color-wash-mint: var(--wash-mint);
+  --color-wash-rose: var(--wash-rose);
+  --color-wash-baby: var(--wash-baby);
+  --color-wash-lilac: var(--wash-lilac);
+  --color-mint-strong: var(--mint-strong);
+  --color-rose-strong: var(--rose-strong);
+  --color-baby-strong: var(--baby-strong);
+  --color-lilac-strong: var(--lilac-strong);
   --font-sans: var(--font-body);
-  --font-display: var(--font-display-serif);
-  --font-script: var(--font-script-hand);
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
 }
 
 /* Anchored sections land below the sticky header. */
 section[id] {
-  scroll-margin-top: 6rem;
-}
-
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Gold foil text, like the monogram on the business card. */
-.text-gold-foil {
-  background: linear-gradient(100deg, #b8892c 0%, #f3d77f 35%, #c99a35 55%, #f0d27a 80%, #a97a22 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* The certificate's security-paper pattern (gift card). */
-.guilloche {
-  background-color: #fffdf7;
-  background-image:
-    repeating-radial-gradient(circle at 20% 30%, rgb(184 144 47 / 0.07) 0 1px, transparent 1px 9px),
-    repeating-radial-gradient(circle at 80% 70%, rgb(34 80 47 / 0.06) 0 1px, transparent 1px 11px);
+  scroll-margin-top: 5.5rem;
 }

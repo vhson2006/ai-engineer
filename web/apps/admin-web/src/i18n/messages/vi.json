@@ -10,13 +10,26 @@
     "brandTagline": "Bảng điều khiển",
     "close": "Đóng",
     "cancel": "Huỷ",
-    "requestId": "Mã yêu cầu"
+    "requestId": "Mã yêu cầu",
+    "back": "Quay lại",
+    "save": "Lưu",
+    "saving": "Đang lưu…",
+    "delete": "Xóa",
+    "deleting": "Đang xóa…",
+    "edit": "Sửa"
   },
   "nav": {
     "label": "Điều hướng chính",
     "overview": "Tổng quan",
     "deployments": "Deployment",
-    "designSystem": "Design system"
+    "designSystem": "Design system",
+    "sites": "Website",
+    "system": "Hệ thống",
+    "articles": "Bài viết",
+    "categories": "Chủ đề",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "noSites": "Chưa có website nào."
   },
   "userMenu": {
     "signIn": "Đăng nhập",
@@ -29,7 +42,8 @@
     "subtitle": "Mọi thao tác ở đây tác động lên dữ liệu thật bằng quyền quản trị của bạn. Hãy cẩn thận.",
     "security": {
       "title": "Phiên được bảo vệ",
-      "text": "Đăng nhập bằng mật khẩu và mã dùng một lần. Phiên tự kết thúc sau 15 phút không hoạt động và tối đa sau 8 giờ."
+      "textSuperadmin": "Đăng nhập bằng mật khẩu và mã một lần. Phiên kết thúc sau 15 phút không hoạt động và tối đa sau 8 giờ.",
+      "textSiteAdmin": "Phiên kết thúc sau 15 phút không hoạt động và tối đa sau 8 giờ. Hãy đăng xuất trên máy dùng chung."
     },
     "stats": {
       "deployments": "Deployment",
@@ -154,7 +168,13 @@
     "required": "Vui lòng nhập trường này.",
     "tooLong": "Nội dung quá dài.",
     "invalidVersion": "Hãy dùng phiên bản dạng 1.4.0.",
-    "invalid": "Giá trị không hợp lệ."
+    "invalid": "Giá trị không hợp lệ.",
+    "invalidSlug": "Dùng chữ thường không dấu, số và gạch ngang (ví dụ bai-viet-cua-toi).",
+    "atLeastOneLanguage": "Hãy điền ít nhất một ngôn ngữ.",
+    "invalidDate": "Hãy chọn ngày giờ hợp lệ.",
+    "tooSoon": "Hãy chọn thời điểm ít nhất một phút kể từ bây giờ.",
+    "tooSmall": "Số này quá nhỏ.",
+    "tooBig": "Số này quá lớn."
   },
   "designSystem": {
     "title": "Design system",
@@ -248,5 +268,168 @@
       "dropped": "Đã thả {name} ở vị trí {position}.",
       "cancelled": "Đã huỷ di chuyển {name}."
     }
+  },
+  "overviewSites": {
+    "title": "Website của bạn",
+    "subtitle": "Mở một website để quản lý bài viết.",
+    "drafts": "Bản nháp",
+    "scheduled": "Hẹn giờ",
+    "published": "Đã đăng",
+    "open": "Mở bài viết",
+    "empty": "Bạn chưa là quản trị viên của website nào. Hãy nhờ super admin thêm bạn vào.",
+    "languages": "Ngôn ngữ: {locales}"
+  },
+  "articles": {
+    "title": "Bài viết",
+    "subtitle": "{site}: viết, hẹn giờ và đăng bài bằng mọi ngôn ngữ của website.",
+    "new": "Bài viết mới",
+    "search": {
+      "label": "Tìm bài viết",
+      "placeholder": "Tìm theo tiêu đề…"
+    },
+    "filters": {
+      "status": "Trạng thái",
+      "allStatuses": "Mọi trạng thái",
+      "category": "Chủ đề",
+      "allCategories": "Mọi chủ đề"
+    },
+    "status": {
+      "draft": "Nháp",
+      "scheduled": "Hẹn giờ",
+      "published": "Đã đăng"
+    },
+    "columns": {
+      "title": "Tiêu đề",
+      "category": "Chủ đề",
+      "status": "Trạng thái",
+      "date": "Ngày",
+      "languages": "Ngôn ngữ"
+    },
+    "caption": "Bài viết của {site}",
+    "untitled": "(chưa có tiêu đề)",
+    "empty": "Chưa có bài viết nào. Hãy viết bài đầu tiên.",
+    "emptyFiltered": "Không có bài viết nào khớp bộ lọc.",
+    "total": "{count} bài viết",
+    "pagination": {
+      "nav": "Trang",
+      "previous": "Trước",
+      "next": "Sau",
+      "status": "Trang {page} / {total}"
+    },
+    "scheduledFor": "Hẹn đăng {date}",
+    "publishedOn": "Đăng {date}",
+    "updatedOn": "Sửa {date}",
+    "form": {
+      "titleNew": "Bài viết mới",
+      "titleEdit": "Sửa bài viết",
+      "backToList": "Tất cả bài viết",
+      "languages": "Ngôn ngữ",
+      "languagesHint": "Bản nháp có thể thiếu ngôn ngữ; muốn đăng thì cần đủ mọi ngôn ngữ của website ({locales}).",
+      "missing": "còn thiếu",
+      "complete": "đủ",
+      "title": "Tiêu đề",
+      "titlePlaceholder": "Năm thói quen giúp móng bền lâu",
+      "slug": "Đường dẫn (slug)",
+      "slugHint": "Chữ thường không dấu, số và gạch ngang. Tự điền theo tiêu đề cho đến khi bạn sửa.",
+      "excerpt": "Tóm tắt",
+      "excerptHint": "Hiện trong danh sách bài và kết quả tìm kiếm.",
+      "body": "Nội dung",
+      "bodyPlaceholder": "Viết nội dung bài…",
+      "coverAlt": "Mô tả ảnh bìa",
+      "coverAltHint": "Cho người không xem được ảnh (ảnh bìa sẽ có sau).",
+      "seo": "Công cụ tìm kiếm (không bắt buộc)",
+      "seoTitle": "Tiêu đề SEO",
+      "seoDescription": "Mô tả SEO",
+      "settings": "Thiết lập",
+      "category": "Chủ đề",
+      "categoryPlaceholder": "Chọn chủ đề",
+      "noCategories": "Website chưa có chủ đề nào: hãy tạo một chủ đề trước.",
+      "createCategory": "Tạo chủ đề",
+      "featured": "Nổi bật",
+      "featuredHint": "Hiện đầu tiên trên website.",
+      "create": "Lưu nháp",
+      "creating": "Đang lưu…",
+      "created": "Đã lưu bản nháp.",
+      "save": "Lưu thay đổi",
+      "saving": "Đang lưu…",
+      "saved": "Đã lưu thay đổi.",
+      "liveWarning": "Bài đang hiển thị: thay đổi sẽ lên website ngay khi lưu.",
+      "scheduledWarning": "Bài đã hẹn giờ: sẽ được đăng cùng các thay đổi này.",
+      "leave": "Bạn có thay đổi chưa lưu.",
+      "checkFields": "Có ô cần sửa (xem các tab và ô được đánh dấu)."
+    },
+    "publish": {
+      "button": "Đăng bài",
+      "title": "Đăng bài viết này",
+      "description": "Mọi ngôn ngữ của website phải đầy đủ.",
+      "now": "Ngay bây giờ",
+      "later": "Vào ngày giờ cụ thể",
+      "at": "Ngày giờ",
+      "atHint": "Ít nhất một phút kể từ bây giờ, theo múi giờ của bạn ({tz}).",
+      "submit": "Đăng",
+      "schedule": "Hẹn giờ",
+      "submitting": "Đang đăng…",
+      "published": "Đã đăng.",
+      "scheduled": "Đã hẹn đăng lúc {date}.",
+      "unpublish": "Gỡ bài",
+      "cancelSchedule": "Hủy hẹn giờ",
+      "unpublishing": "Đang xử lý…",
+      "unpublished": "Bài viết đã trở lại bản nháp.",
+      "unpublishTitle": "Gỡ bài viết này khỏi website?",
+      "unpublishDescription": "Bài trở lại bản nháp. Đường dẫn sẽ không mở được cho đến khi đăng lại.",
+      "saveFirst": "Hãy lưu thay đổi trước."
+    },
+    "delete": {
+      "button": "Xóa",
+      "title": "Xóa bài viết này?",
+      "description": "Bài bị xóa hẳn, ở mọi ngôn ngữ. Bài đang hiển thị sẽ biến mất khỏi website.",
+      "confirm": "Xóa hẳn",
+      "deleted": "Đã xóa bài viết."
+    },
+    "editor": {
+      "toolbar": "Định dạng",
+      "bold": "Đậm",
+      "italic": "Nghiêng",
+      "underline": "Gạch chân",
+      "strike": "Gạch ngang",
+      "code": "Mã",
+      "heading2": "Tiêu đề",
+      "heading3": "Tiêu đề phụ",
+      "bulletList": "Danh sách chấm",
+      "orderedList": "Danh sách số",
+      "quote": "Trích dẫn",
+      "undo": "Hoàn tác",
+      "redo": "Làm lại"
+    }
+  },
+  "categories": {
+    "title": "Chủ đề",
+    "subtitle": "{site}: mỗi bài viết thuộc một chủ đề.",
+    "new": "Chủ đề mới",
+    "key": "Mã",
+    "keyHint": "Mã ngắn không bao giờ đổi, ví dụ care.",
+    "name": "Tên ({locale})",
+    "slug": "Đường dẫn ({locale})",
+    "position": "Thứ tự",
+    "columns": {
+      "key": "Mã",
+      "names": "Tên",
+      "position": "Thứ tự",
+      "actions": "Thao tác"
+    },
+    "caption": "Chủ đề của {site}",
+    "empty": "Chưa có chủ đề nào.",
+    "createTitle": "Chủ đề mới",
+    "editTitle": "Sửa chủ đề",
+    "description": "Tên và đường dẫn ở mọi ngôn ngữ của website.",
+    "create": "Tạo",
+    "creating": "Đang tạo…",
+    "created": "Đã tạo chủ đề “{name}”.",
+    "saved": "Đã lưu chủ đề.",
+    "deleteTitle": "Xóa chủ đề “{name}”?",
+    "deleteDescription": "Chỉ xóa được chủ đề không còn bài viết nào dùng.",
+    "deleted": "Đã xóa chủ đề.",
+    "inUse": "Vẫn còn bài viết thuộc chủ đề này: hãy chuyển chúng sang chủ đề khác trước.",
+    "checkFields": "Có ô cần sửa."
   }
 }
