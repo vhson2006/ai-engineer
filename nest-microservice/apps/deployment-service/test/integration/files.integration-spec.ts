@@ -10,16 +10,16 @@ import {
 } from '@app/common';
 import { createLocalJWKSet, exportJWK, generateKeyPair, KeyLike, SignJWT } from 'jose';
 import request from 'supertest';
-import { DeploymentServiceModule } from '../src/deployment-service.module';
-import { PrismaService } from '../src/prisma/prisma.service';
-import { configureApp } from '../src/setup';
+import { DeploymentServiceModule } from '../../src/deployment-service.module';
+import { PrismaService } from '../../src/prisma/prisma.service';
+import { configureApp } from '../../src/setup';
 
 /**
- * /api/files e2e: real HTTP pipeline, real FilesService, Prisma mocked, storage in memory.
+ * /api/files integration: real HTTP pipeline, real FilesService, Prisma mocked, storage in memory.
  * The conditional SQL (attach, status transitions) is covered against a real Postgres in the
  * service's integration check; here: status codes, access rules, validation, storage calls.
  */
-describe('Files (deployment-service e2e)', () => {
+describe('Files (deployment-service integration)', () => {
   let app: INestApplication;
   let signingKey: KeyLike;
   let storage: InMemoryObjectStorage;

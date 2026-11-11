@@ -28,7 +28,7 @@ export default tseslint.config(
   },
   {
     // Tests read untyped HTTP bodies (res.body) and assert on mocked methods.
-    files: ['**/*.spec.ts', '**/*.e2e-spec.ts', '**/test/**/*.ts'],
+    files: ['**/*.spec.ts', '**/*.integration-spec.ts', '**/test/**/*.ts'],
     rules: {
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',

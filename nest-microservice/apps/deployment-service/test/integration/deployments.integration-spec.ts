@@ -9,12 +9,12 @@ import {
 } from '@app/common';
 import { createLocalJWKSet, exportJWK, generateKeyPair, KeyLike, SignJWT } from 'jose';
 import request from 'supertest';
-import { DeploymentServiceModule } from '../src/deployment-service.module';
-import { PrismaService } from '../src/prisma/prisma.service';
-import { configureApp } from '../src/setup';
+import { DeploymentServiceModule } from '../../src/deployment-service.module';
+import { PrismaService } from '../../src/prisma/prisma.service';
+import { configureApp } from '../../src/setup';
 
 /**
- * deployment-service e2e: the real HTTP pipeline (prefix, AuthGuard, roles, validation, filter,
+ * deployment-service integration: the real HTTP pipeline (prefix, AuthGuard, roles, validation, filter,
  * status codes, headers) and the real DeploymentsService. Prisma and NATS are mocked.
  *
  * Tokens are REAL RS256 JWTs signed with a key pair generated here; the service verifies them
@@ -22,7 +22,7 @@ import { configureApp } from '../src/setup';
  * verifies Keycloak tokens. KrakenD forwards responses as-is (no-op), so these are also what
  * clients get through the gateway.
  */
-describe('Deployments (deployment-service e2e)', () => {
+describe('Deployments (deployment-service integration)', () => {
   let app: INestApplication;
   let signingKey: KeyLike;
   let otherKey: KeyLike;
@@ -91,7 +91,6 @@ describe('Deployments (deployment-service e2e)', () => {
     status: 'pending',
     description: null,
     createdBy: users.dev.sub,
-    revision: 1,
     createdAt,
     updatedAt: createdAt,
     deletedAt: null,
@@ -105,7 +104,6 @@ describe('Deployments (deployment-service e2e)', () => {
     status: 'pending',
     description: null,
     createdBy: users.dev.sub,
-    revision: 1,
     createdAt: '2026-01-01T00:00:00.000Z',
     updatedAt: '2026-01-01T00:00:00.000Z',
   };
@@ -228,7 +226,6 @@ describe('Deployments (deployment-service e2e)', () => {
 
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.otherDev))
         .send({ status: 'running' })
         .expect(403);
@@ -238,13 +235,10 @@ describe('Deployments (deployment-service e2e)', () => {
 
     it("200 when an admin updates someone else's deployment", async () => {
       prisma.deployment.findFirst.mockResolvedValue(row());
-      prisma.deployment.updateManyAndReturn.mockResolvedValue([
-        row({ status: 'running', revision: 2 }),
-      ]);
+      prisma.deployment.updateManyAndReturn.mockResolvedValue([row({ status: 'running' })]);
 
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.admin))
         .send({ status: 'running' })
         .expect(200);
@@ -262,7 +256,6 @@ describe('Deployments (deployment-service e2e)', () => {
         .expect(201);
 
       expect(res.headers.location).toBe(`/api/deployments/${id}`);
-      expect(res.headers.etag).toBe('"1"');
       expect(res.body).toEqual(deployment);
       expect(prisma.deployment.create).toHaveBeenCalledWith({
         data: expect.objectContaining({ createdBy: users.dev.sub }),
@@ -404,12 +397,11 @@ describe('Deployments (deployment-service e2e)', () => {
   });
 
   describe('GET /api/deployments/:id', () => {
-    it('200 with the resource and its ETag (the revision to send back in If-Match)', async () => {
+    it('200 with the resource', async () => {
       prisma.deployment.findFirst.mockResolvedValue(row());
       await http()
         .get(`/api/deployments/${id}`)
         .set('Authorization', await bearer(users.viewer))
-        .expect('ETag', '"1"')
         .expect(200, deployment);
     });
 
@@ -451,66 +443,21 @@ describe('Deployments (deployment-service e2e)', () => {
   describe('PATCH /api/deployments/:id', () => {
     it('200 when the creator updates it', async () => {
       prisma.deployment.findFirst.mockResolvedValue(row());
-      prisma.deployment.updateManyAndReturn.mockResolvedValue([
-        row({ status: 'running', revision: 2 }),
-      ]);
+      prisma.deployment.updateManyAndReturn.mockResolvedValue([row({ status: 'running' })]);
 
       const res = await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.dev))
         .send({ status: 'running' })
         .expect(200);
 
-      expect(res.body).toMatchObject({ status: 'running', revision: 2 });
-      expect(res.headers.etag).toBe('"2"');
-      // Conditional on the revision the client read: a concurrent change makes it match 0 rows.
+      expect(res.body).toMatchObject({ status: 'running' });
+      expect(res.headers.etag).toBeUndefined();
+      // The last write wins (ADR 0029): no If-Match, no revision.
       expect(prisma.deployment.updateManyAndReturn).toHaveBeenCalledWith({
-        where: { id, revision: 1, deletedAt: null },
-        data: { status: 'running', revision: { increment: 1 } },
+        where: { id, deletedAt: null },
+        data: { status: 'running' },
       });
-    });
-
-    it('428 without If-Match: blind overwrites are refused, nothing written', async () => {
-      prisma.deployment.findFirst.mockResolvedValue(row());
-
-      const res = await http()
-        .patch(`/api/deployments/${id}`)
-        .set('Authorization', await bearer(users.dev))
-        .send({ status: 'running' })
-        .expect(428);
-
-      expect(res.headers['content-type']).toBe('application/problem+json; charset=utf-8');
-      expect(res.body).toMatchObject({ status: 428, code: 'precondition_required' });
-      expect(prisma.deployment.updateManyAndReturn).not.toHaveBeenCalled();
-    });
-
-    it('412 when If-Match is stale (someone updated it since our GET), nothing written', async () => {
-      prisma.deployment.findFirst.mockResolvedValue(row({ revision: 3 }));
-
-      const res = await http()
-        .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"2"')
-        .set('Authorization', await bearer(users.dev))
-        .send({ status: 'running' })
-        .expect(412);
-
-      expect(res.body).toMatchObject({ status: 412, code: 'precondition_failed' });
-      expect(prisma.deployment.updateManyAndReturn).not.toHaveBeenCalled();
-      expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
-    });
-
-    it('412 when another update wins the race between our read and our write', async () => {
-      prisma.deployment.findFirst.mockResolvedValue(row()); // revision 1 at read time...
-      prisma.deployment.updateManyAndReturn.mockResolvedValue([]); // ...not any more at write time
-
-      await http()
-        .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
-        .set('Authorization', await bearer(users.dev))
-        .send({ status: 'running' })
-        .expect(412);
-      expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
     });
 
     it('404 when it was deleted between our read and our write', async () => {
@@ -519,33 +466,16 @@ describe('Deployments (deployment-service e2e)', () => {
 
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.dev))
         .send({ status: 'running' })
         .expect(404);
     });
 
-    it('If-Match: * and a list of tags are accepted; weak tags never match', async () => {
+    it("403 for someone else's deployment, nothing written", async () => {
       prisma.deployment.findFirst.mockResolvedValue(row());
-      prisma.deployment.updateManyAndReturn.mockResolvedValue([row({ revision: 2 })]);
-      const patch = async (ifMatch: string) =>
-        http()
-          .patch(`/api/deployments/${id}`)
-          .set('If-Match', ifMatch)
-          .set('Authorization', await bearer(users.dev))
-          .send({ status: 'running' });
-
-      expect((await patch('*')).status).toBe(200);
-      expect((await patch('"7", "1"')).status).toBe(200);
-      expect((await patch('W/"1"')).status).toBe(412);
-    });
-
-    it("403 (not 412) for someone else's deployment, even with a stale If-Match", async () => {
-      prisma.deployment.findFirst.mockResolvedValue(row({ revision: 5 }));
 
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.otherDev))
         .send({ status: 'running' })
         .expect(403);
@@ -554,7 +484,6 @@ describe('Deployments (deployment-service e2e)', () => {
     it('400 on an invalid status', async () => {
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.dev))
         .send({ status: 'done' })
         .expect(400);
@@ -563,7 +492,6 @@ describe('Deployments (deployment-service e2e)', () => {
     it('403 for a viewer (role checked before the body is used)', async () => {
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.viewer))
         .send({ status: 'running' })
         .expect(403);
@@ -678,7 +606,6 @@ describe('Deployments (deployment-service e2e)', () => {
     it('PATCH with null for a required field → 400 naming the field (not 500), nothing written', async () => {
       const res = await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.dev))
         .send({ name: null })
         .expect(400);
@@ -700,19 +627,16 @@ describe('Deployments (deployment-service e2e)', () => {
 
     it('PATCH description: null clears the description (nullable column)', async () => {
       prisma.deployment.findFirst.mockResolvedValue(row({ description: 'old' }));
-      prisma.deployment.updateManyAndReturn.mockResolvedValue([
-        row({ description: null, revision: 2 }),
-      ]);
+      prisma.deployment.updateManyAndReturn.mockResolvedValue([row({ description: null })]);
 
       await http()
         .patch(`/api/deployments/${id}`)
-        .set('If-Match', '"1"')
         .set('Authorization', await bearer(users.dev))
         .send({ description: null })
         .expect(200);
 
       expect(prisma.deployment.updateManyAndReturn).toHaveBeenCalledWith(
-        expect.objectContaining({ data: { description: null, revision: { increment: 1 } } }),
+        expect.objectContaining({ data: { description: null } }),
       );
     });
 

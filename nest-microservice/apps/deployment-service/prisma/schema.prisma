@@ -30,7 +30,6 @@ model Deployment {
   /// Optimistic concurrency: +1 on every update. Sent to clients as the ETag; PATCH must
   /// send it back in If-Match and only succeeds if it is still current (else 412).
   /// Not to be confused with `version` (the deployed application's version).
-  revision    Int          @default(1)
   createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt   DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
   /// Soft delete: every query must filter on `deletedAt: null`.

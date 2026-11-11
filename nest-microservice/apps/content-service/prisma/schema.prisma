@@ -1,0 +1,130 @@
+// content-service database (ADR 0025, 0026): the sites' articles and their categories.
+// Every business table carries site_id; every query filters on it (the service checks the
+// caller's sites first). Articles and categories are deleted for real (no soft delete), so their
+// slugs can be reused.
+
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  moduleFormat    = "cjs" // the Nest apps compile to CommonJS
+  previewFeatures = ["partialIndexes"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// A client site (nails, wine...). Its languages decide which translations an article needs.
+model Site {
+  id            String     @id(map: "pk_sites") @db.VarChar(50)
+  name          String     @db.VarChar(100)
+  locales       String[]   @db.VarChar(10)
+  defaultLocale String     @map("default_locale") @db.VarChar(10)
+  createdAt     DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime   @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  categories    Category[]
+  articles      Article[]
+
+  @@map("sites")
+}
+
+model Category {
+  id           String                @id(map: "pk_categories") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId       String                @map("site_id") @db.VarChar(50)
+  site         Site                  @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_categories_site")
+  key          String                @db.VarChar(50)
+  position     Int                   @default(0)
+  createdAt    DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  translations CategoryTranslation[]
+  articles     Article[]
+
+  @@unique([siteId, key], map: "uq_categories_site_key")
+  @@map("categories")
+}
+
+model CategoryTranslation {
+  categoryId String   @map("category_id") @db.Uuid
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, map: "fk_category_translations_category")
+  siteId     String   @map("site_id") @db.VarChar(50)
+  locale     String   @db.VarChar(10)
+  name       String   @db.VarChar(80)
+  slug       String   @db.VarChar(100)
+
+  @@id([categoryId, locale], map: "pk_category_translations")
+  @@unique([siteId, locale, slug], map: "uq_category_translations_site_locale_slug")
+  @@map("category_translations")
+}
+
+model Article {
+  id           String                @id(map: "pk_articles") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId       String                @map("site_id") @db.VarChar(50)
+  site         Site                  @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_articles_site")
+  categoryId   String                @map("category_id") @db.Uuid
+  category     Category              @relation(fields: [categoryId], references: [id], onDelete: Restrict, map: "fk_articles_category")
+  /// draft | scheduled | published (ArticleStatus in libs/common)
+  status       String                @default("draft") @db.VarChar(20)
+  featured     Boolean               @default(false)
+  scheduledAt  DateTime?             @map("scheduled_at") @db.Timestamptz(6)
+  publishedAt  DateTime?             @map("published_at") @db.Timestamptz(6)
+  createdBy    String                @map("created_by") @db.VarChar(255)
+  updatedBy    String                @map("updated_by") @db.VarChar(255)
+  createdAt    DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  translations ArticleTranslation[]
+  redirects    ArticleSlugRedirect[]
+
+  @@index([siteId, status, publishedAt(sort: Desc)], map: "ix_articles_site_status_published")
+  @@index([scheduledAt], map: "ix_articles_due", where: raw("(status)::text = 'scheduled'::text"))
+  @@index([categoryId], map: "ix_articles_category_id")
+  @@map("articles")
+}
+
+/// One language of an article. The slug is per language (SEO) and unique per site + language.
+model ArticleTranslation {
+  articleId      String  @map("article_id") @db.Uuid
+  article        Article @relation(fields: [articleId], references: [id], onDelete: Cascade, map: "fk_article_translations_article")
+  siteId         String  @map("site_id") @db.VarChar(50)
+  locale         String  @db.VarChar(10)
+  title          String  @db.VarChar(200)
+  slug           String  @db.VarChar(150)
+  excerpt        String  @db.VarChar(500)
+  coverAlt       String? @map("cover_alt") @db.VarChar(300)
+  /// HTML sanitized by the service (ADR 0031, ARTICLE_HTML_TAGS in libs/common)
+  body           String
+  readingMinutes Int     @map("reading_minutes")
+  seoTitle       String? @map("seo_title") @db.VarChar(200)
+  seoDescription String? @map("seo_description") @db.VarChar(300)
+
+  @@id([articleId, locale], map: "pk_article_translations")
+  @@unique([siteId, locale, slug], map: "uq_article_translations_site_locale_slug")
+  @@map("article_translations")
+}
+
+/// An old slug of a live article: the site answers 301 to the current one (links and search
+/// results keep working). Removed when another article takes the slug.
+model ArticleSlugRedirect {
+  siteId    String   @map("site_id") @db.VarChar(50)
+  locale    String   @db.VarChar(10)
+  slug      String   @db.VarChar(150)
+  articleId String   @map("article_id") @db.Uuid
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade, map: "fk_article_slug_redirects_article")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@id([siteId, locale, slug], map: "pk_article_slug_redirects")
+  @@index([articleId], map: "ix_article_slug_redirects_article_id")
+  @@map("article_slug_redirects")
+}
+
+model OutboxMessage {
+  id          String    @id(map: "pk_outbox_messages") @db.Uuid
+  subject     String    @db.VarChar(200)
+  payload     Json
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  publishedAt DateTime? @map("published_at") @db.Timestamptz(3)
+  attempts    Int       @default(0)
+  lastError   String?   @map("last_error") @db.VarChar(500)
+
+  @@index([createdAt], map: "ix_outbox_messages_unpublished", where: raw("published_at IS NULL"))
+  @@map("outbox_messages")
+}

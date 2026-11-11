@@ -31,8 +31,8 @@ Use this for every PR, and when an AI agent self-reviews before calling a task d
 - [ ] Every new route has `@Roles` matching its KrakenD `auth/validator` roles; no new `@Public()` except probes. Ownership/data rules are enforced in the service with the caller from `@CurrentUser()`. Ids and lengths are bounded. No secrets in code or logs. New env vars are in Joi + `.env.example`.
 
 **Tests**
-- [ ] New service logic has unit tests. New or changed routes have e2e tests (`apps/<service>/test/`) with status codes and headers.
-- [ ] No `.only`/`.skip`. `npm run lint:check`, `npm test` and `npm run test:e2e` pass.
+- [ ] New service logic has unit tests. New or changed routes have HTTP integration tests (`apps/<service>/test/`) with status codes and headers.
+- [ ] No `.only`/`.skip`. `npm run lint:check`, `npm test` and `npm run test:integration` pass.
 
 **Docs**
 - [ ] `CLAUDE.md` and `.claude/rules/*` still describe the code. Update them in the same PR if a convention changed.

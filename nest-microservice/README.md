@@ -25,7 +25,8 @@ npm install
 # or, with Docker instead of Kubernetes: npm run infra:up
 
 npm run migration:run     # prisma migrate deploy
-npm run start:dev         # nats:setup (JetStream streams, ADR 0024), then deployment-service :3001, notification-service :3002
+npm run start:dev         # nats:setup (JetStream streams, ADR 0024), then deployment-service :3001, notification-service :3002, content-service :3003
+npm run seed:article-templates   # optional: the 10 laundry article templates (ADR 0033), published, vi + en
 ```
 
 Then get a token from Keycloak and call the API **through KrakenD** (`localhost:8080`, from `k8s:forward`):
@@ -41,14 +42,25 @@ curl -i -X POST http://localhost:8080/api/deployments \
 # notification-service logs: "Deployment checkout-api@1.0.0 created ... by user <bob's id>"
 ```
 
-Updates are conditional (optimistic concurrency, no lost updates): every deployment has a
-`revision`, also sent as the `ETag` header. Send it back in `If-Match`:
+Articles of the client sites (content-service, ADR 0026), same pattern. bob writes drafts for the
+site `nails` (group `/sites/nails`); alice (`content:admin`, every site) creates the sites and
+publishes. alice has OTP: add `-d totp=<code>` (dev secret in `../web/apps/admin-web/README.md`).
 
 ```bash
-curl -i -X PATCH http://localhost:8080/api/deployments/<id>   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"   -H 'If-Match: "1"' -d '{"status":"running"}'
-# → 200, ETag: "2"
-# Same request again → 412 precondition_failed (it changed since: GET again, re-apply, retry)
-# Without If-Match  → 428 precondition_required
+curl -i -X POST http://localhost:8080/api/content/sites -H "Authorization: Bearer $ALICE" \
+  -H "Content-Type: application/json" -d '{"id":"nails","name":"Envy Nails","locales":["en","vi"],"defaultLocale":"en"}'
+# categories: POST /api/content/sites/nails/categories   articles: POST /api/content/sites/nails/articles
+# publish now or later (every language required): POST .../articles/<id>/publish  {"at": "<ISO>"}
+# what a site shows: GET /api/content/sites/nails/published-articles?locale=vi[&category=<slug>]
+#                    GET /api/content/sites/nails/published-articles/by-slug?locale=vi&slug=<slug>
+```
+
+Updates are plain PATCHes (JSON merge); the last write wins, there is no version check
+(ADR 0029):
+
+```bash
+curl -i -X PATCH http://localhost:8080/api/deployments/<id>   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"   -d '{"status":"running"}'
+# → 200 with the deployment
 ```
 
 Test users (password `password`): `carol` can read, `bob` can also create and change his own
@@ -94,7 +106,7 @@ Grafana Cloud, fed by Grafana Alloy in the cluster (ADR 0023). Nothing to set up
 ## Tests
 ```bash
 npm test            # unit tests
-npm run test:e2e    # deployment-service REST e2e (Prisma + NATS mocked, no infrastructure needed)
+npm run test:integration  # REST tests per service (test/integration/; Prisma + NATS mocked, no infrastructure)
 ```
 
 ## Files (uploads)
@@ -137,7 +149,7 @@ file through the gateway.
 4. **notification-service** receives it from its durable JetStream consumer, records the message id in its inbox and reacts, in one transaction (at-least-once delivery, processed once; ADR 0007).
 
 ## Adding a public route
-1. Add the route to the service controller (under the `/api` prefix) with `@Roles(...)` and an e2e test (including 401/403).
+1. Add the route to the service controller (under the `/api` prefix) with `@Roles(...)` and an integration test (including 401/403).
 2. Add a matching endpoint to `k8s/base/krakend/config/krakend.tmpl` (repo root) (same path, `no-op` encoding, the shared `endpoint.tmpl` with the same roles, list query strings and headers to forward, including `Authorization`).
 3. At the repo root: `npm run krakend:check`, then `npm run k8s:up` to roll KrakenD with the new config.
 4. If the web app calls it: a typed helper in `web/packages/core/src/api/<resource>.ts`.

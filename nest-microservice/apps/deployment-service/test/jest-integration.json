@@ -1,12 +1,12 @@
 {
   "moduleFileExtensions": ["js", "json", "ts"],
   "rootDir": "../../..",
-  "testRegex": "apps/deployment-service/test/.*\\.e2e-spec\\.ts$",
+  "testRegex": "apps/deployment-service/test/integration/.*\\.integration-spec\\.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "testEnvironment": "node",
-  "setupFiles": ["<rootDir>/apps/deployment-service/test/setup-env.ts"],
+  "setupFiles": ["<rootDir>/apps/deployment-service/test/support/setup-env.ts"],
   "moduleNameMapper": {
     "^@app/common(|/.*)$": "<rootDir>/libs/common/src$1"
   }

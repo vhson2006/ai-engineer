@@ -1,5 +1,5 @@
-import { FilesCleanupService } from './files-cleanup.service';
-import { sanitizeFilename } from './files.service';
+import { FilesCleanupService } from '../../../src/files/files-cleanup.service';
+import { sanitizeFilename } from '../../../src/files/files.service';
 
 describe('[files-cleanup.service] (unit)', () => {
   const now = new Date('2026-11-05T12:00:00Z');

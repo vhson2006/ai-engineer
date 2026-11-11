@@ -1,5 +1,6 @@
 export * from './auth';
 export * from './constants/clients';
+export * from './contracts/content';
 export * from './contracts/deployment';
 export * from './contracts/file';
 export * from './database';
@@ -8,7 +9,6 @@ export * from './errors/problem-details';
 export * from './errors/validation';
 export * from './dto/validation';
 export * from './http/api-middlewares';
-export * from './http/conditional-requests';
 export * from './errors/http-exception.filter';
 export * from './errors/rpc-exception.filter';
 export * from './http-client';

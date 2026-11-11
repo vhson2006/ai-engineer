@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  Headers,
   HttpCode,
   HttpStatus,
   Param,
@@ -20,13 +19,10 @@ import {
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
-  ApiHeader,
   ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
-  ApiPreconditionFailedResponse,
-  ApiResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -37,7 +33,6 @@ import {
   CurrentUser,
   DEPLOYMENT_ROLES,
   DeploymentResponse,
-  entityTag,
   ListDeploymentsQueryDto,
   Paginated,
   Roles,
@@ -46,19 +41,6 @@ import {
 import { DeploymentsService } from './deployments.service';
 
 const { READ, WRITE, ADMIN } = DEPLOYMENT_ROLES;
-
-const ETAG_HEADER = {
-  ETag: {
-    description: 'Current revision ("<revision>"): send it back in If-Match to update',
-    schema: { type: 'string' },
-  },
-};
-
-/** ETag = the revision the client must send back in If-Match (optimistic concurrency). */
-function withETag(res: Response, deployment: DeploymentResponse): DeploymentResponse {
-  res.setHeader('ETag', entityTag(deployment.revision));
-  return deployment;
-}
 
 /**
  * REST resource /api/deployments, published to clients by KrakenD (k8s/base/krakend/config/krakend.tmpl).
@@ -81,7 +63,6 @@ export class DeploymentsController {
     description: 'Created',
     headers: {
       Location: { description: 'URI of the new deployment', schema: { type: 'string' } },
-      ...ETAG_HEADER,
     },
   })
   @ApiBadRequestResponse({ description: 'Invalid body' })
@@ -96,7 +77,7 @@ export class DeploymentsController {
     // Same path through KrakenD and direct, because both use the /api prefix.
     const collectionPath = req.originalUrl.split('?')[0].replace(/\/$/, '');
     res.location(`${collectionPath}/${deployment.id}`);
-    return withETag(res, deployment); // 201 is the default for POST
+    return deployment; // 201 is the default for POST
   }
 
   @Get()
@@ -112,14 +93,11 @@ export class DeploymentsController {
   @Get(':id')
   @Roles(READ)
   @ApiOperation({ summary: 'Get one deployment (role: deployment:read)' })
-  @ApiOkResponse({ description: 'The deployment', headers: ETAG_HEADER })
+  @ApiOkResponse({ description: 'The deployment' })
   @ApiBadRequestResponse({ description: 'id is not a UUID' })
   @ApiNotFoundResponse({ description: 'Unknown id' })
-  async findOne(
-    @Param('id', ParseUUIDPipe) id: string,
-    @Res({ passthrough: true }) res: Response,
-  ): Promise<DeploymentResponse> {
-    return withETag(res, await this.deployments.findOne(id));
+  findOne(@Param('id', ParseUUIDPipe) id: string): Promise<DeploymentResponse> {
+    return this.deployments.findOne(id);
   }
 
   @Patch(':id')
@@ -128,27 +106,16 @@ export class DeploymentsController {
     summary:
       'Partially update a deployment (deployment:write on your own, deployment:admin on any)',
   })
-  @ApiHeader({
-    name: 'If-Match',
-    required: true,
-    description: 'The ETag from your last GET (e.g. "3"), or * to skip the check',
-  })
-  @ApiOkResponse({ description: 'The updated deployment', headers: ETAG_HEADER })
+  @ApiOkResponse({ description: 'The updated deployment' })
   @ApiBadRequestResponse({ description: 'Invalid body or id' })
   @ApiNotFoundResponse({ description: 'Unknown id' })
   @ApiConflictResponse({ description: 'name + version already exists' })
-  @ApiPreconditionFailedResponse({
-    description: 'Changed since your GET (If-Match is stale): fetch again and retry',
-  })
-  @ApiResponse({ status: 428, description: 'If-Match is missing' })
   async update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() dto: UpdateDeploymentDto,
     @CurrentUser() user: AuthUser,
-    @Headers('if-match') ifMatch: string | undefined,
-    @Res({ passthrough: true }) res: Response,
   ): Promise<DeploymentResponse> {
-    return withETag(res, await this.deployments.update(id, dto, user, ifMatch));
+    return this.deployments.update(id, dto, user);
   }
 
   @Delete(':id')

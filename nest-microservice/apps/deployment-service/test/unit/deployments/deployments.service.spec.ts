@@ -1,10 +1,10 @@
 import { ForbiddenException, NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AuthUser, DEPLOYMENT_EVENTS, DEPLOYMENT_ROLES, OutboxRelay } from '@app/common';
-import type { Deployment } from '../generated/prisma/client';
-import { FilesService } from '../files/files.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { DeploymentsService } from './deployments.service';
+import type { Deployment } from '../../../src/generated/prisma/client';
+import { FilesService } from '../../../src/files/files.service';
+import { PrismaService } from '../../../src/prisma/prisma.service';
+import { DeploymentsService } from '../../../src/deployments/deployments.service';
 
 describe('[deployments.service] (unit)', () => {
   let service: DeploymentsService;
@@ -27,14 +27,17 @@ describe('[deployments.service] (unit)', () => {
   const owner: AuthUser = {
     id: 'user-owner',
     roles: [DEPLOYMENT_ROLES.READ, DEPLOYMENT_ROLES.WRITE],
+    groups: [],
   };
   const otherDev: AuthUser = {
     id: 'user-other',
     roles: [DEPLOYMENT_ROLES.READ, DEPLOYMENT_ROLES.WRITE],
+    groups: [],
   };
   const admin: AuthUser = {
     id: 'user-admin',
     roles: [DEPLOYMENT_ROLES.READ, DEPLOYMENT_ROLES.WRITE, DEPLOYMENT_ROLES.ADMIN],
+    groups: [],
   };
 
   const row = (overrides: Partial<Deployment> = {}): Deployment => ({
@@ -45,7 +48,6 @@ describe('[deployments.service] (unit)', () => {
     status: 'pending',
     description: null,
     createdBy: owner.id,
-    revision: 1,
     createdAt: new Date('2026-01-01T00:00:00Z'),
     updatedAt: new Date('2026-01-01T00:00:00Z'),
     deletedAt: null,
@@ -161,11 +163,11 @@ describe('[deployments.service] (unit)', () => {
       prisma.deployment.findFirst.mockResolvedValue(row({ status: 'pending' }));
       prisma.deployment.updateManyAndReturn.mockResolvedValue([row({ status: 'running' })]);
 
-      await service.update(row().id, { status: 'running' }, owner, '"1"');
+      await service.update(row().id, { status: 'running' }, owner);
 
       expect(prisma.deployment.updateManyAndReturn).toHaveBeenCalledWith({
-        where: { id: row().id, revision: 1, deletedAt: null },
-        data: { status: 'running', revision: { increment: 1 } },
+        where: { id: row().id, deletedAt: null },
+        data: { status: 'running' },
       });
       expect(prisma.outboxMessage.create).toHaveBeenCalledWith({
         data: expect.objectContaining({
@@ -183,7 +185,7 @@ describe('[deployments.service] (unit)', () => {
       prisma.deployment.findFirst.mockResolvedValue(row());
       prisma.deployment.updateManyAndReturn.mockResolvedValue([row({ description: 'hotfix' })]);
 
-      await service.update(row().id, { description: 'hotfix' }, owner, '"1"');
+      await service.update(row().id, { description: 'hotfix' }, owner);
 
       expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
     });
@@ -192,7 +194,7 @@ describe('[deployments.service] (unit)', () => {
       prisma.deployment.findFirst.mockResolvedValue(row());
 
       await expect(
-        service.update(row().id, { status: 'running' }, otherDev, '"1"'),
+        service.update(row().id, { status: 'running' }, otherDev),
       ).rejects.toBeInstanceOf(ForbiddenException);
       expect(prisma.deployment.updateManyAndReturn).not.toHaveBeenCalled();
     });
@@ -203,7 +205,7 @@ describe('[deployments.service] (unit)', () => {
         row({ createdBy: null, status: 'running' }),
       ]);
 
-      await service.update(row().id, { status: 'running' }, admin, '"1"');
+      await service.update(row().id, { status: 'running' }, admin);
 
       expect(prisma.deployment.updateManyAndReturn).toHaveBeenCalled();
     });
@@ -211,17 +213,17 @@ describe('[deployments.service] (unit)', () => {
     it('treats rows without a creator as admin-only', async () => {
       prisma.deployment.findFirst.mockResolvedValue(row({ createdBy: null }));
 
-      await expect(
-        service.update(row().id, { status: 'running' }, owner, '"1"'),
-      ).rejects.toBeInstanceOf(ForbiddenException);
+      await expect(service.update(row().id, { status: 'running' }, owner)).rejects.toBeInstanceOf(
+        ForbiddenException,
+      );
     });
 
     it('throws NotFoundException without writing when the id is unknown', async () => {
       prisma.deployment.findFirst.mockResolvedValue(null);
 
-      await expect(
-        service.update('missing', { status: 'running' }, owner, '"1"'),
-      ).rejects.toBeInstanceOf(NotFoundException);
+      await expect(service.update('missing', { status: 'running' }, owner)).rejects.toBeInstanceOf(
+        NotFoundException,
+      );
       expect(prisma.deployment.updateManyAndReturn).not.toHaveBeenCalled();
     });
   });

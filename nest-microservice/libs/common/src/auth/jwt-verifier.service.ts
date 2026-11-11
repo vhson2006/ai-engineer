@@ -7,6 +7,7 @@ interface KeycloakClaims extends JWTPayload {
   preferred_username?: string;
   email?: string;
   resource_access?: Record<string, { roles?: string[] }>;
+  groups?: unknown;
 }
 
 /**
@@ -47,7 +48,15 @@ export class JwtVerifier {
       id: payload.sub,
       username: payload.preferred_username,
       email: payload.email,
-      roles: Array.isArray(roles) ? roles.filter((r): r is string => typeof r === 'string') : [],
+      roles: strings(roles),
+      groups: strings(payload.groups),
     };
   }
+}
+
+/** The string items of a claim that should be a string array; anything else is ignored. */
+function strings(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string')
+    : [];
 }

@@ -1,0 +1,33 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "rootDir": "../../..",
+  "testRegex": "apps/content-service/test/integration/.*\\.integration-spec\\.ts$",
+  "transform": {
+    "^.+\\.ts$": "ts-jest",
+    "^.+\\.js$": [
+      "ts-jest",
+      {
+        "tsconfig": {
+          "allowJs": true,
+          "module": "commonjs",
+          "esModuleInterop": true
+        },
+        "isolatedModules": true
+      }
+    ]
+  },
+  "testEnvironment": "node",
+  "setupFiles": [
+    "<rootDir>/apps/content-service/test/support/setup-env.ts"
+  ],
+  "moduleNameMapper": {
+    "^@app/common(|/.*)$": "<rootDir>/libs/common/src$1"
+  },
+  "transformIgnorePatterns": [
+    "/node_modules/(?!(htmlparser2|domhandler|domutils|dom-serializer|domelementtype|entities)/)"
+  ]
+}
