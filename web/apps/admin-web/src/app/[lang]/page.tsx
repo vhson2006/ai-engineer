@@ -5,7 +5,9 @@ import { Badge, Card, Container, cn } from '@web/ui';
 import { DeploymentsTable } from '@/features/deployments/deployments-table';
 import { OverviewCharts } from '@/features/deployments/overview-charts';
 import { listDeployments, MAX_PAGE_SIZE, type Deployment, type DeploymentStatus } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
+import { isSuperadmin } from '@web/core/auth/roles';
+import { getSessionUser, type SessionUser } from '@web/core/auth/session';
+import { SitesOverview } from '@/features/sites/sites-overview';
 import { format } from '@web/core/i18n/format';
 import { href, LOCALES, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
@@ -22,17 +24,47 @@ export default async function OverviewPage() {
   return (
     <Container className="py-10 sm:py-14">
       <Suspense fallback={<OverviewSkeleton />}>
-        <Overview t={messages.overview} deployments={messages.deployments} locale={locale} />
+        <Overview t={messages.overview} deployments={messages.deployments} sites={messages.overviewSites} locale={locale} />
       </Suspense>
     </Container>
   );
 }
 
-async function Overview({ t, deployments, locale }: { t: T; deployments: Messages['deployments']; locale: Locale }) {
+async function Overview({ t, deployments, sites, locale }: { t: T; deployments: Messages['deployments']; sites: Messages['overviewSites']; locale: Locale }) {
   // Only sessions with KEYCLOAK_REQUIRED_ROLE exist in this app (@web/core/auth/session).
   const user = await getSessionUser().catch(() => null);
   if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(href(locale, '/'))}`);
+  const superadmin = isSuperadmin(user);
 
+  return (
+    <div className="space-y-10">
+      <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand">{t.eyebrow}</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-balance">{format(t.welcome, { name: user.name.split(' ')[0] })}</h1>
+          <p className="mt-2 max-w-2xl text-pretty text-muted">{t.subtitle}</p>
+        </div>
+        <SecurityNote title={t.security.title} text={superadmin ? t.security.textSuperadmin : t.security.textSiteAdmin} />
+      </header>
+
+      <SitesOverview t={sites} locale={locale} />
+      {superadmin && <DeploymentsOverview t={t} deployments={deployments} locale={locale} user={user} />}
+    </div>
+  );
+}
+
+/** Superadmins: the deployments of the platform (the old overview). */
+async function DeploymentsOverview({
+  t,
+  deployments,
+  locale,
+  user,
+}: {
+  t: T;
+  deployments: Messages['deployments'];
+  locale: Locale;
+  user: SessionUser;
+}) {
   // The latest 100 (one API page): stats and charts. The table shows the 10 most recent.
   const result = await listDeployments({ page: 1, limit: MAX_PAGE_SIZE });
   const latest = result.ok ? result.data.data : [];
@@ -42,15 +74,6 @@ async function Overview({ t, deployments, locale }: { t: T; deployments: Message
 
   return (
     <div className="space-y-8">
-      <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">{t.eyebrow}</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-balance">{format(t.welcome, { name: user.name.split(' ')[0] })}</h1>
-          <p className="mt-2 max-w-2xl text-pretty text-muted">{t.subtitle}</p>
-        </div>
-        <SecurityNote t={t} />
-      </header>
-
       {result.ok ? (
         <>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -133,7 +156,7 @@ function perDay(deployments: Deployment[], intlLocale: string): { day: string; c
   });
 }
 
-function SecurityNote({ t }: { t: T }) {
+function SecurityNote({ title, text }: { title: string; text: string }) {
   return (
     <div className="flex max-w-md items-start gap-3 rounded-2xl border border-brand/25 bg-brand-soft px-4 py-3 text-brand-soft-fg">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className="mt-0.5 size-5 shrink-0">
@@ -141,8 +164,8 @@ function SecurityNote({ t }: { t: T }) {
         <path d="M8 10V7a4 4 0 1 1 8 0v3" strokeLinecap="round" />
       </svg>
       <div>
-        <p className="text-sm font-semibold">{t.security.title}</p>
-        <p className="mt-0.5 text-sm leading-relaxed opacity-90">{t.security.text}</p>
+        <p className="text-sm font-semibold">{title}</p>
+        <p className="mt-0.5 text-sm leading-relaxed opacity-90">{text}</p>
       </div>
     </div>
   );

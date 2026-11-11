@@ -444,7 +444,7 @@
         "JWT được xác minh ở gateway và lần nữa ở từng service (RS256 + JWKS); token không bao giờ tới trình duyệt",
         "Phân quyền theo vai trò cộng quy tắc sở hữu “chỉ người tạo hoặc admin”; trang quản trị yêu cầu mật khẩu + OTP",
         "Sự kiện at-least-once: transactional outbox, JetStream và inbox idempotent",
-        "Optimistic concurrency với ETag, làm mới token single-flight, file tải thẳng từ trình duyệt lên storage",
+        "Làm mới token single-flight, file tải thẳng từ trình duyệt lên storage",
         "CI cho mọi pull request, image lên GHCR, GitOps với Argo CD và telemetry Grafana",
         "24 bản ghi quyết định kiến trúc (ADR) và quy ước viết sẵn mà cả người lẫn AI coding agent đều tuân theo"
       ]

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
+import { isSuperadmin } from '@web/core/auth/roles';
 import { getSessionUser } from '@web/core/auth/session';
 import { Container } from '@web/ui';
 import { Skeleton } from '@web/ui/skeleton';
@@ -12,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getMessages()).designSystem.title };
 }
 
-/** A living catalogue of @web/ui (admins only, like every page here). */
+/** A living catalogue of @web/ui (a system page: superadmins only, ADR 0030). */
 export default async function DesignSystemPage() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
@@ -31,5 +32,6 @@ export default async function DesignSystemPage() {
 async function Showcase({ t, locale }: { t: Messages; locale: Locale }) {
   const user = await getSessionUser().catch(() => null);
   if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(href(locale, '/design-system'))}`);
+  if (!isSuperadmin(user)) notFound();
   return <DesignSystemShowcase t={t.designSystem} lang={locale} intlLocale={LOCALES[locale].intl} />;
 }

@@ -25,6 +25,11 @@ export interface SecurityHeaderOptions {
   keycloakIssuer?: string;
   /** STORAGE_ORIGINS: object storage / CDN origins (presigned PUT uploads, images, inline files). */
   storageOrigins: string[];
+  /**
+   * Third-party pages this site embeds in an <iframe> (e.g. a Google Maps embed), listed by the app
+   * one by one (ADR 0016: explicit origins, never a wildcard). Omitted: no iframe may load.
+   */
+  frameOrigins?: string[];
   /** `next dev`: React needs eval for debugging, HMR needs a websocket. */
   dev: boolean;
 }
@@ -51,6 +56,8 @@ export function contentSecurityPolicy(options: SecurityHeaderOptions): string {
     'base-uri': ["'self'"],
     'form-action': ["'self'", ...(options.keycloakIssuer ? [origin(options.keycloakIssuer)] : [])],
     'frame-ancestors': ["'none'"],
+    // Without it, default-src 'self' applies: no foreign iframe.
+    ...(options.frameOrigins?.length ? { 'frame-src': ["'self'", ...options.frameOrigins.map(origin)] } : {}),
   };
   const policy = Object.entries(directives).map(([name, values]) => `${name} ${[...new Set(values)].join(' ')}`);
   if (https) policy.push('upgrade-insecure-requests'); // never on plain-HTTP dev: it would break same-origin requests

@@ -19,7 +19,7 @@ Before writing Next.js code, read the relevant guide in `node_modules/next/dist/
 ## 1. API helper (server) — `packages/core/src/api/`
 1. Response type mirroring nest-microservice `libs/common/src/contracts/<resource>`.
 2. A typed helper: `export function createOrder(input: OrderInput) { return apiFetch<Order>('/api/orders', { method: 'POST', body: input }); }`
-   - update: `headers: { 'If-Match': '"' + revision + '"' }`
+   - update: a PATCH with only the changed fields (no If-Match: ADR 0029)
    - create the API must deduplicate across retries: `idempotencyKey`
 3. New query param or header? It must also be listed for that endpoint in
    `k8s/base/krakend/config/krakend.tmpl` (`input_query_strings` / `input_headers`).
@@ -63,7 +63,7 @@ export async function submitOrder(input: unknown): Promise<ActionResult<{ id: st
 - Ids that go into an API path: `isUuid()` first.
 - After a successful mutation, refresh what the page shows: `refresh()` / `revalidatePath()` from
   `next/cache` (check the docs), or `router.refresh()` in the client.
-- `once()` only for creates. Updates rely on If-Match; deletes are idempotent.
+- `once()` only for creates. Updates (the same PATCH twice gives the same result) and deletes are idempotent.
 
 ## 4. Client component — `apps/<app>/src/features/<feature>/<name>-form.tsx` (or `-dialog.tsx`)
 - `'use client'`; `useForm({ resolver: zodResolver(schema), defaultValues })` and the `@web/ui/form`
@@ -86,7 +86,7 @@ memory store), and cover:
 - valid input → API called with exactly the expected body (no extra fields);
 - each invalid field → `invalid_input`, API not called;
 - signed out → `unauthenticated`, API not called;
-- API failure (e.g. 412, 422) → `fromApiFailure` mapping with `requestId`;
+- API failure (e.g. 409, 422) → `fromApiFailure` mapping with `requestId`;
 - same `submissionId` twice → the API is called once;
 - rate limited (`limitAction` returns a failure) → `rate_limited`, API not called.
 

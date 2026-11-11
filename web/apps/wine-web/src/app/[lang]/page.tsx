@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {
+  ArrowRight,
   Award,
   CalendarDays,
   Flame,
@@ -22,8 +24,10 @@ import { Reveal } from '@web/ui/reveal';
 import { LegalNotice } from '@/components/legal-notice';
 import { Seal } from '@/components/logo';
 import { Eyebrow, SectionHeading } from '@/components/section-heading';
+import { ArticleGrid } from '@/features/articles/article-card';
+import { articlePaths, listArticles } from '@/features/articles/data';
 import { bottled, featured, jars, ruouCan, signatureBrands, winery } from '@/content/winery';
-import type { Locale } from '@/i18n/locales';
+import { href, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 import { formatVnd } from '@/lib/format';
 import cabinet from '../../../public/images/cabinet.jpg';
@@ -77,6 +81,9 @@ export default async function HomePage() {
       </Reveal>
       <Reveal>
         <About {...ctx} />
+      </Reveal>
+      <Reveal>
+        <LatestArticles {...ctx} />
       </Reveal>
       <Reveal>
         <Contact {...ctx} />
@@ -415,6 +422,29 @@ function About({ t }: Ctx) {
         <div className="mt-12 grid gap-5 lg:grid-cols-[1.6fr_1fr]">
           <Image src={storefront} alt={t.about.storefrontAlt} placeholder="blur" sizes="(min-width: 1024px) 700px, 100vw" className="h-56 w-full rounded-[1.75rem] object-cover sm:h-72" />
           <Image src={factory} alt={t.about.factoryAlt} placeholder="blur" sizes="(min-width: 1024px) 450px, 100vw" className="h-56 w-full rounded-[1.75rem] object-cover sm:h-72" />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── Latest articles ─────────────────────────────── */
+
+async function LatestArticles({ t, locale }: Ctx) {
+  const articles = (await listArticles(locale)).slice(0, 3);
+  if (articles.length === 0) return null;
+  return (
+    <section id="articles" className="bg-surface-2 py-20 sm:py-28">
+      <Container>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.articles.latestIntro} />
+          <Link href={href(locale, articlePaths.index)} className={cn(pill('secondary'), 'shrink-0 self-start sm:self-auto')}>
+            {t.articles.viewAll}
+            <ArrowRight aria-hidden />
+          </Link>
+        </div>
+        <div className="mt-14">
+          <ArticleGrid articles={articles} locale={locale} t={t} />
         </div>
       </Container>
     </section>

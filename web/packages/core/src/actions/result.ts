@@ -23,7 +23,7 @@ export interface FieldError {
 
 export interface ActionFailure {
   ok: false;
-  /** API code (validation_error, precondition_failed…) or ours (invalid_input, unauthenticated…). */
+  /** API code (validation_error, unique_violation…) or ours (invalid_input, unauthenticated…). */
   code: string;
   /** Safe to show. */
   message: string;

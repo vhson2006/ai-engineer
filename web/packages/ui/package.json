@@ -9,6 +9,10 @@
       "style": "./src/theme.css",
       "default": "./src/theme.css"
     },
+    "./article-layout.css": {
+      "style": "./src/article-layout.css",
+      "default": "./src/article-layout.css"
+    },
     "./*": "./src/components/*.tsx"
   },
   "scripts": {

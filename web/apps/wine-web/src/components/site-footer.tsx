@@ -17,6 +17,7 @@ export async function SiteFooter() {
     { id: 'about', label: t.nav.about },
     { id: 'contact', label: t.nav.contact },
   ];
+  const articles = href(locale, '/bai-viet');
   const linkClass = 'transition-colors hover:text-yellow';
 
   return (
@@ -34,6 +35,11 @@ export async function SiteFooter() {
               </a>
             </li>
           ))}
+          <li>
+            <a href={articles} className={linkClass}>
+              {t.nav.articles}
+            </a>
+          </li>
         </FooterColumn>
         <FooterColumn title={t.footer.contact}>
           {winery.addressLines.map((line) => (

@@ -13,7 +13,6 @@
     "dev:nails": "npm run dev -w nails-web",
     "dev:wine": "npm run dev -w wine-web",
     "dev:laundry": "npm run dev -w laundry-web",
-    "dev:wedding": "npm run dev -w wedding-web",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",

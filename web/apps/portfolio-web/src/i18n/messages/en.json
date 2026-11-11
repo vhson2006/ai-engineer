@@ -444,7 +444,7 @@
         "JWTs verified at the gateway and again in each service (RS256 + JWKS); tokens never reach the browser",
         "Role-based access plus “only the creator or an admin” ownership rules; admin site behind password + OTP",
         "At-least-once events: transactional outbox, JetStream and an idempotent inbox",
-        "Optimistic concurrency with ETags, single-flight token refresh, file uploads straight from browser to storage",
+        "Single-flight token refresh, file uploads straight from browser to storage",
         "CI on every pull request, images to GHCR, Argo CD GitOps and Grafana telemetry",
         "24 architecture decision records and written conventions that people and AI coding agents both follow"
       ]

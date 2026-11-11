@@ -11,6 +11,7 @@ import {
   type FieldPath,
   type FieldValues,
   type Path,
+  type SubmitErrorHandler,
   type SubmitHandler,
   type UseFormReturn,
 } from 'react-hook-form';
@@ -40,6 +41,7 @@ const TranslateContext = createContext<Translate>((key) => key);
 export function Form<TIn extends FieldValues, TOut = TIn>({
   form,
   onSubmit,
+  onInvalidSubmit,
   translate,
   className,
   children,
@@ -47,13 +49,15 @@ export function Form<TIn extends FieldValues, TOut = TIn>({
 }: Omit<ComponentProps<'form'>, 'onSubmit' | 'translate'> & {
   form: UseFormReturn<TIn, unknown, TOut>;
   onSubmit: SubmitHandler<TOut>;
+  /** The schema refused the values (e.g. to show the tab that holds the first error). */
+  onInvalidSubmit?: SubmitErrorHandler<TIn>;
   translate?: Translate;
 }) {
   return (
     <FormProvider {...form}>
       <TranslateContext.Provider value={translate ?? ((key) => key)}>
         {/* noValidate: the schema validates (same rules and messages as the server), not the browser. */}
-        <form noValidate onSubmit={form.handleSubmit(onSubmit)} className={cn('grid gap-5', className)} {...props}>
+        <form noValidate onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} className={cn('grid gap-5', className)} {...props}>
           {children}
         </form>
       </TranslateContext.Provider>

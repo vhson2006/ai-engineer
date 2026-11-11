@@ -13,7 +13,7 @@ const { GET } = await import('./route');
 
 const deployment = (n: number) => ({
   id: `id-${n}`, name: `app-${n}`, version: '1.0.0', environment: 'staging', status: 'running',
-  description: null, createdBy: 'user-1', revision: 1, createdAt: '2026-11-07T09:00:00Z', updatedAt: '2026-11-07T09:00:00Z',
+  description: null, createdBy: 'user-1', createdAt: '2026-11-07T09:00:00Z', updatedAt: '2026-11-07T09:00:00Z',
 });
 const page = (items: unknown[], pageNo: number, totalPages: number) => ({
   ok: true, data: { data: items, meta: { page: pageNo, limit: 100, total: totalPages * 100, totalPages } },

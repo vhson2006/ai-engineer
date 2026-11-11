@@ -13,8 +13,6 @@ export interface Deployment {
   status: DeploymentStatus;
   description: string | null;
   createdBy: string | null;
-  /** Optimistic concurrency: send it back as `If-Match: "<revision>"` to update. */
-  revision: number;
   createdAt: string;
   updatedAt: string;
 }

@@ -10,13 +10,26 @@
     "brandTagline": "Control panel",
     "close": "Close",
     "cancel": "Cancel",
-    "requestId": "Request id"
+    "requestId": "Request id",
+    "back": "Back",
+    "save": "Save",
+    "saving": "Saving…",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "edit": "Edit"
   },
   "nav": {
     "label": "Main",
     "overview": "Overview",
     "deployments": "Deployments",
-    "designSystem": "Design system"
+    "designSystem": "Design system",
+    "sites": "Sites",
+    "system": "System",
+    "articles": "Articles",
+    "categories": "Topics",
+    "openMenu": "Open the menu",
+    "closeMenu": "Close the menu",
+    "noSites": "No site yet."
   },
   "userMenu": {
     "signIn": "Sign in",
@@ -29,7 +42,8 @@
     "subtitle": "Everything here acts on production data with your administrator rights. Take care.",
     "security": {
       "title": "Protected session",
-      "text": "Signed in with password and one-time code. The session ends after 15 minutes of inactivity and after 8 hours at most."
+      "textSuperadmin": "Signed in with password and one-time code. The session ends after 15 minutes of inactivity and after 8 hours at most.",
+      "textSiteAdmin": "The session ends after 15 minutes of inactivity and after 8 hours at most. Sign out on shared computers."
     },
     "stats": {
       "deployments": "Deployments",
@@ -154,7 +168,13 @@
     "required": "This field is required.",
     "tooLong": "This is too long.",
     "invalidVersion": "Use a version like 1.4.0.",
-    "invalid": "This value is not valid."
+    "invalid": "This value is not valid.",
+    "invalidSlug": "Use lowercase letters, digits and dashes (e.g. my-article).",
+    "atLeastOneLanguage": "Fill in at least one language.",
+    "invalidDate": "Choose a valid date and time.",
+    "tooSoon": "Choose a time at least a minute from now.",
+    "tooSmall": "This number is too small.",
+    "tooBig": "This number is too big."
   },
   "designSystem": {
     "title": "Design system",
@@ -248,5 +268,168 @@
       "dropped": "{name} dropped at position {position}.",
       "cancelled": "Moving {name} was cancelled."
     }
+  },
+  "overviewSites": {
+    "title": "Your sites",
+    "subtitle": "Open a site to manage its articles.",
+    "drafts": "Drafts",
+    "scheduled": "Scheduled",
+    "published": "Published",
+    "open": "Open articles",
+    "empty": "You are not an administrator of any site yet. Ask a superadmin to add you to one.",
+    "languages": "Languages: {locales}"
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "{site}: write, schedule and publish articles in every language of the site.",
+    "new": "New article",
+    "search": {
+      "label": "Search articles",
+      "placeholder": "Search by title…"
+    },
+    "filters": {
+      "status": "Status",
+      "allStatuses": "All statuses",
+      "category": "Topic",
+      "allCategories": "All topics"
+    },
+    "status": {
+      "draft": "Draft",
+      "scheduled": "Scheduled",
+      "published": "Published"
+    },
+    "columns": {
+      "title": "Title",
+      "category": "Topic",
+      "status": "Status",
+      "date": "Date",
+      "languages": "Languages"
+    },
+    "caption": "Articles of {site}",
+    "untitled": "(no title yet)",
+    "empty": "No article yet. Write the first one.",
+    "emptyFiltered": "No article matches these filters.",
+    "total": "{count} articles",
+    "pagination": {
+      "nav": "Pages",
+      "previous": "Previous",
+      "next": "Next",
+      "status": "Page {page} of {total}"
+    },
+    "scheduledFor": "Scheduled for {date}",
+    "publishedOn": "Published {date}",
+    "updatedOn": "Updated {date}",
+    "form": {
+      "titleNew": "New article",
+      "titleEdit": "Edit article",
+      "backToList": "All articles",
+      "languages": "Languages",
+      "languagesHint": "A draft may miss languages; publishing needs every language of the site ({locales}).",
+      "missing": "missing",
+      "complete": "complete",
+      "title": "Title",
+      "titlePlaceholder": "Five habits for nails that last",
+      "slug": "URL (slug)",
+      "slugHint": "Lowercase letters, digits and dashes. Filled from the title until you change it.",
+      "excerpt": "Summary",
+      "excerptHint": "Shown in lists and in search results.",
+      "body": "Content",
+      "bodyPlaceholder": "Write the article…",
+      "coverAlt": "Cover image description",
+      "coverAltHint": "For people who can’t see the image (the cover itself comes later).",
+      "seo": "Search engines (optional)",
+      "seoTitle": "SEO title",
+      "seoDescription": "SEO description",
+      "settings": "Settings",
+      "category": "Topic",
+      "categoryPlaceholder": "Choose a topic",
+      "noCategories": "This site has no topic yet: create one first.",
+      "createCategory": "Create a topic",
+      "featured": "Featured",
+      "featuredHint": "Shown first on the site.",
+      "create": "Save draft",
+      "creating": "Saving…",
+      "created": "Draft saved.",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "saved": "Changes saved.",
+      "liveWarning": "This article is live: saved changes appear on the site right away.",
+      "scheduledWarning": "This article is scheduled: it goes live with these changes.",
+      "leave": "You have unsaved changes.",
+      "checkFields": "Some fields need your attention (the marked tabs and fields)."
+    },
+    "publish": {
+      "button": "Publish",
+      "title": "Publish this article",
+      "description": "Every language of the site must be complete.",
+      "now": "Now",
+      "later": "At a date and time",
+      "at": "Date and time",
+      "atHint": "At least a minute from now, your time zone ({tz}).",
+      "submit": "Publish",
+      "schedule": "Schedule",
+      "submitting": "Publishing…",
+      "published": "Published.",
+      "scheduled": "Scheduled for {date}.",
+      "unpublish": "Unpublish",
+      "cancelSchedule": "Cancel the schedule",
+      "unpublishing": "Working…",
+      "unpublished": "The article is a draft again.",
+      "unpublishTitle": "Take this article off the site?",
+      "unpublishDescription": "It becomes a draft again. Its address stops working until it is published again.",
+      "saveFirst": "Save your changes first."
+    },
+    "delete": {
+      "button": "Delete",
+      "title": "Delete this article?",
+      "description": "It is deleted for good, in every language. A live article disappears from the site.",
+      "confirm": "Delete for good",
+      "deleted": "Article deleted."
+    },
+    "editor": {
+      "toolbar": "Formatting",
+      "bold": "Bold",
+      "italic": "Italic",
+      "underline": "Underline",
+      "strike": "Strikethrough",
+      "code": "Inline code",
+      "heading2": "Heading",
+      "heading3": "Subheading",
+      "bulletList": "Bulleted list",
+      "orderedList": "Numbered list",
+      "quote": "Quote",
+      "undo": "Undo",
+      "redo": "Redo"
+    }
+  },
+  "categories": {
+    "title": "Topics",
+    "subtitle": "{site}: every article belongs to one topic.",
+    "new": "New topic",
+    "key": "Key",
+    "keyHint": "A short id that never changes, e.g. care.",
+    "name": "Name ({locale})",
+    "slug": "URL ({locale})",
+    "position": "Order",
+    "columns": {
+      "key": "Key",
+      "names": "Names",
+      "position": "Order",
+      "actions": "Actions"
+    },
+    "caption": "Topics of {site}",
+    "empty": "No topic yet.",
+    "createTitle": "New topic",
+    "editTitle": "Edit topic",
+    "description": "A name and a URL in every language of the site.",
+    "create": "Create",
+    "creating": "Creating…",
+    "created": "Topic “{name}” created.",
+    "saved": "Topic saved.",
+    "deleteTitle": "Delete the topic “{name}”?",
+    "deleteDescription": "Only a topic no article uses can be deleted.",
+    "deleted": "Topic deleted.",
+    "inUse": "Articles still use this topic: move them first.",
+    "checkFields": "Some fields need your attention."
   }
 }

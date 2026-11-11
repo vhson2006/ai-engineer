@@ -1,63 +1,25 @@
 import type { ReactNode } from 'react';
 import { cn } from '@web/ui';
 
-/** Small gold label between two hairlines (the menu's ornament style). */
-export function Eyebrow({ children, tone = 'dark', align = 'center' }: { children: ReactNode; tone?: 'dark' | 'light'; align?: 'center' | 'left' }) {
+/** A small rounded label with a colored dot ("● Menu"). */
+export function Eyebrow({ children, dot = 'bg-mint-strong', className }: { children: ReactNode; dot?: string; className?: string }) {
   return (
-    <p
-      className={cn(
-        'flex items-center gap-3 text-xs font-semibold tracking-[0.28em] uppercase',
-        tone === 'light' ? 'text-gold-light' : 'text-gold',
-        align === 'center' && 'justify-center',
-      )}
-    >
-      <span aria-hidden className="h-px w-8 bg-current opacity-60" />
+    <p className={cn('inline-flex items-center gap-2 rounded-full bg-surface-2 px-3 py-1.5 text-xs font-semibold tracking-wide', className)}>
+      <span aria-hidden className={cn('size-2 rounded-full', dot)} />
       {children}
-      {align === 'center' && <span aria-hidden className="h-px w-8 bg-current opacity-60" />}
     </p>
   );
 }
 
-/** Eyebrow + Garamond title + intro: the heading of every section. */
-export function SectionHeading({
-  eyebrow,
-  title,
-  intro,
-  align = 'center',
-  tone = 'dark',
-  action,
-}: {
-  eyebrow: string;
-  title: string;
-  intro?: string;
-  align?: 'center' | 'left';
-  tone?: 'dark' | 'light';
-  action?: ReactNode;
-}) {
+/** Section heading: label, a bold tight title, an intro on the right on wide screens. */
+export function SectionHeading({ eyebrow, dot, title, intro }: { eyebrow: string; dot?: string; title: string; intro?: string }) {
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-6',
-        align === 'center' ? 'mx-auto max-w-2xl items-center text-center' : 'sm:flex-row sm:items-end sm:justify-between',
-      )}
-    >
-      <div className={cn(align === 'left' && 'max-w-2xl')}>
-        <Eyebrow tone={tone} align={align}>
-          {eyebrow}
-        </Eyebrow>
-        <h2
-          className={cn(
-            'mt-4 font-display text-4xl leading-[1.1] font-semibold tracking-tight text-balance sm:text-5xl',
-            tone === 'light' ? 'text-white' : 'text-brand-strong',
-          )}
-        >
-          {title}
-        </h2>
-        {intro && (
-          <p className={cn('mt-4 text-lg leading-relaxed text-pretty', tone === 'light' ? 'text-white/75' : 'text-muted')}>{intro}</p>
-        )}
+    <div className="grid gap-5 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+      <div>
+        <Eyebrow dot={dot}>{eyebrow}</Eyebrow>
+        <h2 className="mt-5 text-4xl leading-[1.02] font-extrabold tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl">{title}</h2>
       </div>
-      {action}
+      {intro && <p className="max-w-md leading-relaxed text-pretty text-muted lg:justify-self-end">{intro}</p>}
     </div>
   );
 }

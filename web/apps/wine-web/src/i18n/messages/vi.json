@@ -29,6 +29,7 @@
     "range": "Danh mục",
     "partners": "Hợp tác nhà hàng",
     "about": "Về chúng tôi",
+    "articles": "Bài viết",
     "contact": "Liên hệ"
   },
   "brand": {
@@ -141,6 +142,56 @@
       "hotline": "Hotline",
       "care": "Chăm sóc khách hàng"
     }
+  },
+  "articles": {
+    "eyebrow": "Bài viết",
+    "title": "Chuyện rượu Gò Đen",
+    "intro": "Câu chuyện thương hiệu, nghề làm rượu, cách thưởng thức và tin hợp tác từ Khang Hưng Tửu.",
+    "metaTitle": "Bài viết",
+    "metaDescription": "Bài viết của Khang Hưng Tửu: câu chuyện thương hiệu, phòng ngâm tẩm và KCS, cách thưởng thức rượu hấp nóng, rượu cần và hợp tác nhà hàng. Dành cho người từ 18 tuổi.",
+    "categoriesLabel": "Chủ đề",
+    "all": "Tất cả",
+    "categories": {
+      "brand": "Thương hiệu",
+      "craft": "Sản xuất",
+      "serving": "Cách thưởng thức",
+      "guide": "Cẩm nang",
+      "partners": "Hợp tác"
+    },
+    "categoryTitle": "Chủ đề: {category}",
+    "categoryDescription": "Các bài viết về {category} của Khang Hưng Tửu.",
+    "featured": "Bài nổi bật",
+    "readMore": "Đọc tiếp",
+    "minutes": "{count} phút đọc",
+    "published": "Đăng ngày {date}",
+    "empty": "Chưa có bài viết trong chủ đề này.",
+    "latest": "Bài viết mới",
+    "latestIntro": "Câu chuyện, cẩm nang và tin tức mới nhất từ hãng.",
+    "viewAll": "Xem tất cả bài viết",
+    "related": "Bài viết cùng chủ đề",
+    "share": "Chia sẻ",
+    "shareFacebook": "Chia sẻ lên Facebook",
+    "copyLink": "Sao chép liên kết",
+    "copied": "Đã sao chép",
+    "back": "Tất cả bài viết",
+    "breadcrumb": "Đường dẫn",
+    "sample": "Nội dung mẫu để duyệt giao diện, ghép từ thông tin đã có trên trang. Bài thật sẽ được lấy từ hệ thống quản trị."
+  },
+  "templates": {
+    "metaTitle": "Mẫu bài viết",
+    "eyebrow": "Mẫu bài viết",
+    "title": "10 mẫu bài viết dựng sẵn",
+    "intro": "Chọn một mẫu để xem bản đầy đủ. Ảnh xám là chỗ đặt ảnh thật; phần trong [ngoặc vuông] là nội dung cần thay. Trang này chỉ để duyệt mẫu, không hiện trên công cụ tìm kiếm.",
+    "preview": "Xem mẫu",
+    "bestFor": "Phù hợp cho",
+    "blocks": "Thành phần bố cục",
+    "chip": "Mẫu {number}",
+    "banner": "Mẫu {number}/{total} · {name}. Nội dung mẫu: thay phần trong [ngoặc vuông] và các ảnh xám.",
+    "languageNote": "Nội dung mẫu viết bằng tiếng Việt.",
+    "all": "Tất cả mẫu",
+    "previous": "Mẫu trước",
+    "next": "Mẫu sau",
+    "navLabel": "Chuyển mẫu"
   },
   "footer": {
     "tagline": "Rượu truyền thống và rượu thảo mộc từ Bến Lức, Long An, từ năm 1991.",

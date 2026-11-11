@@ -10,16 +10,27 @@ import type { Messages } from '@/i18n/messages';
 export const shop = {
   name: 'SFaster',
   fullName: 'Giặt sấy SFaster',
-  // CONFIRM: the last digit is cut off in the photos ("0984 763 10…"). Also the shop's Zalo.
+  /** Hotline, also the shop's Zalo (the sign and the opening-hours poster). */
   phone: { display: '0984 763 100', href: 'tel:+84984763100' },
   zaloHref: 'https://zalo.me/0984763100',
-  // CONFIRM: street read from the awning ("68 Lê Hồng Ph…"); ward, district and city unknown.
-  addressLines: ['68 Lê Hồng Phong'],
-  mapsHref: 'https://www.google.com/maps/search/?api=1&query=Gi%E1%BA%B7t+s%E1%BA%A5y+SFaster+68+L%C3%AA+H%E1%BB%93ng+Phong',
-  /** Every day, except public holidays (Lễ, Tết). */
-  hours: { open: '07:00', close: '19:00' },
+  /** The two branches printed on the sign (ward names after the 2025 merger), Ho Chi Minh City. */
+  branches: [
+    { id: 'cuuLong', street: '40 Cửu Long', ward: 'Phường Hòa Hưng', city: 'TP.HCM' },
+    { id: 'leHongPhong', street: '68 Lê Hồng Phong', ward: 'Phường Chợ Quán', city: 'TP.HCM' },
+  ],
+  /** Every day, except public holidays (Lễ, Tết): the opening-hours poster. */
+  hours: { open: '07:00', close: '20:00' },
   loyalty: { paid: 7, free: 1 },
 } as const;
+
+export type Branch = (typeof shop.branches)[number];
+
+/** One line, as on the sign: "40 Cửu Long, Phường Hòa Hưng, TP.HCM". */
+export const branchAddress = (branch: Branch) => `${branch.street}, ${branch.ward}, ${branch.city}`;
+
+/** Google Maps search for a branch (opens the app on phones). */
+export const branchMapsHref = (branch: Branch) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Giặt sấy SFaster ${branch.street} ${branch.ward} TP Hồ Chí Minh`)}`;
 
 /** Price per unit, in đồng. */
 export type Unit = 'load' | 'kg' | 'set' | 'piece' | 'halfKilo' | 'pair';

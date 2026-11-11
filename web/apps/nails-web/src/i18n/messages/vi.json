@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Envy Nail Spa · Tiệm nail & spa tại Wendell, NC",
-    "description": "Dịch vụ làm móng sạch sẽ, chuyên nghiệp, chất lượng cao tại Wendell, NC: đắp bột, nhúng bột, Gel-X, chăm sóc móng tay, pedicure cao cấp và waxing. Nhận khách đặt hẹn và khách vãng lai."
+    "title": "Envy Nails Spa of Wendell · Tiệm nail tại Wendell, NC",
+    "description": "Envy Nails Spa of Wendell, 2241 Treelight Way, Wendell, NC: manicure, pedicure đặc biệt, acrylic, nhúng bột, Gel-X, nail art và waxing. Đặt lịch online hoặc gọi (919) 366-6435."
   },
   "common": {
     "skipToContent": "Chuyển đến nội dung",
@@ -13,121 +13,221 @@
     "or": "hoặc",
     "directions": "Chỉ đường"
   },
-  "topBar": {
-    "welcome": "Nhận khách đặt hẹn & khách vãng lai",
-    "gift": "Có bán phiếu quà tặng"
-  },
   "nav": {
     "label": "Mục chính",
     "home": "Trang chủ Envy Nail Spa",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
-    "services": "Dịch vụ",
-    "pedicures": "Pedicure",
+    "gallery": "Mẫu nail",
+    "artists": "Nghệ nhân",
     "menu": "Bảng giá",
-    "styles": "Nail art",
-    "gift": "Phiếu quà tặng",
-    "visit": "Ghé tiệm"
+    "faq": "Hỏi đáp",
+    "visit": "Ghé tiệm",
+    "blog": "Blog"
   },
   "hero": {
-    "eyebrow": "Nail spa · Wendell, NC",
-    "title": "Sạch sẽ. Chuyên nghiệp.",
-    "titleAccent": "Đẹp đến từng chi tiết.",
-    "text": "Envy Nail Spa được biết đến với dịch vụ sạch sẽ, chuyên nghiệp và chất lượng cao. Đội ngũ thợ được đào tạo bài bản, chỉ dùng sản phẩm chính hãng cao cấp, trong không gian thư giãn để bạn chỉ việc ngồi và tận hưởng.",
-    "photoAlt": "Móng almond sơn gel xanh xám nhạt, vẽ tay hoa màu xanh",
-    "photoAlt2": "Móng ngắn sơn gel xám điểm nhũ vàng",
-    "hoursTitle": "Giờ mở cửa"
+    "eyebrow": "Tiệm nail · Wendell, NC 27591",
+    "title": "Thanh lịch",
+    "titleAccent": "trên từng đầu ngón tay",
+    "text": "Trải nghiệm thế giới của những bộ móng là tác phẩm nghệ thuật và những liệu trình tinh tế. Đội ngũ thợ của chúng tôi là những nghệ nhân, biến việc chăm sóc móng thành nghệ thuật.",
+    "signatureLabel": "Đặc biệt",
+    "signatureName": "Royal Herbal Detox Pedicure",
+    "featured": "Mẫu nổi bật",
+    "slide": "Xem mẫu {number}",
+    "pause": "Tạm dừng trình chiếu",
+    "play": "Tiếp tục trình chiếu"
   },
   "promise": {
     "label": "Vì sao khách chọn Envy Nail Spa",
     "items": {
-      "clean": { "title": "Sạch sẽ & vệ sinh", "text": "Tiêu chuẩn vệ sinh được đặt lên hàng đầu, cẩn thận với từng khách." },
-      "products": { "title": "Sản phẩm cao cấp", "text": "Chỉ dùng sản phẩm chính hãng, cao cấp cho kết quả đẹp và an toàn cho bạn." },
-      "staff": { "title": "Thợ chuyên nghiệp", "text": "Đội ngũ thợ được đào tạo bài bản, có chuyên môn, bạn hoàn toàn yên tâm." },
-      "relax": { "title": "Không gian thư giãn", "text": "Không gian xanh mát, yên tĩnh để bạn nghỉ ngơi trong lúc làm đẹp." }
-    }
-  },
-  "services": {
-    "eyebrow": "Dịch vụ",
-    "title": "Mọi thứ cho đôi tay và đôi chân đẹp",
-    "intro": "Từ đổi màu sơn nhanh đến pedicure Royal Herbal Detox, chọn đúng thứ bạn cần. Giá niêm yết rõ ràng.",
-    "seePrices": "Xem giá",
-    "items": {
-      "enhancement": { "name": "Đắp & nối móng", "text": "Acrylic, powder gel, bột màu, builder gel, Gel-X và BIAB: làm bộ mới và dặm móng." },
-      "dip": { "name": "Nhúng bột (dip)", "text": "Màu bền, móng nhẹ, có French, ombre và tạo dáng đặc biệt." },
-      "manicure": { "name": "Chăm sóc móng tay", "text": "Manicure Classic, Signature và Candle, sơn thường hoặc sơn gel." },
-      "pedicure": { "name": "Chăm sóc móng chân", "text": "Bảy gói pedicure, từ Basic đến trải nghiệm spa Royal Herbal Detox." },
-      "waxing": { "name": "Waxing", "text": "Chân mày, môi, mặt, tay, chân và cơ thể: sạch mịn, nhẹ nhàng." },
-      "kids": { "name": "Menu cho bé", "text": "Làm móng tay, móng chân và đổi màu sơn cho bé dưới 9 tuổi." }
-    }
-  },
-  "pedicure": {
-    "eyebrow": "Pedicure đặc biệt",
-    "title": "Bảy cách nuông chiều đôi chân",
-    "intro": "Mọi gói pedicure đều có chăm sóc da và sơn móng. Nâng cấp với đá nóng, massage nến, liệu trình vàng, kim cương hoặc Royal Herbal Detox.",
-    "includes": "Gồm những gì",
-    "featured": "Cao cấp nhất",
-    "addOnsTitle": "Thêm vào bất kỳ gói pedicure nào",
-    "imageAlt": "Chén kem dưỡng và muối biển spa cùng lá cọ",
-    "addOns": {
-      "paraffin": "Sáp paraffin",
-      "gel": "Sơn gel"
-    },
-    "items": {
-      "basic": {
-        "name": "Basic Pedicure",
-        "text": "Chăm sóc cơ bản giúp đôi chân luôn sạch sẽ, tươi mới.",
-        "includes": ["Cắt & dũa móng chân", "Chăm sóc da quanh móng", "Tẩy da chết bằng đường", "Massage với lotion", "Quấn khăn nóng", "Sơn màu tùy chọn"]
+      "clean": {
+        "title": "Sạch sẽ & vệ sinh",
+        "text": "Tiêu chuẩn vệ sinh được đặt lên hàng đầu, cẩn thận với từng khách."
       },
-      "signature": {
-        "name": "Signature Pedicure",
-        "text": "Lý tưởng khi bận rộn: đủ mọi bước quan trọng cho đôi chân được chăm chút.",
-        "includes": ["Ngâm chân nước ấm", "Chăm sóc da quanh móng", "Xử lý vết chai", "Tẩy da chết bằng đường", "Đắp mặt nạ bùn", "Quấn 2 khăn nóng", "Massage chân với lotion", "Sơn móng", "Quấn khăn cổ"]
+      "products": {
+        "title": "Sản phẩm cao cấp",
+        "text": "Chỉ dùng sản phẩm chính hãng, cao cấp cho kết quả đẹp và an toàn cho bạn."
       },
-      "candle": {
-        "name": "Candle Pedicure",
-        "text": "Chăm sóc chuyên sâu với massage bằng nến ấm.",
-        "includes": ["Ngâm chân muối biển", "Chăm sóc da quanh móng", "Xử lý vết chai", "Tẩy da chết đường và cam tươi", "Đắp mặt nạ bùn", "Massage chân với nến và lotion", "Quấn 2 khăn nóng", "Sơn móng", "Quấn khăn cổ"]
+      "staff": {
+        "title": "Thợ chuyên nghiệp",
+        "text": "Đội ngũ thợ được đào tạo bài bản, có chuyên môn, bạn hoàn toàn yên tâm."
       },
-      "luxury": {
-        "name": "Luxury Pedicure",
-        "text": "Tận hưởng sự sang trọng với liệu trình detox và đá nóng.",
-        "includes": ["Ngâm chân muối biển", "Chăm sóc da quanh móng", "Xử lý vết chai", "Tẩy da chết đường và cam tươi", "Đắp mặt nạ bùn", "Massage 4 viên đá nóng", "Massage chân với lotion", "Quấn 2 khăn nóng", "Sơn móng", "Quấn khăn cổ"]
-      },
-      "golden": {
-        "name": "Golden Pedicure",
-        "text": "Cảm giác như hoàng gia: đôi chân nhẹ nhõm, tinh thần thư thái.",
-        "includes": ["Ngâm chân bột vàng", "Chăm sóc da quanh móng", "Xử lý vết chai", "Tẩy da chết đường vàng và cam tươi", "Mặt nạ đất sét vàng thải độc", "Massage 4 viên đá nóng", "Sáp paraffin", "Massage bơ vàng giàu vitamin E", "Quấn 2 khăn nóng", "Sơn móng", "Quấn khăn cổ"]
-      },
-      "diamond": {
-        "name": "Diamond Pedicure",
-        "text": "Gói pedicure cầu kỳ nhất: sang trọng mà vẫn hiệu quả.",
-        "includes": ["Bom spa hoa xà phòng", "Muối kim cương vitamin E", "Chăm sóc da quanh móng", "Xử lý vết chai", "Tẩy da chết kim cương & cam tươi", "Mặt nạ kim cương", "Massage bơ kim cương", "Massage nến và 4 viên đá nóng", "Vớ collagen", "Quấn 2 khăn nóng", "Sơn móng", "Quấn khăn cổ"]
-      },
-      "royal": {
-        "name": "Royal Herbal Detox Pedicure",
-        "text": "Đỉnh cao thư giãn: mọi bước cao cấp của Diamond Pedicure, nâng tầm hơn nữa.",
-        "includes": ["Toàn bộ liệu trình Diamond Pedicure", "Ngâm muối hồng Himalaya ấm giúp thải độc, làm mềm da", "Trà thảo mộc pha tay: gừng, kỷ tử, táo đỏ, quế, hoa cúc", "Tăng tuần hoàn, giảm mệt mỏi"]
+      "relax": {
+        "title": "Không gian thư giãn",
+        "text": "Không gian xanh mát, yên tĩnh để bạn nghỉ ngơi trong lúc làm đẹp."
       }
     }
   },
-  "manicure": {
-    "eyebrow": "Manicure",
-    "title": "Đôi tay đẹp từ cảm giác đến vẻ ngoài",
-    "regular": "Sơn thường",
-    "gel": "Sơn gel",
-    "nailCut": "Cắt móng không kèm manicure",
+  "status": {
+    "open": "Đang nhận khách",
+    "closesAt": "Mở đến {time}",
+    "closed": "Hiện đang đóng cửa",
+    "opensAt": "Mở cửa {day} lúc {time}",
+    "today": "hôm nay",
+    "tomorrow": "ngày mai",
+    "checking": "Đang kiểm tra giờ hôm nay…"
+  },
+  "gallery": {
+    "eyebrow": "Bộ sưu tập nail art",
+    "title": "Chọn một mẫu. Chúng tôi làm cho riêng bạn.",
+    "intro": "Những mẫu móng để bạn lấy cảm hứng. Chạm vào một mẫu để xem thời gian, giá ước tính và bảng màu, rồi đặt lịch.",
+    "filtersLabel": "Lọc theo phong cách",
+    "all": "Tất cả",
+    "categories": {
+      "art": "Vẽ nghệ thuật",
+      "gems": "Đính đá & 3D",
+      "french": "French",
+      "minimal": "Cổ điển & tối giản"
+    },
+    "open": "Xem chi tiết",
+    "time": "Thời gian",
+    "timeValue": "Khoảng {min}–{max} phút",
+    "price": "Giá",
+    "total": "Tổng từ",
+    "palette": "Bảng màu sơn",
+    "estimate": "Thời gian là ước lượng, giá tùy độ dài, dáng và tình trạng móng: thợ sẽ xác nhận cả hai trước khi làm.",
+    "book": "Đặt mẫu này",
+    "close": "Đóng",
     "items": {
-      "classic": { "name": "Classic Manicure", "text": "Trải nghiệm nhẹ nhàng, thư thái.", "includes": ["Chăm sóc da quanh móng", "Massage lòng bàn tay", "Sơn móng"] },
-      "signature": { "name": "Signature Manicure", "text": "Phiên bản nâng cấp tươi mới của Classic.", "includes": ["Classic manicure", "Tẩy da chết bằng đường", "Đắp mặt nạ", "Khăn nóng"] },
-      "candle": { "name": "Candle Manicure", "text": "Một chuyến du lịch thiên đường cho đôi tay.", "includes": ["Signature manicure", "Massage bằng nến", "Dưỡng sáp paraffin"] }
+      "floralStiletto": {
+        "name": "Stiletto hoa 3D",
+        "text": "Móng acrylic stiletto dài, hoa cam đắp nổi trên nền vân đá xanh.",
+        "colors": [
+          "Vân xanh trời",
+          "Cam quýt",
+          "Ngọc trai"
+        ]
+      },
+      "mintGoldFoil": {
+        "name": "Bạc hà & nhũ vàng",
+        "text": "Gel bạc hà bóng, điểm vụn lá vàng trên hai móng nhấn.",
+        "colors": [
+          "Bạc hà",
+          "Lá vàng"
+        ]
+      },
+      "classicFrench": {
+        "name": "French cổ điển",
+        "text": "Nền hồng tự nhiên, đầu móng trắng sắc nét.",
+        "colors": [
+          "Hồng phấn",
+          "Trắng"
+        ]
+      },
+      "peacock": {
+        "name": "Lông công",
+        "text": "Xanh pastel với nét vẽ lông vũ và đá đính.",
+        "colors": [
+          "Xanh pistachio",
+          "Xanh rừng",
+          "Xanh sapphire"
+        ]
+      },
+      "milkyPink": {
+        "name": "Hồng sữa",
+        "text": "Gel hồng sữa trong trên móng vuông ngắn.",
+        "colors": [
+          "Hồng sữa",
+          "Trắng sứ"
+        ]
+      },
+      "butterBlossoms": {
+        "name": "Vàng bơ & hoa nhí",
+        "text": "Vàng bơ với hoa nhỏ vẽ tay trên móng nhấn.",
+        "colors": [
+          "Vàng bơ",
+          "Hồng",
+          "Xanh denim"
+        ]
+      },
+      "emeraldDots": {
+        "name": "Trắng & chấm ngọc lục bảo",
+        "text": "Gel trắng với họa tiết chấm xanh lục bảo và đá pha lê.",
+        "colors": [
+          "Trắng",
+          "Lục bảo",
+          "Pha lê"
+        ]
+      },
+      "neonFrench": {
+        "name": "French nhũ neon",
+        "text": "Kết hợp French cổ điển và đầu móng nhũ xanh neon.",
+        "colors": [
+          "Nude",
+          "Xanh neon",
+          "Trắng"
+        ]
+      },
+      "mintConfetti": {
+        "name": "Bạc hà & confetti",
+        "text": "Móng almond bạc hà nhạt, móng nhấn trong suốt có confetti.",
+        "colors": [
+          "Bạc hà",
+          "Tím",
+          "Vàng nắng"
+        ]
+      },
+      "coralPedicure": {
+        "name": "Tay & chân đỏ san hô",
+        "text": "Sắc đỏ san hô cổ điển cho cả tay và chân.",
+        "colors": [
+          "Đỏ san hô"
+        ]
+      },
+      "greenApple": {
+        "name": "Táo xanh",
+        "text": "Trắng bóng với móng nhấn vẽ quả táo xanh.",
+        "colors": [
+          "Trắng",
+          "Xanh táo"
+        ]
+      }
+    }
+  },
+  "artists": {
+    "eyebrow": "Gặp gỡ nghệ nhân",
+    "title": "Ba sở trường, một đội ngũ.",
+    "intro": "Hãy cho tiệm biết kiểu móng bạn muốn khi đặt lịch: chúng tôi sẽ xếp thợ thích làm kiểu đó nhất cho bạn.",
+    "from": "Giá",
+    "book": "Đặt lịch sở trường này",
+    "items": {
+      "handPainted": {
+        "name": "Vẽ tay tỉ mỉ",
+        "text": "Hoa, nét mảnh, chấm bi và mẫu riêng vẽ tay từng móng.",
+        "tags": [
+          "Vẽ tay tự do",
+          "Nhiều màu",
+          "Mẫu theo yêu cầu"
+        ]
+      },
+      "sculpt": {
+        "name": "Đắp & tạo dáng",
+        "text": "Form móng bền đẹp: Gel-X, builder gel và BIAB, tạo dáng hợp với bàn tay bạn.",
+        "tags": [
+          "Gel-X",
+          "Builder gel",
+          "Almond · coffin · stiletto"
+        ]
+      },
+      "effects": {
+        "name": "Hiệu ứng loang",
+        "text": "Ombre, aura, tráng gương và mắt mèo từ tính, đổi sắc theo ánh sáng.",
+        "tags": [
+          "Ombre & aura",
+          "Tráng gương",
+          "Mắt mèo"
+        ]
+      }
     }
   },
   "menu": {
     "eyebrow": "Bảng giá",
-    "title": "Bảng giá dịch vụ",
-    "intro": "Giá có dấu + là giá khởi điểm, tùy độ dài, mẫu vẽ và tình trạng móng. Vui lòng xác nhận giá với thợ trước khi làm.",
-    "tabsLabel": "Nhóm dịch vụ",
+    "title": "Dịch vụ & bảng giá",
+    "intro": "Giá có dấu + là giá khởi điểm, tùy độ dài, mẫu vẽ và tình trạng móng. Vui lòng xác nhận với thợ trước khi làm.",
+    "viewAll": "Xem bảng giá đầy đủ",
+    "more": "+{count} dịch vụ khác",
+    "close": "Đóng",
+    "book": "Đặt lịch",
     "service": "Dịch vụ",
     "notOffered": "Không áp dụng",
     "tabs": {
@@ -140,14 +240,125 @@
       "kids": "Menu cho bé",
       "waxing": "Waxing"
     },
+    "blurbs": {
+      "enhancement": "Acrylic, powder gel, builder gel, Gel-X và BIAB: làm bộ mới và dặm móng.",
+      "dip": "Màu bền, móng nhẹ, có French, ombre và dáng đặc biệt.",
+      "manicure": "Manicure Classic, Signature và Candle, sơn thường hoặc gel.",
+      "pedicure": "Bảy gói pedicure, từ Basic đến Royal Herbal Detox.",
+      "polishChange": "Đổi màu mới cho tay hoặc chân, sơn thường hoặc gel.",
+      "extras": "Tạo dáng, nối dài, tráng gương, mắt mèo, paraffin, đá nóng…",
+      "kids": "Làm móng tay, chân và đổi màu sơn cho bé dưới 9 tuổi.",
+      "waxing": "Chân mày, môi, mặt, tay, chân và cơ thể."
+    },
     "notes": {
       "enhancement": "Với móng giả, sơn thường và sơn gel cùng một giá.",
-      "kids": "Dành cho bé dưới 9 tuổi. Sơn thường dễ lem hoặc trộn màu khi bé vui chơi nên không được bảo hành: vui lòng kiểm tra móng của bé trước khi về để chắc màu như ý. Cảm ơn quý khách đã thông cảm!"
+      "kids": "Dành cho bé dưới 9 tuổi. Sơn thường dễ lem hoặc trộn màu khi bé vui chơi nên không được bảo hành: vui lòng kiểm tra móng của bé trước khi về để chắc màu như ý. Cảm ơn quý khách đã thông cảm!",
+      "pedicure": "Thêm sáp paraffin (+10 $) hoặc sơn gel (+15 $) cho bất kỳ gói pedicure nào."
+    },
+    "includes": {
+      "manicure": {
+        "classic": [
+          "Chăm sóc da quanh móng",
+          "Massage lòng bàn tay",
+          "Sơn móng"
+        ],
+        "signature": [
+          "Classic manicure",
+          "Tẩy da chết bằng đường",
+          "Đắp mặt nạ",
+          "Khăn nóng"
+        ],
+        "candle": [
+          "Signature manicure",
+          "Massage bằng nến",
+          "Dưỡng sáp paraffin"
+        ]
+      },
+      "pedicure": {
+        "basic": [
+          "Cắt & dũa móng chân",
+          "Chăm sóc da quanh móng",
+          "Tẩy da chết bằng đường",
+          "Massage với lotion",
+          "Quấn khăn nóng",
+          "Sơn màu tùy chọn"
+        ],
+        "signature": [
+          "Ngâm chân nước ấm",
+          "Chăm sóc da quanh móng",
+          "Xử lý vết chai",
+          "Tẩy da chết bằng đường",
+          "Đắp mặt nạ bùn",
+          "Quấn 2 khăn nóng",
+          "Massage chân với lotion",
+          "Sơn móng",
+          "Quấn khăn cổ"
+        ],
+        "candle": [
+          "Ngâm chân muối biển",
+          "Chăm sóc da quanh móng",
+          "Xử lý vết chai",
+          "Tẩy da chết đường và cam tươi",
+          "Đắp mặt nạ bùn",
+          "Massage chân với nến và lotion",
+          "Quấn 2 khăn nóng",
+          "Sơn móng",
+          "Quấn khăn cổ"
+        ],
+        "luxury": [
+          "Ngâm chân muối biển",
+          "Chăm sóc da quanh móng",
+          "Xử lý vết chai",
+          "Tẩy da chết đường và cam tươi",
+          "Đắp mặt nạ bùn",
+          "Massage 4 viên đá nóng",
+          "Massage chân với lotion",
+          "Quấn 2 khăn nóng",
+          "Sơn móng",
+          "Quấn khăn cổ"
+        ],
+        "golden": [
+          "Ngâm chân bột vàng",
+          "Chăm sóc da quanh móng",
+          "Xử lý vết chai",
+          "Tẩy da chết đường vàng và cam tươi",
+          "Mặt nạ đất sét vàng thải độc",
+          "Massage 4 viên đá nóng",
+          "Sáp paraffin",
+          "Massage bơ vàng giàu vitamin E",
+          "Quấn 2 khăn nóng",
+          "Sơn móng",
+          "Quấn khăn cổ"
+        ],
+        "diamond": [
+          "Bom spa hoa xà phòng",
+          "Muối kim cương vitamin E",
+          "Chăm sóc da quanh móng",
+          "Xử lý vết chai",
+          "Tẩy da chết kim cương & cam tươi",
+          "Mặt nạ kim cương",
+          "Massage bơ kim cương",
+          "Massage nến và 4 viên đá nóng",
+          "Vớ collagen",
+          "Quấn 2 khăn nóng",
+          "Sơn móng",
+          "Quấn khăn cổ"
+        ],
+        "royal": [
+          "Toàn bộ liệu trình Diamond Pedicure",
+          "Ngâm muối hồng Himalaya ấm giúp thải độc, làm mềm da",
+          "Trà thảo mộc pha tay: gừng, kỷ tử, táo đỏ, quế, hoa cúc",
+          "Tăng tuần hoàn, giảm mệt mỏi"
+        ]
+      }
     },
     "tables": {
       "enhancement": {
         "title": "Làm bộ mới & dặm móng",
-        "columns": ["Bộ mới", "Dặm móng"],
+        "columns": [
+          "Bộ mới",
+          "Dặm móng"
+        ],
         "items": {
           "acrylic": "Acrylic",
           "powderGel": "Powder gel",
@@ -159,7 +370,9 @@
       },
       "enhancementExtras": {
         "title": "Dịch vụ thêm",
-        "columns": ["Giá"],
+        "columns": [
+          "Giá"
+        ],
         "items": {
           "specialShape": "Dáng đặc biệt (almond, coffin, oval, stiletto…)",
           "extraLength": "Thêm độ dài",
@@ -170,7 +383,9 @@
       },
       "dip": {
         "title": "Nhúng bột",
-        "columns": ["Giá"],
+        "columns": [
+          "Giá"
+        ],
         "items": {
           "dippingPowder": "Nhúng bột",
           "french": "French",
@@ -184,7 +399,10 @@
       },
       "manicure": {
         "title": "Manicure",
-        "columns": ["Sơn thường", "Sơn gel"],
+        "columns": [
+          "Sơn thường",
+          "Sơn gel"
+        ],
         "items": {
           "classic": "Classic Manicure",
           "signature": "Signature Manicure",
@@ -194,7 +412,9 @@
       },
       "pedicure": {
         "title": "Pedicure",
-        "columns": ["Giá"],
+        "columns": [
+          "Giá"
+        ],
         "items": {
           "basic": "Basic Pedicure",
           "signature": "Signature Pedicure",
@@ -207,20 +427,26 @@
       },
       "polishChange": {
         "title": "Đổi màu sơn",
-        "columns": ["Tay", "Chân"],
+        "columns": [
+          "Tay",
+          "Chân"
+        ],
         "items": {
           "regular": "Sơn thường",
           "gel": "Sơn gel",
           "regularFrench": "French / American sơn thường",
           "gelFrench": "French / American sơn gel",
           "onArtificial": "Trên móng giả",
-          "takeOffGel": "Tháo sơn gel"
+          "takeOffGel": "Tháo sơn"
         }
       },
       "extras": {
         "title": "Dịch vụ thêm",
-        "columns": ["Giá"],
+        "columns": [
+          "Giá"
+        ],
         "items": {
+          "gelOnArtificial": "Sơn gel trên móng giả",
           "extraLength": "Thêm độ dài",
           "specialShape": "Dáng đặc biệt",
           "frenchAmerican": "French / American",
@@ -238,14 +464,16 @@
           "takeOffArtificial": "Tháo móng giả",
           "takeOffRedo": "Tháo kèm làm lại",
           "takeOffGelDip": "Chỉ tháo sơn gel / bột nhúng",
-          "repairOne": "Sửa 1 móng tay",
           "toenailsCut": "Cắt móng chân",
           "massage": "Massage 10 phút"
         }
       },
       "kids": {
         "title": "Menu cho bé (dưới 9 tuổi)",
-        "columns": ["Sơn thường", "Sơn gel"],
+        "columns": [
+          "Sơn thường",
+          "Sơn gel"
+        ],
         "items": {
           "manicure": "Manicure",
           "pedicure": "Pedicure",
@@ -256,7 +484,9 @@
       },
       "waxing": {
         "title": "Waxing",
-        "columns": ["Giá"],
+        "columns": [
+          "Giá"
+        ],
         "items": {
           "eyebrows": "Chân mày",
           "upperLip": "Môi trên",
@@ -268,43 +498,80 @@
           "fullArms": "Cả tay",
           "halfArms": "Nửa tay",
           "underarms": "Nách",
+          "fullLegs": "Cả chân",
           "halfLegs": "Nửa chân",
           "bikini": "Bikini",
-          "back": "Lưng",
-          "chest": "Ngực"
+          "back": "Lưng"
         }
       }
     }
   },
-  "styles": {
-    "eyebrow": "Nail art & hiệu ứng",
-    "title": "Chi tiết nhỏ, khác biệt lớn",
-    "intro": "Thêm hiệu ứng cho bất kỳ bộ móng nào. Mang theo ảnh mẫu bạn thích, thợ sẽ làm lại cho bạn.",
-    "photosTitle": "Mẫu tiệm đã làm",
-    "items": {
-      "french": "French / American",
-      "ombre": "Ombre",
-      "chrome": "Tráng gương / hologram",
-      "catEye": "Mắt mèo",
-      "colorTips": "Đầu móng màu",
-      "design": "Vẽ tay theo mẫu"
-    }
+  "booking": {
+    "open": "Đặt lịch",
+    "title": "Đặt lịch hẹn",
+    "description": "Lên kế hoạch tại đây, rồi hoàn tất trên trang đặt lịch online hoặc gọi cho tiệm.",
+    "steps": [
+      "Dịch vụ",
+      "Thời gian",
+      "Xác nhận"
+    ],
+    "stepOf": "Bước {current}/{total}",
+    "category": "Nhóm dịch vụ",
+    "service": "Dịch vụ",
+    "artist": "Thợ làm móng",
+    "artistAny": "Không yêu cầu",
+    "artistAnyHint": "Thợ nào rảnh trước",
+    "artistNamed": "Thợ quen",
+    "artistName": "Tên thợ (không bắt buộc)",
+    "day": "Ngày",
+    "time": "Giờ",
+    "today": "Hôm nay",
+    "noTimes": "Ngày này đã hết khung giờ. Vui lòng chọn ngày khác.",
+    "back": "Quay lại",
+    "next": "Tiếp tục",
+    "summary": "Lịch bạn chọn",
+    "anyArtist": "thợ bất kỳ",
+    "call": "Gọi {phone} để đặt",
+    "copy": "Sao chép thông tin",
+    "copied": "Đã sao chép",
+    "copyText": "Đặt lịch: {service}, {date} lúc {time}, với {artist}.",
+    "note": "Lịch hẹn được xác nhận trên trang đặt lịch hoặc qua điện thoại. Vẫn nhận khách vãng lai.",
+    "close": "Đóng",
+    "online": "Tiếp tục đặt lịch online",
+    "callWhen": "Gọi trực tiếp cho tiệm khi:",
+    "callReasons": [
+      "Bạn cần đặt lịch cho nhóm từ 3 người",
+      "Bạn không tìm được giờ mong muốn trên web",
+      "Bạn muốn chọn thợ quen",
+      "Bạn có yêu cầu hoặc nhu cầu đặc biệt"
+    ],
+    "favoriteHint": "Để đặt thợ quen, vui lòng gọi trực tiếp cho tiệm."
+  },
+  "quick": {
+    "label": "Đặt lịch nhanh",
+    "service": "Dịch vụ",
+    "choose": "Chọn dịch vụ",
+    "book": "Đặt lịch",
+    "call": "Gọi cho tiệm"
   },
   "gift": {
     "eyebrow": "Phiếu quà tặng",
     "title": "Món quà đặc biệt dành cho bạn",
     "text": "Tặng người thân một buổi manicure, một gói pedicure đặc biệt hay cả buổi chiều thư giãn. Phiếu quà tặng có sẵn với mọi mệnh giá tại quầy.",
-    "points": ["Mệnh giá tùy bạn chọn", "Món quà hoàn hảo cho sinh nhật, ngày lễ và lời cảm ơn", "Hỏi tại quầy hoặc gọi cho tiệm"],
+    "points": [
+      "Mệnh giá tùy bạn chọn",
+      "Món quà hoàn hảo cho sinh nhật, ngày lễ và lời cảm ơn",
+      "Hỏi tại quầy hoặc gọi cho tiệm"
+    ],
     "cta": "Gọi để đặt phiếu",
     "card": "Phiếu quà tặng",
-    "cardAmount": "Đô la",
     "cardFrom": "Người tặng",
     "cardTo": "Người nhận",
     "fineprint": "Phiếu quà tặng không quy đổi thành tiền mặt và không được cấp lại nếu bị mất."
   },
   "policy": {
     "eyebrow": "Quy định của tiệm",
-    "title": "Vì quyền lợi chung của quý khách và tiệm",
+    "title": "Vì quyền lợi của quý khách và tiệm",
     "items": [
       "Vui lòng báo trước các vấn đề sức khỏe, kể cả tiểu đường, trước khi làm dịch vụ.",
       "Giá có trên bảng giá. Vui lòng xác nhận giá với thợ trước khi làm.",
@@ -315,8 +582,46 @@
       "Tiệm không chịu trách nhiệm với đồ cá nhân hoặc phiếu quà tặng bị mất, thất lạc, hay hư hỏng đồ dùng.",
       "Tiệm có quyền từ chối hoặc ngừng phục vụ khách có thái độ thiếu lịch sự."
     ],
-    "thanks": "Cảm ơn quý khách đã luôn ủng hộ! Được phục vụ quý khách là niềm vui của chúng tôi.",
-    "signature": "cảm ơn"
+    "thanks": "Cảm ơn quý khách đã luôn ủng hộ! Được phục vụ quý khách là niềm vui của chúng tôi."
+  },
+  "faq": {
+    "eyebrow": "Hỏi đáp",
+    "title": "Những điều nên biết trước khi đến",
+    "intro": "Chưa thấy câu trả lời? Gọi (919) 366-6435 hoặc nhắn tin cho tiệm qua mạng xã hội.",
+    "items": [
+      {
+        "q": "Tiệm có những dịch vụ nào?",
+        "a": "Envy Nails Spa Of Wendell có manicure, pedicure đặc biệt, đắp và nối móng (acrylic, powder gel, builder gel, Gel-X, BIAB), nhúng bột, đổi màu sơn, nail art theo yêu cầu, waxing và menu cho bé, trong không gian thư giãn, sang trọng."
+      },
+      {
+        "q": "Đặt lịch như thế nào?",
+        "a": "Đặt online bất cứ lúc nào trên trang đặt lịch, hoặc nhắn tin qua mạng xã hội. Gọi trực tiếp (919) 366-6435 nếu bạn đặt cho nhóm từ 3 người, không tìm được giờ mong muốn trên web, muốn chọn thợ quen hoặc có yêu cầu đặc biệt."
+      },
+      {
+        "q": "Tiệm có nhận khách vãng lai không?",
+        "a": "Có, tiệm nhận cả khách đặt hẹn và khách vãng lai. Đặt trước để chắc chắn có khung giờ bạn thích."
+      },
+      {
+        "q": "Tiệm ở đâu?",
+        "a": "Tiệm ở 2241 Treelight Way, Suite 102, Wendell, NC 27591. Tìm “nail salon Treelight Way” hoặc “nail salon Wendell” trên Google Maps để thấy tiệm."
+      },
+      {
+        "q": "Giờ mở cửa thế nào?",
+        "a": "Thứ 2 – Thứ 5: 10:00 – 19:00, Thứ 6: 9:30 – 19:00, Thứ 7: 9:30 – 18:00, Chủ nhật: 11:30 – 17:00."
+      },
+      {
+        "q": "Tiệm có làm móng cho bé không?",
+        "a": "Có. Menu cho bé (dưới 9 tuổi) gồm manicure, pedicure, combo và đổi màu sơn, sơn thường hoặc sơn gel."
+      },
+      {
+        "q": "Tiệm có bán phiếu quà tặng không?",
+        "a": "Có, mọi mệnh giá tại quầy: món quà hoàn hảo cho sinh nhật, ngày lễ và lời cảm ơn."
+      },
+      {
+        "q": "Cần báo gì cho thợ trước khi làm?",
+        "a": "Vui lòng báo trước các vấn đề sức khỏe, kể cả tiểu đường, và xác nhận giá dịch vụ với thợ trước khi làm."
+      }
+    ]
   },
   "visit": {
     "eyebrow": "Ghé tiệm",
@@ -332,14 +637,46 @@
       "fri": "Thứ 6",
       "sat": "Thứ 7",
       "sun": "Chủ nhật"
-    }
+    },
+    "policy": "Quy định của tiệm",
+    "follow": "Theo dõi chúng tôi",
+    "mapTitle": "Bản đồ: Envy Nails Spa, 2241 Treelight Way, Suite 102, Wendell, NC",
+    "openMap": "Mở trong Google Maps"
   },
   "footer": {
     "tagline": "Dịch vụ làm móng sạch sẽ, chuyên nghiệp, chất lượng cao tại Wendell, North Carolina.",
     "explore": "Khám phá",
-    "contact": "Liên hệ",
-    "hours": "Giờ mở cửa",
     "rights": "© {year} {name}. Bảo lưu mọi quyền."
+  },
+  "articles": {
+    "eyebrow": "Blog",
+    "title": "Chuyện ở tiệm",
+    "intro": "Mẹo chăm sóc móng, giới thiệu dịch vụ và những điều nên biết trước khi ghé, từ Envy Nails Spa of Wendell.",
+    "metaTitle": "Blog: mẹo chăm sóc móng và chuyện ở tiệm",
+    "metaDescription": "Mẹo chăm sóc móng, so sánh acrylic, bột nhúng, Gel-X và BIAB, và những điều nên biết trước khi đến Envy Nails Spa of Wendell.",
+    "home": "Trang chủ",
+    "breadcrumb": "Đường dẫn",
+    "all": "Tất cả",
+    "categoriesLabel": "Chủ đề",
+    "categories": {
+      "care": "Chăm sóc móng",
+      "services": "Dịch vụ",
+      "salon": "Tại tiệm"
+    },
+    "categoryTitle": "{category}",
+    "categoryDescription": "Các bài viết về {category} từ Envy Nails Spa of Wendell.",
+    "featured": "Nổi bật",
+    "readMore": "Đọc tiếp",
+    "minutes": "{count} phút đọc",
+    "latest": "Từ blog của tiệm",
+    "latestIntro": "Mẹo giữ móng đẹp giữa hai lần làm, và giải đáp trước khi bạn đặt lịch.",
+    "viewAll": "Tất cả bài viết",
+    "back": "Quay lại blog",
+    "related": "Đọc thêm",
+    "empty": "Chủ đề này chưa có bài viết.",
+    "ctaTitle": "Sẵn sàng làm móng mới?",
+    "ctaText": "Đặt lịch trực tuyến trong một phút, hoặc gọi tiệm khi đi theo nhóm hay có yêu cầu riêng.",
+    "sample": "Bài viết mẫu để duyệt giao diện, viết từ bảng dịch vụ, phần hỏi đáp và quy định của tiệm, cho tới khi tiệm đăng bài của mình."
   },
   "notFound": {
     "title": "Không tìm thấy trang",

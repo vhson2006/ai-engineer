@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { Toaster } from '@web/ui/toaster';
 import { TooltipProvider } from '@web/ui/tooltip';
+import { Suspense } from 'react';
 import { AdminHeader } from '@/components/admin-header';
+import { AdminSidebar } from '@/components/admin-sidebar';
 import { LOCALE_CODES } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 import '../globals.css';
@@ -41,10 +43,16 @@ export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
         {/* nuqs: list state in the URL; tooltips share a delay; toasts for action results. */}
         <NuqsAdapter>
           <TooltipProvider>
-            <AdminHeader />
-            <main id="content" className="flex-1">
-              {children}
-            </main>
+            <AdminHeader t={t} locale={locale} />
+            <div className="flex flex-1">
+              {/* The side menu needs the session: streamed, the page doesn't wait for it. */}
+              <Suspense fallback={<div aria-hidden className="hidden w-64 shrink-0 border-r border-border lg:block" />}>
+                <AdminSidebar t={t} locale={locale} />
+              </Suspense>
+              <main id="content" className="min-w-0 flex-1">
+                {children}
+              </main>
+            </div>
           </TooltipProvider>
         </NuqsAdapter>
         <Toaster />

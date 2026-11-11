@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Envy Nail Spa · Nail salon & spa in Wendell, NC",
-    "description": "Clean, professional, high-quality nail care in Wendell, NC: acrylic, dip powder, Gel-X, manicures, signature pedicures and waxing. Appointments and walk-ins welcome."
+    "title": "Envy Nails Spa of Wendell · Nail salon in Wendell, NC",
+    "description": "Envy Nails Spa of Wendell, 2241 Treelight Way, Wendell, NC: manicures, signature pedicures, acrylic, dip powder, Gel-X, nail art and waxing. Book online or call (919) 366-6435."
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -13,121 +13,221 @@
     "or": "or",
     "directions": "Get directions"
   },
-  "topBar": {
-    "welcome": "Appointments & walk-ins welcome",
-    "gift": "Gift certificates available"
-  },
   "nav": {
     "label": "Main",
     "home": "Envy Nail Spa home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "services": "Services",
-    "pedicures": "Pedicures",
+    "gallery": "Gallery",
+    "artists": "Artists",
     "menu": "Menu",
-    "styles": "Nail art",
-    "gift": "Gift cards",
-    "visit": "Visit us"
+    "faq": "FAQ",
+    "visit": "Visit",
+    "blog": "Blog"
   },
   "hero": {
-    "eyebrow": "Nail spa · Wendell, NC",
-    "title": "Clean. Professional.",
-    "titleAccent": "Beautifully done.",
-    "text": "Envy Nail Spa is known for clean, professional, high-quality services. Our highly trained staff use only branded, high-grade products in a relaxing atmosphere, so you can simply sit back and enjoy.",
-    "photoAlt": "Almond nails in a soft blue-grey gel with hand-painted blue flowers",
-    "photoAlt2": "Short grey gel manicure with gold foil accents",
-    "hoursTitle": "Opening hours"
+    "eyebrow": "Nail salon · Wendell, NC 27591",
+    "title": "Elegance",
+    "titleAccent": "at your fingertips",
+    "text": "Experience the unique world of nails that are masterpieces and treatments that are strokes of elegance. Our expert technicians are artists, turning nail care into an art form.",
+    "signatureLabel": "Signature",
+    "signatureName": "Royal Herbal Detox Pedicure",
+    "featured": "Featured looks",
+    "slide": "Show look {number}",
+    "pause": "Pause slideshow",
+    "play": "Play slideshow"
   },
   "promise": {
     "label": "Why guests choose Envy Nail Spa",
     "items": {
-      "clean": { "title": "Clean & sanitary", "text": "Hygiene and sanitation taken seriously, every precaution, every guest." },
-      "products": { "title": "High-grade products", "text": "Only branded, high-grade products for the best results and your safety." },
-      "staff": { "title": "Trained professionals", "text": "Highly trained and qualified nail technicians you can trust." },
-      "relax": { "title": "Relaxing atmosphere", "text": "A calm, green space to unwind while we take care of you." }
-    }
-  },
-  "services": {
-    "eyebrow": "Our services",
-    "title": "Everything for beautiful hands and feet",
-    "intro": "From a quick polish change to our Royal Herbal Detox pedicure, pick what you need. Prices are listed upfront.",
-    "seePrices": "See prices",
-    "items": {
-      "enhancement": { "name": "Nail enhancement", "text": "Acrylic, powder gel, color powder, builder gel, Gel-X and BIAB: full sets and fill-ins." },
-      "dip": { "name": "Dipping powder", "text": "Long-lasting, lightweight color with French, ombre and special shapes." },
-      "manicure": { "name": "Manicure", "text": "Classic, Signature and Candle manicures, with regular or gel polish." },
-      "pedicure": { "name": "Pedicure", "text": "Seven pedicures, from Basic to our Royal Herbal Detox spa experience." },
-      "waxing": { "name": "Waxing", "text": "Brows, lip, face, arms, legs and body: smooth results, gentle care." },
-      "kids": { "name": "Kids' menu", "text": "Manicures, pedicures and polish changes for little ones under 9." }
-    }
-  },
-  "pedicure": {
-    "eyebrow": "Signature pedicures",
-    "title": "Seven ways to pamper your feet",
-    "intro": "Every pedicure includes cuticle care and polish. Go further with hot stones, candle massage, gold and diamond treatments, or our Royal Herbal Detox.",
-    "includes": "What's included",
-    "featured": "Most luxurious",
-    "addOnsTitle": "Add to any pedicure",
-    "imageAlt": "Spa bowls of cream and sea salt with palm leaves",
-    "addOns": {
-      "paraffin": "Paraffin wax",
-      "gel": "Gel polish"
-    },
-    "items": {
-      "basic": {
-        "name": "Basic Pedicure",
-        "text": "Essential foot care to keep your feet fresh and clean.",
-        "includes": ["Trim & shape toenails", "Cuticle grooming", "Sugar scrub", "Lotion massage", "Hot towel wrap", "Polish of your choice"]
+      "clean": {
+        "title": "Clean & sanitary",
+        "text": "Hygiene and sanitation taken seriously, every precaution, every guest."
       },
-      "signature": {
-        "name": "Signature Pedicure",
-        "text": "Perfect for a hectic schedule: every vital step for well-maintained feet.",
-        "includes": ["Foot soak in warm water", "Cuticle maintenance", "Callus treatment", "Sugar scrub", "Mud mask", "2 hot towels wrap", "Foot massage with lotion", "Polish application", "Neck wrap"]
+      "products": {
+        "title": "High-grade products",
+        "text": "Only branded, high-grade products for the best results and your safety."
       },
-      "candle": {
-        "name": "Candle Pedicure",
-        "text": "Deep foot care featuring a warm candle massage.",
-        "includes": ["Foot soak with sea salt", "Cuticle maintenance", "Callus treatment", "Sugar scrub and fresh orange", "Mud mask", "Foot massage with candle and lotion", "2 hot towels wrap", "Polish application", "Neck wrap"]
+      "staff": {
+        "title": "Trained professionals",
+        "text": "Highly trained and qualified nail technicians you can trust."
       },
-      "luxury": {
-        "name": "Luxury Pedicure",
-        "text": "Indulge in pure luxury with this detox pedicure and hot stones.",
-        "includes": ["Foot soak with sea salt", "Cuticle maintenance", "Callus treatment", "Sugar scrub and fresh orange", "Mud mask", "4 hot stones massage", "Foot massage with lotion", "2 hot towels wrap", "Polish application", "Neck wrap"]
-      },
-      "golden": {
-        "name": "Golden Pedicure",
-        "text": "Feel like royalty: refreshed legs and a satisfied mind.",
-        "includes": ["Gold soak powder foot soak", "Cuticle maintenance", "Callus treatment", "Gold sugar scrub and fresh orange", "Detoxifying gold clay mask", "4 hot stones massage", "Paraffin wax", "Gold butter cream massage with vitamin E", "2 hot towels wrap", "Polish application", "Neck wrap"]
-      },
-      "diamond": {
-        "name": "Diamond Pedicure",
-        "text": "Our fanciest pedicure: luxury with effective treatment steps.",
-        "includes": ["Bomb spa with soap flower", "Diamond salt with vitamin E", "Cuticle maintenance", "Callus treatment", "Diamond sugar scrub & fresh orange", "Diamond mask", "Diamond butter cream massage", "Candle and 4 hot stones massage", "Collagen socks", "2 hot towels wrap", "Polish application", "Neck wrap"]
-      },
-      "royal": {
-        "name": "Royal Herbal Detox Pedicure",
-        "text": "The ultimate in relaxation: every premium step of our Diamond Pedicure, elevated.",
-        "includes": ["Everything in the Diamond Pedicure", "Warm Himalayan pink salt soak to detoxify and soften", "Hand-blended herbal tea infusion: ginger, goji berries, red dates, cinnamon, chrysanthemum", "Enhances circulation and relieves fatigue"]
+      "relax": {
+        "title": "Relaxing atmosphere",
+        "text": "A calm, green space to unwind while we take care of you."
       }
     }
   },
-  "manicure": {
-    "eyebrow": "Manicures",
-    "title": "Hands that feel as good as they look",
-    "regular": "Regular",
-    "gel": "Gel",
-    "nailCut": "Nail cut without manicure",
+  "status": {
+    "open": "Taking guests now",
+    "closesAt": "Open until {time}",
+    "closed": "Closed right now",
+    "opensAt": "Opens {day} at {time}",
+    "today": "today",
+    "tomorrow": "tomorrow",
+    "checking": "Checking today’s hours…"
+  },
+  "gallery": {
+    "eyebrow": "Nail art gallery",
+    "title": "Pick a look. We’ll make it yours.",
+    "intro": "Looks to inspire your next set. Tap one for an estimate of time and price and its color palette, then book it.",
+    "filtersLabel": "Filter by style",
+    "all": "All",
+    "categories": {
+      "art": "Nail art",
+      "gems": "Gems & 3D",
+      "french": "French",
+      "minimal": "Classic & minimal"
+    },
+    "open": "See details",
+    "time": "Time",
+    "timeValue": "About {min}–{max} min",
+    "price": "Price",
+    "total": "Total from",
+    "palette": "Polish palette",
+    "estimate": "Times are estimates and prices depend on length, shape and condition: your nail tech confirms both before starting.",
+    "book": "Book this look",
+    "close": "Close",
     "items": {
-      "classic": { "name": "Classic Manicure", "text": "A calming experience.", "includes": ["Cuticle care", "Palm massage", "Polish"] },
-      "signature": { "name": "Signature Manicure", "text": "A refreshing upgrade of the classic.", "includes": ["Classic manicure", "Sugar scrub", "Mask", "Hot towel"] },
-      "candle": { "name": "Candle Manicure", "text": "Take a trip to paradise.", "includes": ["Signature manicure", "Massage with candle", "Paraffin treatment"] }
+      "floralStiletto": {
+        "name": "3D floral stilettos",
+        "text": "Long stiletto acrylics with sculpted orange blossoms on a blue marble base.",
+        "colors": [
+          "Sky marble",
+          "Tangerine",
+          "Pearl"
+        ]
+      },
+      "mintGoldFoil": {
+        "name": "Mint & gold foil",
+        "text": "Glossy mint gel with gold leaf flakes on two accent nails.",
+        "colors": [
+          "Mint",
+          "Gold leaf"
+        ]
+      },
+      "classicFrench": {
+        "name": "Classic French",
+        "text": "Natural pink base with crisp white tips.",
+        "colors": [
+          "Blush",
+          "White"
+        ]
+      },
+      "peacock": {
+        "name": "Peacock feather",
+        "text": "Pastel green with hand-painted feather lines and jewel accents.",
+        "colors": [
+          "Pistachio",
+          "Forest",
+          "Sapphire"
+        ]
+      },
+      "milkyPink": {
+        "name": "Milky pink",
+        "text": "Sheer milky pink gel on short square nails.",
+        "colors": [
+          "Milky pink",
+          "Porcelain"
+        ]
+      },
+      "butterBlossoms": {
+        "name": "Butter & blossoms",
+        "text": "Butter yellow with tiny painted flowers on accent nails.",
+        "colors": [
+          "Butter",
+          "Rose",
+          "Denim"
+        ]
+      },
+      "emeraldDots": {
+        "name": "White & emerald dots",
+        "text": "White gel with dotted emerald art and crystal accents.",
+        "colors": [
+          "White",
+          "Emerald",
+          "Crystal"
+        ]
+      },
+      "neonFrench": {
+        "name": "Neon glitter French",
+        "text": "A mix of classic and neon green glitter French tips.",
+        "colors": [
+          "Nude",
+          "Neon green",
+          "White"
+        ]
+      },
+      "mintConfetti": {
+        "name": "Mint & confetti",
+        "text": "Soft mint almonds with clear confetti accent nails.",
+        "colors": [
+          "Mint",
+          "Violet",
+          "Sunshine"
+        ]
+      },
+      "coralPedicure": {
+        "name": "Coral red mani & pedi",
+        "text": "A classic bright coral red on hands and toes.",
+        "colors": [
+          "Coral red"
+        ]
+      },
+      "greenApple": {
+        "name": "Green apple",
+        "text": "Glossy white with a hand-painted green apple accent.",
+        "colors": [
+          "White",
+          "Apple green"
+        ]
+      }
+    }
+  },
+  "artists": {
+    "eyebrow": "Meet the artists",
+    "title": "Three specialties, one team.",
+    "intro": "Tell us the look you want when you book: we’ll pair you with the tech who loves doing it most.",
+    "from": "Prices",
+    "book": "Book this specialty",
+    "items": {
+      "handPainted": {
+        "name": "Hand-painted detail",
+        "text": "Florals, fine lines, dots and custom designs painted freehand, nail by nail.",
+        "tags": [
+          "Freehand art",
+          "Multi-color",
+          "Custom designs"
+        ]
+      },
+      "sculpt": {
+        "name": "Sculpted sets",
+        "text": "Structure that lasts: Gel-X extensions, builder gel and BIAB, shaped to suit your hands.",
+        "tags": [
+          "Gel-X",
+          "Builder gel",
+          "Almond · coffin · stiletto"
+        ]
+      },
+      "effects": {
+        "name": "Blends & effects",
+        "text": "Ombre fades, aura glows, chrome and magnetic cat eye for finishes that shift with the light.",
+        "tags": [
+          "Ombre & aura",
+          "Chrome",
+          "Cat eye"
+        ]
+      }
     }
   },
   "menu": {
-    "eyebrow": "Full menu",
-    "title": "Our price list",
-    "intro": "Prices marked + start from the amount shown and depend on length, design and condition. Please confirm prices with your nail tech before your service.",
-    "tabsLabel": "Menu categories",
+    "eyebrow": "Menu",
+    "title": "Services & prices",
+    "intro": "Prices marked + start from the amount shown and depend on length, design and condition. Please confirm with your nail tech before your service.",
+    "viewAll": "Full price list",
+    "more": "+{count} more",
+    "close": "Close",
+    "book": "Book this",
     "service": "Service",
     "notOffered": "Not offered",
     "tabs": {
@@ -140,14 +240,125 @@
       "kids": "Kids' menu",
       "waxing": "Waxing"
     },
+    "blurbs": {
+      "enhancement": "Acrylic, powder gel, builder gel, Gel-X and BIAB: full sets and fill-ins.",
+      "dip": "Long-lasting, lightweight color with French, ombre and special shapes.",
+      "manicure": "Classic, Signature and Candle manicures, regular or gel.",
+      "pedicure": "Seven pedicures, from Basic to our Royal Herbal Detox.",
+      "polishChange": "A fresh color for hands or feet, regular or gel.",
+      "extras": "Shapes, length, chrome, cat eye, paraffin, hot stone and more.",
+      "kids": "Manicures, pedicures and polish for little ones under 9.",
+      "waxing": "Brows, lip, face, arms, legs and body."
+    },
     "notes": {
       "enhancement": "Regular polish and gel polish are priced the same for artificial nails.",
-      "kids": "For children under 9. Regular polish can smudge or mix during kids' activities, so it has no warranty: please check your child's nails before leaving to make sure the color looks right. Thanks for understanding!"
+      "kids": "For children under 9. Regular polish can smudge or mix during kids' activities, so it has no warranty: please check your child's nails before leaving to make sure the color looks right. Thanks for understanding!",
+      "pedicure": "Add paraffin wax (+$10) or gel polish (+$15) to any pedicure."
+    },
+    "includes": {
+      "manicure": {
+        "classic": [
+          "Cuticle care",
+          "Palm massage",
+          "Polish"
+        ],
+        "signature": [
+          "Classic manicure",
+          "Sugar scrub",
+          "Mask",
+          "Hot towel"
+        ],
+        "candle": [
+          "Signature manicure",
+          "Massage with candle",
+          "Paraffin treatment"
+        ]
+      },
+      "pedicure": {
+        "basic": [
+          "Trim & shape toenails",
+          "Cuticle grooming",
+          "Sugar scrub",
+          "Lotion massage",
+          "Hot towel wrap",
+          "Polish of your choice"
+        ],
+        "signature": [
+          "Foot soak in warm water",
+          "Cuticle maintenance",
+          "Callus treatment",
+          "Sugar scrub",
+          "Mud mask",
+          "2 hot towels wrap",
+          "Foot massage with lotion",
+          "Polish application",
+          "Neck wrap"
+        ],
+        "candle": [
+          "Foot soak with sea salt",
+          "Cuticle maintenance",
+          "Callus treatment",
+          "Sugar scrub and fresh orange",
+          "Mud mask",
+          "Foot massage with candle and lotion",
+          "2 hot towels wrap",
+          "Polish application",
+          "Neck wrap"
+        ],
+        "luxury": [
+          "Foot soak with sea salt",
+          "Cuticle maintenance",
+          "Callus treatment",
+          "Sugar scrub and fresh orange",
+          "Mud mask",
+          "4 hot stones massage",
+          "Foot massage with lotion",
+          "2 hot towels wrap",
+          "Polish application",
+          "Neck wrap"
+        ],
+        "golden": [
+          "Gold soak powder foot soak",
+          "Cuticle maintenance",
+          "Callus treatment",
+          "Gold sugar scrub and fresh orange",
+          "Detoxifying gold clay mask",
+          "4 hot stones massage",
+          "Paraffin wax",
+          "Gold butter cream massage with vitamin E",
+          "2 hot towels wrap",
+          "Polish application",
+          "Neck wrap"
+        ],
+        "diamond": [
+          "Bomb spa with soap flower",
+          "Diamond salt with vitamin E",
+          "Cuticle maintenance",
+          "Callus treatment",
+          "Diamond sugar scrub & fresh orange",
+          "Diamond mask",
+          "Diamond butter cream massage",
+          "Candle and 4 hot stones massage",
+          "Collagen socks",
+          "2 hot towels wrap",
+          "Polish application",
+          "Neck wrap"
+        ],
+        "royal": [
+          "Everything in the Diamond Pedicure",
+          "Warm Himalayan pink salt soak to detoxify and soften",
+          "Hand-blended herbal tea infusion: ginger, goji berries, red dates, cinnamon, chrysanthemum",
+          "Enhances circulation and relieves fatigue"
+        ]
+      }
     },
     "tables": {
       "enhancement": {
         "title": "Full sets & fill-ins",
-        "columns": ["Full set", "Fill-in"],
+        "columns": [
+          "Full set",
+          "Fill-in"
+        ],
         "items": {
           "acrylic": "Acrylic",
           "powderGel": "Powder gel",
@@ -159,7 +370,9 @@
       },
       "enhancementExtras": {
         "title": "Additional services",
-        "columns": ["Price"],
+        "columns": [
+          "Price"
+        ],
         "items": {
           "specialShape": "Special shape (almond, coffin, oval, stiletto…)",
           "extraLength": "Extra length",
@@ -170,7 +383,9 @@
       },
       "dip": {
         "title": "Dipping powder",
-        "columns": ["Price"],
+        "columns": [
+          "Price"
+        ],
         "items": {
           "dippingPowder": "Dipping powder",
           "french": "French",
@@ -184,7 +399,10 @@
       },
       "manicure": {
         "title": "Manicures",
-        "columns": ["Regular", "Gel"],
+        "columns": [
+          "Regular",
+          "Gel"
+        ],
         "items": {
           "classic": "Classic Manicure",
           "signature": "Signature Manicure",
@@ -194,7 +412,9 @@
       },
       "pedicure": {
         "title": "Pedicures",
-        "columns": ["Price"],
+        "columns": [
+          "Price"
+        ],
         "items": {
           "basic": "Basic Pedicure",
           "signature": "Signature Pedicure",
@@ -207,20 +427,26 @@
       },
       "polishChange": {
         "title": "Polish change",
-        "columns": ["Hands", "Feet"],
+        "columns": [
+          "Hands",
+          "Feet"
+        ],
         "items": {
           "regular": "Regular polish",
           "gel": "Gel polish",
           "regularFrench": "Regular French / American",
           "gelFrench": "Gel French / American",
           "onArtificial": "On artificial nails",
-          "takeOffGel": "Take off gel polish"
+          "takeOffGel": "Take off"
         }
       },
       "extras": {
         "title": "Additional services",
-        "columns": ["Price"],
+        "columns": [
+          "Price"
+        ],
         "items": {
+          "gelOnArtificial": "Gel polish on artificial nail",
           "extraLength": "Extra length",
           "specialShape": "Special shape",
           "frenchAmerican": "French / American",
@@ -238,14 +464,16 @@
           "takeOffArtificial": "Take off artificial nails",
           "takeOffRedo": "Take off with re-do",
           "takeOffGelDip": "Take off gel polish / dip only",
-          "repairOne": "Repair 1 finger nail",
           "toenailsCut": "Toenails cut",
           "massage": "10-minute massage"
         }
       },
       "kids": {
         "title": "Kids' menu (under 9)",
-        "columns": ["Regular", "Gel"],
+        "columns": [
+          "Regular",
+          "Gel"
+        ],
         "items": {
           "manicure": "Manicure",
           "pedicure": "Pedicure",
@@ -256,7 +484,9 @@
       },
       "waxing": {
         "title": "Waxing",
-        "columns": ["Price"],
+        "columns": [
+          "Price"
+        ],
         "items": {
           "eyebrows": "Eyebrows",
           "upperLip": "Upper lip",
@@ -268,43 +498,80 @@
           "fullArms": "Full arms",
           "halfArms": "Half arms",
           "underarms": "Underarms",
+          "fullLegs": "Full legs",
           "halfLegs": "Half legs",
           "bikini": "Bikini",
-          "back": "Back",
-          "chest": "Chest"
+          "back": "Back"
         }
       }
     }
   },
-  "styles": {
-    "eyebrow": "Nail art & finishes",
-    "title": "Little details, big difference",
-    "intro": "Add a finish to any manicure, pedicure or full set. Bring a photo of the look you love and our techs will recreate it.",
-    "photosTitle": "Recent work",
-    "items": {
-      "french": "French / American",
-      "ombre": "Ombre",
-      "chrome": "Chrome / holographic",
-      "catEye": "Cat eye",
-      "colorTips": "Color tips",
-      "design": "Hand-painted design"
-    }
+  "booking": {
+    "open": "Book now",
+    "title": "Book a visit",
+    "description": "Plan your visit here, then finish on our online booking page or call us.",
+    "steps": [
+      "Service",
+      "Time",
+      "Confirm"
+    ],
+    "stepOf": "Step {current} of {total}",
+    "category": "Category",
+    "service": "Service",
+    "artist": "Nail artist",
+    "artistAny": "No preference",
+    "artistAnyHint": "The first available tech",
+    "artistNamed": "A favorite tech",
+    "artistName": "Their name (optional)",
+    "day": "Day",
+    "time": "Time",
+    "today": "Today",
+    "noTimes": "No times left on this day. Please pick another day.",
+    "back": "Back",
+    "next": "Continue",
+    "summary": "Your request",
+    "anyArtist": "any tech",
+    "call": "Call {phone} to book",
+    "copy": "Copy details",
+    "copied": "Copied",
+    "copyText": "Booking request: {service}, {date} at {time}, with {artist}.",
+    "note": "Your visit is confirmed on our booking page or by phone. Walk-ins are welcome too.",
+    "close": "Close",
+    "online": "Continue to online booking",
+    "callWhen": "Call us directly when:",
+    "callReasons": [
+      "You need appointments for 3+ people (perfect for groups!)",
+      "You can’t find your preferred time online",
+      "You want your favorite nail tech",
+      "You have special requests or needs"
+    ],
+    "favoriteHint": "To book your favorite nail tech, please call us directly."
+  },
+  "quick": {
+    "label": "Quick booking",
+    "service": "Service",
+    "choose": "Choose a service",
+    "book": "Book",
+    "call": "Call the salon"
   },
   "gift": {
     "eyebrow": "Gift certificates",
     "title": "A special gift for you",
     "text": "Treat someone to a manicure, a signature pedicure or a full afternoon of pampering. Gift certificates are available in any amount at the front desk.",
-    "points": ["Any amount you choose", "Perfect for birthdays, holidays and thank-yous", "Ask at the front desk or call us"],
+    "points": [
+      "Any amount you choose",
+      "Perfect for birthdays, holidays and thank-yous",
+      "Ask at the front desk or call us"
+    ],
     "cta": "Call to order",
     "card": "Gift certificate",
-    "cardAmount": "Dollars",
     "cardFrom": "From",
     "cardTo": "To",
     "fineprint": "Gift certificates have no cash value and cannot be replaced if lost or stolen."
   },
   "policy": {
     "eyebrow": "Our policy",
-    "title": "For the mutual interests of our clients and the salon",
+    "title": "For our clients and our salon",
     "items": [
       "Please let us know about any health concerns, including diabetes, before your service.",
       "Prices are on our menu. Please confirm them with your nail tech before receiving services.",
@@ -315,8 +582,46 @@
       "We are not responsible for lost or stolen personal items or gift cards, or for damage to belongings.",
       "We reserve the right to refuse or stop service for anyone who is rude."
     ],
-    "thanks": "We want to thank you for your continued patronage! It is our pleasure to serve you.",
-    "signature": "thank you"
+    "thanks": "We want to thank you for your continued patronage! It is our pleasure to serve you."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Good to know before your visit",
+    "intro": "Can’t find your answer? Call us at (919) 366-6435 or send us a message on social media.",
+    "items": [
+      {
+        "q": "What services do you offer?",
+        "a": "Envy Nails Spa Of Wendell offers manicures, signature pedicures, nail enhancements (acrylic, powder gel, builder gel, Gel-X, BIAB), dipping powder, polish changes, custom nail art, waxing and a kids’ menu, in a relaxing and luxurious setting."
+      },
+      {
+        "q": "How do I book an appointment?",
+        "a": "Book online any time on our booking page, or message us on social media. Call us directly at (919) 366-6435 if you need appointments for 3 or more people, can’t find your preferred time online, want your favorite nail tech or have special requests."
+      },
+      {
+        "q": "Do you accept walk-ins?",
+        "a": "Yes, appointments and walk-ins are both welcome. Booking ahead guarantees your preferred time."
+      },
+      {
+        "q": "Where are you located?",
+        "a": "We’re at 2241 Treelight Way, Suite 102, Wendell, NC 27591. Search “nail salon Treelight Way” or “nail salon Wendell” on Google Maps to find us."
+      },
+      {
+        "q": "What are your opening hours?",
+        "a": "Monday to Thursday 10:00 AM – 7:00 PM, Friday 9:30 AM – 7:00 PM, Saturday 9:30 AM – 6:00 PM and Sunday 11:30 AM – 5:00 PM."
+      },
+      {
+        "q": "Do you do kids’ nails?",
+        "a": "Yes. Our kids’ menu (under 9) has manicures, pedicures, combos and polish changes, in regular or gel polish."
+      },
+      {
+        "q": "Do you sell gift certificates?",
+        "a": "Yes, in any amount at the front desk: a perfect gift for birthdays, holidays and thank-yous."
+      },
+      {
+        "q": "Is there anything I should tell my nail tech?",
+        "a": "Please let us know about any health concerns, including diabetes, before your service, and confirm the price of your service with your nail tech."
+      }
+    ]
   },
   "visit": {
     "eyebrow": "Visit us",
@@ -332,14 +637,46 @@
       "fri": "Friday",
       "sat": "Saturday",
       "sun": "Sunday"
-    }
+    },
+    "policy": "Salon policy",
+    "follow": "Follow us",
+    "mapTitle": "Map: Envy Nails Spa, 2241 Treelight Way, Suite 102, Wendell, NC",
+    "openMap": "Open in Google Maps"
   },
   "footer": {
     "tagline": "Clean, professional, high-quality nail care in Wendell, North Carolina.",
     "explore": "Explore",
-    "contact": "Contact",
-    "hours": "Hours",
     "rights": "© {year} {name}. All rights reserved."
+  },
+  "articles": {
+    "eyebrow": "Blog",
+    "title": "Notes from the salon",
+    "intro": "Nail care tips, a guide to our services and what to know before your visit, from Envy Nails Spa of Wendell.",
+    "metaTitle": "Blog: nail care tips and salon notes",
+    "metaDescription": "Nail care tips, a guide to acrylic, dip powder, Gel-X and BIAB, and what to know before your visit to Envy Nails Spa of Wendell.",
+    "home": "Home",
+    "breadcrumb": "Breadcrumb",
+    "all": "All",
+    "categoriesLabel": "Topics",
+    "categories": {
+      "care": "Nail care",
+      "services": "Services",
+      "salon": "Salon notes"
+    },
+    "categoryTitle": "{category}",
+    "categoryDescription": "Articles about {category} from Envy Nails Spa of Wendell.",
+    "featured": "Featured",
+    "readMore": "Read more",
+    "minutes": "{count} min read",
+    "latest": "From our blog",
+    "latestIntro": "Tips to keep your nails looking good between visits, and answers before you book.",
+    "viewAll": "All articles",
+    "back": "Back to the blog",
+    "related": "Keep reading",
+    "empty": "No articles in this topic yet.",
+    "ctaTitle": "Ready for fresh nails?",
+    "ctaText": "Book online in a minute, or call us for groups and special requests.",
+    "sample": "Sample articles for reviewing the design, written from the salon’s menu, FAQ and policy until the salon publishes its own."
   },
   "notFound": {
     "title": "Page not found",

@@ -29,6 +29,7 @@
     "range": "Our range",
     "partners": "For restaurants",
     "about": "About us",
+    "articles": "Articles",
     "contact": "Contact"
   },
   "brand": {
@@ -141,6 +142,56 @@
       "hotline": "Hotline",
       "care": "Customer care"
     }
+  },
+  "articles": {
+    "eyebrow": "Articles",
+    "title": "Stories from Gò Đen",
+    "intro": "Brand stories, the craft, how to serve our wines and partner news from Khang Hưng Tửu.",
+    "metaTitle": "Articles",
+    "metaDescription": "Articles from Khang Hưng Tửu: the brand's story, the infusion room and quality lab, how to serve warm wine and rượu cần, and restaurant partnerships. For adults 18 and over.",
+    "categoriesLabel": "Topics",
+    "all": "All",
+    "categories": {
+      "brand": "Brand",
+      "craft": "Craft",
+      "serving": "How to serve",
+      "guide": "Guides",
+      "partners": "Partners"
+    },
+    "categoryTitle": "Topic: {category}",
+    "categoryDescription": "Khang Hưng Tửu articles about {category}.",
+    "featured": "Featured",
+    "readMore": "Read more",
+    "minutes": "{count} min read",
+    "published": "Published {date}",
+    "empty": "No articles in this topic yet.",
+    "latest": "Latest articles",
+    "latestIntro": "The newest stories, guides and news from the winery.",
+    "viewAll": "All articles",
+    "related": "More on this topic",
+    "share": "Share",
+    "shareFacebook": "Share on Facebook",
+    "copyLink": "Copy link",
+    "copied": "Copied",
+    "back": "All articles",
+    "breadcrumb": "Breadcrumb",
+    "sample": "Sample content for reviewing the design, assembled from facts already on the site. Real articles will come from the admin."
+  },
+  "templates": {
+    "metaTitle": "Article templates",
+    "eyebrow": "Article templates",
+    "title": "10 ready-made article templates",
+    "intro": "Pick a template to see it in full. Grey images are where real photos go; text in [square brackets] is to be replaced. This page is for reviewing templates and is hidden from search engines.",
+    "preview": "Preview",
+    "bestFor": "Best for",
+    "blocks": "Layout pieces",
+    "chip": "Template {number}",
+    "banner": "Template {number}/{total} · {name}. Sample content: replace the text in [square brackets] and the grey images.",
+    "languageNote": "The sample text is in Vietnamese, the site's main language.",
+    "all": "All templates",
+    "previous": "Previous template",
+    "next": "Next template",
+    "navLabel": "Switch template"
   },
   "footer": {
     "tagline": "Traditional rice and herbal wines from Bến Lức, Long An, since 1991.",

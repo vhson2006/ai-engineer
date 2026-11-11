@@ -5,6 +5,7 @@ import { Container, buttonVariants, cn } from '@web/ui';
 import { LocaleSwitcher, LocaleToggle } from '@web/ui/locale-switcher';
 import { MobileNav, SectionNav } from '@web/ui/section-nav';
 import { shop } from '@/content/shop';
+import { articlePaths, listArticles } from '@/features/articles/data';
 import { href, LOCALE_OPTIONS } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 import { formatTime } from '@/lib/format';
@@ -13,11 +14,22 @@ import { Logo } from './logo';
 export async function SiteHeader() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   const home = href(locale, '/');
+  // The home page shows its "latest articles" section only when there are articles: then the menu
+  // scrolls to it; otherwise (none yet, or the API is down) it opens the articles page.
+  const hasArticles = await listArticles(locale).then(
+    (articles) => articles.length > 0,
+    () => false,
+  );
+  // Same order as the sections of the home page (src/app/[lang]/page.tsx).
   const links = [
+    { id: 'top', label: t.nav.top },
     { id: 'prices', label: t.nav.prices },
     { id: 'services', label: t.nav.services },
     { id: 'process', label: t.nav.process },
     { id: 'tips', label: t.nav.tips },
+    hasArticles
+      ? { id: 'articles', label: t.nav.articles }
+      : { id: 'articles', label: t.nav.articles, href: href(locale, articlePaths.index) },
     { id: 'faq', label: t.nav.faq },
     { id: 'contact', label: t.nav.contact },
   ];
@@ -49,9 +61,10 @@ export async function SiteHeader() {
             <div className="hidden xl:block">
               <LocaleSwitcher current={locale} locales={LOCALE_OPTIONS} label={t.common.language} />
             </div>
-            <a href={shop.phone.href} className={cn(buttonVariants(), 'hidden rounded-full px-5 sm:inline-flex')}>
+            {/* Between xl and 2xl the full menu leaves no room for the number: icon only (still announced). */}
+            <a href={shop.phone.href} className={cn(buttonVariants(), 'hidden rounded-full px-5 sm:inline-flex xl:max-2xl:px-3')}>
               <Phone aria-hidden />
-              {shop.phone.display}
+              <span className="xl:max-2xl:sr-only">{shop.phone.display}</span>
             </a>
             <MobileNav
               links={links}

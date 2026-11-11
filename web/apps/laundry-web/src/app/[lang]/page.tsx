@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {
+  ArrowRight,
   BedDouble,
   Check,
   Clock,
@@ -24,20 +26,21 @@ import {
   WashingMachine,
   Wind,
 } from 'lucide-react';
-import type { ReactNode } from 'react';
 import { format } from '@web/core/i18n/format';
 import { Container, buttonVariants, cn } from '@web/ui';
 import { Reveal } from '@web/ui/reveal';
 import { MachineMark } from '@/components/logo';
 import { Eyebrow, SectionHeading } from '@/components/section-heading';
-import { priceTableOrder, priceTables, services, shop, type PriceRow, type ServiceIcon, type Unit } from '@/content/shop';
+import { branchMapsHref, priceTableOrder, priceTables, services, shop, type PriceRow, type ServiceIcon, type Unit } from '@/content/shop';
+import { ArticleGrid } from '@/features/articles/article-card';
+import { articlePaths, listArticles } from '@/features/articles/data';
 import { Estimator } from '@/features/estimate/estimator';
-import type { Locale } from '@/i18n/locales';
+import { href, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 import { formatTime, formatVnd } from '@/lib/format';
 import machines from '../../../public/images/machines.jpg';
 import shelves from '../../../public/images/shelves.jpg';
-import storefrontSign from '../../../public/images/storefront-sign.jpg';
+import signboard from '../../../public/images/signboard.jpg';
 
 const SERVICE_ICONS: Record<ServiceIcon, LucideIcon> = {
   shirt: WashingMachine,
@@ -89,6 +92,9 @@ export default async function HomePage() {
         <Tips {...ctx} />
       </Reveal>
       <Reveal>
+        <LatestArticles {...ctx} />
+      </Reveal>
+      <Reveal>
         <Faq {...ctx} />
       </Reveal>
       <Reveal>
@@ -102,7 +108,9 @@ export default async function HomePage() {
 
 function Hero({ t, vnd, unit }: Ctx) {
   return (
-    <section className="bubbles relative overflow-hidden bg-brand text-white">
+    // id="top": the menu's Home link. The huge scroll margin makes it scroll to the very top of the
+    // page (top bar included), and the hero in view highlights Home.
+    <section id="top" className="bubbles relative scroll-mt-[100vh] overflow-hidden bg-brand text-white">
       <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:py-24">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full bg-sun px-4 py-1.5 font-display text-base font-extrabold text-deep shadow-md">
@@ -375,6 +383,29 @@ function Tips({ t }: Ctx) {
   );
 }
 
+/* ─────────────────────────────── Latest articles ─────────────────────────────── */
+
+async function LatestArticles({ t, locale }: Ctx) {
+  const articles = (await listArticles(locale)).slice(0, 3);
+  if (articles.length === 0) return null;
+  return (
+    <section id="articles" className="pb-20 sm:pb-24">
+      <Container>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.articles.latestIntro} />
+          <Link href={href(locale, articlePaths.index)} className={cn(pill('secondary'), 'shrink-0 self-start sm:self-auto')}>
+            {t.articles.viewAll}
+            <ArrowRight aria-hidden />
+          </Link>
+        </div>
+        <div className="mt-12">
+          <ArticleGrid articles={articles} locale={locale} t={t} />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 /* ─────────────────────────────── FAQ ─────────────────────────────── */
 
 function Faq({ t }: Ctx) {
@@ -401,48 +432,72 @@ function Faq({ t }: Ctx) {
 /* ─────────────────────────────── Contact ─────────────────────────────── */
 
 function Contact({ t, locale }: Ctx) {
-  const hours = format(t.contact.hoursValue, { open: formatTime(locale, shop.hours.open), close: formatTime(locale, shop.hours.close) });
+  const open = formatTime(locale, shop.hours.open);
+  const close = formatTime(locale, shop.hours.close);
   return (
     <section id="contact" className="py-20 sm:py-24">
       <Container>
-        <div className="grid overflow-hidden rounded-[2.5rem] border border-border bg-surface lg:grid-cols-[1fr_1.1fr]">
-          <div className="p-8 sm:p-12">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-14">
+          <div>
             <SectionHeading align="left" eyebrow={t.contact.eyebrow} title={t.contact.title} intro={t.contact.text} />
-            <dl className="mt-10 space-y-6">
-              <InfoRow icon={MapPin} label={t.contact.address}>
-                {shop.addressLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
+
+            {/* The branches, as printed on the sign: one card each, with its own directions. */}
+            <h3 className="sr-only">{t.contact.branchesLabel}</h3>
+            <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+              {shop.branches.map((branch, index) => (
+                <li key={branch.id} className="flex flex-col rounded-[1.75rem] border border-border bg-surface p-6 shadow-sm">
+                  <span className="inline-flex items-center gap-2 self-start rounded-full bg-brand px-3 py-1 text-xs font-extrabold tracking-wide text-white uppercase">
+                    <MapPin aria-hidden className="size-3.5" />
+                    {format(t.contact.branch, { number: index + 1 })}
                   </span>
-                ))}
-              </InfoRow>
-              <InfoRow icon={Clock} label={t.contact.hours}>
-                <span className="block font-semibold">{hours}</span>
-                <span className="block text-sm text-muted">{t.contact.holidays}</span>
-              </InfoRow>
-              <InfoRow icon={Phone} label={t.contact.phone}>
-                <a href={shop.phone.href} className="font-display text-2xl font-extrabold text-brand-strong hover:underline">
+                  <address className="mt-4 flex-1 not-italic">
+                    <span className="block font-display text-2xl leading-tight font-extrabold text-brand-strong">{branch.street}</span>
+                    <span className="mt-1 block text-muted">
+                      {branch.ward}, {branch.city}
+                    </span>
+                  </address>
+                  <a
+                    href={branchMapsHref(branch)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 self-start text-sm font-bold text-brand-strong hover:underline"
+                  >
+                    <Navigation aria-hidden className="size-4" />
+                    {t.common.directions}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 flex flex-col gap-5 rounded-[1.75rem] bg-brand-soft p-6 xl:flex-row xl:items-center xl:justify-between">
+              <div>
+                <p className="text-xs font-bold tracking-[0.14em] text-cherry uppercase">{t.contact.phone}</p>
+                <a href={shop.phone.href} className="mt-1 block font-display text-3xl font-extrabold whitespace-nowrap text-brand-strong tabular-nums hover:underline">
                   {shop.phone.display}
                 </a>
-              </InfoRow>
-            </dl>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a href={shop.phone.href} className={pill()}>
-                <Phone aria-hidden />
-                {t.common.callNow}
-              </a>
-              <a href={shop.zaloHref} target="_blank" rel="noopener noreferrer" className={pill('secondary')}>
-                <MessageCircle aria-hidden />
-                {t.common.zalo}
-              </a>
-              <a href={shop.mapsHref} target="_blank" rel="noopener noreferrer" className={pill('secondary')}>
-                <Navigation aria-hidden />
-                {t.common.directions}
-              </a>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a href={shop.phone.href} className={pill()}>
+                  <Phone aria-hidden />
+                  {t.common.callNow}
+                </a>
+                <a href={shop.zaloHref} target="_blank" rel="noopener noreferrer" className={pill('secondary')}>
+                  <MessageCircle aria-hidden />
+                  {t.common.zalo}
+                </a>
+              </div>
             </div>
           </div>
-          <div className="flex items-center bg-brand p-6 sm:p-10">
-            <Image src={storefrontSign} alt={t.contact.imageAlt} placeholder="blur" sizes="(min-width: 1024px) 600px, 92vw" className="w-full rounded-2xl shadow-2xl ring-4 ring-white/80" />
+
+          <div className="space-y-6">
+            <Image
+              src={signboard}
+              alt={t.contact.imageAlt}
+              placeholder="blur"
+              sizes="(min-width: 1024px) 580px, 92vw"
+              className="w-full rounded-[1.75rem] shadow-xl ring-1 ring-black/5"
+            />
+            <HoursPoster t={t} open={open} close={close} />
           </div>
         </div>
       </Container>
@@ -450,16 +505,34 @@ function Contact({ t, locale }: Ctx) {
   );
 }
 
-function InfoRow({ icon: Icon, label, children }: { icon: LucideIcon; label: string; children: ReactNode }) {
+/** The shop's opening-hours poster (red, white and yellow), rebuilt in HTML: crisp and readable. */
+function HoursPoster({ t, open, close }: { t: Messages; open: string; close: string }) {
   return (
-    <div className="flex gap-4">
-      <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand-strong">
-        <Icon aria-hidden className="size-5" />
-      </span>
-      <div>
-        <dt className="text-xs font-bold tracking-[0.14em] text-cherry uppercase">{label}</dt>
-        <dd className="mt-1 leading-relaxed">{children}</dd>
+    <div className="overflow-hidden rounded-[1.75rem] bg-cherry text-center text-white shadow-xl">
+      <div className="px-6 pt-8 pb-7">
+        <p className="inline-flex items-center gap-2 font-display text-3xl leading-none font-extrabold tracking-wide uppercase sm:text-4xl">
+          <Clock aria-hidden className="size-7 sm:size-8" />
+          {t.contact.posterTitle}
+        </p>
+        <p className="mt-4 font-display text-4xl leading-none font-extrabold text-sun tabular-nums sm:text-5xl">
+          {open} – {close}
+        </p>
+        <p className="mt-3 font-display text-lg font-bold text-sun/95 uppercase">
+          {t.contact.posterDaily} · {t.contact.holidays}
+        </p>
       </div>
+      <a
+        href={shop.zaloHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-4 bg-sun px-6 py-4 text-cherry transition-colors hover:bg-[#ffe14d]"
+      >
+        <span className="rounded-xl bg-cherry px-2.5 py-1.5 text-sm font-extrabold text-white">Zalo</span>
+        <span className="text-left">
+          <span className="block text-xs font-bold tracking-[0.12em] uppercase">{t.contact.posterZalo}</span>
+          <span className="block font-display text-3xl leading-none font-extrabold tabular-nums">{shop.phone.display}</span>
+        </span>
+      </a>
     </div>
   );
 }

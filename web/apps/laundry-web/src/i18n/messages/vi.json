@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Giặt sấy SFaster · Mỗi người 1 máy · Sạch – Thơm – Nhanh",
-    "description": "Giặt sấy SFaster, 68 Lê Hồng Phong: giặt sấy quần áo theo ký từ 35.000 ₫, mền màn drap, giặt hấp, vệ sinh giày, gấu bông, topper. Mỗi người 1 máy, không giặt chung. Mở cửa 7:00–19:00 hằng ngày."
+    "description": "Giặt sấy SFaster, 2 chi nhánh tại TP.HCM (40 Cửu Long và 68 Lê Hồng Phong): giặt sấy quần áo theo ký từ 35.000 ₫, mền màn drap, giặt hấp, vệ sinh giày, gấu bông, topper. Mỗi người 1 máy, không giặt chung. Mở cửa 7:00–20:00 hằng ngày."
   },
   "common": {
     "skipToContent": "Chuyển đến nội dung",
@@ -28,6 +28,7 @@
   "nav": {
     "label": "Mục chính",
     "home": "Trang chủ SFaster",
+    "top": "Trang chủ",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
     "prices": "Bảng giá",
@@ -35,7 +36,8 @@
     "process": "Quy trình",
     "tips": "Lưu ý gửi đồ",
     "faq": "Hỏi đáp",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "articles": "Bài viết"
   },
   "brand": {
     "laundry": "Giặt sấy",
@@ -43,7 +45,7 @@
     "oneMachine": "Mỗi người 1 máy"
   },
   "hero": {
-    "eyebrow": "Giặt sấy · 68 Lê Hồng Phong",
+    "eyebrow": "Giặt sấy · 2 chi nhánh tại TP.HCM",
     "title": "Đồ sạch, thơm tho,",
     "titleAccent": "không bao giờ giặt chung.",
     "text": "Ở SFaster mỗi người 1 máy: đồ của bạn được giặt và sấy riêng, sau đó đóng túi và dán phiếu tên. Tính giá theo ký, chỉ từ 35.000 ₫ một lần.",
@@ -176,25 +178,55 @@
       { "q": "Đồ len, lụa, da, vest có giặt máy được không?", "a": "Các loại đồ này nên chọn dịch vụ giặt hấp để giữ form và chất liệu. Xem giá ở mục Giặt hấp." },
       { "q": "Khi nào tôi lấy được đồ?", "a": "Tùy số lượng đồ và dịch vụ. Gọi điện hoặc nhắn Zalo, tiệm sẽ báo giờ có đồ cho bạn." },
       { "q": "Ưu đãi giặt 7 lần tặng 1 áp dụng thế nào?", "a": "Sau 7 lần giặt, lần tiếp theo được tặng. Hỏi nhân viên tại quầy để biết chi tiết." },
-      { "q": "Tiệm mở cửa lúc nào?", "a": "Từ 7:00 đến 19:00 hằng ngày, trừ Lễ, Tết." }
+      { "q": "Tiệm mở cửa lúc nào?", "a": "Từ 7:00 đến 20:00 hằng ngày ở cả hai chi nhánh, trừ Lễ, Tết." }
     ]
   },
   "contact": {
     "eyebrow": "Liên hệ",
     "title": "Ghé tiệm SFaster",
-    "text": "Ghé thẳng tiệm trong giờ mở cửa, hoặc gọi điện, nhắn Zalo trước.",
+    "text": "Hai chi nhánh tại TP.HCM. Ghé chi nhánh gần bạn trong giờ mở cửa, hoặc gọi điện, nhắn Zalo trước.",
+    "branch": "Chi nhánh {number}",
+    "branchesLabel": "Các chi nhánh",
     "address": "Địa chỉ",
     "hours": "Giờ mở cửa",
     "hoursValue": "{open} – {close} hằng ngày",
     "holidays": "Nghỉ Lễ, Tết",
     "phone": "Hotline & Zalo",
-    "imageAlt": "Biển hiệu tiệm: Giặt sấy SFaster, mỗi người 1 máy, sạch – thơm – nhanh"
+    "imageAlt": "Biển hiệu Giặt sấy SFaster: mỗi người 1 máy, sạch – thơm – nhanh, hai chi nhánh 40 Cửu Long và 68 Lê Hồng Phong, hotline 0984 763 100",
+    "posterTitle": "Giờ mở cửa",
+    "posterDaily": "Hằng ngày",
+    "posterZalo": "Gọi hoặc nhắn Zalo"
   },
   "footer": {
     "tagline": "Giặt sấy quần áo: mỗi người 1 máy. Sạch – Thơm – Nhanh.",
     "explore": "Khám phá",
     "contact": "Liên hệ",
     "rights": "© {year} {name}. Bảo lưu mọi quyền."
+  },
+  "articles": {
+    "eyebrow": "Bài viết",
+    "title": "Mẹo giặt giũ & chuyện ở tiệm",
+    "intro": "Mẹo gửi đồ, cách chọn dịch vụ và cách tiệm tính giá, từ Giặt sấy SFaster.",
+    "metaTitle": "Bài viết: mẹo giặt giũ và chuyện ở tiệm",
+    "metaDescription": "Mẹo gửi đồ ở tiệm giặt, khi nào nên chọn giặt hấp, và cách Giặt sấy SFaster tính giá theo ký, theo món.",
+    "home": "Trang chủ",
+    "breadcrumb": "Đường dẫn",
+    "all": "Tất cả",
+    "categoriesLabel": "Chủ đề",
+    "categoryTitle": "{category}",
+    "categoryDescription": "Các bài viết về {category} từ Giặt sấy SFaster.",
+    "featured": "Nổi bật",
+    "readMore": "Đọc tiếp",
+    "minutes": "{count} phút đọc",
+    "latest": "Bài viết mới",
+    "latestIntro": "Mẹo nhỏ để đồ giặt sạch đẹp, và giải đáp trước khi bạn gửi đồ.",
+    "viewAll": "Tất cả bài viết",
+    "back": "Quay lại bài viết",
+    "related": "Đọc thêm",
+    "empty": "Chủ đề này chưa có bài viết.",
+    "none": "Tiệm chưa đăng bài viết nào.",
+    "ctaTitle": "Cần giặt đồ hôm nay?",
+    "ctaText": "Mang đồ tới tiệm, hoặc gọi điện, nhắn Zalo trước cho tiệm."
   },
   "notFound": {
     "title": "Không tìm thấy trang",

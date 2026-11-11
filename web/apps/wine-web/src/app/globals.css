@@ -1,6 +1,7 @@
 @import "tailwindcss";
 /* Shared design tokens and base styles, then this site's own look on top. */
 @import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
 @source "../../../../packages/ui/src";
 
 /*
