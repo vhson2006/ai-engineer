@@ -26,7 +26,8 @@ npm install
 
 npm run migration:run     # prisma migrate deploy
 npm run start:dev         # nats:setup (JetStream streams, ADR 0024), then deployment-service :3001, notification-service :3002, content-service :3003
-npm run seed:article-templates   # optional: the 10 laundry article templates (ADR 0033), published, vi + en
+npm run seed:article-templates   # optional: the writers' guide article of laundry (ADR 0033), published, vi + en
+#   -- nails|wine [--delete-others]  # another site (also creates its topics); --delete-others keeps only the template
 ```
 
 Then get a token from Keycloak and call the API **through KrakenD** (`localhost:8080`, from `k8s:forward`):
