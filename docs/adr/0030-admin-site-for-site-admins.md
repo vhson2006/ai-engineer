@@ -23,7 +23,7 @@ a password only, while the people who manage every site and the system keep the 
 
 - **Sign-in flow `browser-admin-otp`** (client `admin-web`): password → no `admin-web:admin` →
   refused → `admin-web:superadmin` → one-time code. `KEYCLOAK_REQUIRED_ROLE=admin-web:admin` and
-  short sessions stay.
+  short sessions stay (lengthened by 0035: 8 h idle, 7 days max).
 - **The API decides access, the app only displays it**: the side menu lists what
   `GET /api/content/sites` returns (already filtered by the caller's sites, ADR 0028) and shows
   the system pages to `admin-web:superadmin`; a site the caller doesn't belong to answers 404.

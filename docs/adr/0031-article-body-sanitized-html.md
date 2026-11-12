@@ -1,6 +1,6 @@
 # 0031. Article bodies are HTML, sanitized by content-service with an allow-list
 
-- **Status:** Accepted, implemented (2026-11-11); extended by 0033 (layout blocks)
+- **Status:** Accepted, implemented (2026-11-11); extended by 0033 (layout blocks) and 0034 (media library images)
 - **Date:** 2026-11-11
 - **Related:** 0026, 0030, `libs/common/src/contracts/content/content.types.ts` (`ARTICLE_HTML_TAGS`),
   `apps/content-service/src/articles/article-html.ts`, `web/packages/ui/src/components/rich-text-editor.tsx`
