@@ -16,7 +16,7 @@ Browser ──session-id cookie──▶ admin.<domain> ─▶ admin-web (Next.j
 |---|---|
 | Keycloak browser flow `browser-admin-otp`, bound to the client `admin-web` only: password, then **users without `admin-web:admin` are refused**, then, for `admin-web:superadmin` only, the **one-time code** (a superadmin without OTP must set it up first) | `npm run keycloak:admin-otp` (repo root), once per fresh cluster |
 | The app itself refuses a token without the role (`KEYCLOAK_REQUIRED_ROLE=admin-web:admin`), at sign-in AND on every token refresh: removing the role ends the session within minutes | `@web/core/auth/session` |
-| Short sessions: 15 min idle, 8 h at most (client settings of `admin-web`) | realm JSON |
+| Sessions: 8 h idle, 7 days at most (client settings of `admin-web`, ADR 0035; was 15 min / 8 h) | realm JSON |
 
 Plus everything portfolio-web has: tokens only in Redis (its own ACL user, keys `admin-web:*`),
 CSRF origin check, CSP, rate-limited `/auth/login`, `X-Robots-Tag: noindex`. Its own look (teal)

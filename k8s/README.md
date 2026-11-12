@@ -163,7 +163,7 @@ The realm is imported from [`keycloak/realm-nest-microservice.json`](overlays/de
 |---|---|
 | `deployments-api` | Resource server: owns the roles `deployment:read`, `deployment:write`, `deployment:admin`; it's the token audience |
 | `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `http://www.localtest.me:8000/*` and `http://localhost:3000/*`) |
-| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `http://admin.localtest.me:8000/*`, `http://localhost:3100/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 15 min idle / 8 h max; browser flow **`browser-admin-otp`** |
+| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `http://admin.localtest.me:8000/*`, `http://localhost:3100/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
 | `dev-cli` | **Dev only**: password grant for curl tests |
 
 | Group | Roles | Test user (password `password`) |

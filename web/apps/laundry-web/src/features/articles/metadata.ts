@@ -13,13 +13,17 @@ export function articlesMetadata({
   title,
   description,
   publishedTime,
+  image,
 }: {
   locale: Locale;
   paths: Partial<Record<Locale, string>>;
   title: string;
   description: string;
   publishedTime?: string;
+  /** Link preview image (an article's cover from the media library); else the site's default. */
+  image?: { url: string; width: number; height: number; alt: string };
 }): Metadata {
+  const images = image ? [image] : undefined;
   return {
     title,
     description,
@@ -27,7 +31,10 @@ export function articlesMetadata({
       canonical: localizedPath(locale, paths[locale] ?? '/'),
       languages: Object.fromEntries(LOCALE_CODES.flatMap((code) => (paths[code] ? [[code, localizedPath(code, paths[code])]] : []))),
     },
-    openGraph: publishedTime ? { type: 'article', title, description, publishedTime } : { type: 'website', title, description },
+    openGraph: publishedTime
+      ? { type: 'article', title, description, publishedTime, ...(images && { images }) }
+      : { type: 'website', title, description, ...(images && { images }) },
+    ...(images && { twitter: { card: 'summary_large_image', images } }),
   };
 }
 

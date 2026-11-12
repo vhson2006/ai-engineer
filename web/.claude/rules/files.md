@@ -4,6 +4,7 @@ paths:
   - 'packages/core/src/api/files.ts'
   - 'apps/*/src/features/files/**'
   - 'apps/*/src/app/files/**'
+  - 'apps/*/src/features/media/**'
 ---
 
 # Files (upload, download, delete)
@@ -24,3 +25,11 @@ browser PUTs them to object storage with a presigned URL and downloads them from
   early, friendly message.
 - The storage must allow `APP_URL` in its CORS (PUT + Content-Type), or uploads fail in the
   browser with a network error.
+- **Article images (admin-web, ADR 0034)** go to the site's media library, not to `FILE_PURPOSES`:
+  `createMediaUploader` (`@web/core/files/media-upload`) optimizes in the browser
+  (`optimizeImage`: WebP/JPEG, 640/1280/1920 px, no EXIF), then declares, PUTs every size and
+  completes through the app's Server Actions (`apps/admin-web/src/features/media/`). Pick images
+  with `useMediaPicker`. AI images (ADR 0037): `AiGeneratePanel` in the library asks
+  content-service (`generateMediaAction`), polls `getMediaGenerationAction`; ai-service writes
+  the optimized sizes itself, so nothing is uploaded from the browser. Sites render them with `<img src srcset sizes width height>` (already
+  optimized; not through next/image) and list the CDN in `STORAGE_ORIGINS` (CSP img-src).

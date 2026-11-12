@@ -9,6 +9,7 @@ import { Fragment, type ReactNode } from 'react';
 import { cn } from './lib/cn';
 
 export { cn } from './lib/cn';
+export { formatHtml, hasLayoutBlocks, removedOnSave } from './lib/html-source';
 export { Badge, badgeVariants } from './components/badge';
 export { Button, buttonClass, buttonVariants } from './components/button';
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './components/card';

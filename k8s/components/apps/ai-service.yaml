@@ -1,0 +1,84 @@
+# ai-service (ADR 0036): JetStream durable consumer + inbox + outbox; the ONLY service that calls AI
+# providers (translation, ADR 0036; images, ADR 0037). HTTP only for /health and /metrics on :3004;
+# image built with --target ai-service. The overlay provides ConfigMap "ai-service-env" (NATS_URL,
+# LOG_LEVEL, AI_HEALTH_PORT, AI_*_PROVIDER, AI_GEMINI_*, STORAGE_* settings…), Secret "ai-db"
+# (AI_DB_*: its own database), Secret "ai-storage" (STORAGE_ACCESS_KEY_ID/SECRET: it writes the
+# generated images to the public bucket's media/ prefix) and Secret "ai-providers" (GEMINI_API_KEY). No Service: nothing calls it. A model call
+# can last tens of seconds: the consumer's ack wait is 3 min, the pod's grace period longer.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: ai-service
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: ai-service
+      annotations: # GET /metrics, scraped by Alloy (components/observability, ADR 0023)
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3004'
+        prometheus.io/path: /metrics
+    spec:
+      enableServiceLinks: false
+      terminationGracePeriodSeconds: 180 # let an in-flight model call finish before SIGKILL
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: ai-service
+          image: ai-service
+          ports:
+            - name: health
+              containerPort: 3004
+          envFrom:
+            - configMapRef:
+                name: ai-service-env
+            - secretRef:
+                name: ai-db # AI_DB_* (its own database)
+            - secretRef:
+                name: ai-storage # writes generated images (media/<site>/<id>/, ADR 0037)
+            - secretRef:
+                name: ai-providers # GEMINI_API_KEY (later the Claude key): this service only
+                optional: true # staging runs the fake provider: no key
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: health
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: health
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 16Mi

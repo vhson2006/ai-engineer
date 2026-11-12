@@ -10,10 +10,10 @@ describe('estimate (shop price board)', () => {
     expect(estimate('clothes', 6)).toEqual({ kind: 'flat', amount: 75_000 });
   });
 
-  it('clothes: 7 kg and up is priced per kg; 6–7 kg is not on the board', () => {
+  it('clothes: above 6 kg is priced per kg (6 kg itself is the last flat tier)', () => {
+    expect(estimate('clothes', 6.5)).toEqual({ kind: 'perKg', amount: 78_000, perKg: 12_000 });
     expect(estimate('clothes', 7)).toEqual({ kind: 'perKg', amount: 84_000, perKg: 12_000 });
     expect(estimate('clothes', 10)).toEqual({ kind: 'perKg', amount: 120_000, perKg: 12_000 });
-    expect(estimate('clothes', 6.5)).toEqual({ kind: 'ask' });
   });
 
   it('bedding: flat under 1 kg, then per kg', () => {

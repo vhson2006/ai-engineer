@@ -34,6 +34,47 @@ export interface Category {
   updatedAt: string;
 }
 
+/**
+ * An image of the media library (ADR 0034), optimized sizes on the CDN: the widest in `url`,
+ * every size in `srcset` (`<url> 640w, …`). Render it with <img src srcset sizes width height>.
+ */
+export interface MediaImage {
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+  srcset: string;
+}
+
+export interface Media extends MediaImage {
+  siteId: string;
+  filename: string;
+  contentType: 'image/webp' | 'image/jpeg';
+  /** failed: an AI image that could not be made (ADR 0037). */
+  status: 'pending' | 'ready' | 'failed';
+  /** upload: from the admin's browser; ai: generated from `prompt` (ADR 0037). */
+  source: 'upload' | 'ai';
+  prompt: string | null;
+  /** status failed: why (provider_refused, provider_unavailable, not_generated…). */
+  error: string | null;
+  variants: { width: number; height: number; size: number; url: string }[];
+  createdBy: string;
+  createdAt: string;
+}
+
+/** Answer to createMediaUpload: PUT each size to its URL with exactly its headers, then completeMedia. */
+export interface MediaUpload {
+  media: Media;
+  uploads: { width: number; method: 'PUT'; url: string; headers: Record<string, string>; expiresAt: string }[];
+}
+
+/** One optimized size, as declared before the upload (CreateMediaUploadDto). */
+export interface MediaVariantInput {
+  width: number;
+  height: number;
+  size: number;
+}
+
 export interface ArticleTranslation {
   locale: string;
   title: string;
@@ -52,6 +93,8 @@ export interface Article {
   categoryId: string;
   status: ArticleStatus;
   featured: boolean;
+  /** Cover image (media library); its alt text per language: coverAlt. */
+  cover: MediaImage | null;
   scheduledAt: string | null;
   publishedAt: string | null;
   createdBy: string;
@@ -70,6 +113,7 @@ export interface PublishedArticleSummary {
   title: string;
   excerpt: string;
   coverAlt: string | null;
+  cover: MediaImage | null;
   readingMinutes: number;
   featured: boolean;
   publishedAt: string;
@@ -160,23 +204,36 @@ export function getArticle(siteId: string, id: string) {
 /** A draft; languages may be missing until it is published. Not retried: wrap in `once()`. */
 export function createArticle(
   siteId: string,
-  input: { categoryId: string; featured?: boolean; translations: ArticleTranslationInput[] },
+  input: { categoryId: string; featured?: boolean; coverMediaId?: string | null; translations: ArticleTranslationInput[] },
 ) {
   return apiFetch<Article>(`${site(siteId)}/articles`, {
     method: 'POST',
-    body: { categoryId: input.categoryId, featured: input.featured, translations: input.translations },
+    body: {
+      categoryId: input.categoryId,
+      featured: input.featured,
+      coverMediaId: input.coverMediaId,
+      translations: input.translations,
+    },
   });
 }
 
-/** `translations` replaces every language. Live or scheduled articles need content:publish. */
+/**
+ * `translations` replaces every language; `coverMediaId: null` removes the cover (undefined keeps
+ * it). Live or scheduled articles need content:publish. 422 invalid_cover: not an image of the site.
+ */
 export function updateArticle(
   siteId: string,
   id: string,
-  input: { categoryId?: string; featured?: boolean; translations?: ArticleTranslationInput[] },
+  input: { categoryId?: string; featured?: boolean; coverMediaId?: string | null; translations?: ArticleTranslationInput[] },
 ) {
   return apiFetch<Article>(article(siteId, id), {
     method: 'PATCH',
-    body: { categoryId: input.categoryId, featured: input.featured, translations: input.translations },
+    body: {
+      categoryId: input.categoryId,
+      featured: input.featured,
+      coverMediaId: input.coverMediaId,
+      translations: input.translations,
+    },
   });
 }
 
@@ -192,6 +249,124 @@ export function unpublishArticle(siteId: string, id: string) {
 
 export function deleteArticle(siteId: string, id: string) {
   return apiFetch<void>(article(siteId, id), { method: 'DELETE' });
+}
+
+// ─────────────────────────────── Machine translation (ADR 0036) ───────────────────────────────
+// Asynchronous: content-service asks ai-service, the result comes back as a DRAFT translation.
+
+/** A segment to review after a machine translation: its numbers or its formatting changed. */
+export interface TranslationWarning {
+  kind: 'numbers' | 'markup';
+  text: string;
+}
+
+export interface TranslationJob {
+  id: string;
+  siteId: string;
+  articleId: string;
+  sourceLocale: string;
+  targetLocale: string;
+  status: 'pending' | 'completed' | 'failed';
+  /** failed: provider_unavailable, provider_refused, invalid_output, article_not_draft, translation_exists… */
+  error: string | null;
+  detail: string | null;
+  warnings: TranslationWarning[];
+  provider: string | null;
+  model: string | null;
+  createdBy: string;
+  createdAt: string;
+  completedAt: string | null;
+}
+
+/**
+ * Machine-translate a DRAFT into `targetLocale` from `sourceLocale` (202, a pending job). 409
+ * not_a_draft, 409 translation_exists (send overwrite), 422 invalid_locale / missing_source / too_large.
+ * Asking again while a job is pending returns that job.
+ */
+export function startArticleTranslation(
+  siteId: string,
+  id: string,
+  targetLocale: string,
+  input: { sourceLocale: string; overwrite?: boolean },
+) {
+  return apiFetch<TranslationJob>(article(siteId, id, `/translations/${encodeURIComponent(targetLocale)}/auto`), {
+    method: 'POST',
+    body: { sourceLocale: input.sourceLocale, overwrite: input.overwrite },
+  });
+}
+
+/** The article's latest translation jobs, newest first. */
+export function listTranslationJobs(siteId: string, id: string) {
+  return apiFetch<TranslationJob[]>(article(siteId, id, '/translation-jobs'));
+}
+
+// ─────────────────────────────── Media library (ADR 0034) ───────────────────────────────
+// The bytes never come through here: the browser optimizes the image, PUTs every size to the
+// presigned URLs (createMediaUploader, @web/core/files/media-upload), then completes.
+
+const media = (siteId: string, id = '', suffix = '') =>
+  `${site(siteId)}/media${id ? `/${encodeURIComponent(id)}` : ''}${suffix}`;
+
+/** Ready images of a site, newest first. */
+export function listMedia(siteId: string, params: { page?: number; limit?: number } = {}) {
+  return apiFetch<Paginated<Media>>(media(siteId), { query: params });
+}
+
+/** Declare an optimized image and its sizes. Not retried (a retry would leave a pending image). */
+export function createMediaUpload(
+  siteId: string,
+  input: { filename: string; contentType: Media['contentType']; variants: MediaVariantInput[] },
+) {
+  return apiFetch<MediaUpload>(media(siteId), {
+    method: 'POST',
+    body: {
+      filename: input.filename,
+      contentType: input.contentType,
+      variants: input.variants.map(({ width, height, size }) => ({ width, height, size })),
+    },
+  });
+}
+
+/** Every size uploaded → ready. 409 upload_incomplete, 422 upload_mismatch (the image is removed). */
+export function completeMedia(siteId: string, id: string) {
+  return apiFetch<Media>(media(siteId, id, '/complete'), { method: 'POST' });
+}
+
+export { IMAGE_ASPECT_RATIOS, IMAGE_GENERATION_MAX_COUNT, IMAGE_PROMPT_MAX_LENGTH, type ImageAspectRatio } from './image-generation';
+import type { ImageAspectRatio } from './image-generation';
+
+/** An AI image generation (ADR 0037): its images, pending until ai-service answers. */
+export interface MediaGeneration {
+  jobId: string;
+  /** completed may hold failed images (each one is made separately). */
+  status: 'pending' | 'completed' | 'failed';
+  media: Media[];
+  /** Images the site may still generate this calendar month (UTC). */
+  remaining: number;
+}
+
+/**
+ * Generate 1-4 images from a description (202, pending). Counted in the site's monthly quota:
+ * 422 quota_exceeded. Not retried (each image is paid for).
+ */
+export function generateMedia(
+  siteId: string,
+  input: { prompt: string; aspectRatio: ImageAspectRatio; count: number },
+) {
+  return apiFetch<MediaGeneration>(media(siteId, '', '/generate'), {
+    method: 'POST',
+    body: { prompt: input.prompt, aspectRatio: input.aspectRatio, count: input.count },
+  });
+}
+
+/** Poll until `status` is no longer pending. */
+export function getMediaGeneration(siteId: string, jobId: string) {
+  return apiFetch<MediaGeneration>(`${site(siteId)}/media/generations/${encodeURIComponent(jobId)}`);
+}
+
+/** 409 media_in_use while an article uses it (cover or body); 409 generation_in_progress. */
+export function deleteMedia(siteId: string, id: string) {
+  return apiFetch<void>(media(siteId, id), { method: 'DELETE' });
 }
 
 // ─────────────────────────────── Published (what a site shows) ───────────────────────────────

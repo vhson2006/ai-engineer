@@ -13,6 +13,11 @@ export function formatTime(locale: Locale, hhmm: string): string {
   );
 }
 
+/** Opening hours "07:00 – 19:00" in the visitor's language. */
+export function formatHours(locale: Locale, hours: { open: string; close: string }): string {
+  return `${formatTime(locale, hours.open)} – ${formatTime(locale, hours.close)}`;
+}
+
 /** A publication date "2026-11-10" in the visitor's language: "10 tháng 11, 2026" / "10 November 2026". */
 /** The shop's time zone: a publication instant is shown as the day it was in Vietnam. */
 const SHOP_TIME_ZONE = 'Asia/Ho_Chi_Minh';

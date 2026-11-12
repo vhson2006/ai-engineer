@@ -1,7 +1,14 @@
 import 'server-only';
 import type { StaticImageData } from 'next/image';
 import { cacheLife, cacheTag } from 'next/cache';
-import { getPublishedArticle, listPublishedArticles, listSiteCategories, type ApiResult, type PublishedArticleSummary } from '@web/core/api';
+import {
+  getPublishedArticle,
+  listPublishedArticles,
+  listSiteCategories,
+  type ApiResult,
+  type MediaImage,
+  type PublishedArticleSummary,
+} from '@web/core/api';
 import { LOCALE_CODES, type Locale } from '@/i18n/locales';
 import machines from '../../../public/images/machines.jpg';
 import shelves from '../../../public/images/shelves.jpg';
@@ -18,6 +25,12 @@ export const SITE_ID = 'laundry';
 const CACHE_TAG = `content:${SITE_ID}`;
 const PAGE_SIZE = 100; // the API's maximum: every article of the site in one call
 
+/**
+ * An article's cover: the image the admins chose in the media library (ADR 0034: optimized
+ * sizes on the CDN, alt text per language), or a photo of the shop chosen by topic.
+ */
+export type Cover = { kind: 'media'; image: MediaImage; alt: string } | { kind: 'photo'; photo: StaticImageData };
+
 /** A topic in one language: its stable key, URL segment and name. */
 export type Topic = { key: string; slug: string; name: string };
 
@@ -29,8 +42,7 @@ export type ArticleSummary = {
   featured: boolean;
   title: string;
   excerpt: string;
-  /** Until covers are uploaded (media, later): a photo of the shop chosen by topic. */
-  cover: StaticImageData;
+  cover: Cover;
   readingMinutes: number;
 };
 
@@ -63,7 +75,7 @@ function toSummary(item: PublishedArticleSummary): ArticleSummary {
     featured: item.featured,
     title: item.title,
     excerpt: item.excerpt,
-    cover: coverFor(item.category.key),
+    cover: item.cover ? { kind: 'media', image: item.cover, alt: item.coverAlt ?? '' } : { kind: 'photo', photo: coverFor(item.category.key) },
     readingMinutes: item.readingMinutes,
   };
 }

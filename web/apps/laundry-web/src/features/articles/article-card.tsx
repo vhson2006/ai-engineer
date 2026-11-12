@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import { format } from '@web/core/i18n/format';
@@ -6,6 +5,7 @@ import { cn } from '@web/ui';
 import { href, type Locale } from '@/i18n/locales';
 import type { Messages } from '@/i18n/messages';
 import { formatInstantDate } from '@/lib/format';
+import { CoverImage } from './cover-image';
 import { articlePaths, type ArticleSummary } from './data';
 
 type Props = { article: ArticleSummary; locale: Locale; t: Messages; headingLevel?: 'h2' | 'h3' };
@@ -41,12 +41,11 @@ export function ArticleCard({ article, locale, t, headingLevel = 'h3' }: Props) 
   const Heading = headingLevel;
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-shadow duration-300 hover:shadow-xl hover:shadow-brand/10">
-      {/* Covers: a photo of the shop chosen by topic until covers are uploaded (decorative, alt=""). */}
+      {/* The cover is decorative here (alt=""): the title is the card's link. */}
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-2">
-        <Image
-          src={article.cover}
-          alt=""
-          placeholder="blur"
+        <CoverImage
+          cover={article.cover}
+          decorative
           sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
@@ -77,10 +76,9 @@ export function FeaturedArticle({ article, locale, t }: Omit<Props, 'headingLeve
   return (
     <article className="group relative grid overflow-hidden rounded-[2rem] bg-brand text-white lg:grid-cols-[1.15fr_1fr]">
       <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[24rem]">
-        <Image
-          src={article.cover}
-          alt=""
-          placeholder="blur"
+        <CoverImage
+          cover={article.cover}
+          decorative
           priority
           sizes="(min-width: 1024px) 640px, 100vw"
           className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

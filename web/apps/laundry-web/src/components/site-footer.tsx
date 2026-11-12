@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import { format } from '@web/core/i18n/format';
 import { Container } from '@web/ui';
-import { branchAddress, branchMapsHref, shop } from '@/content/shop';
+import { fullAddress, mapsHref, shop } from '@/content/shop';
 import { href } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { formatTime } from '@/lib/format';
+import { formatHours } from '@/lib/format';
 import { Logo } from './logo';
 
 export async function SiteFooter() {
@@ -12,7 +12,6 @@ export async function SiteFooter() {
   const home = href(locale, '/');
   const explore = [
     { id: 'prices', label: t.nav.prices },
-    { id: 'services', label: t.nav.services },
     { id: 'process', label: t.nav.process },
     { id: 'faq', label: t.nav.faq },
     { id: 'contact', label: t.nav.contact },
@@ -41,20 +40,22 @@ export async function SiteFooter() {
           </li>
         </FooterColumn>
         <FooterColumn title={t.footer.contact}>
-          {shop.branches.map((branch, index) => (
-            <li key={branch.id}>
-              <span className="font-semibold text-white">{format(t.contact.branch, { number: index + 1 })}:</span>{' '}
-              <a href={branchMapsHref(branch)} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                {branchAddress(branch)}
-              </a>
-            </li>
-          ))}
+          <li>
+            <a href={mapsHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              {fullAddress}
+            </a>
+          </li>
           <li>
             <a href={shop.phone.href} className={linkClass}>
               {shop.phone.display}
             </a>
           </li>
-          <li>{format(t.contact.hoursValue, { open: formatTime(locale, shop.hours.open), close: formatTime(locale, shop.hours.close) })}</li>
+          <li>
+            {t.contact.weekdays}: {formatHours(locale, shop.hours.weekdays)}
+          </li>
+          <li>
+            {t.contact.weekend}: {formatHours(locale, shop.hours.weekend)}
+          </li>
           <li className="text-white/60">{t.contact.holidays}</li>
         </FooterColumn>
       </Container>

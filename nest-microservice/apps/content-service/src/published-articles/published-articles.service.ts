@@ -10,6 +10,7 @@ import {
 } from '@app/common';
 import type { Prisma, Site } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { MediaUrls } from '../media/media-urls';
 import { SitesService } from '../sites/sites.service';
 import { liveInclude, toSummary } from './published-articles.mapper';
 
@@ -23,6 +24,7 @@ export class PublishedArticlesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly sites: SitesService,
+    private readonly urls: MediaUrls,
   ) {}
 
   async list(
@@ -61,7 +63,7 @@ export class PublishedArticlesService {
       this.prisma.article.count({ where }),
     ]);
     return paginate(
-      rows.map((row) => toSummary(row, locale)),
+      rows.map((row) => toSummary(row, locale, this.urls)),
       total,
       page,
       limit,
@@ -101,7 +103,7 @@ export class PublishedArticlesService {
     if (!row || !translation) throw new NotFoundException(`Article ${slug} not found`);
 
     return {
-      ...toSummary(row, locale),
+      ...toSummary(row, locale, this.urls),
       body: translation.body,
       seoTitle: translation.seoTitle,
       seoDescription: translation.seoDescription,

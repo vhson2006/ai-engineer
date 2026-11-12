@@ -34,7 +34,7 @@ also watch `nest-microservice/` and its `node_modules`.
      `npm run keycloak:admin-otp` (admin API; a partial realm JSON can't add flows).
   2. The app re-checks the role (`KEYCLOAK_REQUIRED_ROLE`) at sign-in and on every token
      refresh; a refused sign-in also ends the Keycloak session.
-  3. Short sessions (client settings: 15 min idle, 8 h max).
+  3. Short sessions (client settings: 15 min idle, 8 h max). Lengthened by 0035 (8 h idle, 7 days max).
   Plus: its own confidential client, cookies on its own host, its own Redis ACL user and keys
   (`admin-web:*`), the same CSRF/CSP/rate limits, `X-Robots-Tag: noindex`, a distinct look. It
   calls the private API like portfolio-web (NetworkPolicy `krakend-from-web`); the services

@@ -13,6 +13,7 @@ import {
   ObjectStorage,
   PresignedDownload,
   PresignedUpload,
+  PutRequest,
   StoredObjectInfo,
   UploadRequest,
 } from './object-storage';
@@ -115,6 +116,25 @@ export class S3ObjectStorage implements ObjectStorage {
     } catch (error) {
       if (statusOf(error) === 404) return;
       throw this.fail('DELETE', key, error);
+    }
+  }
+
+  async putObject(request: PutRequest): Promise<void> {
+    const acl = request.visibility === 'public' ? this.config.publicObjectAcl : undefined;
+    try {
+      await this.client.send(
+        new PutObjectCommand({
+          Bucket: this.bucket(request.visibility),
+          Key: request.key,
+          Body: request.body,
+          ContentType: request.contentType,
+          ContentLength: request.body.byteLength,
+          CacheControl: request.cacheControl,
+          ACL: acl,
+        }),
+      );
+    } catch (error) {
+      throw this.fail('PUT', request.key, error);
     }
   }
 

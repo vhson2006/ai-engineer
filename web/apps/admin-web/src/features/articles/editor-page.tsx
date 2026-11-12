@@ -1,6 +1,6 @@
 import { notFound, redirect } from 'next/navigation';
 import { isUuid } from '@web/core/actions/result';
-import { getArticle } from '@web/core/api';
+import { getArticle, listMedia, listTranslationJobs } from '@web/core/api';
 import { getSessionUser } from '@web/core/auth/session';
 import { ApiFailure } from '@/components/api-failure';
 import { siteCategories, siteOr404 } from '@/features/sites/data';
@@ -33,7 +33,14 @@ export async function ArticleEditorPage({
   if (!site.ok) return <ApiFailure t={t} failure={site} />;
   if (articleId !== undefined && !isUuid(articleId)) notFound();
 
-  const [categories, article] = await Promise.all([siteCategories(siteId), articleId ? getArticle(siteId, articleId) : null]);
+  const [categories, article, media, jobs] = await Promise.all([
+    siteCategories(siteId),
+    articleId ? getArticle(siteId, articleId) : null,
+    // The library's newest images for the picker; without them the editor still works (upload).
+    listMedia(siteId, { limit: 60 }),
+    // Machine translations (ADR 0036): status and what to review, per language.
+    articleId ? listTranslationJobs(siteId, articleId) : null,
+  ]);
   if (article && !article.ok) {
     if (article.status === 404) notFound();
     return <ApiFailure t={t} failure={article} />;
@@ -58,6 +65,9 @@ export async function ArticleEditorPage({
         article={current}
         t={t.articles}
         common={t.common}
+        media={media.ok ? media.data.data : []}
+        mediaLabels={t.media}
+        translationJobs={jobs?.ok ? jobs.data : []}
         validation={t.validation}
         listHref={list}
         categoriesHref={href(locale, `/sites/${siteId}/categories`)}

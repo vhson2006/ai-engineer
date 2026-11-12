@@ -7,7 +7,7 @@
 #   krakend ─▶ deployment-service :3001, content-service :3003
 #   krakend, deployment-service, content-service ─▶ keycloak :8080   (JWKS)
 #   keycloak ◀─▶ keycloak (all ports)         (cluster cache between replicas)
-#   deployment-service, notification-service, content-service, nats-setup (Job) ─▶ nats :4222
+#   deployment-service, notification-service, content-service, ai-service, nats-setup (Job) ─▶ nats :4222
 #
 # Egress is not restricted here (managed Postgres/Valkey, DNS, Let's Encrypt are outside the
 # cluster). Probes come from the kubelet on the node and are not affected on DOKS (Cilium).
@@ -181,6 +181,9 @@ spec:
         - podSelector:
             matchLabels:
               app: content-service
+        - podSelector:
+            matchLabels:
+              app: ai-service
         - podSelector:
             matchLabels:
               app: nats-setup # Job: creates the streams (ADR 0024)

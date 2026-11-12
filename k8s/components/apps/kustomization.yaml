@@ -9,6 +9,7 @@ resources:
   - deployment-service.yaml
   - notification-service.yaml
   - content-service.yaml
+  - ai-service.yaml
   - portfolio-web.yaml
   - admin-web.yaml
   - nats-setup-job.yaml # JetStream streams, before / with the services (ADR 0024)

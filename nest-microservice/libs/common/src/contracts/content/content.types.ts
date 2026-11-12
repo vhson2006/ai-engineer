@@ -1,3 +1,4 @@
+import type { MediaImage } from './content.media';
 /**
  * Response contracts of content-service (ADR 0026). Dates are ISO strings. Mirrored for the web
  * apps in web/packages/core/src/api/content.ts.
@@ -147,6 +148,8 @@ export interface ArticleResponse {
   categoryId: string;
   status: ArticleStatus;
   featured: boolean;
+  /** Cover image (media library of the site); its alt text is per language: coverAlt. */
+  cover: MediaImage | null;
   scheduledAt: string | null;
   publishedAt: string | null;
   createdBy: string;
@@ -165,6 +168,8 @@ export interface PublishedArticleSummary {
   title: string;
   excerpt: string;
   coverAlt: string | null;
+  /** Cover image, optimized sizes on the CDN (srcset), or null. */
+  cover: MediaImage | null;
   readingMinutes: number;
   featured: boolean;
   publishedAt: string;
@@ -179,4 +184,36 @@ export interface PublishedArticleResponse extends PublishedArticleSummary {
   seoDescription: string | null;
   /** The same article in every language of the site: `{ locale, slug }`. */
   alternates: { locale: string; slug: string }[];
+}
+
+export const TRANSLATION_JOB_STATUSES = ['pending', 'completed', 'failed'] as const;
+export type TranslationJobStatus = (typeof TRANSLATION_JOB_STATUSES)[number];
+
+/** A segment the reviewer should check: its numbers or its inline markup changed. */
+export interface TranslationWarning {
+  kind: 'numbers' | 'markup';
+  /** The start of the translated text, to find it in the article. */
+  text: string;
+}
+
+/**
+ * A machine translation of an article (ADR 0036). `completed`: the target language is saved as
+ * a draft translation to review; `failed`: `error` says why (ai-service's TranslationFailure, or
+ * article_not_draft / translation_exists / invalid_output when putting it back).
+ */
+export interface TranslationJobResponse {
+  id: string;
+  siteId: string;
+  articleId: string;
+  sourceLocale: string;
+  targetLocale: string;
+  status: TranslationJobStatus;
+  error: string | null;
+  detail: string | null;
+  warnings: TranslationWarning[];
+  provider: string | null;
+  model: string | null;
+  createdBy: string;
+  createdAt: string;
+  completedAt: string | null;
 }

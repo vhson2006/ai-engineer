@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { ArrowLeft, MessageCircle, Phone } from 'lucide-react';
@@ -7,6 +6,7 @@ import { Container, buttonVariants, cn } from '@web/ui';
 import { shop } from '@/content/shop';
 import { ArticleBody } from '@/features/articles/article-body';
 import { ArticleGrid, ArticleMeta, TopicChip } from '@/features/articles/article-card';
+import { CoverImage } from '@/features/articles/cover-image';
 import { articlePaths, getArticle, listArticles, slugInLocale } from '@/features/articles/data';
 import { articlesMetadata } from '@/features/articles/metadata';
 import { href, isLocale } from '@/i18n/locales';
@@ -35,6 +35,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/bai-viet/[
     title: article.seoTitle ?? article.title,
     description: article.seoDescription ?? article.excerpt,
     publishedTime: article.publishedAt,
+    image:
+      article.cover.kind === 'media'
+        ? { url: article.cover.image.url, width: article.cover.image.width, height: article.cover.image.height, alt: article.cover.alt }
+        : undefined,
   });
 }
 
@@ -91,7 +95,7 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
 
         <Container className="mt-10 max-w-5xl">
           <div className="relative aspect-[16/9] overflow-hidden rounded-[2rem] bg-surface-2">
-            <Image src={article.cover} alt="" placeholder="blur" priority sizes="(min-width: 1024px) 1000px, 100vw" className="size-full object-cover" />
+            <CoverImage cover={article.cover} priority sizes="(min-width: 1024px) 1000px, 100vw" className="size-full object-cover" />
           </div>
         </Container>
 

@@ -8,7 +8,7 @@ import { shop } from '@/content/shop';
 import { articlePaths, listArticles } from '@/features/articles/data';
 import { href, LOCALE_OPTIONS } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { formatTime } from '@/lib/format';
+import { formatHours } from '@/lib/format';
 import { Logo } from './logo';
 
 export async function SiteHeader() {
@@ -24,16 +24,17 @@ export async function SiteHeader() {
   const links = [
     { id: 'top', label: t.nav.top },
     { id: 'prices', label: t.nav.prices },
-    { id: 'services', label: t.nav.services },
     { id: 'process', label: t.nav.process },
-    { id: 'tips', label: t.nav.tips },
     hasArticles
       ? { id: 'articles', label: t.nav.articles }
       : { id: 'articles', label: t.nav.articles, href: href(locale, articlePaths.index) },
     { id: 'faq', label: t.nav.faq },
     { id: 'contact', label: t.nav.contact },
   ];
-  const hours = format(t.topBar.hours, { open: formatTime(locale, shop.hours.open), close: formatTime(locale, shop.hours.close) });
+  const hours = format(t.topBar.hours, {
+    weekdays: formatHours(locale, shop.hours.weekdays),
+    weekend: formatHours(locale, shop.hours.weekend),
+  });
 
   return (
     <>

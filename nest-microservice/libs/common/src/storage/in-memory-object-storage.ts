@@ -4,6 +4,7 @@ import {
   ObjectStorage,
   PresignedDownload,
   PresignedUpload,
+  PutRequest,
   StoredObjectInfo,
   UploadRequest,
 } from './object-storage';
@@ -47,6 +48,14 @@ export class InMemoryObjectStorage implements ObjectStorage {
       url: `https://storage.test/private/${request.key}?signature=x`,
       expiresAt: new Date(Date.now() + 300_000).toISOString(),
     });
+  }
+
+  putObject(request: PutRequest): Promise<void> {
+    this.objects.set(`${request.visibility}:${request.key}`, {
+      size: request.body.byteLength,
+      contentType: request.contentType,
+    });
+    return Promise.resolve();
   }
 
   delete(visibility: FileVisibility, key: string): Promise<void> {

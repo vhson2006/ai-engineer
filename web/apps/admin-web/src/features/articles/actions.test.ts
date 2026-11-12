@@ -6,6 +6,7 @@ const api = vi.hoisted(() => ({
   publishArticle: vi.fn(),
   unpublishArticle: vi.fn(),
   deleteArticle: vi.fn(),
+  startArticleTranslation: vi.fn(),
 }));
 vi.mock('@web/core/api', () => api);
 const limit = vi.hoisted(() => ({ limitAction: vi.fn() }));
@@ -27,7 +28,8 @@ vi.mock('@web/core/actions/idempotency', async (importOriginal) => {
   return { ...real, once: (scope: string, action: () => Promise<unknown>) => real.once(scope, action as never, { store }) };
 });
 
-const { createArticleAction, updateArticleAction, publishArticleAction, unpublishArticleAction, deleteArticleAction } = await import('./actions');
+const { createArticleAction, updateArticleAction, publishArticleAction, unpublishArticleAction, deleteArticleAction, translateArticleAction } =
+  await import('./actions');
 
 const ID = '4f9b2c1e-8a3d-4e5f-9b6c-1d2e3f4a5b6c';
 const CATEGORY = '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d';
@@ -48,7 +50,7 @@ const valid = {
   featured: true,
   translations: [empty('vi'), en],
 };
-const article = { ok: true, data: { id: ID, status: 'draft' } };
+const article = { ok: true, data: { id: ID, status: 'draft', translations: [{ locale: 'en', body: '<p>Hello</p>' }] } };
 
 beforeEach(() => {
   vi.resetAllMocks();
@@ -63,10 +65,11 @@ describe('createArticleAction', () => {
   it('sends only the languages started, field by field (trimmed, empty optional → null)', async () => {
     const result = await createArticleAction('nails', { ...valid, status: 'published', createdBy: 'x' });
 
-    expect(result).toEqual({ ok: true, data: { id: ID, status: 'draft' } });
+    expect(result).toEqual({ ok: true, data: { id: ID, status: 'draft', bodies: [{ locale: 'en', body: '<p>Hello</p>' }] } });
     expect(api.createArticle).toHaveBeenCalledWith('nails', {
       categoryId: CATEGORY,
       featured: true,
+      coverMediaId: null,
       translations: [
         { locale: 'en', title: 'Five habits', slug: 'five-habits', excerpt: 'Short', body: '<p>Hello</p>', coverAlt: null, seoTitle: 'SEO', seoDescription: null },
       ],
@@ -82,6 +85,7 @@ describe('createArticleAction', () => {
     ['a long title', { ...valid, translations: [{ ...en, title: 'a'.repeat(201) }] }, 'translations.0.title', 'tooLong'],
     ['no topic', { ...valid, categoryId: '' }, 'categoryId', 'required'],
     ['the same language twice', { ...valid, translations: [en, en] }, 'translations.1.locale', 'invalid'],
+    ['a cover id that is not a UUID', { ...valid, coverMediaId: '../x' }, 'coverMediaId', 'invalid'],
   ])('refuses %s without calling the API', async (_case, input, field, message) => {
     const result = await createArticleAction('nails', input);
     expect(result).toMatchObject({ ok: false, code: 'invalid_input' });
@@ -108,7 +112,7 @@ describe('createArticleAction', () => {
 
   it('the same submission twice creates one article', async () => {
     await createArticleAction('nails', valid);
-    expect(await createArticleAction('nails', valid)).toEqual({ ok: true, data: { id: ID, status: 'draft' } });
+    expect(await createArticleAction('nails', valid)).toEqual({ ok: true, data: { id: ID, status: 'draft', bodies: [{ locale: 'en', body: '<p>Hello</p>' }] } });
     expect(api.createArticle).toHaveBeenCalledOnce();
   });
 
@@ -148,6 +152,14 @@ describe('updateArticleAction', () => {
     expect(api.updateArticle).toHaveBeenCalledWith('nails', ID, expect.objectContaining({ categoryId: CATEGORY, featured: true }));
   });
 
+  it('sets, keeps or removes the cover (null removes, absent keeps)', async () => {
+    const cover = '9c8b7a65-4321-4fed-8cba-0987654321ab';
+    await updateArticleAction('nails', ID, { ...valid, coverMediaId: cover });
+    await updateArticleAction('nails', ID, { ...valid, coverMediaId: null });
+    await updateArticleAction('nails', ID, valid);
+    expect(api.updateArticle.mock.calls.map(([, , input]) => (input as { coverMediaId?: string | null }).coverMediaId)).toEqual([cover, null, undefined]);
+  });
+
   it('an edit with an empty submission id (no id on edits) is accepted: regression', async () => {
     const result = await updateArticleAction('nails', ID, { ...valid, submissionId: '', translations: [{ ...en, locale: 'vi' }, en] });
     expect(result).toMatchObject({ ok: true });
@@ -184,5 +196,34 @@ describe('publishing', () => {
     expect(api.unpublishArticle).toHaveBeenCalledWith('nails', ID);
     expect(await deleteArticleAction('nails', ID)).toEqual({ ok: true, data: null });
     expect(api.deleteArticle).toHaveBeenCalledWith('nails', ID);
+  });
+});
+
+describe('translateArticleAction', () => {
+  it('asks the API with only the validated fields', async () => {
+    api.startArticleTranslation.mockResolvedValue({ ok: true, data: { id: 'job-1', status: 'pending' } });
+    const result = await translateArticleAction('nails', ID, { targetLocale: 'en', sourceLocale: 'vi', overwrite: true, createdBy: 'x' });
+    expect(result).toMatchObject({ ok: true, data: { status: 'pending' } });
+    expect(api.startArticleTranslation).toHaveBeenCalledWith('nails', ID, 'en', { sourceLocale: 'vi', overwrite: true });
+    expect(cache.refresh).toHaveBeenCalledOnce();
+  });
+
+  it.each([
+    ['the same language', { targetLocale: 'vi', sourceLocale: 'vi' }],
+    ['a bad locale', { targetLocale: 'EN!', sourceLocale: 'vi' }],
+    ['no source', { targetLocale: 'en' }],
+  ])('refuses %s without calling the API', async (_case, input) => {
+    expect(await translateArticleAction('nails', ID, input)).toMatchObject({ ok: false, code: 'invalid_input' });
+    expect(api.startArticleTranslation).not.toHaveBeenCalled();
+  });
+
+  it('refuses a bad target and maps API failures (409 not_a_draft)', async () => {
+    expect(await translateArticleAction('nails', 'not-a-uuid', { targetLocale: 'en', sourceLocale: 'vi' })).toMatchObject({ ok: false, code: 'not_found' });
+    api.startArticleTranslation.mockResolvedValue({ ok: false, status: 409, code: 'not_a_draft', message: 'Only a draft', requestId: 'r1' });
+    expect(await translateArticleAction('nails', ID, { targetLocale: 'en', sourceLocale: 'vi' })).toMatchObject({
+      ok: false,
+      code: 'not_a_draft',
+      requestId: 'r1',
+    });
   });
 });

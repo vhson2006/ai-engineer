@@ -1,6 +1,6 @@
 # 0033. Article bodies may contain layout blocks from a fixed vocabulary
 
-- **Status:** Accepted, partly implemented (2026-11-11: allow-list, site styles, laundry templates; not the admin editor)
+- **Status:** Accepted, implemented (2026-11-11: allow-list, site styles, laundry templates, admin HTML source mode; 2026-11-12: blocks in the visual editor)
 - **Date:** 2026-11-11
 - **Related:** 0031 (extended by this ADR), 0006, `libs/common/src/contracts/content/content.types.ts`
   (`ARTICLE_HTML_TAGS`, `ARTICLE_HTML_CLASSES`), `apps/content-service/src/articles/article-html.ts`,
@@ -19,8 +19,8 @@ database would skip the sanitizer the sites rely on, so the allow-list itself ha
 - **Classes**: only those of `ARTICLE_HTML_CLASSES`, per tag (`section.tpl-cols`, `figure.tpl-wide`,
   `p.tpl-lead`…); any other class is dropped. Still no `style`, no event handler, no other attribute.
 - **Images**: `src`, `alt`, `width`, `height`, `loading` only, and `src` must be a file of the site
-  itself (`/images/….svg|png|jpg|webp|avif`); any other image is removed whole. Uploaded photos come
-  with media uploads (ADR 0006): their storage origin is added to this rule then, never any https.
+  itself (`/images/….svg|png|jpg|webp|avif`); any other image is removed whole. Uploaded photos:
+  ADR 0034 adds the site's own media library images (with `srcset`/`sizes`), never any https.
 - `h2`/`h3` may carry an `id` (table of contents links `#id`).
 - The sites style the blocks with one shared stylesheet, `@web/ui/article-layout.css`, scoped to
   `.article-layout` and coloured through `--article-accent*` variables each site sets.
@@ -32,9 +32,19 @@ database would skip the sanitizer the sites rely on, so the allow-list itself ha
 - Every site can show richer articles with one renderer (the sanitized HTML) and one stylesheet.
 - A bigger allow-list is a bigger XSS surface: `article-html.spec.ts` covers the new tags (unknown
   classes, foreign images, `javascript:`/`data:` sources, attributes).
-- **The admin editor (Tiptap StarterKit) doesn't know these blocks yet**: opening a template article
-  in the admin site and saving it drops the layout. Until Tiptap nodes exist for the blocks, edit
-  template articles' text with care or recreate them from the template.
+- **The admin editor keeps the blocks in its visual mode** (`RichTextEditor` `layout`,
+  `web/packages/ui/src/lib/rich-text-layout.tsx`). A few generic Tiptap nodes (section, div,
+  figure, figcaption, image) and a `class` attribute on text blocks cover the whole vocabulary:
+  there is no node per block to maintain, and a new class in `ARTICLE_HTML_CLASSES` works in the
+  editor as is. The editor keeps only `tpl-*` classes, and the server still decides what is
+  allowed. Blocks show as labelled frames (the structure, not the sites' look). Images show as
+  cards (path and alt text) and are never loaded in admin. A toolbar menu inserts blocks, and the
+  block around the cursor can be unwrapped or deleted. `rich-text-layout.test.ts` runs every
+  laundry template through the editor: no tag or class may be lost.
+- **The HTML source mode (`source`) stays for everything else.** Before switching to the visual
+  mode, the HTML is parsed with the editor's schema. If anything would be dropped, the editor
+  names it and asks first, and such HTML opens in the source mode. After a save the editor shows
+  the body as stored and lists what the sanitizer removed (`removedOnSave`).
 
 ## Alternatives considered
 

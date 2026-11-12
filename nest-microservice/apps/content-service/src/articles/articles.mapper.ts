@@ -4,13 +4,18 @@ import {
   ArticleTranslationDto,
   ArticleTranslationResponse,
 } from '@app/common';
-import type { Article, ArticleTranslation, Prisma } from '../generated/prisma/client';
+import type { Article, ArticleTranslation, Media, Prisma } from '../generated/prisma/client';
+import type { MediaUrls } from '../media/media-urls';
 import { htmlText } from './article-html';
 
 /** Prisma rows → response contracts (never return a raw row), and validated input → rows. */
 
-export const WITH_TRANSLATIONS = { translations: true } as const;
-export type ArticleRow = Article & { translations: ArticleTranslation[] };
+/** Every read of an article for a response includes its cover image. */
+export const WITH_TRANSLATIONS = { translations: true, coverMedia: true } as const;
+export type ArticleRow = Article & {
+  translations: ArticleTranslation[];
+  coverMedia?: Media | null;
+};
 
 export const WORDS_PER_MINUTE = 200;
 
@@ -28,13 +33,17 @@ export function toTranslationResponse(row: ArticleTranslation): ArticleTranslati
   };
 }
 
-export function toArticleResponse(row: ArticleRow): ArticleResponse {
+export function toArticleResponse(
+  row: ArticleRow,
+  urls: Pick<MediaUrls, 'image'>,
+): ArticleResponse {
   return {
     id: row.id,
     siteId: row.siteId,
     categoryId: row.categoryId,
     status: row.status as ArticleStatus, // varchar + CHECK constraint, values from the service
     featured: row.featured,
+    cover: row.coverMedia ? urls.image(row.coverMedia) : null,
     scheduledAt: row.scheduledAt?.toISOString() ?? null,
     publishedAt: row.publishedAt?.toISOString() ?? null,
     createdBy: row.createdBy,

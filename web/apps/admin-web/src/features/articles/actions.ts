@@ -8,18 +8,20 @@ import {
   createArticle,
   deleteArticle,
   publishArticle,
+  startArticleTranslation,
   unpublishArticle,
   updateArticle,
   type Article,
   type ArticleStatus,
   type ArticleTranslationInput,
+  type TranslationJob,
 } from '@web/core/api';
 import { getSessionUser } from '@web/core/auth/session';
 import { LIMITS } from '@web/core/security/rate-limit';
 import { parseInput } from '@web/core/validation';
 import { isSiteId } from '../sites/site-id';
 import { remapFieldErrors } from './field-errors';
-import { articleSchema, isStarted, publishSchema, type ArticleValues } from './schema';
+import { articleSchema, isStarted, publishSchema, translateSchema, type ArticleValues } from './schema';
 
 /**
  * Article actions of the admin site (web/.claude/rules/forms.md; /new-form). Server Actions are
@@ -28,7 +30,8 @@ import { articleSchema, isStarted, publishSchema, type ArticleValues } from './s
  * a site the user doesn't belong to answers 404. The last write wins (ADR 0029).
  */
 
-type Saved = { id: string; status: ArticleStatus };
+/** What the editor needs back: the bodies as the API stored them (sanitized, ADR 0031/0033). */
+type Saved = { id: string; status: ArticleStatus; bodies: { locale: string; body: string }[] };
 
 const signedOut: ActionFailure = { ok: false, code: 'unauthenticated', message: 'Please sign in again.' };
 const badTarget: ActionFailure = { ok: false, code: 'not_found', message: 'This article no longer exists.' };
@@ -65,7 +68,10 @@ function toInput(values: ArticleValues): { translations: ArticleTranslationInput
   return { translations, positions };
 }
 
-const saved = (article: Article): ActionResult<Saved> => ({ ok: true, data: { id: article.id, status: article.status } });
+const saved = (article: Article): ActionResult<Saved> => ({
+  ok: true,
+  data: { id: article.id, status: article.status, bodies: (article.translations ?? []).map((t) => ({ locale: t.locale, body: t.body })) },
+});
 
 /** A new draft. */
 export async function createArticleAction(siteId: unknown, input: unknown): Promise<ActionResult<Saved>> {
@@ -80,14 +86,19 @@ export async function createArticleAction(siteId: unknown, input: unknown): Prom
 
   const { translations, positions } = toInput(values);
   return once(`article:create:${start.userId}:${values.submissionId}`, async () => {
-    const result = await createArticle(siteId, { categoryId: values.categoryId, featured: values.featured, translations });
+    const result = await createArticle(siteId, {
+      categoryId: values.categoryId,
+      featured: values.featured,
+      coverMediaId: values.coverMediaId ?? null,
+      translations,
+    });
     if (!result.ok) return remapFieldErrors(fromApiFailure(result), positions);
     refresh();
     return saved(result.data);
   });
 }
 
-/** Category, featured and EVERY language (the API replaces them). Same PATCH twice = same result. */
+/** Category, featured, cover and EVERY language (the API replaces them). Same PATCH twice = same result. */
 export async function updateArticleAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<Saved>> {
   const start = await guard();
   if (!start.ok) return start;
@@ -98,7 +109,13 @@ export async function updateArticleAction(siteId: unknown, id: unknown, input: u
   const values = parsed.data;
 
   const { translations, positions } = toInput(values);
-  const result = await updateArticle(siteId, id, { categoryId: values.categoryId, featured: values.featured, translations });
+  const result = await updateArticle(siteId, id, {
+    categoryId: values.categoryId,
+    featured: values.featured,
+    // undefined (an older form) keeps the cover; null removes it.
+    coverMediaId: values.coverMediaId,
+    translations,
+  });
   if (!result.ok) return remapFieldErrors(fromApiFailure(result), positions);
   refresh();
   return saved(result.data);
@@ -140,4 +157,22 @@ export async function deleteArticleAction(siteId: unknown, id: unknown): Promise
   const result = await deleteArticle(siteId, id);
   if (!result.ok) return fromApiFailure(result);
   return { ok: true, data: null };
+}
+
+/**
+ * Machine-translate a DRAFT into another language (ADR 0036): the API answers a pending job at
+ * once; the translation arrives as a draft translation a few seconds later (the page polls).
+ */
+export async function translateArticleAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<TranslationJob>> {
+  const start = await guard();
+  if (!start.ok) return start;
+  if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
+
+  const parsed = parseInput(translateSchema, input);
+  if (!parsed.ok) return parsed;
+  const { targetLocale, sourceLocale, overwrite } = parsed.data;
+  const result = await startArticleTranslation(siteId, id, targetLocale, { sourceLocale, overwrite });
+  if (!result.ok) return fromApiFailure(result);
+  refresh();
+  return { ok: true, data: result.data };
 }

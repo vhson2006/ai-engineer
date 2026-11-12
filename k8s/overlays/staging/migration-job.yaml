@@ -40,6 +40,7 @@ spec:
               psql -h postgres -U "$POSTGRES_USER" -d postgres -v ON_ERROR_STOP=1 <<'SQL'
               SELECT 'CREATE DATABASE notification' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'notification')\gexec
               SELECT 'CREATE DATABASE content' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'content')\gexec
+              SELECT 'CREATE DATABASE ai' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'ai')\gexec
               SQL
               echo "databases ready"
           securityContext:
@@ -57,6 +58,8 @@ spec:
                 name: notification-db
             - secretRef:
                 name: content-db
+            - secretRef:
+                name: ai-db
           resources:
             requests:
               cpu: 100m

@@ -17,8 +17,8 @@
   "quickLoginCheckMilliSeconds": 1000,
   "minimumQuickLoginWaitSeconds": 60,
   "accessTokenLifespan": 300,
-  "ssoSessionIdleTimeout": 1800,
-  "ssoSessionMaxLifespan": 36000,
+  "ssoSessionIdleTimeout": 28800,
+  "ssoSessionMaxLifespan": 604800,
   "revokeRefreshToken": true,
   "refreshTokenMaxReuse": 0,
   "roles": {
@@ -183,6 +183,8 @@
         "http://localhost:3000"
       ],
       "attributes": {
+        "client.session.idle.timeout": "1800",
+        "client.session.max.lifespan": "36000",
         "pkce.code.challenge.method": "S256",
         "post.logout.redirect.uris": "http://www.localtest.me:8000/*##http://localhost:3000/*"
       },
@@ -224,8 +226,8 @@
       "attributes": {
         "pkce.code.challenge.method": "S256",
         "post.logout.redirect.uris": "http://admin.localtest.me:8000/*##http://localhost:3100/*",
-        "client.session.idle.timeout": "900",
-        "client.session.max.lifespan": "28800"
+        "client.session.idle.timeout": "28800",
+        "client.session.max.lifespan": "604800"
       },
       "fullScopeAllowed": true,
       "protocolMappers": [

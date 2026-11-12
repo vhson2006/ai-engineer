@@ -84,6 +84,7 @@ class OutboxRelayLifecycle implements OnApplicationBootstrap, OnApplicationShutd
     },
     OutboxRelayLifecycle,
   ],
-  exports: [OutboxRelay],
+  // JetStreamModule too: the consumers of this service share its connection (one per service).
+  exports: [OutboxRelay, JetStreamModule],
 })
 export class OutboxModule {}

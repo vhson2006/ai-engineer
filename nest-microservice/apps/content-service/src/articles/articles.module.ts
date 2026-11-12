@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { MediaModule } from '../media/media.module';
 import { OutboxModule } from '../messaging/outbox.module';
 import { SitesModule } from '../sites/sites.module';
 import { ArticlePublishingService } from './article-publishing.service';
@@ -12,8 +13,9 @@ import { ArticlesService } from './articles.service';
  * ScheduleModule in the root module). Events go through the outbox, never straight to NATS.
  */
 @Module({
-  imports: [SitesModule, OutboxModule],
+  imports: [SitesModule, OutboxModule, MediaModule],
   controllers: [ArticlesController],
   providers: [ArticlesService, ArticlePublishingService, ArticleSchedulerService],
+  exports: [ArticlesService],
 })
 export class ArticlesModule {}

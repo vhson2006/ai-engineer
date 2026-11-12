@@ -263,6 +263,88 @@
       "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}", "encoding": "no-op" }]
     },
     {
+      "@comment": "Machine-translate a draft into :locale (ADR 0036): 202 + Location of the job; done by ai-service.",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}/translations/{locale}/auto",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}/translations/{locale}/auto", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "The latest translation jobs of an article.",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}/translation-jobs",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}/translation-jobs", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "One translation job (pending, completed with warnings, or failed).",
+      "endpoint": "/api/content/sites/{siteId}/articles/{id}/translation-jobs/{jobId}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/articles/{id}/translation-jobs/{jobId}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Media library of a site (ADR 0034): uploaded images, newest first.",
+      "endpoint": "/api/content/sites/{siteId}/media",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["page","limit"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Declare an optimized image: answers presigned PUTs (the bytes go straight to storage).",
+      "endpoint": "/api/content/sites/{siteId}/media",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Generate 1-4 images from a description (ADR 0037): 202 + Location of the job; 422 quota_exceeded.",
+      "endpoint": "/api/content/sites/{siteId}/media/generate",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media/generate", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "One AI image generation and its images (pending, completed, failed).",
+      "endpoint": "/api/content/sites/{siteId}/media/generations/{jobId}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media/generations/{jobId}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Every size uploaded: the image becomes ready (409 upload_incomplete, 422 upload_mismatch).",
+      "endpoint": "/api/content/sites/{siteId}/media/{id}/complete",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media/{id}/complete", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Delete an image no article uses (409 media_in_use).",
+      "endpoint": "/api/content/sites/{siteId}/media/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media/{id}", "encoding": "no-op" }]
+    },
+    {
       "@comment": "What a site shows: published articles in one language.",
       "endpoint": "/api/content/sites/{siteId}/published-articles",
       "method": "GET",

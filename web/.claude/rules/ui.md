@@ -50,6 +50,10 @@ Decision: ADR 0022. Look and feel: the tokens in `packages/ui/src/theme.css`.
 - Rich text: `@web/ui/rich-text-editor` outputs HTML = user input. Sanitize it on the server with an
   allow-list before storing or displaying it; never `dangerouslySetInnerHTML` raw user HTML. The
   one exception: an article `body` from content-service, sanitized there on write (ADR 0031).
+  `layout={{ labels, pickImage }}` keeps the layout blocks of ADR 0033 in the visual mode (frames,
+  image cards, insert menu; only `tpl-*` classes); `pickImage` (admin: `useMediaPicker`, ADR 0034)
+  lets an image card choose or upload an image of the media library, shown as a thumbnail. `source={{ labels }}` adds an HTML source
+  mode for the rest. Never preview the typed HTML in the browser: the server sanitizes it on save.
 - Drag and drop: `@web/ui/sortable-list` (keyboard + screen-reader announcements from the dictionaries).
 - Excel export: a GET Route Handler outside `[lang]` (add it to `ROUTING.bypass`), `limitAction(LIMITS.export)`,
   session check, `toXlsx` + `xlsxResponse` from `@web/core/export`, a row cap; cells are never formulas.

@@ -41,8 +41,8 @@ Specific to this app:
   rendered through the layout vocabulary of ADR 0033 (`features/article-templates/article-html.ts`
   mirrors `ARTICLE_HTML_CLASSES` of libs/common; blocks styled by `@web/ui/article-layout.css`,
   text by `article-html.css`). The wine articles still come from sample JSON; laundry already
-  stores its templates in content-service (`npm run seed:article-templates`). Admin editor: no
-  Tiptap nodes for the blocks yet (saving a template article there drops its layout).
+  stores its templates in content-service (`npm run seed:article-templates`). Admin editor: the
+  blocks are edited in its HTML source mode (the visual mode would drop them).
 - No order form yet: ordering is by phone/Zalo. A form = `/new-form`, never a client-side submit.
 - Not deployed yet: no Dockerfile, k8s manifests or Gateway route.
 

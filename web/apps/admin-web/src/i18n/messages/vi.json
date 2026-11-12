@@ -27,6 +27,7 @@
     "system": "Hệ thống",
     "articles": "Bài viết",
     "categories": "Chủ đề",
+    "media": "Thư viện ảnh",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
     "noSites": "Chưa có website nào."
@@ -258,7 +259,41 @@
       "orderedList": "Danh sách đánh số",
       "quote": "Trích dẫn",
       "undo": "Hoàn tác",
-      "redo": "Làm lại"
+      "redo": "Làm lại",
+      "source": {
+        "visual": "Soạn thảo",
+        "html": "HTML",
+        "format": "Định dạng lại HTML",
+        "source": "Mã HTML của nội dung",
+        "hint": "Sửa HTML trực tiếp. Khi lưu, máy chủ chỉ giữ các thẻ được phép, class bố cục (tpl-*) và ảnh của chính site (/images/…); phần còn lại bị loại bỏ.",
+        "layoutWarning": "Chế độ Soạn thảo sẽ bỏ những phần này (máy chủ cũng không giữ chúng):",
+        "switchAnyway": "Vẫn chuyển",
+        "stay": "Ở lại HTML"
+      },
+      "layout": {
+        "insert": "Chèn khối",
+        "unwrap": "Bỏ khung khối (giữ nội dung)",
+        "remove": "Xoá khối",
+        "image": "Ảnh",
+        "src": "Tệp ảnh (/images/…)",
+        "alt": "Mô tả ảnh (alt)",
+        "pick": "Chọn hoặc tải ảnh",
+        "text": "Nội dung…",
+        "blocks": {
+          "note": "Hộp ghi chú",
+          "tip": "Hộp mẹo",
+          "warn": "Hộp lưu ý",
+          "summary": "Điểm chính",
+          "columns": "Hai cột",
+          "cards": "Thẻ ba cột",
+          "steps": "Các bước",
+          "split": "Ảnh và chữ",
+          "image": "Ảnh rộng có chú thích",
+          "pull": "Trích dẫn nổi bật",
+          "faq": "Hỏi đáp",
+          "cta": "Kêu gọi hành động"
+        }
+      }
     },
     "sortable": {
       "handle": "Kéo để sắp xếp lại {name}",
@@ -337,6 +372,14 @@
       "bodyPlaceholder": "Viết nội dung bài…",
       "coverAlt": "Mô tả ảnh bìa",
       "coverAltHint": "Cho người không xem được ảnh (ảnh bìa sẽ có sau).",
+      "cover": {
+        "label": "Ảnh bìa",
+        "empty": "Chưa có ảnh bìa",
+        "choose": "Chọn ảnh bìa",
+        "change": "Đổi ảnh",
+        "remove": "Gỡ ảnh",
+        "hint": "Hiện ở danh sách bài, đầu bài và khi chia sẻ link. Mô tả ảnh (alt) nhập theo từng ngôn ngữ."
+      },
       "seo": "Công cụ tìm kiếm (không bắt buộc)",
       "seoTitle": "Tiêu đề SEO",
       "seoDescription": "Mô tả SEO",
@@ -353,10 +396,46 @@
       "save": "Lưu thay đổi",
       "saving": "Đang lưu…",
       "saved": "Đã lưu thay đổi.",
+      "sanitized": "Đã lưu. Máy chủ đã loại bỏ phần không được phép: {items}.",
       "liveWarning": "Bài đang hiển thị: thay đổi sẽ lên website ngay khi lưu.",
       "scheduledWarning": "Bài đã hẹn giờ: sẽ được đăng cùng các thay đổi này.",
       "leave": "Bạn có thay đổi chưa lưu.",
       "checkFields": "Có ô cần sửa (xem các tab và ô được đánh dấu)."
+    },
+    "translate": {
+      "hint": "Dịch tự động từ {source} sang {target} bằng AI. Bản dịch được lưu thành bản nháp để bạn đọc lại trước khi xuất bản.",
+      "translate": "Dịch từ {source}",
+      "retranslate": "Dịch lại từ {source}",
+      "confirmOverwrite": "Bản {target} hiện có sẽ bị thay.",
+      "overwrite": "Thay bản dịch",
+      "cancel": "Huỷ",
+      "pending": "Đang dịch…",
+      "done": "Đã dịch xong ({provider}). Đây là bản dịch máy: hãy đọc lại trước khi xuất bản.",
+      "failed": "Dịch không thành công: {reason}",
+      "warnings": "{count} đoạn cần kiểm tra:",
+      "warningKinds": {
+        "numbers": "Số liệu khác bản gốc",
+        "markup": "Định dạng chữ đã đổi"
+      },
+      "saveFirst": "Lưu các thay đổi trước khi dịch.",
+      "draftOnly": "Chỉ dịch được bài nháp: gỡ bài khỏi trang trước khi dịch.",
+      "noSource": "Viết và lưu bản {source} trước.",
+      "reasons": {
+        "provider_unavailable": "dịch vụ AI tạm thời không phản hồi, hãy thử lại sau.",
+        "provider_refused": "dịch vụ AI từ chối yêu cầu.",
+        "invalid_output": "kết quả dịch không khớp với bài gốc, hãy thử lại.",
+        "not_configured": "chưa cấu hình dịch vụ dịch.",
+        "article_not_draft": "bài đã được xuất bản trong lúc dịch.",
+        "translation_exists": "bài đã có bản dịch này."
+      },
+      "errors": {
+        "not_a_draft": "Chỉ dịch được bài nháp.",
+        "translation_exists": "Bài đã có bản dịch này.",
+        "missing_source": "Bài chưa có nội dung ở ngôn ngữ gốc.",
+        "invalid_locale": "Ngôn ngữ không hợp lệ cho site này.",
+        "too_large": "Bài quá dài để dịch một lần.",
+        "rate_limited": "Bạn thao tác quá nhanh, hãy đợi một chút."
+      }
     },
     "publish": {
       "button": "Đăng bài",
@@ -399,7 +478,41 @@
       "orderedList": "Danh sách số",
       "quote": "Trích dẫn",
       "undo": "Hoàn tác",
-      "redo": "Làm lại"
+      "redo": "Làm lại",
+      "source": {
+        "visual": "Soạn thảo",
+        "html": "HTML",
+        "format": "Định dạng lại HTML",
+        "source": "Mã HTML của nội dung",
+        "hint": "Sửa HTML trực tiếp. Khi lưu, máy chủ chỉ giữ các thẻ được phép, class bố cục (tpl-*) và ảnh của chính site (/images/…); phần còn lại bị loại bỏ.",
+        "layoutWarning": "Chế độ Soạn thảo sẽ bỏ những phần này (máy chủ cũng không giữ chúng):",
+        "switchAnyway": "Vẫn chuyển",
+        "stay": "Ở lại HTML"
+      },
+      "layout": {
+        "insert": "Chèn khối",
+        "unwrap": "Bỏ khung khối (giữ nội dung)",
+        "remove": "Xoá khối",
+        "image": "Ảnh",
+        "src": "Tệp ảnh (/images/…)",
+        "alt": "Mô tả ảnh (alt)",
+        "pick": "Chọn hoặc tải ảnh",
+        "text": "Nội dung…",
+        "blocks": {
+          "note": "Hộp ghi chú",
+          "tip": "Hộp mẹo",
+          "warn": "Hộp lưu ý",
+          "summary": "Điểm chính",
+          "columns": "Hai cột",
+          "cards": "Thẻ ba cột",
+          "steps": "Các bước",
+          "split": "Ảnh và chữ",
+          "image": "Ảnh rộng có chú thích",
+          "pull": "Trích dẫn nổi bật",
+          "faq": "Hỏi đáp",
+          "cta": "Kêu gọi hành động"
+        }
+      }
     }
   },
   "categories": {
@@ -431,5 +544,80 @@
     "deleted": "Đã xóa chủ đề.",
     "inUse": "Vẫn còn bài viết thuộc chủ đề này: hãy chuyển chúng sang chủ đề khác trước.",
     "checkFields": "Có ô cần sửa."
+  },
+  "media": {
+    "title": "Thư viện ảnh",
+    "subtitle": "Ảnh dùng cho bài viết của {site}: ảnh bìa và ảnh trong bài. Ảnh được tối ưu ngay trên trình duyệt trước khi tải lên.",
+    "upload": "Chọn ảnh để tải lên",
+    "dropHint": "Kéo thả ảnh vào đây, hoặc",
+    "optimizeHint": "JPEG, PNG, WebP, AVIF. Ảnh được chuyển sang WebP, tối đa 3 cỡ (640, 1280, 1920 px), xoá thông tin vị trí và máy chụp.",
+    "uploaded": "Đã tải lên {name}",
+    "uploadFailed": "Không tải được {name}",
+    "deleted": "Đã xoá ảnh",
+    "empty": "Chưa có ảnh nào. Tải ảnh đầu tiên lên ở trên.",
+    "copyUrl": "Sao chép URL ảnh",
+    "copyFailed": "Không sao chép được: trình duyệt chặn bộ nhớ tạm.",
+    "delete": "Xoá ảnh",
+    "confirmDelete": "Xoá?",
+    "pick": "Chọn ảnh {name}",
+    "pickerTitle": "Chọn ảnh",
+    "pickerHint": "Bấm vào một ảnh để chọn, hoặc tải ảnh mới lên (được tối ưu tự động).",
+    "phases": {
+      "optimizing": "Đang tối ưu…",
+      "preparing": "Đang chuẩn bị…",
+      "uploading": "Đang tải lên",
+      "verifying": "Đang kiểm tra…"
+    },
+    "errors": {
+      "generic": "Có lỗi xảy ra. Hãy thử lại.",
+      "unsupported_type": "Định dạng không hỗ trợ: dùng JPEG, PNG, WebP hoặc AVIF.",
+      "too_large": "Ảnh quá lớn (tối đa 40 MB trước khi tối ưu).",
+      "decode_failed": "Không đọc được ảnh này (file hỏng hoặc định dạng lạ).",
+      "encode_failed": "Trình duyệt không tối ưu được ảnh này.",
+      "upload_failed": "Không kết nối được tới kho ảnh. Kiểm tra mạng rồi thử lại.",
+      "upload_rejected": "Kho ảnh từ chối file (liên kết hết hạn). Hãy thử lại.",
+      "upload_incomplete": "Ảnh chưa tải lên đủ. Hãy thử lại.",
+      "upload_mismatch": "File tải lên khác với file đã khai báo nên đã bị xoá.",
+      "media_in_use": "Ảnh đang được dùng trong bài viết (ảnh bìa hoặc trong bài). Gỡ ảnh khỏi bài trước.",
+      "rate_limited": "Bạn tải lên quá nhiều trong thời gian ngắn. Đợi một chút rồi thử lại.",
+      "network_error": "Không kết nối được tới máy chủ.",
+      "aborted": "Đã huỷ tải lên.",
+      "unauthenticated": "Phiên đăng nhập đã hết. Hãy đăng nhập lại.",
+      "invalid_input": "Ảnh không hợp lệ.",
+      "not_found": "Ảnh không còn tồn tại.",
+      "generation_in_progress": "Ảnh đang được tạo, hãy đợi xong rồi xoá."
+    },
+    "ai": {
+      "title": "Tạo ảnh bằng AI",
+      "hint": "Mô tả ảnh bạn cần: AI tạo ảnh mới (không chứa chữ, logo hay người thật), tối ưu sẵn và lưu vào thư viện.",
+      "prompt": "Mô tả ảnh",
+      "promptPlaceholder": "Ví dụ: Tiệm giặt sấy sáng sủa, máy giặt xếp hàng, phong cách minh hoạ phẳng, tông xanh lá",
+      "aspectRatio": "Tỉ lệ khung",
+      "count": "Số phương án",
+      "generate": "Tạo ảnh",
+      "generating": "Đang tạo ảnh… (khoảng 10–30 giây mỗi ảnh)",
+      "remaining": "Còn {count} ảnh trong tháng này",
+      "done": "Đã tạo {count} ảnh",
+      "partial": "Đã tạo {made}/{count} ảnh, một số ảnh không tạo được",
+      "watermark": "Ảnh AI có thủy vân ẩn SynthID của Google. Kiểm tra kỹ trước khi đăng.",
+      "badge": "AI",
+      "ratios": {
+        "16:9": "Ngang 16:9",
+        "4:3": "Ngang 4:3",
+        "1:1": "Vuông 1:1",
+        "3:4": "Dọc 3:4",
+        "9:16": "Dọc 9:16"
+      },
+      "errors": {
+        "quota_exceeded": "Site đã dùng hết lượt tạo ảnh AI của tháng này.",
+        "provider_refused": "AI từ chối mô tả này (có thể vi phạm chính sách nội dung). Hãy viết lại mô tả.",
+        "provider_unavailable": "Dịch vụ AI đang bận hoặc tạm ngưng. Hãy thử lại sau.",
+        "too_large": "Mô tả quá dài.",
+        "invalid_response": "AI trả về kết quả không dùng được. Hãy thử lại.",
+        "not_generated": "Ảnh này không tạo được.",
+        "timeout": "Chưa có kết quả sau vài phút. Ảnh sẽ xuất hiện trong thư viện khi xong.",
+        "required": "Hãy nhập mô tả ảnh."
+      }
+    }
   }
 }
