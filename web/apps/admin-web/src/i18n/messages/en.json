@@ -27,6 +27,7 @@
     "system": "System",
     "articles": "Articles",
     "categories": "Topics",
+    "media": "Media library",
     "openMenu": "Open the menu",
     "closeMenu": "Close the menu",
     "noSites": "No site yet."
@@ -258,7 +259,41 @@
       "orderedList": "Numbered list",
       "quote": "Quote",
       "undo": "Undo",
-      "redo": "Redo"
+      "redo": "Redo",
+      "source": {
+        "visual": "Visual",
+        "html": "HTML",
+        "format": "Format HTML",
+        "source": "HTML source of the content",
+        "hint": "Edit the HTML directly. On save the server keeps only the allowed tags, layout classes (tpl-*) and the site's own images (/images/…); anything else is removed.",
+        "layoutWarning": "The visual editor would drop these (the server would not keep them either):",
+        "switchAnyway": "Switch anyway",
+        "stay": "Stay in HTML"
+      },
+      "layout": {
+        "insert": "Insert block",
+        "unwrap": "Remove the block frame (keep its content)",
+        "remove": "Delete block",
+        "image": "Image",
+        "src": "Image file (/images/…)",
+        "alt": "Image description (alt)",
+        "pick": "Choose or upload an image",
+        "text": "Text…",
+        "blocks": {
+          "note": "Note box",
+          "tip": "Tip box",
+          "warn": "Warning box",
+          "summary": "Key points",
+          "columns": "Two columns",
+          "cards": "Three cards",
+          "steps": "Steps",
+          "split": "Image and text",
+          "image": "Wide image with caption",
+          "pull": "Pull quote",
+          "faq": "Questions and answers",
+          "cta": "Call to action"
+        }
+      }
     },
     "sortable": {
       "handle": "Drag to reorder {name}",
@@ -337,6 +372,14 @@
       "bodyPlaceholder": "Write the article…",
       "coverAlt": "Cover image description",
       "coverAltHint": "For people who can’t see the image (the cover itself comes later).",
+      "cover": {
+        "label": "Cover image",
+        "empty": "No cover image",
+        "choose": "Choose a cover",
+        "change": "Change",
+        "remove": "Remove",
+        "hint": "Shown in article lists, at the top of the article and in link previews. The alt text is set per language."
+      },
       "seo": "Search engines (optional)",
       "seoTitle": "SEO title",
       "seoDescription": "SEO description",
@@ -353,10 +396,46 @@
       "save": "Save changes",
       "saving": "Saving…",
       "saved": "Changes saved.",
+      "sanitized": "Saved. The server removed what isn't allowed: {items}.",
       "liveWarning": "This article is live: saved changes appear on the site right away.",
       "scheduledWarning": "This article is scheduled: it goes live with these changes.",
       "leave": "You have unsaved changes.",
       "checkFields": "Some fields need your attention (the marked tabs and fields)."
+    },
+    "translate": {
+      "hint": "Machine-translate from {source} into {target} with AI. The translation is saved as a draft for you to review before publishing.",
+      "translate": "Translate from {source}",
+      "retranslate": "Translate again from {source}",
+      "confirmOverwrite": "The current {target} version will be replaced.",
+      "overwrite": "Replace it",
+      "cancel": "Cancel",
+      "pending": "Translating…",
+      "done": "Translated ({provider}). This is a machine translation: review it before publishing.",
+      "failed": "The translation failed: {reason}",
+      "warnings": "{count} part(s) to check:",
+      "warningKinds": {
+        "numbers": "Numbers differ from the original",
+        "markup": "Formatting changed"
+      },
+      "saveFirst": "Save your changes before translating.",
+      "draftOnly": "Only drafts can be translated: unpublish the article first.",
+      "noSource": "Write and save the {source} version first.",
+      "reasons": {
+        "provider_unavailable": "the AI service is not answering right now, try again later.",
+        "provider_refused": "the AI service refused the request.",
+        "invalid_output": "the result did not match the original, try again.",
+        "not_configured": "no translation service is configured.",
+        "article_not_draft": "the article was published while it was being translated.",
+        "translation_exists": "the article already has this language."
+      },
+      "errors": {
+        "not_a_draft": "Only drafts can be translated.",
+        "translation_exists": "The article already has this language.",
+        "missing_source": "The article has no text in the main language yet.",
+        "invalid_locale": "That language is not one of this site.",
+        "too_large": "The article is too long to translate in one go.",
+        "rate_limited": "Too many requests, wait a moment."
+      }
     },
     "publish": {
       "button": "Publish",
@@ -399,7 +478,41 @@
       "orderedList": "Numbered list",
       "quote": "Quote",
       "undo": "Undo",
-      "redo": "Redo"
+      "redo": "Redo",
+      "source": {
+        "visual": "Visual",
+        "html": "HTML",
+        "format": "Format HTML",
+        "source": "HTML source of the content",
+        "hint": "Edit the HTML directly. On save the server keeps only the allowed tags, layout classes (tpl-*) and the site's own images (/images/…); anything else is removed.",
+        "layoutWarning": "The visual editor would drop these (the server would not keep them either):",
+        "switchAnyway": "Switch anyway",
+        "stay": "Stay in HTML"
+      },
+      "layout": {
+        "insert": "Insert block",
+        "unwrap": "Remove the block frame (keep its content)",
+        "remove": "Delete block",
+        "image": "Image",
+        "src": "Image file (/images/…)",
+        "alt": "Image description (alt)",
+        "pick": "Choose or upload an image",
+        "text": "Text…",
+        "blocks": {
+          "note": "Note box",
+          "tip": "Tip box",
+          "warn": "Warning box",
+          "summary": "Key points",
+          "columns": "Two columns",
+          "cards": "Three cards",
+          "steps": "Steps",
+          "split": "Image and text",
+          "image": "Wide image with caption",
+          "pull": "Pull quote",
+          "faq": "Questions and answers",
+          "cta": "Call to action"
+        }
+      }
     }
   },
   "categories": {
@@ -431,5 +544,80 @@
     "deleted": "Topic deleted.",
     "inUse": "Articles still use this topic: move them first.",
     "checkFields": "Some fields need your attention."
+  },
+  "media": {
+    "title": "Media library",
+    "subtitle": "Images for the articles of {site}: covers and images in the text. Images are optimized in your browser before they are uploaded.",
+    "upload": "Choose images to upload",
+    "dropHint": "Drop images here, or",
+    "optimizeHint": "JPEG, PNG, WebP, AVIF. Converted to WebP in up to 3 sizes (640, 1280, 1920 px), with location and camera data removed.",
+    "uploaded": "{name} uploaded",
+    "uploadFailed": "{name} could not be uploaded",
+    "deleted": "Image deleted",
+    "empty": "No images yet. Upload the first one above.",
+    "copyUrl": "Copy the image URL",
+    "copyFailed": "Could not copy: the browser blocked the clipboard.",
+    "delete": "Delete the image",
+    "confirmDelete": "Delete?",
+    "pick": "Choose {name}",
+    "pickerTitle": "Choose an image",
+    "pickerHint": "Click an image to choose it, or upload a new one (optimized automatically).",
+    "phases": {
+      "optimizing": "Optimizing…",
+      "preparing": "Preparing…",
+      "uploading": "Uploading",
+      "verifying": "Checking…"
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "unsupported_type": "Unsupported format: use JPEG, PNG, WebP or AVIF.",
+      "too_large": "The image is too large (40 MB at most before optimization).",
+      "decode_failed": "This image could not be read (damaged file or unusual format).",
+      "encode_failed": "The browser could not optimize this image.",
+      "upload_failed": "The image storage could not be reached. Check the connection and try again.",
+      "upload_rejected": "The image storage refused the file (expired link). Please try again.",
+      "upload_incomplete": "The image was not fully uploaded. Please try again.",
+      "upload_mismatch": "The uploaded file differed from the declared one, so it was removed.",
+      "media_in_use": "An article uses this image (cover or text). Remove it from the article first.",
+      "rate_limited": "Too many uploads in a short time. Wait a moment and try again.",
+      "network_error": "The server could not be reached.",
+      "aborted": "Upload cancelled.",
+      "unauthenticated": "Your session ended. Please sign in again.",
+      "invalid_input": "This image is not valid.",
+      "not_found": "This image no longer exists.",
+      "generation_in_progress": "The image is still being generated: delete it once it is ready."
+    },
+    "ai": {
+      "title": "Generate with AI",
+      "hint": "Describe the image you need: AI creates a new one (no text, logos or real people), optimized and saved to the library.",
+      "prompt": "Description",
+      "promptPlaceholder": "E.g. A bright laundromat, rows of washing machines, flat illustration, green tones",
+      "aspectRatio": "Aspect ratio",
+      "count": "Options",
+      "generate": "Generate",
+      "generating": "Generating… (about 10–30 seconds per image)",
+      "remaining": "{count} image(s) left this month",
+      "done": "{count} image(s) generated",
+      "partial": "{made}/{count} image(s) generated, some could not be made",
+      "watermark": "AI images carry Google's invisible SynthID watermark. Review them before publishing.",
+      "badge": "AI",
+      "ratios": {
+        "16:9": "Landscape 16:9",
+        "4:3": "Landscape 4:3",
+        "1:1": "Square 1:1",
+        "3:4": "Portrait 3:4",
+        "9:16": "Portrait 9:16"
+      },
+      "errors": {
+        "quota_exceeded": "This site has used all its AI images for this month.",
+        "provider_refused": "The AI refused this description (it may break the content policy). Rewrite it.",
+        "provider_unavailable": "The AI service is busy or down. Try again later.",
+        "too_large": "The description is too long.",
+        "invalid_response": "The AI returned something unusable. Try again.",
+        "not_generated": "This image could not be made.",
+        "timeout": "No answer after a few minutes. The images will appear in the library when ready.",
+        "required": "Describe the image."
+      }
+    }
   }
 }

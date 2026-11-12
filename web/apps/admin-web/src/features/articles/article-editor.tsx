@@ -3,9 +3,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { newSubmissionId } from '@web/core/actions/submission-id';
 import type { ActionFailure } from '@web/core/actions/result';
-import type { Article } from '@web/core/api';
+import type { Article, Media, MediaImage, TranslationJob } from '@web/core/api';
 import { format } from '@web/core/i18n/format';
-import { Card, cn } from '@web/ui';
+import { Card, cn, removedOnSave } from '@web/ui';
 import { Button } from '@web/ui/button';
 import { Checkbox } from '@web/ui/checkbox';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
@@ -20,10 +20,13 @@ import { useRouter } from 'next/navigation';
 import { startTransition, useActionState, useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import type { Messages } from '@/i18n/dictionaries';
+import { useMediaPicker } from '../media/media-picker';
 import { createArticleAction, updateArticleAction } from './actions';
 import { ArticlePublishing } from './article-publishing';
+import { CoverField } from './cover-field';
 import { articleSchema, isStarted, type ArticleValues } from './schema';
 import { slugify } from './slug';
+import { TranslatePanel } from './translate-panel';
 
 export interface ArticleEditorProps {
   site: { id: string; name: string; locales: string[]; defaultLocale: string };
@@ -32,6 +35,11 @@ export interface ArticleEditorProps {
   article?: Article;
   t: Messages['articles'];
   common: Messages['common'];
+  /** The site's media library, first page (newest first): the picker of covers and body images. */
+  media: Media[];
+  mediaLabels: Messages['media'];
+  /** The article's latest machine-translation jobs, newest first (ADR 0036). */
+  translationJobs?: TranslationJob[];
   validation: Record<string, string>;
   listHref: string;
   categoriesHref: string;
@@ -45,6 +53,7 @@ function initialValues(site: ArticleEditorProps['site'], article?: Article): Art
     submissionId: article ? undefined : newSubmissionId(),
     categoryId: article?.categoryId ?? '',
     featured: article?.featured ?? false,
+    coverMediaId: article?.cover?.id ?? null,
     // One entry per language of the site, in the site's order; missing ones empty.
     translations: site.locales.map((locale) => {
       const t = article?.translations.find((tr) => tr.locale === locale);
@@ -69,7 +78,21 @@ const showFailure = (result: ActionFailure, requestIdLabel: string) =>
  * Create / edit an article: one tab per language of the site, the rich text body (HTML, sanitized
  * by the API, ADR 0031), topic and "featured" on the side, and, once saved, publishing.
  */
-export function ArticleEditor({ site, categories, article, t, common, validation, listHref, categoriesHref, editHrefTemplate, intlLocale }: ArticleEditorProps) {
+export function ArticleEditor({
+  site,
+  categories,
+  article,
+  t,
+  common,
+  media,
+  mediaLabels,
+  translationJobs = [],
+  validation,
+  listHref,
+  categoriesHref,
+  editHrefTemplate,
+  intlLocale,
+}: ArticleEditorProps) {
   const router = useRouter();
   const f = t.form;
   const form = useForm<ArticleValues>({ resolver: zodResolver(articleSchema), defaultValues: initialValues(site, article) });
@@ -77,6 +100,9 @@ export function ArticleEditor({ site, categories, article, t, common, validation
   // The slug follows the title until the author edits it (or it already existed).
   const [slugEdited, setSlugEdited] = useState<boolean[]>(() => site.locales.map((locale) => Boolean(article?.translations.some((tr) => tr.locale === locale))));
   const translations = useWatch({ control: form.control, name: 'translations' });
+  // The library dialog: the cover and the editor's image cards pick (or upload) images there.
+  const picker = useMediaPicker({ siteId: site.id, initial: media, labels: mediaLabels, closeLabel: common.close });
+  const [cover, setCover] = useState<MediaImage | null>(article?.cover ?? null);
   const { isDirty } = form.formState;
 
   // Leaving with unsaved changes: the browser's own confirmation.
@@ -90,8 +116,15 @@ export function ArticleEditor({ site, categories, article, t, common, validation
   const [, submit, pending] = useActionState(async (_previous: unknown, values: ArticleValues) => {
     const result = article ? await updateArticleAction(site.id, article.id, values) : await createArticleAction(site.id, values);
     if (result.ok) {
-      toast.success(article ? f.saved : f.created);
-      form.reset(values); // the saved values are the new baseline (not dirty any more)
+      // The bodies as the API stored them (sanitized) become the new baseline: the editor shows
+      // what the sites will render, and the author learns what was removed.
+      const stored = new Map(result.data.bodies.map((b) => [b.locale, b.body]));
+      const removed = [
+        ...new Set(values.translations.flatMap((tr) => (stored.has(tr.locale) ? removedOnSave(tr.body, stored.get(tr.locale) ?? '') : []))),
+      ].map((key) => key.replace(/^(tag|class):/, ''));
+      if (removed.length) toast.warning(format(f.sanitized, { items: removed.join(', ') }));
+      else toast.success(article ? f.saved : f.created);
+      form.reset({ ...values, translations: values.translations.map((tr) => ({ ...tr, body: stored.get(tr.locale) ?? tr.body })) });
       if (!article) router.push(editHrefTemplate.replace('{id}', result.data.id));
     } else {
       const unmatched = applyActionErrors(form, result.errors);
@@ -154,6 +187,27 @@ export function ArticleEditor({ site, categories, article, t, common, validation
 
           {site.locales.map((locale, i) => (
             <TabsContent key={locale} value={locale} forceMount className="grid gap-5 data-[state=inactive]:hidden" lang={locale}>
+              {/* Machine translation from the site's main language into this one (ADR 0036). */}
+              {article && locale !== site.defaultLocale && (
+                <TranslatePanel
+                  siteId={site.id}
+                  articleId={article.id}
+                  sourceLocale={site.defaultLocale}
+                  targetLocale={locale}
+                  hasTarget={article.translations.some((tr) => tr.locale === locale)}
+                  latest={translationJobs.find((job) => job.targetLocale === locale)}
+                  blockedReason={
+                    article.status !== 'draft'
+                      ? t.translate.draftOnly
+                      : isDirty
+                        ? t.translate.saveFirst
+                        : !article.translations.some((tr) => tr.locale === site.defaultLocale)
+                          ? format(t.translate.noSource, { source: site.defaultLocale.toUpperCase() })
+                          : undefined
+                  }
+                  labels={t.translate}
+                />
+              )}
               <FormField
                 control={form.control}
                 name={`translations.${i}.title`}
@@ -226,6 +280,10 @@ export function ArticleEditor({ site, categories, article, t, common, validation
                         onChange={field.onChange}
                         placeholder={f.bodyPlaceholder}
                         labels={t.editor}
+                        // Layout blocks of the templates (ADR 0033): kept and editable in the visual
+                        // mode, and the HTML source mode for anything else.
+                        layout={{ labels: t.editor.layout, pickImage: picker.pick }}
+                        source={{ labels: t.editor.source }}
                         aria-invalid={Boolean(fieldState.error)}
                         className="min-h-72"
                       />
@@ -335,6 +393,19 @@ export function ArticleEditor({ site, categories, article, t, common, validation
               </FormItem>
             )}
           />
+          <div className="grid gap-2">
+            <p className="text-sm font-medium">{f.cover.label}</p>
+            <CoverField
+              cover={cover}
+              onChange={(next) => {
+                setCover(next);
+                form.setValue('coverMediaId', next?.id ?? null, { shouldDirty: true });
+              }}
+              pick={picker.pick}
+              labels={f.cover}
+              disabled={pending}
+            />
+          </div>
           {article?.status === 'published' && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">{f.liveWarning}</p>}
           {article?.status === 'scheduled' && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">{f.scheduledWarning}</p>}
           <div className="flex flex-wrap gap-2">
@@ -361,6 +432,7 @@ export function ArticleEditor({ site, categories, article, t, common, validation
           />
         )}
       </div>
+      {picker.dialog}
     </Form>
   );
 }

@@ -1,8 +1,8 @@
 /**
  * Price estimate by weight, from the shop's price board. Pure and client-safe (the estimator
  * runs in the browser; it never changes anything, so no Server Action is involved).
- * The board's tiers: "dưới 2kg", "từ 2kg đến 3kg" … "từ 5kg đến 6kg", "từ 7kg trở lên".
- * A weight on a boundary (3 kg) takes the lower tier; 6–7 kg has no printed price.
+ * The board's tiers: "dưới 2kg", "từ 2kg đến 3kg" … "từ 5kg đến 6kg", then "từ 6kg trở lên" per kg.
+ * A weight on a boundary (3 kg, 6 kg) takes the lower tier: above 6 kg is priced per kg.
  */
 
 export type EstimateKind = 'clothes' | 'bedding';
@@ -10,7 +10,7 @@ export type EstimateKind = 'clothes' | 'bedding';
 export type Estimate =
   | { kind: 'flat'; amount: number } // one price per load
   | { kind: 'perKg'; amount: number; perKg: number } // weight × price per kg
-  | { kind: 'ask' }; // not on the board: ask the shop
+  | { kind: 'ask' }; // no usable weight
 
 const CLOTHES_TIERS = [
   { upTo: 2, exclusive: true, amount: 35_000 },
@@ -28,6 +28,5 @@ export function estimate(kind: EstimateKind, kg: number): Estimate {
   for (const tier of CLOTHES_TIERS) {
     if (tier.exclusive ? kg < tier.upTo : kg <= tier.upTo) return { kind: 'flat', amount: tier.amount };
   }
-  if (kg >= 7) return { kind: 'perKg', amount: Math.round(kg * 12_000), perKg: 12_000 };
-  return { kind: 'ask' };
+  return { kind: 'perKg', amount: Math.round(kg * 12_000), perKg: 12_000 }; // above 6 kg
 }

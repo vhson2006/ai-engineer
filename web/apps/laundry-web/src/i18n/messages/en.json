@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "SFaster Laundry · One customer, one machine · Clean, fresh, fast",
-    "description": "SFaster laundry, two branches in Ho Chi Minh City (40 Cửu Long and 68 Lê Hồng Phong): wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–20:00 every day."
+    "description": "SFaster laundry, 68 Lê Hồng Phong, Chợ Quán ward, Ho Chi Minh City: wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–19:00 Monday to Friday, 7:00–17:00 on Saturdays and Sundays."
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -23,7 +23,7 @@
   },
   "topBar": {
     "loyalty": "Wash 7 times, get 1 free",
-    "hours": "Open {open} – {close} every day"
+    "hours": "Mon–Fri {weekdays} · Sat–Sun {weekend}"
   },
   "nav": {
     "label": "Main",
@@ -32,9 +32,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "prices": "Prices",
-    "services": "Services",
     "process": "How it works",
-    "tips": "Before you drop off",
     "faq": "FAQ",
     "contact": "Contact",
     "articles": "Articles"
@@ -45,7 +43,7 @@
     "oneMachine": "One customer, one machine"
   },
   "hero": {
-    "eyebrow": "Wash & dry · 2 branches in Ho Chi Minh City",
+    "eyebrow": "Wash & dry · 68 Lê Hồng Phong",
     "title": "Clean, fresh laundry,",
     "titleAccent": "never mixed with anyone else's.",
     "text": "At SFaster every customer gets their own machine: your clothes are washed and dried on their own, then bagged and labelled with your name. Priced by weight, from 35,000 ₫ a load.",
@@ -66,7 +64,7 @@
     "eyebrow": "Price list",
     "title": "Clear prices, by weight or by item",
     "intro": "Prices include washing and drying. Your laundry is weighed when you drop it off.",
-    "note": "Prices from the shop's price board. Weights between 6 and 7 kg: please ask the shop.",
+    "note": "Prices from the shop's price board.",
     "tables": {
       "clothes": {
         "title": "Wash & dry: clothes",
@@ -76,7 +74,7 @@
           "from3to4": "3 to 4 kg",
           "from4to5": "4 to 5 kg",
           "from5to6": "5 to 6 kg",
-          "from7": "7 kg and over"
+          "from6": "6 kg and over"
         }
       },
       "bedding": {
@@ -121,24 +119,8 @@
     "result": "Estimated price",
     "perLoad": "one price for the load",
     "perKg": "{kg} kg × {price} / kg",
-    "ask": "6–7 kg isn't on the price board: please ask the shop.",
+    "ask": "Choose a weight to see an estimate.",
     "disclaimer": "An estimate only: the final price is based on the weight measured at the shop."
-  },
-  "services": {
-    "eyebrow": "Services",
-    "title": "More than everyday laundry",
-    "intro": "From work shirts to winter duvets, sneakers and your child's favourite teddy.",
-    "items": {
-      "clothes": { "name": "Wash & dry clothes", "text": "Everyday clothes, priced by weight per load." },
-      "bedding": { "name": "Duvets & bedding", "text": "Duvets, curtains and bed sheets, priced by the kilo." },
-      "dryClean": { "name": "Dry cleaning", "text": "Suits, dresses, wool, silk and leather that need extra care." },
-      "shoes": { "name": "Shoe cleaning", "text": "Sneakers and everyday shoes, per pair." },
-      "plush": { "name": "Plush toys", "text": "Teddy bears and soft toys, priced per 500 g." },
-      "topper": { "name": "Mattress toppers", "text": "Toppers washed and dried, priced by the kilo." },
-      "helmet": { "name": "Helmet cleaning", "text": "Motorbike helmets, per helmet." },
-      "handWash": { "name": "Hand wash", "text": "For items that shouldn't go in a machine." },
-      "ironing": { "name": "Ironing", "text": "Crisp shirts and trousers, per item." }
-    }
   },
   "process": {
     "eyebrow": "How it works",
@@ -151,24 +133,6 @@
       { "title": "Bag, label, pick up", "text": "Clean laundry is bagged with your ticket, ready for you to collect." }
     ]
   },
-  "loyalty": {
-    "eyebrow": "Loyalty",
-    "title": "Wash 7 times, get 1 free",
-    "text": "Every eighth wash is on us. Ask at the counter for the details.",
-    "card": "Loyalty card: 7 paid washes, the 8th free",
-    "free": "Free"
-  },
-  "tips": {
-    "eyebrow": "Before you drop off",
-    "title": "A few checks for the best result",
-    "items": [
-      "Empty every pocket: money, papers, earphones, lighters.",
-      "Tell us about clothes that may bleed colour or need washing separately.",
-      "Choose dry cleaning for wool, silk, leather and suits.",
-      "Point out tough stains (oil, ink, makeup) when you drop off.",
-      "Keep your ticket: it's how we match your bag when you pick up."
-    ]
-  },
   "faq": {
     "eyebrow": "FAQ",
     "title": "Common questions",
@@ -178,24 +142,20 @@
       { "q": "Can wool, silk, leather or suits go in the machine?", "a": "Those are better in our dry cleaning service, which keeps their shape and material. See the dry cleaning prices." },
       { "q": "When can I pick my laundry up?", "a": "It depends on how much you bring and the service. Call or message us on Zalo and we'll tell you when it will be ready." },
       { "q": "How does wash 7 times, get 1 free work?", "a": "After 7 paid washes, your next one is free. Ask at the counter for the details." },
-      { "q": "When is the shop open?", "a": "Every day from 7:00 to 20:00 at both branches, except public holidays (Lễ, Tết)." }
+      { "q": "When is the shop open?", "a": "Monday to Friday from 7:00 to 19:00; Saturdays and Sundays from 7:00 to 17:00. Closed on public holidays." }
     ]
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Drop by the shop",
-    "text": "Two branches in Ho Chi Minh City. Come to the nearest one during opening hours, or call or message us on Zalo first.",
-    "branch": "Branch {number}",
-    "branchesLabel": "Branches",
+    "text": "Come straight in during opening hours, or call or message us on Zalo first.",
     "address": "Address",
     "hours": "Opening hours",
-    "hoursValue": "{open} – {close} every day",
-    "holidays": "Closed on public holidays (Lễ, Tết)",
+    "weekdays": "Monday – Friday",
+    "weekend": "Saturday, Sunday",
+    "holidays": "Closed on public holidays",
     "phone": "Hotline & Zalo",
-    "imageAlt": "The SFaster sign: one customer one machine, clean, fresh, fast; branches at 40 Cửu Long and 68 Lê Hồng Phong, hotline 0984 763 100",
-    "posterTitle": "Opening hours",
-    "posterDaily": "Every day",
-    "posterZalo": "Call or message on Zalo"
+    "mapTitle": "Map to the SFaster laundry"
   },
   "footer": {
     "tagline": "Wash & dry laundry: one customer, one machine. Clean, fresh, fast.",

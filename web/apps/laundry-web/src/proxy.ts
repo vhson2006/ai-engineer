@@ -28,6 +28,8 @@ function headersFromEnv(): Record<string, string> {
   cached = securityHeaders({
     appUrl,
     storageOrigins: (process.env.STORAGE_ORIGINS ?? '').split(/[\s,]+/).filter(Boolean),
+    // The Google Maps embed of the contact section (keyless, www.google.com/maps?…&output=embed).
+    frameOrigins: ['https://www.google.com'],
     dev: process.env.NODE_ENV === 'development',
   });
   return cached;

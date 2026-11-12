@@ -47,6 +47,8 @@ export const articleSchema = z
     submissionId: z.preprocess((v) => (v === '' ? undefined : v), z.uuid('invalid').optional()),
     categoryId: z.uuid('required'),
     featured: z.boolean(),
+    /** An image of the site's media library (ADR 0034); null: no cover. The API checks the site. */
+    coverMediaId: z.preprocess((v) => (v === '' ? null : v), z.uuid('invalid').nullable().optional()),
     translations: z.array(translationSchema).min(1, 'atLeastOneLanguage').max(10, 'invalid'),
   })
   .superRefine((value, ctx) => {
@@ -73,3 +75,12 @@ export type ArticleValues = z.input<typeof articleSchema>;
 export const publishSchema = z.object({
   at: z.iso.datetime({ offset: true, message: 'invalidDate' }).optional(),
 });
+
+/** Machine translation of a draft (ADR 0036): from one language of the site into another. */
+export const translateSchema = z
+  .object({
+    targetLocale: z.string().regex(LOCALE_PATTERN, 'invalid'),
+    sourceLocale: z.string().regex(LOCALE_PATTERN, 'invalid'),
+    overwrite: z.boolean().optional(),
+  })
+  .refine((v) => v.targetLocale !== v.sourceLocale, { message: 'invalid', path: ['targetLocale'] });

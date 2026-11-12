@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- "When to use it": a page outline with one block picked out by a magnifier. -->
+  <rect width="800" height="600" fill="#e1f4e6"/>
+  <circle cx="680" cy="110" r="70" fill="#ffd400" opacity="0.5"/>
+  <rect x="190" y="90" width="330" height="420" rx="22" fill="#ffffff" stroke="#d2e9d8" stroke-width="4"/>
+  <rect x="226" y="130" width="200" height="18" rx="9" fill="#0f7a33"/>
+  <rect x="226" y="166" width="258" height="10" rx="5" fill="#476052" opacity="0.35"/>
+  <rect x="226" y="186" width="230" height="10" rx="5" fill="#476052" opacity="0.35"/>
+  <rect x="226" y="222" width="258" height="96" rx="14" fill="#fff6c2" stroke="#ffd400" stroke-width="4"/>
+  <rect x="244" y="244" width="120" height="12" rx="6" fill="#0a5124"/>
+  <rect x="244" y="268" width="210" height="9" rx="4.5" fill="#476052" opacity="0.4"/>
+  <rect x="244" y="286" width="180" height="9" rx="4.5" fill="#476052" opacity="0.4"/>
+  <rect x="226" y="340" width="120" height="70" rx="12" fill="#e1f4e6"/>
+  <rect x="364" y="340" width="120" height="70" rx="12" fill="#e1f4e6"/>
+  <rect x="226" y="430" width="258" height="10" rx="5" fill="#476052" opacity="0.35"/>
+  <rect x="226" y="450" width="200" height="10" rx="5" fill="#476052" opacity="0.35"/>
+  <!-- magnifier -->
+  <circle cx="470" cy="300" r="92" fill="#ffffff" fill-opacity="0.55" stroke="#13883a" stroke-width="16"/>
+  <line x1="538" y1="368" x2="618" y2="448" stroke="#13883a" stroke-width="26" stroke-linecap="round"/>
+  <line x1="538" y1="368" x2="618" y2="448" stroke="#0a5124" stroke-width="10" stroke-linecap="round"/>
+</svg>

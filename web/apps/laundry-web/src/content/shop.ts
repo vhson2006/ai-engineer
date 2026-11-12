@@ -13,24 +13,30 @@ export const shop = {
   /** Hotline, also the shop's Zalo (the sign and the opening-hours poster). */
   phone: { display: '0984 763 100', href: 'tel:+84984763100' },
   zaloHref: 'https://zalo.me/0984763100',
-  /** The two branches printed on the sign (ward names after the 2025 merger), Ho Chi Minh City. */
-  branches: [
-    { id: 'cuuLong', street: '40 Cửu Long', ward: 'Phường Hòa Hưng', city: 'TP.HCM' },
-    { id: 'leHongPhong', street: '68 Lê Hồng Phong', ward: 'Phường Chợ Quán', city: 'TP.HCM' },
-  ],
-  /** Every day, except public holidays (Lễ, Tết): the opening-hours poster. */
-  hours: { open: '07:00', close: '20:00' },
-  loyalty: { paid: 7, free: 1 },
+  /**
+   * The shop (ward name after the 2025 merger). The sign also printed a branch at 40 Cửu Long: it
+   * has closed, so it is on no page, and the sign artwork (signboard.jpg) is cropped above it.
+   */
+  address: { street: '68 Lê Hồng Phong', ward: 'Phường Chợ Quán', city: 'TP.HCM' },
+  /** Opening hours (the owner, 2026-11-12); closed on public holidays (the national calendar). */
+  hours: {
+    weekdays: { open: '07:00', close: '19:00' }, // Monday to Friday
+    weekend: { open: '07:00', close: '17:00' }, // Saturday and Sunday
+  },
 } as const;
 
-export type Branch = (typeof shop.branches)[number];
+/** One line: "68 Lê Hồng Phong, Phường Chợ Quán, TP.HCM". */
+export const fullAddress = `${shop.address.street}, ${shop.address.ward}, ${shop.address.city}`;
 
-/** One line, as on the sign: "40 Cửu Long, Phường Hòa Hưng, TP.HCM". */
-export const branchAddress = (branch: Branch) => `${branch.street}, ${branch.ward}, ${branch.city}`;
+/** What Google Maps searches for: the shop's name and address. */
+const mapQuery = `Giặt sấy SFaster ${shop.address.street} ${shop.address.ward} TP Hồ Chí Minh`;
 
-/** Google Maps search for a branch (opens the app on phones). */
-export const branchMapsHref = (branch: Branch) =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Giặt sấy SFaster ${branch.street} ${branch.ward} TP Hồ Chí Minh`)}`;
+/** Google Maps search for the shop (opens the app on phones). */
+export const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+
+/** The keyless Google Maps embed (www.google.com, allowed in src/proxy.ts frameOrigins). */
+export const mapEmbedSrc = (locale: string) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&hl=${locale}&z=17&output=embed`;
 
 /** Price per unit, in đồng. */
 export type Unit = 'load' | 'kg' | 'set' | 'piece' | 'halfKilo' | 'pair';
@@ -50,7 +56,7 @@ export const priceTables: { [T in Table]: PriceRow<RowId<T>>[] } = {
     { id: 'from3to4', price: 55_000, unit: 'load' },
     { id: 'from4to5', price: 65_000, unit: 'load' },
     { id: 'from5to6', price: 75_000, unit: 'load' },
-    { id: 'from7', price: 12_000, unit: 'kg' },
+    { id: 'from6', price: 12_000, unit: 'kg' },
   ],
   bedding: [
     { id: 'under1', price: 35_000, unit: 'load' },
@@ -74,17 +80,3 @@ export const priceTables: { [T in Table]: PriceRow<RowId<T>>[] } = {
 };
 
 export const priceTableOrder: Table[] = ['clothes', 'bedding', 'dryClean', 'extras'];
-
-/** Service cards (overview): icon + the lowest price of the service. */
-export type ServiceIcon = 'shirt' | 'bed' | 'sparkles' | 'footprints' | 'teddy' | 'layers' | 'hardHat' | 'hand' | 'iron';
-export const services: { id: keyof Messages['services']['items']; icon: ServiceIcon; from: number; unit: Unit }[] = [
-  { id: 'clothes', icon: 'shirt', from: 35_000, unit: 'load' },
-  { id: 'bedding', icon: 'bed', from: 25_000, unit: 'kg' },
-  { id: 'dryClean', icon: 'sparkles', from: 50_000, unit: 'piece' },
-  { id: 'shoes', icon: 'footprints', from: 75_000, unit: 'pair' },
-  { id: 'plush', icon: 'teddy', from: 25_000, unit: 'halfKilo' },
-  { id: 'topper', icon: 'layers', from: 35_000, unit: 'kg' },
-  { id: 'helmet', icon: 'hardHat', from: 35_000, unit: 'piece' },
-  { id: 'handWash', icon: 'hand', from: 30_000, unit: 'piece' },
-  { id: 'ironing', icon: 'iron', from: 20_000, unit: 'piece' },
-];

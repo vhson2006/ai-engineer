@@ -13,12 +13,22 @@ import { useEffect } from 'react';
  * - Afterwards the URL hash is updated (shareable, Back works) and focus moves to the section
  *   (keyboard and screen-reader users continue from there).
  */
+/**
+ * The element's top in the document from LAYOUT (offsetTop chain): transforms don't count, so a
+ * section still lifted by a <Reveal> animation (translateY) is measured where it will settle.
+ */
+function layoutTop(element: HTMLElement): number {
+  let top = 0;
+  for (let node: HTMLElement | null = element; node; node = node.offsetParent as HTMLElement | null) top += node.offsetTop;
+  return top;
+}
+
 export function scrollToElement(target: HTMLElement, options: { updateHash?: boolean } = {}) {
   const { updateHash = true } = options;
   const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
   const start = window.scrollY;
-  // Re-measured on every frame: content above may still move (images, reveal animations).
-  const endNow = () => Math.max(0, Math.round(target.getBoundingClientRect().top + window.scrollY - margin));
+  // Re-measured on every frame: content above may still move (images loading, lazy sections).
+  const endNow = () => Math.max(0, Math.round(layoutTop(target) - margin));
   const distance = endNow() - start;
 
   const finish = () => {

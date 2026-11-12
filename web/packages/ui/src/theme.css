@@ -134,3 +134,73 @@ body {
   pointer-events: none;
   color: var(--subtle);
 }
+
+/*
+ * Layout blocks in the editor (RichTextEditor `layout`, ADR 0033): the structure, not the sites'
+ * look (that is @web/ui/article-layout.css, on the sites). Each block is a frame labelled with
+ * its classes; columns and cards side by side from md up.
+ */
+.rich-text-layout section,
+.rich-text-layout section > div,
+.rich-text-layout div[class] {
+  position: relative;
+  border: 1px dashed var(--border);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.75rem;
+}
+.rich-text-layout section { margin-block: 1em; }
+.rich-text-layout section[class] { padding-top: 1.5rem; }
+.rich-text-layout div[class] { padding-top: 1.35rem; }
+.rich-text-layout section[class]::before,
+.rich-text-layout div[class]::before {
+  content: attr(class);
+  position: absolute;
+  top: 0.35rem;
+  left: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--subtle);
+  pointer-events: none;
+}
+.rich-text-layout section > * + *,
+.rich-text-layout section > div > * + * { margin-top: 0.5em; }
+.rich-text-layout section:is(.tpl-callout, .tpl-cta, .tpl-dark, .tpl-summary, .tpl-facts) { background: var(--surface-2); }
+@media (min-width: 768px) {
+  .rich-text-layout section:is(.tpl-cols, .tpl-split, .tpl-split-reverse, .tpl-compare, .tpl-gallery),
+  .rich-text-layout section:is(.tpl-cols-3, .tpl-cards, .tpl-gallery-3, .tpl-mosaic, .tpl-stats) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .rich-text-layout section:is(.tpl-cols-3, .tpl-cards, .tpl-gallery-3, .tpl-mosaic, .tpl-stats) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .rich-text-layout section:is(.tpl-cols, .tpl-split, .tpl-split-reverse, .tpl-compare, .tpl-gallery, .tpl-cols-3, .tpl-cards, .tpl-gallery-3, .tpl-mosaic, .tpl-stats) > * {
+    margin-top: 0;
+  }
+}
+.rich-text-layout figure { margin-block: 0.75em; }
+.rich-text-layout figure[class]::before {
+  content: attr(class);
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--subtle);
+}
+.rich-text-layout figcaption { margin-top: 0.3rem; font-size: 0.85em; color: var(--subtle); }
+.rich-text-layout .ProseMirror-selectednode { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 0.6rem; }
+.rich-text-layout li > p { margin: 0; }
+.rich-text-layout p.tpl-lead,
+.rich-text-layout blockquote.tpl-pull { font-size: 1.1em; }
+.rich-text-layout blockquote.tpl-pull { font-style: italic; }
+.rich-text-layout :is(p.tpl-kicker, p.tpl-label) {
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+.rich-text-layout :is(p.tpl-byline, p.tpl-small) { font-size: 0.85em; color: var(--subtle); }
+.rich-text-layout :is(.tpl-center, h2.tpl-chapter-title) { text-align: center; }

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Giặt sấy SFaster · Mỗi người 1 máy · Sạch – Thơm – Nhanh",
-    "description": "Giặt sấy SFaster, 2 chi nhánh tại TP.HCM (40 Cửu Long và 68 Lê Hồng Phong): giặt sấy quần áo theo ký từ 35.000 ₫, mền màn drap, giặt hấp, vệ sinh giày, gấu bông, topper. Mỗi người 1 máy, không giặt chung. Mở cửa 7:00–20:00 hằng ngày."
+    "description": "Giặt sấy SFaster, 68 Lê Hồng Phong, Phường Chợ Quán, TP.HCM: giặt sấy quần áo theo ký từ 35.000 ₫, mền màn drap, giặt hấp, vệ sinh giày, gấu bông, topper. Mỗi người 1 máy, không giặt chung. Mở cửa 7:00–19:00 thứ Hai đến thứ Sáu, 7:00–17:00 thứ Bảy và Chủ nhật."
   },
   "common": {
     "skipToContent": "Chuyển đến nội dung",
@@ -23,7 +23,7 @@
   },
   "topBar": {
     "loyalty": "Giặt 7 lần tặng 1",
-    "hours": "Mở cửa {open} – {close} hằng ngày"
+    "hours": "T2–T6 {weekdays} · T7, CN {weekend}"
   },
   "nav": {
     "label": "Mục chính",
@@ -32,9 +32,7 @@
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
     "prices": "Bảng giá",
-    "services": "Dịch vụ",
     "process": "Quy trình",
-    "tips": "Lưu ý gửi đồ",
     "faq": "Hỏi đáp",
     "contact": "Liên hệ",
     "articles": "Bài viết"
@@ -45,7 +43,7 @@
     "oneMachine": "Mỗi người 1 máy"
   },
   "hero": {
-    "eyebrow": "Giặt sấy · 2 chi nhánh tại TP.HCM",
+    "eyebrow": "Giặt sấy · 68 Lê Hồng Phong",
     "title": "Đồ sạch, thơm tho,",
     "titleAccent": "không bao giờ giặt chung.",
     "text": "Ở SFaster mỗi người 1 máy: đồ của bạn được giặt và sấy riêng, sau đó đóng túi và dán phiếu tên. Tính giá theo ký, chỉ từ 35.000 ₫ một lần.",
@@ -66,7 +64,7 @@
     "eyebrow": "Bảng giá",
     "title": "Giá rõ ràng, theo ký hoặc theo món",
     "intro": "Giá đã gồm giặt và sấy. Đồ được cân khi bạn gửi tại tiệm.",
-    "note": "Giá theo bảng giá của tiệm. Từ 6 đến 7 kg: vui lòng hỏi tiệm.",
+    "note": "Giá theo bảng giá của tiệm.",
     "tables": {
       "clothes": {
         "title": "Giặt sấy quần áo",
@@ -76,7 +74,7 @@
           "from3to4": "Từ 3 kg đến 4 kg",
           "from4to5": "Từ 4 kg đến 5 kg",
           "from5to6": "Từ 5 kg đến 6 kg",
-          "from7": "Từ 7 kg trở lên"
+          "from6": "Từ 6 kg trở lên"
         }
       },
       "bedding": {
@@ -121,24 +119,8 @@
     "result": "Giá ước tính",
     "perLoad": "trọn gói một lần",
     "perKg": "{kg} kg × {price} / kg",
-    "ask": "Từ 6 đến 7 kg chưa có trong bảng giá, vui lòng hỏi tiệm.",
+    "ask": "Chọn cân nặng để xem giá ước tính.",
     "disclaimer": "Chỉ là ước tính: giá chính xác theo cân nặng thực tế tại tiệm."
-  },
-  "services": {
-    "eyebrow": "Dịch vụ",
-    "title": "Không chỉ giặt quần áo",
-    "intro": "Từ áo sơ mi đi làm đến mền mùa lạnh, đôi giày thể thao hay chú gấu bông của bé.",
-    "items": {
-      "clothes": { "name": "Giặt sấy quần áo", "text": "Quần áo hằng ngày, tính giá theo ký mỗi lần." },
-      "bedding": { "name": "Mền – màn – drap", "text": "Mền, màn cửa, drap nệm, tính giá theo ký." },
-      "dryClean": { "name": "Giặt hấp", "text": "Vest, đầm, đồ len, lụa, da cần chăm sóc kỹ." },
-      "shoes": { "name": "Vệ sinh giày", "text": "Giày thể thao và giày đi hằng ngày, tính theo đôi." },
-      "plush": { "name": "Gấu bông", "text": "Gấu bông, thú nhồi bông, tính theo 500 g." },
-      "topper": { "name": "Topper", "text": "Topper nệm được giặt sấy, tính theo ký." },
-      "helmet": { "name": "Mũ bảo hiểm", "text": "Vệ sinh mũ bảo hiểm, tính theo cái." },
-      "handWash": { "name": "Giặt tay", "text": "Cho những món không nên giặt máy." },
-      "ironing": { "name": "Ủi đồ", "text": "Áo quần thẳng thớm, tính theo cái." }
-    }
   },
   "process": {
     "eyebrow": "Quy trình",
@@ -151,24 +133,6 @@
       { "title": "Đóng túi, nhận đồ", "text": "Đồ sạch được đóng túi kèm phiếu, chờ bạn tới lấy." }
     ]
   },
-  "loyalty": {
-    "eyebrow": "Ưu đãi",
-    "title": "Giặt 7 lần tặng 1",
-    "text": "Lần giặt thứ tám tiệm tặng bạn. Hỏi nhân viên tại quầy để biết chi tiết.",
-    "card": "Thẻ tích điểm: 7 lần giặt, lần thứ 8 được tặng",
-    "free": "Tặng"
-  },
-  "tips": {
-    "eyebrow": "Lưu ý khi gửi đồ",
-    "title": "Vài điều nhỏ để đồ giặt đẹp nhất",
-    "items": [
-      "Kiểm tra và lấy hết đồ trong túi: tiền, giấy tờ, tai nghe, bật lửa.",
-      "Báo trước đồ dễ ra màu hoặc cần giặt riêng.",
-      "Đồ len, lụa, da và vest nên chọn dịch vụ giặt hấp.",
-      "Chỉ cho nhân viên các vết bẩn khó (dầu mỡ, mực, son phấn) khi gửi.",
-      "Giữ phiếu để tiệm tìm đúng túi đồ khi bạn nhận."
-    ]
-  },
   "faq": {
     "eyebrow": "Hỏi đáp",
     "title": "Câu hỏi thường gặp",
@@ -178,24 +142,20 @@
       { "q": "Đồ len, lụa, da, vest có giặt máy được không?", "a": "Các loại đồ này nên chọn dịch vụ giặt hấp để giữ form và chất liệu. Xem giá ở mục Giặt hấp." },
       { "q": "Khi nào tôi lấy được đồ?", "a": "Tùy số lượng đồ và dịch vụ. Gọi điện hoặc nhắn Zalo, tiệm sẽ báo giờ có đồ cho bạn." },
       { "q": "Ưu đãi giặt 7 lần tặng 1 áp dụng thế nào?", "a": "Sau 7 lần giặt, lần tiếp theo được tặng. Hỏi nhân viên tại quầy để biết chi tiết." },
-      { "q": "Tiệm mở cửa lúc nào?", "a": "Từ 7:00 đến 20:00 hằng ngày ở cả hai chi nhánh, trừ Lễ, Tết." }
+      { "q": "Tiệm mở cửa lúc nào?", "a": "Thứ Hai đến thứ Sáu từ 7:00 đến 19:00; thứ Bảy và Chủ nhật từ 7:00 đến 17:00. Tiệm nghỉ các ngày lễ theo lịch chung." }
     ]
   },
   "contact": {
     "eyebrow": "Liên hệ",
     "title": "Ghé tiệm SFaster",
-    "text": "Hai chi nhánh tại TP.HCM. Ghé chi nhánh gần bạn trong giờ mở cửa, hoặc gọi điện, nhắn Zalo trước.",
-    "branch": "Chi nhánh {number}",
-    "branchesLabel": "Các chi nhánh",
+    "text": "Ghé thẳng tiệm trong giờ mở cửa, hoặc gọi điện, nhắn Zalo trước.",
     "address": "Địa chỉ",
     "hours": "Giờ mở cửa",
-    "hoursValue": "{open} – {close} hằng ngày",
-    "holidays": "Nghỉ Lễ, Tết",
+    "weekdays": "Thứ Hai – Thứ Sáu",
+    "weekend": "Thứ Bảy, Chủ nhật",
+    "holidays": "Nghỉ lễ theo lịch chung",
     "phone": "Hotline & Zalo",
-    "imageAlt": "Biển hiệu Giặt sấy SFaster: mỗi người 1 máy, sạch – thơm – nhanh, hai chi nhánh 40 Cửu Long và 68 Lê Hồng Phong, hotline 0984 763 100",
-    "posterTitle": "Giờ mở cửa",
-    "posterDaily": "Hằng ngày",
-    "posterZalo": "Gọi hoặc nhắn Zalo"
+    "mapTitle": "Bản đồ đường đến tiệm Giặt sấy SFaster"
   },
   "footer": {
     "tagline": "Giặt sấy quần áo: mỗi người 1 máy. Sạch – Thơm – Nhanh.",

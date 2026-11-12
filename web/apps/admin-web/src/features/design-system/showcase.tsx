@@ -52,7 +52,9 @@ export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: stri
   const pathname = usePathname();
   const [combo, setCombo] = useState<string>();
   const [date, setDate] = useState<Date>();
-  const [html, setHtml] = useState('<h2>Release 2.0</h2><p>Faster <strong>checkout</strong> and a new <em>billing</em> worker.</p>');
+  const [html, setHtml] = useState(
+    '<h2>Release 2.0</h2><p>Faster <strong>checkout</strong> and a new <em>billing</em> worker.</p><section class="tpl-callout tpl-note"><h3>Note</h3><p>A layout block (ADR 0033).</p></section>',
+  );
   const [services, setServices] = useState(SERVICES.map((service) => ({ id: service.value, name: service.label })));
 
   return (
@@ -244,7 +246,15 @@ export function DesignSystemShowcase({ t, lang, intlLocale }: { t: T; lang: stri
       </Block>
 
       <Block title={t.sections.editor}>
-        <RichTextEditor value={html} onChange={setHtml} placeholder={s.editorPlaceholder} labels={t.editor} aria-label={t.sections.editor} />
+        <RichTextEditor
+          value={html}
+          onChange={setHtml}
+          placeholder={s.editorPlaceholder}
+          labels={t.editor}
+          layout={{ labels: t.editor.layout }}
+          source={{ labels: t.editor.source }}
+          aria-label={t.sections.editor}
+        />
         <p className="mt-4 text-xs font-medium text-subtle">{s.editorOutput}</p>
         <pre className="mt-2 max-h-40 overflow-auto rounded-lg bg-surface-2 p-3 font-mono text-xs text-muted">{html}</pre>
       </Block>

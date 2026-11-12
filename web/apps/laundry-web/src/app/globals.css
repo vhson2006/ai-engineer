@@ -60,8 +60,13 @@
   --font-display: var(--font-display-round);
 }
 
-section[id] {
-  scroll-margin-top: 6rem;
+/* A section reached from the menu starts right under the sticky header (66 px at every width):
+   no strip of the previous section above it; the section's own padding is the breathing room.
+   In @layer base so a utility still overrides it (the hero's scroll-mt-[100vh]: Home = top of page). */
+@layer base {
+  section[id] {
+    scroll-margin-top: 66px;
+  }
 }
 
 details summary::-webkit-details-marker {

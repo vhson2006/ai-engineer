@@ -16,6 +16,7 @@ const summary = {
   title: 'Gửi đồ',
   excerpt: 'E',
   coverAlt: null,
+  cover: null,
   readingMinutes: 2,
   featured: true,
   publishedAt: '2026-11-10T02:00:00.000Z',
@@ -47,7 +48,14 @@ describe('articles data (content API)', () => {
     const [article] = await listArticles('vi', 'meo-giat-giu');
     expect(api.listPublishedArticles).toHaveBeenCalledWith('laundry', { locale: 'vi', category: 'meo-giat-giu', limit: 100 });
     expect(article).toMatchObject({ id: 'a1', slug: 'gui-do', topic: summary.category, featured: true, readingMinutes: 2 });
-    expect(article.cover).toBeDefined();
+    expect(article.cover).toMatchObject({ kind: 'photo' });
+  });
+
+  it("uses the cover chosen in the media library, with this language's alt text", async () => {
+    const image = { id: 'm1', url: 'https://cdn.test/media/laundry/m1/1280.webp', width: 1280, height: 853, srcset: 'x 640w' };
+    api.listPublishedArticles.mockResolvedValue({ ok: true, data: { data: [{ ...summary, cover: image, coverAlt: 'Mặt tiền tiệm' }], meta: { total: 1 } } });
+    const [article] = await listArticles('vi');
+    expect(article.cover).toEqual({ kind: 'media', image, alt: 'Mặt tiền tiệm' });
   });
 
   it('an unknown topic is an empty list; any other failure throws (never cached as empty)', async () => {
