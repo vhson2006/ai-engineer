@@ -237,6 +237,14 @@ export class CreateArticleDto {
   @IsBoolean()
   featured?: boolean;
 
+  @ApiPropertyOptional({
+    nullable: true,
+    description: 'Cover image: an uploaded image of the same site (media library); null removes it',
+  })
+  @IsOptional()
+  @IsUUID()
+  coverMediaId?: string | null;
+
   @ApiProperty({
     type: [ArticleTranslationDto],
     description: 'A draft may miss languages; publishing needs every language of the site',
@@ -259,6 +267,14 @@ export class UpdateArticleDto {
   @IsOptionalNonNull()
   @IsBoolean()
   featured?: boolean;
+
+  @ApiPropertyOptional({
+    nullable: true,
+    description: 'Cover image: an uploaded image of the same site (media library); null removes it',
+  })
+  @IsOptional()
+  @IsUUID()
+  coverMediaId?: string | null;
 
   @ApiPropertyOptional({ type: [ArticleTranslationDto], description: 'Replaces every language' })
   @IsOptionalNonNull()
@@ -323,4 +339,20 @@ export class PublishedArticleBySlugQueryDto {
   @Matches(SLUG_PATTERN, { message: `slug ${SLUG_MESSAGE}` })
   @MaxLength(150)
   slug: string;
+}
+
+/** POST …/articles/:id/translations/:locale/auto: machine-translate a language (ADR 0036). */
+export class AutoTranslateArticleDto {
+  @ApiProperty({ example: 'vi', description: 'The language to translate from (must exist)' })
+  @IsString()
+  @Matches(LOCALE_PATTERN, { message: `sourceLocale ${LOCALE_MESSAGE}` })
+  sourceLocale: string;
+
+  @ApiPropertyOptional({
+    default: false,
+    description: 'Replace the target language when the article already has it',
+  })
+  @IsOptionalNonNull()
+  @IsBoolean()
+  overwrite?: boolean;
 }

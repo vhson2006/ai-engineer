@@ -20,6 +20,8 @@ import {
 import { canPublish } from '../common/site-access';
 import { assertAllLocales, assertSiteLocales } from '../common/translations';
 import type { Article, Prisma, Site } from '../generated/prisma/client';
+import { MediaUrls } from '../media/media-urls';
+import { MediaService } from '../media/media.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { SitesService } from '../sites/sites.service';
 import { liveEvent, unpublishedEvent } from './article-events';
@@ -49,6 +51,8 @@ export class ArticlesService {
     private readonly prisma: PrismaService,
     private readonly sites: SitesService,
     private readonly outbox: OutboxRelay,
+    private readonly media: MediaService,
+    private readonly urls: MediaUrls,
   ) {}
 
   async findAll(
@@ -76,19 +80,26 @@ export class ArticlesService {
       }),
       this.prisma.article.count({ where }),
     ]);
-    return paginate(rows.map(toArticleResponse), total, page, limit);
+    return paginate(
+      rows.map((row) => toArticleResponse(row, this.urls)),
+      total,
+      page,
+      limit,
+    );
   }
 
   async findOne(siteId: string, id: string, user: AuthUser): Promise<ArticleResponse> {
     await this.sites.getAccessible(siteId, user);
-    return toArticleResponse(await this.getOrFail(siteId, id));
+    return toArticleResponse(await this.getOrFail(siteId, id), this.urls);
   }
 
   async create(siteId: string, dto: CreateArticleDto, user: AuthUser): Promise<ArticleResponse> {
     const site = await this.sites.getAccessible(siteId, user);
     assertSiteLocales(dto.translations, site);
-    const translations = withCleanBodies(dto.translations); // before any write (400 if empty)
+    // Before any write (400 if empty): body images only from this site.
+    const translations = withCleanBodies(dto.translations, this.urls.sitePrefix(siteId));
     await this.assertCategory(siteId, dto.categoryId);
+    if (dto.coverMediaId) await this.media.assertCover(siteId, dto.coverMediaId);
 
     // Slugs are unique per site + language: the constraint is the guard (409), not a pre-check.
     const row = await this.prisma.$transaction(async (tx) => {
@@ -97,6 +108,7 @@ export class ArticlesService {
           siteId,
           categoryId: dto.categoryId,
           featured: dto.featured ?? false,
+          coverMediaId: dto.coverMediaId ?? null,
           createdBy: user.id,
           updatedBy: user.id,
         },
@@ -107,7 +119,7 @@ export class ArticlesService {
         include: WITH_TRANSLATIONS,
       });
     });
-    return toArticleResponse(row);
+    return toArticleResponse(row, this.urls);
   }
 
   async update(
@@ -126,9 +138,13 @@ export class ArticlesService {
     if (dto.categoryId && dto.categoryId !== current.categoryId) {
       await this.assertCategory(siteId, dto.categoryId);
     }
+    if (dto.coverMediaId && dto.coverMediaId !== current.coverMediaId) {
+      await this.media.assertCover(siteId, dto.coverMediaId);
+    }
 
     const { translations: input, ...fields } = dto;
-    const translations = input && withCleanBodies(input); // before any write (400 if empty)
+    // Before any write (400 if empty): body images only from this site.
+    const translations = input && withCleanBodies(input, this.urls.sitePrefix(siteId));
     const saved = await this.prisma.$transaction(async (tx) => {
       const { count } = await tx.article.updateMany({
         where: { id, siteId },
@@ -150,7 +166,7 @@ export class ArticlesService {
     });
     if (!saved) throw new NotFoundException(`Article ${id} not found`); // deleted in between
     if (saved.status === 'published') this.outbox.poke();
-    return toArticleResponse(saved);
+    return toArticleResponse(saved, this.urls);
   }
 
   /** Deleted for real (its slugs become free). A live article leaves the site: event. */

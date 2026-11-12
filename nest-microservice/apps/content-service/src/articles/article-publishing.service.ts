@@ -12,6 +12,7 @@ import type { Prisma } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { SitesService } from '../sites/sites.service';
 import { liveEvent, unpublishedEvent } from './article-events';
+import { MediaUrls } from '../media/media-urls';
 import { toArticleResponse, WITH_TRANSLATIONS } from './articles.mapper';
 import { ArticlesService } from './articles.service';
 
@@ -30,6 +31,7 @@ export class ArticlePublishingService {
     private readonly sites: SitesService,
     private readonly articles: ArticlesService,
     private readonly outbox: OutboxRelay,
+    private readonly urls: MediaUrls,
   ) {}
 
   /**
@@ -54,7 +56,7 @@ export class ArticlePublishingService {
         code: 'already_published',
       });
     }
-    if (current.status === 'published') return toArticleResponse(current);
+    if (current.status === 'published') return toArticleResponse(current, this.urls);
 
     const data: Prisma.ArticleUpdateManyMutationInput = scheduleAt
       ? { status: 'scheduled', scheduledAt: scheduleAt }
@@ -73,14 +75,14 @@ export class ArticlePublishingService {
     });
     if (!saved) throw new NotFoundException(`Article ${id} not found`); // deleted in between
     if (saved.status === 'published') this.outbox.poke();
-    return toArticleResponse(saved);
+    return toArticleResponse(saved, this.urls);
   }
 
   /** Back to draft (live or scheduled). A draft stays as it is. */
   async unpublish(siteId: string, id: string, user: AuthUser): Promise<ArticleResponse> {
     await this.sites.getAccessible(siteId, user);
     const current = await this.articles.getOrFail(siteId, id);
-    if (current.status === 'draft') return toArticleResponse(current);
+    if (current.status === 'draft') return toArticleResponse(current, this.urls);
 
     const saved = await this.prisma.$transaction(async (tx) => {
       const { count } = await tx.article.updateMany({
@@ -95,6 +97,6 @@ export class ArticlePublishingService {
     });
     if (!saved) throw new NotFoundException(`Article ${id} not found`); // deleted in between
     if (current.status === 'published') this.outbox.poke();
-    return toArticleResponse(saved);
+    return toArticleResponse(saved, this.urls);
   }
 }

@@ -81,10 +81,12 @@ New service: `/new-service` (full bootstrap). Reference for every convention: de
   consumer use `runWithRequestId`. Never log or return the upstream's body, headers or query.
 
 ## Files (ADRs 0006, 0014)
-- Bytes never through KrakenD or a service: presigned PUT/GET or the CDN URL; downloads answer
+- Bytes never through KrakenD or a service: presigned PUT/GET or the CDN URL (exception: images
+  ai-service generates and writes to `media/` itself, ADR 0037); downloads answer
   the link as JSON (`/download-url`), never a redirect or a stream.
 - Storage only through `FilesService` or `StorageModule` + `OBJECT_STORAGE`. A new kind of file =
   an entry in `FILE_PURPOSES` (visibility, types, size, attachable); never types a browser
-  executes. Keys are server-generated; the user's file name is display data only.
+  executes. Keys are server-generated; the user's file name is display data only. Exception:
+  content-service's media library (ADR 0034) keeps its own table, per site (`apps/content-service/src/media/`).
 - Attach inside the resource's transaction with a conditional update and a count check (else 422
   `invalid_attachments`). Others' private files answer 404.

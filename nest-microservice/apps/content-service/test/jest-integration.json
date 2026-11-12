@@ -1,9 +1,5 @@
 {
-  "moduleFileExtensions": [
-    "js",
-    "json",
-    "ts"
-  ],
+  "moduleFileExtensions": ["js", "json", "ts"],
   "rootDir": "../../..",
   "testRegex": "apps/content-service/test/integration/.*\\.integration-spec\\.ts$",
   "transform": {
@@ -21,9 +17,7 @@
     ]
   },
   "testEnvironment": "node",
-  "setupFiles": [
-    "<rootDir>/apps/content-service/test/support/setup-env.ts"
-  ],
+  "setupFiles": ["<rootDir>/apps/content-service/test/support/setup-env.ts"],
   "moduleNameMapper": {
     "^@app/common(|/.*)$": "<rootDir>/libs/common/src$1"
   },

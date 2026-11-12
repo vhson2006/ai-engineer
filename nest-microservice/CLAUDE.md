@@ -8,12 +8,13 @@ here are relative to this package, except `k8s/...` and `docs/adr/...` (root fol
 | Path | What |
 |---|---|
 | `apps/deployment-service/` | REST `/api/deployments`, `/api/files` (presigned uploads, hourly cleanup), port 3001. The reference implementation of every convention. |
-| `apps/content-service/` | REST `/api/content/sites/{siteId}/...` (ADR 0026), port 3003: one module per resource (`sites/` exports the site rule, `categories/`, `articles/` with publishing + scheduler, `published-articles/`), `common/`. Own audience `content-api` (`src/env.ts`), site rule from `/sites/<id>` groups (ADR 0028). |
+| `apps/content-service/` | REST `/api/content/sites/{siteId}/...` (ADR 0026), port 3003: one module per resource (`sites/` exports the site rule, `categories/`, `articles/` with publishing + scheduler, `published-articles/`, `media/`: per-site image library in the public bucket, ADR 0034, + AI images and their monthly quota, ADR 0037, `translations/`: machine-translation jobs through ai-service, ADR 0036; `ai-results/`: the one consumer of ai-service's answers), `common/`. Own audience `content-api` (`src/env.ts`), site rule from `/sites/<id>` groups (ADR 0028). |
+| `apps/ai-service/` | Event consumer + outbox (ADR 0036): the ONLY caller of AI providers (Gemini now, keys in `ai-providers`); machine translation of text segments; image generation, optimized with sharp and written to `media/` (ADR 0037); HTTP only `/health`, `/metrics` (:3004). Own DB `ai` (inbox, outbox, usage ledger). |
 | `apps/notification-service/` | Event consumer (durable JetStream consumer + inbox); HTTP only `/health`, `/metrics`. |
 | `apps/nats-setup/` | Creates/updates the JetStream streams, then exits: their one owner (ADR 0024). |
 | `libs/common/` (`@app/common`) | Contracts (DTOs, responses, events, roles), auth, logging, observability, errors (RFC 9457), database errors, `HttpClient`, object storage, NATS/outbox/inbox. |
 
-Images: `Dockerfile --target deployment-service|notification-service|content-service|migrate`.
+Images: `Dockerfile --target deployment-service|notification-service|content-service|ai-service|migrate`.
 Infrastructure (KrakenD, Keycloak, Postgres, Redis, NATS): `k8s/README.md`.
 
 ## Commands

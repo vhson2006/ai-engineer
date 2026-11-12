@@ -14,6 +14,7 @@ import {
   translationRow as tr,
   users,
 } from '../../support/fixtures';
+import { mediaProviders, mediaRow } from '../../support/media';
 import { createPrismaMock, outboxSubjects, resetPrismaMock } from '../../support/prisma-mock';
 import { PrismaService } from '../../../src/prisma/prisma.service';
 import { SitesService } from '../../../src/sites/sites.service';
@@ -34,6 +35,7 @@ describe('[articles.service] (unit)', () => {
         SitesService,
         { provide: PrismaService, useValue: prisma },
         { provide: OutboxRelay, useValue: outbox },
+        ...mediaProviders(),
       ],
     }).compile();
     service = moduleRef.get(ArticlesService);
@@ -99,6 +101,84 @@ describe('[articles.service] (unit)', () => {
         service.create('nails', { categoryId, translations: [translationInput('fr')] }, writer),
       ).rejects.toBeInstanceOf(UnprocessableEntityException);
       expect(prisma.article.create).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('cover image', () => {
+    const cover = mediaRow();
+
+    it('sets a ready image of the site as the cover and answers its URLs', async () => {
+      prisma.article.findFirst.mockResolvedValue(row());
+      prisma.media.findFirst.mockResolvedValue({ id: cover.id });
+      prisma.article.updateMany.mockResolvedValue({ count: 1 });
+      prisma.article.findUniqueOrThrow.mockResolvedValue(
+        row({ coverMediaId: cover.id, coverMedia: cover }),
+      );
+
+      const result = await service.update('nails', id, { coverMediaId: cover.id }, writer);
+
+      expect(prisma.media.findFirst).toHaveBeenCalledWith({
+        where: { id: cover.id, siteId: 'nails', status: 'ready' },
+        select: { id: true },
+      });
+      expect(prisma.article.updateMany).toHaveBeenCalledWith({
+        where: { id, siteId: 'nails' },
+        data: expect.objectContaining({ coverMediaId: cover.id }),
+      });
+      expect(result.cover).toEqual({
+        id: cover.id,
+        url: `https://cdn.test/media/nails/${cover.id}/1280.webp`,
+        width: 1280,
+        height: 853,
+        srcset: `https://cdn.test/media/nails/${cover.id}/640.webp 640w, https://cdn.test/media/nails/${cover.id}/1280.webp 1280w`,
+      });
+    });
+
+    it('refuses an image of another site or not uploaded yet (422), nothing written', async () => {
+      prisma.article.findFirst.mockResolvedValue(row());
+      prisma.media.findFirst.mockResolvedValue(null);
+      await expect(
+        service.update('nails', id, { coverMediaId: cover.id }, writer),
+      ).rejects.toBeInstanceOf(UnprocessableEntityException);
+      expect(prisma.article.updateMany).not.toHaveBeenCalled();
+    });
+
+    it('removes the cover with null, without checking an image', async () => {
+      prisma.article.findFirst.mockResolvedValue(
+        row({ coverMediaId: cover.id, coverMedia: cover }),
+      );
+      prisma.article.updateMany.mockResolvedValue({ count: 1 });
+      prisma.article.findUniqueOrThrow.mockResolvedValue(row());
+      const result = await service.update('nails', id, { coverMediaId: null }, writer);
+      expect(prisma.media.findFirst).not.toHaveBeenCalled();
+      expect(prisma.article.updateMany).toHaveBeenCalledWith({
+        where: { id, siteId: 'nails' },
+        data: expect.objectContaining({ coverMediaId: null }),
+      });
+      expect(result.cover).toBeNull();
+    });
+
+    it("keeps body images of the site's library, drops another site's", async () => {
+      prisma.category.findFirst.mockResolvedValue({ id: categoryId });
+      prisma.article.create.mockResolvedValue({ id });
+      prisma.article.findUniqueOrThrow.mockResolvedValue(row());
+      const own = `https://cdn.test/media/nails/${cover.id}/640.webp`;
+      const other = `https://cdn.test/media/wine/${cover.id}/640.webp`;
+      await service.create(
+        'nails',
+        {
+          categoryId,
+          translations: [
+            {
+              ...translationInput('en'),
+              body: `<p>a</p><img src="${own}" /><img src="${other}" />`,
+            },
+          ],
+        },
+        writer,
+      );
+      const [data] = prisma.articleTranslation.createMany.mock.calls[0][0].data;
+      expect(data.body).toBe(`<p>a</p><img src="${own}" />`);
     });
   });
 

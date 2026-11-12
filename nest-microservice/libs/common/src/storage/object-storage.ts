@@ -40,6 +40,15 @@ export interface UploadRequest {
   size: number;
 }
 
+export interface PutRequest {
+  visibility: FileVisibility;
+  key: string;
+  contentType: string;
+  body: Uint8Array;
+  /** e.g. 'public, max-age=31536000, immutable' for objects that never change. */
+  cacheControl?: string;
+}
+
 export interface DownloadRequest {
   key: string;
   /** Name proposed to the browser (Content-Disposition). */
@@ -60,4 +69,9 @@ export interface ObjectStorage {
   createDownloadUrl(request: DownloadRequest): Promise<PresignedDownload>;
   /** Idempotent: deleting a missing object is not an error. */
   delete(visibility: FileVisibility, key: string): Promise<void>;
+  /**
+   * Writes bytes a SERVICE produced itself (e.g. an AI-generated image, ADR 0037). Files from
+   * users never go through a service: they use createUploadUrl (ADR 0014).
+   */
+  putObject(request: PutRequest): Promise<void>;
 }

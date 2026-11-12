@@ -1,10 +1,17 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { AUTH_JWKS, JETSTREAM, OutboxRelay } from '@app/common';
+import {
+  AUTH_JWKS,
+  InMemoryObjectStorage,
+  JETSTREAM,
+  OBJECT_STORAGE,
+  OutboxRelay,
+} from '@app/common';
 import { createLocalJWKSet, exportJWK, generateKeyPair, KeyLike, SignJWT } from 'jose';
 import { ContentServiceModule } from '../../src/content-service.module';
 import { PrismaService } from '../../src/prisma/prisma.service';
 import { configureApp } from '../../src/setup';
+import { AiResultsConsumer } from '../../src/ai-results/ai-results.consumer';
 import { createPrismaMock, PrismaMock } from './prisma-mock';
 
 /**
@@ -17,6 +24,8 @@ export interface TestApp {
   app: INestApplication;
   prisma: PrismaMock;
   outbox: { poke: jest.Mock; start: jest.Mock; stop: jest.Mock };
+  /** The media library's bucket: put() simulates a browser upload. */
+  storage: InMemoryObjectStorage;
   /** `Bearer <token>` for a caller with these content-api roles and group paths. */
   bearer(caller: TokenCaller): Promise<string>;
 }
@@ -34,6 +43,7 @@ export async function createTestApp(): Promise<TestApp> {
   const publicJwk = { ...(await exportJWK(pair.publicKey)), kid, alg: 'RS256' };
   const prisma = createPrismaMock();
   const outbox = { poke: jest.fn(), start: jest.fn(), stop: jest.fn() };
+  const storage = new InMemoryObjectStorage();
   const jetstream = { nc: { drain: jest.fn() }, js: { publish: jest.fn() }, jsm: {} };
 
   const moduleRef = await Test.createTestingModule({ imports: [ContentServiceModule] })
@@ -43,6 +53,11 @@ export async function createTestApp(): Promise<TestApp> {
     .useValue(jetstream)
     .overrideProvider(OutboxRelay)
     .useValue(outbox)
+    // The JetStream mock can't run a consumer: its handlers are unit-tested.
+    .overrideProvider(AiResultsConsumer)
+    .useValue({ onApplicationBootstrap: jest.fn(), onApplicationShutdown: jest.fn() })
+    .overrideProvider(OBJECT_STORAGE)
+    .useValue(storage)
     .overrideProvider(AUTH_JWKS)
     .useValue(createLocalJWKSet({ keys: [publicJwk] }))
     .compile();
@@ -65,7 +80,7 @@ export async function createTestApp(): Promise<TestApp> {
       .setExpirationTime('5m')
       .sign(signingKey)}`;
 
-  return { app, prisma, outbox, bearer };
+  return { app, prisma, outbox, storage, bearer };
 }
 
 /** The fixture callers as token claims (`sub` = AuthUser id). */

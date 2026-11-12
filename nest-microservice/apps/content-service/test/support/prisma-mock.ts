@@ -30,11 +30,40 @@ export function createPrismaMock() {
       deleteMany: jest.fn(),
       findUniqueOrThrow: jest.fn(),
     },
-    articleTranslation: { createMany: jest.fn(), deleteMany: jest.fn(), findUnique: jest.fn() },
+    articleTranslation: {
+      createMany: jest.fn(),
+      deleteMany: jest.fn(),
+      findUnique: jest.fn(),
+      count: jest.fn(),
+    },
     articleSlugRedirect: { createMany: jest.fn(), deleteMany: jest.fn(), findUnique: jest.fn() },
+    media: {
+      create: jest.fn(),
+      createMany: jest.fn(),
+      findFirst: jest.fn(),
+      findMany: jest.fn(),
+      count: jest.fn(),
+      updateMany: jest.fn(),
+      deleteMany: jest.fn(),
+    },
+    translationJob: {
+      create: jest.fn(),
+      findFirst: jest.fn(),
+      findMany: jest.fn(),
+      update: jest.fn(),
+    },
+    imageGenerationJob: {
+      create: jest.fn(),
+      findFirst: jest.fn(),
+      findUnique: jest.fn(),
+      findMany: jest.fn(),
+      update: jest.fn(),
+    },
+    inboxMessage: { createMany: jest.fn() },
     outboxMessage: { create: jest.fn() }, // addToOutbox (same transaction)
     $transaction: jest.fn(),
     $queryRaw: jest.fn(),
+    $executeRaw: jest.fn(),
   };
 }
 

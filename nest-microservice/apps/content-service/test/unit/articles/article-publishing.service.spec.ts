@@ -14,6 +14,7 @@ import {
   outboxSubjects,
   resetPrismaMock,
 } from '../../support/prisma-mock';
+import { mediaProviders } from '../../support/media';
 import { PrismaService } from '../../../src/prisma/prisma.service';
 import { SitesService } from '../../../src/sites/sites.service';
 import { ArticlePublishingService } from '../../../src/articles/article-publishing.service';
@@ -36,6 +37,7 @@ describe('[article-publishing.service] (unit)', () => {
         SitesService,
         { provide: PrismaService, useValue: prisma },
         { provide: OutboxRelay, useValue: outbox },
+        ...mediaProviders(),
       ],
     }).compile();
     service = moduleRef.get(ArticlePublishingService);

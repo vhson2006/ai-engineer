@@ -1,0 +1,69 @@
+// Schema of the ai-service database ("ai", ADR 0036). Only this service connects to it.
+// Connection settings for the CLI: ../prisma.config.ts. Runtime: src/prisma/prisma.module.ts.
+//
+//   npm run migration:dev:ai -- --name <change_name>
+//   npm run migration:run            # every service (prisma migrate deploy)
+//
+// No business data here: the requesters own what is translated (content-service owns articles).
+
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  moduleFormat    = "cjs"
+  previewFeatures = ["partialIndexes"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Inbox (ADR 0007): ids of the requests already processed, written in the SAME transaction as
+/// the result event (outbox). A redelivered request finds its id here and is only acked.
+model InboxMessage {
+  consumer    String   @db.VarChar(100)
+  messageId   String   @map("message_id") @db.VarChar(200)
+  subject     String   @db.VarChar(200)
+  processedAt DateTime @default(now()) @map("processed_at") @db.Timestamptz(3)
+
+  @@id([consumer, messageId], map: "pk_inbox_messages")
+  @@index([processedAt], map: "ix_inbox_messages_processed_at")
+  @@map("inbox_messages")
+}
+
+/// Outbox (ADR 0007): the result events, published to JetStream by the relay.
+model OutboxMessage {
+  /// Message id end to end: Nats-Msg-Id on the wire, inbox key in every consumer.
+  id          String    @id(map: "pk_outbox_messages") @db.Uuid
+  subject     String    @db.VarChar(200)
+  payload     Json
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  publishedAt DateTime? @map("published_at") @db.Timestamptz(3)
+  attempts    Int       @default(0)
+  lastError   String?   @map("last_error") @db.VarChar(500)
+
+  @@index([createdAt], map: "ix_outbox_messages_unpublished", where: raw("published_at IS NULL"))
+  @@map("outbox_messages")
+}
+
+/// One call to an AI provider: who asked, for which site, what it cost in tokens (budgets per
+/// site, the monthly bill). Never the prompt or the answer: they belong to the requester.
+model AiUsage {
+  id           String   @id(map: "pk_ai_usage") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// The request's job id (one row per successful or failed call).
+  jobId        String   @map("job_id") @db.Uuid
+  requester    String   @db.VarChar(50)
+  siteId       String   @map("site_id") @db.VarChar(50)
+  /// "translation" (later: "script", "caption", "speech"…)
+  task         String   @db.VarChar(30)
+  provider     String   @db.VarChar(30)
+  model        String   @db.VarChar(100)
+  /// ok | failed
+  outcome      String   @db.VarChar(20)
+  inputTokens  Int      @default(0) @map("input_tokens")
+  outputTokens Int      @default(0) @map("output_tokens")
+  durationMs   Int      @default(0) @map("duration_ms")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([siteId, createdAt], map: "ix_ai_usage_site_created")
+  @@map("ai_usage")
+}

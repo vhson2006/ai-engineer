@@ -74,10 +74,16 @@ async function main() {
 
     for (const template of LAUNDRY_TEMPLATES) {
       const existing = await prisma.articleTranslation.findFirst({
-        where: { siteId: SITE_ID, locale: 'vi', slug: template.slug.vi },
+        where: {
+          siteId: SITE_ID,
+          locale: 'vi',
+          slug: { in: [template.slug.vi, ...(template.formerSlugs ?? [])] },
+        },
       });
       const dto = {
         categoryId: categoryId(template.categoryKey),
+        // Templates use the site's own images only, never a cover from the media library.
+        coverMediaId: null,
         translations: translations(template),
       };
       const article = existing

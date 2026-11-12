@@ -19,6 +19,8 @@ COPY apps/notification-service/prisma.config.ts apps/notification-service/
 COPY apps/notification-service/prisma apps/notification-service/prisma
 COPY apps/content-service/prisma.config.ts apps/content-service/
 COPY apps/content-service/prisma apps/content-service/prisma
+COPY apps/ai-service/prisma.config.ts apps/ai-service/
+COPY apps/ai-service/prisma apps/ai-service/prisma
 RUN npm ci
 
 # ---- build every app (webpack bundles the app code and the generated Prisma client into dist/) --
@@ -64,6 +66,12 @@ COPY --from=build /app/dist/apps/content-service ./dist/apps/content-service
 EXPOSE 3003
 CMD ["node", "dist/apps/content-service/main"]
 
+# ---- ai-service (JetStream consumer + outbox, health on :3004; the only caller of AI providers) ----
+FROM runtime AS ai-service
+COPY --from=build /app/dist/apps/ai-service ./dist/apps/ai-service
+EXPOSE 3004
+CMD ["node", "dist/apps/ai-service/main"]
+
 # ---- migrate: prisma migrate deploy (needs the Prisma CLI, a dev dependency) --------------------
 # Also carries nats-setup (the one owner of the JetStream streams, ADR 0024): same image, the Job
 # `nats-setup` overrides the command.
@@ -73,5 +81,5 @@ COPY --from=build /app/dist/apps/nats-setup ./dist/apps/nats-setup
 # Numeric uid (= the image's "node" user): Kubernetes can only enforce runAsNonRoot with a
 # numeric USER ("node" → CreateContainerConfigError). Found by the local staging (ADR 0018).
 USER 1000:1000
-# Each service owns its database: deployment (DB_*), notification (NOTIFICATION_DB_*), content (CONTENT_DB_*).
-CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy --config apps/deployment-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/notification-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/content-service/prisma.config.ts"]
+# Each service owns its database: deployment (DB_*), notification (NOTIFICATION_DB_*), content (CONTENT_DB_*), ai (AI_DB_*).
+CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy --config apps/deployment-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/notification-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/content-service/prisma.config.ts && ./node_modules/.bin/prisma migrate deploy --config apps/ai-service/prisma.config.ts"]

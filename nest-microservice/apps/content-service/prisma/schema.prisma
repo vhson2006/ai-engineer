@@ -24,6 +24,7 @@ model Site {
   updatedAt     DateTime   @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
   categories    Category[]
   articles      Article[]
+  media         Media[]
 
   @@map("sites")
 }
@@ -57,26 +58,31 @@ model CategoryTranslation {
 }
 
 model Article {
-  id           String                @id(map: "pk_articles") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  siteId       String                @map("site_id") @db.VarChar(50)
-  site         Site                  @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_articles_site")
-  categoryId   String                @map("category_id") @db.Uuid
-  category     Category              @relation(fields: [categoryId], references: [id], onDelete: Restrict, map: "fk_articles_category")
+  id              String                @id(map: "pk_articles") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId          String                @map("site_id") @db.VarChar(50)
+  site            Site                  @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_articles_site")
+  categoryId      String                @map("category_id") @db.Uuid
+  category        Category              @relation(fields: [categoryId], references: [id], onDelete: Restrict, map: "fk_articles_category")
   /// draft | scheduled | published (ArticleStatus in libs/common)
-  status       String                @default("draft") @db.VarChar(20)
-  featured     Boolean               @default(false)
-  scheduledAt  DateTime?             @map("scheduled_at") @db.Timestamptz(6)
-  publishedAt  DateTime?             @map("published_at") @db.Timestamptz(6)
-  createdBy    String                @map("created_by") @db.VarChar(255)
-  updatedBy    String                @map("updated_by") @db.VarChar(255)
-  createdAt    DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt    DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
-  translations ArticleTranslation[]
-  redirects    ArticleSlugRedirect[]
+  status          String                @default("draft") @db.VarChar(20)
+  featured        Boolean               @default(false)
+  /// Cover image (media library of the same site); a used image can't be deleted.
+  coverMediaId    String?               @map("cover_media_id") @db.Uuid
+  coverMedia      Media?                @relation(fields: [coverMediaId], references: [id], onDelete: Restrict, map: "fk_articles_cover_media")
+  scheduledAt     DateTime?             @map("scheduled_at") @db.Timestamptz(6)
+  publishedAt     DateTime?             @map("published_at") @db.Timestamptz(6)
+  createdBy       String                @map("created_by") @db.VarChar(255)
+  updatedBy       String                @map("updated_by") @db.VarChar(255)
+  createdAt       DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  translations    ArticleTranslation[]
+  redirects       ArticleSlugRedirect[]
+  translationJobs TranslationJob[]
 
   @@index([siteId, status, publishedAt(sort: Desc)], map: "ix_articles_site_status_published")
   @@index([scheduledAt], map: "ix_articles_due", where: raw("(status)::text = 'scheduled'::text"))
   @@index([categoryId], map: "ix_articles_category_id")
+  @@index([coverMediaId], map: "ix_articles_cover_media_id")
   @@map("articles")
 }
 
@@ -114,6 +120,111 @@ model ArticleSlugRedirect {
   @@id([siteId, locale, slug], map: "pk_article_slug_redirects")
   @@index([articleId], map: "ix_article_slug_redirects_article_id")
   @@map("article_slug_redirects")
+}
+
+/// An image of a site's media library (ADR 0034), optimized by the admin's browser and uploaded
+/// straight to the PUBLIC bucket in several sizes: media/<site_id>/<id>/<width>.<ext>.
+/// pending until the service has checked every size in storage; pending rows older than a day
+/// are deleted with their objects (MediaCleanupService).
+model Media {
+  id              String              @id(map: "pk_media") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId          String              @map("site_id") @db.VarChar(50)
+  site            Site                @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_media_site")
+  /// pending | ready | failed (an AI image that could not be made, ADR 0037)
+  status          String              @default("pending") @db.VarChar(20)
+  /// upload (the admin's browser, ADR 0034) | ai (ai-service, ADR 0037)
+  source          String              @default("upload") @db.VarChar(20)
+  /// source ai: the description it was generated from
+  prompt          String?             @db.VarChar(1000)
+  generationJobId String?             @map("generation_job_id") @db.Uuid
+  generationJob   ImageGenerationJob? @relation(fields: [generationJobId], references: [id], onDelete: SetNull, map: "fk_media_generation_job")
+  /// status failed: why (provider_refused, provider_unavailable…)
+  error           String?             @db.VarChar(50)
+  filename        String              @db.VarChar(200)
+  contentType     String              @map("content_type") @db.VarChar(50)
+  /// The largest size
+  width           Int
+  height          Int
+  /// Every size: [{ width, height, size }], widest last
+  variants        Json
+  createdBy       String              @map("created_by") @db.VarChar(255)
+  createdAt       DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  uploadedAt      DateTime?           @map("uploaded_at") @db.Timestamptz(6)
+  covers          Article[]
+
+  @@index([siteId, status, createdAt(sort: Desc)], map: "ix_media_site_status_created")
+  @@index([status, createdAt], map: "ix_media_pending", where: raw("(status)::text = 'pending'::text"))
+  @@index([generationJobId], map: "ix_media_generation_job_id")
+  @@map("media")
+}
+
+/// One request for AI images (ADR 0037): its `count` pending media rows are filled by ai-service.
+/// Never deleted: the monthly quota per site sums these (an image deleted later still counted).
+model ImageGenerationJob {
+  id          String    @id(map: "pk_image_generation_jobs") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId      String    @map("site_id") @db.VarChar(50)
+  prompt      String    @db.VarChar(1000)
+  aspectRatio String    @map("aspect_ratio") @db.VarChar(10)
+  /// Images asked for
+  count       Int
+  /// pending | completed | failed
+  status      String    @default("pending") @db.VarChar(20)
+  /// Images actually made (known once answered): the quota counts these, else `count`
+  generated   Int?
+  provider    String?   @db.VarChar(30)
+  model       String?   @db.VarChar(100)
+  /// failed: a TranslationFailure-like reason
+  error       String?   @db.VarChar(50)
+  createdBy   String    @map("created_by") @db.VarChar(255)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  completedAt DateTime? @map("completed_at") @db.Timestamptz(6)
+  media       Media[]
+
+  @@index([siteId, createdAt(sort: Desc)], map: "ix_image_generation_jobs_site_created")
+  @@map("image_generation_jobs")
+}
+
+/// A machine translation of an article (ADR 0036): requested here (outbox), done by ai-service,
+/// its result written back as a DRAFT translation by AiResultsConsumer.
+model TranslationJob {
+  id           String    @id(map: "pk_translation_jobs") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId       String    @map("site_id") @db.VarChar(50)
+  articleId    String    @map("article_id") @db.Uuid
+  article      Article   @relation(fields: [articleId], references: [id], onDelete: Cascade, map: "fk_translation_jobs_article")
+  sourceLocale String    @map("source_locale") @db.VarChar(10)
+  targetLocale String    @map("target_locale") @db.VarChar(10)
+  /// Replace an existing translation of targetLocale (asked explicitly).
+  overwrite    Boolean   @default(false)
+  /// pending | completed | failed
+  status       String    @default("pending") @db.VarChar(20)
+  /// The source language as sent (fields + body): the answer is put back into exactly this.
+  source       Json
+  /// failed: a TranslationFailure or a local reason (article_not_draft, translation_exists…)
+  error        String?   @db.VarChar(50)
+  detail       String?   @db.VarChar(300)
+  /// completed: [{ index, kind, text }] segments a reviewer should check (numbers, markup changed)
+  warnings     Json?
+  provider     String?   @db.VarChar(30)
+  model        String?   @db.VarChar(100)
+  createdBy    String    @map("created_by") @db.VarChar(255)
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  completedAt  DateTime? @map("completed_at") @db.Timestamptz(6)
+
+  @@index([articleId, createdAt(sort: Desc)], map: "ix_translation_jobs_article_created")
+  @@map("translation_jobs")
+}
+
+/// Inbox (ADR 0007): ids of the events this service consumed (ai-service answers), written in
+/// the SAME transaction as their effect.
+model InboxMessage {
+  consumer    String   @db.VarChar(100)
+  messageId   String   @map("message_id") @db.VarChar(200)
+  subject     String   @db.VarChar(200)
+  processedAt DateTime @default(now()) @map("processed_at") @db.Timestamptz(3)
+
+  @@id([consumer, messageId], map: "pk_inbox_messages")
+  @@index([processedAt], map: "ix_inbox_messages_processed_at")
+  @@map("inbox_messages")
 }
 
 model OutboxMessage {

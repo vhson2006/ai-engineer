@@ -1,5 +1,6 @@
 export * from './auth';
 export * from './constants/clients';
+export * from './contracts/ai';
 export * from './contracts/content';
 export * from './contracts/deployment';
 export * from './contracts/file';

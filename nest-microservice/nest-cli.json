@@ -37,6 +37,15 @@
         "tsConfigPath": "apps/content-service/tsconfig.app.json"
       }
     },
+    "ai-service": {
+      "type": "application",
+      "root": "apps/ai-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/ai-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/ai-service/tsconfig.app.json"
+      }
+    },
     "nats-setup": {
       "type": "application",
       "root": "apps/nats-setup",

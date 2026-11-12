@@ -76,6 +76,55 @@ describe('[article-html] (unit)', () => {
     }
   });
 
+  describe('images of the media library (ADR 0034)', () => {
+    const media = 'https://cdn.example.com/media/nails/';
+    const id = '7d0c4f3e-1b2a-4c5d-8e9f-0a1b2c3d4e5f';
+    const url = (width: number, site = 'nails') =>
+      `https://cdn.example.com/media/${site}/${id}/${width}.webp`;
+
+    it("keeps an image of the site's library with its srcset and sizes", () => {
+      const html = `<figure><img src="${url(1280)}" alt="a" width="1280" height="853" srcset="${url(640)} 640w, ${url(1280)} 1280w" sizes="(min-width: 768px) 50vw, 100vw" /></figure>`;
+      expect(sanitizeArticleHtml(html, media)).toBe(html);
+    });
+
+    it('removes images of another site, another host, or other paths of the bucket', () => {
+      for (const src of [
+        url(640, 'wine'),
+        `https://evil.dev/media/nails/${id}/640.webp`,
+        `${media}${id}/640.svg`,
+        `${media}${id}/../../wine/${id}/640.webp`,
+        `${media}x/640.webp`,
+      ]) {
+        expect(sanitizeArticleHtml(`<p>t<img src="${src}" alt="x" /></p>`, media)).toBe('<p>t</p>');
+      }
+    });
+
+    it('without the prefix (no media library), library images are removed', () => {
+      expect(sanitizeArticleHtml(`<p>t<img src="${url(640)}" /></p>`)).toBe('<p>t</p>');
+    });
+
+    it('keeps only the srcset candidates of the library; sizes only with a srcset', () => {
+      expect(
+        sanitizeArticleHtml(
+          `<img src="${url(1280)}" srcset="https://evil.dev/x.webp 640w, ${url(1280)} 1280w, ${url(640)} 2x" sizes="100vw" />`,
+          media,
+        ),
+      ).toBe(`<img src="${url(1280)}" srcset="${url(1280)} 1280w" sizes="100vw" />`);
+      expect(
+        sanitizeArticleHtml(
+          `<img src="/images/a.jpg" srcset="/images/b.jpg 640w" sizes="100vw" />`,
+          media,
+        ),
+      ).toBe('<img src="/images/a.jpg" />');
+      expect(
+        sanitizeArticleHtml(
+          `<img src="${url(640)}" srcset="${url(640)} 640w" sizes="url(x);" />`,
+          media,
+        ),
+      ).toBe(`<img src="${url(640)}" srcset="${url(640)} 640w" />`);
+    });
+  });
+
   it('text: block boundaries become spaces, entities count as one character', () => {
     expect(htmlText('<p>a</p><p>b&amp;c&nbsp;d</p>')).toBe('a bxc d');
   });
