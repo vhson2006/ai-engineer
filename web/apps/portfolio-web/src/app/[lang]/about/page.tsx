@@ -4,7 +4,7 @@ import { Reveal } from '@web/ui/reveal';
 import { format } from '@web/core/i18n/format';
 import { profile } from '@/content/profile';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { JsonLd } from '@/components/json-ld';
+import { JsonLd } from '@web/ui/json-ld';
 import { inkLink, SectionHeading } from '@/features/editorial/section-heading';
 import { SelectedWork } from '@/features/resume/selected-work';
 import { publicPageMetadata, structuredData } from '@/seo';

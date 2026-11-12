@@ -1,6 +1,6 @@
 # 0020. Languages: sub-path routing and JSON dictionaries, without an i18n library
 
-- **Status:** Accepted
+- **Status:** Accepted; for the public sites the browser language is no longer used (0038)
 - **Date:** 2026-11-07
 - **Related:** 0016, 0019, `web/.claude/rules/i18n.md`, `web/packages/core/src/i18n/`,
   `web/apps/portfolio-web/src/i18n/`

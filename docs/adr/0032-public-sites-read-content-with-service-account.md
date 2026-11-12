@@ -1,6 +1,6 @@
 # 0032. Public sites read their published content with their own service account
 
-- **Status:** Accepted, implemented for laundry-web in dev (2026-11-11)
+- **Status:** Accepted, implemented for laundry-web (2026-11-11), nails-web and wine-web (2026-11-12) in dev
 - **Date:** 2026-11-11
 - **Related:** 0002, 0003, 0010, 0025 (realms per site, later), 0026, 0028 (site groups), 0031,
   `web/packages/core/src/auth/service-token.ts`, `web/packages/core/src/api/site-fetch.ts`

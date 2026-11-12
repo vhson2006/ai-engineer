@@ -31,6 +31,8 @@
   --gold-light: #f7d77a;
   --gold-text: #9a6b07;
   --deep: #3f0a0d;
+  /* The sticky header's height (site-header.tsx). */
+  --header-h: 4.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -64,8 +66,13 @@
   --font-display: var(--font-display-serif);
 }
 
-section[id] {
-  scroll-margin-top: 6rem;
+/* A section reached from the menu starts right under the sticky header (fixed height + its 1 px
+   border); the section's own padding is the breathing room. In @layer base so a utility still
+   overrides it (the hero's scroll-mt-[100vh]: Home = top of page). */
+@layer base {
+  section[id] {
+    scroll-margin-top: calc(var(--header-h) + 1px);
+  }
 }
 
 /* Gold foil text, like the logo lettering on the labels. */

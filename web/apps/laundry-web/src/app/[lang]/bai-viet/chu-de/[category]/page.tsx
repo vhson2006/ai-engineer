@@ -5,7 +5,7 @@ import { Container } from '@web/ui';
 import { ArticleGrid } from '@/features/articles/article-card';
 import { ArticlesHeader } from '@/features/articles/articles-header';
 import { articlePaths, listArticles, listTopics, topicBySlug, topicSlugInLocale } from '@/features/articles/data';
-import { articlesMetadata } from '@/features/articles/metadata';
+import { pageMetadata } from '@/seo';
 import { href, isLocale } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 
@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/bai-viet/c
   const [{ category: segment }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
   const topic = await topicBySlug(locale, segment);
   if (!topic) return {};
-  return articlesMetadata({
+  return pageMetadata({
+    t,
     locale,
     paths: Object.fromEntries(Object.entries(topic.slugs).map(([code, slug]) => [code, articlePaths.topic(slug)])),
     title: format(t.articles.categoryTitle, { category: topic.name }),

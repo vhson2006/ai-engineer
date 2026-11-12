@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { Container, buttonVariants, cn } from '@web/ui';
 import { Reveal } from '@web/ui/reveal';
-import { JsonLd } from '@/components/json-ld';
+import { JsonLd } from '@web/ui/json-ld';
 import { profile } from '@/content/profile';
 import { inkLink, SectionHeading } from '@/features/editorial/section-heading';
 import { ArchitectureDiagram } from '@/features/home/architecture-diagram';

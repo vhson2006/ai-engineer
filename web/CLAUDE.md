@@ -8,7 +8,7 @@ storage); paths here are relative to `web/`, except `k8s/...` and `docs/adr/...`
 |---|---|---|
 | `apps/portfolio-web/` | User site (www.*) | its `CLAUDE.md` |
 | `apps/admin-web/` | Admin site (admin.*): admins + OTP | its `CLAUDE.md` |
-| `apps/nails-web/`, `apps/wine-web/`, `apps/laundry-web/` | Client sites: hard-coded data and sample articles until they read the API, no sign-in, not deployed | their `CLAUDE.md` |
+| `apps/nails-web/`, `apps/wine-web/`, `apps/laundry-web/` | Client sites: hard-coded facts, articles from the API (each with its own service account); no sign-in, not deployed | their `CLAUDE.md` |
 | `packages/core/` (`@web/core`) | API client, sessions/OIDC + `/auth/*` handlers, CSRF, CSP, rate limits, Server Action helpers, uploads, i18n | rules below |
 | `packages/ui/` (`@web/ui`) | Design system (ADR 0022): one component per file, tokens in `theme.css` | `.claude/rules/ui.md` |
 

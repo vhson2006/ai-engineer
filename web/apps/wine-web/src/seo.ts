@@ -1,73 +1,116 @@
 import type { Metadata } from 'next';
 import { localizedPath } from '@web/core/i18n/paths';
-import { localizedAlternates } from '@web/core/i18n/seo';
-import { winery } from '@/content/winery';
-import { LOCALE_CODES, LOCALES, type Locale } from '@/i18n/locales';
+import { localizedPageMetadata, type PreviewImage } from '@web/core/i18n/seo';
+import { mapsHref, winery } from '@/content/winery';
+import { DEFAULT_LOCALE, LOCALE_CODES, LOCALES, type Locale } from '@/i18n/locales';
+import type { Messages } from '@/i18n/messages';
 import { SITE_URL } from '@/site';
 
+export type { PreviewImage };
+
 /**
- * Full metadata of a public page (ADR 0021): title, description, canonical + hreflang, Open Graph
- * and Twitter card. A page's `openGraph` REPLACES the layout's (no deep merge), so it is always
- * built complete here. Images come from the nearest opengraph-image.tsx (file convention).
+ * The link preview of every page without its own image: the brand card drawn per language by
+ * src/app/og/[image]/route.ts (a route, not opengraph-image.tsx: a file-based image would
+ * override an article's cover). An article without a cover gets its own card (articlePreview).
  */
-export function publicPageMetadata({
-  locale,
-  path,
-  title,
-  description,
-  article,
-}: {
-  locale: Locale;
-  path: string;
-  /** Page title; omitted on the home page (the layout's default title is used). */
-  title?: string;
-  description: string;
-  /** Article pages: Open Graph type `article` with its dates and section. */
-  article?: { publishedTime: string; section: string };
-}): Metadata {
-  const fullTitle = title ? `${title} · ${winery.name}` : winery.name;
-  return {
-    ...(title ? { title } : {}),
-    description,
-    alternates: localizedAlternates(LOCALE_CODES, locale, path),
-    openGraph: {
-      ...(article ? { type: 'article', publishedTime: article.publishedTime, section: article.section } : { type: 'website' }),
-      siteName: winery.name,
-      title: fullTitle,
-      description,
-      url: localizedPath(locale, path),
-      locale: ogLocale(locale),
-      alternateLocale: LOCALE_CODES.filter((code) => code !== locale).map(ogLocale),
-    },
-    twitter: { card: 'summary_large_image', title: fullTitle, description },
-  };
+export function defaultPreview(t: Messages, locale: Locale): PreviewImage {
+  return { url: `/og/${locale}.png`, width: 1200, height: 630, alt: t.meta.title };
 }
 
-/** 'vi' → 'vi_VN' (Open Graph wants language_TERRITORY). */
-export function ogLocale(locale: Locale): string {
-  return LOCALES[locale].intl.replace('-', '_');
+/** An article's card (topic + title on the brand card): src/app/og/bai-viet/[lang]/[image]/route.ts. */
+export function articlePreview(locale: Locale, slug: string, title: string): PreviewImage {
+  return { url: `/og/bai-viet/${locale}/${slug}.png`, width: 1200, height: 630, alt: title };
+}
+
+const INTL = Object.fromEntries(LOCALE_CODES.map((code) => [code, LOCALES[code].intl])) as Record<Locale, string>;
+
+/**
+ * Full metadata of a public page (ADR 0021): canonical + hreflang (+ x-default), Open Graph and
+ * the Twitter/X card (localizedPageMetadata). `paths`: the page's path in each language that has it.
+ */
+export function pageMetadata({
+  t,
+  locale,
+  paths,
+  title,
+  description,
+  image,
+  article,
+}: {
+  t: Messages;
+  locale: Locale;
+  paths: Partial<Record<Locale, string>>;
+  /** Omitted on the home page (the layout's default title). */
+  title?: string;
+  description: string;
+  /** Else the site's preview card. */
+  image?: PreviewImage;
+  article?: { publishedTime: string };
+}): Metadata {
+  return localizedPageMetadata({
+    locale,
+    intl: INTL,
+    defaultLocale: DEFAULT_LOCALE,
+    paths,
+    siteName: winery.name,
+    title,
+    fullTitle: title ? `${title} · ${winery.name}` : t.meta.title,
+    description,
+    image: image ?? defaultPreview(t, locale),
+    article,
+  });
+}
+
+/** The same path in every language. */
+export function samePath(path: string): Record<Locale, string> {
+  return Object.fromEntries(LOCALE_CODES.map((code) => [code, path])) as Record<Locale, string>;
 }
 
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE_URL).href;
 }
 
-/** schema.org graph (JSON-LD) of the company, extended with an Article on article pages. */
+/**
+ * schema.org graph (JSON-LD): the winery (name, address, phones, map, Zalo) and the website on the
+ * home page, extended with an Article on article pages. Only facts shown on the site
+ * (src/content/winery.ts); stable @ids so pages refer to the same organization.
+ */
 export function structuredData(
+  t: Messages,
   locale: Locale,
   page?: { article: { path: string; title: string; description: string; image: string; publishedAt: string } },
 ) {
   const organization = {
-    '@type': 'Organization',
+    '@type': 'Winery',
     '@id': absoluteUrl('/#organization'),
     name: winery.fullName,
     alternateName: winery.name,
+    description: t.meta.description,
     url: absoluteUrl(localizedPath(locale, '/')),
+    logo: absoluteUrl('/icon.svg'),
+    image: [absoluteUrl(defaultPreview(t, locale).url), absoluteUrl('/images/storefront.jpg')],
     foundingDate: String(winery.since),
-    telephone: winery.orderPhone.display,
-    address: { '@type': 'PostalAddress', streetAddress: winery.addressLines.join(', '), addressCountry: 'VN' },
+    telephone: winery.orderPhone.href.replace('tel:', ''),
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: winery.addressLines[0],
+      addressLocality: 'Bến Lức',
+      addressRegion: 'Long An',
+      addressCountry: 'VN',
+    },
+    hasMap: mapsHref,
+    currenciesAccepted: 'VND',
+    sameAs: [winery.zalo.href],
   };
-  const graph: object[] = [organization];
+  const website = {
+    '@type': 'WebSite',
+    '@id': absoluteUrl('/#website'),
+    url: absoluteUrl(localizedPath(locale, '/')),
+    name: winery.name,
+    inLanguage: LOCALES[locale].intl,
+    publisher: { '@id': organization['@id'] },
+  };
+  const graph: object[] = [website, organization];
   if (page) {
     const url = absoluteUrl(localizedPath(locale, page.article.path));
     graph.push({

@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { format } from '@web/core/i18n/format';
-import { localizedPath } from '@web/core/i18n/paths';
 import { SmoothScroll } from '@web/ui/smooth-scroll';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
@@ -12,6 +11,7 @@ import { QuickBookingBar } from '@/features/booking/quick-bar';
 import { LOCALE_CODES, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 import { formatPrice } from '@/lib/format';
+import { pageMetadata, samePath } from '@/seo';
 import { SITE_URL } from '@/site';
 import '../globals.css';
 
@@ -27,18 +27,14 @@ export function generateStaticParams() {
   return LOCALE_CODES.map((lang) => ({ lang }));
 }
 
+/** The home page's metadata, and the defaults of every page (absolute URLs from SITE_URL). */
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return {
-    // Absolute URLs for the link preview image (app/[lang]/opengraph-image.tsx).
     metadataBase: new URL(SITE_URL),
-    title: { default: t.meta.title, template: `%s · ${salon.name}` },
-    description: t.meta.description,
-    applicationName: salon.name,
-    alternates: {
-      canonical: localizedPath(locale, '/'),
-      languages: Object.fromEntries(LOCALE_CODES.map((code) => [code, localizedPath(code, '/')])),
-    },
+    ...pageMetadata({ t, locale, paths: samePath('/'), description: t.meta.description }),
+    title: { default: t.meta.title, template: `%s · ${salon.fullName}` },
+    applicationName: salon.fullName,
     formatDetection: { telephone: false, address: false, email: false },
   };
 }

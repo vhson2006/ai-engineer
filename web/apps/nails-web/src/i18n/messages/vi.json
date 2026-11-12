@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Envy Nails Spa of Wendell · Tiệm nail tại Wendell, NC",
-    "description": "Envy Nails Spa of Wendell, 2241 Treelight Way, Wendell, NC: manicure, pedicure đặc biệt, acrylic, nhúng bột, Gel-X, nail art và waxing. Đặt lịch online hoặc gọi (919) 366-6435."
+    "description": "Envy Nails Spa of Wendell, 2241 Treelight Way, Wendell, NC: manicure, pedicure đặc biệt, acrylic, nhúng bột, Gel-X, nail art và waxing. Đặt lịch online hoặc gọi (919) 366-6435.",
+    "ogImageAlt": "Envy Nails Spa of Wendell: chữ ENVY bên bốn mẫu nail trên các ô màu pastel"
   },
   "common": {
     "skipToContent": "Chuyển đến nội dung",
@@ -18,6 +19,7 @@
     "home": "Trang chủ Envy Nail Spa",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
+    "top": "Trang chủ",
     "gallery": "Mẫu nail",
     "artists": "Nghệ nhân",
     "menu": "Bảng giá",
@@ -646,7 +648,8 @@
   "footer": {
     "tagline": "Dịch vụ làm móng sạch sẽ, chuyên nghiệp, chất lượng cao tại Wendell, North Carolina.",
     "explore": "Khám phá",
-    "rights": "© {year} {name}. Bảo lưu mọi quyền."
+    "rights": "© {year} {name}. Bảo lưu mọi quyền.",
+    "legal": "Thông tin pháp lý"
   },
   "articles": {
     "eyebrow": "Blog",
@@ -658,11 +661,6 @@
     "breadcrumb": "Đường dẫn",
     "all": "Tất cả",
     "categoriesLabel": "Chủ đề",
-    "categories": {
-      "care": "Chăm sóc móng",
-      "services": "Dịch vụ",
-      "salon": "Tại tiệm"
-    },
     "categoryTitle": "{category}",
     "categoryDescription": "Các bài viết về {category} từ Envy Nails Spa of Wendell.",
     "featured": "Nổi bật",
@@ -676,11 +674,243 @@
     "empty": "Chủ đề này chưa có bài viết.",
     "ctaTitle": "Sẵn sàng làm móng mới?",
     "ctaText": "Đặt lịch trực tuyến trong một phút, hoặc gọi tiệm khi đi theo nhóm hay có yêu cầu riêng.",
-    "sample": "Bài viết mẫu để duyệt giao diện, viết từ bảng dịch vụ, phần hỏi đáp và quy định của tiệm, cho tới khi tiệm đăng bài của mình."
+    "none": "Chưa có bài viết nào được đăng."
   },
   "notFound": {
     "title": "Không tìm thấy trang",
     "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
     "back": "Về trang chủ"
+  },
+  "legal": {
+    "effective": "Ngày hiệu lực: {date}",
+    "contents": "Mục lục",
+    "related": "Xem thêm",
+    "links": {
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản dịch vụ"
+    },
+    "privacy": {
+      "title": "Chính sách bảo mật",
+      "description": "Cách Envy Nails Spa of Wendell thu thập, sử dụng, chia sẻ và bảo vệ thông tin cá nhân của bạn, và các lựa chọn của bạn.",
+      "intro": "Tại {name}, chúng tôi cam kết bảo vệ quyền riêng tư và giữ an toàn cho thông tin cá nhân của bạn. Chính sách bảo mật này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin bạn cung cấp khi dùng website, đặt lịch trực tuyến và dịch vụ tại tiệm. Bản tiếng Việt là bản dịch để bạn tham khảo; nếu có khác biệt, bản tiếng Anh là bản chính thức.",
+      "sections": [
+        {
+          "id": "information-we-collect",
+          "title": "Thông tin chúng tôi thu thập",
+          "paragraphs": [
+            "Thông tin cá nhân: khi bạn đặt lịch hoặc liên hệ {name}, chúng tôi có thể thu thập thông tin cá nhân bạn tự nguyện cung cấp, như họ tên, địa chỉ email, số điện thoại và mọi thông tin khác bạn chọn chia sẻ với chúng tôi.",
+            "Thông tin sử dụng: chúng tôi cũng có thể thu thập thông tin không mang tính cá nhân về cách bạn sử dụng dịch vụ, gồm thông tin thiết bị, dữ liệu sử dụng và dữ liệu phân tích."
+          ],
+          "items": []
+        },
+        {
+          "id": "use-of-information",
+          "title": "Cách chúng tôi sử dụng thông tin",
+          "paragraphs": [
+            "Chúng tôi có thể sử dụng thông tin cá nhân bạn cung cấp cho các mục đích sau:"
+          ],
+          "items": [
+            "Cung cấp dịch vụ cho bạn, gồm đặt và quản lý lịch hẹn tại {name}.",
+            "Liên lạc với bạn và trả lời câu hỏi, góp ý hoặc yêu cầu hỗ trợ của bạn.",
+            "Cá nhân hoá trải nghiệm và cải thiện dịch vụ của chúng tôi.",
+            "Gửi bạn thông tin cập nhật quan trọng, thông báo và tin tiếp thị liên quan đến {name}, chỉ khi bạn đã đồng ý nhận."
+          ]
+        },
+        {
+          "id": "data-security",
+          "title": "Bảo mật dữ liệu",
+          "paragraphs": [
+            "Chúng tôi áp dụng các biện pháp phù hợp để bảo vệ thông tin cá nhân của bạn khỏi việc truy cập, tiết lộ, thay đổi hoặc phá huỷ trái phép. Chúng tôi dùng các công nghệ và quy trình bảo mật theo chuẩn ngành để giữ an toàn dữ liệu của bạn."
+          ],
+          "items": []
+        },
+        {
+          "id": "data-retention",
+          "title": "Thời gian lưu giữ dữ liệu",
+          "paragraphs": [
+            "Chúng tôi lưu giữ thông tin cá nhân của bạn trong thời gian cần thiết để thực hiện các mục đích nêu trong Chính sách bảo mật này, trừ khi pháp luật yêu cầu hoặc cho phép lưu lâu hơn."
+          ],
+          "items": []
+        },
+        {
+          "id": "third-party-services",
+          "title": "Dịch vụ của bên thứ ba",
+          "paragraphs": [
+            "{name} có thể tích hợp dịch vụ của bên thứ ba hoặc đặt liên kết đến website, ứng dụng bên ngoài. Chính sách bảo mật này không áp dụng cho cách các bên thứ ba đó xử lý dữ liệu. Bạn nên đọc chính sách bảo mật của mọi dịch vụ hoặc website bên thứ ba mà bạn sử dụng.",
+            "Trên website này, bản đồ do Google Maps cung cấp, còn đặt lịch trực tuyến mở một trang do nhà cung cấp hệ thống đặt lịch của tiệm vận hành: chính sách bảo mật của họ áp dụng tại đó."
+          ],
+          "items": []
+        },
+        {
+          "id": "childrens-privacy",
+          "title": "Quyền riêng tư của trẻ em",
+          "paragraphs": [
+            "Dịch vụ trực tuyến của chúng tôi không dành cho người dưới 13 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân của trẻ em. Nếu bạn cho rằng chúng tôi đã vô tình thu thập thông tin của một trẻ em, vui lòng liên hệ ngay với chúng tôi."
+          ],
+          "items": []
+        },
+        {
+          "id": "changes",
+          "title": "Thay đổi chính sách này",
+          "paragraphs": [
+            "Chúng tôi có thể cập nhật Chính sách bảo mật này theo thời gian. Mọi thay đổi có hiệu lực khi chúng tôi đăng bản sửa đổi trên website này. Bạn nên xem lại chính sách này định kỳ."
+          ],
+          "items": []
+        },
+        {
+          "id": "your-choices",
+          "title": "Lựa chọn của bạn",
+          "paragraphs": [],
+          "items": [
+            "Truy cập và chỉnh sửa: bạn có thể yêu cầu xem và chỉnh sửa thông tin cá nhân của mình.",
+            "Từ chối nhận tin: bạn có thể ngừng nhận tin tiếp thị bằng cách làm theo hướng dẫn huỷ đăng ký trong các tin đó.",
+            "Cookie: bạn có thể quản lý cookie trong phần cài đặt của trình duyệt. Tuy nhiên, tắt cookie có thể ảnh hưởng đến trải nghiệm của bạn trên website."
+          ]
+        },
+        {
+          "id": "sharing-policy",
+          "title": "Chính sách chia sẻ",
+          "paragraphs": [
+            "Tất cả các loại thông tin nêu trên không bao gồm dữ liệu và sự đồng ý nhận tin nhắn SMS; thông tin này sẽ không được chia sẻ với bên thứ ba.",
+            "Chia sẻ dữ liệu đăng ký SMS: chúng tôi không chia sẻ dữ liệu đăng ký SMS của bạn với bên thứ ba cho mục đích không liên quan đến việc cung cấp dịch vụ. Trạng thái đăng ký SMS của bạn chỉ có thể được chia sẻ với các bên giúp chúng tôi gửi tin, như nhà cung cấp nền tảng, nhà mạng và đơn vị gửi tin nhắn."
+          ],
+          "items": []
+        },
+        {
+          "id": "contact-us",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "Nếu bạn có câu hỏi, thắc mắc hoặc yêu cầu về Chính sách bảo mật này hay cách chúng tôi xử lý dữ liệu, vui lòng gọi {phone} hoặc ghé tiệm tại {address}."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "title": "Điều khoản dịch vụ",
+      "description": "Điều khoản về đặt lịch, liên lạc của tiệm và chương trình tin nhắn SMS của Envy Nails Spa of Wendell.",
+      "intro": "Chào mừng bạn đến với {name}. Điều khoản dịch vụ này áp dụng cho việc bạn sử dụng dịch vụ của chúng tôi, gồm đặt lịch hẹn, liên lạc của tiệm và các dịch vụ thanh toán tại quầy (POS) liên quan. Bản tiếng Việt là bản dịch để bạn tham khảo; nếu có khác biệt, bản tiếng Anh là bản chính thức.",
+      "sections": [
+        {
+          "id": "introduction",
+          "title": "Giới thiệu",
+          "paragraphs": [
+            "Khi sử dụng dịch vụ của chúng tôi, bạn đồng ý với Điều khoản dịch vụ này. Nếu không đồng ý, vui lòng không sử dụng các dịch vụ liên quan."
+          ],
+          "items": []
+        },
+        {
+          "id": "appointments",
+          "title": "Đặt lịch và liên lạc về dịch vụ",
+          "paragraphs": [
+            "{name} có thể dùng thông tin liên lạc bạn cung cấp để quản lý lịch hẹn, báo thay đổi lịch hẹn, trả lời câu hỏi và gửi thông tin về dịch vụ bạn yêu cầu.",
+            "Bạn có trách nhiệm cung cấp thông tin liên lạc chính xác và báo cho chúng tôi khi thông tin đó thay đổi."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-programs",
+          "title": "Chương trình tin nhắn SMS",
+          "paragraphs": [
+            "{name} có các chương trình tin nhắn SMS không bắt buộc, có thể gồm:"
+          ],
+          "items": [
+            "Tin nhắn giao dịch: xác nhận lịch hẹn, nhắc lịch hẹn, thay đổi lịch hẹn và thông báo liên quan đến dịch vụ POS hoặc các giao dịch khác.",
+            "Tin nhắn tiếp thị: khuyến mãi, ưu đãi đặc biệt, giảm giá và các thông tin tiếp thị khác."
+          ]
+        },
+        {
+          "id": "sms-consent",
+          "title": "Đồng ý nhận tin nhắn",
+          "paragraphs": [
+            "Khi cung cấp số điện thoại và chọn ô đồng ý nhận SMS tương ứng, bạn đồng ý nhận loại tin nhắn đó từ {name}.",
+            "Đồng ý nhận SMS tiếp thị và đồng ý nhận SMS giao dịch là riêng biệt và không bắt buộc. Bạn có thể đồng ý một loại mà không đồng ý loại kia. Việc đồng ý nhận tin tiếp thị không phải là điều kiện để mua hàng hay sử dụng dịch vụ."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-frequency",
+          "title": "Tần suất và cước phí tin nhắn",
+          "paragraphs": [
+            "Số lượng tin nhắn có thể thay đổi tuỳ theo lịch hẹn, giao dịch và lựa chọn liên lạc của bạn. Có thể phát sinh cước tin nhắn và dữ liệu theo nhà mạng và gói cước di động của bạn."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-opt-out",
+          "title": "Cách ngừng nhận tin",
+          "paragraphs": [
+            "Bạn có thể ngừng nhận tin nhắn SMS bất cứ lúc nào bằng cách trả lời STOP. Sau khi ngừng, bạn có thể nhận một tin xác nhận, và chúng tôi sẽ ngừng gửi loại tin nhắn tương ứng, trừ trường hợp pháp luật cho phép khác.",
+            "Cần hỗ trợ, hãy trả lời HELP hoặc gọi {name} theo số {phone}."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-carriers",
+          "title": "Nhà mạng tham gia",
+          "paragraphs": [
+            "Nhà mạng không chịu trách nhiệm về tin nhắn bị chậm hoặc không được gửi tới. Việc gửi tin có thể phụ thuộc vào nhà mạng, tình trạng mạng và các yếu tố khác ngoài tầm kiểm soát của chúng tôi."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-privacy",
+          "title": "Bảo mật thông tin SMS",
+          "paragraphs": [
+            "Hồ sơ đồng ý và thông tin đăng ký SMS sẽ không được bán hoặc chia sẻ cho bên thứ ba dùng vào mục đích tiếp thị của họ. Các thông tin này có thể được chia sẻ với nhà cung cấp dịch vụ, nền tảng nhắn tin và nhà mạng khi cần để gửi tin và vận hành dịch vụ. Để biết thêm, vui lòng xem Chính sách bảo mật của chúng tôi."
+          ],
+          "items": []
+        },
+        {
+          "id": "privacy-policy",
+          "title": "Chính sách bảo mật",
+          "paragraphs": [
+            "Việc bạn sử dụng dịch vụ của chúng tôi cũng tuân theo Chính sách bảo mật, trong đó giải thích cách chúng tôi thu thập, sử dụng, lưu giữ và bảo vệ thông tin cá nhân."
+          ],
+          "items": []
+        },
+        {
+          "id": "acceptable-use",
+          "title": "Sử dụng hợp lệ",
+          "paragraphs": [
+            "Bạn đồng ý cung cấp thông tin chính xác khi dùng dịch vụ và không lạm dụng hệ thống đặt lịch, kênh liên lạc hay các dịch vụ khác của chúng tôi. Chúng tôi có thể áp dụng các biện pháp hợp lý để bảo vệ hệ thống và ngăn chặn gian lận, lạm dụng hoặc truy cập trái phép."
+          ],
+          "items": []
+        },
+        {
+          "id": "availability",
+          "title": "Tính sẵn sàng của dịch vụ",
+          "paragraphs": [
+            "Chúng tôi nỗ lực hợp lý để duy trì dịch vụ đặt lịch và liên lạc. Tuy nhiên, dịch vụ đôi khi có thể gián đoạn do bảo trì, sự cố kỹ thuật, gián đoạn từ nhà mạng hoặc các tình huống khác ngoài tầm kiểm soát của chúng tôi."
+          ],
+          "items": []
+        },
+        {
+          "id": "liability",
+          "title": "Giới hạn trách nhiệm",
+          "paragraphs": [
+            "Trong phạm vi pháp luật cho phép, {name} không chịu trách nhiệm về việc tin nhắn SMS bị chậm hoặc không gửi được do nhà mạng, sự cố mạng hoặc hệ thống của bên thứ ba ngoài tầm kiểm soát hợp lý của chúng tôi.",
+            "Không điều khoản nào trong văn bản này loại trừ hay giới hạn các quyền hoặc biện pháp khắc phục mà pháp luật không cho phép loại trừ hay giới hạn."
+          ],
+          "items": []
+        },
+        {
+          "id": "changes",
+          "title": "Thay đổi điều khoản",
+          "paragraphs": [
+            "Chúng tôi có thể cập nhật Điều khoản dịch vụ này theo thời gian. Điều khoản cập nhật sẽ được đăng trên website này cùng ngày hiệu lực mới. Việc bạn tiếp tục sử dụng dịch vụ sau khi cập nhật được xem là chấp nhận điều khoản mới, trong phạm vi pháp luật cho phép."
+          ],
+          "items": []
+        },
+        {
+          "id": "contact-us",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "Nếu bạn có câu hỏi về Điều khoản dịch vụ này hoặc chương trình tin nhắn SMS, vui lòng gọi {name} theo số {phone} hoặc ghé tiệm tại {address}."
+          ],
+          "items": []
+        }
+      ]
+    }
   }
 }

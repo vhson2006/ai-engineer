@@ -16,7 +16,8 @@ Decision: ADR 0022. Look and feel: the tokens in `packages/ui/src/theme.css`.
   popover, tooltip, tabs, command (+ Combobox), calendar (+ DatePicker), form, data-table,
   pagination, toaster, skeleton (+ Separator), locale-switcher (+ LocaleToggle for menus),
   nav-links, chart (BarChart, AreaChart, ChartFrame), reveal, rich-text-editor, sortable-list,
-  section-nav (SectionNav + MobileNav drawer, scrollspy) and smooth-scroll (`<SmoothScroll />` in
+  section-nav (SectionNav + MobileNav drawer, scrollspy), json-ld (`<JsonLd data>`, structured data), cover-image (an article
+  cover: media library `<img srcset>` or a site photo) and smooth-scroll (`<SmoothScroll />` in
   the layout) for single-page sites. Live catalogue: admin
   `/design-system` (`apps/admin-web/src/features/design-system/showcase.tsx`): add new components there. `@web/ui` (index)
   re-exports the common ones plus Container, Section, Chip, Avatar, `cn`, `richText`.

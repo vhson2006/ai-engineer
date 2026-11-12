@@ -26,11 +26,15 @@ const p = (amount: number, plus = false): Price => ({ amount, plus });
 
 export const salon = {
   name: 'Envy Nails Spa',
+  /** Site name in titles and link previews. */
+  fullName: 'Envy Nails Spa of Wendell',
   legalName: 'Envy Nails Spa Of Wendell LLC',
   city: 'Wendell, NC',
   /** The one number on the website ("Call us directly"). */
   phones: [{ display: '(919) 366-6435', href: 'tel:+19193666435' }],
   addressLines: ['2241 Treelight Way, Suite 102', 'Wendell, NC 27591'],
+  /** The same address, by part (structured data). */
+  address: { street: '2241 Treelight Way, Suite 102', city: 'Wendell', region: 'NC', postalCode: '27591' },
   website: { display: 'www.envynailsspaofwendell.com', href: 'https://envynailsspaofwendell.com' },
   mapsHref: 'https://maps.app.goo.gl/8BjU4qGcJAMFvM5S7',
   /** What the embedded Google Map searches for (keyless embed: www.google.com/maps?q=…&output=embed). */

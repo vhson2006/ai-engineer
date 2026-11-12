@@ -4,6 +4,7 @@ import { ArrowDown, ArrowUpRight, Check, Clock, Gem, Globe, HeartHandshake, Leaf
 import type { ReactNode } from 'react';
 import { format } from '@web/core/i18n/format';
 import { cn } from '@web/ui';
+import { JsonLd } from '@web/ui/json-ld';
 import { Reveal } from '@web/ui/reveal';
 import { Band } from '@/components/band';
 import { bento, GRID, STRONG, TINTS } from '@/components/bento';
@@ -25,7 +26,7 @@ import {
   type TableId,
 } from '@/content/salon';
 import { ArticleGrid } from '@/features/articles/article-card';
-import { articlePaths, listArticles } from '@/features/articles/data';
+import { articlePaths, latestArticles, type ArticleSummary } from '@/features/articles/data';
 import { BookButton } from '@/features/booking/booking-provider';
 import { Gallery, type GalleryLook } from '@/features/gallery/gallery';
 import { FeaturedCarousel } from '@/features/hero/featured-carousel';
@@ -34,6 +35,7 @@ import { MenuGrid, type MenuCard } from '@/features/menu/menu-grid';
 import { href, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 import { formatHours, formatPrice } from '@/lib/format';
+import { structuredData } from '@/seo';
 import spaCandle from '../../../public/images/spa-candle.jpg';
 
 const PROMISE_ICONS: Record<keyof Messages['promise']['items'], { icon: LucideIcon; tint: string }> = {
@@ -49,41 +51,50 @@ type Ctx = { t: Messages; locale: Locale; price: (value: Price) => string };
 export default async function HomePage() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   const ctx: Ctx = { t, locale, price: (value) => formatPrice(locale, value) };
-  // Bands alternate white / pastel wash (the band stays put; only its content fades in).
+  // The blog band only when there are articles (none yet, or the API is down: no empty band).
+  const articles = await latestArticles(locale, 3);
+  // Bands alternate white / pastel wash (the band stays put; only its content fades in). Each
+  // band carries the id the menu scrolls to (src/components/site-header.tsx, same order).
   return (
     <>
-      <Band tone="white" className="pt-2 sm:pt-2">
+      {/* The salon as a local business (address, phone, hours, booking) for search engines. */}
+      <JsonLd data={structuredData(t, locale)} />
+      {/* id="top": the menu's Home link. The huge scroll margin scrolls to the very top of the page. */}
+      <Band id="top" tone="white" className="scroll-mt-[100vh] pt-2 sm:pt-2">
         <div className="space-y-3 sm:space-y-4">
           <Hero {...ctx} />
           <PromiseRow {...ctx} />
         </div>
       </Band>
-      <Band tone="rose">
+      <Band id="gallery" tone="rose">
         <Reveal>
           <GallerySection {...ctx} />
         </Reveal>
       </Band>
-      <Band tone="white">
+      <Band id="artists" tone="white">
         <Reveal>
           <Artists {...ctx} />
         </Reveal>
       </Band>
-      <Band tone="mint">
+      <Band id="menu" tone="mint">
         <Reveal>
           <Menu {...ctx} />
         </Reveal>
       </Band>
-      <Band tone="lilac">
+      <Band id="faq" tone="lilac">
         <Reveal>
           <Faq {...ctx} />
         </Reveal>
       </Band>
-      <Band tone="white">
-        <Reveal>
-          <LatestArticles {...ctx} />
-        </Reveal>
-      </Band>
-      <Band tone="white" className="pt-0 pb-24 sm:pt-0 sm:pb-28">
+      {articles.length > 0 && (
+        // Followed by the white Visit band: no bottom padding, Visit's top padding is the gap.
+        <Band id="blog" tone="white" className="pb-0 sm:pb-0">
+          <Reveal>
+            <LatestArticles {...ctx} articles={articles} />
+          </Reveal>
+        </Band>
+      )}
+      <Band id="visit" tone="white">
         <Reveal>
           <Visit {...ctx} />
         </Reveal>
@@ -92,12 +103,10 @@ export default async function HomePage() {
   );
 }
 
-/** The three newest blog articles, with a link to the blog. */
-async function LatestArticles({ t, locale }: Ctx) {
-  const articles = (await listArticles(locale)).slice(0, 3);
-  if (articles.length === 0) return null;
+/** The newest blog articles, with a link to the blog. */
+function LatestArticles({ t, locale, articles }: Ctx & { articles: ArticleSummary[] }) {
   return (
-    <section id="blog">
+    <section aria-label={t.articles.latest}>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeading eyebrow={t.articles.eyebrow} dot="bg-rose-strong" title={t.articles.latest} intro={t.articles.latestIntro} />
         <Link href={href(locale, articlePaths.index)} className={pill('soft', 'md', 'shrink-0 self-start lg:self-auto')}>
@@ -105,7 +114,7 @@ async function LatestArticles({ t, locale }: Ctx) {
           <ArrowUpRight aria-hidden />
         </Link>
       </div>
-      <div className="mt-10">
+      <div className="mt-8">
         <ArticleGrid articles={articles} locale={locale} t={t} />
       </div>
     </section>
@@ -308,9 +317,9 @@ function GallerySection({ t, price }: Ctx) {
     ...(Object.entries(t.gallery.categories) as [string, string][]).map(([id, label]) => ({ id, label })),
   ];
   return (
-    <section id="gallery">
+    <section aria-label={t.gallery.title}>
       <SectionHeading eyebrow={t.gallery.eyebrow} dot="bg-lilac-strong" title={t.gallery.title} intro={t.gallery.intro} />
-      <div className="mt-10">
+      <div className="mt-8">
         <Gallery looks={looks} filters={filters} labels={{ filters: t.gallery.filtersLabel, open: t.gallery.open, book: t.gallery.book, close: t.gallery.close }} />
       </div>
     </section>
@@ -321,9 +330,9 @@ function GallerySection({ t, price }: Ctx) {
 
 function Artists({ t, price }: Ctx) {
   return (
-    <section id="artists">
+    <section aria-label={t.artists.title}>
       <SectionHeading eyebrow={t.artists.eyebrow} dot="bg-rose-strong" title={t.artists.title} intro={t.artists.intro} />
-      <ul className={cn(GRID, 'mt-10 lg:grid-cols-3')}>
+      <ul className={cn(GRID, 'mt-8 lg:grid-cols-3')}>
         {specialties.map((item, index) => {
           const text = t.artists.items[item.id];
           return (
@@ -396,9 +405,9 @@ function Menu(ctx: Ctx) {
     };
   });
   return (
-    <section id="menu">
+    <section aria-label={t.menu.title}>
       <SectionHeading eyebrow={t.menu.eyebrow} dot="bg-baby-strong" title={t.menu.title} intro={t.menu.intro} />
-      <div className="mt-10">
+      <div className="mt-8">
         <MenuGrid cards={cards} labels={{ viewAll: t.menu.viewAll, more: t.menu.more, book: t.menu.book, close: t.menu.close }} />
       </div>
     </section>
@@ -460,8 +469,8 @@ function PriceTable({ tableId, showTitle, t, price }: Ctx & { tableId: TableId; 
 function Faq({ t }: Ctx) {
   const phone = salon.phones[0];
   return (
-    <section id="faq" className={cn(GRID, 'lg:grid-cols-[1fr_1.6fr] lg:items-start')}>
-      <div className={bento('baby', 'lg:sticky lg:top-24 lg:p-10')}>
+    <section aria-label={t.faq.title} className={cn(GRID, 'lg:grid-cols-[1fr_1.6fr] lg:items-start')}>
+      <div className={bento('baby', 'lg:sticky lg:top-[calc(var(--header-h)+1rem)] lg:p-10')}>
         <Eyebrow dot="bg-baby-strong" className="bg-white/70 dark:bg-white/10">
           {t.faq.eyebrow}
         </Eyebrow>
@@ -505,7 +514,7 @@ function Faq({ t }: Ctx) {
 function Visit({ t, locale }: Ctx) {
   const phone = salon.phones[0];
   return (
-    <section id="visit">
+    <section aria-label={t.visit.title}>
       <div className={cn(GRID, 'lg:grid-cols-4')}>
         {/* Address & contact */}
         <div className={bento('mint', 'lg:col-span-2 lg:p-10')}>
@@ -605,7 +614,7 @@ function Visit({ t, locale }: Ctx) {
         </div>
 
         {/* Gift certificates */}
-        <div id="gift" className={bento('rose', 'grid gap-8 sm:grid-cols-[1fr_auto] sm:items-center lg:col-span-2')}>
+        <div id="gift" className={bento('rose', 'scroll-mt-[calc(var(--header-h)+1rem)] grid gap-8 sm:grid-cols-[1fr_auto] sm:items-center lg:col-span-2')}>
           <div>
             <p className="text-xs font-bold tracking-wide text-muted uppercase">{t.gift.eyebrow}</p>
             <h3 className="mt-2 text-3xl font-extrabold tracking-[-0.03em]">{t.gift.title}</h3>

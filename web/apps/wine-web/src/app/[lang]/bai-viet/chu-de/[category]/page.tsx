@@ -1,54 +1,61 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { format } from '@web/core/i18n/format';
 import { Container } from '@web/ui';
 import { ArticleGrid } from '@/features/articles/article-card';
 import { ArticlesHeader } from '@/features/articles/articles-header';
-import { articlePaths, CATEGORIES, CATEGORY_SLUGS, categoryFromSlug, listArticles } from '@/features/articles/data';
+import { articlePaths, listArticles, listTopics, topicBySlug, topicSlugInLocale } from '@/features/articles/data';
+import { href, isLocale } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { publicPageMetadata } from '@/seo';
+import { pageMetadata } from '@/seo';
 
 /**
- * Fully static, also for a slug that wasn't prerendered: the request waits for the complete page,
- * so an unknown slug answers a real 404 (notFound()) instead of a 200 app shell.
+ * Fully static, also for a segment that wasn't prerendered: the request waits for the complete
+ * page, so an unknown topic answers a real 404 (notFound()) instead of a 200 app shell.
  */
 export const ensureStatic = 'navigation';
 
-/** One static page per topic and language. */
-export function generateStaticParams() {
-  return CATEGORIES.map((category) => ({ category: CATEGORY_SLUGS[category] }));
+/** One page per topic, in each language with that language's slug (from the API). */
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
+  const topics = isLocale(params.lang) ? await listTopics(params.lang) : [];
+  // ensureStatic needs at least one entry: an unknown segment, answered by notFound().
+  return topics.length ? topics.map((topic) => ({ category: topic.slug })) : [{ category: 'none' }];
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/bai-viet/chu-de/[category]'>): Promise<Metadata> {
   const [{ category: segment }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
-  const category = categoryFromSlug(segment);
-  if (!category) return {};
-  const name = t.articles.categories[category];
-  return publicPageMetadata({
+  const topic = await topicBySlug(locale, segment);
+  if (!topic) return {};
+  return pageMetadata({
+    t,
     locale,
-    path: articlePaths.category(category),
-    title: format(t.articles.categoryTitle, { category: name }),
-    description: format(t.articles.categoryDescription, { category: name.toLowerCase() }),
+    paths: Object.fromEntries(Object.entries(topic.slugs).map(([code, slug]) => [code, articlePaths.topic(slug)])),
+    title: format(t.articles.categoryTitle, { category: topic.name }),
+    description: format(t.articles.categoryDescription, { category: topic.name.toLowerCase() }),
   });
 }
 
 export default async function CategoryPage({ params }: PageProps<'/[lang]/bai-viet/chu-de/[category]'>) {
   const [{ category: segment }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
-  const category = categoryFromSlug(segment);
-  if (!category) notFound();
-  const articles = await listArticles(locale, category);
-  const name = t.articles.categories[category];
+  const topic = await topicBySlug(locale, segment);
+  if (!topic) {
+    // The segment of another language (language switch): the same topic in this language.
+    const own = await topicSlugInLocale(locale, segment);
+    if (own) permanentRedirect(href(locale, articlePaths.topic(own)));
+    notFound();
+  }
+  const articles = await listArticles(locale, topic.slug);
 
   return (
     <>
       <ArticlesHeader
-        title={format(t.articles.categoryTitle, { category: name })}
-        intro={format(t.articles.categoryDescription, { category: name.toLowerCase() })}
-        active={category}
+        title={format(t.articles.categoryTitle, { category: topic.name })}
+        intro={format(t.articles.categoryDescription, { category: topic.name.toLowerCase() })}
+        active={topic.key}
         locale={locale}
         t={t}
       />
-      <Container className="py-14 sm:py-20">
+      <Container className="py-12 sm:py-16">
         {articles.length > 0 ? (
           <ArticleGrid articles={articles} locale={locale} t={t} headingLevel="h2" />
         ) : (

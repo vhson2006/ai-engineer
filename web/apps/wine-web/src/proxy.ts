@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
 
   const i18n = routeLocale(request, ROUTING);
   const response = i18n.redirect ?? NextResponse.next();
-  rememberLocale(request, response, i18n.locale);
+  rememberLocale(request, response, i18n.locale, ROUTING);
   for (const [name, value] of Object.entries(headersFromEnv())) response.headers.set(name, value);
   return response;
 }
@@ -28,6 +28,8 @@ function headersFromEnv(): Record<string, string> {
   cached = securityHeaders({
     appUrl,
     storageOrigins: (process.env.STORAGE_ORIGINS ?? '').split(/[\s,]+/).filter(Boolean),
+    // The Google Maps embed of the contact section (keyless, www.google.com/maps?…&output=embed).
+    frameOrigins: ['https://www.google.com'],
     dev: process.env.NODE_ENV === 'development',
   });
   return cached;

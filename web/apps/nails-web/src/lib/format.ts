@@ -1,4 +1,4 @@
-import type { Price } from '@/content/salon';
+import { salon, type Price } from '@/content/salon';
 import { LOCALES, type Locale } from '@/i18n/locales';
 
 /** "$59+" (en) / "59 $+" (vi): a menu price in the visitor's language. */
@@ -24,10 +24,17 @@ export function formatHours(locale: Locale, open: string, close: string): string
   return `${formatTime(locale, open)} – ${formatTime(locale, close)}`;
 }
 
-/** A publication date "2026-11-10" in the visitor's language: "November 10, 2026" / "10 tháng 11, 2026". */
+/**
+ * A publication instant (ISO, from the API) as a date in the visitor's language, on the salon's
+ * clock: "November 12, 2026" / "12 tháng 11, 2026".
+ */
+export function formatInstantDate(locale: Locale, iso: string): string {
+  return new Intl.DateTimeFormat(LOCALES[locale].intl, { day: 'numeric', month: 'long', year: 'numeric', timeZone: salon.timeZone }).format(new Date(iso));
+}
+
+/** A calendar date "2026-01-01" (no time zone shift): "January 1, 2026" / "1 tháng 1, 2026". */
 export function formatDate(locale: Locale, isoDate: string): string {
   const [year, month, day] = isoDate.split('-').map(Number);
-  // A calendar date, not an instant: format it in UTC so no time zone shifts the day.
   return new Intl.DateTimeFormat(LOCALES[locale].intl, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
     new Date(Date.UTC(year, month - 1, day)),
   );

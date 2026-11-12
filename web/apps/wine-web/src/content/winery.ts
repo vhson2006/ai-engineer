@@ -31,8 +31,20 @@ export const winery = {
   zalo: { display: '0939 7777 97', href: 'https://zalo.me/0939777797' },
   website: { display: 'www.ruoukhanghung.com', href: 'https://www.ruoukhanghung.com' },
   addressLines: ['Quốc lộ 1A, Ấp Long Bình (Gò Đen)', 'Xã Long Hiệp, Huyện Bến Lức, Long An'],
-  mapsHref: 'https://www.google.com/maps/search/?api=1&query=Khang+H%C6%B0ng+T%E1%BB%ADu+Long+Hi%E1%BB%87p+B%E1%BA%BFn+L%E1%BB%A9c+Long+An',
 } as const;
+
+/**
+ * What Google Maps searches for: the winery's own Google listing, under the address after the 2025
+ * merger (Long An → Tây Ninh, Long Hiệp → Mỹ Yên: same place on QL1A, 10.6347, 106.5210). The
+ * site still SHOWS the address printed on the banner (`addressLines`) until the owner updates it.
+ */
+const mapQuery = 'Hãng Rượu Khang Hưng Tửu, 109 QL1A, Mỹ Yên, Tây Ninh';
+
+/** Google Maps search for the winery (opens the app on phones). */
+export const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+
+/** The keyless Google Maps embed (www.google.com, allowed in src/proxy.ts frameOrigins). */
+export const mapEmbedSrc = (locale: string) => `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&hl=${locale}&z=15&output=embed`;
 
 /** "Tinh dược" line: product photos from the brochure. */
 export const featured: { id: keyof Messages['featured']['items']; name: string; image: StaticImageData; kind: 'bottle' | 'can' }[] = [

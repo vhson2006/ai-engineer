@@ -28,7 +28,7 @@ export function proxy(request: NextRequest) {
 
   const i18n = routeLocale(request, ROUTING);
   const response = i18n.redirect ?? NextResponse.next();
-  rememberLocale(request, response, i18n.locale);
+  rememberLocale(request, response, i18n.locale, ROUTING);
   for (const [name, value] of Object.entries(securityHeadersFromEnv())) response.headers.set(name, value);
   return response;
 }

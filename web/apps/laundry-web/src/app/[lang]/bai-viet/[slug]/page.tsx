@@ -6,9 +6,9 @@ import { Container, buttonVariants, cn } from '@web/ui';
 import { shop } from '@/content/shop';
 import { ArticleBody } from '@/features/articles/article-body';
 import { ArticleGrid, ArticleMeta, TopicChip } from '@/features/articles/article-card';
-import { CoverImage } from '@/features/articles/cover-image';
+import { CoverImage } from '@web/ui/cover-image';
 import { articlePaths, getArticle, listArticles, slugInLocale } from '@/features/articles/data';
-import { articlesMetadata } from '@/features/articles/metadata';
+import { pageMetadata } from '@/seo';
 import { href, isLocale } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 
@@ -26,15 +26,16 @@ export async function generateStaticParams({ params }: { params: { lang: string 
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/bai-viet/[slug]'>): Promise<Metadata> {
-  const [{ slug }, locale] = await Promise.all([params, getLocale()]);
+  const [{ slug }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
   const article = await getArticle(locale, slug);
   if (!article) return {};
-  return articlesMetadata({
+  return pageMetadata({
+    t,
     locale,
     paths: Object.fromEntries(Object.entries(article.slugs).map(([code, own]) => [code, articlePaths.article(own)])),
     title: article.seoTitle ?? article.title,
     description: article.seoDescription ?? article.excerpt,
-    publishedTime: article.publishedAt,
+    article: { publishedTime: article.publishedAt },
     image:
       article.cover.kind === 'media'
         ? { url: article.cover.image.url, width: article.cover.image.width, height: article.cover.image.height, alt: article.cover.alt }

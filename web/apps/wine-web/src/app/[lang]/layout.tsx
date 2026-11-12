@@ -7,7 +7,7 @@ import { SiteHeader } from '@/components/site-header';
 import { winery } from '@/content/winery';
 import { LOCALE_CODES } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { publicPageMetadata } from '@/seo';
+import { pageMetadata, samePath } from '@/seo';
 import { SITE_URL } from '@/site';
 import '../globals.css';
 
@@ -25,16 +25,16 @@ export function generateStaticParams() {
   return LOCALE_CODES.map((lang) => ({ lang }));
 }
 
+/** The home page's metadata, and the defaults of every page (absolute URLs from SITE_URL). */
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return {
     // Relative URLs in metadata (canonical, hreflang, Open Graph images) resolve against SITE_URL.
     metadataBase: new URL(SITE_URL),
+    ...pageMetadata({ t, locale, paths: samePath('/'), description: t.meta.description }),
     title: { default: t.meta.title, template: `%s · ${winery.name}` },
     applicationName: winery.name,
     formatDetection: { telephone: false, address: false, email: false },
-    // The home page's complete metadata; every other page returns its own (publicPageMetadata).
-    ...publicPageMetadata({ locale, path: '/', description: t.meta.description }),
   };
 }
 

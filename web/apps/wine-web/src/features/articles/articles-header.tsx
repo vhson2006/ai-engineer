@@ -1,10 +1,8 @@
-import { Info } from 'lucide-react';
 import { Container } from '@web/ui';
 import { Eyebrow } from '@/components/section-heading';
 import type { Locale } from '@/i18n/locales';
 import type { Messages } from '@/i18n/messages';
 import { CategoryNav } from './category-nav';
-import type { ArticleCategory } from './data';
 
 /** Masthead of the article list pages: eyebrow, the page's <h1>, intro, topics. */
 export function ArticlesHeader({
@@ -16,26 +14,21 @@ export function ArticlesHeader({
 }: {
   title: string;
   intro: string;
-  active?: ArticleCategory;
+  active?: string;
   locale: Locale;
   t: Messages;
 }) {
   return (
     <div className="border-b border-border bg-surface-2">
-      <Container className="pt-14 pb-10 sm:pt-20">
+      <Container className="pt-12 pb-10 sm:pt-16">
         <Eyebrow align="left">{t.articles.eyebrow}</Eyebrow>
         <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] font-bold tracking-tight text-balance text-brand-strong sm:text-6xl">
           {title}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{intro}</p>
-        <div className="mt-10">
+        <div className="mt-8">
           <CategoryNav active={active} locale={locale} t={t} />
         </div>
-        {/* Remove with the sample JSON once articles come from the API. */}
-        <p className="mt-8 flex max-w-3xl gap-2 text-xs leading-relaxed text-subtle">
-          <Info aria-hidden className="size-4 shrink-0" />
-          {t.articles.sample}
-        </p>
       </Container>
     </div>
   );

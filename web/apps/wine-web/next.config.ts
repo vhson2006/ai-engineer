@@ -22,10 +22,8 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: workspaceRoot,
   // The link preview images read these fonts at runtime (src/features/articles/og-card.tsx).
   outputFileTracingIncludes: {
-    '/[lang]/opengraph-image': ['../../packages/ui/assets/fonts/*.ttf'],
-    '/[lang]/twitter-image': ['../../packages/ui/assets/fonts/*.ttf'],
-    '/[lang]/bai-viet/[slug]/opengraph-image': ['../../packages/ui/assets/fonts/*.ttf'],
-    '/[lang]/bai-viet/[slug]/twitter-image': ['../../packages/ui/assets/fonts/*.ttf'],
+    '/og/[image]': ['../../packages/ui/assets/fonts/*.ttf'],
+    '/og/bai-viet/[lang]/[image]': ['../../packages/ui/assets/fonts/*.ttf'],
   },
   cacheComponents: true,
   partialPrefetching: true,

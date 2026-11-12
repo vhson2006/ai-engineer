@@ -51,8 +51,8 @@ The look is controlled by the shared color tokens in [`packages/ui/src/theme.css
 ## Languages
 
 English and Vietnamese (ADR 0020). URLs carry the language: `/en`, `/vi/about`… `/` (or any page
-path without a language) redirects to the visitor's language: the one they last chose (cookie
-`NEXT_LOCALE`), else their browser's (`Accept-Language`), else English. The globe menu in the
+path without a language) redirects to the language they last chose (cookie `NEXT_LOCALE`), else
+Vietnamese (the browser's language is not used: `detectLanguage: false` in `src/i18n/locales.ts`). The globe menu in the
 header switches language on the same page, keeping the query string and the scroll position.
 
 Add a language: copy `en.json` to `src/i18n/messages/<code>.json` and translate it, add the code

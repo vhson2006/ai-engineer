@@ -46,9 +46,10 @@ decision.
 | [0029](0029-no-optimistic-concurrency.md) | No optimistic concurrency: no `revision`, ETag or If-Match; the last write wins | API / Web | Accepted, implemented |
 | [0030](0030-admin-site-for-site-admins.md) | The admin site serves site admins too (password); only superadmins need a one-time code | Web / Infra | Accepted, partly implemented |
 | [0031](0031-article-body-sanitized-html.md) | Article bodies are HTML, sanitized by content-service with an allow-list | API / Web | Accepted, implemented |
-| [0032](0032-public-sites-read-content-with-service-account.md) | Public sites read their published content with their own service account (client credentials) | Web / Infra | Accepted, implemented (laundry-web, dev) |
+| [0032](0032-public-sites-read-content-with-service-account.md) | Public sites read their published content with their own service account (client credentials) | Web / Infra | Accepted, implemented (laundry-web, nails-web, wine-web; dev) |
 | [0033](0033-article-layout-blocks.md) | Article bodies may contain layout blocks from a fixed vocabulary (`tpl-*` classes, site images) | API / Web | Accepted, implemented (blocks edited visually or in HTML) |
 | [0034](0034-media-library-browser-optimized-images.md) | A media library per site; images optimized in the admin's browser (WebP, 3 sizes, no EXIF) | API / Web / Infra | Accepted, implemented |
 | [0035](0035-longer-admin-sessions.md) | Longer admin sessions for now: 8 h without activity, 7 days at most | Web / Infra | Accepted, interim |
 | [0036](0036-ai-service-machine-translation.md) | ai-service, the one caller of AI providers; machine translation of articles (segments, drafts) | API / Web / Infra | Accepted, implemented |
 | [0037](0037-ai-generated-images.md) | AI-generated images in the media library (Gemini Flash-Lite Image, server-side WebP, monthly quota per site) | API / Web / Infra | Accepted, implemented |
+| [0038](0038-fixed-default-language-public-sites.md) | Public sites open in their own language (nails EN; laundry, wine, portfolio VI), not the browser's; one language cookie per client site | Web | Accepted, implemented |

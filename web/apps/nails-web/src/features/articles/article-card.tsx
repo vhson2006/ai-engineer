@@ -1,17 +1,18 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, Clock } from 'lucide-react';
 import { format } from '@web/core/i18n/format';
 import { cn } from '@web/ui';
+import { CoverImage } from '@web/ui/cover-image';
 import { STRONG, TINTS } from '@/components/bento';
 import type { Tint } from '@/content/salon';
 import { href, type Locale } from '@/i18n/locales';
 import type { Messages } from '@/i18n/messages';
-import { formatDate } from '@/lib/format';
-import { articlePaths, type ArticleCategory, type ArticleSummary } from './data';
+import { formatInstantDate } from '@/lib/format';
+import { articlePaths, type ArticleSummary, type Topic } from './data';
 
-/** Each topic's pastel, like the menu tabs. */
-export const TOPIC_TINT: Record<ArticleCategory, Tint> = { care: 'mint', services: 'rose', salon: 'baby' };
+/** Each topic's pastel (by its stable key), like the menu tabs; another topic is lilac. */
+const TOPIC_TINT: Record<string, Tint> = { care: 'mint', services: 'rose', salon: 'baby' };
+export const topicTint = (topic: Topic): Tint => TOPIC_TINT[topic.key] ?? 'lilac';
 
 type Props = { article: ArticleSummary; locale: Locale; t: Messages; headingLevel?: 'h2' | 'h3' };
 
@@ -19,7 +20,7 @@ type Props = { article: ArticleSummary; locale: Locale; t: Messages; headingLeve
 export function ArticleMeta({ article, locale, t, className }: Omit<Props, 'headingLevel'> & { className?: string }) {
   return (
     <p className={cn('flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted', className)}>
-      <time dateTime={article.publishedAt}>{formatDate(locale, article.publishedAt)}</time>
+      <time dateTime={article.publishedAt}>{formatInstantDate(locale, article.publishedAt)}</time>
       <span aria-hidden>·</span>
       <span className="inline-flex items-center gap-1.5">
         <Clock aria-hidden className="size-3.5" />
@@ -30,12 +31,12 @@ export function ArticleMeta({ article, locale, t, className }: Omit<Props, 'head
 }
 
 /** The topic as a pastel pill with a colored dot. */
-export function TopicChip({ category, t, className }: { category: ArticleCategory; t: Messages; className?: string }) {
-  const tint = TOPIC_TINT[category];
+export function TopicChip({ topic, className }: { topic: Topic; className?: string }) {
+  const tint = topicTint(topic);
   return (
     <span className={cn('inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-[#263238]', TINTS[tint], className)}>
       <span aria-hidden className={cn('size-2 rounded-full', STRONG[tint])} />
-      {t.articles.categories[category]}
+      {topic.name}
     </span>
   );
 }
@@ -49,14 +50,14 @@ export function ArticleCard({ article, locale, t, headingLevel = 'h3' }: Props) 
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-surface-2 transition duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-[#263238]/[0.06] motion-reduce:transform-none">
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={article.cover}
-          alt={article.coverAlt}
-          placeholder="blur"
+        {/* Decorative here (alt=""): the title is the card's link. */}
+        <CoverImage
+          cover={article.cover}
+          decorative
           sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
           className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
-        <TopicChip category={article.category} t={t} className="absolute top-4 left-4" />
+        <TopicChip topic={article.topic} className="absolute top-4 left-4" />
       </div>
       <div className="flex flex-1 flex-col p-6">
         <ArticleMeta article={article} locale={locale} t={t} />
@@ -81,12 +82,11 @@ export function ArticleCard({ article, locale, t, headingLevel = 'h3' }: Props) 
 /** The featured article: a wide bento in its topic's pastel. */
 export function FeaturedArticle({ article, locale, t }: Omit<Props, 'headingLevel'>) {
   return (
-    <article className={cn('group relative grid overflow-hidden rounded-3xl lg:grid-cols-[1.1fr_1fr]', TINTS[TOPIC_TINT[article.category]])}>
+    <article className={cn('group relative grid overflow-hidden rounded-3xl lg:grid-cols-[1.1fr_1fr]', TINTS[topicTint(article.topic)])}>
       <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[24rem]">
-        <Image
-          src={article.cover}
-          alt={article.coverAlt}
-          placeholder="blur"
+        <CoverImage
+          cover={article.cover}
+          decorative
           priority
           sizes="(min-width: 1024px) 640px, 100vw"
           className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -95,7 +95,7 @@ export function FeaturedArticle({ article, locale, t }: Omit<Props, 'headingLeve
       <div className="flex flex-col justify-center p-8 text-[#263238] sm:p-12">
         <p className="flex flex-wrap items-center gap-3">
           <span className="text-xs font-bold tracking-[0.2em] uppercase">{t.articles.featured}</span>
-          <TopicChip category={article.category} t={t} className="bg-white/70" />
+          <TopicChip topic={article.topic} className="bg-white/70" />
         </p>
         <h2 className="mt-5 text-3xl leading-[1.05] font-extrabold tracking-[-0.03em] text-balance sm:text-4xl">
           <Link
@@ -117,7 +117,7 @@ export function ArticleGrid({ articles, locale, t, headingLevel }: { articles: A
   return (
     <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
       {articles.map((article) => (
-        <li key={article.slug}>
+        <li key={article.id}>
           <ArticleCard article={article} locale={locale} t={t} headingLevel={headingLevel} />
         </li>
       ))}
