@@ -198,8 +198,10 @@ function MediaTile({
     />
   );
 
+  // min-w-0 + grid-cols-1 (minmax(0, 1fr)): neither a long name (AI images are named after their
+  // prompt) nor a portrait image (its intrinsic size) may widen the column.
   return (
-    <li className="group grid gap-1.5">
+    <li className="group grid min-w-0 grid-cols-1 gap-1.5">
       {onPick ? (
         <button
           type="button"
