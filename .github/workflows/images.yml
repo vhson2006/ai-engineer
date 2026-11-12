@@ -74,7 +74,7 @@ jobs:
           # The API images are built together (one commit): any of them changed, or still on a
           # placeholder tag (a new image), rebuilds all of them.
           api=false
-          for image in deployment-service notification-service content-service deployment-migrate; do
+          for image in deployment-service notification-service content-service ai-service deployment-migrate; do
             if [ "$(changed "$image" '^nest-microservice/')" = true ]; then api=true; fi
           done
           portfolio=$(changed portfolio-web '^web/(packages/|apps/portfolio-web/|package(-lock)?\.json|tsconfig)')
@@ -95,6 +95,7 @@ jobs:
                 {name:"deployment-service",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"deployment-service",   args:""},
                 {name:"notification-service", context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"notification-service", args:""},
                 {name:"content-service",      context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"content-service",      args:""},
+                {name:"ai-service",           context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"ai-service",           args:""},
                 {name:"deployment-migrate",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"migrate",              args:""}
               else empty end),
               ($portfolio | if . then

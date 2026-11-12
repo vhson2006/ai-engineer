@@ -1,4 +1,5 @@
-# Browsers on https://www.staging.localtest.me PUT to presigned URLs (same args as
+# Browsers on https://www.staging.localtest.me and https://admin.staging.localtest.me (media
+# library, ADR 0034) PUT to presigned URLs (same args as
 # components/local-data, only the allowed origin differs).
 apiVersion: apps/v1
 kind: StatefulSet
@@ -18,4 +19,4 @@ spec:
             - -s3.port=8333
             - -s3.config=/etc/seaweedfs/s3.json
             - -s3.autoCreateBucket
-            - -s3.allowedOrigins=https://www.staging.localtest.me
+            - -s3.allowedOrigins=https://www.staging.localtest.me,https://admin.staging.localtest.me

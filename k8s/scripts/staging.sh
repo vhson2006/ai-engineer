@@ -35,6 +35,7 @@ build() {
   docker build --target deployment-service -t local/deployment-service:staging nest-microservice
   docker build --target notification-service -t local/notification-service:staging nest-microservice
   docker build --target content-service -t local/content-service:staging nest-microservice
+  docker build --target ai-service -t local/ai-service:staging nest-microservice
   docker build --target migrate -t local/deployment-migrate:staging nest-microservice
   docker build -f web/apps/portfolio-web/Dockerfile --build-arg SITE_URL=https://www.staging.localtest.me -t local/portfolio-web:staging web
   docker build -f web/apps/admin-web/Dockerfile -t local/admin-web:staging web
@@ -108,7 +109,7 @@ scale_dev_down() {
 
 up() {
   require_local_cluster
-  for img in deployment-service notification-service content-service deployment-migrate portfolio-web admin-web; do
+  for img in deployment-service notification-service content-service ai-service deployment-migrate portfolio-web admin-web; do
     docker image inspect "local/$img:staging" >/dev/null 2>&1 || { echo "Missing image local/$img:staging: run npm run staging:build first." >&2; exit 1; }
   done
   say "NGINX Gateway Fabric"
@@ -126,7 +127,7 @@ up() {
   # (IfNotPresent), so each build is deployed as local/<img>:<image id>; a rebuild changes the tag,
   # which also rolls the Deployments.
   local rewrite=()
-  for img in deployment-service notification-service content-service deployment-migrate portfolio-web admin-web; do
+  for img in deployment-service notification-service content-service ai-service deployment-migrate portfolio-web admin-web; do
     local id
     id=$(docker image inspect -f '{{.Id}}' "local/$img:staging" | sed 's/^sha256://' | cut -c1-12)
     docker tag "local/$img:staging" "local/$img:$id"
@@ -139,7 +140,7 @@ up() {
   kubectl -n "$NS" rollout status statefulset/postgres statefulset/redis statefulset/nats statefulset/seaweedfs --timeout=300s
   kubectl -n "$NS" wait job/db-migrate job/nats-setup --for=condition=Complete --timeout=600s
   kubectl -n "$NS" rollout status deploy/keycloak --timeout=600s
-  kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/content-service deploy/portfolio-web deploy/admin-web --timeout=300s
+  kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/content-service deploy/ai-service deploy/portfolio-web deploy/admin-web --timeout=300s
   kubectl -n "$NS" wait certificate --all --for=condition=Ready --timeout=180s
   if [ -f "$GRAFANA_ENV" ]; then kubectl -n "$NS" rollout status deploy/alloy --timeout=180s; fi
 

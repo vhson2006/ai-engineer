@@ -4,6 +4,8 @@
 #   ConfigMap "content-service-env"  NATS_URL, LOG_LEVEL, CONTENT_PORT, AUTH_ISSUER, AUTH_JWKS_URL,
 #                                    CONTENT_AUTH_AUDIENCE (content-api)
 #   Secret    "content-db"           CONTENT_DB_HOST, _PORT, _USER, _PASSWORD, _NAME, _SSLMODE
+#   Secret    "content-storage"      STORAGE_ACCESS_KEY_ID, STORAGE_SECRET_ACCESS_KEY (media library,
+#                                    ADR 0034; STORAGE_* settings in the ConfigMap)
 # and the image name/tag (kustomization `images:`).
 apiVersion: apps/v1
 kind: Deployment
@@ -47,6 +49,8 @@ spec:
                 name: content-service-env
             - secretRef:
                 name: content-db
+            - secretRef:
+                name: content-storage
           readinessProbe:
             httpGet:
               path: /health

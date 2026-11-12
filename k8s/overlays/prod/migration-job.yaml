@@ -1,4 +1,4 @@
-# Applies pending Prisma migrations to the deployment, notification AND content databases BEFORE
+# Applies pending Prisma migrations to the deployment, notification, content AND ai databases BEFORE
 # the new version rolls out.
 # Argo CD runs it as a PreSync hook on every sync: if it fails, the sync stops and the running
 # version keeps serving. The Job is deleted and recreated each time (BeforeHookCreation).
@@ -39,6 +39,8 @@ spec:
                 name: notification-db # NOTIFICATION_DB_* incl. NOTIFICATION_DB_SSLMODE=require
             - secretRef:
                 name: content-db # CONTENT_DB_* incl. CONTENT_DB_SSLMODE=require
+            - secretRef:
+                name: ai-db # AI_DB_* incl. AI_DB_SSLMODE=require
           resources:
             requests:
               cpu: 100m

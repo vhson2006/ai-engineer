@@ -53,6 +53,9 @@ images:
   - name: content-service
     newName: local/content-service
     newTag: staging
+  - name: ai-service
+    newName: local/ai-service
+    newTag: staging
   - name: deployment-migrate
     newName: local/deployment-migrate
     newTag: staging
@@ -79,6 +82,9 @@ configMapGenerator:
   - name: content-service-env
     envs:
       - env/content-service.env
+  - name: ai-service-env
+    envs:
+      - env/ai-service.env
   - name: portfolio-web-env
     envs:
       - env/portfolio-web.env
