@@ -454,6 +454,33 @@
       "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}", "encoding": "no-op" }]
     },
     {
+      "@comment": "AI articles (ADR 0041): start one (the brief and outline first): 201 + Location.",
+      "endpoint": "/api/content/sites/{siteId}/article-drafts",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/article-drafts", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "AI articles: one job (poll it).",
+      "endpoint": "/api/content/sites/{siteId}/article-drafts/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/article-drafts/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "AI articles: confirm the brief, the article is written as a draft: 202 (409 busy, 422 quota_exceeded).",
+      "endpoint": "/api/content/sites/{siteId}/article-drafts/{id}/write",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/article-drafts/{id}/write", "encoding": "no-op" }]
+    },
+    {
       "@comment": "Fill the empty fields: brand-kit facts, AI drafts of descriptive ones: 202 (409 busy).",
       "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}/suggest",
       "method": "POST",

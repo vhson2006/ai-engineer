@@ -2,6 +2,10 @@ import { Inject, Injectable, OnApplicationBootstrap, OnApplicationShutdown } fro
 import { plainToInstance, type ClassConstructor } from 'class-transformer';
 import { validate } from 'class-validator';
 import {
+  ARTICLE_PROMPT_EVENTS,
+  ARTICLE_WRITING_EVENTS,
+  ArticlePromptRequestedEvent,
+  ArticleWritingRequestedEvent,
   FACT_SUGGESTION_EVENTS,
   FactSuggestionRequestedEvent,
   IMAGE_GENERATION_EVENTS,
@@ -19,6 +23,7 @@ import {
   type JetStreamHandle,
   type MessageHandler,
 } from '@app/common';
+import { ArticleService } from './articles/article.service';
 import { ImageService } from './images/image.service';
 import { ScriptService } from './scripts/script.service';
 import { SpeechService } from './speech/speech.service';
@@ -46,6 +51,7 @@ export class RequestsConsumer implements OnApplicationBootstrap, OnApplicationSh
     private readonly scripts: ScriptService,
     private readonly speech: SpeechService,
     private readonly suggestions: SuggestionService,
+    private readonly articles: ArticleService,
   ) {}
 
   /** Subject → handler. Exposed for tests. */
@@ -64,6 +70,15 @@ export class RequestsConsumer implements OnApplicationBootstrap, OnApplicationSh
     ),
     [SPEECH_EVENTS.REQUESTED]: this.validated(SpeechRequestedEvent, (event, delivery) =>
       this.speech.speak(event, delivery),
+    ),
+    // Articles written by AI (ADR 0041).
+    [ARTICLE_PROMPT_EVENTS.REQUESTED]: this.validated(
+      ArticlePromptRequestedEvent,
+      (event, delivery) => this.articles.brief(event, delivery),
+    ),
+    [ARTICLE_WRITING_EVENTS.REQUESTED]: this.validated(
+      ArticleWritingRequestedEvent,
+      (event, delivery) => this.articles.write(event, delivery),
     ),
     [FACT_SUGGESTION_EVENTS.REQUESTED]: this.validated(
       FactSuggestionRequestedEvent,

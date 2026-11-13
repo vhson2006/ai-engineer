@@ -1,5 +1,7 @@
 import { Test } from '@nestjs/testing';
 import {
+  ARTICLE_PROMPT_EVENTS,
+  ARTICLE_WRITING_EVENTS,
   IMAGE_GENERATION_EVENTS,
   JETSTREAM,
   PermanentMessageError,
@@ -10,6 +12,7 @@ import {
 } from '@app/common';
 import { createPrismaMock } from '../../support/prisma-mock';
 import { AiResultsConsumer } from '../../../src/ai-results/ai-results.consumer';
+import { ArticleDraftsService } from '../../../src/article-drafts/article-drafts.service';
 import { MediaGenerationService } from '../../../src/media/media-generation.service';
 import { PrismaService } from '../../../src/prisma/prisma.service';
 import { ProjectsService } from '../../../src/studio/projects.service';
@@ -27,6 +30,13 @@ describe('[ai-results.consumer] (unit)', () => {
     voiceFailed: jest.fn(),
     rendered: jest.fn(),
     renderFailed: jest.fn(),
+  };
+  const drafts = {
+    briefWritten: jest.fn(),
+    briefFailed: jest.fn(),
+    articleWritten: jest.fn(),
+    articleFailed: jest.fn(),
+    imageSettled: jest.fn(),
   };
   const failed = {
     jobId: '0b30bc39-b265-47bb-91e3-5a3d2a254935',
@@ -49,6 +59,7 @@ describe('[ai-results.consumer] (unit)', () => {
         { provide: MediaGenerationService, useValue: images },
         { provide: TranslationJobsService, useValue: translations },
         { provide: ProjectsService, useValue: studio },
+        { provide: ArticleDraftsService, useValue: drafts },
       ],
     }).compile();
     consumer = moduleRef.get(AiResultsConsumer);
@@ -65,6 +76,8 @@ describe('[ai-results.consumer] (unit)', () => {
     prisma.inboxMessage.createMany.mockResolvedValue({ count: 0 }); // already processed
     await handler(message(IMAGE_GENERATION_EVENTS.FAILED, failed));
     expect(images.fail).toHaveBeenCalledTimes(1);
+    // An AI article waiting for that image is told (ADR 0041), in the same transaction.
+    expect(drafts.imageSettled).toHaveBeenCalledWith(prisma, failed.jobId);
     expect(consumer.handlers[TRANSLATION_EVENTS.COMPLETED]).toBeDefined();
   });
 
@@ -109,5 +122,30 @@ describe('[ai-results.consumer] (unit)', () => {
         message(VIDEO_RENDER_EVENTS.COMPLETED, { renderId: 'x' }, 'msg-4'),
       ),
     ).rejects.toBeInstanceOf(PermanentMessageError);
+  });
+
+  it('routes the AI article answers (ADR 0041): the brief, the article, their failures', async () => {
+    await consumer.handlers[ARTICLE_PROMPT_EVENTS.FAILED](
+      message(ARTICLE_PROMPT_EVENTS.FAILED, failed, 'msg-a'),
+    );
+    expect(drafts.briefFailed).toHaveBeenCalledWith(prisma, expect.objectContaining(failed));
+    await consumer.handlers[ARTICLE_WRITING_EVENTS.FAILED](
+      message(ARTICLE_WRITING_EVENTS.FAILED, failed, 'msg-b'),
+    );
+    expect(drafts.articleFailed).toHaveBeenCalledWith(prisma, expect.objectContaining(failed));
+    await consumer.handlers[ARTICLE_PROMPT_EVENTS.COMPLETED](
+      message(
+        ARTICLE_PROMPT_EVENTS.COMPLETED,
+        {
+          ...failed,
+          prompt: 'You are a professional content writer',
+          outline: ['A'],
+          provider: 'fake',
+          model: 'fake',
+        },
+        'msg-c',
+      ),
+    );
+    expect(drafts.briefWritten).toHaveBeenCalled();
   });
 });

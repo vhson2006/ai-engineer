@@ -55,3 +55,4 @@ decision.
 | [0038](0038-fixed-default-language-public-sites.md) | Public sites open in their own language (nails EN; laundry, wine, portfolio VI), not the browser's; one language cookie per client site | Web | Accepted, implemented |
 | [0039](0039-video-studio.md) | Video studio: script templates (code), AI script and voice (ai-service), Remotion render-worker, studio module in content-service | API / Web / Infra | Accepted, implemented (dev) |
 | [0040](0040-youtube-embeds-in-articles.md) | YouTube embeds in articles: only the video id in the body, a click-to-load youtube-nocookie player on the client sites | API / Web | Accepted, implemented (dev) |
+| [0041](0041-ai-written-articles.md) | Articles written by AI: a brief and an outline to confirm, the article as blocks (not HTML), AI images, written in one language then machine-translated into the site's others; always a draft | API / Web | Accepted, implemented (dev) |

@@ -117,46 +117,74 @@ export class TranslationJobsService {
       seoDescription: source.seoDescription,
       body: source.body,
     };
-    const { segments } = planSegments(snapshot);
-    if (
-      segments.length > TRANSLATION_MAX_SEGMENTS ||
-      segments.some((s) => s.length > TRANSLATION_MAX_SEGMENT_LENGTH)
-    ) {
+    const segments = segmentsOf(snapshot);
+    if (!segments) {
       throw new UnprocessableEntityException({
         message: 'The article is too long to translate in one go',
         code: 'too_large',
       });
     }
 
-    const job = await this.prisma.$transaction(async (tx) => {
-      const created = await tx.translationJob.create({
-        data: {
-          siteId,
-          articleId,
-          sourceLocale,
-          targetLocale,
-          overwrite: dto.overwrite ?? false,
-          source: snapshot,
-          createdBy: user.id,
-        },
-      });
-      const event: TranslationRequestedEvent = {
-        jobId: created.id,
-        requester: REQUESTER,
+    const job = await this.prisma.$transaction((tx) =>
+      this.requestIn(tx, {
         siteId,
+        siteName: site.name,
+        articleId,
         sourceLocale,
         targetLocale,
-        kind: 'article',
+        overwrite: dto.overwrite ?? false,
+        source: snapshot,
         segments,
-        // The site's name is a brand: never translated.
-        glossary: [{ source: site.name, target: site.name }],
         actorId: user.id,
-      };
-      await addToOutbox(tx, TRANSLATION_EVENTS.REQUESTED, event);
-      return created;
-    });
+      }),
+    );
     this.outbox.poke();
     return toJobResponse(job);
+  }
+
+  /**
+   * Stores a job and asks ai-service (outbox, in the caller's transaction): from `start`, and for
+   * an AI-written article right after it was built (ADR 0041). The caller pokes the outbox.
+   */
+  async requestIn(
+    tx: Tx,
+    args: {
+      siteId: string;
+      siteName: string;
+      articleId: string;
+      sourceLocale: string;
+      targetLocale: string;
+      overwrite: boolean;
+      source: SourceFields;
+      segments: string[];
+      actorId: string;
+    },
+  ): Promise<TranslationJob> {
+    const created = await tx.translationJob.create({
+      data: {
+        siteId: args.siteId,
+        articleId: args.articleId,
+        sourceLocale: args.sourceLocale,
+        targetLocale: args.targetLocale,
+        overwrite: args.overwrite,
+        source: args.source,
+        createdBy: args.actorId,
+      },
+    });
+    const event: TranslationRequestedEvent = {
+      jobId: created.id,
+      requester: REQUESTER,
+      siteId: args.siteId,
+      sourceLocale: args.sourceLocale,
+      targetLocale: args.targetLocale,
+      kind: 'article',
+      segments: args.segments,
+      // The site's name is a brand: never translated.
+      glossary: [{ source: args.siteName, target: args.siteName }],
+      actorId: args.actorId,
+    };
+    await addToOutbox(tx, TRANSLATION_EVENTS.REQUESTED, event);
+    return created;
   }
 
   async findForArticle(
@@ -308,6 +336,15 @@ export class TranslationJobsService {
       },
     });
   }
+}
+
+/** The segments to send, or null when the article is too long to translate in one go. */
+export function segmentsOf(source: SourceFields): string[] | null {
+  const { segments } = planSegments(source);
+  return segments.length > TRANSLATION_MAX_SEGMENTS ||
+    segments.some((s) => s.length > TRANSLATION_MAX_SEGMENT_LENGTH)
+    ? null
+    : segments;
 }
 
 export function toJobResponse(row: TranslationJob): TranslationJobResponse {

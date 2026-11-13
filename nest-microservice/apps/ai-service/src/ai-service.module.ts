@@ -17,6 +17,7 @@ import { RequestsConsumer } from './requests.consumer';
 import { ScriptsModule } from './scripts/scripts.module';
 import { SpeechModule } from './speech/speech.module';
 import { SuggestionsModule } from './suggestions/suggestions.module';
+import { ArticlesModule } from './articles/articles.module';
 import { TranslationModule } from './translation/translation.module';
 
 /**
@@ -82,6 +83,7 @@ import { TranslationModule } from './translation/translation.module';
     ScriptsModule,
     SpeechModule,
     SuggestionsModule,
+    ArticlesModule,
   ],
   controllers: [HealthController],
   providers: [RequestsConsumer],

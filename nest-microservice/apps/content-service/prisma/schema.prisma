@@ -16,18 +16,19 @@ datasource db {
 
 /// A client site (nails, wine...). Its languages decide which translations an article needs.
 model Site {
-  id            String     @id(map: "pk_sites") @db.VarChar(50)
-  name          String     @db.VarChar(100)
-  locales       String[]   @db.VarChar(10)
-  defaultLocale String     @map("default_locale") @db.VarChar(10)
-  createdAt     DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt     DateTime   @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
-  categories    Category[]
-  articles      Article[]
-  media         Media[]
-  brandKit      StudioBrandKit?
-  avatars       StudioAvatar[]
-  projects      StudioProject[]
+  id               String            @id(map: "pk_sites") @db.VarChar(50)
+  name             String            @db.VarChar(100)
+  locales          String[]          @db.VarChar(10)
+  defaultLocale    String            @map("default_locale") @db.VarChar(10)
+  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt        DateTime          @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  categories       Category[]
+  articles         Article[]
+  media            Media[]
+  brandKit         StudioBrandKit?
+  avatars          StudioAvatar[]
+  projects         StudioProject[]
+  articleDraftJobs ArticleDraftJob[]
 
   @@map("sites")
 }
@@ -42,6 +43,7 @@ model Category {
   updatedAt    DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
   translations CategoryTranslation[]
   articles     Article[]
+  draftJobs    ArticleDraftJob[]
 
   @@unique([siteId, key], map: "uq_categories_site_key")
   @@map("categories")
@@ -81,6 +83,7 @@ model Article {
   translations    ArticleTranslation[]
   redirects       ArticleSlugRedirect[]
   translationJobs TranslationJob[]
+  aiDraftJobs     ArticleDraftJob[]
 
   @@index([siteId, status, publishedAt(sort: Desc)], map: "ix_articles_site_status_published")
   @@index([scheduledAt], map: "ix_articles_due", where: raw("(status)::text = 'scheduled'::text"))
@@ -348,4 +351,48 @@ model OutboxMessage {
 
   @@index([createdAt], map: "ix_outbox_messages_unpublished", where: raw("published_at IS NULL"))
   @@map("outbox_messages")
+}
+
+/// An article written by AI (ADR 0041): the admin's idea → a brief + outline (edited, confirmed) →
+/// the article as blocks → its images (AI, the media library's quota) → a DRAFT article, then
+/// machine translations into the site's other languages. Never published by itself.
+model ArticleDraftJob {
+  id          String    @id(map: "pk_article_draft_jobs") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId      String    @map("site_id") @db.VarChar(50)
+  site        Site      @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_article_draft_jobs_site")
+  categoryId  String    @map("category_id") @db.Uuid
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade, map: "fk_article_draft_jobs_category")
+  locale      String    @db.VarChar(10)
+  /// { topic, idea, audience?, keyword?, length, images } (ArticleIdea in libs/common)
+  idea        Json
+  /// prompting | prompted | writing | illustrating | completed | failed (ArticleDraftStatus)
+  status      String    @default("prompting") @db.VarChar(20)
+  /// The brief, as written by AI then edited and confirmed by the admin
+  prompt      String?
+  /// The section headings (string[])
+  outline     Json?
+  /// The article as blocks (WrittenArticle), until it is built
+  result      Json?
+  /// The image generation jobs of the article, the cover first
+  imageJobIds String[]  @map("image_job_ids") @db.Uuid
+  articleId   String?   @map("article_id") @db.Uuid
+  article     Article?  @relation(fields: [articleId], references: [id], onDelete: SetNull, map: "fk_article_draft_jobs_article")
+  /// Numbers of the article found in none of the facts (to check), and skipped steps
+  warnings    Json?
+  error       String?   @db.VarChar(50)
+  detail      String?   @db.VarChar(300)
+  provider    String?   @db.VarChar(30)
+  model       String?   @db.VarChar(100)
+  /// When the article was asked for: the monthly quota counts these
+  writtenAt   DateTime? @map("written_at") @db.Timestamptz(6)
+  createdBy   String    @map("created_by") @db.VarChar(255)
+  updatedBy   String    @map("updated_by") @db.VarChar(255)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  completedAt DateTime? @map("completed_at") @db.Timestamptz(6)
+
+  @@index([siteId, createdAt(sort: Desc)], map: "ix_article_draft_jobs_site_created")
+  @@index([categoryId], map: "ix_article_draft_jobs_category_id")
+  @@index([articleId], map: "ix_article_draft_jobs_article_id")
+  @@map("article_draft_jobs")
 }

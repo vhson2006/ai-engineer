@@ -16,6 +16,6 @@ import { StudioController } from './studio.controller';
   imports: [SitesModule, MediaModule, StorageModule, OutboxModule],
   controllers: [StudioController],
   providers: [BrandKitService, AvatarsService, ProjectsService],
-  exports: [ProjectsService],
+  exports: [ProjectsService, BrandKitService],
 })
 export class StudioModule {}

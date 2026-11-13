@@ -21,6 +21,7 @@ import { PublishedArticlesModule } from './published-articles/published-articles
 import { TranslationsModule } from './translations/translations.module';
 import { SitesModule } from './sites/sites.module';
 import { StudioModule } from './studio/studio.module';
+import { ArticleDraftsModule } from './article-drafts/article-drafts.module';
 
 /** The service's environment (validated at startup; also used by scripts/seed-article-templates.ts). */
 export const CONTENT_ENV_SCHEMA = Joi.object({
@@ -51,6 +52,8 @@ export const CONTENT_ENV_SCHEMA = Joi.object({
   CONTENT_AI_IMAGES_PER_MONTH: Joi.number().integer().min(0).default(50),
   // Video studio (ADR 0039): finished videos per site and calendar month (UTC).
   CONTENT_STUDIO_RENDERS_PER_MONTH: Joi.number().integer().min(0).default(30),
+  /** Articles each site may have written by AI per calendar month (UTC), ADR 0041. */
+  CONTENT_AI_ARTICLES_PER_MONTH: Joi.number().integer().min(0).default(30),
   // Tracing (optional, ADR 0023): off unless OTEL_EXPORTER_OTLP_ENDPOINT is set.
   ...OBSERVABILITY_ENV_SCHEMA,
 });
@@ -81,6 +84,7 @@ export const CONTENT_ENV_SCHEMA = Joi.object({
     TranslationsModule,
     // Video studio (ADR 0039): brand kit, avatars, projects; renders by render-worker.
     StudioModule,
+    ArticleDraftsModule,
     AiResultsModule,
   ],
   controllers: [HealthController],
