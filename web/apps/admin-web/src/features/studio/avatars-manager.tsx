@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input, Textarea } from '@web/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { LoaderCircleIcon, PencilIcon, PlusIcon, Trash2Icon, UserRoundIcon } from 'lucide-react';
 import { startTransition, useActionState, useState, useTransition } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
@@ -139,7 +139,7 @@ function AvatarDialog({
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;

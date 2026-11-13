@@ -2,10 +2,9 @@
 
 import { refresh } from 'next/cache';
 import { once } from '@web/core/actions/idempotency';
-import { limitAction } from '@web/core/actions/limit';
+import { guardAction } from '@web/core/actions/guard';
 import { fromApiFailure, isUuid, type ActionFailure, type ActionResult } from '@web/core/actions/result';
 import { createCategory, deleteCategory, updateCategory, type CategoryInput } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { LIMITS } from '@web/core/security/rate-limit';
 import { parseInput } from '@web/core/validation';
 import { isSiteId } from '../sites/site-id';
@@ -16,15 +15,7 @@ import { categorySchema, type CategoryValues } from './schema';
  * caller (ADR 0028); the languages of the site are checked there too (422 unsupported_locale).
  */
 
-const signedOut: ActionFailure = { ok: false, code: 'unauthenticated', message: 'Please sign in again.' };
 const badTarget: ActionFailure = { ok: false, code: 'not_found', message: 'This topic no longer exists.' };
-
-async function guard(): Promise<ActionFailure | { ok: true; userId: string }> {
-  const limited = await limitAction(LIMITS.mutation);
-  if (limited) return limited;
-  const user = await getSessionUser().catch(() => null);
-  return user ? { ok: true, userId: user.id } : signedOut;
-}
 
 /** Field by field, never the raw input. */
 function toInput(values: CategoryValues): CategoryInput {
@@ -36,7 +27,7 @@ function toInput(values: CategoryValues): CategoryInput {
 }
 
 export async function createCategoryAction(siteId: unknown, input: unknown): Promise<ActionResult<{ id: string }>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
   const parsed = parseInput(categorySchema, input);
@@ -53,7 +44,7 @@ export async function createCategoryAction(siteId: unknown, input: unknown): Pro
 }
 
 export async function updateCategoryAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<{ id: string }>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
   const parsed = parseInput(categorySchema, input);
@@ -66,7 +57,7 @@ export async function updateCategoryAction(siteId: unknown, id: unknown, input: 
 }
 
 export async function deleteCategoryAction(siteId: unknown, id: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 

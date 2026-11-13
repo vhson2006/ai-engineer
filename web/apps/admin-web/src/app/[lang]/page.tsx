@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
-import { Badge, Card, Container, cn } from '@web/ui';
+import { Badge, Card, cn } from '@web/ui';
+import { PageShell } from '@/components/page';
+import { requireUser } from '@/features/auth/require-user';
 import { DeploymentsTable } from '@/features/deployments/deployments-table';
 import { OverviewCharts } from '@/features/deployments/overview-charts';
 import { listDeployments, MAX_PAGE_SIZE, type Deployment, type DeploymentStatus } from '@web/core/api';
 import { isSuperadmin } from '@web/core/auth/roles';
-import { getSessionUser, type SessionUser } from '@web/core/auth/session';
+import type { SessionUser } from '@web/core/auth/session';
 import { SitesOverview } from '@/features/sites/sites-overview';
 import { format } from '@web/core/i18n/format';
 import { href, LOCALES, type Locale } from '@/i18n/locales';
@@ -22,18 +22,15 @@ type T = Messages['overview'];
 export default async function OverviewPage() {
   const [messages, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <Container className="py-10 sm:py-14">
-      <Suspense fallback={<OverviewSkeleton />}>
-        <Overview t={messages.overview} deployments={messages.deployments} sites={messages.overviewSites} locale={locale} />
-      </Suspense>
-    </Container>
+    <PageShell fallback={<OverviewSkeleton />}>
+      <Overview t={messages.overview} deployments={messages.deployments} sites={messages.overviewSites} locale={locale} />
+    </PageShell>
   );
 }
 
 async function Overview({ t, deployments, sites, locale }: { t: T; deployments: Messages['deployments']; sites: Messages['overviewSites']; locale: Locale }) {
   // Only sessions with KEYCLOAK_REQUIRED_ROLE exist in this app (@web/core/auth/session).
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(href(locale, '/'))}`);
+  const user = await requireUser(locale, href(locale, '/'));
   const superadmin = isSuperadmin(user);
 
   return (

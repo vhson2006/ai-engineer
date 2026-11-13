@@ -5,7 +5,7 @@ import type { Media, StudioBrandKit } from '@web/core/api';
 import { Button } from '@web/ui/button';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input, Textarea } from '@web/ui/input';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { ImageIcon, LoaderCircleIcon } from 'lucide-react';
 import { startTransition, useActionState } from 'react';
 import { useForm, useWatch, type FieldPath } from 'react-hook-form';
@@ -50,7 +50,7 @@ export function BrandForm({ siteId, brand, media, labels }: { siteId: string; br
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;

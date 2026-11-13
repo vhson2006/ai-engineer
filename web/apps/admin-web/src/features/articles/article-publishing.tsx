@@ -7,7 +7,7 @@ import { Card } from '@web/ui';
 import { Button } from '@web/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@web/ui/dialog';
 import { Input } from '@web/ui/input';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { LoaderCircleIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useId, useState, useTransition } from 'react';
@@ -60,7 +60,7 @@ export function ArticlePublishing({
   const dateFormat = new Intl.DateTimeFormat(intlLocale, { dateStyle: 'medium', timeStyle: 'short' });
 
   const fail = (result: ActionFailure): void => {
-    toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+    toastFailure(result, common.requestId);
   };
 
   const openDialog = (next: typeof dialog) => {

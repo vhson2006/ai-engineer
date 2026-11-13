@@ -36,22 +36,19 @@ control (owner, price, status computed by the API).
 import { fromApiFailure, invalidInput, type ActionResult } from '@web/core/actions/result';
 import { createOrder } from '@web/core/api';
 import { once } from '@web/core/actions/idempotency';
-import { getSessionUser } from '@web/core/auth/session';
-import { limitAction } from '@web/core/actions/limit';
+import { guardAction } from '@web/core/actions/guard';
 import { LIMITS } from '@web/core/security/rate-limit';
 import { parseInput } from '@web/core/validation';
 import { orderSchema } from './schema';
 
 export async function submitOrder(input: unknown): Promise<ActionResult<{ id: string }>> {
-  const limited = await limitAction(LIMITS.mutation);     // rule 3a: rate limit (per user)
-  if (limited) return limited;
-  const user = await getSessionUser();                    // rule 3: re-check the session
-  if (!user) return { ok: false, code: 'unauthenticated', message: 'Please sign in again.' };
+  const start = await guardAction(LIMITS.mutation);       // rules 3a + 3: rate limit, then the session
+  if (!start.ok) return start;                            // rate_limited / unauthenticated
 
   const parsed = parseInput(orderSchema, input);          // rule 4: same schema as the form
   if (!parsed.ok) return parsed;                          // invalid_input + field errors (keys)
 
-  return once(`order:${user.id}:${parsed.data.submissionId}`, async () => {   // rule 6
+  return once(`order:${start.userId}:${parsed.data.submissionId}`, async () => {   // rule 6
     const result = await createOrder({ productId: parsed.data.productId, quantity: parsed.data.quantity });
     return result.ok ? { ok: true, data: { id: result.data.id } } : fromApiFailure(result);   // rule 7
   });
@@ -74,7 +71,7 @@ export async function submitOrder(input: unknown): Promise<ActionResult<{ id: st
 - Call the action through `useActionState` (pending → disable the submit button, spinner) and
   handle the result inside that function, not in an effect: success → `toast.success`, close /
   navigate, reset; failure → `applyActionErrors(form, result.errors)` for the field errors, and
-  `toast.error(message, { description: requestId })` for the rest.
+  `toastFailure(result, t.common.requestId)` (`@web/ui/toaster`) for the rest.
 - Every label, placeholder and message comes from the dictionaries, passed as props.
 - Files in the form: `useFileUpload(purpose)` uploads first; the form sends only the file ids.
 - Never call the API, read tokens or use `NEXT_PUBLIC_*` secrets in the client.

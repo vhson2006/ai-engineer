@@ -11,7 +11,7 @@ import { Checkbox } from '@web/ui/checkbox';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input, Textarea } from '@web/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { AlertTriangleIcon, DownloadIcon, ImageIcon, LoaderCircleIcon, MicIcon, SparklesIcon, Trash2Icon, VideoIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -67,7 +67,7 @@ export function ProjectEditor(props: Props) {
     startStep(async () => {
       const result = await startStudioStepAction(props.siteId, project.id, step);
       if (result.ok) toast.success(t.started);
-      else toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+      else toastFailure(result, common.requestId);
     });
 
   const [deleting, startDelete] = useTransition();
@@ -254,7 +254,7 @@ function InputsSection({
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;
@@ -269,7 +269,7 @@ function InputsSection({
     startSuggest(async () => {
       const result = await startStudioStepAction(siteId, project.id, 'suggest');
       if (result.ok) toast.success(t.suggestStarted);
-      else toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+      else toastFailure(result, common.requestId);
     });
   const narration = useWatch({ control: form.control, name: 'narration' });
   const avatarSpeakers = new Set(template.speakers.filter((s) => s.avatar).map((s) => s.id));
@@ -539,7 +539,7 @@ function ScriptForm({ siteId, project, template, labels, disabled }: Props & { d
     else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;

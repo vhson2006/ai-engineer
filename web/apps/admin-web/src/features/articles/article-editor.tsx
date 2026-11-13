@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { newSubmissionId } from '@web/core/actions/submission-id';
-import type { ActionFailure } from '@web/core/actions/result';
 import type { Article, Media, MediaImage, TranslationJob } from '@web/core/api';
 import { format } from '@web/core/i18n/format';
 import { Card, cn, removedOnSave } from '@web/ui';
@@ -13,7 +12,7 @@ import { Input, Textarea } from '@web/ui/input';
 import { RichTextEditor } from '@web/ui/rich-text-editor';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@web/ui/tabs';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { LoaderCircleIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -73,9 +72,6 @@ function initialValues(site: ArticleEditorProps['site'], article?: Article): Art
     }),
   };
 }
-
-const showFailure = (result: ActionFailure, requestIdLabel: string) =>
-  toast.error(result.message, { description: result.requestId ? `${requestIdLabel}: ${result.requestId}` : undefined });
 
 /**
  * Create / edit an article: one tab per language of the site, the rich text body (HTML, sanitized
@@ -137,7 +133,7 @@ export function ArticleEditor({
       const unmatched = applyActionErrors(form, result.errors);
       const firstTab = result.errors?.map((e) => /^translations\.(\d+)\./.exec(e.field)?.[1]).find((i) => i !== undefined);
       if (firstTab !== undefined) setTab(site.locales[Number(firstTab)]);
-      if (!result.errors?.length || unmatched.length) showFailure(result, common.requestId);
+      if (!result.errors?.length || unmatched.length) toastFailure(result, common.requestId);
     }
     return result;
   }, null);

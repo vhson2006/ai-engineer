@@ -8,7 +8,7 @@ import { Button } from '@web/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@web/ui/dialog';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input } from '@web/ui/input';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { LoaderCircleIcon, PencilIcon, PlusIcon, Trash2Icon } from 'lucide-react';
 import { startTransition, useActionState, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
@@ -44,7 +44,7 @@ export function CategoryDialog({ siteId, locales, category, labels }: { siteId: 
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;
@@ -187,9 +187,7 @@ export function DeleteCategoryButton({ siteId, category, name, labels }: { siteI
         toast.success(t.deleted);
         setOpen(false);
       } else {
-        toast.error(result.code === 'foreign_key_violation' ? t.inUse : result.message, {
-          description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined,
-        });
+        toastFailure(result, common.requestId, result.code === 'foreign_key_violation' ? t.inUse : result.message);
       }
     });
 

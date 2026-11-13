@@ -3,19 +3,12 @@ import type { Article, Category, Site } from '@web/core/api';
 import { format } from '@web/core/i18n/format';
 import { Badge } from '@web/ui';
 import { LocalDate } from '@/components/local-date';
+import { categoryName } from '@/features/categories/display';
+import { displayTranslation } from '@/i18n/display-translation';
 import type { Messages } from '@/i18n/messages';
 import { ArticleStatusBadge } from './status-badge';
 
 type T = Messages['articles'];
-
-/** The translation in the first preferred language present, else any. */
-export function displayTranslation<X extends { locale: string }>(translations: X[], preferred: string[]): X | undefined {
-  for (const locale of preferred) {
-    const found = translations.find((t) => t.locale === locale);
-    if (found) return found;
-  }
-  return translations[0];
-}
 
 export function ArticlesTable({
   articles,
@@ -38,9 +31,9 @@ export function ArticlesTable({
 }) {
   if (articles.length === 0) return <p className="p-6 text-sm text-muted">{empty}</p>;
   const preferred = [uiLocale, site.defaultLocale];
-  const categoryName = (id: string) => {
+  const topicName = (id: string) => {
     const category = categories.find((c) => c.id === id);
-    return category ? (displayTranslation(category.translations, preferred)?.name ?? category.key) : '–';
+    return category ? categoryName(category, preferred) : '–';
   };
 
   return (
@@ -88,7 +81,7 @@ export function ArticlesTable({
                   )}
                   {main && <p className="mt-0.5 truncate text-xs text-subtle">/{main.slug}</p>}
                 </td>
-                <td className="hidden px-4 py-3 text-muted md:table-cell">{categoryName(article.categoryId)}</td>
+                <td className="hidden px-4 py-3 text-muted md:table-cell">{topicName(article.categoryId)}</td>
                 <td className="px-4 py-3">
                   <ArticleStatusBadge status={article.status} label={t.status[article.status]} />
                 </td>

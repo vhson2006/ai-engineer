@@ -12,3 +12,4 @@ export * from './content';
 export * from './deployments';
 export * from './files';
 export * from './studio';
+export * from './ai-articles';

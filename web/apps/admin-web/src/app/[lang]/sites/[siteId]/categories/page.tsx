@@ -1,13 +1,11 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
-import { getSessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
-import { Card, Container } from '@web/ui';
-import { Skeleton } from '@web/ui/skeleton';
+import { Card } from '@web/ui';
 import { ApiFailure } from '@/components/api-failure';
-import { displayTranslation } from '@/features/articles/articles-table';
+import { PageHeader, PageShell } from '@/components/page';
+import { requireUser } from '@/features/auth/require-user';
 import { CategoryDialog, DeleteCategoryButton } from '@/features/categories/category-dialog';
+import { categoryName } from '@/features/categories/display';
 import { siteCategories, siteOr404 } from '@/features/sites/data';
 import { href, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
@@ -20,19 +18,16 @@ export default async function CategoriesPage({ params }: PageProps<'/[lang]/site
   // params (and the session) only inside <Suspense>: the static shell prerenders without them.
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <Container className="py-10 sm:py-14">
-      <Suspense fallback={<Skeleton className="h-96 rounded-2xl" />}>
-        <Categories t={t} locale={locale} params={params} />
-      </Suspense>
-    </Container>
+    <PageShell>
+      <Categories t={t} locale={locale} params={params} />
+    </PageShell>
   );
 }
 
 async function Categories({ t, locale, params }: { t: Messages; locale: Locale; params: PageProps<'/[lang]/sites/[siteId]/categories'>['params'] }) {
   const { siteId } = await params;
   const self = href(locale, `/sites/${siteId}/categories`);
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(self)}`);
+  await requireUser(locale, self);
 
   const site = await siteOr404(siteId);
   if (!site.ok) return <ApiFailure t={t} failure={site} />;
@@ -43,14 +38,12 @@ async function Categories({ t, locale, params }: { t: Messages; locale: Locale; 
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">{site.data.name}</p>
-          <h1 className="mt-1 text-3xl font-bold tracking-tight">{c.title}</h1>
-          <p className="mt-2 max-w-2xl text-muted">{format(c.subtitle, { site: site.data.name })}</p>
-        </div>
-        <CategoryDialog siteId={siteId} locales={locales} labels={labels} />
-      </header>
+      <PageHeader
+        eyebrow={site.data.name}
+        title={c.title}
+        subtitle={format(c.subtitle, { site: site.data.name })}
+        actions={<CategoryDialog siteId={siteId} locales={locales} labels={labels} />}
+      />
 
       {!categories.ok ? (
         <ApiFailure t={t} failure={categories} />
@@ -80,7 +73,7 @@ async function Categories({ t, locale, params }: { t: Messages; locale: Locale; 
                 </thead>
                 <tbody className="divide-y divide-border">
                   {categories.data.map((category) => {
-                    const name = displayTranslation(category.translations, [locale, site.data.defaultLocale])?.name ?? category.key;
+                    const name = categoryName(category, [locale, site.data.defaultLocale]);
                     return (
                       <tr key={category.id}>
                         <td className="px-4 py-3">

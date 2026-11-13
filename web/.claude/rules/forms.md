@@ -35,6 +35,9 @@ Step by step: the `/new-form` skill.
    `const limited = await limitAction(LIMITS.<policy>); if (limited) return limited;`
    (`@web/core/actions/limit`, `@web/core/security/rate-limit`): per user, per client IP when signed out;
    `rate_limited` + `retryAfterS` for the UI. Pick a policy in `LIMITS` or add one there (ADR 0017).
+   With a session (admin, signed-in users), 3a then 3 in one call:
+   `const start = await guardAction(LIMITS.<policy>); if (!start.ok) return start;`
+   (`@web/core/actions/guard`; `start.userId` for `once()` keys).
 4. **Validate input on the server** with the form's zod schema (`parseInput(schema, input)`,
    `@web/core/validation`; messages are dictionary keys): types, lengths, ranges, enums, and UUIDs (`isUuid`) before
    an id goes into an API path. Treat every argument, field and hidden input as attacker-controlled;

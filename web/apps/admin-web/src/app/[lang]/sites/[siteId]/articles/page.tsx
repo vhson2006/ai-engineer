@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
 import { isUuid } from '@web/core/actions/result';
 import { listArticles } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
-import { buttonClass, Card, Container } from '@web/ui';
+import { buttonClass, Card } from '@web/ui';
 import { Pagination } from '@web/ui/pagination';
 import { Skeleton } from '@web/ui/skeleton';
-import { PlusIcon } from 'lucide-react';
+import { PlusIcon, SparklesIcon } from 'lucide-react';
 import { ApiFailure } from '@/components/api-failure';
-import { ArticlesTable, displayTranslation } from '@/features/articles/articles-table';
+import { PageHeader, PageShell } from '@/components/page';
+import { ArticlesTable } from '@/features/articles/articles-table';
 import { ArticlesToolbar } from '@/features/articles/articles-toolbar';
 import { loadArticlesParams } from '@/features/articles/search-params';
+import { requireUser } from '@/features/auth/require-user';
+import { categoryOptions } from '@/features/categories/display';
 import { siteCategories, siteOr404 } from '@/features/sites/data';
 import { href, LOCALES, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
@@ -29,19 +29,26 @@ export default async function ArticlesPage({ params, searchParams }: Props) {
   // params (and the session) only inside <Suspense>: the static shell prerenders without them.
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <Container className="py-10 sm:py-14">
-      <Suspense fallback={<ListSkeleton />}>
-        <Articles t={t} locale={locale} params={params} searchParams={searchParams} />
-      </Suspense>
-    </Container>
+    <PageShell fallback={<ListSkeleton />}>
+      <Articles t={t} locale={locale} params={params} searchParams={searchParams} />
+    </PageShell>
   );
 }
 
-async function Articles({ t, locale, params, searchParams }: { t: Messages; locale: Locale; params: Props['params']; searchParams: Props['searchParams'] }) {
+async function Articles({
+  t,
+  locale,
+  params,
+  searchParams,
+}: {
+  t: Messages;
+  locale: Locale;
+  params: Props['params'];
+  searchParams: Props['searchParams'];
+}) {
   const { siteId } = await params;
   const self = href(locale, `/sites/${siteId}/articles`);
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(self)}`);
+  await requireUser(locale, self);
 
   const site = await siteOr404(siteId);
   const a = t.articles;
@@ -66,22 +73,28 @@ async function Articles({ t, locale, params, searchParams }: { t: Messages; loca
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">{site.data.name}</p>
-          <h1 className="mt-1 text-3xl font-bold tracking-tight">{a.title}</h1>
-          <p className="mt-2 max-w-2xl text-muted">{format(a.subtitle, { site: site.data.name })}</p>
-        </div>
-        <Link href={`${self}/new`} className={buttonClass.primary}>
-          <PlusIcon aria-hidden className="size-4" />
-          {a.new}
-        </Link>
-      </header>
+      <PageHeader
+        eyebrow={site.data.name}
+        title={a.title}
+        subtitle={format(a.subtitle, { site: site.data.name })}
+        actions={
+          <div className="flex flex-wrap gap-2">
+            <Link href={`${self}/ai/new`} className={buttonClass.secondary}>
+              <SparklesIcon aria-hidden className="size-4" />
+              {a.writeWithAi}
+            </Link>
+            <Link href={`${self}/new`} className={buttonClass.primary}>
+              <PlusIcon aria-hidden className="size-4" />
+              {a.new}
+            </Link>
+          </div>
+        }
+      />
 
       <Card padding="p-0" className="overflow-hidden">
         <div className="flex flex-col gap-3 border-b border-border p-4 lg:flex-row lg:items-center lg:justify-between">
           <ArticlesToolbar
-            categories={categoryList.map((c) => ({ id: c.id, name: displayTranslation(c.translations, [locale, site.data.defaultLocale])?.name ?? c.key }))}
+            categories={categoryOptions(categoryList, [locale, site.data.defaultLocale])}
             labels={{ ...a.filters, search: a.search.label, placeholder: a.search.placeholder, statuses: a.status }}
           />
           {result.ok && (

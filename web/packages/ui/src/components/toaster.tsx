@@ -20,3 +20,15 @@ export function Toaster(props: ToasterProps) {
 }
 
 export { toast };
+
+/**
+ * A failed action (an ActionFailure): its message (or `message` to replace it), and the request
+ * id support finds the logs by, under the app's translated label.
+ */
+export function toastFailure(
+  failure: { message: string; requestId?: string },
+  requestIdLabel: string,
+  message: string = failure.message,
+): void {
+  toast.error(message, { description: failure.requestId ? `${requestIdLabel}: ${failure.requestId}` : undefined });
+}
