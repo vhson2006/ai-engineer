@@ -35,6 +35,10 @@ export interface StudioTemplate {
     required: boolean;
     maxLength: number;
     excludeSites?: string[];
+    /** "Suggest with AI" may draft it. */
+    suggest?: { lines?: number; images?: string[] };
+    /** Filled from the brand kit's business facts when empty. */
+    fromBrand?: 'website' | 'address' | 'hours' | 'prices';
   }[];
   scenes: {
     id: string;
@@ -69,6 +73,8 @@ export interface StudioInputs {
   facts: Record<string, string>;
   /** With a voice: always for `required` narration; for `optional`, the admin's choice. */
   narration?: boolean;
+  /** Facts drafted by AI and not edited since (server-managed). */
+  suggested?: string[];
 }
 
 export interface StudioScriptScene {
@@ -181,6 +187,10 @@ export interface StudioBrandKit {
   callToAction: string | null;
   tone: string | null;
   footerNote: string | null;
+  website: string | null;
+  address: string | null;
+  hours: string | null;
+  prices: string | null;
   bannedPhrases: string[];
   primaryColor: string;
   accentColor: string;
@@ -195,6 +205,10 @@ export interface StudioBrandKitInput {
   callToAction: string | null;
   tone: string | null;
   footerNote: string | null;
+  website: string | null;
+  address: string | null;
+  hours: string | null;
+  prices: string | null;
   bannedPhrases: string[];
   primaryColor: string;
   accentColor: string;
@@ -271,6 +285,14 @@ export function deleteStudioProject(siteId: string, id: string) {
 }
 
 /** 202: the AI writes the script (poll the project). */
+/**
+ * 202 when the AI drafts (poll the project, `suggesting`); 200 when only the brand kit's facts
+ * were filled. Never overwrites a filled field.
+ */
+export function requestStudioSuggest(siteId: string, id: string) {
+  return apiFetch<StudioProject>(project(siteId, id, '/suggest'), { method: 'POST' });
+}
+
 export function requestStudioScript(siteId: string, id: string) {
   return apiFetch<StudioProject>(project(siteId, id, '/script'), { method: 'POST' });
 }

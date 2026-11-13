@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
-import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 import { listDeployments } from '@web/core/api';
 import { isSuperadmin } from '@web/core/auth/roles';
-import { getSessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
-import { Container } from '@web/ui';
 import { Button } from '@web/ui/button';
 import { Card } from '@web/ui/card';
 import { DownloadIcon } from 'lucide-react';
 import { Pagination } from '@web/ui/pagination';
 import { Skeleton } from '@web/ui/skeleton';
+import { PageHeader, PageShell } from '@/components/page';
+import { requireUser } from '@/features/auth/require-user';
 import { CreateDeploymentDialog } from '@/features/deployments/create-deployment-dialog';
 import { DeploymentsTable } from '@/features/deployments/deployments-table';
 import { loadDeploymentsParams } from '@/features/deployments/search-params';
@@ -26,11 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function DeploymentsPage({ searchParams }: PageProps<'/[lang]/deployments'>) {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <Container className="py-10 sm:py-14">
-      <Suspense fallback={<ListSkeleton />}>
-        <Deployments t={t} locale={locale} searchParams={searchParams} />
-      </Suspense>
-    </Container>
+    <PageShell fallback={<ListSkeleton />}>
+      <Deployments t={t} locale={locale} searchParams={searchParams} />
+    </PageShell>
   );
 }
 
@@ -44,8 +41,7 @@ async function Deployments({
   searchParams: PageProps<'/[lang]/deployments'>['searchParams'];
 }) {
   const self = href(locale, '/deployments');
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(self)}`);
+  const user = await requireUser(locale, self);
   if (!isSuperadmin(user)) notFound(); // a system page (ADR 0030); the API refuses site admins anyway
 
   const params = await loadDeploymentsParams(searchParams);
@@ -57,24 +53,24 @@ async function Deployments({
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{d.title}</h1>
-          <p className="mt-2 text-muted">{d.subtitle}</p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {/* A plain download link (GET, read-only): the export of exactly what is listed. */}
-          <Button asChild variant="secondary">
-            <a href={`/exports/deployments${search ? `?${new URLSearchParams({ search })}` : ''}`} download>
-              <DownloadIcon />
-              {d.export.button}
-            </a>
-          </Button>
-          <CreateDeploymentDialog
-            labels={{ ...d.create, cancel: t.common.cancel, close: t.common.close, requestId: t.common.requestId, validation: t.validation }}
-          />
-        </div>
-      </header>
+      <PageHeader
+        title={d.title}
+        subtitle={d.subtitle}
+        actions={
+          <div className="flex flex-wrap gap-2">
+            {/* A plain download link (GET, read-only): the export of exactly what is listed. */}
+            <Button asChild variant="secondary">
+              <a href={`/exports/deployments${search ? `?${new URLSearchParams({ search })}` : ''}`} download>
+                <DownloadIcon />
+                {d.export.button}
+              </a>
+            </Button>
+            <CreateDeploymentDialog
+              labels={{ ...d.create, cancel: t.common.cancel, close: t.common.close, requestId: t.common.requestId, validation: t.validation }}
+            />
+          </div>
+        }
+      />
 
       <Card padding="p-0" className="overflow-hidden">
         <div className="flex flex-col gap-3 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between">

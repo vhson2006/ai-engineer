@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input } from '@web/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
-import { toast } from '@web/ui/toaster';
+import { toastFailure } from '@web/ui/toaster';
 import { ClapperboardIcon, LoaderCircleIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { startTransition, useActionState, useState } from 'react';
@@ -55,7 +55,7 @@ export function TemplatePicker({
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;

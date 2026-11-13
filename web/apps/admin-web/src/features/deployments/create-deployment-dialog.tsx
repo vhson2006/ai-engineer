@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input, Textarea } from '@web/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { LoaderCircleIcon, PlusIcon } from 'lucide-react';
 import { startTransition, useActionState, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -62,7 +62,7 @@ export function CreateDeploymentDialog({ labels }: { labels: CreateDeploymentLab
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${labels.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, labels.requestId);
       }
     }
     return result;

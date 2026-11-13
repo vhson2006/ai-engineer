@@ -7,6 +7,7 @@ const api = vi.hoisted(() => ({
   deleteStudioProject: vi.fn(),
   requestStudioRender: vi.fn(),
   requestStudioScript: vi.fn(),
+  requestStudioSuggest: vi.fn(),
   requestStudioVoice: vi.fn(),
   saveStudioBrandKit: vi.fn(),
   updateStudioAvatar: vi.fn(),
@@ -113,6 +114,8 @@ describe('studio actions', () => {
   it('starts only the known steps, on valid ids', async () => {
     await startStudioStepAction('nails', ID, 'render');
     expect(api.requestStudioRender).toHaveBeenCalledWith('nails', ID);
+    await startStudioStepAction('nails', ID, 'suggest');
+    expect(api.requestStudioSuggest).toHaveBeenCalledWith('nails', ID);
     expect((await startStudioStepAction('nails', ID, 'publish')).ok).toBe(false);
     expect((await startStudioStepAction('../wine', ID, 'script')).ok).toBe(false);
     expect((await startStudioStepAction('nails', 'x', 'script')).ok).toBe(false);
@@ -136,6 +139,10 @@ describe('studio actions', () => {
       callToAction: '',
       tone: '',
       footerNote: '',
+      website: ' envynailsspaofwendell.com ',
+      address: '',
+      hours: 'Mon–Sat | 9:30 AM – 7 PM',
+      prices: '',
       bannedPhrases: 'best in town\n\n best in town \ncheapest',
       primaryColor: '#263238',
       accentColor: '#f06292',
@@ -148,6 +155,10 @@ describe('studio actions', () => {
       callToAction: null,
       tone: null,
       footerNote: null,
+      website: 'envynailsspaofwendell.com',
+      address: null,
+      hours: 'Mon–Sat | 9:30 AM – 7 PM',
+      prices: null,
       bannedPhrases: ['best in town', 'cheapest'],
       primaryColor: '#263238',
       accentColor: '#f06292',

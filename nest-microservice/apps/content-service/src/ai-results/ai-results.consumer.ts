@@ -8,7 +8,15 @@ import {
 import { plainToInstance, type ClassConstructor } from 'class-transformer';
 import { validate } from 'class-validator';
 import {
+  ARTICLE_PROMPT_EVENTS,
+  ARTICLE_WRITING_EVENTS,
+  ArticleJobFailedEvent,
+  ArticlePromptCompletedEvent,
+  ArticleWritingCompletedEvent,
   handleOnce,
+  FACT_SUGGESTION_EVENTS,
+  FactSuggestionCompletedEvent,
+  FactSuggestionFailedEvent,
   IMAGE_GENERATION_EVENTS,
   ImageGenerationCompletedEvent,
   ImageGenerationFailedEvent,
@@ -32,6 +40,7 @@ import {
   type MessageHandler,
 } from '@app/common';
 import type { Prisma } from '../generated/prisma/client';
+import { ArticleDraftsService } from '../article-drafts/article-drafts.service';
 import { REQUESTER } from '../common/ai';
 import { MediaGenerationService } from '../media/media-generation.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -57,6 +66,7 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
     private readonly jobs: TranslationJobsService,
     private readonly images: MediaGenerationService,
     private readonly studio: ProjectsService,
+    private readonly drafts: ArticleDraftsService,
   ) {}
 
   /** Subject → handler. Exposed for tests. */
@@ -67,13 +77,39 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
     [TRANSLATION_EVENTS.FAILED]: this.once(TranslationFailedEvent, (tx, event) =>
       this.jobs.fail(tx, event),
     ),
-    [IMAGE_GENERATION_EVENTS.COMPLETED]: this.once(ImageGenerationCompletedEvent, (tx, event) =>
-      this.images.complete(tx, event),
+    // An image of an AI article (ADR 0041) is a media-library image too: the article is built
+    // once all of its images are settled.
+    [IMAGE_GENERATION_EVENTS.COMPLETED]: this.once(
+      ImageGenerationCompletedEvent,
+      async (tx, event) => {
+        await this.images.complete(tx, event);
+        await this.drafts.imageSettled(tx, event.jobId);
+      },
     ),
-    [IMAGE_GENERATION_EVENTS.FAILED]: this.once(ImageGenerationFailedEvent, (tx, event) =>
-      this.images.fail(tx, event),
+    [IMAGE_GENERATION_EVENTS.FAILED]: this.once(ImageGenerationFailedEvent, async (tx, event) => {
+      await this.images.fail(tx, event);
+      await this.drafts.imageSettled(tx, event.jobId);
+    }),
+    // Articles written by AI (ADR 0041).
+    [ARTICLE_PROMPT_EVENTS.COMPLETED]: this.once(ArticlePromptCompletedEvent, (tx, event) =>
+      this.drafts.briefWritten(tx, event),
     ),
+    [ARTICLE_PROMPT_EVENTS.FAILED]: this.once(ArticleJobFailedEvent, async (tx, event) => {
+      await this.drafts.briefFailed(tx, event);
+    }),
+    [ARTICLE_WRITING_EVENTS.COMPLETED]: this.once(ArticleWritingCompletedEvent, (tx, event) =>
+      this.drafts.articleWritten(tx, event),
+    ),
+    [ARTICLE_WRITING_EVENTS.FAILED]: this.once(ArticleJobFailedEvent, async (tx, event) => {
+      await this.drafts.articleFailed(tx, event);
+    }),
     // Video studio (ADR 0039): script and voice from ai-service, the MP4 from render-worker.
+    [FACT_SUGGESTION_EVENTS.COMPLETED]: this.once(FactSuggestionCompletedEvent, (tx, event) =>
+      this.studio.suggestionWritten(tx, event),
+    ),
+    [FACT_SUGGESTION_EVENTS.FAILED]: this.once(FactSuggestionFailedEvent, (tx, event) =>
+      this.studio.suggestionFailed(tx, event),
+    ),
     [SCRIPT_WRITING_EVENTS.COMPLETED]: this.once(ScriptWritingCompletedEvent, (tx, event) =>
       this.studio.scriptWritten(tx, event),
     ),

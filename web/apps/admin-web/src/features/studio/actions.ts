@@ -2,7 +2,7 @@
 
 import { refresh } from 'next/cache';
 import { once } from '@web/core/actions/idempotency';
-import { limitAction } from '@web/core/actions/limit';
+import { guardAction } from '@web/core/actions/guard';
 import { fromApiFailure, isUuid, type ActionFailure, type ActionResult } from '@web/core/actions/result';
 import {
   createStudioAvatar,
@@ -11,13 +11,13 @@ import {
   deleteStudioProject,
   requestStudioRender,
   requestStudioScript,
+  requestStudioSuggest,
   requestStudioVoice,
   saveStudioBrandKit,
   updateStudioAvatar,
   updateStudioProject,
   type StudioInputs,
 } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { LIMITS } from '@web/core/security/rate-limit';
 import { parseInput } from '@web/core/validation';
 import { isSiteId } from '../sites/site-id';
@@ -40,16 +40,8 @@ import {
  * the site's own. Script, voice and render run in other processes: the actions only start them.
  */
 
-const signedOut: ActionFailure = { ok: false, code: 'unauthenticated', message: 'Please sign in again.' };
 const badTarget: ActionFailure = { ok: false, code: 'not_found', message: 'This item no longer exists.' };
 const reload: ActionFailure = { ok: false, code: 'invalid_input', message: 'Please reload the page.', errors: [] };
-
-async function guard(): Promise<ActionFailure | { ok: true; userId: string }> {
-  const limited = await limitAction(LIMITS.mutation);
-  if (limited) return limited;
-  const user = await getSessionUser().catch(() => null);
-  return user ? { ok: true, userId: user.id } : signedOut;
-}
 
 /** Only the filled slots, as plain string maps. */
 function slots(values: Record<string, string | undefined>): Record<string, string> {
@@ -58,7 +50,7 @@ function slots(values: Record<string, string | undefined>): Record<string, strin
 
 /** A new video from a template; answers its id (the editor page). */
 export async function createStudioProjectAction(siteId: unknown, input: unknown): Promise<ActionResult<{ id: string }>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
   const parsed = parseInput(newProjectSchema, input);
@@ -80,7 +72,7 @@ export async function createStudioProjectAction(siteId: unknown, input: unknown)
 
 /** Title, brief and the slots. */
 export async function saveStudioInputsAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
   const parsed = parseInput(inputsSchema, input);
@@ -101,7 +93,7 @@ export async function saveStudioInputsAction(siteId: unknown, id: unknown, input
 
 /** The admin's edit of the script (clears the voice: it has to be spoken again). */
 export async function saveStudioScriptAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
   const parsed = parseInput(scriptSchema, input);
@@ -122,10 +114,15 @@ export async function saveStudioScriptAction(siteId: unknown, id: unknown, input
 
 /** Starts a step (AI script, voice, render). Starting it twice answers 409 busy: harmless. */
 export async function startStudioStepAction(siteId: unknown, id: unknown, step: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id) || !STUDIO_STEPS.includes(step as StudioStep)) return badTarget;
-  const call = { script: requestStudioScript, voice: requestStudioVoice, render: requestStudioRender }[step as StudioStep];
+  const call = {
+    suggest: requestStudioSuggest,
+    script: requestStudioScript,
+    voice: requestStudioVoice,
+    render: requestStudioRender,
+  }[step as StudioStep];
   const result = await call(siteId, id);
   if (!result.ok) return fromApiFailure(result);
   refresh();
@@ -133,7 +130,7 @@ export async function startStudioStepAction(siteId: unknown, id: unknown, step: 
 }
 
 export async function deleteStudioProjectAction(siteId: unknown, id: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
   const result = await deleteStudioProject(siteId, id);
@@ -143,7 +140,7 @@ export async function deleteStudioProjectAction(siteId: unknown, id: unknown): P
 }
 
 export async function saveStudioBrandAction(siteId: unknown, input: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
   const parsed = parseInput(brandSchema, input);
@@ -156,6 +153,10 @@ export async function saveStudioBrandAction(siteId: unknown, input: unknown): Pr
     callToAction: v.callToAction || null,
     tone: v.tone || null,
     footerNote: v.footerNote || null,
+    website: v.website || null,
+    address: v.address || null,
+    hours: v.hours || null,
+    prices: v.prices || null,
     bannedPhrases: splitLines(v.bannedPhrases),
     primaryColor: v.primaryColor,
     accentColor: v.accentColor,
@@ -167,7 +168,7 @@ export async function saveStudioBrandAction(siteId: unknown, input: unknown): Pr
 }
 
 export async function createStudioAvatarAction(siteId: unknown, input: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
   const parsed = parseInput(avatarSchema, input);
@@ -183,7 +184,7 @@ export async function createStudioAvatarAction(siteId: unknown, input: unknown):
 }
 
 export async function updateStudioAvatarAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
   const parsed = parseInput(avatarSchema, input);
@@ -196,7 +197,7 @@ export async function updateStudioAvatarAction(siteId: unknown, id: unknown, inp
 }
 
 export async function deleteStudioAvatarAction(siteId: unknown, id: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
   const result = await deleteStudioAvatar(siteId, id);

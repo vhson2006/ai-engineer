@@ -17,6 +17,7 @@ import {
   OutboxRelay,
   paginate,
   Paginated,
+  FACT_SUGGESTION_EVENTS,
   SCRIPT_WRITING_EVENTS,
   SPEECH_EVENTS,
   STUDIO_VOICE_IDS,
@@ -24,6 +25,10 @@ import {
   UpdateStudioProjectDto,
   VIDEO_RENDER_EVENTS,
   videoWebKeys,
+  type FactSuggestionCompletedEvent,
+  type MediaContentType,
+  type FactSuggestionFailedEvent,
+  type FactSuggestionRequestedEvent,
   type ObjectStorage,
   type ScriptWritingCompletedEvent,
   type ScriptWritingFailedEvent,
@@ -47,13 +52,13 @@ import {
 import { Prisma, type Site, type StudioProject } from '../generated/prisma/client';
 import { REQUESTER } from '../common/ai';
 import { monthStart } from '../media/media-generation.service';
-import { MediaUrls } from '../media/media-urls';
+import { MediaUrls, variantsOf } from '../media/media-urls';
 import { PrismaService } from '../prisma/prisma.service';
 import { SitesService } from '../sites/sites.service';
 import { AvatarsService } from './avatars.service';
 import { BrandKitService } from './brand-kit.service';
 import { buildCompositionProps, type ResolvedAssets } from './composition';
-import { activeScenes, checkScript, narrated } from './script-checks';
+import { activeScenes, checkScript, narrated, numbersIn } from './script-checks';
 
 type Tx = Prisma.TransactionClient;
 
@@ -72,7 +77,9 @@ interface StoredVideo {
   renderedAt: string;
 }
 
-const BUSY: StudioProjectStatus[] = ['writing', 'voicing', 'rendering'];
+const BUSY: StudioProjectStatus[] = ['suggesting', 'writing', 'voicing', 'rendering'];
+/** What the AI sees of an already filled fact (context, not material). */
+const KNOWN_FACT_MAX = 2000;
 const DEFAULT_VOICE = 'Kore';
 /** An article as a fact: its title and text, without markup. */
 const ARTICLE_FACT_MAX = 12_000;
@@ -153,7 +160,12 @@ export class ProjectsService {
         code: 'invalid_language',
       });
     }
-    const inputs = await this.checkInputs(site, template, dto.inputs);
+    const inputs = withBrandFacts(
+      template,
+      site,
+      await this.checkInputs(site, template, dto.inputs),
+      await this.brand.resolve(site),
+    );
     const row = await this.prisma.studioProject.create({
       data: {
         siteId,
@@ -184,9 +196,10 @@ export class ProjectsService {
     const current = await this.getOrFail(siteId, id);
     assertIdle(current);
     const template = this.templateOf(current);
+    const before = currentInputs(current);
     const inputs = dto.inputs
-      ? await this.checkInputs(site, template, dto.inputs)
-      : (current.inputs as unknown as StudioInputs);
+      ? keepUneditedDrafts(await this.checkInputs(site, template, dto.inputs), before)
+      : before;
     let script = current.script as unknown as StudioScript | null;
     if (dto.script) {
       const allowed = new Set(template.scenes.map((s) => s.id));
@@ -208,7 +221,6 @@ export class ProjectsService {
         hashtags: dto.script.hashtags.map((h) => h.trim()).filter(Boolean),
       };
     }
-    const before = currentInputs(current);
     const voiceChanged =
       Boolean(dto.script) ||
       (dto.inputs &&
@@ -278,6 +290,88 @@ export class ProjectsService {
   }
 
   /* ─────────────────────────────── Steps ─────────────────────────────── */
+
+  /**
+   * "Suggest with AI" (202): the empty business facts come from the brand kit at once; the empty
+   * descriptive facts (`suggest` slots) are drafted by ai-service, the pictured looks named from
+   * their images. Nothing to draft: the brand facts are saved and nothing else happens.
+   */
+  async requestSuggest(siteId: string, id: string, user: AuthUser): Promise<StudioProjectResponse> {
+    const site = await this.sites.getAccessible(siteId, user);
+    const project = await this.getOrFail(siteId, id);
+    assertIdle(project);
+    const template = this.templateOf(project);
+    const brand = await this.brand.resolve(site);
+    const inputs = withBrandFacts(template, site, currentInputs(project), brand);
+    const locale = project.language === 'vi' ? 'vi' : 'en';
+
+    const media = await this.prisma.media.findMany({
+      where: { siteId, status: 'ready', id: { in: Object.values(inputs.images) } },
+    });
+    const imageKey = (slot: string) => {
+      const row = media.find((m) => m.id === inputs.images[slot]);
+      // The smallest size is plenty to name a look.
+      const smallest = row && variantsOf(row)[0];
+      return row && smallest
+        ? [this.urls.key(siteId, row.id, smallest.width, row.contentType as MediaContentType)]
+        : [];
+    };
+    const fields = offeredFacts(template, site)
+      .filter((slot) => slot.suggest && !inputs.facts[slot.id]?.trim())
+      .flatMap((slot) => {
+        const images = slot.suggest?.images?.flatMap(imageKey);
+        if (slot.suggest?.images && !images?.length) return []; // nothing pictured to name
+        return [
+          {
+            id: slot.id,
+            label: slot.label[locale],
+            hint: slot.hint[locale],
+            maxLength: Math.max(20, Math.min(slot.maxLength, 2000)),
+            ...(slot.suggest?.lines && { lines: slot.suggest.lines }),
+            ...(images?.length && { images }),
+          },
+        ];
+      });
+    if (!fields.length) {
+      const [row] = await this.prisma.studioProject.updateManyAndReturn({
+        where: { id, siteId, status: { notIn: BUSY } },
+        data: { inputs: inputs as unknown as Prisma.InputJsonValue, updatedBy: user.id },
+      });
+      if (!row) throw busy();
+      return this.toResponse(site, row);
+    }
+
+    const known = template.facts
+      .filter((slot) => slot.kind === 'text' && inputs.facts[slot.id]?.trim())
+      .map((slot) => ({ id: slot.id, text: inputs.facts[slot.id].slice(0, KNOWN_FACT_MAX) }));
+    const jobId = randomUUID();
+    const event: FactSuggestionRequestedEvent = {
+      jobId,
+      requester: REQUESTER,
+      siteId,
+      language: project.language,
+      template: template.instructions,
+      title: project.title,
+      ...(project.brief && { brief: project.brief }),
+      brand: {
+        name: brand.brandName,
+        ...(brand.tagline && { tagline: brand.tagline }),
+        ...(brand.tone && { tone: brand.tone }),
+        ...(brand.callToAction && { callToAction: brand.callToAction }),
+      },
+      known,
+      fields,
+      actorId: user.id,
+    };
+    const row = await this.startStep(
+      project,
+      'suggesting',
+      { suggestJobId: jobId, inputs: inputs as unknown as Prisma.InputJsonValue },
+      user,
+      (tx) => addToOutbox(tx, FACT_SUGGESTION_EVENTS.REQUESTED, event),
+    );
+    return this.toResponse(site, row);
+  }
 
   /** Asks ai-service to write the script (202). Needs the template's required facts. */
   async requestScript(siteId: string, id: string, user: AuthUser): Promise<StudioProjectResponse> {
@@ -460,6 +554,74 @@ export class ProjectsService {
     if (oldVoice) void this.deleteFiles(oldVoice.lines.map((l) => l.key));
   }
 
+  /**
+   * The drafts: only into facts still empty, only for slots that may be suggested, and a line
+   * with a number the business didn't give is dropped (the AI must not invent figures).
+   */
+  async suggestionWritten(tx: Tx, event: FactSuggestionCompletedEvent): Promise<void> {
+    const project = await tx.studioProject.findFirst({
+      where: { siteId: event.siteId, suggestJobId: event.jobId, status: 'suggesting' },
+    });
+    if (!project) return;
+    const site = await tx.site.findUniqueOrThrow({ where: { id: project.siteId } });
+    const template = this.templateOf(project);
+    const inputs = currentInputs(project);
+    const brand = await this.brand.resolve(site);
+    const known = new Set(
+      [
+        ...Object.values(inputs.facts),
+        project.title,
+        brand.brandName,
+        brand.tagline ?? '',
+        brand.phone ?? '',
+      ].flatMap(numbersIn),
+    );
+    const allowed = new Map(
+      offeredFacts(template, site)
+        .filter((slot) => slot.suggest)
+        .map((slot) => [slot.id, slot]),
+    );
+    const facts = { ...inputs.facts };
+    const suggested = new Set(inputs.suggested ?? []);
+    for (const draft of event.facts) {
+      const slot = allowed.get(draft.id);
+      if (!slot || facts[draft.id]?.trim()) continue;
+      const text = draft.text
+        .split('\n')
+        .filter((line) => numbersIn(line).every((n) => Number(n) <= 10 || known.has(n)))
+        .join('\n')
+        .slice(0, slot.maxLength)
+        .trim();
+      if (!text) continue;
+      facts[draft.id] = text;
+      suggested.add(draft.id);
+    }
+    await tx.studioProject.update({
+      where: { id: project.id },
+      data: {
+        inputs: { ...inputs, facts, suggested: [...suggested] },
+        status: restingStatus(project),
+        suggestJobId: null,
+        error: null,
+      },
+    });
+  }
+
+  async suggestionFailed(tx: Tx, event: FactSuggestionFailedEvent): Promise<void> {
+    const project = await tx.studioProject.findFirst({
+      where: { siteId: event.siteId, suggestJobId: event.jobId, status: 'suggesting' },
+    });
+    if (!project) return;
+    await tx.studioProject.update({
+      where: { id: project.id },
+      data: {
+        status: restingStatus(project),
+        suggestJobId: null,
+        error: `suggest_${event.reason}`,
+      },
+    });
+  }
+
   async scriptFailed(tx: Tx, event: ScriptWritingFailedEvent): Promise<void> {
     const project = await tx.studioProject.findFirst({
       where: { siteId: event.siteId, scriptJobId: event.jobId, status: 'writing' },
@@ -568,7 +730,11 @@ export class ProjectsService {
   private async startStep(
     project: StudioProject,
     status: StudioProjectStatus,
-    ids: Partial<Pick<StudioProject, 'scriptJobId' | 'voiceJobId' | 'renderId'>>,
+    ids: Partial<
+      Pick<StudioProject, 'scriptJobId' | 'voiceJobId' | 'renderId' | 'suggestJobId'>
+    > & {
+      inputs?: Prisma.InputJsonValue;
+    },
     user: AuthUser,
     publish: (tx: Tx) => Promise<unknown>,
   ): Promise<StudioProject> {
@@ -880,7 +1046,46 @@ function currentInputs(project: StudioProject): StudioInputs {
     voices: inputs.voices ?? {},
     facts: inputs.facts ?? {},
     ...(inputs.narration !== undefined && { narration: inputs.narration }),
+    ...(inputs.suggested?.length && { suggested: inputs.suggested }),
   };
+}
+
+/** Where a project is when nothing runs: from what it already has. */
+function restingStatus(project: StudioProject): StudioProjectStatus {
+  if (project.video) return 'rendered';
+  if (project.voice) return 'voiced';
+  return project.script ? 'written' : 'draft';
+}
+
+/** The template's facts this site gets (wine: no prices). */
+function offeredFacts(template: StudioTemplate, site: Site) {
+  return template.facts.filter((slot) => !slot.excludeSites?.includes(site.id));
+}
+
+/** Empty business facts filled from the brand kit (typed once there, never by AI). */
+export function withBrandFacts(
+  template: StudioTemplate,
+  site: Site,
+  inputs: StudioInputs,
+  brand: StudioBrandKitResponse,
+): StudioInputs {
+  const facts = { ...inputs.facts };
+  for (const slot of offeredFacts(template, site)) {
+    const value = slot.fromBrand ? brand[slot.fromBrand]?.trim() : undefined;
+    if (value && !facts[slot.id]?.trim()) facts[slot.id] = value.slice(0, slot.maxLength);
+  }
+  return { ...inputs, facts };
+}
+
+/**
+ * AI drafts the admin left as they were stay marked; an edited one is the admin's now. `inputs`
+ * comes from checkInputs: never a `suggested` list from the client.
+ */
+function keepUneditedDrafts(inputs: StudioInputs, before: StudioInputs): StudioInputs {
+  const kept = (before.suggested ?? []).filter(
+    (id) => inputs.facts[id] && inputs.facts[id] === before.facts[id],
+  );
+  return kept.length ? { ...inputs, suggested: kept } : inputs;
 }
 
 function brandProps(brand: StudioBrandKitResponse): StudioCompositionProps['brand'] {

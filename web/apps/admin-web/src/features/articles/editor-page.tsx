@@ -1,13 +1,15 @@
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { isUuid } from '@web/core/actions/result';
 import { getArticle, listMedia, listStudioProjects, listTranslationJobs } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { ApiFailure } from '@/components/api-failure';
+import { PageHeader } from '@/components/page';
+import { requireUser } from '@/features/auth/require-user';
+import { categoryOptions } from '@/features/categories/display';
 import { siteCategories, siteOr404 } from '@/features/sites/data';
+import { displayTranslation } from '@/i18n/display-translation';
 import { href, LOCALES, type Locale } from '@/i18n/locales';
 import type { Messages } from '@/i18n/messages';
 import { ArticleEditor } from './article-editor';
-import { displayTranslation } from './articles-table';
 
 /**
  * The new / edit article screen (server part): session, site (404 if not the user's), topics,
@@ -26,8 +28,7 @@ export async function ArticleEditorPage({
   const { siteId, id: articleId } = await params;
   const list = href(locale, `/sites/${siteId}/articles`);
   const self = articleId ? `${list}/${articleId}` : `${list}/new`;
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(self)}`);
+  await requireUser(locale, self);
 
   const site = await siteOr404(siteId);
   if (!site.ok) return <ApiFailure t={t} failure={site} />;
@@ -57,15 +58,12 @@ export async function ArticleEditorPage({
 
   return (
     <div className="space-y-6">
-      <header>
-        <p className="text-sm font-semibold uppercase tracking-wider text-brand">{site.data.name}</p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight text-balance">{heading}</h1>
-      </header>
+      <PageHeader eyebrow={site.data.name} title={heading} />
       <ArticleEditor
         // A fresh editor per article (and after another admin's change: the key changes).
         key={current ? `${current.id}:${current.updatedAt}` : 'new'}
         site={{ id: site.data.id, name: site.data.name, locales: site.data.locales, defaultLocale: site.data.defaultLocale }}
-        categories={categories.data.map((c) => ({ id: c.id, name: displayTranslation(c.translations, preferred)?.name ?? c.key }))}
+        categories={categoryOptions(categories.data, preferred)}
         article={current}
         t={t.articles}
         common={t.common}

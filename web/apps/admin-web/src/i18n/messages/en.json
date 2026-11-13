@@ -533,7 +533,8 @@
         "hint": "Finished clips of the video studio. The page loads the light web version, only when a visitor presses play.",
         "empty": "No finished video yet: make one in the video studio."
       }
-    }
+    },
+    "writeWithAi": "Write with AI"
   },
   "categories": {
     "title": "Topics",
@@ -666,6 +667,7 @@
     "updated": "Updated {date}",
     "status": {
       "draft": "Draft",
+      "suggesting": "AI is drafting the fields…",
       "writing": "AI is writing…",
       "written": "Script ready",
       "voicing": "Recording voices…",
@@ -769,7 +771,71 @@
       "primaryColor": "Main colour",
       "accentColor": "Accent colour",
       "logo": "Logo",
-      "saved": "Brand kit saved."
+      "saved": "Brand kit saved.",
+      "businessTitle": "Business facts",
+      "businessHint": "Typed once, filled into every new video as they are. The AI never writes these.",
+      "website": "Website",
+      "websiteHint": "e.g. envynailsspaofwendell.com",
+      "address": "Address",
+      "addressHint": "One address line per line.",
+      "hours": "Opening hours",
+      "hoursHint": "One per line: Days | Hours, e.g. \"Mon–Sat | 9:30 AM – 7 PM\".",
+      "prices": "Price list",
+      "pricesHint": "Up to 4 lines: Service | Price, exactly as on the price list."
+    },
+    "suggest": "Suggest with AI",
+    "suggestHint": "Fills the empty fields: website, address, hours and prices from the brand kit; descriptions drafted by AI (never prices or figures). Check every draft.",
+    "suggestSaveFirst": "Save your changes first: the suggestions start from what is saved.",
+    "suggestStarted": "The AI is drafting: this page updates by itself.",
+    "aiDraft": "AI draft: check it"
+  },
+  "aiArticles": {
+    "title": "Write an article with AI",
+    "subtitle": "Give the AI a topic and an idea: it suggests a brief and an outline, you edit and confirm them, then it writes a draft article with its images and translates it into the site’s other languages. Nothing is published by itself.",
+    "back": "All articles",
+    "noTopics": "Create a topic first: every article belongs to one.",
+    "topic": "Topic",
+    "language": "Written in",
+    "languageHint": "The article is written in this language, then machine-translated into the site’s other languages.",
+    "idea": "Your idea",
+    "ideaHint": "What the article should help readers with, in your words.",
+    "audience": "Readers (optional)",
+    "audienceHint": "e.g. busy women who get their nails done every few weeks.",
+    "keyword": "Search keyword (optional)",
+    "keywordHint": "The phrase people would type in Google.",
+    "length": "Length",
+    "lengths": {
+      "short": "Short (about 500 words)",
+      "medium": "Medium (about 900 words)",
+      "long": "Long (about 1,400 words)"
+    },
+    "images": "AI images",
+    "imagesHint": "The cover first, then images in the text. Counted in the site’s monthly AI image quota.",
+    "start": "Suggest a brief",
+    "steps": {
+      "prompting": "The AI is preparing the brief and the outline…",
+      "writing": "The AI is writing the article…",
+      "illustrating": "The AI is drawing the images…"
+    },
+    "briefTitle": "Check the brief",
+    "briefHint": "Edit anything you like: the AI writes exactly from this brief and this outline. Prices, hours and the address come from the brand kit and must stay as they are.",
+    "prompt": "Brief (prompt)",
+    "promptHint": "Starts with “You are a professional content writer…”. Add what matters to you.",
+    "outline": "Outline",
+    "outlineHint": "One section heading per line, in order.",
+    "write": "Write the article",
+    "writeStarted": "The AI is writing: this page updates by itself.",
+    "doneTitle": "Draft ready",
+    "doneHint": "The article is saved as a draft with its images; its translations into the other languages follow in a minute or two. Read every language and check every fact before publishing.",
+    "open": "Open the draft",
+    "failed": "The AI could not finish ({code}). You can try again.",
+    "notice": "Written with AI: check every fact before publishing.",
+    "warnings": {
+      "title": "To check before publishing",
+      "number": "The number {value} is in none of your facts or your brief.",
+      "images_quota": "Not enough AI images left this month: the article has fewer images.",
+      "images_failed": "Some images could not be made: they were left out.",
+      "translation_too_large": "The article is too long to translate automatically: translate it from the editor."
     }
   }
 }

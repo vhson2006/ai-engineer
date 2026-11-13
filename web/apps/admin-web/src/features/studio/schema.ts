@@ -58,6 +58,10 @@ export const brandSchema = z.object({
   callToAction: z.string().trim().max(200, 'tooLong'),
   tone: z.string().trim().max(300, 'tooLong'),
   footerNote: z.string().trim().max(200, 'tooLong'),
+  website: z.string().trim().max(80, 'tooLong'),
+  address: z.string().trim().max(200, 'tooLong'),
+  hours: z.string().trim().max(300, 'tooLong'),
+  prices: z.string().trim().max(400, 'tooLong'),
   bannedPhrases: z.string().max(5000, 'tooLong'),
   primaryColor: hex,
   accentColor: hex,
@@ -74,7 +78,7 @@ export const avatarSchema = z.object({
 });
 export type AvatarValues = z.input<typeof avatarSchema>;
 
-export const STUDIO_STEPS = ['script', 'voice', 'render'] as const;
+export const STUDIO_STEPS = ['suggest', 'script', 'voice', 'render'] as const;
 export type StudioStep = (typeof STUDIO_STEPS)[number];
 
 /** "#giat say  #sfaster" → ["#giatsay"…]: the words, each with one leading #. */

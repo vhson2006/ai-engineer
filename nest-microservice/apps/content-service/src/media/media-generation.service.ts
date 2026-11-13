@@ -71,59 +71,72 @@ export class MediaGenerationService {
     user: AuthUser,
   ): Promise<MediaGenerationResponse> {
     await this.sites.getAccessible(siteId, user);
-    const prompt = dto.prompt.trim();
-    const [width, height] = ratioOf(dto.aspectRatio);
-    const jobId = randomUUID();
-    const ids = Array.from({ length: dto.count }, () => randomUUID());
-
-    const remaining = await this.prisma.$transaction(async (tx) => {
-      // One request per site at a time past this point: two can't both take the last images.
-      await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`ai-images:${siteId}`}))`;
-      const left = this.perMonth - (await this.used(tx, siteId));
-      if (dto.count > left) {
-        throw new UnprocessableEntityException({
-          message: `This site can generate ${Math.max(left, 0)} more image(s) this month (limit ${this.perMonth})`,
-          code: 'quota_exceeded',
-        });
-      }
-      await tx.imageGenerationJob.create({
-        data: {
-          id: jobId,
-          siteId,
-          prompt,
-          aspectRatio: dto.aspectRatio,
-          count: dto.count,
-          createdBy: user.id,
-        },
-      });
-      await tx.media.createMany({
-        data: ids.map((id) => ({
-          id,
-          siteId,
-          source: 'ai',
-          prompt,
-          generationJobId: jobId,
-          filename: `${prompt.slice(0, 60)}.webp`,
-          contentType: 'image/webp',
-          width,
-          height,
-          variants: [],
-          createdBy: user.id,
-        })),
-      });
-      await addToOutbox(tx, IMAGE_GENERATION_EVENTS.REQUESTED, {
-        jobId,
-        requester: REQUESTER,
-        siteId,
-        prompt,
-        aspectRatio: dto.aspectRatio,
-        targets: ids.map((mediaId) => ({ mediaId, keyPrefix: `media/${siteId}/${mediaId}/` })),
-        actorId: user.id,
-      } satisfies ImageGenerationRequestedEvent);
-      return left - dto.count;
-    });
+    const { jobId, remaining } = await this.prisma.$transaction((tx) =>
+      this.request(tx, siteId, dto.prompt.trim(), dto.aspectRatio, dto.count, user.id),
+    );
     this.outbox.poke();
     return this.answer(await this.getJob(siteId, jobId), remaining);
+  }
+
+  /**
+   * The job, its pending rows and the event, in the CALLER's transaction (the caller pokes the
+   * outbox after the commit). 422 quota_exceeded when the month has fewer images left.
+   */
+  async request(
+    tx: Tx,
+    siteId: string,
+    prompt: string,
+    aspectRatio: ImageAspectRatio,
+    count: number,
+    actorId: string,
+  ): Promise<{ jobId: string; mediaIds: string[]; remaining: number }> {
+    const [width, height] = ratioOf(aspectRatio);
+    const jobId = randomUUID();
+    const ids = Array.from({ length: count }, () => randomUUID());
+    // One request per site at a time past this point: two can't both take the last images.
+    await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${`ai-images:${siteId}`}))`;
+    const left = this.perMonth - (await this.used(tx, siteId));
+    if (count > left) {
+      throw new UnprocessableEntityException({
+        message: `This site can generate ${Math.max(left, 0)} more image(s) this month (limit ${this.perMonth})`,
+        code: 'quota_exceeded',
+      });
+    }
+    await tx.imageGenerationJob.create({
+      data: {
+        id: jobId,
+        siteId,
+        prompt,
+        aspectRatio,
+        count,
+        createdBy: actorId,
+      },
+    });
+    await tx.media.createMany({
+      data: ids.map((id) => ({
+        id,
+        siteId,
+        source: 'ai',
+        prompt,
+        generationJobId: jobId,
+        filename: `${prompt.slice(0, 60)}.webp`,
+        contentType: 'image/webp',
+        width,
+        height,
+        variants: [],
+        createdBy: actorId,
+      })),
+    });
+    await addToOutbox(tx, IMAGE_GENERATION_EVENTS.REQUESTED, {
+      jobId,
+      requester: REQUESTER,
+      siteId,
+      prompt,
+      aspectRatio,
+      targets: ids.map((mediaId) => ({ mediaId, keyPrefix: `media/${siteId}/${mediaId}/` })),
+      actorId,
+    } satisfies ImageGenerationRequestedEvent);
+    return { jobId, mediaIds: ids, remaining: left - count };
   }
 
   /** Polled by the admin until the job is no longer pending. Another site's job answers 404. */

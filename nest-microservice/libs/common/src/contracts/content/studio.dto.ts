@@ -69,6 +69,38 @@ export class UpsertStudioBrandKitDto {
   @MaxLength(200)
   footerNote?: string | null;
 
+  @ApiPropertyOptional({ example: 'envynailsspaofwendell.com', maxLength: 80, nullable: true })
+  @IsOptional()
+  @IsString()
+  @MaxLength(80)
+  website?: string | null;
+
+  @ApiPropertyOptional({ description: 'One address line per line', maxLength: 200, nullable: true })
+  @IsOptional()
+  @IsString()
+  @MaxLength(200)
+  address?: string | null;
+
+  @ApiPropertyOptional({
+    description: '"Days | Hours", one per line',
+    maxLength: 300,
+    nullable: true,
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(300)
+  hours?: string | null;
+
+  @ApiPropertyOptional({
+    description: '"Service | Price", one per line',
+    maxLength: 400,
+    nullable: true,
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(400)
+  prices?: string | null;
+
   @ApiProperty({ type: [String], maxItems: 50, description: 'Words the AI must never use' })
   @IsArray()
   @ArrayMaxSize(50)

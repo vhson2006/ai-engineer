@@ -16,6 +16,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RequestsConsumer } from './requests.consumer';
 import { ScriptsModule } from './scripts/scripts.module';
 import { SpeechModule } from './speech/speech.module';
+import { SuggestionsModule } from './suggestions/suggestions.module';
+import { ArticlesModule } from './articles/articles.module';
 import { TranslationModule } from './translation/translation.module';
 
 /**
@@ -80,6 +82,8 @@ import { TranslationModule } from './translation/translation.module';
     ImagesModule,
     ScriptsModule,
     SpeechModule,
+    SuggestionsModule,
+    ArticlesModule,
   ],
   controllers: [HealthController],
   providers: [RequestsConsumer],

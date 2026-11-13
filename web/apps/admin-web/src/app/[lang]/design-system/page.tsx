@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { isSuperadmin } from '@web/core/auth/roles';
-import { getSessionUser } from '@web/core/auth/session';
 import { Container } from '@web/ui';
 import { Skeleton } from '@web/ui/skeleton';
+import { requireUser } from '@/features/auth/require-user';
 import { DesignSystemShowcase } from '@/features/design-system/showcase';
 import { href, LOCALES, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
@@ -30,8 +30,7 @@ export default async function DesignSystemPage() {
 }
 
 async function Showcase({ t, locale }: { t: Messages; locale: Locale }) {
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(href(locale, '/design-system'))}`);
+  const user = await requireUser(locale, href(locale, '/design-system'));
   if (!isSuperadmin(user)) notFound();
   return <DesignSystemShowcase t={t.designSystem} lang={locale} intlLocale={LOCALES[locale].intl} />;
 }

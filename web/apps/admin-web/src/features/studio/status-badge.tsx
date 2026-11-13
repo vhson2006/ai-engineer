@@ -5,6 +5,7 @@ import type { Messages } from '@/i18n/messages';
 
 const TONES: Record<StudioProjectStatus, 'neutral' | 'info' | 'brand' | 'success'> = {
   draft: 'neutral',
+  suggesting: 'info',
   writing: 'info',
   written: 'brand',
   voicing: 'info',

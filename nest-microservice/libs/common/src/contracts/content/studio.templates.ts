@@ -49,7 +49,17 @@ export interface StudioFactSlot {
   maxLength: number;
   /** Sites that never get this fact (wine: no prices); scenes that need it are left out. */
   excludeSites?: string[];
+  /**
+   * "Suggest with AI" may draft it (descriptive text only, never prices, hours or addresses):
+   * `lines` = one item per line, at most that many; `images` = one line per image of these slots.
+   */
+  suggest?: { lines?: number; images?: string[] };
+  /** Filled from the site's brand kit when empty (business facts typed once, never by AI). */
+  fromBrand?: StudioBrandFact;
 }
+
+/** The business facts of a brand kit a template can take. */
+export type StudioBrandFact = 'website' | 'address' | 'hours' | 'prices';
 
 export type StudioLayout = 'image' | 'cover' | 'grid' | 'cards' | 'prices' | 'visit';
 
@@ -159,6 +169,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: false,
         maxLength: 600,
+        suggest: { lines: 3 },
       },
     ],
     scenes: [
@@ -245,6 +256,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: true,
         maxLength: 300,
+        suggest: {},
       },
       {
         id: 'points',
@@ -253,6 +265,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: true,
         maxLength: 1000,
+        suggest: { lines: 4 },
       },
     ],
     scenes: [
@@ -445,6 +458,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: false,
         maxLength: 80,
+        fromBrand: 'website',
       },
       {
         id: 'captions',
@@ -456,6 +470,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: false,
         maxLength: 300,
+        suggest: { images: ['look1', 'look2', 'look3', 'look4', 'look5', 'look6'] },
       },
       {
         id: 'promises',
@@ -467,6 +482,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: true,
         maxLength: 600,
+        suggest: { lines: 4 },
       },
       {
         id: 'prices',
@@ -478,6 +494,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: false,
         maxLength: 400,
+        fromBrand: 'prices',
         excludeSites: ['wine'],
       },
       {
@@ -496,6 +513,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: false,
         maxLength: 200,
+        fromBrand: 'address',
       },
       {
         id: 'hours',
@@ -507,6 +525,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         kind: 'text',
         required: false,
         maxLength: 300,
+        fromBrand: 'hours',
       },
     ],
     scenes: [

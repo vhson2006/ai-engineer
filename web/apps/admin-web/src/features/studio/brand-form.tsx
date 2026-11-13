@@ -5,7 +5,7 @@ import type { Media, StudioBrandKit } from '@web/core/api';
 import { Button } from '@web/ui/button';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input, Textarea } from '@web/ui/input';
-import { toast } from '@web/ui/toaster';
+import { toast, toastFailure } from '@web/ui/toaster';
 import { ImageIcon, LoaderCircleIcon } from 'lucide-react';
 import { startTransition, useActionState } from 'react';
 import { useForm, useWatch, type FieldPath } from 'react-hook-form';
@@ -28,6 +28,10 @@ export function BrandForm({ siteId, brand, media, labels }: { siteId: string; br
       callToAction: brand.callToAction ?? '',
       tone: brand.tone ?? '',
       footerNote: brand.footerNote ?? '',
+      website: brand.website ?? '',
+      address: brand.address ?? '',
+      hours: brand.hours ?? '',
+      prices: brand.prices ?? '',
       bannedPhrases: brand.bannedPhrases.join('\n'),
       primaryColor: brand.primaryColor,
       accentColor: brand.accentColor,
@@ -46,7 +50,7 @@ export function BrandForm({ siteId, brand, media, labels }: { siteId: string; br
     } else {
       const unmatched = applyActionErrors(form, result.errors);
       if (!result.errors?.length || unmatched.length) {
-        toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+        toastFailure(result, common.requestId);
       }
     }
     return result;
@@ -63,6 +67,22 @@ export function BrandForm({ siteId, brand, media, labels }: { siteId: string; br
             <Input maxLength={max} {...field} />
           </FormControl>
           {hint && <FormDescription>{hint}</FormDescription>}
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+  const area = (name: 'address' | 'hours' | 'prices', label: string, max: number, hint: string) => (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{label}</FormLabel>
+          <FormControl>
+            <Textarea rows={3} maxLength={max} {...field} />
+          </FormControl>
+          <FormDescription>{hint}</FormDescription>
           <FormMessage />
         </FormItem>
       )}
@@ -102,6 +122,15 @@ export function BrandForm({ siteId, brand, media, labels }: { siteId: string; br
         {text('callToAction', t.brand.callToAction, 200)}
         {text('tone', t.brand.tone, 300, t.brand.toneHint)}
         {text('footerNote', t.brand.footerNote, 200, t.brand.footerNoteHint)}
+        {/* Business facts: typed once here, filled into new videos as they are (never by AI). */}
+        <div className="md:col-span-2">
+          <h2 className="text-base font-semibold">{t.brand.businessTitle}</h2>
+          <p className="mt-1 text-sm text-muted">{t.brand.businessHint}</p>
+        </div>
+        {text('website', t.brand.website, 80, t.brand.websiteHint)}
+        {area('address', t.brand.address, 200, t.brand.addressHint)}
+        {area('hours', t.brand.hours, 300, t.brand.hoursHint)}
+        {area('prices', t.brand.prices, 400, t.brand.pricesHint)}
         {color('primaryColor', t.brand.primaryColor)}
         {color('accentColor', t.brand.accentColor)}
         <FormField

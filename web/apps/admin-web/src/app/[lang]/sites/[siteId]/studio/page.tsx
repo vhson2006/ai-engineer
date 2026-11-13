@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
 import { getStudioCatalog, listStudioProjects, STUDIO_BUSY } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
-import { Card, Container } from '@web/ui';
-import { Skeleton } from '@web/ui/skeleton';
+import { Card } from '@web/ui';
 import { ApiFailure } from '@/components/api-failure';
 import { LocalDate } from '@/components/local-date';
+import { PageHeader, PageShell } from '@/components/page';
+import { requireUser } from '@/features/auth/require-user';
 import { siteOr404 } from '@/features/sites/data';
 import { BusyPoller } from '@/features/studio/busy-poller';
 import { StudioStatusBadge } from '@/features/studio/status-badge';
@@ -25,19 +23,16 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function StudioPage({ params }: PageProps<'/[lang]/sites/[siteId]/studio'>) {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <Container className="py-10 sm:py-14">
-      <Suspense fallback={<Skeleton className="h-96 rounded-2xl" />}>
-        <Studio t={t} locale={locale} params={params} />
-      </Suspense>
-    </Container>
+    <PageShell>
+      <Studio t={t} locale={locale} params={params} />
+    </PageShell>
   );
 }
 
 async function Studio({ t, locale, params }: { t: Messages; locale: Locale; params: PageProps<'/[lang]/sites/[siteId]/studio'>['params'] }) {
   const { siteId } = await params;
   const base = href(locale, `/sites/${siteId}/studio`);
-  const user = await getSessionUser().catch(() => null);
-  if (!user) redirect(`${href(locale, '/login')}?returnTo=${encodeURIComponent(base)}`);
+  await requireUser(locale, base);
 
   const site = await siteOr404(siteId);
   if (!site.ok) return <ApiFailure t={t} failure={site} />;
@@ -45,11 +40,7 @@ async function Studio({ t, locale, params }: { t: Messages; locale: Locale; para
 
   return (
     <div className="space-y-8">
-      <header>
-        <p className="text-sm font-semibold uppercase tracking-wider text-brand">{site.data.name}</p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight">{t.studio.title}</h1>
-        <p className="mt-2 max-w-2xl text-muted">{format(t.studio.subtitle, { site: site.data.name })}</p>
-      </header>
+      <PageHeader eyebrow={site.data.name} title={t.studio.title} subtitle={format(t.studio.subtitle, { site: site.data.name })} />
       <StudioNav base={base} current="projects" t={t.studio} />
 
       {!catalog.ok ? (

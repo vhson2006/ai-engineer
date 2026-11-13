@@ -17,6 +17,9 @@ Specific to this app:
 - **Site admins vs superadmins** (ADR 0030): the side menu shows the sites `GET /api/content/sites`
   returns (the API filters them) and the system pages only to `admin-web:superadmin`
   (`isSuperadmin`). Hiding a link is display only: every page and action relies on the API's 403/404.
-- Pages under `src/app/[lang]/`; all text in `src/i18n/messages/<lang>.json` (en and vi).
+- Pages under `src/app/[lang]/`; all text in `src/i18n/messages/<lang>.json` (en and vi). A page:
+  `<PageShell>` (`src/components/page.tsx`), then inside it `await requireUser(locale, self)`
+  (`src/features/auth/require-user.ts`) first, `siteOr404(siteId)` for a site page, and
+  `<PageHeader>` / `<BackLink>`; actions start with `guardAction` (`@web/core/actions/guard`).
 - Not indexed (`X-Robots-Tag: noindex` in `next.config.ts`, `robots` metadata): keep both.
 - Its own brand color (teal, `src/app/globals.css`): keep it distinct from portfolio-web.

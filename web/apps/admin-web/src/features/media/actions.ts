@@ -1,7 +1,7 @@
 'use server';
 
 import { refresh } from 'next/cache';
-import { limitAction } from '@web/core/actions/limit';
+import { guardAction } from '@web/core/actions/guard';
 import { fromApiFailure, isUuid, type ActionFailure, type ActionResult } from '@web/core/actions/result';
 import {
   completeMedia,
@@ -13,7 +13,6 @@ import {
   type MediaGeneration,
   type MediaUpload,
 } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { LIMITS } from '@web/core/security/rate-limit';
 import { parseInput } from '@web/core/validation';
 import { isSiteId } from '../sites/site-id';
@@ -27,28 +26,16 @@ import { mediaGenerateSchema, mediaUploadSchema } from './schema';
  * and stored by ai-service: these only ask for them and poll.
  */
 
-const signedOut: ActionFailure = {
-  ok: false,
-  code: 'unauthenticated',
-  message: 'Please sign in again.',
-};
 const badTarget: ActionFailure = {
   ok: false,
   code: 'not_found',
   message: 'This image no longer exists.',
 };
 
-async function guard(policy: (typeof LIMITS)[keyof typeof LIMITS] | null): Promise<ActionFailure | null> {
-  const limited = policy && (await limitAction(policy));
-  if (limited) return limited;
-  const user = await getSessionUser().catch(() => null);
-  return user ? null : signedOut;
-}
-
 /** Step 2 of an upload: the optimized sizes → one presigned PUT per size. */
 export async function declareMediaUploadAction(siteId: unknown, input: unknown): Promise<ActionResult<MediaUpload>> {
-  const refused = await guard(LIMITS.upload);
-  if (refused) return refused;
+  const start = await guardAction(LIMITS.upload);
+  if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
 
   const parsed = parseInput(mediaUploadSchema, input);
@@ -69,8 +56,8 @@ export async function declareMediaUploadAction(siteId: unknown, input: unknown):
 
 /** Step 4: the API checks every stored size; the image becomes ready. Idempotent. */
 export async function completeMediaAction(siteId: unknown, id: unknown): Promise<ActionResult<Media>> {
-  const refused = await guard(LIMITS.upload);
-  if (refused) return refused;
+  const start = await guardAction(LIMITS.upload);
+  if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
   const result = await completeMedia(siteId, id);
@@ -81,8 +68,8 @@ export async function completeMediaAction(siteId: unknown, id: unknown): Promise
 
 /** 409 media_in_use while an article uses it (cover or body). */
 export async function deleteMediaAction(siteId: unknown, id: unknown): Promise<ActionResult<null>> {
-  const refused = await guard(LIMITS.mutation);
-  if (refused) return refused;
+  const start = await guardAction(LIMITS.mutation);
+  if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
   const result = await deleteMedia(siteId, id);
@@ -93,8 +80,8 @@ export async function deleteMediaAction(siteId: unknown, id: unknown): Promise<A
 
 /** Generate 1-4 images from a description (paid, counted in the site's monthly quota). */
 export async function generateMediaAction(siteId: unknown, input: unknown): Promise<ActionResult<MediaGeneration>> {
-  const refused = await guard(LIMITS.upload);
-  if (refused) return refused;
+  const start = await guardAction(LIMITS.upload);
+  if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
 
   const parsed = parseInput(mediaGenerateSchema, input);
@@ -106,8 +93,8 @@ export async function generateMediaAction(siteId: unknown, input: unknown): Prom
 
 /** Polled every few seconds while a generation is pending: read only, not rate limited here. */
 export async function getMediaGenerationAction(siteId: unknown, jobId: unknown): Promise<ActionResult<MediaGeneration>> {
-  const refused = await guard(null);
-  if (refused) return refused;
+  const start = await guardAction(null);
+  if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(jobId)) return badTarget;
 
   const result = await getMediaGeneration(siteId, jobId);

@@ -533,7 +533,8 @@
         "hint": "Các clip đã xuất của video studio. Trang chỉ tải bản nhẹ cho web, khi người xem bấm phát.",
         "empty": "Chưa có video nào: hãy tạo trong video studio."
       }
-    }
+    },
+    "writeWithAi": "Viết bằng AI"
   },
   "categories": {
     "title": "Chủ đề",
@@ -666,6 +667,7 @@
     "updated": "Cập nhật {date}",
     "status": {
       "draft": "Nháp",
+      "suggesting": "AI đang gợi ý…",
       "writing": "AI đang viết…",
       "written": "Đã có kịch bản",
       "voicing": "Đang đọc thoại…",
@@ -769,7 +771,71 @@
       "primaryColor": "Màu chính",
       "accentColor": "Màu nhấn",
       "logo": "Logo",
-      "saved": "Đã lưu thương hiệu."
+      "saved": "Đã lưu thương hiệu.",
+      "businessTitle": "Thông tin kinh doanh",
+      "businessHint": "Nhập một lần, tự điền vào mọi video mới đúng như vậy. AI không bao giờ viết các ô này.",
+      "website": "Website",
+      "websiteHint": "Ví dụ envynailsspaofwendell.com",
+      "address": "Địa chỉ",
+      "addressHint": "Mỗi dòng một dòng địa chỉ.",
+      "hours": "Giờ mở cửa",
+      "hoursHint": "Mỗi dòng: Ngày | Giờ, ví dụ \"T2–T7 | 9:30–19:00\".",
+      "prices": "Bảng giá",
+      "pricesHint": "Tối đa 4 dòng: Dịch vụ | Giá, đúng như bảng giá."
+    },
+    "suggest": "Gợi ý bằng AI",
+    "suggestHint": "Điền các ô còn trống: website, địa chỉ, giờ mở cửa, bảng giá lấy từ bộ nhận diện; phần mô tả do AI viết nháp (không bao giờ là giá hay số liệu). Hãy kiểm tra từng bản nháp.",
+    "suggestSaveFirst": "Hãy lưu thay đổi trước: gợi ý dựa trên dữ liệu đã lưu.",
+    "suggestStarted": "AI đang viết nháp: trang sẽ tự cập nhật.",
+    "aiDraft": "Bản nháp AI: hãy kiểm tra"
+  },
+  "aiArticles": {
+    "title": "Viết bài bằng AI",
+    "subtitle": "Cho AI một chủ đề và ý tưởng: AI gợi ý prompt và dàn ý, bạn sửa rồi xác nhận, sau đó AI viết bài nháp kèm ảnh rồi dịch sang các ngôn ngữ khác của site. Không có gì tự xuất bản.",
+    "back": "Tất cả bài viết",
+    "noTopics": "Hãy tạo chủ đề trước: mỗi bài viết thuộc một chủ đề.",
+    "topic": "Chủ đề",
+    "language": "Ngôn ngữ viết",
+    "languageHint": "Bài được viết bằng ngôn ngữ này, rồi dịch máy sang các ngôn ngữ khác của site.",
+    "idea": "Ý tưởng của bạn",
+    "ideaHint": "Bài viết giúp người đọc điều gì, theo lời của bạn.",
+    "audience": "Người đọc (tuỳ chọn)",
+    "audienceHint": "Ví dụ: phụ nữ đi làm, làm móng vài tuần một lần.",
+    "keyword": "Từ khoá tìm kiếm (tuỳ chọn)",
+    "keywordHint": "Cụm từ người ta sẽ gõ trên Google.",
+    "length": "Độ dài",
+    "lengths": {
+      "short": "Ngắn (khoảng 500 từ)",
+      "medium": "Vừa (khoảng 900 từ)",
+      "long": "Dài (khoảng 1.400 từ)"
+    },
+    "images": "Ảnh AI",
+    "imagesHint": "Ảnh bìa trước, sau đó là ảnh trong bài. Tính vào quota ảnh AI hằng tháng của site.",
+    "start": "Gợi ý prompt",
+    "steps": {
+      "prompting": "AI đang soạn prompt và dàn ý…",
+      "writing": "AI đang viết bài…",
+      "illustrating": "AI đang vẽ ảnh…"
+    },
+    "briefTitle": "Kiểm tra prompt",
+    "briefHint": "Sửa bất cứ điều gì: AI viết đúng theo prompt và dàn ý này. Giá, giờ mở cửa và địa chỉ lấy từ bộ nhận diện, phải giữ nguyên.",
+    "prompt": "Prompt",
+    "promptHint": "Bắt đầu bằng “Bạn là người viết nội dung chuyên nghiệp…”. Thêm điều bạn muốn nhấn mạnh.",
+    "outline": "Dàn ý",
+    "outlineHint": "Mỗi dòng một tiêu đề phần, theo thứ tự.",
+    "write": "Viết bài",
+    "writeStarted": "AI đang viết: trang sẽ tự cập nhật.",
+    "doneTitle": "Bài nháp đã xong",
+    "doneHint": "Bài được lưu ở dạng nháp kèm ảnh; bản dịch sang các ngôn ngữ khác sẽ có sau một, hai phút. Hãy đọc mọi ngôn ngữ và kiểm tra mọi thông tin trước khi xuất bản.",
+    "open": "Mở bài nháp",
+    "failed": "AI chưa hoàn thành được ({code}). Bạn có thể thử lại.",
+    "notice": "Viết bằng AI: hãy kiểm tra mọi thông tin trước khi xuất bản.",
+    "warnings": {
+      "title": "Cần kiểm tra trước khi xuất bản",
+      "number": "Con số {value} không có trong thông tin của bạn hay prompt.",
+      "images_quota": "Tháng này không còn đủ ảnh AI: bài có ít ảnh hơn.",
+      "images_failed": "Một số ảnh không tạo được: đã bỏ ra khỏi bài.",
+      "translation_too_large": "Bài quá dài để dịch tự động: hãy dịch trong trình soạn thảo."
     }
   }
 }

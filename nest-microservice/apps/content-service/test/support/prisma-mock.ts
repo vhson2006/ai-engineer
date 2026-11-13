@@ -60,7 +60,16 @@ export function createPrismaMock() {
       findFirst: jest.fn(),
       findUnique: jest.fn(),
       findMany: jest.fn(),
+      count: jest.fn(),
       update: jest.fn(),
+    },
+    articleDraftJob: {
+      create: jest.fn(),
+      findFirst: jest.fn(),
+      count: jest.fn(),
+      update: jest.fn(),
+      updateMany: jest.fn(),
+      updateManyAndReturn: jest.fn(),
     },
     studioBrandKit: { findUnique: jest.fn(), upsert: jest.fn() },
     studioAvatar: {

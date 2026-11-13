@@ -2,7 +2,7 @@
 
 import { refresh } from 'next/cache';
 import { once } from '@web/core/actions/idempotency';
-import { limitAction } from '@web/core/actions/limit';
+import { guardAction } from '@web/core/actions/guard';
 import { fromApiFailure, isUuid, type ActionFailure, type ActionResult } from '@web/core/actions/result';
 import {
   createArticle,
@@ -16,7 +16,6 @@ import {
   type ArticleTranslationInput,
   type TranslationJob,
 } from '@web/core/api';
-import { getSessionUser } from '@web/core/auth/session';
 import { LIMITS } from '@web/core/security/rate-limit';
 import { parseInput } from '@web/core/validation';
 import { isSiteId } from '../sites/site-id';
@@ -33,16 +32,7 @@ import { articleSchema, isStarted, publishSchema, translateSchema, type ArticleV
 /** What the editor needs back: the bodies as the API stored them (sanitized, ADR 0031/0033). */
 type Saved = { id: string; status: ArticleStatus; bodies: { locale: string; body: string }[] };
 
-const signedOut: ActionFailure = { ok: false, code: 'unauthenticated', message: 'Please sign in again.' };
 const badTarget: ActionFailure = { ok: false, code: 'not_found', message: 'This article no longer exists.' };
-
-/** Rate limit + session, the start of every action. */
-async function guard(): Promise<ActionFailure | { ok: true; userId: string }> {
-  const limited = await limitAction(LIMITS.mutation);
-  if (limited) return limited;
-  const user = await getSessionUser().catch(() => null);
-  return user ? { ok: true, userId: user.id } : signedOut;
-}
 
 /**
  * The languages the author started, field by field (never the raw input). `positions[i]` is the
@@ -75,7 +65,7 @@ const saved = (article: Article): ActionResult<Saved> => ({
 
 /** A new draft. */
 export async function createArticleAction(siteId: unknown, input: unknown): Promise<ActionResult<Saved>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId)) return badTarget;
 
@@ -100,7 +90,7 @@ export async function createArticleAction(siteId: unknown, input: unknown): Prom
 
 /** Category, featured, cover and EVERY language (the API replaces them). Same PATCH twice = same result. */
 export async function updateArticleAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<Saved>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
@@ -123,7 +113,7 @@ export async function updateArticleAction(siteId: unknown, id: unknown, input: u
 
 /** Now, or at `at` (ISO). Needs every language of the site (422 missing_translations). */
 export async function publishArticleAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<Saved>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
@@ -138,7 +128,7 @@ export async function publishArticleAction(siteId: unknown, id: unknown, input: 
 
 /** Off the site, or the schedule cancelled: a draft again. */
 export async function unpublishArticleAction(siteId: unknown, id: unknown): Promise<ActionResult<Saved>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
@@ -150,7 +140,7 @@ export async function unpublishArticleAction(siteId: unknown, id: unknown): Prom
 
 /** For good, every language. Deleting twice: the second answers 404. */
 export async function deleteArticleAction(siteId: unknown, id: unknown): Promise<ActionResult<null>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
@@ -164,7 +154,7 @@ export async function deleteArticleAction(siteId: unknown, id: unknown): Promise
  * once; the translation arrives as a draft translation a few seconds later (the page polls).
  */
 export async function translateArticleAction(siteId: unknown, id: unknown, input: unknown): Promise<ActionResult<TranslationJob>> {
-  const start = await guard();
+  const start = await guardAction(LIMITS.mutation);
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id)) return badTarget;
 
