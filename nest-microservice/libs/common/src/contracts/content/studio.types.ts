@@ -37,6 +37,11 @@ export interface StudioInputs {
   avatars: Record<string, string>;
   voices: Record<string, string>;
   facts: Record<string, string>;
+  /**
+   * With a voice (narration). Always true for a template whose narration is `required`; for an
+   * `optional` one, false or absent = a silent video (no voice step).
+   */
+  narration?: boolean;
 }
 
 export interface StudioScriptScene {
@@ -115,6 +120,24 @@ export interface StudioCompositionProps {
     voice: string;
     onScreen: string;
     durationInFrames: number;
+    /** The bento layouts (studio.templates.ts); absent: `image`. */
+    layout?: 'image' | 'cover' | 'grid' | 'cards' | 'prices' | 'visit';
+    /** `grid`: the images and their names. */
+    gallery?: { url: string; label: string | null }[];
+    /**
+     * `cards`: title + text; `prices`: name + price (`highlight`: the signature line);
+     * `visit`: the address (title null, one item per line), then the hours (`Days | Hours`).
+     */
+    items?: {
+      title: string | null;
+      text: string | null;
+      highlight?: boolean;
+      group?: 'address' | 'hours';
+    }[];
+    /** `cover`, `visit`: the website to show (fact `website`). */
+    website?: string | null;
+    /** Small titles in the video's language (`visit`: address, hours, phone; `prices`: signature). */
+    labels?: Record<string, string>;
   }[];
   endCardFrames: number;
 }

@@ -728,6 +728,8 @@
     "render": "Xuất MP4",
     "rerender": "Xuất lại",
     "needVoice": "Hãy đọc thoại trước.",
+    "narration": "Thêm giọng đọc AI",
+    "narrationHint": "Tắt: video không lời (chữ, ảnh và hiệu ứng; phần lớn người xem tắt tiếng), bỏ qua bước đọc thoại. Bật: AI đọc lời thoại, mỗi cảnh dài theo câu thoại.",
     "download": "Tải MP4",
     "videoReady": "Video đã xong ({seconds} giây, {size} MB).",
     "started": "Đã bắt đầu.",

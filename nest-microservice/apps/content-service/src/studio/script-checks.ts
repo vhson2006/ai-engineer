@@ -11,13 +11,25 @@ import type {
  * (ADR 0039). Never blocks anything: the admin sees the warnings and decides.
  */
 
-/** Scenes that apply: a scene whose image slot is optional and empty is left out. */
+/**
+ * Scenes that apply: a scene whose image slot is optional and empty is left out, so is a grid
+ * without any image and a scene whose `requires` fact is empty.
+ */
 export function activeScenes(template: StudioTemplate, inputs: StudioInputs): StudioScene[] {
+  const filled = (id: string) => {
+    const slot = template.images.find((image) => image.id === id);
+    return Boolean(slot?.required || inputs.images[id]);
+  };
   return template.scenes.filter((scene) => {
-    if (!scene.image) return true;
-    const slot = template.images.find((image) => image.id === scene.image);
-    return slot?.required || Boolean(inputs.images[scene.image]);
+    if (scene.requires && !inputs.facts[scene.requires]?.trim()) return false;
+    if (scene.images && !scene.images.some(filled)) return false;
+    return !scene.image || filled(scene.image);
   });
+}
+
+/** True when the video has a voice: always for `required` narration, else the admin's choice. */
+export function narrated(template: StudioTemplate, inputs: StudioInputs): boolean {
+  return template.narration === 'required' || inputs.narration === true;
 }
 
 export function countWords(text: string): number {
@@ -39,6 +51,8 @@ export function checkScript(
 ): StudioWarning[] {
   const warnings: StudioWarning[] = [];
   const scenes = activeScenes(template, inputs);
+  // A silent video (narration off) never uses the spoken lines: only the on-screen texts count.
+  const spoken = narrated(template, inputs);
   // Every number in the facts and the brand (phone, prices) is allowed, exactly; a phone written
   // in groups ("0909 123 456") also as one run of digits.
   const known = new Set([
@@ -53,7 +67,7 @@ export function checkScript(
       continue;
     }
     const words = countWords(scene.voice);
-    if (words > spec.maxWords) {
+    if (spoken && words > spec.maxWords) {
       warnings.push({
         code: 'too_many_words',
         scene: spec.id,
@@ -67,7 +81,7 @@ export function checkScript(
         detail: `${scene.onScreen.length}/${spec.onScreenMaxChars}`,
       });
     }
-    const text = `${scene.voice}\n${scene.onScreen}`;
+    const text = spoken ? `${scene.voice}\n${scene.onScreen}` : scene.onScreen;
     for (const phrase of sources.bannedPhrases) {
       if (phrase.trim() && lower(text).includes(lower(phrase.trim()))) {
         warnings.push({ code: 'banned_phrase', scene: spec.id, detail: phrase.trim() });

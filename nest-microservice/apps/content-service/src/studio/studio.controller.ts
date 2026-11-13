@@ -91,7 +91,11 @@ export class StudioController {
   ): Promise<{ templates: StudioTemplate[]; voices: StudioVoice[] }> {
     await this.sites.getAccessible(siteId, user);
     return {
-      templates: STUDIO_TEMPLATES.filter((t) => !t.excludeSites.includes(siteId)),
+      // Without the facts the site never gets (wine: prices).
+      templates: STUDIO_TEMPLATES.filter((t) => !t.excludeSites.includes(siteId)).map((t) => ({
+        ...t,
+        facts: t.facts.filter((f) => !f.excludeSites?.includes(siteId)),
+      })),
       voices: STUDIO_VOICES,
     };
   }

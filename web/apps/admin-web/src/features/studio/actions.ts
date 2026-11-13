@@ -91,6 +91,7 @@ export async function saveStudioInputsAction(siteId: unknown, id: unknown, input
     avatars: slots(values.avatars),
     voices: slots(values.voices),
     facts: slots(values.facts),
+    narration: values.narration,
   };
   const result = await updateStudioProject(siteId, id, { title: values.title, brief: values.brief || null, inputs });
   if (!result.ok) return fromApiFailure(result);

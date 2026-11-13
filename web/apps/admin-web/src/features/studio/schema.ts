@@ -25,6 +25,8 @@ export const inputsSchema = z.object({
   avatars: z.record(slotId, optionalUuid),
   voices: z.record(slotId, z.string().max(40, 'tooLong')),
   facts: z.record(slotId, z.string().max(12_000, 'tooLong')),
+  /** With a voice (templates whose narration is optional; the API keeps it on for the others). */
+  narration: z.boolean().default(false),
 });
 export type InputsValues = z.input<typeof inputsSchema>;
 
@@ -87,5 +89,14 @@ export function splitHashtags(text: string): string[] {
 
 /** One phrase per line, trimmed, no duplicates or empty lines. */
 export function splitLines(text: string): string[] {
-  return [...new Set(text.split('\n').map((line) => line.trim()).filter(Boolean))].slice(0, 50).map((line) => line.slice(0, 100));
+  return [
+    ...new Set(
+      text
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean),
+    ),
+  ]
+    .slice(0, 50)
+    .map((line) => line.slice(0, 100));
 }

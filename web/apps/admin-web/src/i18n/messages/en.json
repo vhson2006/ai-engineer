@@ -728,6 +728,8 @@
     "render": "Export MP4",
     "rerender": "Export again",
     "needVoice": "Record the voices first.",
+    "narration": "Add an AI voice-over",
+    "narrationHint": "Off: a silent video (text, images and motion; most people watch muted), no voice step. On: the AI reads the lines and each scene lasts as long as its line.",
     "download": "Download MP4",
     "videoReady": "Video ready ({seconds} s, {size} MB).",
     "started": "Started.",

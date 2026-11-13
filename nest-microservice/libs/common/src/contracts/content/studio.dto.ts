@@ -4,6 +4,7 @@ import {
   ArrayMaxSize,
   ArrayMinSize,
   IsArray,
+  IsBoolean,
   IsIn,
   IsNotEmpty,
   IsObject,
@@ -165,6 +166,13 @@ export class StudioInputsDto {
   })
   @IsObject()
   facts: Record<string, string>;
+
+  @ApiPropertyOptional({
+    description: 'With a voice; only for templates whose narration is optional (else always on)',
+  })
+  @IsOptional()
+  @IsBoolean()
+  narration?: boolean;
 }
 
 export class CreateStudioProjectDto {

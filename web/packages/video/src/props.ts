@@ -24,6 +24,25 @@ export const studioSceneSchema = z.object({
   voice: z.string().max(600),
   onScreen: z.string().max(200),
   durationInFrames: z.number().int().min(1).max(MAX_FRAMES),
+  // The bento layouts of brand-showcase (studio.templates.ts); absent: one image per scene.
+  layout: z.enum(['image', 'cover', 'grid', 'cards', 'prices', 'visit']).optional(),
+  gallery: z
+    .array(z.object({ url: nullableUrl.unwrap(), label: z.string().max(80).nullable() }))
+    .max(6)
+    .optional(),
+  items: z
+    .array(
+      z.object({
+        title: z.string().max(200).nullable(),
+        text: z.string().max(300).nullable(),
+        highlight: z.boolean().optional(),
+        group: z.enum(['address', 'hours']).optional(),
+      }),
+    )
+    .max(12)
+    .optional(),
+  website: z.string().max(80).nullable().optional(),
+  labels: z.record(z.string().max(20), z.string().max(60)).optional(),
 });
 
 const color = z.string().regex(/^#[0-9a-fA-F]{6}$/);
@@ -57,9 +76,10 @@ export function totalFrames(props: Pick<StudioVideoProps, 'scenes' | 'endCardFra
 
 /** Every asset URL of the props (images, faces, voices, logo). */
 export function assetUrls(props: StudioVideoProps): string[] {
-  return [props.brand.logoUrl, ...props.scenes.flatMap((scene) => [scene.imageUrl, scene.avatarUrl, scene.voiceUrl])].filter(
-    (url): url is string => Boolean(url),
-  );
+  return [
+    props.brand.logoUrl,
+    ...props.scenes.flatMap((scene) => [scene.imageUrl, scene.avatarUrl, scene.voiceUrl, ...(scene.gallery ?? []).map((g) => g.url)]),
+  ].filter((url): url is string => Boolean(url));
 }
 
 /**

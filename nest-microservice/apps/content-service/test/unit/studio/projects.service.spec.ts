@@ -234,6 +234,76 @@ describe('[projects.service] (unit)', () => {
       expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
     });
 
+    it('a silent brand showcase: no voice step, rendered straight from the script', async () => {
+      const showcaseScript = {
+        hooks: ['Hi'],
+        scenes: ['cover', 'looks', 'promise', 'visit'].map((id) => ({
+          id,
+          voice: 'Line.',
+          onScreen: 'Headline',
+        })),
+        caption: 'c',
+        hashtags: [],
+      };
+      const written = project({
+        templateId: 'brand-showcase',
+        status: 'written',
+        script: showcaseScript,
+        inputs: {
+          images: { cover: HERO, look1: HERO, look2: DETAIL },
+          avatars: {},
+          voices: {},
+          facts: { promises: 'Clean | Sterilized tools' },
+          narration: false,
+        },
+      });
+      prisma.studioProject.findFirst.mockResolvedValue(written);
+      await expect(service.requestVoice('nails', ID, writer)).rejects.toThrow(/no narration/);
+      expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
+
+      applyUpdates(written);
+      prisma.studioRender.count.mockResolvedValue(0);
+      await service.requestRender('nails', ID, writer);
+      const event = outboxPayload<VideoRenderRequestedEvent>(prisma);
+      expect(event.composition).toBe('brand-showcase');
+      expect(event.props.endCardFrames).toBe(0);
+      expect(event.props.scenes.map((s) => [s.id, s.layout, s.voiceUrl])).toEqual([
+        ['cover', 'cover', null],
+        ['looks', 'grid', null],
+        ['promise', 'cards', null],
+        ['visit', 'visit', null],
+      ]);
+    });
+
+    it('keeps no prices for wine (the fact is not offered there)', async () => {
+      prisma.site.findUnique.mockResolvedValue({ ...site, id: 'wine' });
+      prisma.media.count.mockResolvedValue(1); // one distinct image
+      prisma.studioProject.create.mockImplementation(
+        ({ data }: { data: Record<string, unknown> }) => Promise.resolve(project(data)),
+      );
+      await service.create(
+        'wine',
+        {
+          templateId: 'brand-showcase',
+          title: 'Showcase',
+          language: 'vi',
+          inputs: {
+            images: { cover: HERO, look1: HERO },
+            avatars: {},
+            voices: {},
+            facts: { promises: 'A | b', prices: 'Rượu | 500.000đ', signature: 'X | 1' },
+            narration: true,
+          },
+        },
+        users.admin,
+      );
+      expect(prisma.studioProject.create).toHaveBeenCalledWith({
+        data: expect.objectContaining({
+          inputs: expect.objectContaining({ facts: { promises: 'A | b' }, narration: true }),
+        }),
+      });
+    });
+
     it("never touches another site's project", async () => {
       await expect(service.requestScript('nails', ID, outsider)).rejects.toThrow(/not found/);
     });

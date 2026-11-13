@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import type { StudioVideoProps } from './props';
+import { ShowcaseVideo } from './showcase-video';
 import { StudioVideo, type StudioLook } from './studio-video';
 
 /**
@@ -20,8 +21,10 @@ function withLook(look: StudioLook): ComponentType<StudioVideoProps> {
   return Composition;
 }
 
-export const COMPOSITIONS: Record<string, ComponentType<StudioVideoProps>> = Object.fromEntries(
-  Object.entries(LOOKS).map(([id, look]) => [id, withLook(look)]),
-);
+export const COMPOSITIONS: Record<string, ComponentType<StudioVideoProps>> = {
+  ...Object.fromEntries(Object.entries(LOOKS).map(([id, look]) => [id, withLook(look)])),
+  // The bento brand film (after video/nails-promo), for any site.
+  'brand-showcase': ShowcaseVideo,
+};
 
-export const COMPOSITION_IDS = Object.keys(LOOKS);
+export const COMPOSITION_IDS = Object.keys(COMPOSITIONS);

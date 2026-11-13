@@ -53,7 +53,7 @@ import { SitesService } from '../sites/sites.service';
 import { AvatarsService } from './avatars.service';
 import { BrandKitService } from './brand-kit.service';
 import { buildCompositionProps, type ResolvedAssets } from './composition';
-import { activeScenes, checkScript } from './script-checks';
+import { activeScenes, checkScript, narrated } from './script-checks';
 
 type Tx = Prisma.TransactionClient;
 
@@ -208,10 +208,12 @@ export class ProjectsService {
         hashtags: dto.script.hashtags.map((h) => h.trim()).filter(Boolean),
       };
     }
+    const before = currentInputs(current);
     const voiceChanged =
       Boolean(dto.script) ||
       (dto.inputs &&
-        JSON.stringify(inputs.voices) !== JSON.stringify(currentInputs(current).voices));
+        (JSON.stringify(inputs.voices) !== JSON.stringify(before.voices) ||
+          narrated(template, inputs) !== narrated(template, before)));
     const oldVoice = voiceChanged ? (current.voice as unknown as StoredVoice | null) : null;
     const warnings = script ? await this.warningsFor(site, template, inputs, script) : [];
 
@@ -330,6 +332,12 @@ export class ProjectsService {
     const inputs = currentInputs(project);
     const script = project.script as unknown as StudioScript | null;
     if (!script) throw missingInput('script');
+    if (!narrated(template, inputs)) {
+      throw new UnprocessableEntityException({
+        message: 'This video has no narration: render it directly',
+        code: 'invalid_inputs',
+      });
+    }
 
     const avatars = await this.avatars.findMany(siteId, Object.values(inputs.avatars));
     const voiceOf = (speakerId: string) => {
@@ -363,7 +371,10 @@ export class ProjectsService {
     return this.toResponse(site, row);
   }
 
-  /** Asks render-worker for the MP4 (202). Needs the voice and every required image and avatar. */
+  /**
+   * Asks render-worker for the MP4 (202). Needs every required image and avatar, and the voice
+   * unless the video is silent (a template with optional narration, turned off).
+   */
   async requestRender(siteId: string, id: string, user: AuthUser): Promise<StudioProjectResponse> {
     const site = await this.sites.getAccessible(siteId, user);
     const project = await this.getOrFail(siteId, id);
@@ -373,7 +384,7 @@ export class ProjectsService {
     const script = project.script as unknown as StudioScript | null;
     const voice = project.voice as unknown as StoredVoice | null;
     if (!script) throw missingInput('script');
-    if (!voice) throw missingInput('voice');
+    if (!voice && narrated(template, inputs)) throw missingInput('voice');
     const image = template.images.find((slot) => slot.required && !inputs.images[slot.id]);
     if (image) throw missingInput(`image ${image.id}`);
     const avatar = template.avatars.find((slot) => !inputs.avatars[slot.id]);
@@ -621,10 +632,12 @@ export class ProjectsService {
         raw.voices,
         template.speakers.map((s) => s.id),
       ),
+      // Never a fact the site doesn't get (wine: prices).
       facts: pick(
         raw.facts,
-        template.facts.map((s) => s.id),
+        template.facts.filter((s) => !s.excludeSites?.includes(site.id)).map((s) => s.id),
       ),
+      ...(template.narration === 'optional' && { narration: raw.narration === true }),
     };
     const invalid = (what: string) =>
       new UnprocessableEntityException({ message: `Invalid ${what}`, code: 'invalid_inputs' });
@@ -777,12 +790,13 @@ export class ProjectsService {
         { url: this.storage.publicUrl(line.key), durationMs: line.durationMs },
       ]),
     );
-    return buildCompositionProps(template, inputs, script, {
-      brand: brandProps(brand),
-      images,
-      avatars,
-      voice: voiceLines,
-    });
+    return buildCompositionProps(
+      template,
+      inputs,
+      script,
+      { brand: brandProps(brand), images, avatars, voice: voiceLines },
+      project.language,
+    );
   }
 
   private async getOrFail(siteId: string, id: string): Promise<StudioProject> {
@@ -865,6 +879,7 @@ function currentInputs(project: StudioProject): StudioInputs {
     avatars: inputs.avatars ?? {},
     voices: inputs.voices ?? {},
     facts: inputs.facts ?? {},
+    ...(inputs.narration !== undefined && { narration: inputs.narration }),
   };
 }
 

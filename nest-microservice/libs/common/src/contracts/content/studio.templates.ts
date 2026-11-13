@@ -6,7 +6,15 @@
  * Slots are what the admin fills in: images (from the site's media library), avatars (from the
  * site's avatar library), a voice per speaker, facts (free text, or a published article). Scenes
  * are what the AI writes: one spoken line and one on-screen text each, within the limits.
- * A scene whose image slot is optional and empty is left out. Every video ends on the brand card.
+ * A scene whose image slot is optional and empty is left out. Every video ends on the brand card
+ * (unless `endCard: false`).
+ *
+ * Layouts (`StudioScene.layout`): `image` (default: one image or avatar, the line on screen),
+ * and the bento layouts of `brand-showcase`: `cover` (the image as a tilted card, the brand),
+ * `grid` (up to six images, names from a fact), `cards` (`Title | text` lines of a fact),
+ * `prices` (`Name | price` lines, the `highlight` fact last), `visit` (address, hours, phone, call
+ * to action). In those, the AI writes only the headline (`onScreen`) and the narration (`voice`):
+ * lists, prices and hours are shown exactly as the admin wrote them.
  */
 
 export type StudioLocale = 'vi' | 'en';
@@ -39,7 +47,11 @@ export interface StudioFactSlot {
   kind: 'text' | 'article';
   required: boolean;
   maxLength: number;
+  /** Sites that never get this fact (wine: no prices); scenes that need it are left out. */
+  excludeSites?: string[];
 }
+
+export type StudioLayout = 'image' | 'cover' | 'grid' | 'cards' | 'prices' | 'visit';
 
 export interface StudioScene {
   id: string;
@@ -52,6 +64,18 @@ export interface StudioScene {
   speaker: string;
   maxWords: number;
   onScreenMaxChars: number;
+  /** Default `image`. */
+  layout?: StudioLayout;
+  /** `grid`: its image slots, in order (the empty optional ones are skipped). */
+  images?: string[];
+  /** `grid`: names (one per line); `cards`, `prices`: the items; `visit`: the address. */
+  items?: string;
+  /** `prices`: the highlighted line (`Name | price`); `visit`: the opening hours. */
+  extra?: string;
+  /** Left out when this fact is empty (or excluded for the site). */
+  requires?: string;
+  /** Length without narration (and at least that with it), in seconds. */
+  seconds?: number;
 }
 
 export interface StudioTemplate {
@@ -64,6 +88,10 @@ export interface StudioTemplate {
   seconds: [number, number];
   /** Sites that must not use it (wine: no prices or promotions for alcohol). */
   excludeSites: string[];
+  /** `optional`: the admin may leave the voice out (then the scenes keep their `seconds`). */
+  narration: 'required' | 'optional';
+  /** False: no brand card at the end (the last scene already is one). Default true. */
+  endCard?: boolean;
   /** The template's own instructions for the AI, in English. */
   instructions: string;
   images: StudioImageSlot[];
@@ -87,6 +115,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
     aspect: '9:16',
     seconds: [12, 18],
     excludeSites: ['wine'],
+    narration: 'required',
     instructions:
       'A fast price-led clip. The first line states the price exactly as written in the fact "price". The two benefit lines use only the facts and the brand. The last line is the brand\'s call to action.',
     images: [
@@ -177,6 +206,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
     aspect: '9:16',
     seconds: [20, 30],
     excludeSites: [],
+    narration: 'required',
     instructions:
       'A friendly host speaking to the viewer in the first person ("we", the business). Greet, present each highlight in one sentence, close with the call to action. The host is staff of the business: never a customer, never a testimonial.',
     images: [
@@ -291,6 +321,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
     aspect: '9:16',
     seconds: [25, 35],
     excludeSites: [],
+    narration: 'required',
     instructions:
       'Summarise the article (fact "article") into a hook and exactly three tips taken from it, in its order. Add nothing that is not in the article. The last line invites viewers to read the full article on the website.',
     images: [
@@ -365,6 +396,177 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         speaker: 'narrator',
         maxWords: 14,
         onScreenMaxChars: 30,
+      },
+    ],
+  },
+  {
+    // The brand film of nails-promo (video/nails-promo), for any site: bento cards that pop in.
+    id: 'brand-showcase',
+    version: 1,
+    name: L('Giới thiệu thương hiệu', 'Brand showcase'),
+    description: L(
+      'Phim giới thiệu kiểu bento: ảnh mở đầu, lưới ảnh mẫu, cam kết, bảng giá, ghé tiệm. 15–20 giây, mặc định không lời (có thể thêm giọng đọc).',
+      'A bento-style brand film: opening image, a grid of looks, promises, prices, visit us. 15–20 seconds, silent by default (narration optional).',
+    ),
+    aspect: '9:16',
+    seconds: [15, 20],
+    excludeSites: [],
+    narration: 'optional',
+    endCard: false,
+    instructions:
+      "A calm brand film. Each on-screen text is a short HEADLINE for its scene (like a section title on the website), not a sentence; the lists, prices and hours are shown as written by the business, so never repeat or change them. Each spoken line (used only when the video is narrated) is one natural sentence that goes with its scene. Never present the gallery images as the business's own work unless the facts say so.",
+    images: [
+      {
+        id: 'cover',
+        label: L('Ảnh mở đầu', 'Opening image'),
+        hint: L(
+          'Ảnh đẹp nhất, hoặc ảnh thẻ chia sẻ của website (ảnh ngang hiển thị như một tấm thẻ)',
+          "The best image, or the website's link preview card (a landscape image shows as a card)",
+        ),
+        required: true,
+      },
+      ...[1, 2, 3, 4, 5, 6].map((n) => ({
+        id: `look${n}`,
+        label: L(`Ảnh mẫu ${n}`, `Look ${n}`),
+        hint: L(
+          n <= 2 ? 'Ảnh vuông hoặc ngang, rõ nét' : 'Tuỳ chọn',
+          n <= 2 ? 'A square or landscape image, sharp' : 'Optional',
+        ),
+        required: n <= 2,
+      })),
+    ],
+    avatars: [],
+    speakers: [{ id: 'narrator', label: L('Người dẫn (không hiện mặt)', 'Narrator (off screen)') }],
+    facts: [
+      {
+        id: 'website',
+        label: L('Website', 'Website'),
+        hint: L('Ví dụ envynailsspaofwendell.com', 'e.g. envynailsspaofwendell.com'),
+        kind: 'text',
+        required: false,
+        maxLength: 80,
+      },
+      {
+        id: 'lookNames',
+        label: L('Tên các ảnh mẫu', 'Names of the looks'),
+        hint: L(
+          'Mỗi dòng một tên, theo thứ tự ảnh mẫu 1–6',
+          'One name per line, in the order of looks 1–6',
+        ),
+        kind: 'text',
+        required: false,
+        maxLength: 300,
+      },
+      {
+        id: 'promises',
+        label: L('Cam kết', 'Promises'),
+        hint: L(
+          '3–4 dòng, mỗi dòng: Tiêu đề | mô tả ngắn (ví dụ "Sạch sẽ | Dụng cụ tiệt trùng sau mỗi khách")',
+          '3–4 lines, each: Title | short text (e.g. "Clean | Tools sterilized after every guest")',
+        ),
+        kind: 'text',
+        required: true,
+        maxLength: 600,
+      },
+      {
+        id: 'prices',
+        label: L('Bảng giá', 'Prices'),
+        hint: L(
+          'Tối đa 4 dòng, mỗi dòng: Dịch vụ | Giá, đúng như bảng giá (bỏ trống: không có cảnh giá)',
+          'Up to 4 lines, each: Service | Price, exactly as on the price list (empty: no price scene)',
+        ),
+        kind: 'text',
+        required: false,
+        maxLength: 400,
+        excludeSites: ['wine'],
+      },
+      {
+        id: 'signature',
+        label: L('Dịch vụ nổi bật', 'Signature service'),
+        hint: L('Một dòng: Tên | Giá', 'One line: Name | Price'),
+        kind: 'text',
+        required: false,
+        maxLength: 120,
+        excludeSites: ['wine'],
+      },
+      {
+        id: 'address',
+        label: L('Địa chỉ', 'Address'),
+        hint: L('Mỗi dòng một dòng địa chỉ', 'One address line per line'),
+        kind: 'text',
+        required: false,
+        maxLength: 200,
+      },
+      {
+        id: 'hours',
+        label: L('Giờ mở cửa', 'Opening hours'),
+        hint: L(
+          'Mỗi dòng: Ngày | Giờ (ví dụ "T2–T7 | 9:30–19:00")',
+          'Each line: Days | Hours (e.g. "Mon–Sat | 9:30 AM – 7 PM")',
+        ),
+        kind: 'text',
+        required: false,
+        maxLength: 300,
+      },
+    ],
+    scenes: [
+      {
+        id: 'cover',
+        purpose:
+          'Opening: who the business is (brand name, tagline). Headline: a short welcome or the tagline.',
+        layout: 'cover',
+        image: 'cover',
+        speaker: 'narrator',
+        maxWords: 14,
+        onScreenMaxChars: 40,
+        seconds: 3.5,
+      },
+      {
+        id: 'looks',
+        purpose:
+          'The gallery: the kind of looks or products the images show (fact "lookNames"), as inspiration. Headline: a gallery title.',
+        layout: 'grid',
+        images: ['look1', 'look2', 'look3', 'look4', 'look5', 'look6'],
+        items: 'lookNames',
+        speaker: 'narrator',
+        maxWords: 14,
+        onScreenMaxChars: 32,
+        seconds: 4,
+      },
+      {
+        id: 'promise',
+        purpose: 'The promises (fact "promises") summed up. Headline: a title for them.',
+        layout: 'cards',
+        items: 'promises',
+        speaker: 'narrator',
+        maxWords: 16,
+        onScreenMaxChars: 32,
+        seconds: 3.5,
+      },
+      {
+        id: 'menu',
+        purpose:
+          'The prices (facts "prices", "signature"): invite to see them; quote at most one price, exactly. Headline: a menu title.',
+        layout: 'prices',
+        items: 'prices',
+        extra: 'signature',
+        requires: 'prices',
+        speaker: 'narrator',
+        maxWords: 14,
+        onScreenMaxChars: 24,
+        seconds: 3.5,
+      },
+      {
+        id: 'visit',
+        purpose:
+          "Call to action: visit or book, with the brand's call to action and the business name. Headline: an invitation to visit.",
+        layout: 'visit',
+        items: 'address',
+        extra: 'hours',
+        speaker: 'narrator',
+        maxWords: 14,
+        onScreenMaxChars: 30,
+        seconds: 4,
       },
     ],
   },

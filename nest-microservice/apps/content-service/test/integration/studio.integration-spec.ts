@@ -59,14 +59,14 @@ describe('Studio (content-service integration)', () => {
     t.prisma.media.findMany.mockResolvedValue([mediaRow({ id: HERO })]);
   });
 
-  it('lists the templates the site may use (wine gets no price template) and the voices', async () => {
+  it('lists the templates the site may use (wine: no price template, no price facts) and the voices', async () => {
     const res = await request(t.app.getHttpServer())
       .get(`${base}/templates`)
       .set('Authorization', await t.bearer(asToken(reader)))
       .expect(200);
     const ids = (body: unknown) =>
       (body as { templates: { id: string }[] }).templates.map((tpl) => tpl.id);
-    expect(ids(res.body)).toEqual(['price-hook', 'host-intro', 'article-tips']);
+    expect(ids(res.body)).toEqual(['price-hook', 'host-intro', 'article-tips', 'brand-showcase']);
     expect(res.body.voices.length).toBeGreaterThan(0);
 
     t.prisma.site.findUnique.mockResolvedValue({ ...site, id: 'wine' });
@@ -75,6 +75,13 @@ describe('Studio (content-service integration)', () => {
       .set('Authorization', await t.bearer(asToken(users.admin)))
       .expect(200);
     expect(ids(wine.body)).not.toContain('price-hook');
+    const factsOf = (body: unknown, id: string) =>
+      (body as { templates: { id: string; facts: { id: string }[] }[] }).templates
+        .find((tpl) => tpl.id === id)
+        ?.facts.map((f) => f.id);
+    expect(factsOf(res.body, 'brand-showcase')).toContain('prices');
+    expect(factsOf(wine.body, 'brand-showcase')).not.toContain('prices');
+    expect(factsOf(wine.body, 'brand-showcase')).not.toContain('signature');
   });
 
   it('gives a default brand kit from the site name until one is saved', async () => {

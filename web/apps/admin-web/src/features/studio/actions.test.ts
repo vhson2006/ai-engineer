@@ -74,8 +74,16 @@ describe('studio actions', () => {
     expect(api.updateStudioProject).toHaveBeenCalledWith('nails', ID, {
       title: 'Giá',
       brief: null,
-      inputs: { images: { hero: MEDIA }, avatars: {}, voices: { narrator: 'Kore' }, facts: { price: '35.000đ' } },
+      inputs: { images: { hero: MEDIA }, avatars: {}, voices: { narrator: 'Kore' }, facts: { price: '35.000đ' }, narration: false },
     });
+
+    api.updateStudioProject.mockClear();
+    await saveStudioInputsAction('nails', ID, { title: 'x', brief: '', images: {}, avatars: {}, voices: {}, facts: {}, narration: true });
+    expect(api.updateStudioProject).toHaveBeenCalledWith(
+      'nails',
+      ID,
+      expect.objectContaining({ inputs: expect.objectContaining({ narration: true }) }),
+    );
 
     api.updateStudioProject.mockClear();
     const refused = await saveStudioInputsAction('nails', ID, {
@@ -149,7 +157,13 @@ describe('studio actions', () => {
   });
 
   it('avatar: needs a face, a voice and a real consent note', async () => {
-    const refused = await createStudioAvatarAction('nails', { submissionId: SUBMISSION, name: 'Lan', mediaId: MEDIA, voice: 'Kore', consentNote: 'ok' });
+    const refused = await createStudioAvatarAction('nails', {
+      submissionId: SUBMISSION,
+      name: 'Lan',
+      mediaId: MEDIA,
+      voice: 'Kore',
+      consentNote: 'ok',
+    });
     expect(refused.ok).toBe(false);
     await createStudioAvatarAction('nails', {
       submissionId: SUBMISSION,

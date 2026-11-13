@@ -6,6 +6,7 @@ import { STUDIO_BUSY } from '@web/core/api/studio-status';
 import { format } from '@web/core/i18n/format';
 import { Card, cn } from '@web/ui';
 import { Button } from '@web/ui/button';
+import { Checkbox } from '@web/ui/checkbox';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
 import { Input, Textarea } from '@web/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@web/ui/select';
@@ -57,6 +58,9 @@ export function ProjectEditor(props: Props) {
   const router = useRouter();
   const busy = STUDIO_BUSY.includes(project.status);
   const [stepping, startStep] = useTransition();
+  // A silent video (optional narration, off): no voice step, rendered straight from the script.
+  const narrated = props.template.narration === 'required' || project.inputs.narration === true;
+  const canRender = Boolean(project.script) && (!narrated || Boolean(project.voice));
 
   const runStep = (step: StudioStep) =>
     startStep(async () => {
@@ -110,29 +114,31 @@ export function ProjectEditor(props: Props) {
         {project.script && <ScriptForm key={project.updatedAt} {...props} disabled={busy} />}
       </Step>
 
-      <Step title={t.voiceTitle} hint={t.voiceHint}>
-        <Button
-          onClick={() => runStep('voice')}
-          disabled={busy || stepping || !project.script}
-          variant={project.voice ? 'secondary' : 'primary'}
-        >
-          <MicIcon />
-          {project.voice ? t.rerecord : t.record}
-        </Button>
-        {!project.script && <p className="text-sm text-subtle">{t.needScript}</p>}
-        {project.voice && (
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {project.voice.lines.map((line) => (
-              <li key={line.id} className="rounded-xl border border-border p-3">
-                <p className="text-xs font-mono text-subtle">
-                  {line.id} · {(line.durationMs / 1000).toFixed(1)} s
-                </p>
-                <audio controls preload="none" src={line.url} className="mt-2 w-full" />
-              </li>
-            ))}
-          </ul>
-        )}
-      </Step>
+      {narrated && (
+        <Step title={t.voiceTitle} hint={t.voiceHint}>
+          <Button
+            onClick={() => runStep('voice')}
+            disabled={busy || stepping || !project.script}
+            variant={project.voice ? 'secondary' : 'primary'}
+          >
+            <MicIcon />
+            {project.voice ? t.rerecord : t.record}
+          </Button>
+          {!project.script && <p className="text-sm text-subtle">{t.needScript}</p>}
+          {project.voice && (
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {project.voice.lines.map((line) => (
+                <li key={line.id} className="rounded-xl border border-border p-3">
+                  <p className="text-xs font-mono text-subtle">
+                    {line.id} · {(line.durationMs / 1000).toFixed(1)} s
+                  </p>
+                  <audio controls preload="none" src={line.url} className="mt-2 w-full" />
+                </li>
+              ))}
+            </ul>
+          )}
+        </Step>
+      )}
 
       {project.preview && (
         <Step title={t.previewTitle} hint={t.previewHint}>
@@ -146,13 +152,13 @@ export function ProjectEditor(props: Props) {
       <Step title={t.renderTitle} hint={t.renderHint}>
         <Button
           onClick={() => runStep('render')}
-          disabled={busy || stepping || !project.voice}
+          disabled={busy || stepping || !canRender}
           variant={project.video ? 'secondary' : 'primary'}
         >
           <VideoIcon />
           {project.video ? t.rerender : t.render}
         </Button>
-        {!project.voice && <p className="text-sm text-subtle">{t.needVoice}</p>}
+        {!canRender && <p className="text-sm text-subtle">{project.script ? t.needVoice : t.needScript}</p>}
         {project.video && (
           <div className="space-y-3">
             <p className="text-sm text-muted">
@@ -233,6 +239,7 @@ function InputsSection({
       template.facts.map((s) => s.id),
       project.inputs.facts,
     ),
+    narration: template.narration === 'required' || project.inputs.narration === true,
   };
   const form = useForm<InputsValues>({ resolver: zodResolver(inputsSchema), defaultValues: defaults });
   const picker = useMediaPicker({ siteId, initial: media, labels: labels.media, closeLabel: common.close });
@@ -252,6 +259,7 @@ function InputsSection({
   }, null);
 
   const thumb = (mediaId: string) => media.find((m) => m.id === mediaId);
+  const narration = useWatch({ control: form.control, name: 'narration' });
   const avatarSpeakers = new Set(template.speakers.filter((s) => s.avatar).map((s) => s.id));
 
   return (
@@ -328,6 +336,25 @@ function InputsSection({
             </div>
           )}
 
+          {/* Narration: a choice only for templates that can be silent */}
+          {template.narration === 'optional' && (
+            <FormField
+              control={form.control}
+              name="narration"
+              render={({ field }) => (
+                <FormItem className="flex items-start gap-3 rounded-xl border border-border p-4">
+                  <FormControl>
+                    <Checkbox checked={field.value} onCheckedChange={(checked) => field.onChange(checked === true)} />
+                  </FormControl>
+                  <div className="space-y-1">
+                    <FormLabel>{t.narration}</FormLabel>
+                    <FormDescription>{t.narrationHint}</FormDescription>
+                  </div>
+                </FormItem>
+              )}
+            />
+          )}
+
           {/* Hosts and voices */}
           <div className="grid gap-4 sm:grid-cols-2">
             {template.avatars.map((slot) => (
@@ -363,34 +390,35 @@ function InputsSection({
                 )}
               />
             ))}
-            {template.speakers.map((speaker) => (
-              <FormField
-                key={speaker.id}
-                control={form.control}
-                name={`voices.${speaker.id}`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{format(t.voiceOf, { speaker: speaker.label[uiLocale] })}</FormLabel>
-                    <Select value={field.value || NONE} onValueChange={(value) => field.onChange(value === NONE ? '' : value)}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value={NONE}>{avatarSpeakers.has(speaker.id) ? t.hostVoice : voices[0]?.label[uiLocale]}</SelectItem>
-                        {voices.map((voice) => (
-                          <SelectItem key={voice.id} value={voice.id}>
-                            {voice.label[uiLocale]}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ))}
+            {narration &&
+              template.speakers.map((speaker) => (
+                <FormField
+                  key={speaker.id}
+                  control={form.control}
+                  name={`voices.${speaker.id}`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{format(t.voiceOf, { speaker: speaker.label[uiLocale] })}</FormLabel>
+                      <Select value={field.value || NONE} onValueChange={(value) => field.onChange(value === NONE ? '' : value)}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value={NONE}>{avatarSpeakers.has(speaker.id) ? t.hostVoice : voices[0]?.label[uiLocale]}</SelectItem>
+                          {voices.map((voice) => (
+                            <SelectItem key={voice.id} value={voice.id}>
+                              {voice.label[uiLocale]}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
           </div>
 
           {/* Facts */}

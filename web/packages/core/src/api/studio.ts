@@ -20,11 +20,22 @@ export interface StudioTemplate {
   aspect: '9:16';
   seconds: [number, number];
   excludeSites: string[];
+  /** `optional`: the admin may leave the voice out (a silent video, no voice step). */
+  narration: 'required' | 'optional';
+  endCard?: boolean;
   instructions: string;
   images: { id: string; label: Localized; hint: Localized; required: boolean }[];
   avatars: { id: string; label: Localized }[];
   speakers: { id: string; label: Localized; avatar?: string }[];
-  facts: { id: string; label: Localized; hint: Localized; kind: 'text' | 'article'; required: boolean; maxLength: number }[];
+  facts: {
+    id: string;
+    label: Localized;
+    hint: Localized;
+    kind: 'text' | 'article';
+    required: boolean;
+    maxLength: number;
+    excludeSites?: string[];
+  }[];
   scenes: {
     id: string;
     purpose: string;
@@ -33,8 +44,16 @@ export interface StudioTemplate {
     speaker: string;
     maxWords: number;
     onScreenMaxChars: number;
+    layout?: StudioLayout;
+    images?: string[];
+    items?: string;
+    extra?: string;
+    requires?: string;
+    seconds?: number;
   }[];
 }
+
+export type StudioLayout = 'image' | 'cover' | 'grid' | 'cards' | 'prices' | 'visit';
 
 export interface StudioVoice {
   id: string;
@@ -48,6 +67,8 @@ export interface StudioInputs {
   avatars: Record<string, string>;
   voices: Record<string, string>;
   facts: Record<string, string>;
+  /** With a voice: always for `required` narration; for `optional`, the admin's choice. */
+  narration?: boolean;
 }
 
 export interface StudioScriptScene {
@@ -108,6 +129,11 @@ export interface StudioCompositionProps {
     voice: string;
     onScreen: string;
     durationInFrames: number;
+    layout?: StudioLayout;
+    gallery?: { url: string; label: string | null }[];
+    items?: { title: string | null; text: string | null; highlight?: boolean; group?: 'address' | 'hours' }[];
+    website?: string | null;
+    labels?: Record<string, string>;
   }[];
   endCardFrames: number;
 }

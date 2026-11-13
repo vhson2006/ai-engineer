@@ -19,7 +19,11 @@ of AI providers) and Remotion projects in `video/` that render videos from React
 - **Script templates are code** (`STUDIO_TEMPLATES` in libs/common, versioned): each declares its
   slots (images, avatars, speakers, facts: free text or a published article) and its scenes
   (purpose, which slot it shows, word and on-screen character limits). First three: `price-hook`,
-  `host-intro`, `article-tips` (9:16). Each template id is a Remotion composition of the same name
+  `host-intro`, `article-tips` (9:16). Fourth (2026-11-13): `brand-showcase`, the bento brand film
+  of `video/nails-promo` for any site: cover card, grid of looks, promise cards, price list (a
+  fact wine never gets), visit card; the AI writes only the headlines (and the narration), lists,
+  prices and hours are shown exactly as the admin wrote them. **Narration is `optional`** there:
+  silent by default (no voice step, scenes keep their `seconds`), the admin may add the voice. Each template id is a Remotion composition of the same name
   in `@web/video` (`web/packages/video`). A project records the template VERSION it used.
 - **Where:** a `studio` module of **content-service** (not a new service): it needs the media
   library, the articles, the sites and the site rule, all in that database. Tables
