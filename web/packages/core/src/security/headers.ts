@@ -30,6 +30,11 @@ export interface SecurityHeaderOptions {
    * one by one (ADR 0016: explicit origins, never a wildcard). Omitted: no iframe may load.
    */
   frameOrigins?: string[];
+  /**
+   * Third-party image hosts, one by one (e.g. https://i.ytimg.com for YouTube thumbnails,
+   * ADR 0040). Omitted: images only from this site and object storage.
+   */
+  imageOrigins?: string[];
   /** `next dev`: React needs eval for debugging, HMR needs a websocket. */
   dev: boolean;
 }
@@ -46,7 +51,7 @@ export function contentSecurityPolicy(options: SecurityHeaderOptions): string {
     'default-src': ["'self'"],
     'script-src': ["'self'", "'unsafe-inline'", ...(options.dev ? ["'unsafe-eval'"] : [])],
     'style-src': ["'self'", "'unsafe-inline'"],
-    'img-src': ["'self'", 'data:', 'blob:', ...storage],
+    'img-src': ["'self'", 'data:', 'blob:', ...storage, ...(options.imageOrigins ?? []).map(origin)],
     'media-src': ["'self'", ...storage],
     'font-src': ["'self'", 'data:'],
     'connect-src': ["'self'", ...storage, ...hmr],

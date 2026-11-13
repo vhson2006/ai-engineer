@@ -33,7 +33,8 @@ Specific to this app:
   cover built from it (sign on the brand green, so cards never crop its lettering). Text-only
   artwork (the opening-hours poster) is rebuilt in HTML, never shown as an image.
 - Contact: opening-hours and phone/Zalo cards beside a square keyless Google Maps embed (the address:
-  the map, the footer) (`mapEmbedSrc` in `src/content/shop.ts`; `https://www.google.com` is the only `frameOrigins` entry in `src/proxy.ts`).
+  the map, the footer) (`mapEmbedSrc` in `src/content/shop.ts`; `frameOrigins` in `src/proxy.ts`: `https://www.google.com` and, for YouTube embeds in articles,
+  `https://www.youtube-nocookie.com`; `imageOrigins`: `https://i.ytimg.com`, ADR 0040).
 - **Articles** (`/bai-viet`, topics `/bai-viet/chu-de/<segment>`, `src/features/articles/`): from
   content-service, site `laundry`, written in the admin site. `data.ts` reads them (through `@web/core/content/site-articles`, shared with nails-web) with this
   server's service account (Keycloak client `laundry-web`, `siteApiFetch`, ADR 0032), cached a few
@@ -52,7 +53,7 @@ Specific to this app:
   deletion instructions `/xoa-du-lieu` (same path in both languages, `LEGAL_PATHS` in `src/site.ts`:
   social platforms register these URLs, keep them stable), linked in the footer of every page. Text in
   `legal.*` of the dictionaries, shop facts filled from `shop.ts`; it describes only what the site does
-  (no accounts, no forms, one language cookie, the Google Maps embed): change it, and `LEGAL_UPDATED`,
+  (no accounts, no forms, one language cookie, the Google Maps and YouTube embeds): change it, and `LEGAL_UPDATED`,
   with any new data collection (a form, analytics, social sign-in). Not reviewed by a lawyer yet.
 - **SEO** (`src/seo.ts`, `src/site.ts`): every page's metadata through `pageMetadata` (canonical,
   hreflang + x-default, Open Graph + Twitter card, default preview `public/images/og-default.jpg`

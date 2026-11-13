@@ -49,7 +49,7 @@
             "Khi nhà hàng, quán ăn liên hệ hợp tác: tên cơ sở, người liên hệ, số điện thoại và nội dung trao đổi.",
             "Khi bạn mua hàng tại showroom: thông tin cần cho việc mua bán và chứng từ theo quy định.",
             "Khi bạn truy cập website: dữ liệu kỹ thuật do trình duyệt tự gửi (địa chỉ IP, loại trình duyệt và thiết bị, trang đã xem, thời điểm truy cập), ghi trong nhật ký máy chủ.",
-            "Một cookie duy nhất, wine_locale, ghi nhớ ngôn ngữ bạn chọn (tối đa 1 năm). Website không dùng cookie quảng cáo, công cụ phân tích hay theo dõi (cookie của Google Maps: xem mục Chia sẻ dữ liệu)."
+            "Một cookie duy nhất, wine_locale, ghi nhớ ngôn ngữ bạn chọn (tối đa 1 năm). Website không dùng cookie quảng cáo, công cụ phân tích hay theo dõi (cookie của Google Maps và YouTube: xem mục Chia sẻ dữ liệu)."
           ]
         },
         {
@@ -84,6 +84,7 @@
             "Nhà cung cấp hạ tầng lưu trữ và vận hành website (máy chủ, lưu trữ hình ảnh), chỉ để cung cấp website cho bạn.",
             "Zalo, Facebook và các nền tảng nhắn tin: khi bạn liên hệ qua các nền tảng này, nền tảng xử lý dữ liệu theo chính sách riêng của họ.",
             "Google Maps được nhúng ở mục Liên hệ: khi bản đồ hiển thị, Google có thể đặt cookie và thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
+            "Video YouTube trong một số bài viết: trước khi bạn bấm phát chỉ hiện ảnh xem trước (từ i.ytimg.com); khi bấm, trình phát tải từ youtube-nocookie.com và Google có thể đặt cookie, thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
             "Cơ quan nhà nước có thẩm quyền, khi pháp luật yêu cầu."
           ]
         },
@@ -226,7 +227,7 @@
           "id": "ben-thu-ba",
           "title": "Liên kết và nội dung của bên thứ ba",
           "paragraphs": [
-            "Website có liên kết và nội dung nhúng từ Google Maps, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
+            "Website có liên kết và nội dung nhúng từ Google Maps, YouTube, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
           ],
           "items": []
         },
@@ -417,6 +418,7 @@
     "mapTitle": "Bản đồ Google Maps: Hãng rượu Khang Hưng Tửu"
   },
   "articles": {
+    "playVideo": "Phát video",
     "eyebrow": "Bài viết",
     "title": "Chuyện rượu Gò Đen",
     "intro": "Câu chuyện thương hiệu, nghề làm rượu, cách thưởng thức và tin hợp tác từ Khang Hưng Tửu.",

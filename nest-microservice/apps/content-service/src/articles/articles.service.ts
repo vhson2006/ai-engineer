@@ -97,7 +97,11 @@ export class ArticlesService {
     const site = await this.sites.getAccessible(siteId, user);
     assertSiteLocales(dto.translations, site);
     // Before any write (400 if empty): body images only from this site.
-    const translations = withCleanBodies(dto.translations, this.urls.sitePrefix(siteId));
+    const translations = withCleanBodies(
+      dto.translations,
+      this.urls.sitePrefix(siteId),
+      this.urls.studioPrefix(siteId),
+    );
     await this.assertCategory(siteId, dto.categoryId);
     if (dto.coverMediaId) await this.media.assertCover(siteId, dto.coverMediaId);
 
@@ -144,7 +148,8 @@ export class ArticlesService {
 
     const { translations: input, ...fields } = dto;
     // Before any write (400 if empty): body images only from this site.
-    const translations = input && withCleanBodies(input, this.urls.sitePrefix(siteId));
+    const translations =
+      input && withCleanBodies(input, this.urls.sitePrefix(siteId), this.urls.studioPrefix(siteId));
     const saved = await this.prisma.$transaction(async (tx) => {
       const { count } = await tx.article.updateMany({
         where: { id, siteId },

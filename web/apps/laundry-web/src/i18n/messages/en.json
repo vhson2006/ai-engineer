@@ -166,6 +166,7 @@
     "legal": "Legal information"
   },
   "articles": {
+    "playVideo": "Play the video",
     "eyebrow": "Articles",
     "title": "Laundry tips & shop notes",
     "intro": "Drop-off tips, choosing the right service and how we price your laundry, from SFaster.",
@@ -265,6 +266,7 @@
             "The providers that host and run the website (servers, image storage), only to serve the website to you.",
             "Zalo, Facebook, TikTok and other messaging platforms: when you contact us through them, they process data under their own policies.",
             "Google Maps, embedded in the Contact section: when the map is shown, Google may set cookies and collect data under the Google Privacy Policy (policies.google.com/privacy).",
+            "YouTube videos in some articles: only a thumbnail (from i.ytimg.com) shows until you press play; the player then loads from youtube-nocookie.com, and Google may set cookies and collect data under Google’s Privacy Policy (policies.google.com/privacy).",
             "Competent authorities, when the law requires it."
           ]
         },
@@ -419,7 +421,7 @@
           "id": "ben-thu-ba",
           "title": "Third-party links and content",
           "paragraphs": [
-            "The website links to, and embeds content from, Google Maps, Zalo, Facebook and other platforms. We do not control and are not responsible for their content or policies."
+            "The website links to, and embeds content from, Google Maps, YouTube, Zalo, Facebook and other platforms. We do not control and are not responsible for their content or policies."
           ],
           "items": [
 

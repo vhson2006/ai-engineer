@@ -57,7 +57,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
 
   const all = await listArticles(locale);
   const others = all.filter((item) => item.id !== article.id);
-  const related = [...others.filter((item) => item.topic.key === article.topic.key), ...others.filter((item) => item.topic.key !== article.topic.key)].slice(0, 3);
+  const related = [
+    ...others.filter((item) => item.topic.key === article.topic.key),
+    ...others.filter((item) => item.topic.key !== article.topic.key),
+  ].slice(0, 3);
 
   return (
     <>
@@ -101,10 +104,13 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
         </Container>
 
         <Container className="max-w-3xl py-14 sm:py-20">
-          <ArticleBody html={article.body} />
+          <ArticleBody html={article.body} playLabel={t.articles.playVideo} />
 
           <div className="mt-14 border-t border-border pt-8">
-            <Link href={href(locale, articlePaths.index)} className="inline-flex items-center gap-2 text-sm font-bold text-brand-strong hover:underline">
+            <Link
+              href={href(locale, articlePaths.index)}
+              className="inline-flex items-center gap-2 text-sm font-bold text-brand-strong hover:underline"
+            >
               <ArrowLeft aria-hidden className="size-4" />
               {t.articles.back}
             </Link>
@@ -115,7 +121,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
             <p className="font-display text-2xl font-extrabold text-sun">{t.articles.ctaTitle}</p>
             <p className="mt-2 text-white/85">{t.articles.ctaText}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={shop.phone.href} className={cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-sun px-6 text-deep hover:bg-[#ffe14d]')}>
+              <a
+                href={shop.phone.href}
+                className={cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-sun px-6 text-deep hover:bg-[#ffe14d]')}
+              >
                 <Phone aria-hidden />
                 {shop.phone.display}
               </a>
@@ -123,7 +132,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
                 href={shop.zaloHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'rounded-full border-white/30 bg-white/10 px-6 text-white hover:bg-white/20')}
+                className={cn(
+                  buttonVariants({ variant: 'secondary', size: 'lg' }),
+                  'rounded-full border-white/30 bg-white/10 px-6 text-white hover:bg-white/20',
+                )}
               >
                 <MessageCircle aria-hidden />
                 Zalo

@@ -32,7 +32,12 @@ export async function generateStaticParams({ params }: { params: { lang: string 
 /** The link preview: the cover chosen in the media library, else the article's brand card. */
 function preview(locale: Locale, article: Article): PreviewImage {
   return article.cover.kind === 'media'
-    ? { url: article.cover.image.url, width: article.cover.image.width, height: article.cover.image.height, alt: article.cover.alt || article.title }
+    ? {
+        url: article.cover.image.url,
+        width: article.cover.image.width,
+        height: article.cover.image.height,
+        alt: article.cover.alt || article.title,
+      }
     : articlePreview(locale, article.slug, article.title);
 }
 
@@ -65,7 +70,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
 
   const all = await listArticles(locale);
   const others = all.filter((item) => item.id !== article.id);
-  const related = [...others.filter((item) => item.topic.key === article.topic.key), ...others.filter((item) => item.topic.key !== article.topic.key)].slice(0, 3);
+  const related = [
+    ...others.filter((item) => item.topic.key === article.topic.key),
+    ...others.filter((item) => item.topic.key !== article.topic.key),
+  ].slice(0, 3);
   const path = articlePaths.article(slug);
 
   return (
@@ -73,7 +81,13 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
       <article>
         <JsonLd
           data={structuredData(t, locale, {
-            article: { path, title: article.title, description: article.excerpt, image: preview(locale, article).url, publishedAt: article.publishedAt },
+            article: {
+              path,
+              title: article.title,
+              description: article.excerpt,
+              image: preview(locale, article).url,
+              publishedAt: article.publishedAt,
+            },
           })}
         />
 
@@ -111,19 +125,27 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
 
         <Container className="max-w-5xl">
           <div className="frame-ornate relative -mt-1 aspect-[16/9] overflow-hidden rounded-[2rem] p-1.5">
-            <CoverImage cover={article.cover} priority sizes="(min-width: 1024px) 1000px, 100vw" className="size-full rounded-[1.6rem] object-cover" />
+            <CoverImage
+              cover={article.cover}
+              priority
+              sizes="(min-width: 1024px) 1000px, 100vw"
+              className="size-full rounded-[1.6rem] object-cover"
+            />
           </div>
         </Container>
 
         <Container className="max-w-3xl py-12 sm:py-16">
-          <ArticleBody html={article.body} />
+          <ArticleBody html={article.body} playLabel={t.articles.playVideo} />
 
           <div className="mt-14 flex flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
             <ShareBar
               url={absoluteUrl(localizedPath(locale, path))}
               labels={{ share: t.articles.share, facebook: t.articles.shareFacebook, copy: t.articles.copyLink, copied: t.articles.copied }}
             />
-            <Link href={href(locale, articlePaths.index)} className="inline-flex items-center gap-2 text-sm font-bold text-brand-strong hover:underline">
+            <Link
+              href={href(locale, articlePaths.index)}
+              className="inline-flex items-center gap-2 text-sm font-bold text-brand-strong hover:underline"
+            >
               <ArrowLeft aria-hidden className="size-4" />
               {t.articles.back}
             </Link>
@@ -134,7 +156,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
             <p className="font-display text-2xl font-bold text-yellow">{t.contact.title}</p>
             <p className="mt-2 text-white/85">{t.contact.text}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={winery.orderPhone.href} className={cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-yellow px-6 text-[#3f0a0d] hover:bg-yellow/90')}>
+              <a
+                href={winery.orderPhone.href}
+                className={cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-yellow px-6 text-[#3f0a0d] hover:bg-yellow/90')}
+              >
                 <Phone aria-hidden />
                 {winery.orderPhone.display}
               </a>
@@ -142,7 +167,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
                 href={winery.zalo.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'rounded-full border-white/30 bg-white/10 px-6 text-white hover:bg-white/20')}
+                className={cn(
+                  buttonVariants({ variant: 'secondary', size: 'lg' }),
+                  'rounded-full border-white/30 bg-white/10 px-6 text-white hover:bg-white/20',
+                )}
               >
                 <MessageCircle aria-hidden />
                 {t.common.zalo}
@@ -151,7 +179,6 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
             <LegalNotice tone="light" className="mt-6" />
           </aside>
         </Container>
-
       </article>
 
       {related.length > 0 && (

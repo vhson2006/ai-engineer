@@ -1,6 +1,6 @@
 import { notFound, redirect } from 'next/navigation';
 import { isUuid } from '@web/core/actions/result';
-import { getArticle, listMedia, listTranslationJobs } from '@web/core/api';
+import { getArticle, listMedia, listStudioProjects, listTranslationJobs } from '@web/core/api';
 import { getSessionUser } from '@web/core/auth/session';
 import { ApiFailure } from '@/components/api-failure';
 import { siteCategories, siteOr404 } from '@/features/sites/data';
@@ -33,13 +33,15 @@ export async function ArticleEditorPage({
   if (!site.ok) return <ApiFailure t={t} failure={site} />;
   if (articleId !== undefined && !isUuid(articleId)) notFound();
 
-  const [categories, article, media, jobs] = await Promise.all([
+  const [categories, article, media, jobs, videos] = await Promise.all([
     siteCategories(siteId),
     articleId ? getArticle(siteId, articleId) : null,
     // The library's newest images for the picker; without them the editor still works (upload).
     listMedia(siteId, { limit: 60 }),
     // Machine translations (ADR 0036): status and what to review, per language.
     articleId ? listTranslationJobs(siteId, articleId) : null,
+    // Finished studio clips (ADR 0039) for "insert a video"; without them the menu item is hidden.
+    listStudioProjects(siteId, { rendered: true, limit: 50 }),
   ]);
   if (article && !article.ok) {
     if (article.status === 404) notFound();
@@ -49,7 +51,9 @@ export async function ArticleEditorPage({
 
   const preferred = [locale, site.data.defaultLocale];
   const current = article?.data;
-  const heading = current ? (displayTranslation(current.translations, preferred)?.title ?? t.articles.form.titleEdit) : t.articles.form.titleNew;
+  const heading = current
+    ? (displayTranslation(current.translations, preferred)?.title ?? t.articles.form.titleEdit)
+    : t.articles.form.titleNew;
 
   return (
     <div className="space-y-6">
@@ -67,6 +71,25 @@ export async function ArticleEditorPage({
         common={t.common}
         media={media.ok ? media.data.data : []}
         mediaLabels={t.media}
+        clips={
+          videos.ok
+            ? videos.data.data.flatMap((p) =>
+                p.video
+                  ? // the web version when there is one (lighter); 720×1280 or 1080×1920, both 9:16
+                    [
+                      {
+                        id: p.id,
+                        title: p.title,
+                        src: p.video.webUrl ?? p.video.url,
+                        poster: p.video.posterUrl,
+                        width: p.video.webUrl ? 720 : 1080,
+                        height: p.video.webUrl ? 1280 : 1920,
+                      },
+                    ]
+                  : [],
+              )
+            : []
+        }
         translationJobs={jobs?.ok ? jobs.data : []}
         validation={t.validation}
         listHref={list}

@@ -208,7 +208,12 @@ export class TranslationJobsService {
     try {
       const applied = applySegments(source, plan, event.segments);
       fields = applied.fields;
-      body = toArticleHtml(job.targetLocale, applied.body, this.urls.sitePrefix(job.siteId));
+      body = toArticleHtml(
+        job.targetLocale,
+        applied.body,
+        this.urls.sitePrefix(job.siteId),
+        this.urls.studioPrefix(job.siteId),
+      );
     } catch (error) {
       return this.finish(tx, job, 'failed', {
         error: 'invalid_output',

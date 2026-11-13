@@ -49,7 +49,7 @@
             "When a restaurant or bar contacts us about a partnership: the business name, the contact person, phone number and your messages.",
             "When you buy at the showroom: what the sale and its paperwork require.",
             "When you visit the website: technical data your browser sends by itself (IP address, browser and device type, pages viewed, time of visit), kept in the server logs.",
-            "One cookie, wine_locale, remembers the language you chose (up to 1 year). The website uses no advertising cookies, analytics or tracking (Google Maps cookies: see Sharing)."
+            "One cookie, wine_locale, remembers the language you chose (up to 1 year). The website uses no advertising cookies, analytics or tracking (Google Maps and YouTube cookies: see Sharing)."
           ]
         },
         {
@@ -84,6 +84,7 @@
             "Providers of the website's hosting and infrastructure (servers, image storage), only to provide the website to you.",
             "Zalo, Facebook and messaging platforms: when you contact us through them, they process data under their own policies.",
             "Google Maps, embedded in the Contact section: when the map shows, Google may set cookies and collect data under Google’s Privacy Policy (policies.google.com/privacy).",
+            "YouTube videos in some articles: only a thumbnail (from i.ytimg.com) shows until you press play; the player then loads from youtube-nocookie.com, and Google may set cookies and collect data under Google’s Privacy Policy (policies.google.com/privacy).",
             "Competent state authorities, when the law requires it."
           ]
         },
@@ -226,7 +227,7 @@
           "id": "ben-thu-ba",
           "title": "Third-party links and content",
           "paragraphs": [
-            "The website has links to, and embedded content from, Google Maps, Zalo, Facebook and other platforms. We do not control them and are not responsible for their content or policies."
+            "The website has links to, and embedded content from, Google Maps, YouTube, Zalo, Facebook and other platforms. We do not control them and are not responsible for their content or policies."
           ],
           "items": []
         },
@@ -417,6 +418,7 @@
     "mapTitle": "Google Maps: Khang Hưng Tửu winery"
   },
   "articles": {
+    "playVideo": "Play the video",
     "eyebrow": "Articles",
     "title": "Stories from Gò Đen",
     "intro": "Brand stories, the craft, how to serve our wines and partner news from Khang Hưng Tửu.",

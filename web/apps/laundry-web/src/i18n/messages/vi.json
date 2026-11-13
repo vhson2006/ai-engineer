@@ -166,6 +166,7 @@
     "legal": "Thông tin pháp lý"
   },
   "articles": {
+    "playVideo": "Phát video",
     "eyebrow": "Bài viết",
     "title": "Mẹo giặt giũ & chuyện ở tiệm",
     "intro": "Mẹo gửi đồ, cách chọn dịch vụ và cách tiệm tính giá, từ Giặt sấy SFaster.",
@@ -265,6 +266,7 @@
             "Nhà cung cấp hạ tầng lưu trữ và vận hành website (máy chủ, lưu trữ hình ảnh), chỉ để cung cấp website cho bạn.",
             "Zalo, Facebook, TikTok và các nền tảng nhắn tin: khi bạn liên hệ qua các nền tảng này, nền tảng xử lý dữ liệu theo chính sách riêng của họ.",
             "Google Maps được nhúng ở mục Liên hệ: khi bản đồ hiển thị, Google có thể đặt cookie và thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
+            "Video YouTube trong một số bài viết: trước khi bạn bấm phát chỉ hiện ảnh xem trước (từ i.ytimg.com); khi bấm, trình phát tải từ youtube-nocookie.com và Google có thể đặt cookie, thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
             "Cơ quan nhà nước có thẩm quyền, khi pháp luật yêu cầu."
           ]
         },
@@ -419,7 +421,7 @@
           "id": "ben-thu-ba",
           "title": "Liên kết và nội dung của bên thứ ba",
           "paragraphs": [
-            "Website có liên kết và nội dung nhúng từ Google Maps, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
+            "Website có liên kết và nội dung nhúng từ Google Maps, YouTube, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
           ],
           "items": [
 

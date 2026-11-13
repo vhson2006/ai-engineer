@@ -49,7 +49,7 @@ Specific to this app:
   `policies.*` of the dictionaries (`legal.*` is the 18+ notice), winery facts filled from `winery.ts`.
   The company has no website of its own to copy from (www.ruoukhanghung.com, printed on the banner,
   does not resolve, 2026-11-12): the text describes only what this site does (no accounts, forms or
-  online shop; orders by phone/Zalo; 18+ only; one language cookie; the Google Maps embed). Change it,
+  online shop; orders by phone/Zalo; 18+ only; one language cookie; the Google Maps and YouTube embeds). Change it,
   and `LEGAL_UPDATED`, with any new data collection. Not reviewed by a lawyer yet.
 - SEO (`.claude/rules/seo.md`): every page's metadata through `pageMetadata` (`src/seo.ts`: canonical,
   hreflang + x-default, Open Graph + Twitter card), `metadataBase` = `SITE_URL`; JSON-LD `Winery` +
@@ -66,7 +66,8 @@ Specific to this app:
   text by `article-html.css`). Kept as a layout catalogue for the owner; the real sample article
   is the seeded guide (above).
 - **Map**: the contact card ends with a keyless Google Maps embed (`mapEmbedSrc` in
-  `src/content/winery.ts`; `https://www.google.com` is the only `frameOrigins` entry in `src/proxy.ts`)
+  `src/content/winery.ts`; `frameOrigins` in `src/proxy.ts`: `https://www.google.com` and, for YouTube embeds in articles,
+  `https://www.youtube-nocookie.com`; `imageOrigins`: `https://i.ytimg.com`, ADR 0040)
   and its "Chỉ đường" button. It searches the winery's own Google listing under the post-2025-merger
   address ("109 QL1A, Mỹ Yên, Tây Ninh", 10.6347, 106.5210, checked 2026-11-12); the site still shows
   the banner's address (Long Hiệp, Bến Lức, Long An) until the owner confirms the new one.

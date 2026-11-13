@@ -652,6 +652,7 @@
     "legal": "Thông tin pháp lý"
   },
   "articles": {
+    "playVideo": "Phát video",
     "eyebrow": "Blog",
     "title": "Chuyện ở tiệm",
     "intro": "Mẹo chăm sóc móng, giới thiệu dịch vụ và những điều nên biết trước khi ghé, từ Envy Nails Spa of Wendell.",
@@ -737,7 +738,7 @@
           "title": "Dịch vụ của bên thứ ba",
           "paragraphs": [
             "{name} có thể tích hợp dịch vụ của bên thứ ba hoặc đặt liên kết đến website, ứng dụng bên ngoài. Chính sách bảo mật này không áp dụng cho cách các bên thứ ba đó xử lý dữ liệu. Bạn nên đọc chính sách bảo mật của mọi dịch vụ hoặc website bên thứ ba mà bạn sử dụng.",
-            "Trên website này, bản đồ do Google Maps cung cấp, còn đặt lịch trực tuyến mở một trang do nhà cung cấp hệ thống đặt lịch của tiệm vận hành: chính sách bảo mật của họ áp dụng tại đó."
+            "Trên website này, bản đồ do Google Maps cung cấp, video trong một số bài viết do YouTube cung cấp (trước khi bạn bấm phát chỉ hiện ảnh xem trước; khi bấm, trình phát tải từ youtube-nocookie.com), còn đặt lịch trực tuyến mở một trang do nhà cung cấp hệ thống đặt lịch của tiệm vận hành: chính sách bảo mật của họ áp dụng tại đó."
           ],
           "items": []
         },

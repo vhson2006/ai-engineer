@@ -60,7 +60,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[s
 
   const all = await listArticles(locale);
   const others = all.filter((item) => item.id !== article.id);
-  const related = [...others.filter((item) => item.topic.key === article.topic.key), ...others.filter((item) => item.topic.key !== article.topic.key)].slice(0, 3);
+  const related = [
+    ...others.filter((item) => item.topic.key === article.topic.key),
+    ...others.filter((item) => item.topic.key !== article.topic.key),
+  ].slice(0, 3);
   const phone = salon.phones[0];
 
   return (
@@ -90,7 +93,9 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[s
               </ol>
             </nav>
             <TopicChip topic={article.topic} className="mt-8" />
-            <h1 className="mt-4 text-4xl leading-[1.04] font-extrabold tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl">{article.title}</h1>
+            <h1 className="mt-4 text-4xl leading-[1.04] font-extrabold tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl">
+              {article.title}
+            </h1>
             <p className="mt-5 text-xl leading-relaxed text-muted">{article.excerpt}</p>
             <ArticleMeta article={article} locale={locale} t={t} className="mt-6" />
           </Container>
@@ -103,7 +108,7 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[s
         </Container>
 
         <Container className="max-w-3xl py-12 sm:py-16">
-          <ArticleBody html={article.body} />
+          <ArticleBody html={article.body} playLabel={t.articles.playVideo} />
 
           <div className="mt-14 border-t border-border pt-8">
             <Link href={href(locale, articlePaths.index)} className="inline-flex items-center gap-2 text-sm font-semibold hover:underline">

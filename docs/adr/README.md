@@ -53,3 +53,5 @@ decision.
 | [0036](0036-ai-service-machine-translation.md) | ai-service, the one caller of AI providers; machine translation of articles (segments, drafts) | API / Web / Infra | Accepted, implemented |
 | [0037](0037-ai-generated-images.md) | AI-generated images in the media library (Gemini Flash-Lite Image, server-side WebP, monthly quota per site) | API / Web / Infra | Accepted, implemented |
 | [0038](0038-fixed-default-language-public-sites.md) | Public sites open in their own language (nails EN; laundry, wine, portfolio VI), not the browser's; one language cookie per client site | Web | Accepted, implemented |
+| [0039](0039-video-studio.md) | Video studio: script templates (code), AI script and voice (ai-service), Remotion render-worker, studio module in content-service | API / Web / Infra | Accepted, implemented (dev) |
+| [0040](0040-youtube-embeds-in-articles.md) | YouTube embeds in articles: only the video id in the body, a click-to-load youtube-nocookie player on the client sites | API / Web | Accepted, implemented (dev) |

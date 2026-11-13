@@ -652,6 +652,7 @@
     "legal": "Legal information"
   },
   "articles": {
+    "playVideo": "Play the video",
     "eyebrow": "Blog",
     "title": "Notes from the salon",
     "intro": "Nail care tips, a guide to our services and what to know before your visit, from Envy Nails Spa of Wendell.",
@@ -737,7 +738,7 @@
           "title": "Third-Party Services",
           "paragraphs": [
             "{name} may integrate with third-party services or include links to external websites or applications. This Privacy Policy does not cover the privacy practices of these third parties. We encourage you to review the privacy policies of any third-party services or websites you interact with.",
-            "On this website, the map is provided by Google Maps, and online booking opens a page run by our booking provider: their own privacy policies apply there."
+            "On this website, the map is provided by Google Maps, videos in some articles by YouTube (only a thumbnail shows until you press play; the player then loads from youtube-nocookie.com), and online booking opens a page run by our booking provider: their own privacy policies apply there."
           ],
           "items": []
         },

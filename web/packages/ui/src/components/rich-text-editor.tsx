@@ -34,15 +34,21 @@ import {
   editorHtml,
   layoutBlockHtml,
   layoutExtensions,
+  layoutVideoHtml,
+  layoutYouTubeHtml,
   lostInVisualEditor,
   removeLayoutBlock,
   setImagePicker,
+  setVideoPicker,
   unwrapLayoutBlock,
   type PickedImage,
+  type PickedVideo,
   type RichTextLayoutLabels,
 } from '../lib/rich-text-layout';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './dropdown-menu';
 import { fieldClass } from './input';
+
+export type { PickedImage, PickedVideo } from '../lib/rich-text-layout';
 
 /**
  * Rich text (Tiptap, MIT). Emits HTML through `onChange`. The HTML is user input: when it is
@@ -87,8 +93,13 @@ export interface RichTextEditorProps {
   /**
    * Turns on the layout blocks of article bodies (ADR 0033) in the visual editor. `pickImage`:
    * the app's media library (ADR 0034), for the "choose an image" button of image cards.
+   * `pickVideo`: the app's finished studio clips (ADR 0039): "insert a video" and video cards.
    */
-  layout?: { labels: RichTextLayoutLabels; pickImage?: () => Promise<PickedImage | null> };
+  layout?: {
+    labels: RichTextLayoutLabels;
+    pickImage?: () => Promise<PickedImage | null>;
+    pickVideo?: () => Promise<PickedVideo | null>;
+  };
 }
 
 export interface RichTextEditorSourceLabels {
@@ -109,7 +120,18 @@ export interface RichTextEditorSourceLabels {
 
 type Mode = 'visual' | 'source';
 
-export function RichTextEditor({ value = '', onChange, placeholder, labels, disabled, className, id, source, layout, ...aria }: RichTextEditorProps) {
+export function RichTextEditor({
+  value = '',
+  onChange,
+  placeholder,
+  labels,
+  disabled,
+  className,
+  id,
+  source,
+  layout,
+  ...aria
+}: RichTextEditorProps) {
   // Without `layout`, blocks are known to be lost: open in the source mode right away. With it, the
   // editor's schema decides once the editor exists (onCreate below).
   const opensInSource = Boolean(source && !layout && hasLayoutBlocks(value));
@@ -173,6 +195,10 @@ export function RichTextEditor({ value = '', onChange, placeholder, labels, disa
   useEffect(() => {
     if (editor && layout) setImagePicker(editor, pickImage);
   }, [editor, layout, pickImage]);
+  const pickVideo = layout?.pickVideo;
+  useEffect(() => {
+    if (editor && layout) setVideoPicker(editor, pickVideo);
+  }, [editor, layout, pickVideo]);
 
   // A new value from outside in the visual editor (e.g. the form reset to what the server stored).
   useEffect(() => {
@@ -224,12 +250,22 @@ export function RichTextEditor({ value = '', onChange, placeholder, labels, disa
       className={cn(fieldClass, 'p-0 focus-within:border-brand focus-within:ring-3 focus-within:ring-brand/20', className)}
     >
       {editor ? (
-        <Toolbar editor={editor} labels={labels} layout={layout?.labels} disabled={disabled || mode === 'source'} extra={modes} />
+        <Toolbar
+          editor={editor}
+          labels={labels}
+          layout={layout?.labels}
+          pickVideo={pickVideo}
+          disabled={disabled || mode === 'source'}
+          extra={modes}
+        />
       ) : (
         <div className="h-10 border-b border-border" />
       )}
       {source && lost.length > 0 && (
-        <div role="alert" className="flex flex-wrap items-center gap-3 border-b border-border bg-amber-50 px-3 py-2.5 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+        <div
+          role="alert"
+          className="flex flex-wrap items-center gap-3 border-b border-border bg-amber-50 px-3 py-2.5 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200"
+        >
           <TriangleAlertIcon aria-hidden className="size-4 shrink-0" />
           <p className="min-w-0 flex-1">
             {source.labels.layoutWarning} <code className="font-mono text-xs">{lost.map(describeLost).join(' ')}</code>
@@ -312,7 +348,14 @@ function ModeSwitch({
   return (
     <div className="ml-auto flex items-center gap-1">
       {onFormat && (
-        <button type="button" title={labels.format} aria-label={labels.format} disabled={disabled} onClick={onFormat} className={cn(item(false), 'px-2')}>
+        <button
+          type="button"
+          title={labels.format}
+          aria-label={labels.format}
+          disabled={disabled}
+          onClick={onFormat}
+          className={cn(item(false), 'px-2')}
+        >
           <WandSparklesIcon aria-hidden className="size-3.5" />
         </button>
       )}
@@ -334,12 +377,14 @@ function Toolbar({
   editor,
   labels,
   layout,
+  pickVideo,
   disabled,
   extra,
 }: {
   editor: Editor;
   labels: RichTextEditorLabels;
   layout?: RichTextLayoutLabels;
+  pickVideo?: () => Promise<PickedVideo | null>;
   disabled?: boolean;
   extra?: ReactNode;
 }) {
@@ -423,14 +468,31 @@ function Toolbar({
           ))}
         </div>
       ))}
-      {layout && <InsertBlockMenu editor={editor} labels={layout} disabled={disabled} />}
+      {layout && <InsertBlockMenu editor={editor} labels={layout} pickVideo={pickVideo} disabled={disabled} />}
       {extra}
     </div>
   );
 }
 
-/** "Insert block": the layout blocks of ADR 0033, with placeholder text, at the cursor. */
-function InsertBlockMenu({ editor, labels, disabled }: { editor: Editor; labels: RichTextLayoutLabels; disabled?: boolean }) {
+/**
+ * "Insert block": the layout blocks of ADR 0033, with placeholder text, at the cursor; with
+ * `pickVideo`, also a studio clip (chosen first: never an empty video).
+ */
+function InsertBlockMenu({
+  editor,
+  labels,
+  pickVideo,
+  disabled,
+}: {
+  editor: Editor;
+  labels: RichTextLayoutLabels;
+  pickVideo?: () => Promise<PickedVideo | null>;
+  disabled?: boolean;
+}) {
+  const insertVideo = async () => {
+    const picked = await pickVideo?.();
+    if (picked) editor.chain().focus().insertContent(layoutVideoHtml(picked, labels.text)).run();
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -449,6 +511,10 @@ function InsertBlockMenu({ editor, labels, disabled }: { editor: Editor; labels:
             {labels.blocks[block]}
           </DropdownMenuItem>
         ))}
+        {pickVideo && <DropdownMenuItem onSelect={() => void insertVideo()}>{labels.video}</DropdownMenuItem>}
+        <DropdownMenuItem onSelect={() => editor.chain().focus().insertContent(layoutYouTubeHtml(labels.text)).run()}>
+          {labels.youtube}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

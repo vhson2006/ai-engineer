@@ -48,7 +48,8 @@ Specific to this app:
   the menu's Blog opens `/blog`).
 - **Map**: the Visit section embeds Google Maps without an API key
   (`www.google.com/maps?q=<salon.mapQuery>&output=embed`); `src/proxy.ts` allows exactly that
-  origin in `frameOrigins` (CSP `frame-src`).
+  origin in `frameOrigins` (CSP `frame-src`), plus `https://www.youtube-nocookie.com` and
+  `imageOrigins` `https://i.ytimg.com` for YouTube embeds in articles (ADR 0040).
 - **Navigation**: `@web/ui/section-nav` + `<SmoothScroll />`, Home → Gallery → Artists → Menu → FAQ →
   Blog → Visit (the bands' order). Each `<Band id>` carries the anchor and stops right under the
   sticky header (fixed height `--header-h`, 68 px, `globals.css`); Home is the hero band with
@@ -57,7 +58,7 @@ Specific to this app:
   `src/site.ts`: its SMS program links to them, keep them stable), in the footer of every page. Text =
   the salon's own documents (envynailsspaofwendell.com, effective 2023-05-19 / 2026-01-01,
   `LEGAL_EFFECTIVE`), its "mobile app / ABC Salon System" wording adapted to this website, plus one line
-  on Google Maps and the booking page; Vietnamese is a translation (says English prevails). Not
+  on Google Maps, YouTube and the booking page; Vietnamese is a translation (says English prevails). Not
   reviewed by a lawyer; when the salon changes its documents, change both dictionaries and the dates.
 - **SEO** (`src/seo.ts`, `src/site.ts`): every page's metadata through `pageMetadata` (canonical,
   hreflang + x-default, Open Graph + Twitter card; the preview card `/og/<lang>.png` from
