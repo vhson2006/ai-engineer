@@ -6,7 +6,7 @@ One repository (ADR 0015). This file is always loaded; each package's `CLAUDE.md
 | Part | What | Instructions |
 |---|---|---|
 | `nest-microservice/` | NestJS API: deployment-, notification-, content-service, ai-service (the only caller of AI providers, ADR 0036; images 0037), `libs/common` | `nest-microservice/CLAUDE.md` |
-| `web/` | Next.js BFF apps (portfolio, admin, nails, wine, laundry) + `@web/core`, `@web/ui` | `web/CLAUDE.md` |
+| `web/` | Next.js BFF apps (portfolio, admin, nails, wine, laundry) + `@web/core`, `@web/ui`, `@web/video` (video studio compositions); `apps/render-worker` renders the studio's MP4s (ADR 0039) | `web/CLAUDE.md` |
 | `k8s/` | Kustomize for both: Gateway, KrakenD, Keycloak, NATS, data, apps, Alloy; dev/staging/prod | `k8s/README.md`, `.claude/rules/` |
 | `docs/adr/` | The one decision log. Client-sites target: ADRs 0025–0028 | read before undoing a decision |
 | `advanced-architecture/` | Separate reference repository | don't modify |

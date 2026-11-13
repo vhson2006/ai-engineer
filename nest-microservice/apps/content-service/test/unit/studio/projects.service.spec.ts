@@ -1,0 +1,380 @@
+import { ConflictException, UnprocessableEntityException } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { Test } from '@nestjs/testing';
+import {
+  InMemoryObjectStorage,
+  OutboxRelay,
+  SCRIPT_WRITING_EVENTS,
+  SPEECH_EVENTS,
+  VIDEO_RENDER_EVENTS,
+  type ScriptWritingRequestedEvent,
+  type SpeechRequestedEvent,
+  type VideoRenderRequestedEvent,
+} from '@app/common';
+import { site, users } from '../../support/fixtures';
+import { mediaProviders, mediaRow } from '../../support/media';
+import {
+  createPrismaMock,
+  outboxPayload,
+  outboxSubjects,
+  resetPrismaMock,
+} from '../../support/prisma-mock';
+import { PrismaService } from '../../../src/prisma/prisma.service';
+import { SitesService } from '../../../src/sites/sites.service';
+import { AvatarsService } from '../../../src/studio/avatars.service';
+import { BrandKitService } from '../../../src/studio/brand-kit.service';
+import { ProjectsService, videoKey } from '../../../src/studio/projects.service';
+
+describe('[projects.service] (unit)', () => {
+  let service: ProjectsService;
+  const prisma = createPrismaMock();
+  let storage: InMemoryObjectStorage;
+  const outbox = { poke: jest.fn() };
+  const { writer, outsider } = users;
+  const ID = '2c9d6f2a-4b1e-4c3d-9a8b-7f6e5d4c3b2a';
+  const HERO = '7d0c4f3e-1b2a-4c5d-8e9f-0a1b2c3d4e5f';
+  const DETAIL = '5b1e2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d';
+  const JOB = '0b30bc39-b265-47bb-91e3-5a3d2a254935';
+  const script = {
+    hooks: ['Chỉ 35.000đ một mẻ?'],
+    scenes: [
+      { id: 'hook', voice: 'Chỉ 35.000đ một mẻ?', onScreen: '35.000đ/mẻ' },
+      { id: 'benefit1', voice: 'Mỗi khách một máy.', onScreen: '1 khách 1 máy' },
+      { id: 'cta', voice: 'Gọi cho tiệm nhé!', onScreen: 'Gọi ngay' },
+    ],
+    caption: 'c',
+    hashtags: [],
+  };
+  const project = (overrides: Record<string, unknown> = {}) => ({
+    id: ID,
+    siteId: 'nails',
+    templateId: 'price-hook',
+    templateVersion: 1,
+    title: 'Giá',
+    language: 'vi',
+    status: 'draft',
+    brief: null,
+    inputs: {
+      images: { hero: HERO, detail1: DETAIL },
+      avatars: {},
+      voices: { narrator: 'Puck' },
+      facts: { price: 'Giặt sấy 35.000đ/mẻ' },
+    },
+    script: null,
+    warnings: [],
+    scriptJobId: null,
+    voice: null,
+    voiceJobId: null,
+    video: null,
+    renderId: null,
+    error: null,
+    createdBy: writer.id,
+    updatedBy: writer.id,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    ...overrides,
+  });
+  /** updateManyAndReturn answers the row with the update applied. */
+  const applyUpdates = (base: Record<string, unknown>) =>
+    prisma.studioProject.updateManyAndReturn.mockImplementation(({ data }: { data: object }) =>
+      Promise.resolve([{ ...base, ...data }]),
+    );
+
+  beforeEach(async () => {
+    jest.resetAllMocks();
+    resetPrismaMock(prisma, site);
+    prisma.studioBrandKit.findUnique.mockResolvedValue(null);
+    prisma.studioAvatar.findMany.mockResolvedValue([]);
+    prisma.media.findMany.mockResolvedValue([mediaRow({ id: HERO }), mediaRow({ id: DETAIL })]);
+    storage = new InMemoryObjectStorage();
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        SitesService,
+        BrandKitService,
+        AvatarsService,
+        ProjectsService,
+        ...mediaProviders(storage),
+        { provide: PrismaService, useValue: prisma },
+        { provide: OutboxRelay, useValue: outbox },
+        { provide: ConfigService, useValue: { getOrThrow: () => 2 } },
+      ],
+    }).compile();
+    service = moduleRef.get(ProjectsService);
+  });
+
+  describe('create', () => {
+    it('keeps only the template slots and checks they belong to the site', async () => {
+      prisma.media.count.mockResolvedValue(1);
+      prisma.studioProject.create.mockImplementation(
+        ({ data }: { data: Record<string, unknown> }) => Promise.resolve(project(data)),
+      );
+      await service.create(
+        'nails',
+        {
+          templateId: 'price-hook',
+          title: ' Giá ',
+          language: 'vi',
+          inputs: {
+            images: { hero: HERO, unknownSlot: DETAIL },
+            avatars: {},
+            voices: { narrator: 'Puck' },
+            facts: { price: 'x' },
+          },
+        },
+        writer,
+      );
+      const [[{ data }]] = prisma.studioProject.create.mock.calls as [
+        [{ data: { inputs: object; title: string } }],
+      ];
+      expect(data.title).toBe('Giá');
+      expect(data.inputs).toEqual({
+        images: { hero: HERO },
+        avatars: {},
+        voices: { narrator: 'Puck' },
+        facts: { price: 'x' },
+      });
+    });
+
+    it('refuses an image of another site (422) and a template excluded for the site', async () => {
+      prisma.media.count.mockResolvedValue(0);
+      const dto = {
+        templateId: 'price-hook',
+        title: 'x',
+        language: 'vi',
+        inputs: { images: { hero: HERO }, avatars: {}, voices: {}, facts: {} },
+      };
+      await expect(service.create('nails', dto, writer)).rejects.toBeInstanceOf(
+        UnprocessableEntityException,
+      );
+      prisma.site.findUnique.mockResolvedValue({ ...site, id: 'wine' });
+      await expect(service.create('wine', dto, users.admin)).rejects.toThrow(/not available/);
+      expect(prisma.studioProject.create).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('steps', () => {
+    it('script: writing + one event with the brand, facts and active scene limits', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(project());
+      applyUpdates(project());
+      const result = await service.requestScript('nails', ID, writer);
+
+      expect(result.status).toBe('writing');
+      expect(outboxSubjects(prisma)).toEqual([SCRIPT_WRITING_EVENTS.REQUESTED]);
+      const event = outboxPayload<ScriptWritingRequestedEvent>(prisma);
+      expect(event).toMatchObject({
+        requester: 'content-service',
+        siteId: 'nails',
+        language: 'vi',
+        brand: { name: site.name },
+        facts: [{ id: 'price', text: 'Giặt sấy 35.000đ/mẻ' }],
+        hookVariants: 3,
+      });
+      // detail2 (optional, empty) is left out.
+      expect(event.scenes.map((s) => s.id)).toEqual(['hook', 'benefit1', 'cta']);
+      expect(outbox.poke).toHaveBeenCalled();
+    });
+
+    it('script: 422 without the required fact, 409 while another step runs', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        project({ inputs: { images: {}, avatars: {}, voices: {}, facts: {} } }),
+      );
+      await expect(service.requestScript('nails', ID, writer)).rejects.toThrow(/fact price/);
+      prisma.studioProject.findFirst.mockResolvedValue(project({ status: 'voicing' }));
+      await expect(service.requestScript('nails', ID, writer)).rejects.toBeInstanceOf(
+        ConflictException,
+      );
+      expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
+    });
+
+    it("voice: each line with its speaker's voice, under the project's voice prefix", async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(project({ status: 'written', script }));
+      applyUpdates(project({ status: 'written', script }));
+      await service.requestVoice('nails', ID, writer);
+      const event = outboxPayload<SpeechRequestedEvent>(prisma);
+      expect(outboxSubjects(prisma)).toEqual([SPEECH_EVENTS.REQUESTED]);
+      expect(event.keyPrefix).toBe(`studio/nails/${ID}/voice/${event.jobId}/`);
+      expect(event.lines).toEqual([
+        { id: 'hook', text: 'Chỉ 35.000đ một mẻ?', voice: 'Puck' },
+        { id: 'benefit1', text: 'Mỗi khách một máy.', voice: 'Puck' },
+        { id: 'cta', text: 'Gọi cho tiệm nhé!', voice: 'Puck' },
+      ]);
+    });
+
+    it('render: a render row + an event with public URLs; refused over the monthly quota', async () => {
+      const voiced = project({
+        status: 'voiced',
+        script,
+        voice: {
+          jobId: JOB,
+          lines: [
+            { id: 'hook', key: `studio/nails/${ID}/voice/${JOB}/hook.wav`, durationMs: 1800 },
+          ],
+        },
+      });
+      prisma.studioProject.findFirst.mockResolvedValue(voiced);
+      applyUpdates(voiced);
+      prisma.studioRender.count.mockResolvedValue(1);
+      await service.requestRender('nails', ID, writer);
+
+      expect(prisma.$executeRaw).toHaveBeenCalled(); // per-site lock
+      expect(outboxSubjects(prisma)).toEqual([VIDEO_RENDER_EVENTS.REQUESTED]);
+      const event = outboxPayload<VideoRenderRequestedEvent>(prisma);
+      expect(event.outputKey).toBe(videoKey('nails', ID, event.renderId));
+      expect(event.props.scenes[0]).toMatchObject({
+        imageUrl: `https://cdn.test/media/nails/${HERO}/1280.webp`,
+        voiceUrl: `https://cdn.test/studio/nails/${ID}/voice/${JOB}/hook.wav`,
+      });
+      expect(prisma.studioRender.create).toHaveBeenCalledWith({
+        data: expect.objectContaining({ id: event.renderId, siteId: 'nails', projectId: ID }),
+      });
+
+      jest.clearAllMocks();
+      prisma.studioRender.count.mockResolvedValue(2); // quota of 2 used
+      await expect(service.requestRender('nails', ID, writer)).rejects.toThrow(/2 videos/);
+      expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
+    });
+
+    it("never touches another site's project", async () => {
+      await expect(service.requestScript('nails', ID, outsider)).rejects.toThrow(/not found/);
+    });
+  });
+
+  describe('results', () => {
+    it('stores the written script with warnings, only for the job it waits for', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        project({ status: 'writing', scriptJobId: JOB }),
+      );
+      prisma.site.findUniqueOrThrow.mockResolvedValue(site);
+      await service.scriptWritten(prisma as never, {
+        jobId: JOB,
+        requester: 'content-service',
+        siteId: 'nails',
+        hooks: ['Giảm 50% hôm nay!'],
+        scenes: [{ id: 'hook', voice: 'Giảm 50% hôm nay!', onScreen: '-50%' }],
+        caption: '',
+        hashtags: [],
+        provider: 'fake',
+        model: 'fake',
+      });
+      expect(prisma.studioProject.findFirst).toHaveBeenCalledWith({
+        where: { siteId: 'nails', scriptJobId: JOB, status: 'writing' },
+      });
+      const [[{ data }]] = prisma.studioProject.update.mock.calls as [
+        [{ data: { status: string; warnings: { code: string }[] } }],
+      ];
+      expect(data.status).toBe('written');
+      expect(data.warnings.map((w) => w.code)).toEqual(
+        expect.arrayContaining(['unknown_number', 'missing_scene']),
+      );
+    });
+
+    it('a finished render becomes the project video; a failed one returns to voiced', async () => {
+      const RENDER = 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d';
+      prisma.studioRender.findFirst.mockResolvedValue({
+        id: RENDER,
+        siteId: 'nails',
+        projectId: ID,
+        status: 'pending',
+      });
+      await service.rendered(prisma as never, {
+        renderId: RENDER,
+        siteId: 'nails',
+        key: videoKey('nails', ID, RENDER),
+        sizeBytes: 1000,
+        webSizeBytes: 400,
+        durationMs: 15000,
+        renderMs: 40000,
+      });
+      expect(prisma.studioProject.updateMany).toHaveBeenCalledWith({
+        where: { id: ID, renderId: RENDER, status: 'rendering' },
+        data: expect.objectContaining({
+          status: 'rendered',
+          video: expect.objectContaining({ renderId: RENDER, webSizeBytes: 400 }),
+        }),
+      });
+
+      jest.clearAllMocks();
+      prisma.studioRender.findFirst.mockResolvedValue({
+        id: RENDER,
+        siteId: 'nails',
+        projectId: ID,
+        status: 'pending',
+      });
+      await service.renderFailed(prisma as never, {
+        renderId: RENDER,
+        siteId: 'nails',
+        reason: 'render_failed',
+      });
+      expect(prisma.studioRender.update).toHaveBeenCalledWith({
+        where: { id: RENDER },
+        data: expect.objectContaining({ status: 'failed' }),
+      });
+      expect(prisma.studioProject.updateMany).toHaveBeenCalledWith({
+        where: { id: ID, renderId: RENDER, status: 'rendering' },
+        data: { status: 'voiced', error: 'render_render_failed' },
+      });
+    });
+  });
+
+  describe('the video', () => {
+    const RENDER = 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d';
+    const key = videoKey('nails', ID, RENDER);
+    const video = (web?: number) => ({
+      renderId: RENDER,
+      key,
+      sizeBytes: 1000,
+      ...(web && { webSizeBytes: web }),
+      durationMs: 15000,
+      renderedAt: '2026-11-12T10:00:00.000Z',
+    });
+
+    it('answers the web MP4 and its poster next to the full-quality one (none for older renders)', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        project({ status: 'rendered', video: video(400) }),
+      );
+      const answered = await service.findOne('nails', ID, writer);
+      expect(answered.video).toMatchObject({
+        url: `https://cdn.test/${key}`,
+        webUrl: `https://cdn.test/studio/nails/${ID}/video/${RENDER}-web.mp4`,
+        webSizeBytes: 400,
+        posterUrl: `https://cdn.test/studio/nails/${ID}/video/${RENDER}.jpg`,
+      });
+
+      prisma.studioProject.findFirst.mockResolvedValue(
+        project({ status: 'rendered', video: video() }),
+      );
+      const older = await service.findOne('nails', ID, writer);
+      expect(older.video).toMatchObject({ webUrl: null, webSizeBytes: null, posterUrl: null });
+    });
+
+    it('delete: 409 video_in_use while an article shows one of its clips; nothing deleted', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        project({ status: 'rendered', video: video(400) }),
+      );
+      prisma.articleTranslation.count.mockResolvedValue(2);
+      await expect(service.remove('nails', ID, writer)).rejects.toMatchObject({
+        response: expect.objectContaining({ code: 'video_in_use' }),
+      });
+      expect(prisma.articleTranslation.count).toHaveBeenCalledWith({
+        where: { siteId: 'nails', body: { contains: `/studio/nails/${ID}/` } },
+      });
+      expect(prisma.studioProject.deleteMany).not.toHaveBeenCalled();
+      expect(storage.deleted).toEqual([]);
+    });
+
+    it('delete: every render loses its MP4, web MP4 and poster', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        project({ status: 'rendered', video: video(400) }),
+      );
+      prisma.articleTranslation.count.mockResolvedValue(0);
+      prisma.studioRender.findMany.mockResolvedValue([{ id: RENDER }]);
+      prisma.studioProject.deleteMany.mockResolvedValue({ count: 1 });
+      await service.remove('nails', ID, writer);
+      expect(storage.deleted).toEqual([
+        `public:${key}`,
+        `public:studio/nails/${ID}/video/${RENDER}-web.mp4`,
+        `public:studio/nails/${ID}/video/${RENDER}.jpg`,
+      ]);
+    });
+  });
+});

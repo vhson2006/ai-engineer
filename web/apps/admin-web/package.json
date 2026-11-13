@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^7.0.3",
+    "@remotion/player": "4.0.542",
     "@web/core": "*",
     "@web/ui": "*",
+    "@web/video": "*",
     "lucide-react": "^1.70.0",
     "next": "16.4.5",
     "nuqs": "^2.10.2",
@@ -22,6 +24,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-hook-form": "^7.91.0",
+    "remotion": "4.0.542",
     "zod": "^4.6.7"
   },
   "devDependencies": {

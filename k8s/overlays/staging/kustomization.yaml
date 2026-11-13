@@ -59,6 +59,9 @@ images:
   - name: deployment-migrate
     newName: local/deployment-migrate
     newTag: staging
+  - name: render-worker
+    newName: local/render-worker
+    newTag: staging
   - name: portfolio-web
     newName: local/portfolio-web
     newTag: staging
@@ -85,6 +88,9 @@ configMapGenerator:
   - name: ai-service-env
     envs:
       - env/ai-service.env
+  - name: render-worker-env
+    envs:
+      - env/render-worker.env
   - name: portfolio-web-env
     envs:
       - env/portfolio-web.env

@@ -1,0 +1,32 @@
+{
+  "name": "@web/video",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Video studio compositions (ADR 0039): one Remotion composition per script template, rendered by render-worker and previewed in admin-web with @remotion/player.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./entry": "./src/entry.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "test": "vitest run",
+    "studio": "remotion studio src/entry.ts"
+  },
+  "peerDependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "dependencies": {
+    "remotion": "4.0.542",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.542",
+    "@types/react": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "typescript": "^5",
+    "vitest": "^5.1.0"
+  }
+}

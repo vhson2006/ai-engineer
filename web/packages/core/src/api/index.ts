@@ -11,3 +11,4 @@ export * from './types';
 export * from './content';
 export * from './deployments';
 export * from './files';
+export * from './studio';
