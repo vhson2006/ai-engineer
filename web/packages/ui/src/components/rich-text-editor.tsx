@@ -187,7 +187,11 @@ export function RichTextEditor({
         setMode('source');
       }
     },
-    onUpdate: ({ editor: current }) => emit(editorHtml(current)),
+    // Only the root transaction is an edit: a plugin's normalization (TrailingNode appending a
+    // paragraph after a meta-only dispatch such as setImagePicker) must not make the form dirty.
+    onUpdate: ({ editor: current, transaction }) => {
+      if (transaction.docChanged) emit(editorHtml(current));
+    },
   });
 
   // The image cards call the CURRENT picker (the editor itself is created once).

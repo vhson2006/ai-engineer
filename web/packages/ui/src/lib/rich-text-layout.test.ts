@@ -16,6 +16,7 @@ import {
   layoutYouTubeHtml,
   lostInVisualEditor,
   removeLayoutBlock,
+  setImagePicker,
   unwrapLayoutBlock,
 } from './rich-text-layout';
 
@@ -122,5 +123,23 @@ describe('layout blocks in the visual editor', () => {
     const html = layoutBlockHtml(block, labels);
     expect(html).not.toMatch(/<(note|tip|warn|summary|columns|cards|steps|split|image|pull|faq|cta)>/); // labels escaped
     expect(lostInVisualEditor(html, schema)).toEqual([]);
+  });
+});
+
+// RichTextEditor emits onChange only when the ROOT transaction changed the document: a meta-only
+// dispatch (setImagePicker on mount) makes TrailingNode append a paragraph after a final heading
+// or block, and Tiptap reports that as an update; emitting it sent the editor's own serialization
+// of the stored body (not byte-equal to the server's HTML), which made a just-loaded form dirty.
+describe('updates that are not edits', () => {
+  it('a meta-only dispatch appends a trailing paragraph without the root transaction changing the doc', () => {
+    const editor = new Editor({ extensions, content: '<p>a</p><h2>Prep</h2>' });
+    const updates: boolean[] = [];
+    editor.on('update', ({ transaction }) => updates.push(transaction.docChanged));
+    setImagePicker(editor, () => Promise.resolve(null));
+    expect(updates).toEqual([false]); // an update, but not an edit: RichTextEditor ignores it
+    expect(editor.getHTML()).toBe('<p>a</p><h2>Prep</h2><p></p>');
+    editor.commands.insertContent('b');
+    expect(updates.at(-1)).toBe(true); // typing is an edit
+    editor.destroy();
   });
 });
