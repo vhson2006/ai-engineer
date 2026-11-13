@@ -36,30 +36,30 @@ components:
 images:
   - name: deployment-service
     newName: ghcr.io/vhson2006/ai-engineer/deployment-service
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: notification-service
     newName: ghcr.io/vhson2006/ai-engineer/notification-service
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: content-service
     newName: ghcr.io/vhson2006/ai-engineer/content-service
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: ai-service
     newName: ghcr.io/vhson2006/ai-engineer/ai-service
     # Not a commit: images.yml builds every API image on the next run and writes the real tag.
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: render-worker
     newName: ghcr.io/vhson2006/ai-engineer/render-worker
     # Not a commit: images.yml builds it on the next run and writes the real tag.
-    newTag: placeholder
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
-    newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
 
 configMapGenerator:
   - name: krakend-settings
