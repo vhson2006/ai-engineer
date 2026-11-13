@@ -36,20 +36,20 @@ components:
 images:
   - name: deployment-service
     newName: ghcr.io/vhson2006/ai-engineer/deployment-service
-    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
+    newTag: 04ef4e72281374ed23b5cd07e84cf693d941716a
   - name: notification-service
     newName: ghcr.io/vhson2006/ai-engineer/notification-service
-    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
+    newTag: 04ef4e72281374ed23b5cd07e84cf693d941716a
   - name: content-service
     newName: ghcr.io/vhson2006/ai-engineer/content-service
-    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
+    newTag: 04ef4e72281374ed23b5cd07e84cf693d941716a
   - name: ai-service
     newName: ghcr.io/vhson2006/ai-engineer/ai-service
     # Not a commit: images.yml builds every API image on the next run and writes the real tag.
-    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
+    newTag: 04ef4e72281374ed23b5cd07e84cf693d941716a
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
-    newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
+    newTag: 04ef4e72281374ed23b5cd07e84cf693d941716a
   - name: render-worker
     newName: ghcr.io/vhson2006/ai-engineer/render-worker
     # Not a commit: images.yml builds it on the next run and writes the real tag.
