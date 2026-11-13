@@ -19,7 +19,7 @@ const inputs = (overrides: Partial<StudioInputs> = {}): StudioInputs => ({
   voices: {},
   facts: {
     website: 'envynailsspaofwendell.com',
-    lookNames: 'Mint gold foil\nPeacock\n\nButter blossoms',
+    captions: 'Mint gold foil\nPeacock\n\nButter blossoms',
     promises: 'Clean | Tools sterilized after every guest\nRelaxing: Massage chairs\nOn time',
     prices: 'Classic manicure | $25\nBasic pedicure | $35',
     signature: 'Royal pedicure | $65',

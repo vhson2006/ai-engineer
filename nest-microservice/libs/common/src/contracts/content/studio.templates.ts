@@ -447,7 +447,7 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
         maxLength: 80,
       },
       {
-        id: 'lookNames',
+        id: 'captions',
         label: L('Tên các ảnh mẫu', 'Names of the looks'),
         hint: L(
           'Mỗi dòng một tên, theo thứ tự ảnh mẫu 1–6',
@@ -524,10 +524,10 @@ export const STUDIO_TEMPLATES: StudioTemplate[] = [
       {
         id: 'looks',
         purpose:
-          'The gallery: the kind of looks or products the images show (fact "lookNames"), as inspiration. Headline: a gallery title.',
+          'The gallery: the kind of looks or products the images show (fact "captions"), as inspiration. Headline: a gallery title.',
         layout: 'grid',
         images: ['look1', 'look2', 'look3', 'look4', 'look5', 'look6'],
-        items: 'lookNames',
+        items: 'captions',
         speaker: 'narrator',
         maxWords: 14,
         onScreenMaxChars: 32,
