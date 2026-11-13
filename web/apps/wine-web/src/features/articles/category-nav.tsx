@@ -2,21 +2,17 @@ import Link from 'next/link';
 import { cn } from '@web/ui';
 import { href, type Locale } from '@/i18n/locales';
 import type { Messages } from '@/i18n/messages';
-import { articlePaths, CATEGORIES, type ArticleCategory } from './data';
+import { articlePaths, listTopics } from './data';
 
 /**
- * Topic filter as real links (each topic is its own static, indexable page): no client state,
- * works without JavaScript, shareable URLs.
+ * Topic filter as real links (each topic is its own static, indexable page; from the API, in the
+ * admins' order): no client state, works without JavaScript, shareable URLs.
  */
-export function CategoryNav({ active, locale, t }: { active?: ArticleCategory; locale: Locale; t: Messages }) {
+export async function CategoryNav({ active, locale, t }: { active?: string; locale: Locale; t: Messages }) {
+  const topics = await listTopics(locale);
   const links = [
     { id: 'all', label: t.articles.all, path: articlePaths.index, current: !active },
-    ...CATEGORIES.map((category) => ({
-      id: category,
-      label: t.articles.categories[category],
-      path: articlePaths.category(category),
-      current: active === category,
-    })),
+    ...topics.map((topic) => ({ id: topic.key, label: topic.name, path: articlePaths.topic(topic.slug), current: active === topic.key })),
   ];
   return (
     <nav aria-label={t.articles.categoriesLabel}>

@@ -36,6 +36,13 @@ describe('content security policy', () => {
     expect(csp).not.toContain('ws:');
   });
 
+  it('images: this site and storage by default, plus the listed hosts (origin only)', () => {
+    expect(directive(contentSecurityPolicy(prod), 'img-src')).not.toContain('ytimg');
+    expect(directive(contentSecurityPolicy({ ...prod, imageOrigins: ['https://i.ytimg.com/vi'] }), 'img-src')).toContain(
+      ' https://i.ytimg.com',
+    );
+  });
+
   it('frames: none by default, only the listed origins otherwise (no path, no wildcard)', () => {
     expect(directive(contentSecurityPolicy(prod), 'frame-src')).toBeUndefined();
     const csp = contentSecurityPolicy({ ...prod, frameOrigins: ['https://www.google.com/maps'] });

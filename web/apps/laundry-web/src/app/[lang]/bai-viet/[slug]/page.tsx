@@ -6,9 +6,9 @@ import { Container, buttonVariants, cn } from '@web/ui';
 import { shop } from '@/content/shop';
 import { ArticleBody } from '@/features/articles/article-body';
 import { ArticleGrid, ArticleMeta, TopicChip } from '@/features/articles/article-card';
-import { CoverImage } from '@/features/articles/cover-image';
+import { CoverImage } from '@web/ui/cover-image';
 import { articlePaths, getArticle, listArticles, slugInLocale } from '@/features/articles/data';
-import { articlesMetadata } from '@/features/articles/metadata';
+import { pageMetadata } from '@/seo';
 import { href, isLocale } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
 
@@ -26,15 +26,16 @@ export async function generateStaticParams({ params }: { params: { lang: string 
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/bai-viet/[slug]'>): Promise<Metadata> {
-  const [{ slug }, locale] = await Promise.all([params, getLocale()]);
+  const [{ slug }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
   const article = await getArticle(locale, slug);
   if (!article) return {};
-  return articlesMetadata({
+  return pageMetadata({
+    t,
     locale,
     paths: Object.fromEntries(Object.entries(article.slugs).map(([code, own]) => [code, articlePaths.article(own)])),
     title: article.seoTitle ?? article.title,
     description: article.seoDescription ?? article.excerpt,
-    publishedTime: article.publishedAt,
+    article: { publishedTime: article.publishedAt },
     image:
       article.cover.kind === 'media'
         ? { url: article.cover.image.url, width: article.cover.image.width, height: article.cover.image.height, alt: article.cover.alt }
@@ -56,7 +57,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
 
   const all = await listArticles(locale);
   const others = all.filter((item) => item.id !== article.id);
-  const related = [...others.filter((item) => item.topic.key === article.topic.key), ...others.filter((item) => item.topic.key !== article.topic.key)].slice(0, 3);
+  const related = [
+    ...others.filter((item) => item.topic.key === article.topic.key),
+    ...others.filter((item) => item.topic.key !== article.topic.key),
+  ].slice(0, 3);
 
   return (
     <>
@@ -100,10 +104,13 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
         </Container>
 
         <Container className="max-w-3xl py-14 sm:py-20">
-          <ArticleBody html={article.body} />
+          <ArticleBody html={article.body} playLabel={t.articles.playVideo} />
 
           <div className="mt-14 border-t border-border pt-8">
-            <Link href={href(locale, articlePaths.index)} className="inline-flex items-center gap-2 text-sm font-bold text-brand-strong hover:underline">
+            <Link
+              href={href(locale, articlePaths.index)}
+              className="inline-flex items-center gap-2 text-sm font-bold text-brand-strong hover:underline"
+            >
               <ArrowLeft aria-hidden className="size-4" />
               {t.articles.back}
             </Link>
@@ -114,7 +121,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
             <p className="font-display text-2xl font-extrabold text-sun">{t.articles.ctaTitle}</p>
             <p className="mt-2 text-white/85">{t.articles.ctaText}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href={shop.phone.href} className={cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-sun px-6 text-deep hover:bg-[#ffe14d]')}>
+              <a
+                href={shop.phone.href}
+                className={cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-sun px-6 text-deep hover:bg-[#ffe14d]')}
+              >
                 <Phone aria-hidden />
                 {shop.phone.display}
               </a>
@@ -122,7 +132,10 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/bai-vie
                 href={shop.zaloHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'rounded-full border-white/30 bg-white/10 px-6 text-white hover:bg-white/20')}
+                className={cn(
+                  buttonVariants({ variant: 'secondary', size: 'lg' }),
+                  'rounded-full border-white/30 bg-white/10 px-6 text-white hover:bg-white/20',
+                )}
               >
                 <MessageCircle aria-hidden />
                 Zalo

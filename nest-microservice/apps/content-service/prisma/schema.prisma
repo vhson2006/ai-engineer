@@ -25,6 +25,9 @@ model Site {
   categories    Category[]
   articles      Article[]
   media         Media[]
+  brandKit      StudioBrandKit?
+  avatars       StudioAvatar[]
+  projects      StudioProject[]
 
   @@map("sites")
 }
@@ -151,6 +154,8 @@ model Media {
   createdAt       DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
   uploadedAt      DateTime?           @map("uploaded_at") @db.Timestamptz(6)
   covers          Article[]
+  avatars         StudioAvatar[]
+  brandLogos      StudioBrandKit[]
 
   @@index([siteId, status, createdAt(sort: Desc)], map: "ix_media_site_status_created")
   @@index([status, createdAt], map: "ix_media_pending", where: raw("(status)::text = 'pending'::text"))
@@ -216,6 +221,103 @@ model TranslationJob {
 
 /// Inbox (ADR 0007): ids of the events this service consumed (ai-service answers), written in
 /// the SAME transaction as their effect.
+/// Video studio (ADR 0039): the brand a site's clips use (one row per site).
+model StudioBrandKit {
+  siteId        String   @id(map: "pk_studio_brand_kits") @map("site_id") @db.VarChar(50)
+  site          Site     @relation(fields: [siteId], references: [id], onDelete: Cascade, map: "fk_studio_brand_kits_site")
+  brandName     String   @map("brand_name") @db.VarChar(100)
+  tagline       String?  @db.VarChar(200)
+  phone         String?  @db.VarChar(40)
+  callToAction  String?  @map("call_to_action") @db.VarChar(200)
+  tone          String?  @db.VarChar(300)
+  footerNote    String?  @map("footer_note") @db.VarChar(200)
+  bannedPhrases String[] @map("banned_phrases") @db.VarChar(100)
+  primaryColor  String   @map("primary_color") @db.VarChar(7)
+  accentColor   String   @map("accent_color") @db.VarChar(7)
+  logoMediaId   String?  @map("logo_media_id") @db.Uuid
+  logoMedia     Media?   @relation(fields: [logoMediaId], references: [id], onDelete: SetNull, map: "fk_studio_brand_kits_logo_media")
+  updatedBy     String   @map("updated_by") @db.VarChar(255)
+  updatedAt     DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([logoMediaId], map: "ix_studio_brand_kits_logo_media_id")
+  @@map("studio_brand_kits")
+}
+
+/// A host who appears in clips: a media-library photo, a default voice, and who agreed (consent).
+model StudioAvatar {
+  id          String   @id(map: "pk_studio_avatars") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId      String   @map("site_id") @db.VarChar(50)
+  site        Site     @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_studio_avatars_site")
+  name        String   @db.VarChar(80)
+  mediaId     String   @map("media_id") @db.Uuid
+  media       Media    @relation(fields: [mediaId], references: [id], onDelete: Restrict, map: "fk_studio_avatars_media")
+  voice       String   @db.VarChar(40)
+  consentNote String   @map("consent_note") @db.VarChar(500)
+  createdBy   String   @map("created_by") @db.VarChar(255)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([siteId, name], map: "ix_studio_avatars_site_name")
+  @@index([mediaId], map: "ix_studio_avatars_media_id")
+  @@map("studio_avatars")
+}
+
+/// One clip in the making: template + inputs → script (AI, edited) → voice → render.
+model StudioProject {
+  id              String         @id(map: "pk_studio_projects") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  siteId          String         @map("site_id") @db.VarChar(50)
+  site            Site           @relation(fields: [siteId], references: [id], onDelete: Restrict, map: "fk_studio_projects_site")
+  templateId      String         @map("template_id") @db.VarChar(40)
+  templateVersion Int            @map("template_version")
+  title           String         @db.VarChar(120)
+  language        String         @db.VarChar(10)
+  status          String         @default("draft") @db.VarChar(20)
+  brief           String?        @db.VarChar(1000)
+  /// StudioInputs: slot id → media / avatar / voice id, fact id → text or article id.
+  inputs          Json
+  /// StudioScript, null until the AI (or the admin) wrote it.
+  script          Json?
+  warnings        Json           @default("[]")
+  scriptJobId     String?        @map("script_job_id") @db.Uuid
+  /// { jobId, lines: [{ id, key, durationMs }] }: the voice files of the current script.
+  voice           Json?
+  voiceJobId      String?        @map("voice_job_id") @db.Uuid
+  /// The latest finished render: { renderId, key, sizeBytes, webSizeBytes?, durationMs, renderedAt }.
+  video           Json?
+  renderId        String?        @map("render_id") @db.Uuid
+  error           String?        @db.VarChar(300)
+  createdBy       String         @map("created_by") @db.VarChar(255)
+  updatedBy       String         @map("updated_by") @db.VarChar(255)
+  createdAt       DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime       @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  renders         StudioRender[]
+
+  @@index([siteId, updatedAt(sort: Desc)], map: "ix_studio_projects_site_updated")
+  @@map("studio_projects")
+}
+
+/// One render request: history, the monthly quota, and the render report of the Remotion license.
+/// Kept when the project is deleted (project_id set null): the count must not change.
+model StudioRender {
+  id          String         @id(map: "pk_studio_renders") @db.Uuid
+  siteId      String         @map("site_id") @db.VarChar(50)
+  projectId   String?        @map("project_id") @db.Uuid
+  project     StudioProject? @relation(fields: [projectId], references: [id], onDelete: SetNull, map: "fk_studio_renders_project")
+  templateId  String         @map("template_id") @db.VarChar(40)
+  status      String         @default("pending") @db.VarChar(20)
+  sizeBytes   Int?           @map("size_bytes")
+  durationMs  Int?           @map("duration_ms")
+  renderMs    Int?           @map("render_ms")
+  error       String?        @db.VarChar(300)
+  createdBy   String         @map("created_by") @db.VarChar(255)
+  createdAt   DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  completedAt DateTime?      @map("completed_at") @db.Timestamptz(6)
+
+  @@index([siteId, createdAt(sort: Desc)], map: "ix_studio_renders_site_created")
+  @@index([projectId], map: "ix_studio_renders_project_id")
+  @@map("studio_renders")
+}
+
 model InboxMessage {
   consumer    String   @db.VarChar(100)
   messageId   String   @map("message_id") @db.VarChar(200)

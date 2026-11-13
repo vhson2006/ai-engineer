@@ -1,52 +1,67 @@
-import { describe, expect, it } from 'vitest';
-import source from '@/content/articles.json';
-import { LOCALE_CODES } from '@/i18n/locales';
-import { CATEGORIES, CATEGORY_SLUGS, categoryFromSlug, getArticle, listArticles } from './data';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const IMAGE_KEYS = ['cabinet', 'displayJars', 'factory', 'hapNong', 'nepGoDen', 'ruouCan', 'showroom', 'storefront', 'towerRack'];
+// The content API (siteApiFetch inside) and Next's cache functions are mocked: this tests the
+// mapping and the error policy of the data layer, not the network.
+const api = vi.hoisted(() => ({ listSiteCategories: vi.fn(), listPublishedArticles: vi.fn(), getPublishedArticle: vi.fn() }));
+vi.mock('@web/core/api', () => api);
+vi.mock('next/cache', () => ({ cacheLife: vi.fn(), cacheTag: vi.fn() }));
 
-describe('articles (sample JSON, same shape as the future API)', () => {
-  it('has unique, URL-safe slugs', () => {
-    const slugs = source.items.map((item) => item.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
-    for (const slug of slugs) expect(slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+const { ContentUnavailableError, getArticle, latestArticles, listArticles, listTopics, SITE_ID, slugInLocale } = await import('./data');
+
+const failure = (status: number, code = 'x') => ({ ok: false, status, code, message: 'm', requestId: 'req-1' });
+const summary = {
+  id: 'a1',
+  locale: 'en',
+  slug: 'gel-x-guide',
+  title: 'Gel-X guide',
+  excerpt: 'E',
+  coverAlt: null,
+  cover: null,
+  readingMinutes: 3,
+  featured: false,
+  publishedAt: '2026-11-12T15:00:00.000Z',
+  category: { key: 'services', slug: 'services', name: 'Services' },
+};
+
+beforeEach(() => vi.resetAllMocks());
+
+describe('wine articles data (content API, site wine)', () => {
+  it('lists topics in the admins order, in the asked language', async () => {
+    api.listSiteCategories.mockResolvedValue({
+      ok: true,
+      data: [
+        { key: 'salon', position: 2, translations: [{ locale: 'en', name: 'Salon notes', slug: 'salon' }, { locale: 'vi', name: 'Tin tiệm', slug: 'tin-tiem' }] },
+        { key: 'care', position: 0, translations: [{ locale: 'en', name: 'Nail care', slug: 'nail-care' }, { locale: 'vi', name: 'Chăm sóc móng', slug: 'cham-soc-mong' }] },
+      ],
+    });
+    expect((await listTopics('vi')).map((topic) => topic.slug)).toEqual(['cham-soc-mong', 'tin-tiem']);
+    expect(api.listSiteCategories).toHaveBeenCalledWith(SITE_ID);
+    expect(SITE_ID).toBe('wine');
   });
 
-  it('uses known categories, cover images and ISO dates', () => {
-    for (const item of source.items) {
-      expect(CATEGORIES, item.slug).toContain(item.category);
-      expect(IMAGE_KEYS, item.slug).toContain(item.cover);
-      expect(item.publishedAt, item.slug).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    }
+  it('maps articles with a gallery cover by topic, or the media library cover', async () => {
+    const image = { id: 'm1', url: 'https://cdn.test/media/wine/m1/1280.webp', width: 1280, height: 853, srcset: 'x 640w' };
+    api.listPublishedArticles.mockResolvedValue({ ok: true, data: { data: [summary, { ...summary, id: 'a2', cover: image, coverAlt: 'Gel-X set' }], meta: { total: 2 } } });
+    const [plain, withCover] = await listArticles('en', 'services');
+    expect(api.listPublishedArticles).toHaveBeenCalledWith('wine', { locale: 'en', category: 'services', limit: 100 });
+    expect(plain.cover).toMatchObject({ kind: 'photo' });
+    expect(withCover.cover).toEqual({ kind: 'media', image, alt: 'Gel-X set' });
   });
 
-  it('is translated into every language, with non-empty text and known body images', () => {
-    for (const item of source.items) {
-      for (const locale of LOCALE_CODES) {
-        const text = item.i18n[locale];
-        expect(text, `${item.slug} ${locale}`).toBeDefined();
-        expect(text.title.trim()).not.toBe('');
-        expect(text.excerpt.trim()).not.toBe('');
-        expect(text.body.length).toBeGreaterThan(0);
-        for (const block of text.body) {
-          if ('image' in block) expect(IMAGE_KEYS).toContain(block.image);
-        }
-      }
-    }
+  it('the home page gets no articles (not an error) when the API is down', async () => {
+    api.listPublishedArticles.mockResolvedValue(failure(503, 'api_unreachable'));
+    expect(await latestArticles('en', 3)).toEqual([]);
+    await expect(listArticles('en')).rejects.toBeInstanceOf(ContentUnavailableError);
   });
 
-  it('lists newest first, filters by category and finds one article', async () => {
-    const all = await listArticles('vi');
-    expect(all.map((article) => article.publishedAt)).toEqual([...all.map((article) => article.publishedAt)].sort().reverse());
-    const serving = await listArticles('en', 'serving');
-    expect(serving.length).toBeGreaterThan(0);
-    expect(serving.every((article) => article.category === 'serving')).toBe(true);
-    expect((await getArticle('en', all[0].slug))?.title).toBeTruthy();
-    expect(await getArticle('vi', 'does-not-exist')).toBeNull();
-  });
-
-  it('maps category URL segments both ways', () => {
-    for (const category of CATEGORIES) expect(categoryFromSlug(CATEGORY_SLUGS[category])).toBe(category);
-    expect(categoryFromSlug('nope')).toBeUndefined();
+  it('one article: HTML body, slugs per language; another language slug finds its own', async () => {
+    api.getPublishedArticle.mockImplementation(async (_site: string, locale: string, slug: string) =>
+      locale === 'en' && slug === 'gel-x-guide'
+        ? { ok: true, data: { ...summary, body: '<p>Hi</p>', seoTitle: null, seoDescription: null, alternates: [{ locale: 'en', slug: 'gel-x-guide' }, { locale: 'vi', slug: 'huong-dan-gel-x' }] } }
+        : failure(404),
+    );
+    expect(await getArticle('en', 'gel-x-guide')).toMatchObject({ body: '<p>Hi</p>', slugs: { en: 'gel-x-guide', vi: 'huong-dan-gel-x' } });
+    expect(await getArticle('vi', 'gel-x-guide')).toBeNull();
+    expect(await slugInLocale('vi', 'gel-x-guide')).toBe('huong-dan-gel-x');
   });
 });

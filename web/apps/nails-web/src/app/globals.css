@@ -1,6 +1,7 @@
 @import "tailwindcss";
 /* Shared design tokens and base styles, then this site's own look on top. */
 @import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
 @source "../../../../packages/ui/src";
 
 /*
@@ -36,6 +37,8 @@
   --wash-rose: #fdf6f9;
   --wash-baby: #f4f9fe;
   --wash-lilac: #faf5fb;
+  /* The sticky header's height (site-header.tsx): the menu scrolls a band right under it. */
+  --header-h: 4.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -90,7 +93,67 @@
   }
 }
 
-/* Anchored sections land below the sticky header. */
-section[id] {
-  scroll-margin-top: 5.5rem;
+/* Other anchors (a legal page's sections, #content…) land below the sticky header too. Bands
+   set their own scroll margin (utility, wins over this base rule; Home: scroll-mt-[100vh]). */
+@layer base {
+  [id] {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+}
+
+/*
+ * An article body: HTML from content-service (sanitized there, ADR 0031/0033), in the site's bento
+ * look: bold tight headings, a lilac quote card, top-level bullets with mint check dots. Layout
+ * blocks (tpl-*) come from @web/ui/article-layout.css, in the salon's pastels.
+ */
+.article-body {
+  --article-accent: var(--rose-strong);
+  --article-accent-text: var(--fg);
+  --article-accent-light: var(--rose);
+  --article-highlight: var(--mint);
+  --article-dark: #263238;
+  @apply text-lg leading-[1.8] text-pretty;
+}
+.article-body > * + * {
+  @apply mt-6;
+}
+.article-body h2 {
+  @apply text-3xl leading-tight font-extrabold tracking-[-0.03em];
+}
+.article-body > h2 {
+  @apply !mt-14;
+}
+.article-body h3 {
+  @apply text-2xl leading-snug font-bold tracking-[-0.02em];
+}
+.article-body > h3 {
+  @apply !mt-10;
+}
+.article-body > blockquote {
+  @apply !my-10 rounded-3xl bg-lilac px-7 py-6 text-xl leading-snug font-semibold;
+}
+.article-body > ul {
+  @apply space-y-3;
+}
+.article-body > ul > li {
+  @apply relative pl-9;
+}
+.article-body > ul > li::before {
+  content: "✓";
+  @apply absolute top-[0.35em] left-0 inline-flex size-5 items-center justify-center rounded-full bg-mint text-xs font-bold text-[#263238];
+}
+.article-body > ol {
+  @apply list-decimal space-y-2 pl-6 marker:font-bold;
+}
+.article-body a {
+  @apply font-semibold underline underline-offset-2 hover:text-muted;
+}
+.article-body code {
+  @apply rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[0.9em];
+}
+.article-body hr {
+  @apply my-12 border-border;
+}
+.article-body img {
+  @apply rounded-3xl;
 }

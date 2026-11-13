@@ -15,7 +15,8 @@ export const LOCALES = {
 
 export type Locale = keyof typeof LOCALES;
 export const LOCALE_CODES = Object.keys(LOCALES) as Locale[];
-export const DEFAULT_LOCALE: Locale = 'en';
+/** Vietnamese first (also for English browsers); English through the language menu. */
+export const DEFAULT_LOCALE: Locale = 'vi';
 
 export function isLocale(value: string): value is Locale {
   return value in LOCALES;
@@ -29,6 +30,9 @@ export const ROUTING: LocaleRouting<Locale> = {
   locales: LOCALE_CODES,
   defaultLocale: DEFAULT_LOCALE,
   bypass: ['/auth/', '/files/'],
+  // A first visit always lands on DEFAULT_LOCALE, not the browser's language. The cookie keeps the
+  // default name: the /auth/* handlers read it (@web/core/auth/routes.ts).
+  detectLanguage: false,
 };
 
 /** '/about' → '/vi/about' (every internal link in a page goes through this). */

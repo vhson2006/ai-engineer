@@ -33,6 +33,11 @@ export class MediaUrls {
     return this.storage.publicUrl(`media/${siteId}/`);
   }
 
+  /** `https://cdn…/studio/<siteId>/`: every studio file of this site starts with it (ADR 0039). */
+  studioPrefix(siteId: string): string {
+    return this.storage.publicUrl(`studio/${siteId}/`);
+  }
+
   /** The image as pages use it: the widest size in `url`, every size in `srcset`. */
   image(media: Media): MediaImage {
     const sizes = variantsOf(media);

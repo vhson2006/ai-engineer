@@ -7,6 +7,10 @@ import {
   JETSTREAM,
   JetStreamConsumer,
   PermanentMessageError,
+  SCRIPT_WRITING_EVENTS,
+  ScriptWritingRequestedEvent,
+  SPEECH_EVENTS,
+  SpeechRequestedEvent,
   TRANSLATION_EVENTS,
   TranslationRequestedEvent,
   type IncomingMessage,
@@ -14,6 +18,8 @@ import {
   type MessageHandler,
 } from '@app/common';
 import { ImageService } from './images/image.service';
+import { ScriptService } from './scripts/script.service';
+import { SpeechService } from './speech/speech.service';
 import { CONSUMER, type Delivery, TranslationService } from './translation/translation.service';
 
 /** A model call can take a while: redeliver only after 3 minutes without an ack. */
@@ -34,6 +40,8 @@ export class RequestsConsumer implements OnApplicationBootstrap, OnApplicationSh
     @Inject(JETSTREAM) private readonly jetstream: JetStreamHandle,
     private readonly translations: TranslationService,
     private readonly images: ImageService,
+    private readonly scripts: ScriptService,
+    private readonly speech: SpeechService,
   ) {}
 
   /** Subject → handler. Exposed for tests. */
@@ -44,6 +52,14 @@ export class RequestsConsumer implements OnApplicationBootstrap, OnApplicationSh
     [IMAGE_GENERATION_EVENTS.REQUESTED]: this.validated(
       ImageGenerationRequestedEvent,
       (event, delivery) => this.images.generate(event, delivery),
+    ),
+    // Video studio (ADR 0039).
+    [SCRIPT_WRITING_EVENTS.REQUESTED]: this.validated(
+      ScriptWritingRequestedEvent,
+      (event, delivery) => this.scripts.write(event, delivery),
+    ),
+    [SPEECH_EVENTS.REQUESTED]: this.validated(SpeechRequestedEvent, (event, delivery) =>
+      this.speech.speak(event, delivery),
     ),
   };
 

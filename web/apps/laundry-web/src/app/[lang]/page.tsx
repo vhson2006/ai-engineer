@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { format } from '@web/core/i18n/format';
 import { Container, buttonVariants, cn } from '@web/ui';
+import { JsonLd } from '@web/ui/json-ld';
 import { Reveal } from '@web/ui/reveal';
 import { MachineMark } from '@/components/logo';
 import { SectionHeading } from '@/components/section-heading';
@@ -27,6 +28,7 @@ import { Estimator } from '@/features/estimate/estimator';
 import { href, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 import { formatHours, formatVnd } from '@/lib/format';
+import { structuredData } from '@/seo';
 import machines from '../../../public/images/machines.jpg';
 import shelves from '../../../public/images/shelves.jpg';
 
@@ -50,6 +52,8 @@ export default async function HomePage() {
   const ctx: Ctx = { t, locale, vnd: (amount) => formatVnd(locale, amount), unit: (unit) => t.common.units[unit] };
   return (
     <>
+      {/* The shop as a local business (address, phone, opening hours) for search engines. */}
+      <JsonLd data={structuredData(t, locale)} />
       <Hero {...ctx} />
       <Highlights {...ctx} />
       <Reveal>

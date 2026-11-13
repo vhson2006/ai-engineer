@@ -4,14 +4,14 @@ import { ArticleGrid, FeaturedArticle } from '@/features/articles/article-card';
 import { ArticlesHeader } from '@/features/articles/articles-header';
 import { articlePaths, listArticles } from '@/features/articles/data';
 import { getLocale, getMessages } from '@/i18n/messages';
-import { publicPageMetadata } from '@/seo';
+import { pageMetadata, samePath } from '@/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return publicPageMetadata({ locale, path: articlePaths.index, title: t.articles.metaTitle, description: t.articles.metaDescription });
+  return pageMetadata({ t, locale, paths: samePath(articlePaths.index), title: t.articles.metaTitle, description: t.articles.metaDescription });
 }
 
-/** All articles: the featured one as a spread, then the rest, newest first. Prerendered per language. */
+/** All published articles: the featured one as a spread, then the rest, newest first (API, cached). */
 export default async function ArticlesPage() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   const articles = await listArticles(locale);
@@ -21,8 +21,12 @@ export default async function ArticlesPage() {
   return (
     <>
       <ArticlesHeader title={t.articles.title} intro={t.articles.intro} locale={locale} t={t} />
-      <Container className="space-y-20 py-14 sm:py-20">
-        {featured && <FeaturedArticle article={featured} locale={locale} t={t} />}
+      <Container className="space-y-14 py-12 sm:py-16">
+        {featured ? (
+          <FeaturedArticle article={featured} locale={locale} t={t} />
+        ) : (
+          <p className="rounded-3xl bg-surface-2 px-6 py-10 text-center text-muted">{t.articles.none}</p>
+        )}
         {rest.length > 0 && <ArticleGrid articles={rest} locale={locale} t={t} headingLevel="h2" />}
       </Container>
     </>

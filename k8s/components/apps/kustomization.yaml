@@ -10,6 +10,7 @@ resources:
   - notification-service.yaml
   - content-service.yaml
   - ai-service.yaml
+  - render-worker.yaml # video studio renders (ADR 0039)
   - portfolio-web.yaml
   - admin-web.yaml
   - nats-setup-job.yaml # JetStream streams, before / with the services (ADR 0024)

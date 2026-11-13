@@ -1,20 +1,25 @@
 import { format } from '@web/core/i18n/format';
 import { salon } from '@/content/salon';
+import { articlePaths } from '@/features/articles/data';
 import { href } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
+import { LEGAL_PATHS, type LegalPage } from '@/site';
 import { Logo } from './logo';
+
+const LEGAL_LINKS: LegalPage[] = ['privacy', 'terms'];
 
 /** A slim footer (contact and hours live in the Visit bento); room at the bottom for the quick bar. */
 export async function SiteFooter() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   const home = href(locale, '/');
+  // The home page's bands, in their order (the blog link opens the blog page).
   const explore = [
     { id: 'gallery', label: t.nav.gallery },
     { id: 'artists', label: t.nav.artists },
     { id: 'menu', label: t.nav.menu },
     { id: 'faq', label: t.nav.faq },
-    { id: 'visit', label: t.nav.visit },
   ];
+  const chip = 'inline-flex rounded-full bg-bg px-4 py-2 transition-colors hover:bg-mint';
   return (
     <footer className="px-3 pb-28 sm:px-4">
       <div className="mx-auto max-w-7xl rounded-3xl bg-surface-2 px-6 py-8 sm:px-8">
@@ -27,14 +32,19 @@ export async function SiteFooter() {
             <ul className="flex flex-wrap gap-2 text-sm font-semibold">
               {explore.map((link) => (
                 <li key={link.id}>
-                  <a href={`${home}#${link.id}`} className="inline-flex rounded-full bg-bg px-4 py-2 transition-colors hover:bg-mint">
+                  <a href={`${home}#${link.id}`} className={chip}>
                     {link.label}
                   </a>
                 </li>
               ))}
               <li>
-                <a href={href(locale, '/blog')} className="inline-flex rounded-full bg-bg px-4 py-2 transition-colors hover:bg-mint">
+                <a href={href(locale, articlePaths.index)} className={chip}>
                   {t.nav.blog}
+                </a>
+              </li>
+              <li>
+                <a href={`${home}#visit`} className={chip}>
+                  {t.nav.visit}
                 </a>
               </li>
             </ul>
@@ -49,7 +59,21 @@ export async function SiteFooter() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-xs text-muted">{format(t.footer.rights, { year: '2026', name: salon.legalName })}</p>
+        <div className="mt-6 flex flex-col gap-3 border-t border-border pt-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>{format(t.footer.rights, { year: '2026', name: salon.legalName })}</p>
+          {/* Privacy policy and terms: on every page (search engines, the SMS program's registration). */}
+          <nav aria-label={t.footer.legal}>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {LEGAL_LINKS.map((page) => (
+                <li key={page}>
+                  <a href={href(locale, LEGAL_PATHS[page])} className="underline-offset-4 hover:text-fg hover:underline">
+                    {t.legal.links[page]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </footer>
   );

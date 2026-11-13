@@ -125,6 +125,81 @@ describe('[article-html] (unit)', () => {
     });
   });
 
+  describe('YouTube embeds (ADR 0040)', () => {
+    it('keeps the id and the classes only: never an iframe', () => {
+      const html =
+        '<figure class="tpl-youtube tpl-short" data-youtube="dQw4w9WgXcQ"><figcaption>c</figcaption></figure>';
+      expect(sanitizeArticleHtml(html)).toBe(html);
+      expect(
+        sanitizeArticleHtml(
+          '<figure class="tpl-youtube" data-youtube="dQw4w9WgXcQ" data-x="1" onclick="x()"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe><figcaption>c</figcaption></figure>',
+        ),
+      ).toBe(
+        '<figure class="tpl-youtube" data-youtube="dQw4w9WgXcQ"><figcaption>c</figcaption></figure>',
+      );
+    });
+
+    it('removes a YouTube block without a valid id; drops an id on any other figure', () => {
+      for (const id of ['', 'short', 'javascript:x', 'dQw4w9WgXcQQ']) {
+        expect(
+          sanitizeArticleHtml(
+            `<p>t</p><figure class="tpl-youtube" data-youtube="${id}"><figcaption>c</figcaption></figure>`,
+          ),
+        ).toBe('<p>t</p>');
+      }
+      expect(
+        sanitizeArticleHtml(
+          '<figure class="tpl-wide" data-youtube="bad id"><img src="/images/a.jpg" /></figure>',
+        ),
+      ).toBe('<figure class="tpl-wide"><img src="/images/a.jpg" /></figure>');
+    });
+  });
+
+  describe('videos of the studio (ADR 0039)', () => {
+    const studio = 'https://cdn.example.com/studio/nails/';
+    const project = '7d0c4f3e-1b2a-4c5d-8e9f-0a1b2c3d4e5f';
+    const render = '0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d';
+    const file = (name: string, site = 'nails') =>
+      `https://cdn.example.com/studio/${site}/${project}/video/${render}${name}`;
+    const clean = (html: string) => sanitizeArticleHtml(html, null, studio);
+
+    it('keeps a clip of the site with its poster and size, always controls / inline / not preloaded', () => {
+      expect(
+        clean(
+          `<figure class="tpl-video"><video src="${file('-web.mp4')}" poster="${file('.jpg')}" width="720" height="1280" autoplay muted loop onplay="x()"></video><figcaption>c</figcaption></figure>`,
+        ),
+      ).toBe(
+        `<figure class="tpl-video"><video src="${file('-web.mp4')}" poster="${file('.jpg')}" width="720" height="1280" controls playsinline preload="none"></video><figcaption>c</figcaption></figure>`,
+      );
+      expect(clean(`<p>t</p><video src="${file('.mp4')}"></video>`)).toBe(
+        `<p>t</p><video src="${file('.mp4')}" controls playsinline preload="none"></video>`,
+      );
+    });
+
+    it('removes a video from another site, host or path, and without the prefix', () => {
+      for (const src of [
+        file('.mp4', 'wine'),
+        `https://evil.dev/studio/nails/${project}/video/${render}.mp4`,
+        `${studio}${project}/voice/${render}.wav`,
+        `${studio}${project}/video/../../wine/x.mp4`,
+        `${studio}${project}/video/${render}.webm`,
+      ]) {
+        expect(clean(`<p>t</p><video src="${src}"></video>`)).toBe('<p>t</p>');
+      }
+      expect(sanitizeArticleHtml(`<p>t</p><video src="${file('.mp4')}"></video>`)).toBe('<p>t</p>');
+    });
+
+    it('drops a poster from elsewhere and a size that is not a number', () => {
+      expect(
+        clean(
+          `<video src="${file('.mp4')}" poster="https://evil.dev/x.jpg" width="100%" height="1280"></video>`,
+        ),
+      ).toBe(
+        `<video src="${file('.mp4')}" height="1280" controls playsinline preload="none"></video>`,
+      );
+    });
+  });
+
   it('text: block boundaries become spaces, entities count as one character', () => {
     expect(htmlText('<p>a</p><p>b&amp;c&nbsp;d</p>')).toBe('a bxc d');
   });

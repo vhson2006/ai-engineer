@@ -4,8 +4,11 @@ import { Container } from '@web/ui';
 import { fullAddress, mapsHref, shop } from '@/content/shop';
 import { href } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
+import { LEGAL_PATHS, type LegalPage } from '@/site';
 import { formatHours } from '@/lib/format';
 import { Logo } from './logo';
+
+const LEGAL_LINKS: LegalPage[] = ['privacy', 'terms', 'dataDeletion'];
 
 export async function SiteFooter() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
@@ -60,8 +63,20 @@ export async function SiteFooter() {
         </FooterColumn>
       </Container>
       <div className="border-t border-white/10">
-        <Container className="py-5 text-xs text-white/60">
+        <Container className="flex flex-col gap-3 py-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>{format(t.footer.rights, { year: '2026', name: shop.fullName })}</p>
+          {/* Privacy policy, terms and data deletion: on every page (search engines, social platforms' app review). */}
+          <nav aria-label={t.footer.legal}>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              {LEGAL_LINKS.map((page) => (
+                <li key={page}>
+                  <a href={href(locale, LEGAL_PATHS[page])} className="underline-offset-4 transition-colors hover:text-sun hover:underline">
+                    {t.legal.links[page]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </Container>
       </div>
     </footer>

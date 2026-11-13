@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "SFaster Laundry · One customer, one machine · Clean, fresh, fast",
-    "description": "SFaster laundry, 68 Lê Hồng Phong, Chợ Quán ward, Ho Chi Minh City: wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–19:00 Monday to Friday, 7:00–17:00 on Saturdays and Sundays."
+    "description": "SFaster laundry, 68 Lê Hồng Phong, Chợ Quán ward, Ho Chi Minh City: wash & dry by weight from 35,000 ₫, duvets and bedding, dry cleaning, shoe cleaning, plush toys and toppers. Every customer gets their own machine. Open 7:00–19:00 Monday to Friday, 7:00–17:00 on Saturdays and Sundays.",
+    "ogImageAlt": "The Giặt sấy SFaster sign: one machine per customer · Clean – Fresh – Fast"
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -161,9 +162,11 @@
     "tagline": "Wash & dry laundry: one customer, one machine. Clean, fresh, fast.",
     "explore": "Explore",
     "contact": "Contact",
-    "rights": "© {year} {name}. All rights reserved."
+    "rights": "© {year} {name}. All rights reserved.",
+    "legal": "Legal information"
   },
   "articles": {
+    "playVideo": "Play the video",
     "eyebrow": "Articles",
     "title": "Laundry tips & shop notes",
     "intro": "Drop-off tips, choosing the right service and how we price your laundry, from SFaster.",
@@ -192,5 +195,339 @@
     "title": "Page not found",
     "text": "The page you're looking for doesn't exist or has moved.",
     "back": "Back to home"
+  },
+  "legal": {
+    "updated": "Last updated: {date}",
+    "contents": "Contents",
+    "related": "See also",
+    "links": {
+      "privacy": "Privacy policy",
+      "terms": "Terms of use",
+      "dataDeletion": "Delete your data"
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "What personal data Giặt sấy SFaster collects, what it is used for, who it is shared with, how long it is kept, and your rights over it.",
+      "intro": "This policy explains how {name} collects, uses and protects personal data when you use the website, contact the shop or use its laundry service, in line with Vietnamese personal data protection law.",
+      "sections": [
+        {
+          "id": "ben-kiem-soat",
+          "title": "Who is responsible for your data",
+          "paragraphs": [
+            "{name} (“we”), {address}, phone and Zalo {phone}, decides why and how the personal data described in this policy is processed."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "du-lieu-thu-thap",
+          "title": "What we collect",
+          "paragraphs": [
+            "The website has no accounts and no forms, and never asks you to enter personal information. We only have your data in these cases:"
+          ],
+          "items": [
+            "When you call, message us on Zalo or message the shop on social media: your name or display name, phone number, your messages and what you tell us about your laundry.",
+            "When you drop off laundry at the shop: what we need to give it back (name, phone number) and the order details (items, weight, your notes).",
+            "When you visit the website: technical data your browser sends by itself (IP address, browser and device type, pages viewed, time of visit), kept in the server logs.",
+            "One cookie, laundry_locale, remembers the language you chose (up to 1 year). The website uses no advertising cookies, analytics or tracking."
+          ]
+        },
+        {
+          "id": "muc-dich",
+          "title": "What we use it for",
+          "paragraphs": [
+            "We never use your data for advertising, and we never sell, rent or trade it."
+          ],
+          "items": [
+            "Answering your questions, giving advice and quotes when you contact us.",
+            "Receiving, washing and returning your laundry; contacting you when it is ready or when something needs discussing.",
+            "Running, securing and fixing the website.",
+            "Meeting our legal obligations."
+          ]
+        },
+        {
+          "id": "co-so",
+          "title": "Why we may process it",
+          "paragraphs": [
+            "We process data with your consent (for example when you contact us and give us information), when it is needed to provide the service you asked for, or when the law requires it. You may withdraw your consent at any time; this does not affect processing done before."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "chia-se",
+          "title": "Sharing and third parties",
+          "paragraphs": [
+            "Others only get access to data when it is truly necessary:"
+          ],
+          "items": [
+            "The providers that host and run the website (servers, image storage), only to serve the website to you.",
+            "Zalo, Facebook, TikTok and other messaging platforms: when you contact us through them, they process data under their own policies.",
+            "Google Maps, embedded in the Contact section: when the map is shown, Google may set cookies and collect data under the Google Privacy Policy (policies.google.com/privacy).",
+            "YouTube videos in some articles: only a thumbnail (from i.ytimg.com) shows until you press play; the player then loads from youtube-nocookie.com, and Google may set cookies and collect data under Google’s Privacy Policy (policies.google.com/privacy).",
+            "Competent authorities, when the law requires it."
+          ]
+        },
+        {
+          "id": "mang-xa-hoi",
+          "title": "Social media and sign-in",
+          "paragraphs": [
+            "The website has no sign-in and does not connect to social media accounts. When you follow a link to Zalo, Facebook or another platform, you leave our website and that platform's policy applies.",
+            "If we later add sign-in or sharing with a social media account, we will only ask for the minimum permissions needed, describe them in this policy before using them, and you will always be able to ask us to delete your data as described on the Delete your data page."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "luu-tru",
+          "title": "How long we keep it",
+          "paragraphs": [
+            "We only keep data as long as needed for the purposes above, then delete or anonymise it:"
+          ],
+          "items": [
+            "Order details: until the order is complete and any related complaint is settled.",
+            "Server logs: for a short time, for security and troubleshooting.",
+            "Data the law requires us to keep (for example accounting records): for the legal period."
+          ]
+        },
+        {
+          "id": "bao-mat",
+          "title": "Security",
+          "paragraphs": [
+            "The website is only served over an encrypted connection (HTTPS) and never stores your passwords or payment details. Only the people who need it to serve you can access your data."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "quyen",
+          "title": "Your rights",
+          "paragraphs": [
+            "Over your personal data, you have the right to:"
+          ],
+          "items": [
+            "Know what data is processed and why.",
+            "Give, or withdraw, your consent.",
+            "See, copy and ask us to correct your data.",
+            "Ask us to delete your data, or restrict or object to its processing.",
+            "Complain, report or take legal action as provided by law."
+          ]
+        },
+        {
+          "id": "thuc-hien-quyen",
+          "title": "Using your rights",
+          "paragraphs": [
+            "Call or message us on Zalo at {phone}, or visit the shop at {address}. We may ask a few questions to make sure you own the data before acting on your request."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "tre-em",
+          "title": "Children",
+          "paragraphs": [
+            "The website and the service are meant for adults. We do not knowingly collect children's data; a child's data is only processed with the consent of a parent or guardian, as the law requires."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "thay-doi",
+          "title": "Changes to this policy",
+          "paragraphs": [
+            "When this policy changes, we update this page and the “Last updated” date at the top. Important changes will be clearly announced on the website."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "lien-he",
+          "title": "Contact",
+          "paragraphs": [
+            "{name}, {address}. Phone and Zalo: {phone}."
+          ],
+          "items": [
+
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of use",
+      "description": "The terms of using the Giặt sấy SFaster website: indicative information and prices, the service at the shop, articles, content ownership and governing law.",
+      "intro": "These terms apply when you use the website of {name}. By using the website, you agree to them. How we handle personal data is described in the Privacy policy.",
+      "sections": [
+        {
+          "id": "thong-tin-gia",
+          "title": "Information and prices",
+          "paragraphs": [
+            "The prices and service information on the website come from the shop's price board and are indicative only. The price that applies is the one displayed in the shop when you drop off your laundry; the price estimator only gives an approximation.",
+            "We may update prices, opening hours and the website's content at any time."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "dich-vu",
+          "title": "The laundry service",
+          "paragraphs": [
+            "The website presents the shop's services; laundry is dropped off and collected at the shop or as agreed by phone or Zalo. The details of each order (how weight is counted, items needing special care, when to collect) are agreed with the shop when you drop it off. For any question, call or message us on Zalo at {phone}."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "bai-viet",
+          "title": "Articles",
+          "paragraphs": [
+            "The articles on the website are general advice on laundry and care. Where they differ, follow the instructions on the item's care label."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "so-huu",
+          "title": "Ownership of the content",
+          "paragraphs": [
+            "The name, sign, pictures, articles and design of the website belong to {name} or are used lawfully. You may share links to the website and short quotes with the source; you may not copy content for commercial use without our permission."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "su-dung-hop-le",
+          "title": "Acceptable use",
+          "paragraphs": [
+            "When using the website, you must not:"
+          ],
+          "items": [
+            "Attack it, scan it for vulnerabilities or overload it.",
+            "Collect its content automatically in a way that affects how it works.",
+            "Impersonate the shop or use the website for unlawful purposes."
+          ]
+        },
+        {
+          "id": "ben-thu-ba",
+          "title": "Third-party links and content",
+          "paragraphs": [
+            "The website links to, and embeds content from, Google Maps, YouTube, Zalo, Facebook and other platforms. We do not control and are not responsible for their content or policies."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "trach-nhiem",
+          "title": "Limitation of liability",
+          "paragraphs": [
+            "We try to keep the information accurate and the website running, but cannot guarantee it is always free of errors or interruptions. To the extent permitted by law, we are not liable for damage arising from the use of information on the website. This does not affect your rights as a consumer under Vietnamese law."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "luat-ap-dung",
+          "title": "Governing law",
+          "paragraphs": [
+            "These terms are governed by Vietnamese law. Disputes are first settled by negotiation; failing that, by the competent authority as provided by law."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "thay-doi",
+          "title": "Changes to these terms",
+          "paragraphs": [
+            "When these terms change, we update this page and the “Last updated” date at the top. Continuing to use the website afterwards means you accept the new terms."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "lien-he",
+          "title": "Contact",
+          "paragraphs": [
+            "{name}, {address}. Phone and Zalo: {phone}."
+          ],
+          "items": [
+
+          ]
+        }
+      ]
+    },
+    "dataDeletion": {
+      "title": "How to delete your personal data",
+      "description": "How to ask Giặt sấy SFaster to delete your personal data, including data received through Facebook, Zalo and other social media.",
+      "intro": "This page explains how to ask {name} to delete your personal data, including data received through social media.",
+      "sections": [
+        {
+          "id": "du-lieu",
+          "title": "Data you can ask us to delete",
+          "paragraphs": [
+            "Your contact details (name, phone number), your messages with the shop, your order details, and any data we received from your social media account (if any)."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "cach-yeu-cau",
+          "title": "How to ask",
+          "paragraphs": [
+            "We handle requests as soon as possible, within the period set by law, free of charge."
+          ],
+          "items": [
+            "Call or message us on Zalo at {phone}, or visit the shop at {address}.",
+            "Tell us the name and phone number (or social media account) you used to contact us, and which data you want deleted.",
+            "We check that you own the data, delete it, and tell you when it is done."
+          ]
+        },
+        {
+          "id": "mang-xa-hoi",
+          "title": "Data from social media",
+          "paragraphs": [
+            "If you messaged the shop on Facebook, Zalo or another platform, you can delete the conversation on your side in that app. To have us delete the shop's copy, send a request as above.",
+            "If you signed in or connected a social media account to the website (once this is available), you can remove its access in the platform's settings (for example Facebook: Settings & privacy → Settings → Apps and websites), then send a deletion request as above."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "giu-lai",
+          "title": "Data we must keep",
+          "paragraphs": [
+            "Some data may have to be kept when the law requires it (for example accounting records) or to settle an open complaint. We then keep only what is needed and delete it when the period ends."
+          ],
+          "items": [
+
+          ]
+        },
+        {
+          "id": "lien-he",
+          "title": "Contact",
+          "paragraphs": [
+            "{name}, {address}. Phone and Zalo: {phone}."
+          ],
+          "items": [
+
+          ]
+        }
+      ]
+    }
   }
 }

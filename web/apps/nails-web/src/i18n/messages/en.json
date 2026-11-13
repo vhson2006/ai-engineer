@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Envy Nails Spa of Wendell · Nail salon in Wendell, NC",
-    "description": "Envy Nails Spa of Wendell, 2241 Treelight Way, Wendell, NC: manicures, signature pedicures, acrylic, dip powder, Gel-X, nail art and waxing. Book online or call (919) 366-6435."
+    "description": "Envy Nails Spa of Wendell, 2241 Treelight Way, Wendell, NC: manicures, signature pedicures, acrylic, dip powder, Gel-X, nail art and waxing. Book online or call (919) 366-6435.",
+    "ogImageAlt": "Envy Nails Spa of Wendell: the ENVY wordmark beside four nail looks on pastel tiles"
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -18,6 +19,7 @@
     "home": "Envy Nail Spa home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
+    "top": "Home",
     "gallery": "Gallery",
     "artists": "Artists",
     "menu": "Menu",
@@ -646,9 +648,11 @@
   "footer": {
     "tagline": "Clean, professional, high-quality nail care in Wendell, North Carolina.",
     "explore": "Explore",
-    "rights": "© {year} {name}. All rights reserved."
+    "rights": "© {year} {name}. All rights reserved.",
+    "legal": "Legal information"
   },
   "articles": {
+    "playVideo": "Play the video",
     "eyebrow": "Blog",
     "title": "Notes from the salon",
     "intro": "Nail care tips, a guide to our services and what to know before your visit, from Envy Nails Spa of Wendell.",
@@ -658,11 +662,6 @@
     "breadcrumb": "Breadcrumb",
     "all": "All",
     "categoriesLabel": "Topics",
-    "categories": {
-      "care": "Nail care",
-      "services": "Services",
-      "salon": "Salon notes"
-    },
     "categoryTitle": "{category}",
     "categoryDescription": "Articles about {category} from Envy Nails Spa of Wendell.",
     "featured": "Featured",
@@ -676,11 +675,243 @@
     "empty": "No articles in this topic yet.",
     "ctaTitle": "Ready for fresh nails?",
     "ctaText": "Book online in a minute, or call us for groups and special requests.",
-    "sample": "Sample articles for reviewing the design, written from the salon’s menu, FAQ and policy until the salon publishes its own."
+    "none": "No article has been published yet."
   },
   "notFound": {
     "title": "Page not found",
     "text": "The page you're looking for doesn't exist or has moved.",
     "back": "Back to home"
+  },
+  "legal": {
+    "effective": "Effective date: {date}",
+    "contents": "Contents",
+    "related": "See also",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Envy Nails Spa of Wendell collects, uses, shares and protects your personal information, and your choices about it.",
+      "intro": "At {name}, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when using our website, online booking and salon services.",
+      "sections": [
+        {
+          "id": "information-we-collect",
+          "title": "Information We Collect",
+          "paragraphs": [
+            "Personal information: when you book an appointment or contact {name}, we may collect personal information that you voluntarily provide, such as your name, email address, phone number, and any other information you choose to share with us.",
+            "Usage information: we may also collect non-personal information about your use of our services, including device information, usage data, and analytical information."
+          ],
+          "items": []
+        },
+        {
+          "id": "use-of-information",
+          "title": "Use of Collected Information",
+          "paragraphs": [
+            "We may use the personal information you provide to us for the following purposes:"
+          ],
+          "items": [
+            "To provide you with our services, including booking and managing your appointments at {name}.",
+            "To communicate with you and respond to your inquiries, feedback, or support requests.",
+            "To personalize your experience and improve our services.",
+            "To send you important updates, notifications, and marketing communications related to {name}, only if you have opted in to receive such communications."
+          ]
+        },
+        {
+          "id": "data-security",
+          "title": "Data Security",
+          "paragraphs": [
+            "We take appropriate measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. We use industry-standard security technologies and procedures to safeguard your data."
+          ],
+          "items": []
+        },
+        {
+          "id": "data-retention",
+          "title": "Data Retention",
+          "paragraphs": [
+            "We will retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law."
+          ],
+          "items": []
+        },
+        {
+          "id": "third-party-services",
+          "title": "Third-Party Services",
+          "paragraphs": [
+            "{name} may integrate with third-party services or include links to external websites or applications. This Privacy Policy does not cover the privacy practices of these third parties. We encourage you to review the privacy policies of any third-party services or websites you interact with.",
+            "On this website, the map is provided by Google Maps, videos in some articles by YouTube (only a thumbnail shows until you press play; the player then loads from youtube-nocookie.com), and online booking opens a page run by our booking provider: their own privacy policies apply there."
+          ],
+          "items": []
+        },
+        {
+          "id": "childrens-privacy",
+          "title": "Children's Privacy",
+          "paragraphs": [
+            "Our online services are not intended for use by individuals under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected personal information from a child, please contact us immediately."
+          ],
+          "items": []
+        },
+        {
+          "id": "changes",
+          "title": "Changes to this Privacy Policy",
+          "paragraphs": [
+            "We may update this Privacy Policy from time to time. Any changes will be effective when we post the revised Privacy Policy on this website. We encourage you to review this Privacy Policy periodically."
+          ],
+          "items": []
+        },
+        {
+          "id": "your-choices",
+          "title": "Your Choices",
+          "paragraphs": [],
+          "items": [
+            "Access and correction: you may request access to and correction of your personal information.",
+            "Opt-out: you may opt out of receiving marketing communications from us by following the unsubscribe instructions provided in those communications.",
+            "Cookies: you can manage your cookie preferences through your browser settings. However, disabling cookies may affect your experience on our website."
+          ]
+        },
+        {
+          "id": "sharing-policy",
+          "title": "Sharing Policy",
+          "paragraphs": [
+            "All the above categories exclude text messaging opt-in data and consent; this information will not be shared with third parties.",
+            "SMS opt-in sharing policy: we will not share your SMS opt-in data with third parties for purposes unrelated to providing services. Your SMS opt-in status may be shared only with third parties that help us deliver messages, such as platform providers, phone companies, and messaging vendors."
+          ],
+          "items": []
+        },
+        {
+          "id": "contact-us",
+          "title": "Contact Us",
+          "paragraphs": [
+            "If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please call us at {phone} or visit us at {address}."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "The terms for booking, salon communications and the SMS programs of Envy Nails Spa of Wendell.",
+      "intro": "Welcome to {name}. These Terms of Service govern your use of our services, including appointment booking, salon communications, and related point-of-sale (POS) services.",
+      "sections": [
+        {
+          "id": "introduction",
+          "title": "Introduction",
+          "paragraphs": [
+            "By using our services, you agree to these Terms of Service. If you do not agree, please do not use the applicable services."
+          ],
+          "items": []
+        },
+        {
+          "id": "appointments",
+          "title": "Appointment Booking and Service Communications",
+          "paragraphs": [
+            "{name} may use the contact information you provide to manage appointments, communicate appointment changes, respond to inquiries, and provide information related to services you request.",
+            "You are responsible for providing accurate contact information and notifying us if your contact information changes."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-programs",
+          "title": "SMS Programs",
+          "paragraphs": [
+            "{name} offers optional SMS messaging programs, which may include:"
+          ],
+          "items": [
+            "Transactional messages: appointment confirmations, appointment reminders, appointment changes, and notifications related to POS services or other transactions.",
+            "Marketing messages: promotions, special offers, discounts, and other marketing communications."
+          ]
+        },
+        {
+          "id": "sms-consent",
+          "title": "Consent to Receive Messages",
+          "paragraphs": [
+            "By providing your phone number and selecting the applicable SMS consent checkbox, you agree to receive the corresponding category of text messages from {name}.",
+            "Marketing SMS consent and transactional SMS consent are separate and optional. You may consent to one category without consenting to the other. Consent to receive marketing messages is not a condition of purchase."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-frequency",
+          "title": "Message Frequency and Rates",
+          "paragraphs": [
+            "Message frequency may vary depending on your appointments, transactions, and communication preferences. Message and data rates may apply according to your wireless carrier and mobile plan."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-opt-out",
+          "title": "Opt-Out Instructions",
+          "paragraphs": [
+            "You may opt out of SMS messages at any time by replying STOP to a message. After opting out, you may receive a confirmation of your request, and we will stop sending the applicable category of messages, except where otherwise permitted by law.",
+            "For assistance, reply HELP or call {name} at {phone}."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-carriers",
+          "title": "Participating Carriers",
+          "paragraphs": [
+            "Wireless carriers are not liable for delayed or undelivered messages. Message delivery may depend on your wireless carrier, network availability, and other factors outside our control."
+          ],
+          "items": []
+        },
+        {
+          "id": "sms-privacy",
+          "title": "Privacy of SMS Information",
+          "paragraphs": [
+            "SMS consent records and opt-in information will not be sold or shared with third parties for their own marketing purposes. Such information may be shared with service providers, messaging platforms, and wireless carriers as necessary to deliver messages and operate our services. For more information, please review our Privacy Policy."
+          ],
+          "items": []
+        },
+        {
+          "id": "privacy-policy",
+          "title": "Privacy Policy",
+          "paragraphs": [
+            "Your use of our services is also subject to our Privacy Policy, which explains how we collect, use, retain, and protect personal information."
+          ],
+          "items": []
+        },
+        {
+          "id": "acceptable-use",
+          "title": "Acceptable Use",
+          "paragraphs": [
+            "You agree to provide accurate information when using our services and not to misuse our booking systems, communication channels, or other services. We may take reasonable measures to protect our systems and prevent fraud, abuse, or unauthorized activity."
+          ],
+          "items": []
+        },
+        {
+          "id": "availability",
+          "title": "Service Availability",
+          "paragraphs": [
+            "We make reasonable efforts to maintain the availability of our booking and communication services. However, services may occasionally be unavailable because of maintenance, technical issues, carrier interruptions, or other circumstances beyond our control."
+          ],
+          "items": []
+        },
+        {
+          "id": "liability",
+          "title": "Limitation of Liability",
+          "paragraphs": [
+            "To the extent permitted by applicable law, {name} is not responsible for delays or failures in SMS delivery caused by wireless carriers, network outages, or other third-party systems beyond our reasonable control.",
+            "Nothing in these Terms excludes or limits any rights or remedies that cannot legally be excluded or limited."
+          ],
+          "items": []
+        },
+        {
+          "id": "changes",
+          "title": "Changes to These Terms",
+          "paragraphs": [
+            "We may update these Terms of Service from time to time. Updated terms will be posted on this website with a revised effective date. Your continued use of our services after an update constitutes acceptance of the revised terms to the extent permitted by applicable law."
+          ],
+          "items": []
+        },
+        {
+          "id": "contact-us",
+          "title": "Contact Us",
+          "paragraphs": [
+            "If you have questions about these Terms of Service or our SMS messaging programs, please call {name} at {phone} or visit us at {address}."
+          ],
+          "items": []
+        }
+      ]
+    }
   }
 }

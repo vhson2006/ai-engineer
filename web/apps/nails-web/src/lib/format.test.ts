@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDate, formatHours, formatPrice, formatTime } from './format';
+import { formatDate, formatHours, formatInstantDate, formatPrice, formatTime } from './format';
 
 describe('menu formatting', () => {
   it('prices in US dollars, "+" for starting prices', () => {
@@ -21,5 +21,7 @@ describe('article dates', () => {
     expect(formatDate('en', '2026-11-10')).toBe('November 10, 2026');
     expect(formatDate('vi', '2026-11-02')).toMatch(/^2 tháng 11,? 2026$/);
     expect(formatDate('en', '2026-01-01')).toBe('January 1, 2026');
+    // An instant late on Nov 12 in New York is already Nov 13 in UTC: the salon's date wins.
+    expect(formatInstantDate('en', '2026-11-13T03:00:00.000Z')).toBe('November 12, 2026');
   });
 });

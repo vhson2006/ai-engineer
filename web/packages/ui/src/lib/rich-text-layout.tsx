@@ -3,6 +3,7 @@
 import {
   Extension,
   Node,
+  NodeViewContent,
   NodeViewWrapper,
   ReactNodeViewRenderer,
   createDocument,
@@ -13,8 +14,9 @@ import {
   useEditorState,
 } from '@tiptap/react';
 import type { Schema } from '@tiptap/pm/model';
-import { ImageIcon } from 'lucide-react';
-import { useId } from 'react';
+import { ImageIcon, VideoIcon, SquarePlayIcon } from 'lucide-react';
+import { useId, useState } from 'react';
+import { parseYouTubeUrl, YOUTUBE_ID } from '../components/youtube';
 import { removedOnSave } from './html-source';
 
 /**
@@ -24,7 +26,8 @@ import { removedOnSave } from './html-source';
  * decides (content-service drops any class or tag outside ARTICLE_HTML_CLASSES / _TAGS).
  *
  * In the editor: blocks are labelled frames (theme.css `.rich-text-layout`), not the sites' look;
- * images are cards (path + alt text), never loaded in admin.
+ * images are cards (path + alt text), never loaded in admin; videos (studio clips, ADR 0039) are
+ * cards with their poster, never played in the editor.
  */
 
 /** Keeps the `tpl-*` classes only: anything else (pasted Tailwind classes…) never reaches the admin DOM. */
@@ -45,7 +48,10 @@ const LayoutAttributes = Extension.create({
   name: 'layoutAttributes',
   addGlobalAttributes() {
     return [
-      { types: ['paragraph', 'heading', 'blockquote', 'bulletList', 'orderedList', 'horizontalRule'], attributes: { class: classAttribute } },
+      {
+        types: ['paragraph', 'heading', 'blockquote', 'bulletList', 'orderedList', 'horizontalRule'],
+        attributes: { class: classAttribute },
+      },
       {
         types: ['heading'],
         attributes: {
@@ -64,7 +70,11 @@ const LayoutAttributes = Extension.create({
   },
 });
 
-const container = (name: string, tag: 'section' | 'div', parse: { tag: string; context?: string; getAttrs?: (element: HTMLElement) => false | null }[]) =>
+const container = (
+  name: string,
+  tag: 'section' | 'div',
+  parse: { tag: string; context?: string; getAttrs?: (element: HTMLElement) => false | null }[],
+) =>
   Node.create({
     name,
     group: 'block',
@@ -87,7 +97,7 @@ const LayoutDiv = container('layoutDiv', 'div', [
 const Figure = Node.create({
   name: 'figure',
   group: 'block',
-  content: 'layoutImage figcaption?',
+  content: '(layoutImage | layoutVideo) figcaption?',
   defining: true,
   isolating: true,
   addAttributes: () => ({ class: classAttribute }),
@@ -112,6 +122,18 @@ export interface RichTextLayoutImageLabels {
   alt: string;
   /** Opens the app's media library (shown when `pickImage` is given). */
   pick: string;
+  /** A video card's title and the insert menu's item, e.g. "Video from the studio". */
+  video: string;
+  /** Opens the app's list of finished clips (shown when `pickVideo` is given). */
+  pickVideo: string;
+  /** A YouTube card's title and the insert menu's item, e.g. "YouTube video". */
+  youtube: string;
+  /** The link field, e.g. "YouTube link (video or Shorts)". */
+  youtubeUrl: string;
+  /** Under a link that isn't a YouTube video. */
+  youtubeInvalid: string;
+  /** Shown for a Shorts link, e.g. "Shorts: shown vertical (9:16)". */
+  youtubeShort: string;
 }
 
 /** An image chosen in the app's media library (ADR 0034): optimized sizes on the CDN. */
@@ -122,8 +144,18 @@ export interface PickedImage {
   height: number;
 }
 
+/** A finished clip of the app's video studio (ADR 0039): the web MP4 and its poster on the CDN. */
+export interface PickedVideo {
+  src: string;
+  poster: string | null;
+  width: number;
+  height: number;
+}
+
 /** Images of a media library: `…/media/<site>/<uuid>/<width>.webp|jpg` (shown as a thumbnail). */
 const MEDIA_IMAGE = /^https?:\/\/[^/]+(\/[^?#]*)?\/media\/[a-z0-9-]+\/[0-9a-f-]{36}\/\d{1,4}\.(webp|jpg)$/;
+/** Posters of studio clips: `…/studio/<site>/<project>/video/<render>.jpg` (shown as a thumbnail). */
+const STUDIO_POSTER = /^https?:\/\/[^/]+(\/[^?#]*)?\/studio\/[a-z0-9-]+\/[0-9a-f-]{36}\/video\/[0-9a-f-]{36}\.jpg$/;
 /** The body column of the sites is ~48rem: the browser picks the right size from srcset. */
 const BODY_SIZES = '(min-width: 768px) 48rem, 100vw';
 
@@ -183,17 +215,35 @@ function ImageCard({ node, updateAttributes, extension, editor, selected }: Node
   const choose = async () => {
     const picked = await pickImage?.();
     if (!picked) return;
-    updateAttributes({ src: picked.url, srcset: picked.srcset, sizes: BODY_SIZES, width: String(picked.width), height: String(picked.height), loading: 'lazy' });
+    updateAttributes({
+      src: picked.url,
+      srcset: picked.srcset,
+      sizes: BODY_SIZES,
+      width: String(picked.width),
+      height: String(picked.height),
+      loading: 'lazy',
+    });
   };
   return (
     <NodeViewWrapper
       data-slot="layout-image"
       className={`my-1 flex gap-3 rounded-lg border border-dashed border-border bg-surface-2/60 p-2.5 ${selected ? 'ring-2 ring-brand/40' : ''}`}
     >
-      <div data-drag-handle className="flex size-14 shrink-0 cursor-grab items-center justify-center overflow-hidden rounded-md bg-surface text-muted" title={labels.image}>
+      <div
+        data-drag-handle
+        className="flex size-14 shrink-0 cursor-grab items-center justify-center overflow-hidden rounded-md bg-surface text-muted"
+        title={labels.image}
+      >
         {preview ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={attrs.src} srcSet={attrs.srcset ?? undefined} sizes="56px" alt="" className="size-full object-cover" draggable={false} />
+          <img
+            src={attrs.src}
+            srcSet={attrs.srcset ?? undefined}
+            sizes="56px"
+            alt=""
+            className="size-full object-cover"
+            draggable={false}
+          />
         ) : (
           <ImageIcon aria-hidden className="size-5" />
         )}
@@ -238,9 +288,211 @@ function ImageCard({ node, updateAttributes, extension, editor, selected }: Node
   );
 }
 
-/** The extensions to add to StarterKit for layout blocks (labels: the image card; omit headless). */
+type VideoPicker = () => Promise<PickedVideo | null>;
+interface VideoStorage {
+  /** The app's finished clips, set by RichTextEditor (setVideoPicker); none: no "choose" button. */
+  pickVideo?: VideoPicker;
+}
+
+/**
+ * A studio clip (ADR 0039). The editor keeps src, poster and size; the server keeps it only when
+ * it is one of the site's own clips and sets the behaviour (controls, inline, nothing preloaded).
+ */
+const LayoutVideo = Node.create<ImageOptions>({
+  name: 'layoutVideo',
+  group: 'block',
+  atom: true,
+  draggable: true,
+  addOptions: () => ({ labels: undefined }),
+  addStorage: (): VideoStorage => ({ pickVideo: undefined }),
+  addAttributes: () => ({
+    src: { default: '', parseHTML: (element: HTMLElement) => element.getAttribute('src') ?? '' },
+    poster: plainAttribute('poster'),
+    width: plainAttribute('width'),
+    height: plainAttribute('height'),
+  }),
+  parseHTML: () => [{ tag: 'video[src]' }],
+  renderHTML: ({ HTMLAttributes }) => ['video', mergeAttributes(HTMLAttributes, { controls: '', playsinline: '', preload: 'none' })],
+  addNodeView() {
+    return this.options.labels ? ReactNodeViewRenderer(VideoCard) : null;
+  },
+});
+
+/** A video in the editor: its poster (a studio clip's) and a button to choose another clip. */
+function VideoCard({ node, updateAttributes, extension, editor, selected }: NodeViewProps) {
+  const { labels } = extension.options as { labels: RichTextLayoutImageLabels };
+  const pickVideo = useEditorState({ editor, selector: ({ editor: e }) => videoStorage(e)?.pickVideo });
+  const attrs = node.attrs as { src: string; poster: string | null };
+  const poster = attrs.poster && STUDIO_POSTER.test(attrs.poster) ? attrs.poster : null;
+  const choose = async () => {
+    const picked = await pickVideo?.();
+    if (!picked) return;
+    updateAttributes({ src: picked.src, poster: picked.poster, width: String(picked.width), height: String(picked.height) });
+  };
+  return (
+    <NodeViewWrapper
+      data-slot="layout-video"
+      className={`my-1 flex gap-3 rounded-lg border border-dashed border-border bg-surface-2/60 p-2.5 ${selected ? 'ring-2 ring-brand/40' : ''}`}
+    >
+      <div
+        data-drag-handle
+        className="flex h-20 w-12 shrink-0 cursor-grab items-center justify-center overflow-hidden rounded-md bg-surface text-muted"
+        title={labels.video}
+      >
+        {poster ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={poster} alt="" className="size-full object-cover" draggable={false} />
+        ) : (
+          <VideoIcon aria-hidden className="size-5" />
+        )}
+      </div>
+      <div className="grid min-w-0 flex-1 content-start gap-1.5">
+        <p className="flex items-center gap-1.5 text-[11px] font-medium text-subtle">
+          <VideoIcon aria-hidden className="size-3.5" />
+          {labels.video}
+        </p>
+        <p className="truncate font-mono text-[12px] text-muted">{attrs.src}</p>
+        {pickVideo && editor.isEditable && (
+          <button
+            type="button"
+            onClick={() => void choose()}
+            className="inline-flex h-7 w-fit items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 text-xs font-medium text-fg hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-brand"
+          >
+            <VideoIcon aria-hidden className="size-3.5" />
+            {labels.pickVideo}
+          </button>
+        )}
+      </div>
+    </NodeViewWrapper>
+  );
+}
+
+/**
+ * A YouTube embed (ADR 0040): only `<figure class="tpl-youtube[ tpl-short]" data-youtube="<id>">`
+ * and an optional caption; the sites build the player from the id. Before Figure (priority).
+ */
+const LayoutYouTube = Node.create<ImageOptions>({
+  name: 'layoutYouTube',
+  group: 'block',
+  content: 'figcaption?',
+  defining: true,
+  isolating: true,
+  draggable: true,
+  addOptions: () => ({ labels: undefined }),
+  addAttributes: () => ({
+    class: { ...classAttribute, default: 'tpl-youtube' },
+    youtube: {
+      default: '',
+      parseHTML: (element: HTMLElement) => {
+        const id = element.getAttribute('data-youtube') ?? '';
+        return YOUTUBE_ID.test(id) ? id : '';
+      },
+      renderHTML: (attributes: Record<string, unknown>) => ({ 'data-youtube': attributes.youtube ?? '' }),
+    },
+  }),
+  parseHTML: () => [{ tag: 'figure[data-youtube]', priority: 60 }],
+  renderHTML: ({ HTMLAttributes }) => ['figure', HTMLAttributes, 0],
+  addNodeView() {
+    return this.options.labels ? ReactNodeViewRenderer(YouTubeCard) : null;
+  },
+});
+
+/** `tpl-youtube`, with or without `tpl-short`, keeping the block's other tpl-* classes. */
+function youtubeClass(current: string | null, short: boolean): string {
+  const others = (current ?? '').split(/\s+/).filter((name) => name && name !== 'tpl-youtube' && name !== 'tpl-short');
+  return ['tpl-youtube', ...(short ? ['tpl-short'] : []), ...others].join(' ');
+}
+
+/** A YouTube embed in the editor: the link (any YouTube form), the format, the caption below. */
+function YouTubeCard({ node, updateAttributes, extension, editor, selected }: NodeViewProps) {
+  const { labels } = extension.options as { labels: RichTextLayoutImageLabels };
+  const attrs = node.attrs as { youtube: string; class: string | null };
+  const short = /(^|\s)tpl-short(\s|$)/.test(attrs.class ?? '');
+  const [link, setLink] = useState(() =>
+    attrs.youtube ? (short ? `https://www.youtube.com/shorts/${attrs.youtube}` : `https://youtu.be/${attrs.youtube}`) : '',
+  );
+  const id = useId();
+  const invalid = link.trim() !== '' && !parseYouTubeUrl(link);
+  const change = (value: string) => {
+    setLink(value);
+    const parsed = parseYouTubeUrl(value);
+    if (parsed) updateAttributes({ youtube: parsed.id, class: youtubeClass(attrs.class, parsed.short) });
+  };
+  return (
+    <NodeViewWrapper
+      data-slot="layout-youtube"
+      className={`my-1 rounded-lg border border-dashed border-border bg-surface-2/60 p-2.5 ${selected ? 'ring-2 ring-brand/40' : ''}`}
+    >
+      <div contentEditable={false} className="flex gap-3">
+        <div
+          data-drag-handle
+          className="flex size-14 shrink-0 cursor-grab items-center justify-center rounded-md bg-surface text-muted"
+          title={labels.youtube}
+        >
+          <SquarePlayIcon aria-hidden className="size-6" />
+        </div>
+        <label className="grid min-w-0 flex-1 content-start gap-0.5 text-[11px] font-medium text-subtle" htmlFor={`${id}-url`}>
+          {labels.youtubeUrl}
+          <input
+            id={`${id}-url`}
+            value={link}
+            readOnly={!editor.isEditable}
+            spellCheck={false}
+            inputMode="url"
+            placeholder="https://www.youtube.com/watch?v=…"
+            aria-invalid={invalid || undefined}
+            aria-describedby={`${id}-hint`}
+            onChange={(event) => change(event.target.value)}
+            className="h-8 w-full min-w-0 rounded-md border border-border bg-bg px-2 font-mono text-[13px] text-fg outline-none focus-visible:border-brand focus-visible:ring-2 focus-visible:ring-brand/20 aria-invalid:border-red-500"
+          />
+          <span id={`${id}-hint`} className={invalid ? 'text-red-600' : 'text-subtle'}>
+            {invalid ? labels.youtubeInvalid : short ? labels.youtubeShort : attrs.youtube ? `youtube.com · ${attrs.youtube}` : ''}
+          </span>
+        </label>
+      </div>
+      <NodeViewContent className="mt-1.5" />
+    </NodeViewWrapper>
+  );
+}
+
+/** A new YouTube block: no video yet (the card asks for the link), a caption to fill in. */
+export function layoutYouTubeHtml(caption: string): string {
+  return `<figure class="tpl-youtube" data-youtube=""><figcaption>${escapeHtml(caption)}</figcaption></figure>`;
+}
+
+/** The extensions to add to StarterKit for layout blocks (labels: the image and video cards; omit headless). */
 export function layoutExtensions(labels?: RichTextLayoutImageLabels) {
-  return [LayoutAttributes, LayoutSection, LayoutDiv, Figure, Figcaption, LayoutImage.configure({ labels })];
+  return [
+    LayoutAttributes,
+    LayoutSection,
+    LayoutDiv,
+    Figure,
+    Figcaption,
+    LayoutImage.configure({ labels }),
+    LayoutVideo.configure({ labels }),
+    LayoutYouTube.configure({ labels }),
+  ];
+}
+
+function videoStorage(editor: Editor): VideoStorage | undefined {
+  return (editor.storage as unknown as Record<string, VideoStorage | undefined>).layoutVideo;
+}
+
+/** The clips the video cards' "choose" button and the insert menu offer (undefined: none). */
+export function setVideoPicker(editor: Editor, pickVideo: VideoPicker | undefined): void {
+  const video = videoStorage(editor);
+  if (!video || video.pickVideo === pickVideo) return;
+  video.pickVideo = pickVideo;
+  editor.view.dispatch(editor.state.tr.setMeta('videoPicker', true));
+}
+
+/** A chosen clip as a block: a narrow figure (9:16) with a caption to fill in. */
+export function layoutVideoHtml(video: PickedVideo, caption: string): string {
+  const poster = video.poster ? ` poster="${escapeHtml(video.poster)}"` : '';
+  return (
+    `<figure class="tpl-video"><video src="${escapeHtml(video.src)}"${poster} width="${video.width}" height="${video.height}" controls playsinline preload="none"></video>` +
+    `<figcaption>${escapeHtml(caption)}</figcaption></figure>`
+  );
 }
 
 function imageStorage(editor: Editor): ImageStorage | undefined {
@@ -277,7 +529,20 @@ export function editorHtml(editor: Editor): string {
 
 /* ---------- insert menu ---------- */
 
-export const LAYOUT_BLOCKS = ['note', 'tip', 'warn', 'summary', 'columns', 'cards', 'steps', 'split', 'image', 'pull', 'faq', 'cta'] as const;
+export const LAYOUT_BLOCKS = [
+  'note',
+  'tip',
+  'warn',
+  'summary',
+  'columns',
+  'cards',
+  'steps',
+  'split',
+  'image',
+  'pull',
+  'faq',
+  'cta',
+] as const;
 export type LayoutBlock = (typeof LAYOUT_BLOCKS)[number];
 
 export interface RichTextLayoutLabels extends RichTextLayoutImageLabels {
@@ -336,7 +601,7 @@ export function currentLayoutBlock(editor: Editor): { name: string; depth: numbe
   const { $from } = editor.state.selection;
   for (let depth = $from.depth; depth > 0; depth--) {
     const node = $from.node(depth);
-    if (['layoutSection', 'layoutDiv', 'figure'].includes(node.type.name)) return { name: node.type.name, depth };
+    if (['layoutSection', 'layoutDiv', 'figure', 'layoutYouTube'].includes(node.type.name)) return { name: node.type.name, depth };
   }
   return null;
 }
@@ -344,11 +609,15 @@ export function currentLayoutBlock(editor: Editor): { name: string; depth: numbe
 /** Unwraps the block around the cursor: its content stays in place. */
 export function unwrapLayoutBlock(editor: Editor): boolean {
   const block = currentLayoutBlock(editor);
-  if (!block || block.name === 'figure') return false;
+  if (!block || block.name === 'figure' || block.name === 'layoutYouTube') return false;
   const { $from } = editor.state.selection;
   const start = $from.before(block.depth);
   const node = $from.node(block.depth);
-  return editor.chain().focus().insertContentAt({ from: start, to: start + node.nodeSize }, node.content.toJSON() as object[]).run();
+  return editor
+    .chain()
+    .focus()
+    .insertContentAt({ from: start, to: start + node.nodeSize }, node.content.toJSON() as object[])
+    .run();
 }
 
 /** Deletes the block around the cursor, content included. */
@@ -357,5 +626,9 @@ export function removeLayoutBlock(editor: Editor): boolean {
   if (!block) return false;
   const { $from } = editor.state.selection;
   const start = $from.before(block.depth);
-  return editor.chain().focus().deleteRange({ from: start, to: start + $from.node(block.depth).nodeSize }).run();
+  return editor
+    .chain()
+    .focus()
+    .deleteRange({ from: start, to: start + $from.node(block.depth).nodeSize })
+    .run();
 }

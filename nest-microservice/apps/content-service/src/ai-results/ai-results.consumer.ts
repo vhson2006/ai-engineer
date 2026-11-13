@@ -15,6 +15,15 @@ import {
   JETSTREAM,
   JetStreamConsumer,
   PermanentMessageError,
+  SCRIPT_WRITING_EVENTS,
+  ScriptWritingCompletedEvent,
+  ScriptWritingFailedEvent,
+  SPEECH_EVENTS,
+  SpeechCompletedEvent,
+  SpeechFailedEvent,
+  VIDEO_RENDER_EVENTS,
+  VideoRenderCompletedEvent,
+  VideoRenderFailedEvent,
   TRANSLATION_EVENTS,
   TranslationCompletedEvent,
   TranslationFailedEvent,
@@ -26,6 +35,7 @@ import type { Prisma } from '../generated/prisma/client';
 import { REQUESTER } from '../common/ai';
 import { MediaGenerationService } from '../media/media-generation.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { ProjectsService } from '../studio/projects.service';
 import { TranslationJobsService } from '../translations/translation-jobs.service';
 
 /** Durable consumer name, also the inbox `consumer` column. */
@@ -46,6 +56,7 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
     private readonly prisma: PrismaService,
     private readonly jobs: TranslationJobsService,
     private readonly images: MediaGenerationService,
+    private readonly studio: ProjectsService,
   ) {}
 
   /** Subject → handler. Exposed for tests. */
@@ -62,6 +73,26 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
     [IMAGE_GENERATION_EVENTS.FAILED]: this.once(ImageGenerationFailedEvent, (tx, event) =>
       this.images.fail(tx, event),
     ),
+    // Video studio (ADR 0039): script and voice from ai-service, the MP4 from render-worker.
+    [SCRIPT_WRITING_EVENTS.COMPLETED]: this.once(ScriptWritingCompletedEvent, (tx, event) =>
+      this.studio.scriptWritten(tx, event),
+    ),
+    [SCRIPT_WRITING_EVENTS.FAILED]: this.once(ScriptWritingFailedEvent, (tx, event) =>
+      this.studio.scriptFailed(tx, event),
+    ),
+    [SPEECH_EVENTS.COMPLETED]: this.once(SpeechCompletedEvent, (tx, event) =>
+      this.studio.voiceReady(tx, event),
+    ),
+    [SPEECH_EVENTS.FAILED]: this.once(SpeechFailedEvent, (tx, event) =>
+      this.studio.voiceFailed(tx, event),
+    ),
+    // render-worker serves only us: its answers have no `requester`.
+    [VIDEO_RENDER_EVENTS.COMPLETED]: this.once(VideoRenderCompletedEvent, (tx, event) =>
+      this.studio.rendered(tx, event),
+    ),
+    [VIDEO_RENDER_EVENTS.FAILED]: this.once(VideoRenderFailedEvent, (tx, event) =>
+      this.studio.renderFailed(tx, event),
+    ),
   };
 
   async onApplicationBootstrap(): Promise<void> {
@@ -76,7 +107,7 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
     await this.consumer?.stop();
   }
 
-  private once<T extends { requester: string }>(
+  private once<T extends object>(
     type: ClassConstructor<T>,
     work: (tx: Prisma.TransactionClient, event: T) => Promise<void>,
   ): MessageHandler {
@@ -88,7 +119,8 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
           `invalid ${message.subject}: ${errors.map((e) => e.property).join(', ')}`,
         );
       }
-      if (event.requester !== REQUESTER) return; // another service's job
+      const requester = (event as { requester?: unknown }).requester;
+      if (requester !== undefined && requester !== REQUESTER) return; // another service's job
       const processed = await handleOnce(this.prisma, CONSUMER, message.id, message.subject, (tx) =>
         work(tx, event),
       );

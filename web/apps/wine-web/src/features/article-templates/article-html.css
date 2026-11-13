@@ -25,7 +25,7 @@
   font-weight: 700;
   color: var(--brand-strong);
   text-wrap: balance;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
 }
 .article-html h3 {
   margin-top: 2.5rem;
@@ -34,7 +34,7 @@
   line-height: 1.25;
   font-weight: 700;
   color: var(--fg);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: calc(var(--header-h) + 1rem);
 }
 .article-html a {
   color: var(--brand-strong);

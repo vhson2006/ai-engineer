@@ -20,7 +20,8 @@ export type ArticleStatus = (typeof ARTICLE_STATUSES)[number];
 /**
  * The tags an article body may contain: text (ADR 0031) and layout blocks (ADR 0033).
  * content-service sanitizes every body on write with this allow-list (links: http, https, mailto
- * only; images: site-relative paths only; classes: ARTICLE_HTML_CLASSES only); everything else is
+ * only; images: site-relative paths or the site's media library; videos: the site's studio clips;
+ * classes: ARTICLE_HTML_CLASSES only); everything else is
  * removed. The sites render the stored HTML as is.
  */
 export const ARTICLE_HTML_TAGS = [
@@ -46,7 +47,15 @@ export const ARTICLE_HTML_TAGS = [
   'figure',
   'figcaption',
   'img',
+  // a clip of the site's video studio (ADR 0039): src and poster only from its studio/ files
+  'video',
 ] as const;
+
+/**
+ * A YouTube video id (ADR 0040): the only thing an article stores of an embed. The sites build the
+ * player (youtube-nocookie.com, loaded on click) from it; an article never contains an iframe.
+ */
+export const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
 
 /**
  * The only classes an article body may carry, per tag (ADR 0033): the layout vocabulary the sites
@@ -81,7 +90,18 @@ export const ARTICLE_HTML_CLASSES = {
     'tpl-facts',
   ],
   div: ['tpl-item', 'tpl-media', 'tpl-body', 'tpl-highlight'],
-  figure: ['tpl-wide', 'tpl-full', 'tpl-left', 'tpl-right', 'tpl-portrait', 'tpl-framed'],
+  figure: [
+    'tpl-wide',
+    'tpl-full',
+    'tpl-left',
+    'tpl-right',
+    'tpl-portrait',
+    'tpl-framed',
+    'tpl-video',
+    // a YouTube embed (ADR 0040): `<figure class="tpl-youtube" data-youtube="<id>">`, Shorts 9:16
+    'tpl-youtube',
+    'tpl-short',
+  ],
   p: [
     'tpl-lead',
     'tpl-kicker',

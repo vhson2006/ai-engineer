@@ -345,6 +345,142 @@
       "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/media/{id}", "encoding": "no-op" }]
     },
     {
+      "@comment": "Video studio (ADR 0039): the templates this site may use, and the voices.",
+      "endpoint": "/api/content/sites/{siteId}/studio/templates",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/templates", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "The site's brand kit (defaults from the site name until saved).",
+      "endpoint": "/api/content/sites/{siteId}/studio/brand",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/brand", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Save the brand kit (whole object; 422 invalid_media).",
+      "endpoint": "/api/content/sites/{siteId}/studio/brand",
+      "method": "PUT",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/brand", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "The site's avatars (hosts of the clips).",
+      "endpoint": "/api/content/sites/{siteId}/studio/avatars",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/avatars", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Add an avatar: a face, a voice, the consent note.",
+      "endpoint": "/api/content/sites/{siteId}/studio/avatars",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/avatars", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Change an avatar.",
+      "endpoint": "/api/content/sites/{siteId}/studio/avatars/{id}",
+      "method": "PATCH",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/avatars/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Delete an avatar.",
+      "endpoint": "/api/content/sites/{siteId}/studio/avatars/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/avatars/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Video projects, latest first; rendered=true: finished videos (media library Video section).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_query_strings": ["page","limit","rendered"],
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Start a video from a template: 201 + Location.",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "A project with its preview props.",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:read") "limit" "read") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Change the title, brief, inputs or script (409 busy).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}",
+      "method": "PATCH",
+      "output_encoding": "no-op",
+      "input_headers": ["Content-Type", "Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Delete a project, its voice and its videos (409 busy).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Let the AI write the script: 202 (409 busy, 422 missing_input).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}/script",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}/script", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Speak every line with its voice: 202 (409 busy, 422 missing_input).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}/voice",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}/voice", "encoding": "no-op" }]
+    },
+    {
+      "@comment": "Render the MP4: 202 (409 busy, 422 missing_input or quota_exceeded).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}/render",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}/render", "encoding": "no-op" }]
+    },
+    {
       "@comment": "What a site shows: published articles in one language.",
       "endpoint": "/api/content/sites/{siteId}/published-articles",
       "method": "GET",

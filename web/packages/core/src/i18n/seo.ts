@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { localizedPath } from './paths';
 
 /**
@@ -48,4 +49,72 @@ export function localizedSitemap(
       },
     })),
   );
+}
+
+export interface PreviewImage {
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+/**
+ * Full metadata of a public page of a localized site (ADR 0021): description, canonical +
+ * hreflang (+ x-default when every language shares the path), Open Graph (what Facebook, Zalo,
+ * TikTok, LinkedIn show) and the Twitter/X card. A page's `openGraph` REPLACES the layout's (no
+ * deep merge), so it is always built complete here. `paths`: the page's path in each language
+ * that has it (articles have a slug per language). `intl`: each language's Intl tag ('vi-VN').
+ */
+export function localizedPageMetadata<L extends string>({
+  locale,
+  intl,
+  defaultLocale,
+  paths,
+  siteName,
+  title,
+  fullTitle,
+  description,
+  image,
+  article,
+}: {
+  locale: L;
+  intl: Record<L, string>;
+  defaultLocale: L;
+  paths: Partial<Record<L, string>>;
+  siteName: string;
+  /** The page's own title (the layout's template adds the site name); omitted on the home page. */
+  title?: string;
+  /** The title shown in link previews (with the site name). */
+  fullTitle: string;
+  description: string;
+  image: PreviewImage;
+  article?: { publishedTime: string };
+}): Metadata {
+  const codes = Object.keys(intl) as L[];
+  const url = localizedPath(locale, paths[locale] ?? '/');
+  const languages: Record<string, string> = Object.fromEntries(
+    codes.flatMap((code) => (paths[code] ? [[code, localizedPath(code, paths[code])]] : [])),
+  );
+  // x-default: the path without a language, where the proxy picks one (only when all share it).
+  if (paths[defaultLocale] && codes.every((code) => paths[code] === paths[defaultLocale])) {
+    languages['x-default'] = paths[defaultLocale];
+  }
+  const ogLocale = (code: L) => intl[code].replace('-', '_');
+  const images = [image];
+  return {
+    ...(title ? { title } : {}),
+    description,
+    alternates: { canonical: url, languages },
+    openGraph: {
+      ...(article ? { type: 'article', publishedTime: article.publishedTime } : { type: 'website' }),
+      siteName,
+      title: fullTitle,
+      description,
+      url,
+      locale: ogLocale(locale),
+      alternateLocale: codes.filter((code) => code !== locale && paths[code]).map(ogLocale),
+      images,
+    },
+    twitter: { card: 'summary_large_image', title: fullTitle, description, images },
+  };
 }

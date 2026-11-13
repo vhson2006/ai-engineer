@@ -3,3 +3,6 @@ export * from './content.events';
 export * from './content.roles';
 export * from './content.types';
 export * from './content.media';
+export * from './studio.templates';
+export * from './studio.types';
+export * from './studio.dto';

@@ -24,8 +24,7 @@ const nextConfig: NextConfig = {
   env: { SITE_URL: siteUrl },
   outputFileTracingRoot: workspaceRoot,
   outputFileTracingIncludes: {
-    '/[lang]/opengraph-image': ogFiles,
-    '/[lang]/twitter-image': ogFiles,
+    '/og/[image]': ogFiles,
   },
   cacheComponents: true,
   partialPrefetching: true,

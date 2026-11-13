@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Phone } from 'lucide-react';
 import { Container } from '@web/ui';
+import { CoverImage } from '@web/ui/cover-image';
 import { Band } from '@/components/band';
 import { pill } from '@/components/pill';
 import { salon } from '@/content/salon';
 import { ArticleBody } from '@/features/articles/article-body';
 import { ArticleGrid, ArticleMeta, TopicChip } from '@/features/articles/article-card';
-import { articlePaths, articleSlugs, getArticle, listArticles } from '@/features/articles/data';
-import { blogMetadata } from '@/features/articles/metadata';
+import { articlePaths, getArticle, listArticles, slugInLocale } from '@/features/articles/data';
 import { BookButton } from '@/features/booking/booking-provider';
-import { href } from '@/i18n/locales';
+import { href, isLocale } from '@/i18n/locales';
 import { getLocale, getMessages } from '@/i18n/messages';
+import { pageMetadata } from '@/seo';
 
 /**
  * Fully static, also for a slug that wasn't prerendered: the request waits for the complete page,
@@ -21,32 +21,55 @@ import { getLocale, getMessages } from '@/i18n/messages';
  */
 export const ensureStatic = 'navigation';
 
-/** Every article, prerendered per language. */
-export function generateStaticParams() {
-  return articleSlugs().map((slug) => ({ slug }));
+/** Every published article, prerendered per language with that language's slug (from the API). */
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
+  const articles = isLocale(params.lang) ? await listArticles(params.lang) : [];
+  // ensureStatic needs at least one entry: an unknown slug, answered by notFound().
+  return articles.length ? articles.map((article) => ({ slug: article.slug })) : [{ slug: 'none' }];
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/blog/[slug]'>): Promise<Metadata> {
-  const [{ slug }, locale] = await Promise.all([params, getLocale()]);
+  const [{ slug }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
   const article = await getArticle(locale, slug);
   if (!article) return {};
-  return blogMetadata({ locale, path: articlePaths.article(slug), title: article.title, description: article.excerpt, publishedTime: article.publishedAt });
+  return pageMetadata({
+    t,
+    locale,
+    paths: Object.fromEntries(Object.entries(article.slugs).map(([code, own]) => [code, articlePaths.article(own)])),
+    title: article.seoTitle ?? article.title,
+    description: article.seoDescription ?? article.excerpt,
+    article: { publishedTime: article.publishedAt },
+    image:
+      article.cover.kind === 'media'
+        ? { url: article.cover.image.url, width: article.cover.image.width, height: article.cover.image.height, alt: article.cover.alt }
+        : undefined,
+  });
 }
 
 export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[slug]'>) {
   const [{ slug }, t, locale] = await Promise.all([params, getMessages(), getLocale()]);
   const article = await getArticle(locale, slug);
-  if (!article) notFound();
+  if (!article) {
+    // The slug of another language (language switch): the same article in this language.
+    const own = await slugInLocale(locale, slug);
+    if (own) permanentRedirect(href(locale, articlePaths.article(own)));
+    notFound();
+  }
+  // An old slug (changed after publishing): permanent redirect to the current one.
+  if (article.slug !== slug) permanentRedirect(href(locale, articlePaths.article(article.slug)));
 
   const all = await listArticles(locale);
-  const others = all.filter((item) => item.slug !== slug);
-  const related = [...others.filter((item) => item.category === article.category), ...others.filter((item) => item.category !== article.category)].slice(0, 3);
+  const others = all.filter((item) => item.id !== article.id);
+  const related = [
+    ...others.filter((item) => item.topic.key === article.topic.key),
+    ...others.filter((item) => item.topic.key !== article.topic.key),
+  ].slice(0, 3);
   const phone = salon.phones[0];
 
   return (
     <>
-      <article>
-        <header className="pt-10 sm:pt-14">
+      <article className="overflow-x-clip">
+        <header className="pt-10 sm:pt-12">
           <Container className="max-w-4xl">
             <nav aria-label={t.articles.breadcrumb}>
               <ol className="flex flex-wrap items-center gap-2 text-sm text-muted">
@@ -63,14 +86,16 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[s
                 </li>
                 <li aria-hidden>/</li>
                 <li>
-                  <Link href={href(locale, articlePaths.category(article.category))} className="hover:text-fg hover:underline">
-                    {t.articles.categories[article.category]}
+                  <Link href={href(locale, articlePaths.topic(article.topic.slug))} className="hover:text-fg hover:underline">
+                    {article.topic.name}
                   </Link>
                 </li>
               </ol>
             </nav>
-            <TopicChip category={article.category} t={t} className="mt-8" />
-            <h1 className="mt-4 text-4xl leading-[1.04] font-extrabold tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl">{article.title}</h1>
+            <TopicChip topic={article.topic} className="mt-8" />
+            <h1 className="mt-4 text-4xl leading-[1.04] font-extrabold tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl">
+              {article.title}
+            </h1>
             <p className="mt-5 text-xl leading-relaxed text-muted">{article.excerpt}</p>
             <ArticleMeta article={article} locale={locale} t={t} className="mt-6" />
           </Container>
@@ -78,12 +103,12 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[s
 
         <Container className="mt-10 max-w-5xl">
           <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-surface-2">
-            <Image src={article.cover} alt={article.coverAlt} placeholder="blur" priority sizes="(min-width: 1024px) 1000px, 100vw" className="size-full object-cover" />
+            <CoverImage cover={article.cover} priority sizes="(min-width: 1024px) 1000px, 100vw" className="size-full object-cover" />
           </div>
         </Container>
 
-        <Container className="max-w-3xl py-14 sm:py-20">
-          <ArticleBody blocks={article.body} />
+        <Container className="max-w-3xl py-12 sm:py-16">
+          <ArticleBody html={article.body} playLabel={t.articles.playVideo} />
 
           <div className="mt-14 border-t border-border pt-8">
             <Link href={href(locale, articlePaths.index)} className="inline-flex items-center gap-2 text-sm font-semibold hover:underline">
@@ -116,7 +141,7 @@ export default async function ArticlePage({ params }: PageProps<'/[lang]/blog/[s
             <h2 id="related" className="text-3xl font-extrabold tracking-[-0.03em]">
               {t.articles.related}
             </h2>
-            <div className="mt-10">
+            <div className="mt-8">
               <ArticleGrid articles={related} locale={locale} t={t} />
             </div>
           </section>

@@ -17,6 +17,255 @@
     "age": "Sản phẩm không dành cho người dưới 18 tuổi và phụ nữ mang thai.",
     "drive": "Đã uống rượu, bia thì không lái xe."
   },
+  "policies": {
+    "updated": "Cập nhật lần cuối: {date}",
+    "contents": "Mục lục",
+    "related": "Xem thêm",
+    "links": {
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản sử dụng"
+    },
+    "privacy": {
+      "title": "Chính sách bảo mật",
+      "description": "Khang Hưng Tửu thu thập dữ liệu cá nhân nào, dùng vào việc gì, chia sẻ với ai, lưu bao lâu, và quyền của bạn với dữ liệu của mình.",
+      "intro": "Chính sách này giải thích cách {name} thu thập, sử dụng và bảo vệ dữ liệu cá nhân khi bạn dùng website, liên hệ đặt hàng hoặc hợp tác với hãng, theo quy định của pháp luật Việt Nam về bảo vệ dữ liệu cá nhân.",
+      "sections": [
+        {
+          "id": "ben-kiem-soat",
+          "title": "Ai chịu trách nhiệm về dữ liệu của bạn",
+          "paragraphs": [
+            "{name} (“chúng tôi”), địa chỉ {address}, điện thoại đặt hàng {phone}, Zalo {zalo}, là bên quyết định mục đích và cách xử lý dữ liệu cá nhân nêu trong chính sách này."
+          ],
+          "items": []
+        },
+        {
+          "id": "du-lieu-thu-thap",
+          "title": "Dữ liệu chúng tôi thu thập",
+          "paragraphs": [
+            "Website không có tài khoản, không có biểu mẫu, không bán hàng trực tuyến và không yêu cầu bạn nhập thông tin cá nhân. Chúng tôi chỉ có dữ liệu của bạn trong các trường hợp sau:"
+          ],
+          "items": [
+            "Khi bạn gọi điện hoặc nhắn Zalo để đặt hàng, hỏi sản phẩm hay kiểm tra hàng chính hãng: tên hoặc tên hiển thị, số điện thoại, nội dung trao đổi và thông tin đơn hàng mà bạn cung cấp.",
+            "Khi nhà hàng, quán ăn liên hệ hợp tác: tên cơ sở, người liên hệ, số điện thoại và nội dung trao đổi.",
+            "Khi bạn mua hàng tại showroom: thông tin cần cho việc mua bán và chứng từ theo quy định.",
+            "Khi bạn truy cập website: dữ liệu kỹ thuật do trình duyệt tự gửi (địa chỉ IP, loại trình duyệt và thiết bị, trang đã xem, thời điểm truy cập), ghi trong nhật ký máy chủ.",
+            "Một cookie duy nhất, wine_locale, ghi nhớ ngôn ngữ bạn chọn (tối đa 1 năm). Website không dùng cookie quảng cáo, công cụ phân tích hay theo dõi (cookie của Google Maps và YouTube: xem mục Chia sẻ dữ liệu)."
+          ]
+        },
+        {
+          "id": "muc-dich",
+          "title": "Chúng tôi dùng dữ liệu để làm gì",
+          "paragraphs": [
+            "Chúng tôi không dùng dữ liệu của bạn để quảng cáo và không bán, cho thuê hay trao đổi dữ liệu với bất kỳ ai."
+          ],
+          "items": [
+            "Trả lời câu hỏi, tư vấn và nhận đơn hàng khi bạn liên hệ.",
+            "Trao đổi và thực hiện hợp tác với nhà hàng, quán ăn.",
+            "Giúp bạn kiểm tra sản phẩm có phải hàng chính hãng hay không.",
+            "Vận hành, bảo mật và khắc phục lỗi của website.",
+            "Thực hiện nghĩa vụ theo quy định của pháp luật."
+          ]
+        },
+        {
+          "id": "co-so",
+          "title": "Cơ sở để xử lý dữ liệu",
+          "paragraphs": [
+            "Chúng tôi xử lý dữ liệu khi bạn đồng ý (ví dụ khi bạn chủ động liên hệ và cung cấp thông tin), khi cần để thực hiện đơn hàng hay thoả thuận bạn yêu cầu, hoặc khi pháp luật yêu cầu. Bạn có thể rút lại sự đồng ý bất cứ lúc nào; việc rút lại không ảnh hưởng đến việc xử lý đã thực hiện trước đó."
+          ],
+          "items": []
+        },
+        {
+          "id": "chia-se",
+          "title": "Chia sẻ dữ liệu và bên thứ ba",
+          "paragraphs": [
+            "Chúng tôi chỉ để bên khác tiếp cận dữ liệu khi thật sự cần thiết:"
+          ],
+          "items": [
+            "Nhà cung cấp hạ tầng lưu trữ và vận hành website (máy chủ, lưu trữ hình ảnh), chỉ để cung cấp website cho bạn.",
+            "Zalo, Facebook và các nền tảng nhắn tin: khi bạn liên hệ qua các nền tảng này, nền tảng xử lý dữ liệu theo chính sách riêng của họ.",
+            "Google Maps được nhúng ở mục Liên hệ: khi bản đồ hiển thị, Google có thể đặt cookie và thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
+            "Video YouTube trong một số bài viết: trước khi bạn bấm phát chỉ hiện ảnh xem trước (từ i.ytimg.com); khi bấm, trình phát tải từ youtube-nocookie.com và Google có thể đặt cookie, thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
+            "Cơ quan nhà nước có thẩm quyền, khi pháp luật yêu cầu."
+          ]
+        },
+        {
+          "id": "luu-tru",
+          "title": "Thời gian lưu trữ",
+          "paragraphs": [
+            "Chúng tôi chỉ giữ dữ liệu trong thời gian cần cho các mục đích nêu trên, sau đó xoá hoặc ẩn danh:"
+          ],
+          "items": [
+            "Thông tin đơn hàng và trao đổi hợp tác: đến khi việc mua bán, hợp tác hoàn tất và mọi khiếu nại liên quan đã được giải quyết.",
+            "Nhật ký máy chủ: trong thời gian ngắn, để bảo mật và khắc phục lỗi.",
+            "Dữ liệu pháp luật buộc phải lưu (ví dụ hoá đơn, chứng từ kế toán): theo thời hạn luật định."
+          ]
+        },
+        {
+          "id": "bao-mat",
+          "title": "Bảo mật",
+          "paragraphs": [
+            "Website chỉ phục vụ qua kết nối mã hoá (HTTPS) và không lưu mật khẩu hay thông tin thanh toán của bạn. Chỉ những người cần thiết để phục vụ bạn mới được tiếp cận dữ liệu."
+          ],
+          "items": []
+        },
+        {
+          "id": "quyen",
+          "title": "Quyền của bạn",
+          "paragraphs": [
+            "Với dữ liệu cá nhân của mình, bạn có quyền:"
+          ],
+          "items": [
+            "Được biết dữ liệu nào được xử lý và vì sao.",
+            "Đồng ý, hoặc rút lại sự đồng ý.",
+            "Xem, sao chép và yêu cầu chỉnh sửa dữ liệu.",
+            "Yêu cầu xoá dữ liệu, hạn chế hoặc phản đối việc xử lý.",
+            "Khiếu nại, tố cáo hoặc khởi kiện theo quy định của pháp luật."
+          ]
+        },
+        {
+          "id": "thuc-hien-quyen",
+          "title": "Thực hiện quyền của bạn",
+          "paragraphs": [
+            "Hãy gọi {phone}, nhắn Zalo {zalo}, hoặc đến showroom tại {address}. Chúng tôi có thể hỏi một vài thông tin để xác minh bạn là chủ của dữ liệu trước khi thực hiện yêu cầu."
+          ],
+          "items": []
+        },
+        {
+          "id": "tre-em",
+          "title": "Người dưới 18 tuổi",
+          "paragraphs": [
+            "Website và sản phẩm chỉ dành cho người từ đủ 18 tuổi trở lên; chúng tôi không bán rượu cho người dưới 18 tuổi và không cố ý thu thập dữ liệu của người dưới 18 tuổi. Nếu bạn cho rằng chúng tôi đã có dữ liệu của một người dưới 18 tuổi, hãy liên hệ để chúng tôi xoá."
+          ],
+          "items": []
+        },
+        {
+          "id": "thay-doi",
+          "title": "Thay đổi chính sách",
+          "paragraphs": [
+            "Khi chính sách thay đổi, chúng tôi cập nhật trang này và ngày “Cập nhật lần cuối” ở đầu trang. Thay đổi quan trọng sẽ được thông báo rõ trên website."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "{name}, {address}. Điện thoại đặt hàng: {phone}. Zalo: {zalo}."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "title": "Điều khoản sử dụng",
+      "description": "Điều khoản khi sử dụng website Khang Hưng Tửu: độ tuổi, thông tin sản phẩm, đặt hàng qua điện thoại và Zalo, hàng chính hãng, bài viết, quyền sở hữu nội dung và luật áp dụng.",
+      "intro": "Các điều khoản này áp dụng khi bạn sử dụng website của {name}. Bằng việc sử dụng website, bạn đồng ý với các điều khoản dưới đây. Cách chúng tôi xử lý dữ liệu cá nhân được nêu trong Chính sách bảo mật.",
+      "sections": [
+        {
+          "id": "do-tuoi",
+          "title": "Độ tuổi",
+          "paragraphs": [
+            "Website giới thiệu đồ uống có cồn và chỉ dành cho người từ đủ 18 tuổi trở lên. Khi sử dụng website, bạn xác nhận mình đã đủ 18 tuổi. Sản phẩm không dành cho phụ nữ mang thai. Đã uống rượu, bia thì không lái xe."
+          ],
+          "items": []
+        },
+        {
+          "id": "thong-tin-san-pham",
+          "title": "Thông tin sản phẩm và giá",
+          "paragraphs": [
+            "Thông tin, hình ảnh sản phẩm và giá trên website lấy từ tài liệu và showroom của hãng, chỉ để tham khảo; hình ảnh có thể khác sản phẩm thực tế về màu sắc hay bao bì. Giá, quy cách và tình trạng còn hàng được xác nhận khi bạn đặt hàng.",
+            "Chúng tôi có thể cập nhật sản phẩm, giá và nội dung website bất cứ lúc nào."
+          ],
+          "items": []
+        },
+        {
+          "id": "dat-hang",
+          "title": "Đặt hàng",
+          "paragraphs": [
+            "Website không bán hàng trực tuyến. Bạn đặt hàng bằng cách gọi {phone} hoặc nhắn Zalo {zalo}, hoặc mua tại showroom. Điều kiện của từng đơn hàng (giá, số lượng, cách nhận hàng, thanh toán) do hãng trao đổi và xác nhận với bạn khi đặt.",
+            "Chúng tôi không bán rượu cho người dưới 18 tuổi và có thể từ chối đơn hàng khi không xác định được người mua đã đủ tuổi."
+          ],
+          "items": []
+        },
+        {
+          "id": "hang-chinh-hang",
+          "title": "Hàng chính hãng",
+          "paragraphs": [
+            "Số đặt hàng {phone} được in trên sản phẩm của hãng. Nếu nghi ngờ hàng giả, hàng nhái, hãy gọi số này để kiểm tra trước khi mua."
+          ],
+          "items": []
+        },
+        {
+          "id": "bai-viet",
+          "title": "Bài viết",
+          "paragraphs": [
+            "Bài viết trên website giới thiệu thương hiệu, cách làm rượu, cách thưởng thức và tin hợp tác; chỉ mang tính tham khảo, không phải lời khuyên về sức khoẻ. Hãy uống có trách nhiệm."
+          ],
+          "items": []
+        },
+        {
+          "id": "so-huu",
+          "title": "Quyền sở hữu nội dung",
+          "paragraphs": [
+            "Tên, nhãn hiệu, nhãn sản phẩm, hình ảnh, bài viết và thiết kế của website thuộc về {name} hoặc được sử dụng hợp pháp. Bạn được chia sẻ liên kết tới website và trích dẫn ngắn có ghi nguồn; không được sao chép nội dung để dùng cho mục đích thương mại khi chưa được chúng tôi đồng ý."
+          ],
+          "items": []
+        },
+        {
+          "id": "su-dung-hop-le",
+          "title": "Sử dụng hợp lệ",
+          "paragraphs": [
+            "Khi sử dụng website, bạn không được:"
+          ],
+          "items": [
+            "Tấn công, dò quét lỗ hổng hoặc làm quá tải website.",
+            "Thu thập nội dung tự động ở mức làm ảnh hưởng tới hoạt động của website.",
+            "Giả danh hãng hoặc dùng tên, hình ảnh của hãng cho mục đích trái pháp luật."
+          ]
+        },
+        {
+          "id": "ben-thu-ba",
+          "title": "Liên kết và nội dung của bên thứ ba",
+          "paragraphs": [
+            "Website có liên kết và nội dung nhúng từ Google Maps, YouTube, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
+          ],
+          "items": []
+        },
+        {
+          "id": "trach-nhiem",
+          "title": "Giới hạn trách nhiệm",
+          "paragraphs": [
+            "Chúng tôi cố gắng giữ thông tin chính xác và website hoạt động ổn định, nhưng không bảo đảm website luôn không có lỗi hay gián đoạn. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về thiệt hại phát sinh từ việc sử dụng thông tin trên website. Điều này không làm ảnh hưởng đến quyền lợi của bạn với tư cách người tiêu dùng theo pháp luật Việt Nam."
+          ],
+          "items": []
+        },
+        {
+          "id": "luat-ap-dung",
+          "title": "Luật áp dụng",
+          "paragraphs": [
+            "Các điều khoản này tuân theo pháp luật Việt Nam. Tranh chấp được giải quyết trước hết bằng thương lượng; nếu không thành, sẽ được giải quyết tại cơ quan có thẩm quyền theo quy định của pháp luật."
+          ],
+          "items": []
+        },
+        {
+          "id": "thay-doi",
+          "title": "Thay đổi điều khoản",
+          "paragraphs": [
+            "Khi điều khoản thay đổi, chúng tôi cập nhật trang này và ngày “Cập nhật lần cuối” ở đầu trang. Việc bạn tiếp tục sử dụng website sau đó đồng nghĩa với việc chấp nhận điều khoản mới."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "{name}, {address}. Điện thoại đặt hàng: {phone}. Zalo: {zalo}."
+          ],
+          "items": []
+        }
+      ]
+    }
+  },
   "topBar": {
     "orderOnly": "Chỉ đặt hàng qua số điện thoại in trên can rượu: {phone}"
   },
@@ -25,6 +274,7 @@
     "home": "Trang chủ Khang Hưng Tửu",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
+    "top": "Trang chủ",
     "products": "Sản phẩm",
     "range": "Danh mục",
     "partners": "Hợp tác nhà hàng",
@@ -47,10 +297,22 @@
   "trust": {
     "label": "Vì sao chọn Khang Hưng Tửu",
     "items": {
-      "since": { "title": "Từ năm 1991", "text": "Hơn ba mươi năm làm rượu tại Long An." },
-      "trademark": { "title": "Nhãn hiệu cầu chứng", "text": "Thương hiệu độc quyền đã đăng ký: hãy nhận diện nhãn và tem của hãng." },
-      "quality": { "title": "Kiểm soát chất lượng", "text": "Phòng ngâm tẩm chế biến riêng và phòng nghiên cứu, thí nghiệm, KCS." },
-      "partners": { "title": "Hợp tác nhà hàng", "text": "Tháp rượu, tủ rượu trưng bày và nhân viên đến tận nơi tư vấn." }
+      "since": {
+        "title": "Từ năm 1991",
+        "text": "Hơn ba mươi năm làm rượu tại Long An."
+      },
+      "trademark": {
+        "title": "Nhãn hiệu cầu chứng",
+        "text": "Thương hiệu độc quyền đã đăng ký: hãy nhận diện nhãn và tem của hãng."
+      },
+      "quality": {
+        "title": "Kiểm soát chất lượng",
+        "text": "Phòng ngâm tẩm chế biến riêng và phòng nghiên cứu, thí nghiệm, KCS."
+      },
+      "partners": {
+        "title": "Hợp tác nhà hàng",
+        "text": "Tháp rượu, tủ rượu trưng bày và nhân viên đến tận nơi tư vấn."
+      }
     }
   },
   "featured": {
@@ -112,8 +374,16 @@
     "title": "Khang Hưng Tửu hoan hỷ hợp tác cùng các nhà hàng",
     "intro": "Hãng cùng đầu tư, trưng bày và quảng cáo cùng quý khách. Nhân viên của hãng sẽ đến tận nơi bàn bạc chi tiết.",
     "items": {
-      "tower": { "title": "Tháp rượu", "text": "Tháp gỗ trưng bày chai rượu ngay tại quầy của quý khách.", "imageAlt": "Tháp rượu bằng gỗ trưng bày chai" },
-      "cabinet": { "title": "Tủ rượu", "text": "Tủ trưng bày rượu cho không gian nhà hàng.", "imageAlt": "Tủ trưng bày rượu màu đen" }
+      "tower": {
+        "title": "Tháp rượu",
+        "text": "Tháp gỗ trưng bày chai rượu ngay tại quầy của quý khách.",
+        "imageAlt": "Tháp rượu bằng gỗ trưng bày chai"
+      },
+      "cabinet": {
+        "title": "Tủ rượu",
+        "text": "Tủ trưng bày rượu cho không gian nhà hàng.",
+        "imageAlt": "Tủ trưng bày rượu màu đen"
+      }
     },
     "cta": "Gọi để trao đổi"
   },
@@ -123,7 +393,10 @@
     "text": "Hãng rượu nằm trên Quốc lộ 1A tại ấp Gò Đen, quê hương của một trong những loại rượu nếp nổi tiếng nhất Việt Nam. Mỗi mẻ rượu được ngâm tại phòng ngâm tẩm riêng và kiểm tra tại phòng nghiên cứu, thí nghiệm, KCS trước khi xuất xưởng.",
     "storefrontAlt": "Cổng hãng rượu Khang Hưng Tửu trên Quốc lộ 1A",
     "factoryAlt": "Thùng ngâm tại phòng ngâm tẩm và kệ mẫu tại phòng nghiên cứu",
-    "departments": ["Phòng ngâm tẩm chế biến rượu", "Phòng nghiên cứu, thí nghiệm, KCS"]
+    "departments": [
+      "Phòng ngâm tẩm chế biến rượu",
+      "Phòng nghiên cứu, thí nghiệm, KCS"
+    ]
   },
   "counterfeit": {
     "title": "Cảnh giác hàng nhái",
@@ -141,9 +414,11 @@
       "owner": "Chủ doanh nghiệp",
       "hotline": "Hotline",
       "care": "Chăm sóc khách hàng"
-    }
+    },
+    "mapTitle": "Bản đồ Google Maps: Hãng rượu Khang Hưng Tửu"
   },
   "articles": {
+    "playVideo": "Phát video",
     "eyebrow": "Bài viết",
     "title": "Chuyện rượu Gò Đen",
     "intro": "Câu chuyện thương hiệu, nghề làm rượu, cách thưởng thức và tin hợp tác từ Khang Hưng Tửu.",
@@ -151,13 +426,6 @@
     "metaDescription": "Bài viết của Khang Hưng Tửu: câu chuyện thương hiệu, phòng ngâm tẩm và KCS, cách thưởng thức rượu hấp nóng, rượu cần và hợp tác nhà hàng. Dành cho người từ 18 tuổi.",
     "categoriesLabel": "Chủ đề",
     "all": "Tất cả",
-    "categories": {
-      "brand": "Thương hiệu",
-      "craft": "Sản xuất",
-      "serving": "Cách thưởng thức",
-      "guide": "Cẩm nang",
-      "partners": "Hợp tác"
-    },
     "categoryTitle": "Chủ đề: {category}",
     "categoryDescription": "Các bài viết về {category} của Khang Hưng Tửu.",
     "featured": "Bài nổi bật",
@@ -175,7 +443,7 @@
     "copied": "Đã sao chép",
     "back": "Tất cả bài viết",
     "breadcrumb": "Đường dẫn",
-    "sample": "Nội dung mẫu để duyệt giao diện, ghép từ thông tin đã có trên trang. Bài thật sẽ được lấy từ hệ thống quản trị."
+    "none": "Chưa có bài viết nào được đăng."
   },
   "templates": {
     "metaTitle": "Mẫu bài viết",
@@ -197,7 +465,8 @@
     "tagline": "Rượu truyền thống và rượu thảo mộc từ Bến Lức, Long An, từ năm 1991.",
     "explore": "Khám phá",
     "contact": "Liên hệ",
-    "rights": "© {year} {name}. Bảo lưu mọi quyền."
+    "rights": "© {year} {name}. Bảo lưu mọi quyền.",
+    "legal": "Thông tin pháp lý"
   },
   "notFound": {
     "title": "Không tìm thấy trang",

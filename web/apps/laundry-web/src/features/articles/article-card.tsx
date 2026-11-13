@@ -5,7 +5,7 @@ import { cn } from '@web/ui';
 import { href, type Locale } from '@/i18n/locales';
 import type { Messages } from '@/i18n/messages';
 import { formatInstantDate } from '@/lib/format';
-import { CoverImage } from './cover-image';
+import { CoverImage } from '@web/ui/cover-image';
 import { articlePaths, type ArticleSummary } from './data';
 
 type Props = { article: ArticleSummary; locale: Locale; t: Messages; headingLevel?: 'h2' | 'h3' };

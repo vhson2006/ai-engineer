@@ -77,6 +77,17 @@ describe('routeLocale', () => {
     expect(bogus.redirect?.headers.get('location')).toBe('http://www.example.test/vi');
   });
 
+  it('without language detection, a first visit lands on the default; a saved choice still wins', () => {
+    const fixed = { ...ROUTING, defaultLocale: 'vi' as const, detectLanguage: false, cookieName: 'site_locale' };
+    const first = routeLocale(request('/', { headers: { 'accept-language': 'en-US,en;q=0.9' } }), fixed);
+    expect(first.redirect?.headers.get('location')).toBe('http://www.example.test/vi');
+    const chosen = routeLocale(request('/', { headers: { cookie: 'site_locale=en', 'accept-language': 'vi' } }), fixed);
+    expect(chosen.redirect?.headers.get('location')).toBe('http://www.example.test/en');
+    // Another site's cookie (same host in dev, another port) is not this site's choice.
+    const other = routeLocale(request('/', { headers: { cookie: `${LOCALE_COOKIE}=en` } }), fixed);
+    expect(other.redirect?.headers.get('location')).toBe('http://www.example.test/vi');
+  });
+
   it('leaves Route Handlers and non-GET requests alone', () => {
     expect(routeLocale(request('/auth/login'), ROUTING)).toEqual({});
     expect(routeLocale(request('/files/1/download'), ROUTING)).toEqual({});
@@ -89,6 +100,13 @@ describe('rememberLocale', () => {
     const response = NextResponse.next();
     rememberLocale(request('/vi', { headers: { cookie: `${LOCALE_COOKIE}=en` } }), response, 'vi');
     expect(response.cookies.get(LOCALE_COOKIE)?.value).toBe('vi');
+  });
+
+  it("uses the site's own cookie name when it has one", () => {
+    const response = NextResponse.next();
+    rememberLocale(request('/en', { headers: { cookie: 'site_locale=vi' } }), response, 'en', { cookieName: 'site_locale' });
+    expect(response.cookies.get('site_locale')?.value).toBe('en');
+    expect(response.cookies.get(LOCALE_COOKIE)).toBeUndefined();
   });
 
   it('does nothing when unchanged, or for router prefetches', () => {

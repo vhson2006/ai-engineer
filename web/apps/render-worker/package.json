@@ -1,0 +1,34 @@
+{
+  "name": "render-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Renders the video studio's MP4s (ADR 0039): consumes events.video-render.requested from JetStream, renders the @web/video composition with Remotion, uploads it to the public bucket, answers completed/failed.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=.env.local src/main.ts",
+    "start": "tsx --env-file-if-exists=.env.local src/main.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.700.0",
+    "@remotion/bundler": "4.0.542",
+    "@remotion/renderer": "4.0.542",
+    "@web/video": "*",
+    "nats": "^2.29.0",
+    "pino": "^9.5.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.542",
+    "tsx": "^4.19.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "typescript": "^5",
+    "vitest": "^5.1.0"
+  }
+}

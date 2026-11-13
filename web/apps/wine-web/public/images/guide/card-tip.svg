@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- "A tip": a light bulb with sparkles. -->
+  <rect width="800" height="600" fill="#fde9e5"/>
+  <circle cx="400" cy="270" r="190" fill="#ffe500" opacity="0.25"/>
+  <path d="M400 120 a120 120 0 0 1 72 216 c-14 11 -22 26 -22 44 v14 h-100 v-14 c0 -18 -8 -33 -22 -44 a120 120 0 0 1 72 -216 z" fill="#ffe500" stroke="#3f0a0d" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M370 300 q30 -40 60 0" fill="none" stroke="#3f0a0d" stroke-width="8" stroke-linecap="round"/>
+  <line x1="400" y1="300" x2="400" y2="394" stroke="#3f0a0d" stroke-width="8"/>
+  <rect x="352" y="400" width="96" height="26" rx="10" fill="#b3141c"/>
+  <rect x="362" y="432" width="76" height="24" rx="10" fill="#a3121a"/>
+  <rect x="380" y="462" width="40" height="16" rx="8" fill="#3f0a0d"/>
+  <g stroke="#b3141c" stroke-width="12" stroke-linecap="round">
+    <line x1="230" y1="140" x2="262" y2="168"/>
+    <line x1="570" y1="140" x2="538" y2="168"/>
+    <line x1="196" y1="262" x2="238" y2="262"/>
+    <line x1="604" y1="262" x2="562" y2="262"/>
+  </g>
+  <path d="M620 400 l12 28 l28 12 l-28 12 l-12 28 l-12 -28 l-28 -12 l28 -12 z" fill="#e9b93a"/>
+  <path d="M168 380 l8 18 l18 8 l-18 8 l-8 18 l-8 -18 l-18 -8 l18 -8 z" fill="#b3141c"/>
+</svg>

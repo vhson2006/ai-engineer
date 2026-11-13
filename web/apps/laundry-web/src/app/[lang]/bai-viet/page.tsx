@@ -3,12 +3,12 @@ import { Container } from '@web/ui';
 import { ArticleGrid, FeaturedArticle } from '@/features/articles/article-card';
 import { ArticlesHeader } from '@/features/articles/articles-header';
 import { articlePaths, listArticles } from '@/features/articles/data';
-import { articlesMetadata, samePath } from '@/features/articles/metadata';
+import { pageMetadata, samePath } from '@/seo';
 import { getLocale, getMessages } from '@/i18n/messages';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return articlesMetadata({ locale, paths: samePath(articlePaths.index), title: t.articles.metaTitle, description: t.articles.metaDescription });
+  return pageMetadata({ t, locale, paths: samePath(articlePaths.index), title: t.articles.metaTitle, description: t.articles.metaDescription });
 }
 
 /** All published articles: the featured one as a spread, then the rest, newest first (API, cached). */

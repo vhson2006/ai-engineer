@@ -50,6 +50,10 @@ images:
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
     newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
+  - name: render-worker
+    newName: ghcr.io/vhson2006/ai-engineer/render-worker
+    # Not a commit: images.yml builds it on the next run and writes the real tag.
+    newTag: placeholder
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
     newTag: b742f2147fbd2e1c5bf0af74befa1ae4c1f9ec66
@@ -76,6 +80,9 @@ configMapGenerator:
   - name: ai-service-env
     envs:
       - env/ai-service.env
+  - name: render-worker-env
+    envs:
+      - env/render-worker.env
   - name: portfolio-web-env
     envs:
       - env/portfolio-web.env

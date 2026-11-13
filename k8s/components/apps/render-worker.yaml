@@ -1,0 +1,110 @@
+# render-worker (ADR 0039): renders the video studio's MP4s. A JetStream durable consumer of
+# events.video-render.requested, ONE render at a time (CPU-bound: add replicas to render more in
+# parallel; they share the consumer). Headless Chrome + ffmpeg inside (web/apps/render-worker/
+# Dockerfile). HTTP only for /health on :3005; no Service (nothing calls it).
+# It shares the nodes with the site (ADR 0039, "option A"), so it stays a good neighbour: at most
+# 1 CPU and 2Gi, the lowest priority (evicted first, never evicts), kept away from Keycloak and
+# KrakenD when the scheduler can, and Recreate on rollout (no second pod reserving 1 CPU; a render
+# cut short is redelivered by JetStream). The overlay provides
+# ConfigMap "render-worker-env" (NATS_URL, LOG_LEVEL, RENDER_*, STORAGE_* settings) and Secret
+# "render-worker-storage" (STORAGE_ACCESS_KEY_ID/SECRET: writes studio/<site>/<project>/video/).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: render-worker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: render-worker
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: render-worker
+    spec:
+      enableServiceLinks: false
+      terminationGracePeriodSeconds: 600 # finish the render in progress before SIGKILL
+      automountServiceAccountToken: false
+      priorityClassName: render-batch
+      affinity:
+        podAntiAffinity:
+          # A preference, not a rule: on a full cluster it still runs next to them.
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values: ['keycloak', 'krakend']
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: render-worker
+          image: render-worker
+          ports:
+            - name: health
+              containerPort: 3005
+          envFrom:
+            - configMapRef:
+                name: render-worker-env
+            - secretRef:
+                name: render-worker-storage
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: health
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: health
+            # Bundling the compositions takes a while at start.
+            initialDelaySeconds: 120
+            periodSeconds: 30
+          # One render (RENDER_CONCURRENCY=1): Chrome + ffmpeg + Node, about 1–1.5Gi; the limit
+          # also counts /dev/shm below (memory-backed).
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 1Gi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp # the bundle, the frames and the MP4 before upload
+              mountPath: /tmp
+            - name: shm # Chrome's shared memory
+              mountPath: /dev/shm
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 2Gi
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 512Mi
+---
+# Below every other pod (default 0): under pressure the renders go first, and they never evict
+# anything to get a place. A queued render just waits in JetStream.
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: render-batch
+value: -100
+preemptionPolicy: Never
+globalDefault: false
+description: Video studio renders (ADR 0039), the first to go and never preempting.

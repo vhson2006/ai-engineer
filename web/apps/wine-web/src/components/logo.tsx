@@ -25,7 +25,8 @@ export function Seal({ className }: { className?: string }) {
 /** Seal + "Khang Hưng Tửu" + "Long An · Since 1991". `tone="light"` on red/dark backgrounds. */
 export function Logo({ tagline, tone = 'dark', className }: { tagline: string; tone?: 'dark' | 'light'; className?: string }) {
   return (
-    <span className={cn('flex items-center gap-3', className)}>
+    // Never shrinks or wraps: in a full header the menu must give way, not the wordmark.
+    <span className={cn('flex shrink-0 items-center gap-3 whitespace-nowrap', className)}>
       <Seal className="size-11 shrink-0 drop-shadow-sm" />
       <span className="leading-none">
         <span

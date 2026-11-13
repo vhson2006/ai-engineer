@@ -21,6 +21,7 @@ import { startTransition, useActionState, useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import type { Messages } from '@/i18n/dictionaries';
 import { useMediaPicker } from '../media/media-picker';
+import { useVideoPicker, type StudioClip } from '../studio/video-picker';
 import { createArticleAction, updateArticleAction } from './actions';
 import { ArticlePublishing } from './article-publishing';
 import { CoverField } from './cover-field';
@@ -38,6 +39,8 @@ export interface ArticleEditorProps {
   /** The site's media library, first page (newest first): the picker of covers and body images. */
   media: Media[];
   mediaLabels: Messages['media'];
+  /** The site's finished studio clips (ADR 0039): "insert a video"; empty: the item is hidden. */
+  clips: StudioClip[];
   /** The article's latest machine-translation jobs, newest first (ADR 0036). */
   translationJobs?: TranslationJob[];
   validation: Record<string, string>;
@@ -86,6 +89,7 @@ export function ArticleEditor({
   common,
   media,
   mediaLabels,
+  clips,
   translationJobs = [],
   validation,
   listHref,
@@ -98,10 +102,13 @@ export function ArticleEditor({
   const form = useForm<ArticleValues>({ resolver: zodResolver(articleSchema), defaultValues: initialValues(site, article) });
   const [tab, setTab] = useState(site.locales[0]);
   // The slug follows the title until the author edits it (or it already existed).
-  const [slugEdited, setSlugEdited] = useState<boolean[]>(() => site.locales.map((locale) => Boolean(article?.translations.some((tr) => tr.locale === locale))));
+  const [slugEdited, setSlugEdited] = useState<boolean[]>(() =>
+    site.locales.map((locale) => Boolean(article?.translations.some((tr) => tr.locale === locale))),
+  );
   const translations = useWatch({ control: form.control, name: 'translations' });
   // The library dialog: the cover and the editor's image cards pick (or upload) images there.
   const picker = useMediaPicker({ siteId: site.id, initial: media, labels: mediaLabels, closeLabel: common.close });
+  const videoPicker = useVideoPicker({ clips, labels: t.editor.videoPicker, closeLabel: common.close });
   const [cover, setCover] = useState<MediaImage | null>(article?.cover ?? null);
   const { isDirty } = form.formState;
 
@@ -282,7 +289,7 @@ export function ArticleEditor({
                         labels={t.editor}
                         // Layout blocks of the templates (ADR 0033): kept and editable in the visual
                         // mode, and the HTML source mode for anything else.
-                        layout={{ labels: t.editor.layout, pickImage: picker.pick }}
+                        layout={{ labels: t.editor.layout, pickImage: picker.pick, pickVideo: clips.length ? videoPicker.pick : undefined }}
                         source={{ labels: t.editor.source }}
                         aria-invalid={Boolean(fieldState.error)}
                         className="min-h-72"
@@ -406,8 +413,14 @@ export function ArticleEditor({
               disabled={pending}
             />
           </div>
-          {article?.status === 'published' && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">{f.liveWarning}</p>}
-          {article?.status === 'scheduled' && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">{f.scheduledWarning}</p>}
+          {article?.status === 'published' && (
+            <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">{f.liveWarning}</p>
+          )}
+          {article?.status === 'scheduled' && (
+            <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">
+              {f.scheduledWarning}
+            </p>
+          )}
           <div className="flex flex-wrap gap-2">
             <Button type="submit" disabled={pending || categories.length === 0 || (article && !isDirty)}>
               {pending && <LoaderCircleIcon className="animate-spin" />}
@@ -433,6 +446,7 @@ export function ArticleEditor({
         )}
       </div>
       {picker.dialog}
+      {videoPicker.dialog}
     </Form>
   );
 }

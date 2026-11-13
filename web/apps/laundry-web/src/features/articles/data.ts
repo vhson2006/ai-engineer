@@ -1,14 +1,15 @@
 import 'server-only';
 import type { StaticImageData } from 'next/image';
-import { cacheLife, cacheTag } from 'next/cache';
+import type { PublishedArticleSummary } from '@web/core/api';
 import {
-  getPublishedArticle,
-  listPublishedArticles,
-  listSiteCategories,
-  type ApiResult,
-  type MediaImage,
-  type PublishedArticleSummary,
-} from '@web/core/api';
+  articleSlugInLocale,
+  getSiteArticle,
+  listSiteArticles,
+  listSiteTopics,
+  topicSlugInLocale as siteTopicSlugInLocale,
+  type SiteTopic,
+} from '@web/core/content/site-articles';
+import type { Cover } from '@web/ui/cover-image';
 import { LOCALE_CODES, type Locale } from '@/i18n/locales';
 import machines from '../../../public/images/machines.jpg';
 import shelves from '../../../public/images/shelves.jpg';
@@ -16,20 +17,11 @@ import coverShop from '../../../public/images/cover-shop.jpg';
 
 /**
  * Articles ("Bài viết") of SFaster, from content-service (ADR 0026): what admins publish in the
- * admin site, read with this site's own service account (siteApiFetch, ADR 0032).
- *
- * Cached ('use cache', a few minutes): the pages stay static and fast, a new or changed article
- * shows up within minutes. A failed API call THROWS (never cached): the next request tries again.
+ * admin site, read with this site's own service account (ADR 0032) through the shared, cached
+ * `@web/core/content/site-articles`. A failed API call THROWS (never cached).
  */
 export const SITE_ID = 'laundry';
-const CACHE_TAG = `content:${SITE_ID}`;
-const PAGE_SIZE = 100; // the API's maximum: every article of the site in one call
-
-/**
- * An article's cover: the image the admins chose in the media library (ADR 0034: optimized
- * sizes on the CDN, alt text per language), or a photo of the shop chosen by topic.
- */
-export type Cover = { kind: 'media'; image: MediaImage; alt: string } | { kind: 'photo'; photo: StaticImageData };
+export { ContentUnavailableError } from '@web/core/content/site-articles';
 
 /** A topic in one language: its stable key, URL segment and name. */
 export type Topic = { key: string; slug: string; name: string };
@@ -42,6 +34,7 @@ export type ArticleSummary = {
   featured: boolean;
   title: string;
   excerpt: string;
+  /** The media library image the admins chose, else a photo of the shop chosen by topic. */
   cover: Cover;
   readingMinutes: number;
 };
@@ -57,12 +50,6 @@ export type Article = ArticleSummary & {
 
 const COVERS: Record<string, StaticImageData> = { tips: shelves, services: machines, shop: coverShop };
 const coverFor = (topicKey: string) => COVERS[topicKey] ?? coverShop;
-
-export class ContentUnavailableError extends Error {
-  constructor(result: Extract<ApiResult<unknown>, { ok: false }>) {
-    super(`content API: ${result.status} ${result.code} [requestId=${result.requestId}]`);
-  }
-}
 
 const isLocale = (value: string): value is Locale => (LOCALE_CODES as readonly string[]).includes(value);
 
@@ -82,19 +69,7 @@ function toSummary(item: PublishedArticleSummary): ArticleSummary {
 
 /** The site's topics in one language, in the admins' order. With every language's slug. */
 export async function listTopics(locale: Locale): Promise<(Topic & { slugs: Partial<Record<Locale, string>> })[]> {
-  'use cache';
-  cacheLife('minutes');
-  cacheTag(CACHE_TAG);
-  const result = await listSiteCategories(SITE_ID);
-  if (!result.ok) throw new ContentUnavailableError(result);
-  return [...result.data]
-    .sort((a, b) => a.position - b.position || a.key.localeCompare(b.key))
-    .flatMap((category) => {
-      const own = category.translations.find((t) => t.locale === locale);
-      if (!own) return [];
-      const slugs = Object.fromEntries(category.translations.filter((t) => isLocale(t.locale)).map((t) => [t.locale, t.slug]));
-      return [{ key: category.key, slug: own.slug, name: own.name, slugs }];
-    });
+  return (await listSiteTopics(SITE_ID, locale, LOCALE_CODES)) as (SiteTopic & { slugs: Partial<Record<Locale, string>> })[];
 }
 
 export async function topicBySlug(locale: Locale, slug: string) {
@@ -103,31 +78,16 @@ export async function topicBySlug(locale: Locale, slug: string) {
 
 /** Every published article in a language, newest first (optionally one topic, by its slug). */
 export async function listArticles(locale: Locale, topicSlug?: string): Promise<ArticleSummary[]> {
-  'use cache';
-  cacheLife('minutes');
-  cacheTag(CACHE_TAG);
-  const result = await listPublishedArticles(SITE_ID, { locale, category: topicSlug, limit: PAGE_SIZE });
-  if (!result.ok) {
-    if (result.status === 404) return []; // an unknown topic
-    throw new ContentUnavailableError(result);
-  }
-  return result.data.data.map(toSummary);
+  return (await listSiteArticles(SITE_ID, locale, topicSlug)).map(toSummary);
 }
 
 /**
  * One article by its slug in `locale`, or null. An OLD slug finds it too: compare `article.slug`
- * with the slug asked and redirect (301) when they differ.
+ * with the slug asked and redirect when they differ.
  */
 export async function getArticle(locale: Locale, slug: string): Promise<Article | null> {
-  'use cache';
-  cacheLife('minutes');
-  cacheTag(CACHE_TAG);
-  const result = await getPublishedArticle(SITE_ID, locale, slug);
-  if (!result.ok) {
-    if (result.status === 404 || result.status === 400) return null; // unknown, or not a valid slug
-    throw new ContentUnavailableError(result);
-  }
-  const item = result.data;
+  const item = await getSiteArticle(SITE_ID, locale, slug);
+  if (!item) return null;
   return {
     ...toSummary(item),
     body: item.body,
@@ -137,24 +97,14 @@ export async function getArticle(locale: Locale, slug: string): Promise<Article 
   };
 }
 
-/**
- * A slug of ANOTHER language (the language switcher keeps the path; a link shared in the other
- * language): the same article's slug in `locale`, to redirect to. Null when no language has it.
- */
-export async function slugInLocale(locale: Locale, slug: string): Promise<string | null> {
-  for (const other of LOCALE_CODES) {
-    if (other === locale) continue;
-    const article = await getArticle(other, slug);
-    const own = article?.slugs[locale];
-    if (own) return own;
-  }
-  return null;
+/** A slug of ANOTHER language: the same article's slug in `locale` (to redirect to), or null. */
+export function slugInLocale(locale: Locale, slug: string): Promise<string | null> {
+  return articleSlugInLocale(SITE_ID, LOCALE_CODES, locale, slug);
 }
 
 /** Same for a topic: a segment of another language → this language's segment. */
-export async function topicSlugInLocale(locale: Locale, segment: string): Promise<string | null> {
-  const topic = (await listTopics(locale)).find((t) => Object.values(t.slugs).includes(segment));
-  return topic?.slug ?? null;
+export function topicSlugInLocale(locale: Locale, segment: string): Promise<string | null> {
+  return siteTopicSlugInLocale(SITE_ID, LOCALE_CODES, locale, segment);
 }
 
 /** "/bai-viet", "/bai-viet/<slug>", "/bai-viet/chu-de/<topic slug>" (pass through href(locale, …)). */

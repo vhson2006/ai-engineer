@@ -17,6 +17,255 @@
     "age": "Not for people under 18 or pregnant women.",
     "drive": "If you drink, don't drive."
   },
+  "policies": {
+    "updated": "Last updated: {date}",
+    "contents": "Contents",
+    "related": "See also",
+    "links": {
+      "privacy": "Privacy policy",
+      "terms": "Terms of use"
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "What personal data Khang Hưng Tửu collects, what it is used for, who it is shared with, how long it is kept, and your rights over it.",
+      "intro": "This policy explains how {name} collects, uses and protects personal data when you use the website, contact the winery to order or work with it, in line with Vietnamese personal data protection law.",
+      "sections": [
+        {
+          "id": "ben-kiem-soat",
+          "title": "Who is responsible for your data",
+          "paragraphs": [
+            "{name} (“we”), {address}, ordering phone {phone}, Zalo {zalo}, decides why and how the personal data described in this policy is processed."
+          ],
+          "items": []
+        },
+        {
+          "id": "du-lieu-thu-thap",
+          "title": "What we collect",
+          "paragraphs": [
+            "The website has no accounts, no forms and no online shop, and never asks you to enter personal information. We only have your data in these cases:"
+          ],
+          "items": [
+            "When you call or message us on Zalo to order, ask about a product or check that a product is genuine: your name or display name, phone number, your messages and the order details you give us.",
+            "When a restaurant or bar contacts us about a partnership: the business name, the contact person, phone number and your messages.",
+            "When you buy at the showroom: what the sale and its paperwork require.",
+            "When you visit the website: technical data your browser sends by itself (IP address, browser and device type, pages viewed, time of visit), kept in the server logs.",
+            "One cookie, wine_locale, remembers the language you chose (up to 1 year). The website uses no advertising cookies, analytics or tracking (Google Maps and YouTube cookies: see Sharing)."
+          ]
+        },
+        {
+          "id": "muc-dich",
+          "title": "What we use it for",
+          "paragraphs": [
+            "We never use your data for advertising, and never sell, rent or trade it with anyone."
+          ],
+          "items": [
+            "Answering your questions, advising you and taking your orders.",
+            "Discussing and carrying out partnerships with restaurants and bars.",
+            "Helping you check whether a product is genuine.",
+            "Running, securing and fixing the website.",
+            "Meeting our legal obligations."
+          ]
+        },
+        {
+          "id": "co-so",
+          "title": "Why we may process it",
+          "paragraphs": [
+            "We process data with your consent (for example when you contact us and give us information), when it is needed for an order or agreement you ask for, or when the law requires it. You can withdraw your consent at any time; this does not affect processing done before."
+          ],
+          "items": []
+        },
+        {
+          "id": "chia-se",
+          "title": "Sharing and third parties",
+          "paragraphs": [
+            "Others only get access to data when it is truly necessary:"
+          ],
+          "items": [
+            "Providers of the website's hosting and infrastructure (servers, image storage), only to provide the website to you.",
+            "Zalo, Facebook and messaging platforms: when you contact us through them, they process data under their own policies.",
+            "Google Maps, embedded in the Contact section: when the map shows, Google may set cookies and collect data under Google’s Privacy Policy (policies.google.com/privacy).",
+            "YouTube videos in some articles: only a thumbnail (from i.ytimg.com) shows until you press play; the player then loads from youtube-nocookie.com, and Google may set cookies and collect data under Google’s Privacy Policy (policies.google.com/privacy).",
+            "Competent state authorities, when the law requires it."
+          ]
+        },
+        {
+          "id": "luu-tru",
+          "title": "How long we keep it",
+          "paragraphs": [
+            "We keep data only as long as needed for the purposes above, then delete or anonymise it:"
+          ],
+          "items": [
+            "Orders and partnership discussions: until the sale or partnership is complete and any related complaint is settled.",
+            "Server logs: for a short time, for security and troubleshooting.",
+            "Data the law requires us to keep (for example invoices and accounting records): for the legal period."
+          ]
+        },
+        {
+          "id": "bao-mat",
+          "title": "Security",
+          "paragraphs": [
+            "The website is only served over an encrypted connection (HTTPS) and never stores your passwords or payment details. Only the people who need it to serve you can access your data."
+          ],
+          "items": []
+        },
+        {
+          "id": "quyen",
+          "title": "Your rights",
+          "paragraphs": [
+            "Over your personal data, you have the right to:"
+          ],
+          "items": [
+            "Know what data is processed and why.",
+            "Give consent, or withdraw it.",
+            "See, copy and ask us to correct your data.",
+            "Ask us to delete your data, or restrict or object to its processing.",
+            "Complain, report or take legal action as the law provides."
+          ]
+        },
+        {
+          "id": "thuc-hien-quyen",
+          "title": "Exercising your rights",
+          "paragraphs": [
+            "Call {phone}, message us on Zalo {zalo}, or visit the showroom at {address}. We may ask a few questions to make sure the data is yours before acting on your request."
+          ],
+          "items": []
+        },
+        {
+          "id": "tre-em",
+          "title": "People under 18",
+          "paragraphs": [
+            "The website and our products are only for people aged 18 and over; we do not sell alcohol to anyone under 18 and do not knowingly collect data about people under 18. If you think we hold data about someone under 18, contact us and we will delete it."
+          ],
+          "items": []
+        },
+        {
+          "id": "thay-doi",
+          "title": "Changes to this policy",
+          "paragraphs": [
+            "When this policy changes, we update this page and the “Last updated” date at the top. Important changes will be clearly announced on the website."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Contact",
+          "paragraphs": [
+            "{name}, {address}. Ordering phone: {phone}. Zalo: {zalo}."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of use",
+      "description": "The terms for using the Khang Hưng Tửu website: age, product information, ordering by phone and Zalo, genuine products, articles, ownership of the content and the applicable law.",
+      "intro": "These terms apply when you use the website of {name}. By using the website, you agree to the terms below. How we handle personal data is described in the Privacy policy.",
+      "sections": [
+        {
+          "id": "do-tuoi",
+          "title": "Age",
+          "paragraphs": [
+            "The website presents alcoholic drinks and is only for people aged 18 and over. By using it, you confirm that you are at least 18. Our products are not for pregnant women. If you drink, don't drive."
+          ],
+          "items": []
+        },
+        {
+          "id": "thong-tin-san-pham",
+          "title": "Product information and prices",
+          "paragraphs": [
+            "Product information, photos and prices on the website come from the winery’s own materials and showroom and are for reference only; photos may differ from the actual product in colour or packaging. Prices, sizes and availability are confirmed when you order.",
+            "We may update products, prices and the website’s content at any time."
+          ],
+          "items": []
+        },
+        {
+          "id": "dat-hang",
+          "title": "Ordering",
+          "paragraphs": [
+            "The website does not sell online. You order by calling {phone} or messaging us on Zalo {zalo}, or at the showroom. The terms of each order (price, quantity, how you receive it, payment) are agreed and confirmed with you when you order.",
+            "We do not sell alcohol to anyone under 18 and may refuse an order when we cannot confirm the buyer is of age."
+          ],
+          "items": []
+        },
+        {
+          "id": "hang-chinh-hang",
+          "title": "Genuine products",
+          "paragraphs": [
+            "The ordering number {phone} is printed on the winery’s products. If you suspect a counterfeit, call this number to check before you buy."
+          ],
+          "items": []
+        },
+        {
+          "id": "bai-viet",
+          "title": "Articles",
+          "paragraphs": [
+            "The website’s articles present the brand, how the wines are made, how to serve them and partnership news. They are for reference only and are not health advice. Please drink responsibly."
+          ],
+          "items": []
+        },
+        {
+          "id": "so-huu",
+          "title": "Ownership of the content",
+          "paragraphs": [
+            "The names, trademark, product labels, photos, articles and design of the website belong to {name} or are used lawfully. You may share links to the website and quote short passages with the source; you may not copy the content for commercial use without our permission."
+          ],
+          "items": []
+        },
+        {
+          "id": "su-dung-hop-le",
+          "title": "Acceptable use",
+          "paragraphs": [
+            "When using the website, you must not:"
+          ],
+          "items": [
+            "Attack it, scan it for vulnerabilities or overload it.",
+            "Scrape content in a way that affects how the website works.",
+            "Impersonate the winery or use its name or images for unlawful purposes."
+          ]
+        },
+        {
+          "id": "ben-thu-ba",
+          "title": "Third-party links and content",
+          "paragraphs": [
+            "The website has links to, and embedded content from, Google Maps, YouTube, Zalo, Facebook and other platforms. We do not control them and are not responsible for their content or policies."
+          ],
+          "items": []
+        },
+        {
+          "id": "trach-nhiem",
+          "title": "Limitation of liability",
+          "paragraphs": [
+            "We try to keep the information accurate and the website running, but cannot promise it will always be free of errors or interruptions. As far as the law allows, we are not liable for damage arising from the use of information on the website. This does not affect your rights as a consumer under Vietnamese law."
+          ],
+          "items": []
+        },
+        {
+          "id": "luat-ap-dung",
+          "title": "Applicable law",
+          "paragraphs": [
+            "These terms are governed by Vietnamese law. Disputes are settled by negotiation first and, failing that, by the competent authority as the law provides."
+          ],
+          "items": []
+        },
+        {
+          "id": "thay-doi",
+          "title": "Changes to these terms",
+          "paragraphs": [
+            "When these terms change, we update this page and the “Last updated” date at the top. Continuing to use the website afterwards means you accept the new terms."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Contact",
+          "paragraphs": [
+            "{name}, {address}. Ordering phone: {phone}. Zalo: {zalo}."
+          ],
+          "items": []
+        }
+      ]
+    }
+  },
   "topBar": {
     "orderOnly": "Order only through the number printed on our cans: {phone}"
   },
@@ -25,6 +274,7 @@
     "home": "Khang Hưng Tửu home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
+    "top": "Home",
     "products": "Products",
     "range": "Our range",
     "partners": "For restaurants",
@@ -47,10 +297,22 @@
   "trust": {
     "label": "Why Khang Hưng Tửu",
     "items": {
-      "since": { "title": "Since 1991", "text": "More than thirty years of winemaking in Long An." },
-      "trademark": { "title": "Registered trademark", "text": "An exclusive, registered brand: look for our label and seal." },
-      "quality": { "title": "Own quality control", "text": "Dedicated steeping rooms and an R&D and quality-control (KCS) lab." },
-      "partners": { "title": "Partner with restaurants", "text": "Display stands, cabinets and visits from our team, wherever you are." }
+      "since": {
+        "title": "Since 1991",
+        "text": "More than thirty years of winemaking in Long An."
+      },
+      "trademark": {
+        "title": "Registered trademark",
+        "text": "An exclusive, registered brand: look for our label and seal."
+      },
+      "quality": {
+        "title": "Own quality control",
+        "text": "Dedicated steeping rooms and an R&D and quality-control (KCS) lab."
+      },
+      "partners": {
+        "title": "Partner with restaurants",
+        "text": "Display stands, cabinets and visits from our team, wherever you are."
+      }
     }
   },
   "featured": {
@@ -112,8 +374,16 @@
     "title": "Khang Hưng Tửu is delighted to partner with restaurants",
     "intro": "We invest in, display and advertise our wines alongside you. Our staff will visit you in person to discuss every detail.",
     "items": {
-      "tower": { "title": "Wine tower stand", "text": "A wooden tower that showcases our bottles at your counter.", "imageAlt": "Wooden wine tower stand with bottles" },
-      "cabinet": { "title": "Wine cabinet", "text": "A display cabinet for your dining room.", "imageAlt": "Black wine display cabinet" }
+      "tower": {
+        "title": "Wine tower stand",
+        "text": "A wooden tower that showcases our bottles at your counter.",
+        "imageAlt": "Wooden wine tower stand with bottles"
+      },
+      "cabinet": {
+        "title": "Wine cabinet",
+        "text": "A display cabinet for your dining room.",
+        "imageAlt": "Black wine display cabinet"
+      }
     },
     "cta": "Call to discuss"
   },
@@ -123,7 +393,10 @@
     "text": "Our winery sits on National Route 1A in the Gò Đen hamlet, home of one of Vietnam's best-known rice wines. Every batch is steeped in our own immersion rooms and checked by our research and quality-control lab before it leaves.",
     "storefrontAlt": "The Khang Hưng Tửu winery entrance on National Route 1A",
     "factoryAlt": "Steeping vats in the immersion department and shelves of samples in the R&D lab",
-    "departments": ["Immersion & processing department", "R&D and quality-control (KCS) lab"]
+    "departments": [
+      "Immersion & processing department",
+      "R&D and quality-control (KCS) lab"
+    ]
   },
   "counterfeit": {
     "title": "Protect yourself from imitations",
@@ -141,9 +414,11 @@
       "owner": "Business owner",
       "hotline": "Hotline",
       "care": "Customer care"
-    }
+    },
+    "mapTitle": "Google Maps: Khang Hưng Tửu winery"
   },
   "articles": {
+    "playVideo": "Play the video",
     "eyebrow": "Articles",
     "title": "Stories from Gò Đen",
     "intro": "Brand stories, the craft, how to serve our wines and partner news from Khang Hưng Tửu.",
@@ -151,13 +426,6 @@
     "metaDescription": "Articles from Khang Hưng Tửu: the brand's story, the infusion room and quality lab, how to serve warm wine and rượu cần, and restaurant partnerships. For adults 18 and over.",
     "categoriesLabel": "Topics",
     "all": "All",
-    "categories": {
-      "brand": "Brand",
-      "craft": "Craft",
-      "serving": "How to serve",
-      "guide": "Guides",
-      "partners": "Partners"
-    },
     "categoryTitle": "Topic: {category}",
     "categoryDescription": "Khang Hưng Tửu articles about {category}.",
     "featured": "Featured",
@@ -175,7 +443,7 @@
     "copied": "Copied",
     "back": "All articles",
     "breadcrumb": "Breadcrumb",
-    "sample": "Sample content for reviewing the design, assembled from facts already on the site. Real articles will come from the admin."
+    "none": "No article has been published yet."
   },
   "templates": {
     "metaTitle": "Article templates",
@@ -197,7 +465,8 @@
     "tagline": "Traditional rice and herbal wines from Bến Lức, Long An, since 1991.",
     "explore": "Explore",
     "contact": "Contact",
-    "rights": "© {year} {name}. All rights reserved."
+    "rights": "© {year} {name}. All rights reserved.",
+    "legal": "Legal information"
   },
   "notFound": {
     "title": "Page not found",

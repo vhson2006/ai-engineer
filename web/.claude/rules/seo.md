@@ -28,7 +28,10 @@ Decision: ADR 0021. portfolio-web is public and optimized for search; admin-web 
 - **JSON-LD** through `<JsonLd data={structuredData(...)} />`: extend the graph (stable `@id`s),
   don't add unrelated scripts. Keep the facts in sync with the visible content.
 - **Link preview image**: `app/[lang]/opengraph-image.tsx` (Geist from
-  `packages/ui/assets/fonts`, traced in `next.config.ts`); `twitter-image.tsx` re-exports it.
+  `packages/ui/assets/fonts`, traced in `next.config.ts`); `twitter-image.tsx` re-exports it. A site
+  whose articles have their own covers can't use it (a file-based image overrides page metadata):
+  nails-web draws its card in a Route Handler (`app/og/[image]/route.ts`) and sets it in `src/seo.ts`.
+- Client sites build page metadata with `localizedPageMetadata` (`@web/core/i18n/seo`) through their `pageMetadata`.
 - **Icons**: edit `src/app/icon.svg` / `assets/icon-maskable.svg`, then `npm run icons` (in
   `web/`) and commit the generated files. Never hand-edit the PNG/ICO outputs.
 - Root metadata files (`robots.txt`, `sitemap.xml`, `manifest.webmanifest`, icons) must stay

@@ -13,10 +13,14 @@ const TONES = {
  * A full-width band behind one section: the page alternates white and pastel washes so long
  * scrolls don't feel empty. Washes are lighter than the bento card fills; cards that would be
  * grey on a wash use `bg-surface` (white) instead.
+ *
+ * `id`: the anchor the menu scrolls to (SectionNav, SmoothScroll). The BAND carries it, so a
+ * section stops right under the sticky header (`--header-h`) with the band's own top padding as
+ * breathing room, and the band's colour fills the screen edge to edge.
  */
-export function Band({ tone, className, children }: { tone: keyof typeof TONES; className?: string; children: ReactNode }) {
+export function Band({ id, tone, className, children }: { id?: string; tone: keyof typeof TONES; className?: string; children: ReactNode }) {
   return (
-    <div className={cn('py-20 sm:py-28', TONES[tone], className)}>
+    <div id={id} className={cn('scroll-mt-(--header-h) py-14 sm:py-16', TONES[tone], className)}>
       <Container className="max-w-7xl">{children}</Container>
     </div>
   );

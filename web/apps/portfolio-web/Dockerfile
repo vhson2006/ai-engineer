@@ -14,6 +14,8 @@ COPY package.json package-lock.json ./
 COPY apps/portfolio-web/package.json apps/portfolio-web/
 COPY packages/core/package.json packages/core/
 COPY packages/ui/package.json packages/ui/
+COPY packages/video/package.json packages/video/
+COPY apps/render-worker/package.json apps/render-worker/
 COPY apps/admin-web/package.json apps/admin-web/
 RUN npm ci -w portfolio-web
 

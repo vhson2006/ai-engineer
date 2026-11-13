@@ -79,7 +79,8 @@ jobs:
           done
           portfolio=$(changed portfolio-web '^web/(packages/|apps/portfolio-web/|package(-lock)?\.json|tsconfig)')
           admin=$(changed admin-web '^web/(packages/|apps/admin-web/|package(-lock)?\.json|tsconfig)')
-          echo "api=$api portfolio-web=$portfolio admin-web=$admin"
+          worker=$(changed render-worker '^web/(packages/video/|apps/render-worker/|package(-lock)?\.json|tsconfig)')
+          echo "api=$api portfolio-web=$portfolio admin-web=$admin render-worker=$worker"
 
           if [ "$SITE_URL" = "https://www.example.com" ] && [ "$portfolio" = true ]; then
             echo "::warning::Repository variable PROD_SITE_URL is not set: portfolio-web is built for https://www.example.com"
@@ -89,7 +90,7 @@ jobs:
           # match deployment-service: ADR 0007/migration Job), so they are built together.
           matrix=$(jq -cn \
             --arg r "$registry" --arg site "$SITE_URL" \
-            --argjson api "$api" --argjson portfolio "$portfolio" --argjson admin "$admin" '
+            --argjson api "$api" --argjson portfolio "$portfolio" --argjson admin "$admin" --argjson worker "$worker" '
             [
               ($api | if . then
                 {name:"deployment-service",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"deployment-service",   args:""},
@@ -103,6 +104,9 @@ jobs:
               else empty end),
               ($admin | if . then
                 {name:"admin-web", context:"web", file:"web/apps/admin-web/Dockerfile", target:"", args:""}
+              else empty end),
+              ($worker | if . then
+                {name:"render-worker", context:"web", file:"web/apps/render-worker/Dockerfile", target:"", args:""}
               else empty end)
             ] | map(. + {image: ($r + "/" + .name)})')
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"

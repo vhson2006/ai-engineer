@@ -29,6 +29,7 @@ async function sidebarGroups(t: Messages, locale: Locale): Promise<SidebarGroup[
             { href: `${base}/articles`, label: t.nav.articles },
             { href: `${base}/categories`, label: t.nav.categories },
             { href: `${base}/media`, label: t.nav.media },
+            { href: `${base}/studio`, label: t.nav.studio },
           ],
         };
       }),

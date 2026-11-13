@@ -12,6 +12,8 @@ import {
   layoutBlockHtml,
   layoutClass,
   layoutExtensions,
+  layoutVideoHtml,
+  layoutYouTubeHtml,
   lostInVisualEditor,
   removeLayoutBlock,
   unwrapLayoutBlock,
@@ -44,6 +46,30 @@ describe('layout blocks in the visual editor', () => {
     expect(roundTrip(`<figure class="tpl-wide">${img}</figure>`)).toBe(`<figure class="tpl-wide">${img}</figure>`);
   });
 
+  it('keeps a studio clip (ADR 0039) as a figure with its poster, size and caption', () => {
+    const base = 'https://cdn.test/studio/nails/7d0c4f3e-1b2a-4c5d-8e9f-0a1b2c3d4e5f/video/0a1b2c3d-4e5f-4a6b-8c7d-9e0f1a2b3c4d';
+    const html = layoutVideoHtml({ src: `${base}-web.mp4`, poster: `${base}.jpg`, width: 720, height: 1280 }, 'Chú "thích" <x>');
+    expect(html).toBe(
+      `<figure class="tpl-video"><video src="${base}-web.mp4" poster="${base}.jpg" width="720" height="1280" controls playsinline preload="none"></video><figcaption>Chú &quot;thích&quot; &lt;x&gt;</figcaption></figure>`,
+    );
+    const kept = roundTrip(html);
+    expect(removedOnSave(html, kept)).toEqual([]);
+    expect(lostInVisualEditor(html, schema)).toEqual([]);
+    expect(kept).toContain(
+      `<video src="${base}-web.mp4" poster="${base}.jpg" width="720" height="1280" controls="" playsinline="" preload="none"></video>`,
+    );
+  });
+
+  it('keeps a YouTube embed (ADR 0040): id, Shorts class, caption; a new one starts without a video', () => {
+    const html = '<figure class="tpl-youtube tpl-short" data-youtube="dQw4w9WgXcQ"><figcaption>Xem nhé</figcaption></figure>';
+    expect(roundTrip(html)).toBe(html);
+    expect(lostInVisualEditor(html, schema)).toEqual([]);
+    expect(roundTrip('<figure class="tpl-youtube" data-youtube="bad id"><figcaption>c</figcaption></figure>')).toBe(
+      '<figure class="tpl-youtube" data-youtube=""><figcaption>c</figcaption></figure>',
+    );
+    expect(roundTrip(layoutYouTubeHtml('<b>'))).toBe('<figure class="tpl-youtube" data-youtube=""><figcaption>&lt;b&gt;</figcaption></figure>');
+  });
+
   it('keeps only tpl-* classes (pasted classes never reach the admin page)', () => {
     expect(layoutClass('tpl-callout fixed inset-0 tpl-note')).toBe('tpl-callout tpl-note');
     expect(layoutClass('mso-normal')).toBeNull();
@@ -58,7 +84,11 @@ describe('layout blocks in the visual editor', () => {
   });
 
   it('Enter after a styled paragraph starts a plain one, inside the same block', () => {
-    const editor = new Editor({ element: document.createElement('div'), extensions, content: '<section class="tpl-callout tpl-note"><p class="tpl-lead">ab</p></section>' });
+    const editor = new Editor({
+      element: document.createElement('div'),
+      extensions,
+      content: '<section class="tpl-callout tpl-note"><p class="tpl-lead">ab</p></section>',
+    });
     editor.chain().setTextSelection(4).splitBlock().insertContent('c').run();
     expect(editorHtml(editor)).toBe('<section class="tpl-callout tpl-note"><p class="tpl-lead">ab</p><p>c</p></section>');
     editor.destroy();
@@ -85,7 +115,10 @@ describe('layout blocks in the visual editor', () => {
   });
 
   it.each(LAYOUT_BLOCKS)('inserts a %s block that survives the editor', (block) => {
-    const labels = { blocks: Object.fromEntries(LAYOUT_BLOCKS.map((b) => [b, `<${b}> & "x"`])) as Record<(typeof LAYOUT_BLOCKS)[number], string>, text: 'Nội dung' };
+    const labels = {
+      blocks: Object.fromEntries(LAYOUT_BLOCKS.map((b) => [b, `<${b}> & "x"`])) as Record<(typeof LAYOUT_BLOCKS)[number], string>,
+      text: 'Nội dung',
+    };
     const html = layoutBlockHtml(block, labels);
     expect(html).not.toMatch(/<(note|tip|warn|summary|columns|cards|steps|split|image|pull|faq|cta)>/); // labels escaped
     expect(lostInVisualEditor(html, schema)).toEqual([]);

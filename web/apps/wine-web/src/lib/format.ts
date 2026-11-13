@@ -13,3 +13,11 @@ export function formatDate(locale: Locale, isoDate: string): string {
     new Date(Date.UTC(year, month - 1, day)),
   );
 }
+
+/** The winery's clock: an article's publication instant is shown as its date in Vietnam. */
+const WINERY_TIME_ZONE = 'Asia/Ho_Chi_Minh';
+
+/** A publication instant (ISO, from the API) as a date in the visitor's language, Vietnam time. */
+export function formatInstantDate(locale: Locale, iso: string): string {
+  return new Intl.DateTimeFormat(LOCALES[locale].intl, { day: 'numeric', month: 'long', year: 'numeric', timeZone: WINERY_TIME_ZONE }).format(new Date(iso));
+}

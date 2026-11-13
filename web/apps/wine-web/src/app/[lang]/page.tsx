@@ -20,16 +20,18 @@ import {
 import type { ReactNode } from 'react';
 import { format } from '@web/core/i18n/format';
 import { Container, buttonVariants, cn, richText } from '@web/ui';
+import { JsonLd } from '@web/ui/json-ld';
 import { Reveal } from '@web/ui/reveal';
 import { LegalNotice } from '@/components/legal-notice';
 import { Seal } from '@/components/logo';
 import { Eyebrow, SectionHeading } from '@/components/section-heading';
 import { ArticleGrid } from '@/features/articles/article-card';
-import { articlePaths, listArticles } from '@/features/articles/data';
-import { bottled, featured, jars, ruouCan, signatureBrands, winery } from '@/content/winery';
+import { articlePaths, latestArticles, type ArticleSummary } from '@/features/articles/data';
+import { bottled, featured, jars, mapEmbedSrc, mapsHref, ruouCan, signatureBrands, winery } from '@/content/winery';
 import { href, type Locale } from '@/i18n/locales';
 import { getLocale, getMessages, type Messages } from '@/i18n/messages';
 import { formatVnd } from '@/lib/format';
+import { structuredData } from '@/seo';
 import cabinet from '../../../public/images/cabinet.jpg';
 import displayJars from '../../../public/images/display-jars.jpg';
 import factory from '../../../public/images/factory.jpg';
@@ -57,8 +59,12 @@ type Ctx = { t: Messages; locale: Locale };
 export default async function HomePage() {
   const [t, locale] = await Promise.all([getMessages(), getLocale()]);
   const ctx: Ctx = { t, locale };
+  // The articles section only when there are articles (none yet, or the API is down: no section).
+  const articles = await latestArticles(locale, 3);
   return (
     <>
+      {/* The winery (address, phones, map) and the website for search engines. */}
+      <JsonLd data={structuredData(t, locale)} />
       <Hero {...ctx} />
       <TrustStrip {...ctx} />
       <Reveal>
@@ -82,11 +88,13 @@ export default async function HomePage() {
       <Reveal>
         <About {...ctx} />
       </Reveal>
+      {articles.length > 0 && (
+        <Reveal>
+          <LatestArticles {...ctx} articles={articles} />
+        </Reveal>
+      )}
       <Reveal>
-        <LatestArticles {...ctx} />
-      </Reveal>
-      <Reveal>
-        <Contact {...ctx} />
+        <Contact {...ctx} afterArticles={articles.length > 0} />
       </Reveal>
     </>
   );
@@ -96,10 +104,11 @@ export default async function HomePage() {
 
 function Hero({ t }: Ctx) {
   return (
-    <section className="relative isolate overflow-hidden bg-deep text-white">
+    // id="top": the menu's Home link. The huge scroll margin scrolls to the very top of the page.
+    <section id="top" className="relative isolate scroll-mt-[100vh] overflow-hidden bg-deep text-white">
       <Image src={showroom} alt={t.hero.imageAlt} priority placeholder="blur" sizes="100vw" className="absolute inset-0 -z-20 size-full object-cover" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-deep via-deep/90 to-deep/30" />
-      <Container className="py-20 sm:py-28 lg:py-32">
+      <Container className="py-16 sm:py-24 lg:py-28">
         <div className="max-w-2xl">
           <Eyebrow tone="light" align="left">
             {t.hero.eyebrow}
@@ -178,10 +187,10 @@ function Featured({ t }: Ctx) {
     { id: 'cans', title: t.featured.cans, items: featured.filter((item) => item.kind === 'can'), cols: 'grid-cols-2 lg:grid-cols-4' },
   ];
   return (
-    <section id="products" className="py-20 sm:py-28">
+    <section id="products" className="py-14 sm:py-16">
       <Container>
         <SectionHeading eyebrow={t.featured.eyebrow} title={t.featured.title} intro={t.featured.intro} />
-        <div className="mt-14 space-y-12">
+        <div className="mt-10 space-y-12">
           {groups.map((group) => (
             <div key={group.id}>
               <h3 className="flex items-center gap-4 font-display text-2xl font-bold text-brand-strong">
@@ -219,7 +228,7 @@ function Featured({ t }: Ctx) {
 
 function Jars({ t, locale }: Ctx) {
   return (
-    <section className="bg-surface-2 py-20 sm:py-28">
+    <section className="bg-surface-2 py-14 sm:py-16">
       <Container className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div className="relative mx-auto w-full max-w-md">
           <div aria-hidden className="absolute -inset-3 rotate-3 rounded-[2rem] bg-brand" />
@@ -253,10 +262,10 @@ function Jars({ t, locale }: Ctx) {
 
 function Range({ t }: Ctx) {
   return (
-    <section id="range" className="py-20 sm:py-28">
+    <section id="range" className="py-14 sm:py-16">
       <Container>
         <SectionHeading eyebrow={t.range.eyebrow} title={t.range.title} intro={t.range.intro} />
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <div className="rounded-[2rem] border border-border bg-surface p-7 sm:p-9">
             <h3 className="font-display text-2xl font-bold text-brand-strong">{t.range.signatureTitle}</h3>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -288,10 +297,10 @@ function Range({ t }: Ctx) {
 
 function Serving({ t }: Ctx) {
   return (
-    <section className="bg-surface-2 py-20 sm:py-28">
+    <section className="bg-surface-2 py-14 sm:py-16">
       <Container>
         <SectionHeading eyebrow={t.serving.eyebrow} title={`${t.serving.hapNong.title} · ${t.serving.ruouCan.title}`} />
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <article className="rounded-[2rem] border border-border bg-surface p-7 sm:p-9">
             <span className="inline-flex size-14 items-center justify-center rounded-full bg-brand text-yellow">
               <Flame aria-hidden className="size-6" />
@@ -372,7 +381,7 @@ function Partners({ t }: Ctx) {
     { id: 'cabinet' as const, image: cabinet },
   ];
   return (
-    <section id="partners" className="lattice bg-deep py-20 text-white sm:py-28">
+    <section id="partners" className="lattice bg-deep py-14 text-white sm:py-16">
       <Container className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div>
           <SectionHeading align="left" tone="light" eyebrow={t.partners.eyebrow} title={t.partners.title} intro={t.partners.intro} />
@@ -406,7 +415,7 @@ function Partners({ t }: Ctx) {
 
 function About({ t }: Ctx) {
   return (
-    <section id="about" className="py-20 sm:py-28">
+    <section id="about" className="py-14 sm:py-16">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <SectionHeading align="left" eyebrow={t.about.eyebrow} title={t.about.title} intro={t.about.text} />
@@ -430,11 +439,9 @@ function About({ t }: Ctx) {
 
 /* ─────────────────────────────── Latest articles ─────────────────────────────── */
 
-async function LatestArticles({ t, locale }: Ctx) {
-  const articles = (await listArticles(locale)).slice(0, 3);
-  if (articles.length === 0) return null;
+function LatestArticles({ t, locale, articles }: Ctx & { articles: ArticleSummary[] }) {
   return (
-    <section id="articles" className="bg-surface-2 py-20 sm:py-28">
+    <section id="articles" className="bg-surface-2 py-14 sm:py-16">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.articles.latestIntro} />
@@ -443,7 +450,7 @@ async function LatestArticles({ t, locale }: Ctx) {
             <ArrowRight aria-hidden />
           </Link>
         </div>
-        <div className="mt-14">
+        <div className="mt-10">
           <ArticleGrid articles={articles} locale={locale} t={t} />
         </div>
       </Container>
@@ -453,9 +460,13 @@ async function LatestArticles({ t, locale }: Ctx) {
 
 /* ─────────────────────────────── Contact ─────────────────────────────── */
 
-function Contact({ t }: Ctx) {
+/** After the grey articles band it needs its own top padding; right after About, About's is enough. */
+function Contact({ t, locale, afterArticles }: Ctx & { afterArticles: boolean }) {
   return (
-    <section id="contact" className="pb-20 sm:pb-28">
+    <section
+      id="contact"
+      className={cn('pb-14 sm:pb-16', afterArticles ? 'pt-14 sm:pt-16' : 'scroll-mt-[calc(var(--header-h)+2rem)]')}
+    >
       <Container>
         <div className="grid overflow-hidden rounded-[2.5rem] border border-border bg-surface lg:grid-cols-[1.1fr_1fr]">
           <div className="p-8 sm:p-12">
@@ -482,10 +493,6 @@ function Contact({ t }: Ctx) {
                 <MessageCircle aria-hidden />
                 {t.common.zalo}
               </a>
-              <a href={winery.mapsHref} target="_blank" rel="noopener noreferrer" className={pill('secondary')}>
-                <Navigation aria-hidden />
-                {t.common.directions}
-              </a>
             </div>
           </div>
 
@@ -507,6 +514,27 @@ function Contact({ t }: Ctx) {
               ))}
             </dl>
             <LegalNotice tone="light" className="mt-auto pt-8" />
+          </div>
+
+          {/* Google Maps across the card (keyless embed; www.google.com is allowed in src/proxy.ts
+              frameOrigins). Lazy: it loads only when the visitor scrolls near it. */}
+          <div className="relative isolate h-80 border-t border-border bg-surface-2 sm:h-96 lg:col-span-2">
+            <iframe
+              title={t.contact.mapTitle}
+              src={mapEmbedSrc(locale)}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 -z-10 size-full border-0"
+            />
+            <a
+              href={mapsHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(pill(), 'absolute bottom-4 left-4 shadow-lg sm:bottom-6 sm:left-6')}
+            >
+              <Navigation aria-hidden />
+              {t.common.directions}
+            </a>
           </div>
         </div>
       </Container>
