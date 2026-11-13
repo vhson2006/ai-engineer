@@ -19,9 +19,11 @@ import type { MediaImage } from './content.media';
 /**
  * draft → writing → written → voicing → voiced → rendering → rendered. A failed step returns to
  * the status before it with `error` set; editing the script after the voice clears the voice.
+ * `suggesting` ("Suggest with AI" drafting the input fields) returns to where the project was.
  */
 export const STUDIO_PROJECT_STATUSES = [
   'draft',
+  'suggesting',
   'writing',
   'written',
   'voicing',
@@ -42,6 +44,11 @@ export interface StudioInputs {
    * `optional` one, false or absent = a silent video (no voice step).
    */
   narration?: boolean;
+  /**
+   * Facts drafted by "Suggest with AI" and not edited since (shown as drafts to check). Written by
+   * the server only: an edited fact leaves the list.
+   */
+  suggested?: string[];
 }
 
 export interface StudioScriptScene {
@@ -187,6 +194,10 @@ export interface StudioBrandKitResponse {
   callToAction: string | null;
   tone: string | null;
   footerNote: string | null;
+  website: string | null;
+  address: string | null;
+  hours: string | null;
+  prices: string | null;
   bannedPhrases: string[];
   primaryColor: string;
   accentColor: string;

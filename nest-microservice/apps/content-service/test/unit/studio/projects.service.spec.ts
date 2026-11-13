@@ -2,6 +2,8 @@ import { ConflictException, UnprocessableEntityException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import {
+  FACT_SUGGESTION_EVENTS,
+  type FactSuggestionRequestedEvent,
   InMemoryObjectStorage,
   OutboxRelay,
   SCRIPT_WRITING_EVENTS,
@@ -445,6 +447,205 @@ describe('[projects.service] (unit)', () => {
         `public:studio/nails/${ID}/video/${RENDER}-web.mp4`,
         `public:studio/nails/${ID}/video/${RENDER}.jpg`,
       ]);
+    });
+  });
+
+  describe('suggest with AI', () => {
+    const kit = {
+      siteId: 'nails',
+      brandName: 'Envy Nails Spa',
+      tagline: null,
+      phone: '(919) 366-6435',
+      callToAction: null,
+      tone: null,
+      footerNote: null,
+      website: 'envynailsspaofwendell.com',
+      address: '2241 Treelight Way\nWendell, NC 27591',
+      hours: 'Mon–Sat | 9:30 AM – 7 PM',
+      prices: 'Classic manicure | $27',
+      bannedPhrases: [],
+      primaryColor: '#4db6ac',
+      accentColor: '#f48fb1',
+      logoMediaId: null,
+      logoMedia: null,
+      updatedBy: writer.id,
+      updatedAt: new Date(),
+    };
+    const showcase = (overrides: Record<string, unknown> = {}) =>
+      project({
+        templateId: 'brand-showcase',
+        title: 'Fall looks',
+        inputs: {
+          images: { cover: HERO, look1: HERO, look2: DETAIL },
+          avatars: {},
+          voices: {},
+          facts: {},
+        },
+        ...overrides,
+      });
+
+    beforeEach(() => prisma.studioBrandKit.findUnique.mockResolvedValue(kit));
+
+    it('takes the business facts from the brand kit, asks the AI for the descriptive ones only', async () => {
+      const row = showcase();
+      prisma.studioProject.findFirst.mockResolvedValue(row);
+      applyUpdates(row);
+      await service.requestSuggest('nails', ID, writer);
+
+      expect(outboxSubjects(prisma)).toEqual([FACT_SUGGESTION_EVENTS.REQUESTED]);
+      const event = outboxPayload<FactSuggestionRequestedEvent>(prisma);
+      expect(event.fields.map((f) => f.id)).toEqual(['captions', 'promises']);
+      // The looks to name: their smallest size, in the slots' order.
+      expect(event.fields[0].images).toEqual([
+        `media/nails/${HERO}/640.webp`,
+        `media/nails/${DETAIL}/640.webp`,
+      ]);
+      expect(event.known.map((k) => k.id)).toEqual(['website', 'prices', 'address', 'hours']);
+      const data = prisma.studioProject.updateManyAndReturn.mock.calls[0][0].data as {
+        status: string;
+        inputs: { facts: Record<string, string> };
+      };
+      expect(data.status).toBe('suggesting');
+      expect(data.inputs.facts).toMatchObject({
+        website: 'envynailsspaofwendell.com',
+        prices: 'Classic manicure | $27',
+        hours: 'Mon–Sat | 9:30 AM – 7 PM',
+      });
+    });
+
+    it('nothing left to draft: saves the brand facts, no AI job', async () => {
+      const row = showcase({
+        inputs: {
+          images: { cover: HERO, look1: HERO },
+          avatars: {},
+          voices: {},
+          facts: { captions: 'Mint', promises: 'Clean | Sterilized tools' },
+        },
+      });
+      prisma.studioProject.findFirst.mockResolvedValue(row);
+      applyUpdates(row);
+      const answered = await service.requestSuggest('nails', ID, writer);
+      expect(prisma.outboxMessage.create).not.toHaveBeenCalled();
+      expect(answered.status).toBe('draft');
+      expect(answered.inputs.facts.website).toBe('envynailsspaofwendell.com');
+    });
+
+    it('fills only empty, suggestable facts and drops lines with invented numbers', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        showcase({
+          status: 'suggesting',
+          suggestJobId: JOB,
+          inputs: {
+            images: {},
+            avatars: {},
+            voices: {},
+            facts: { prices: 'Classic manicure | $27', captions: 'Typed by the admin' },
+          },
+        }),
+      );
+      prisma.site.findUniqueOrThrow.mockResolvedValue(site);
+      await service.suggestionWritten(prisma as never, {
+        jobId: JOB,
+        requester: 'content-service',
+        siteId: 'nails',
+        facts: [
+          {
+            id: 'promises',
+            text: 'Clean | Sterilized tools\nExperienced | Over 15 years of nails',
+          },
+          { id: 'captions', text: 'Mint foil' },
+          { id: 'prices', text: 'Gel | $5' },
+        ],
+        provider: 'fake',
+        model: 'fake',
+      });
+      expect(prisma.studioProject.update).toHaveBeenCalledWith({
+        where: { id: ID },
+        data: {
+          inputs: expect.objectContaining({
+            facts: {
+              prices: 'Classic manicure | $27',
+              captions: 'Typed by the admin',
+              promises: 'Clean | Sterilized tools',
+            },
+            suggested: ['promises'],
+          }),
+          status: 'draft',
+          suggestJobId: null,
+          error: null,
+        },
+      });
+    });
+
+    it('a failed suggestion returns the project to where it was, with the reason', async () => {
+      prisma.studioProject.findFirst.mockResolvedValue(
+        showcase({ status: 'suggesting', suggestJobId: JOB, script }),
+      );
+      await service.suggestionFailed(prisma as never, {
+        jobId: JOB,
+        requester: 'content-service',
+        siteId: 'nails',
+        reason: 'provider_refused',
+      });
+      expect(prisma.studioProject.update).toHaveBeenCalledWith({
+        where: { id: ID },
+        data: { status: 'written', suggestJobId: null, error: 'suggest_provider_refused' },
+      });
+    });
+
+    it('an AI draft the admin edits is theirs (no longer marked)', async () => {
+      const row = showcase({
+        status: 'draft',
+        inputs: {
+          images: { cover: HERO, look1: HERO },
+          avatars: {},
+          voices: {},
+          facts: { captions: 'Mint foil', promises: 'Clean | Sterilized tools' },
+          suggested: ['captions', 'promises'],
+        },
+      });
+      prisma.studioProject.findFirst.mockResolvedValue(row);
+      prisma.media.count.mockResolvedValue(1);
+      applyUpdates(row);
+      const answered = await service.update(
+        'nails',
+        ID,
+        {
+          inputs: {
+            images: { cover: HERO, look1: HERO },
+            avatars: {},
+            voices: {},
+            facts: { captions: 'Mint foil', promises: 'Clean | Tools sterilized for every guest' },
+            suggested: ['promises'],
+          } as never,
+        },
+        writer,
+      );
+      expect(answered.inputs.suggested).toEqual(['captions']);
+    });
+
+    it('a new project takes the business facts from the brand kit', async () => {
+      prisma.media.count.mockResolvedValue(1);
+      prisma.studioProject.create.mockImplementation(
+        ({ data }: { data: Record<string, unknown> }) => Promise.resolve(project(data)),
+      );
+      await service.create(
+        'nails',
+        {
+          templateId: 'brand-showcase',
+          title: 'Fall looks',
+          language: 'en',
+          inputs: { images: { cover: HERO, look1: HERO }, avatars: {}, voices: {}, facts: {} },
+        },
+        writer,
+      );
+      expect(prisma.studioProject.create).toHaveBeenCalledWith({
+        data: expect.objectContaining({
+          inputs: expect.objectContaining({
+            facts: expect.objectContaining({ address: '2241 Treelight Way\nWendell, NC 27591' }),
+          }),
+        }),
+      });
     });
   });
 });

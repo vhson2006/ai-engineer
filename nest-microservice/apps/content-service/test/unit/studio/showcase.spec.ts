@@ -90,11 +90,11 @@ describe('[brand-showcase template] (unit)', () => {
       imageUrl: 'https://cdn/cover.webp',
       website: 'envynailsspaofwendell.com',
     });
-    // Names follow the slots in order, the empty optional slots skipped (look3 has no image).
+    // One name per chosen image, in order (look3 has no image and takes no name).
     expect(looks.gallery).toEqual([
       { url: 'https://cdn/1.webp', label: 'Mint gold foil' },
       { url: 'https://cdn/2.webp', label: 'Peacock' },
-      { url: 'https://cdn/4.webp', label: null },
+      { url: 'https://cdn/4.webp', label: 'Butter blossoms' },
     ]);
     expect(promise.items).toEqual([
       { title: 'Clean', text: 'Tools sterilized after every guest' },

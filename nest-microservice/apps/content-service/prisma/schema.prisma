@@ -231,6 +231,12 @@ model StudioBrandKit {
   callToAction  String?  @map("call_to_action") @db.VarChar(200)
   tone          String?  @db.VarChar(300)
   footerNote    String?  @map("footer_note") @db.VarChar(200)
+  /// The business facts the studio fills in by itself (typed once, never by AI): website, address
+  /// lines, opening hours ("Days | Hours" lines), price list ("Service | Price" lines).
+  website       String?  @db.VarChar(80)
+  address       String?  @db.VarChar(200)
+  hours         String?  @db.VarChar(300)
+  prices        String?  @db.VarChar(400)
   bannedPhrases String[] @map("banned_phrases") @db.VarChar(100)
   primaryColor  String   @map("primary_color") @db.VarChar(7)
   accentColor   String   @map("accent_color") @db.VarChar(7)
@@ -279,6 +285,8 @@ model StudioProject {
   script          Json?
   warnings        Json           @default("[]")
   scriptJobId     String?        @map("script_job_id") @db.Uuid
+  /// The "Suggest with AI" job in progress (status `suggesting`).
+  suggestJobId    String?        @map("suggest_job_id") @db.Uuid
   /// { jobId, lines: [{ id, key, durationMs }] }: the voice files of the current script.
   voice           Json?
   voiceJobId      String?        @map("voice_job_id") @db.Uuid

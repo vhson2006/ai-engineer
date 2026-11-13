@@ -11,6 +11,7 @@ import {
   deleteStudioProject,
   requestStudioRender,
   requestStudioScript,
+  requestStudioSuggest,
   requestStudioVoice,
   saveStudioBrandKit,
   updateStudioAvatar,
@@ -125,7 +126,12 @@ export async function startStudioStepAction(siteId: unknown, id: unknown, step: 
   const start = await guard();
   if (!start.ok) return start;
   if (!isSiteId(siteId) || !isUuid(id) || !STUDIO_STEPS.includes(step as StudioStep)) return badTarget;
-  const call = { script: requestStudioScript, voice: requestStudioVoice, render: requestStudioRender }[step as StudioStep];
+  const call = {
+    suggest: requestStudioSuggest,
+    script: requestStudioScript,
+    voice: requestStudioVoice,
+    render: requestStudioRender,
+  }[step as StudioStep];
   const result = await call(siteId, id);
   if (!result.ok) return fromApiFailure(result);
   refresh();
@@ -156,6 +162,10 @@ export async function saveStudioBrandAction(siteId: unknown, input: unknown): Pr
     callToAction: v.callToAction || null,
     tone: v.tone || null,
     footerNote: v.footerNote || null,
+    website: v.website || null,
+    address: v.address || null,
+    hours: v.hours || null,
+    prices: v.prices || null,
     bannedPhrases: splitLines(v.bannedPhrases),
     primaryColor: v.primaryColor,
     accentColor: v.accentColor,

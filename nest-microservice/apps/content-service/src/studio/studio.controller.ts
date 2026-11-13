@@ -265,6 +265,23 @@ export class StudioController {
     return this.projects.remove(siteId, id, user);
   }
 
+  @Post('projects/:id/suggest')
+  @HttpCode(HttpStatus.ACCEPTED)
+  @Roles(WRITE, PUBLISH, ADMIN)
+  @ApiOperation({
+    summary:
+      'Fill the empty fields: business facts from the brand kit, descriptive ones drafted by AI (content:write)',
+  })
+  @ApiAcceptedResponse({ description: 'The project, `suggesting` while the AI drafts: poll it' })
+  @ApiConflictResponse({ description: 'busy' })
+  requestSuggest(
+    @Param('siteId', ParseSiteIdPipe) siteId: string,
+    @Param('id', ParseUUIDPipe) id: string,
+    @CurrentUser() user: AuthUser,
+  ): Promise<StudioProjectResponse> {
+    return this.projects.requestSuggest(siteId, id, user);
+  }
+
   @Post('projects/:id/script')
   @HttpCode(HttpStatus.ACCEPTED)
   @Roles(WRITE, PUBLISH, ADMIN)

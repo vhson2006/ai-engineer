@@ -5,6 +5,7 @@ import type { Media, StudioAvatar, StudioProject, StudioTemplate, StudioVoice } 
 import { STUDIO_BUSY } from '@web/core/api/studio-status';
 import { format } from '@web/core/i18n/format';
 import { Card, cn } from '@web/ui';
+import { Badge } from '@web/ui/badge';
 import { Button } from '@web/ui/button';
 import { Checkbox } from '@web/ui/checkbox';
 import { applyActionErrors, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@web/ui/form';
@@ -102,7 +103,8 @@ export function ProjectEditor(props: Props) {
         </p>
       )}
 
-      <InputsSection {...props} disabled={busy} />
+      {/* A fresh form after a step changed the inputs on the server (AI drafts, brand facts). */}
+      <InputsSection key={project.updatedAt} {...props} disabled={busy} />
 
       <Step title={t.scriptTitle} hint={t.scriptHint}>
         <div className="flex flex-wrap gap-2">
@@ -259,6 +261,16 @@ function InputsSection({
   }, null);
 
   const thumb = (mediaId: string) => media.find((m) => m.id === mediaId);
+  const drafts = new Set(project.inputs.suggested ?? []);
+  const canSuggest = template.facts.some((slot) => slot.suggest || slot.fromBrand);
+  const { isDirty } = form.formState;
+  const [suggesting, startSuggest] = useTransition();
+  const suggest = () =>
+    startSuggest(async () => {
+      const result = await startStudioStepAction(siteId, project.id, 'suggest');
+      if (result.ok) toast.success(t.suggestStarted);
+      else toast.error(result.message, { description: result.requestId ? `${common.requestId}: ${result.requestId}` : undefined });
+    });
   const narration = useWatch({ control: form.control, name: 'narration' });
   const avatarSpeakers = new Set(template.speakers.filter((s) => s.avatar).map((s) => s.id));
 
@@ -421,6 +433,17 @@ function InputsSection({
               ))}
           </div>
 
+          {/* Fill the empty fields: business facts from the brand kit, descriptive ones by AI */}
+          {canSuggest && (
+            <div className="flex flex-wrap items-center gap-3 rounded-xl border border-dashed border-border p-4">
+              <Button type="button" variant="secondary" onClick={suggest} disabled={disabled || suggesting || isDirty}>
+                {suggesting ? <LoaderCircleIcon className="animate-spin" /> : <SparklesIcon />}
+                {t.suggest}
+              </Button>
+              <p className="min-w-0 flex-1 text-sm text-muted">{isDirty ? t.suggestSaveFirst : t.suggestHint}</p>
+            </div>
+          )}
+
           {/* Facts */}
           {template.facts.map((slot) => (
             <FormField
@@ -432,6 +455,11 @@ function InputsSection({
                   <FormLabel>
                     {slot.label[uiLocale]}{' '}
                     <span className="text-xs font-normal text-subtle">· {slot.required ? t.required : t.optional}</span>
+                    {drafts.has(slot.id) && (
+                      <Badge tone="warning" className="ml-2">
+                        {t.aiDraft}
+                      </Badge>
+                    )}
                   </FormLabel>
                   {slot.kind === 'article' ? (
                     articles.length ? (

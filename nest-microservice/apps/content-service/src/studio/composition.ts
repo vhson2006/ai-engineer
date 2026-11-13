@@ -88,10 +88,9 @@ function layoutParts(
       return { layout: 'cover', website };
     case 'grid': {
       const names = factLines(spec.items ? facts[spec.items] : undefined, 6);
-      const gallery = (spec.images ?? []).flatMap((slot, index) => {
-        const url = assets.images[slot];
-        return url ? [{ url, label: names[index] ?? null }] : [];
-      });
+      // One name per chosen image, in order (an empty optional slot takes no name).
+      const urls = (spec.images ?? []).flatMap((slot) => assets.images[slot] ?? []);
+      const gallery = urls.map((url, index) => ({ url, label: names[index] ?? null }));
       return { layout: 'grid', gallery };
     }
     case 'cards':

@@ -666,6 +666,7 @@
     "updated": "Updated {date}",
     "status": {
       "draft": "Draft",
+      "suggesting": "AI is drafting the fields…",
       "writing": "AI is writing…",
       "written": "Script ready",
       "voicing": "Recording voices…",
@@ -769,7 +770,22 @@
       "primaryColor": "Main colour",
       "accentColor": "Accent colour",
       "logo": "Logo",
-      "saved": "Brand kit saved."
-    }
+      "saved": "Brand kit saved.",
+      "businessTitle": "Business facts",
+      "businessHint": "Typed once, filled into every new video as they are. The AI never writes these.",
+      "website": "Website",
+      "websiteHint": "e.g. envynailsspaofwendell.com",
+      "address": "Address",
+      "addressHint": "One address line per line.",
+      "hours": "Opening hours",
+      "hoursHint": "One per line: Days | Hours, e.g. \"Mon–Sat | 9:30 AM – 7 PM\".",
+      "prices": "Price list",
+      "pricesHint": "Up to 4 lines: Service | Price, exactly as on the price list."
+    },
+    "suggest": "Suggest with AI",
+    "suggestHint": "Fills the empty fields: website, address, hours and prices from the brand kit; descriptions drafted by AI (never prices or figures). Check every draft.",
+    "suggestSaveFirst": "Save your changes first: the suggestions start from what is saved.",
+    "suggestStarted": "The AI is drafting: this page updates by itself.",
+    "aiDraft": "AI draft: check it"
   }
 }

@@ -2,6 +2,8 @@ import { Inject, Injectable, OnApplicationBootstrap, OnApplicationShutdown } fro
 import { plainToInstance, type ClassConstructor } from 'class-transformer';
 import { validate } from 'class-validator';
 import {
+  FACT_SUGGESTION_EVENTS,
+  FactSuggestionRequestedEvent,
   IMAGE_GENERATION_EVENTS,
   ImageGenerationRequestedEvent,
   JETSTREAM,
@@ -20,6 +22,7 @@ import {
 import { ImageService } from './images/image.service';
 import { ScriptService } from './scripts/script.service';
 import { SpeechService } from './speech/speech.service';
+import { SuggestionService } from './suggestions/suggestion.service';
 import { CONSUMER, type Delivery, TranslationService } from './translation/translation.service';
 
 /** A model call can take a while: redeliver only after 3 minutes without an ack. */
@@ -42,6 +45,7 @@ export class RequestsConsumer implements OnApplicationBootstrap, OnApplicationSh
     private readonly images: ImageService,
     private readonly scripts: ScriptService,
     private readonly speech: SpeechService,
+    private readonly suggestions: SuggestionService,
   ) {}
 
   /** Subject → handler. Exposed for tests. */
@@ -60,6 +64,10 @@ export class RequestsConsumer implements OnApplicationBootstrap, OnApplicationSh
     ),
     [SPEECH_EVENTS.REQUESTED]: this.validated(SpeechRequestedEvent, (event, delivery) =>
       this.speech.speak(event, delivery),
+    ),
+    [FACT_SUGGESTION_EVENTS.REQUESTED]: this.validated(
+      FactSuggestionRequestedEvent,
+      (event, delivery) => this.suggestions.suggest(event, delivery),
     ),
   };
 

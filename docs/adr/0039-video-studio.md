@@ -33,6 +33,15 @@ of AI providers) and Remotion projects in `video/` that render videos from React
   render: history, monthly quota, and the render report the Remotion license asks for).
   Routes `/api/content/sites/{siteId}/studio/...`, `content:read` to view, `content:write` to change
   (same audience and roles as the rest of content-service; site rule of 0028).
+- **Filling the inputs (2026-11-13):** the brand kit also holds the business facts (website,
+  address, hours, price list), typed once and copied as they are into the empty facts that take
+  them (`fromBrand`), at creation and on "Suggest with AI". That button also asks ai-service
+  (`events.fact-suggestion.*`, status `suggesting`) for drafts of the empty DESCRIPTIVE facts only
+  (`suggest` slots: promises, benefits, key points, names of the pictured looks, read from their
+  images); never prices, hours, addresses or figures (the model is told so, and content-service
+  drops any draft line with a number the business didn't give). Drafts fill only empty fields and
+  stay marked ("AI draft: check it") until the admin edits them (`inputs.suggested`). Image input
+  needs Gemini's `v1beta` Interactions API.
 - **Flow** (events and outbox, like 0036/0037; every step answered `completed` or `failed`):
   1. **Script:** `POST …/projects/{id}/script` → `events.script-writing.requested` (brand kit,
      facts, scene limits, banned phrases, 3 hook variants) → ai-service (Gemini, JSON schema) →

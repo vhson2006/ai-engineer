@@ -666,6 +666,7 @@
     "updated": "Cập nhật {date}",
     "status": {
       "draft": "Nháp",
+      "suggesting": "AI đang gợi ý…",
       "writing": "AI đang viết…",
       "written": "Đã có kịch bản",
       "voicing": "Đang đọc thoại…",
@@ -769,7 +770,22 @@
       "primaryColor": "Màu chính",
       "accentColor": "Màu nhấn",
       "logo": "Logo",
-      "saved": "Đã lưu thương hiệu."
-    }
+      "saved": "Đã lưu thương hiệu.",
+      "businessTitle": "Thông tin kinh doanh",
+      "businessHint": "Nhập một lần, tự điền vào mọi video mới đúng như vậy. AI không bao giờ viết các ô này.",
+      "website": "Website",
+      "websiteHint": "Ví dụ envynailsspaofwendell.com",
+      "address": "Địa chỉ",
+      "addressHint": "Mỗi dòng một dòng địa chỉ.",
+      "hours": "Giờ mở cửa",
+      "hoursHint": "Mỗi dòng: Ngày | Giờ, ví dụ \"T2–T7 | 9:30–19:00\".",
+      "prices": "Bảng giá",
+      "pricesHint": "Tối đa 4 dòng: Dịch vụ | Giá, đúng như bảng giá."
+    },
+    "suggest": "Gợi ý bằng AI",
+    "suggestHint": "Điền các ô còn trống: website, địa chỉ, giờ mở cửa, bảng giá lấy từ bộ nhận diện; phần mô tả do AI viết nháp (không bao giờ là giá hay số liệu). Hãy kiểm tra từng bản nháp.",
+    "suggestSaveFirst": "Hãy lưu thay đổi trước: gợi ý dựa trên dữ liệu đã lưu.",
+    "suggestStarted": "AI đang viết nháp: trang sẽ tự cập nhật.",
+    "aiDraft": "Bản nháp AI: hãy kiểm tra"
   }
 }

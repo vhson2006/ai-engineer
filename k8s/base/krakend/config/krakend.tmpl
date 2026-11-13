@@ -454,6 +454,15 @@
       "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}", "encoding": "no-op" }]
     },
     {
+      "@comment": "Fill the empty fields: brand-kit facts, AI drafts of descriptive ones: 202 (409 busy).",
+      "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}/suggest",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": ["Authorization", "X-Request-Id"],
+      "extra_config": {{ template "endpoint.tmpl" (dict "env" .env "audience" "content-api" "roles" (list "content:write" "content:publish" "content:admin") "limit" "write") }},
+      "backend": [{ "host": [{{ marshal .env.services.content }}], "url_pattern": "/api/content/sites/{siteId}/studio/projects/{id}/suggest", "encoding": "no-op" }]
+    },
+    {
       "@comment": "Let the AI write the script: 202 (409 busy, 422 missing_input).",
       "endpoint": "/api/content/sites/{siteId}/studio/projects/{id}/script",
       "method": "POST",

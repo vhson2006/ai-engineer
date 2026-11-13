@@ -9,6 +9,9 @@ import { plainToInstance, type ClassConstructor } from 'class-transformer';
 import { validate } from 'class-validator';
 import {
   handleOnce,
+  FACT_SUGGESTION_EVENTS,
+  FactSuggestionCompletedEvent,
+  FactSuggestionFailedEvent,
   IMAGE_GENERATION_EVENTS,
   ImageGenerationCompletedEvent,
   ImageGenerationFailedEvent,
@@ -74,6 +77,12 @@ export class AiResultsConsumer implements OnApplicationBootstrap, OnApplicationS
       this.images.fail(tx, event),
     ),
     // Video studio (ADR 0039): script and voice from ai-service, the MP4 from render-worker.
+    [FACT_SUGGESTION_EVENTS.COMPLETED]: this.once(FactSuggestionCompletedEvent, (tx, event) =>
+      this.studio.suggestionWritten(tx, event),
+    ),
+    [FACT_SUGGESTION_EVENTS.FAILED]: this.once(FactSuggestionFailedEvent, (tx, event) =>
+      this.studio.suggestionFailed(tx, event),
+    ),
     [SCRIPT_WRITING_EVENTS.COMPLETED]: this.once(ScriptWritingCompletedEvent, (tx, event) =>
       this.studio.scriptWritten(tx, event),
     ),

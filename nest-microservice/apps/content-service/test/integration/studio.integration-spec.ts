@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { SCRIPT_WRITING_EVENTS } from '@app/common';
+import { FACT_SUGGESTION_EVENTS, SCRIPT_WRITING_EVENTS } from '@app/common';
 import { asToken, createTestApp, TestApp } from '../support/app';
 import { site, users } from '../support/fixtures';
 import { mediaRow } from '../support/media';
@@ -151,6 +151,34 @@ describe('Studio (content-service integration)', () => {
     t.prisma.studioProject.findFirst.mockResolvedValue(project({ status: 'rendering' }));
     const busy = await request(t.app.getHttpServer())
       .post(`${base}/projects/${ID}/voice`)
+      .set('Authorization', await t.bearer(asToken(users.writer)))
+      .expect(409);
+    expect(busy.body.code).toBe('busy');
+  });
+
+  it('suggests with AI: 202 + the event (price-hook: its benefits); 401, 403, 409 while busy', async () => {
+    const url = `${base}/projects/${ID}/suggest`;
+    t.prisma.studioProject.findFirst.mockResolvedValue(project());
+    t.prisma.studioProject.updateManyAndReturn.mockImplementation(({ data }: { data: object }) =>
+      Promise.resolve([project(data as Record<string, unknown>)]),
+    );
+    await request(t.app.getHttpServer()).post(url).expect(401);
+    await request(t.app.getHttpServer())
+      .post(url)
+      .set('Authorization', await t.bearer(asToken(reader)))
+      .expect(403);
+    expect(t.prisma.outboxMessage.create).not.toHaveBeenCalled();
+
+    const res = await request(t.app.getHttpServer())
+      .post(url)
+      .set('Authorization', await t.bearer(asToken(users.writer)))
+      .expect(202);
+    expect(res.body.status).toBe('suggesting');
+    expect(outboxSubjects(t.prisma)).toEqual([FACT_SUGGESTION_EVENTS.REQUESTED]);
+
+    t.prisma.studioProject.findFirst.mockResolvedValue(project({ status: 'suggesting' }));
+    const busy = await request(t.app.getHttpServer())
+      .post(url)
       .set('Authorization', await t.bearer(asToken(users.writer)))
       .expect(409);
     expect(busy.body.code).toBe('busy');

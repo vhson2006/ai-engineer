@@ -10,8 +10,9 @@ type KitWithLogo = StudioBrandKit & { logoMedia: Media | null };
 
 /**
  * The brand a site's clips use (ADR 0039): name, tagline, phone, call to action, tone, banned
- * phrases (never in a script), a line always on the brand card (wine: 18+), colours, logo. A site
- * without one gets defaults from its name, so a first clip works right away.
+ * phrases (never in a script), a line always on the brand card (wine: 18+), colours, logo, and the
+ * business facts templates take as they are (website, address, hours, prices: typed once here,
+ * never written by AI). A site without one gets defaults from its name, so a first clip works.
  */
 @Injectable()
 export class BrandKitService {
@@ -45,6 +46,10 @@ export class BrandKitService {
       callToAction: dto.callToAction?.trim() || null,
       tone: dto.tone?.trim() || null,
       footerNote: dto.footerNote?.trim() || null,
+      website: dto.website?.trim() || null,
+      address: dto.address?.trim() || null,
+      hours: dto.hours?.trim() || null,
+      prices: dto.prices?.trim() || null,
       bannedPhrases: [...new Set(dto.bannedPhrases.map((p) => p.trim()).filter(Boolean))],
       primaryColor: dto.primaryColor.toLowerCase(),
       accentColor: dto.accentColor.toLowerCase(),
@@ -90,6 +95,10 @@ export class BrandKitService {
       callToAction: kit?.callToAction ?? null,
       tone: kit?.tone ?? null,
       footerNote: kit?.footerNote ?? null,
+      website: kit?.website ?? null,
+      address: kit?.address ?? null,
+      hours: kit?.hours ?? null,
+      prices: kit?.prices ?? null,
       bannedPhrases: kit?.bannedPhrases ?? [],
       primaryColor: kit?.primaryColor ?? DEFAULT_PRIMARY,
       accentColor: kit?.accentColor ?? DEFAULT_ACCENT,
