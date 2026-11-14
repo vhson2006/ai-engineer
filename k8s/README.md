@@ -65,7 +65,7 @@ are needed), listeners, settings, patches and secrets.
 |---|---|---|---|
 | Edge Gateway | NGINX Gateway Fabric `2.8.0` | Service `edge-nginx` (LoadBalancer) | `http://{www,api,auth}.localtest.me:8000` (no port-forward) |
 | KrakenD | `krakend:2.10.2` | `http://krakend.nest-microservice.svc.cluster.local:8080` | `http://localhost:8080` via port-forward only (health: `/__health`) |
-| Keycloak | `quay.io/keycloak/keycloak:26.4.7` | `http://keycloak.nest-microservice.svc.cluster.local:8080`, management `:9000` | `http://auth.localtest.me:8000` (app realm only); Admin Console `http://localhost:8180/admin` and management `http://localhost:9000` via port-forward |
+| Keycloak | `quay.io/keycloak/keycloak:26.4.7` | `http://keycloak.nest-microservice.svc.cluster.local:8080`, management `:9000` | `http://auth.localtest.me:8000` (realms `nest-microservice` and `site-*` only); Admin Console `http://localhost:8180/admin` and management `http://localhost:9000` via port-forward |
 | Postgres | `postgres:16-alpine` | `postgres.nest-microservice.svc.cluster.local:5432` | `localhost:5432` |
 | Redis | `redis:7-alpine` | `redis.nest-microservice.svc.cluster.local:6379` | `localhost:6379` |
 | NATS | `nats:2.10-alpine` | `nats://nats.nest-microservice.svc.cluster.local:4222` | `localhost:4222`, monitoring `http://localhost:8222` (JetStream: `/jsz`) |
@@ -171,7 +171,8 @@ fresh cluster and on a running one alike. **The same files in every environment*
 [`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
 groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
 [`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
-code, `dev-cli`); [`sites/<id>/keycloak/`](sites/) (a business site's client and service account, in
+code, `dev-cli`, the test customers `bob`/`carol` of each site's realm); [`sites/<id>/keycloak/`](sites/)
+(a business site's client and service account, and its customers' realm `site-<id>`, ADR 0049; in
 the environments that list it); prod adds `master-config-cli.json`. What differs per environment is
 only a value, written `$(env:NAME)` in the files: ConfigMap `public-urls` (the overlay's `urls.env`)
 (`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
@@ -182,8 +183,8 @@ Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 | Clients | Purpose |
 |---|---|
 | `deployments-api` | Resource server: owns the roles `deployment:read`, `deployment:write`, `deployment:admin`; it's the token audience |
-| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `$WEB_URL/*`: `http://www.localtest.me:8000/*` in dev) |
-| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `$ADMIN_URL/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
+| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect exactly `$WEB_URL/auth/callback`: `http://www.localtest.me:8000/auth/callback` in dev, the one URL the app uses) |
+| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect exactly `$ADMIN_URL/auth/callback`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
 | `dev-cli` | **dev and staging only** (`components/keycloak-local`): password grant for curl tests |
 
 | Group | Roles | Test user (password `Dev-Staging-2026!`) |
@@ -309,21 +310,51 @@ kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statef
 ## Business sites (ADR 0047)
 
 Every business site runs from one template, [`sites/_template`](sites/_template/): a Deployment,
-a Service and a route, the same for all. A site's folder `sites/<id>/` only names it (`app/`: its
-app and client-secret key; `keycloak/`: its Keycloak client) and takes its host and URL from the
-overlay's `urls.env`. To run a site in an environment:
+a Service and a route, the same for all. **The sites are listed once, in
+[`sites/sites.json`](sites/sites.json)** (id, name, languages, dev port). `npm run sites:generate`
+([`scripts/sites.mjs`](scripts/sites.mjs)) writes each site's folder `sites/<id>/` from it (`app/`:
+its names for the template; `keycloak/`: its client in `nest-microservice` and its customers' realm
+`site-<id>`, whose security settings are read from `base/keycloak/realm.json`) and its test
+customers in `components/keycloak-local`. Those files are never edited by hand: `npm run k8s:check`
+(CI) refuses one that differs.
 
-1. `components:` of the overlay: `- ../../sites/<id>`;
-2. `urls.env`: `<ID>_HOST` and `<ID>_URL`;
-3. `images:`: `<id>-web` (and its entry in `images.json`, `environments` listing the overlay);
-4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`.
+A new site: its app in `web/apps/<id>-web` (on `@web/site-kit`), an entry in `sites.json`, then
+`npm run sites:generate`, which prints what the environments still lack (the same list `k8s:check`
+fails on):
+
+1. `components:` of the overlay: `- ../../sites/<id>` (dev: `- ../../sites/<id>/keycloak`);
+2. `urls.env`: `<ID>_HOST` and `<ID>_URL` (dev: `<ID>_URL=http://localhost:<dev port>`);
+3. `images.json` (`siteUrl: "{<ID>_URL}"`) and `images:` of the overlays: `<id>-web`;
+4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`;
+5. Secret `<id>-web`: `REDIS_URL` (its own Redis/Valkey user, keys `<id>-web:*`; local:
+   `components/local-data/redis/users.acl`) and `SESSION_ENCRYPTION_KEY`: its customers' sessions
+   (ADR 0049); `components/keycloak-local/kustomization.yaml` lists its `test-customers-<id>.json`.
 
 Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
-`role: business-site` (NetworkPolicies, the https-only route patch). Staging runs all nine
-(`https://<id>.staging.localtest.me`: each site 160 Mi requested, 384 Mi limit; give WSL 12 GB,
-`.wslconfig`); prod none yet (each real site needs its domain,
-certificate and DNS). Site images build without the API: their article pages fill in at runtime
+`role: business-site` (NetworkPolicies, the https-only route patch). Staging and prod run all
+nine (`https://<id>.staging.localtest.me`, `https://<id>.<domain>`: each site 160 Mi requested,
+384 Mi limit; staging: give WSL 12 GB, `.wslconfig`). Site images build without the API: their article pages fill in at runtime
 (ISR, about a minute; ADR 0047).
+
+### A business site on its own domain (later, client by client)
+
+A site's host is written once, in the overlay's `urls.env`: the route, `APP_URL`, its Keycloak
+redirect URIs and the `SITE_URL` its image is built with (`images.json` `siteUrl: "{<ID>_URL}"`) all
+read `<ID>_HOST` / `<ID>_URL`. To move `nails` from `nails.example.com` to `envynails.com` in prod:
+
+1. `overlays/prod/urls.env`: `NAILS_HOST=envynails.com`, `NAILS_URL=https://envynails.com`.
+2. DNS: the domain in DigitalOcean DNS (cert-manager's DNS-01 needs it there), `@` (and `www`) → the
+   Load Balancer's IP.
+3. TLS: a `Certificate` for `envynails.com` (+ `www`) from the same ClusterIssuer, and a Gateway
+   listener for it (`https-nails`, hostname `envynails.com`, that certificate; an `http` redirect for
+   the domain too), in `overlays/prod/gateway/`; the site's route attaches to that listener
+   (`sectionName`, a patch next to `routes-https.yaml`).
+4. Images → *Run workflow*: the site's image is rebuilt with its new `SITE_URL` (canonical, sitemap).
+5. Optional: the realm `site-nails` gets `frontendUrl` `https://auth.envynails.com` (ADR 0025) so
+   customers sign in on the brand's domain; until then they sign in at `auth.<domain>`.
+
+The old subdomain should answer `301` to the new domain (a route with a `RequestRedirect`) so links
+and search results follow.
 
 ## Local staging
 
@@ -344,7 +375,7 @@ npm run staging:down       # delete the namespace WITH its data (fresh start); n
 |---|---|
 | https://www.staging.localtest.me | portfolio-web (production image) |
 | https://admin.staging.localtest.me | admin-web (alice: password + one-time code) |
-| https://auth.staging.localtest.me | Keycloak, app realm only |
+| https://auth.staging.localtest.me | Keycloak: realm `nest-microservice` and the sites' customers' realms `site-<id>` |
 | https://s3.staging.localtest.me | SeaweedFS (presigned uploads/downloads) |
 | https://&lt;site&gt;.staging.localtest.me | the nine business sites: nails, wine, laundry, sushi, travel, flowers, autoparts, hotel, spa |
 | http://*.staging.localtest.me:8001 | → 301 to https (port 80 is Windows') |
@@ -406,7 +437,8 @@ the prod overlay by hand (the migration Job is an Argo CD PreSync hook).
 ```
 Internet ─▶ DO Load Balancer ─▶ edge-nginx (x2) ─┬─ https://www.example.com   ─▶ portfolio-web (x2)
            :80 → 301 to https, :443 TLS          ├─ https://admin.example.com ─▶ admin-web (x2, admins + OTP)
-           (wildcard cert, cert-manager)         └─ https://auth.example.com  ─▶ Keycloak (x2, app realm only)
+           (wildcard cert, cert-manager)         ├─ https://auth.example.com  ─▶ Keycloak (x2, staff + site realms)
+                                                 └─ https://<id>.example.com  ─▶ the nine business sites (x1 each)
 portfolio-web, admin-web ─▶ KrakenD (x2, PRIVATE: NetworkPolicy krakend-from-web) ─▶ deployment-service (x2)
 deployment-service, notification-service (x2) ─▶ NATS (in cluster)
 deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TLS─▶ DO managed Valkey (one user each)
@@ -434,8 +466,9 @@ image whose watched files changed since the commit it is tagged with in `overlay
 rebuilds all), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>` (private, like the
 repository; pods pull with the Secret `ghcr-pull`) and commits the new `newTag`s to `main` as
 `github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all. The web apps bake their public
-origin in (ADR 0021): set the repository variable `PROD_DOMAIN` (e.g. `example.com` →
-`https://www.example.com`, `https://admin.example.com`). What the workflow runs:
+origin in (ADR 0021): `siteUrl` of `images.json` names a key of the environment's `urls.env`
+(`{WEB_URL}`, `{NAILS_URL}`…, `scripts/site-url.mjs`), so an address is written only there. What the
+workflow runs:
 
 ```bash
 # nest-microservice (context nest-microservice/), one target per image
@@ -452,8 +485,8 @@ All run as non-root with a read-only root filesystem; configuration comes from e
 
 1. **DigitalOcean**: DOKS cluster; the domain in DO DNS; managed Postgres with databases
    `deployment`, `notification`, `content`, `ai` and `keycloak` (one user each); managed Valkey with one ACL user
-   per web app (`web` on `~web:*`, `admin-web` on `~admin-web:*`, commands as in
-   `components/local-data/redis/users.acl`); an API token with domain read/write (for cert-manager).
+   per web app (`web` on `~web:*`, `admin-web` on `~admin-web:*`, and `<id>-web` on `~<id>-web:*` for
+   each business site; commands as in `components/local-data/redis/users.acl`); an API token with domain read/write (for cert-manager).
 2. **Cluster add-ons**:
    ```bash
    bash k8s/scripts/gateway-install.sh          # NGINX Gateway Fabric v2.8.0 + Gateway API CRDs
@@ -483,12 +516,13 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    R2 public domain), unset that variable, and set `STORAGE_PROVIDER` / `STORAGE_REGION` /
    `STORAGE_R2_ACCOUNT_ID`.
 5. **Replace placeholders**: `example.com` and the bucket names in `overlays/prod/urls.env` (the one
-   file with the environment's public addresses), the ClusterIssuer email, and set the
-   repository variable `PROD_DOMAIN`, then *Run workflow* on Images. The GitHub repository is
+   file with the environment's public addresses, the web images' too), the ClusterIssuer email,
+   then *Run workflow* on Images. The GitHub repository is
    private: give Argo CD read access (a deploy key or a read-only token, `argocd repo add`).
 6. `kubectl apply -k k8s/platform/prod`: ClusterIssuers, DNS token, Argo CD Application. Argo CD
    then syncs `overlays/prod`.
-7. **DNS**: `www`, `admin`, `auth` → the external IP of Service `edge-nginx` (no `api`: the API is private)
+7. **DNS**: `www`, `admin`, `auth` and the business sites' subdomains (`nails`, `wine`, …: or one
+   wildcard record `*`) → the external IP of Service `edge-nginx` (no `api`: the API is private)
    (`kubectl -n nest-microservice get svc edge-nginx`).
 8. **Keycloak, after the first sync**: the Job `keycloak-config` (PostSync hook, ADR 0043) has created
    both realms, the admin-site flow and realm `master`'s Frontend URL, signing in with the bootstrap

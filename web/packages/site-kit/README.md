@@ -16,6 +16,7 @@ of `npm run check`) refuses a site that copies what the kit does.
 | `src/proxy.ts` | `siteProxy(website.routing)` + the app's `config.matcher`. |
 | `src/app/[lang]/layout.tsx` | Fonts, `<html>`, the chrome: `<SiteShell>`, or the site's own header and footer built with `SkipLink`, `LegalLinks`, `website.localeOptions`. |
 | `src/app/[lang]/page.tsx` | The landing page: the site's own sections, plus `LatestArticles`, `Faq`, `ContactSection` when they fit. |
+| Customers' sign-in (ADR 0049) | `src/app/auth/{login,callback,logout}/route.ts` re-export `site.routes.authLogin / authCallback / authLogout`; `src/app/[lang]/login/page.tsx` and `[lang]/account/page.tsx` re-export `site.routes.login` / `.account`. `SiteHeader` shows `AccountLink`; a site's own header adds it (`@web/site-kit/components/account`). Env: `KEYCLOAK_ISSUER` (realm `site-<id>`), `API_KEYCLOAK_ISSUER`, `REDIS_URL`, `REDIS_KEY_PREFIX`, `SESSION_ENCRYPTION_KEY` (`.env.example`). |
 | Shared routes | One-line re-exports of `site.routes.*`: articles index, topic, article, `legal(page)`, `NotFound`, `sitemap`, `robots`, `ogImage`, `articleOgImage`. The folder names follow the site's paths (`bai-viet/`, or `blog/` for nails). |
 | `src/app/globals.css` | `@web/ui/theme.css`, `@web/ui/article-layout.css`, `@web/site-kit/theme.css`, `@source` both packages, then the site's tokens. |
 
@@ -38,6 +39,12 @@ of `npm run check`) refuses a site that copies what the kit does.
 - **Look**: tokens in `globals.css` (`--brand-strong`, `--accent`, `--deep`, `--card-radius`,
   `--button-radius`, `--heading-*`, `--font-heading`), and the class hooks of the kit's pages:
   `.article-masthead`, `.article-cover`, `.article-cta`, `.topic-chip`, `.article-body`.
+
+## A new site
+
+Its app here (`apps/<id>-web`, the files above; `npm run check:sites` lists what is missing), then its
+entry in `k8s/sites/sites.json` and `npm run sites:generate` at the repo root: its Kubernetes folder,
+Keycloak client and customers' realm (k8s/README.md, "Business sites").
 
 ## Changing the kit
 

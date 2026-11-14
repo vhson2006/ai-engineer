@@ -11,3 +11,12 @@ configMapGenerator:
       - users.json
       - otp.json
       - dev-cli.json
+      - test-customers-autoparts.json # bob, carol: customers of autoparts (realm site-autoparts)
+      - test-customers-flowers.json # bob, carol: customers of flowers (realm site-flowers)
+      - test-customers-hotel.json # bob, carol: customers of hotel (realm site-hotel)
+      - test-customers-laundry.json # bob, carol: customers of laundry (realm site-laundry)
+      - test-customers-nails.json # bob, carol: customers of nails (realm site-nails)
+      - test-customers-spa.json # bob, carol: customers of spa (realm site-spa)
+      - test-customers-sushi.json # bob, carol: customers of sushi (realm site-sushi)
+      - test-customers-travel.json # bob, carol: customers of travel (realm site-travel)
+      - test-customers-wine.json # bob, carol: customers of wine (realm site-wine)

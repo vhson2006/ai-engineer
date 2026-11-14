@@ -4,6 +4,7 @@ import { format } from '@web/core/i18n/format';
 import { LocaleSwitcher, LocaleToggle } from '@web/ui/locale-switcher';
 import { MobileNav, SectionNav } from '@web/ui/section-nav';
 import { BookButton } from '@/features/booking/booking-provider';
+import { AccountLink } from '@web/site-kit/components/account';
 import { href } from '@web/site-kit/locales';
 import { site } from '@/site';
 import { Logo } from './logo';
@@ -48,6 +49,7 @@ export async function SiteHeader() {
           <div className="hidden lg:block">
             <LocaleSwitcher current={locale} locales={website.localeOptions} label={t.common.language} />
           </div>
+          <AccountLink t={t} locale={locale} className="hidden sm:inline-flex" />
           <BookButton className={pill('ink', 'md', 'hidden sm:inline-flex')}>
             {t.booking.open}
             <ArrowUpRight aria-hidden />
@@ -61,6 +63,7 @@ export async function SiteHeader() {
             footer={
               <>
                 <LocaleToggle current={locale} locales={website.localeOptions} label={t.common.language} />
+                <AccountLink t={t} locale={locale} className="w-full justify-center sm:hidden" />
                 <a href={phone.href} className={pill('ink', 'lg', 'w-full')}>
                   <Phone aria-hidden />
                   {format(t.common.call, { phone: phone.display })}

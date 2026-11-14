@@ -1,0 +1,54 @@
+{
+  "realm": "site-flowers",
+  "displayName": "Bông Florist",
+  "enabled": true,
+  "sslRequired": "external",
+  "loginWithEmailAllowed": true,
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxTemporaryLockouts": 0,
+  "bruteForceStrategy": "MULTIPLE",
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "maxDeltaTimeSeconds": 43200,
+  "quickLoginCheckMilliSeconds": 1000,
+  "minimumQuickLoginWaitSeconds": 60,
+  "accessTokenLifespan": 300,
+  "ssoSessionMaxLifespan": 604800,
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 0,
+  "ssoSessionIdleTimeout": 86400,
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "internationalizationEnabled": true,
+  "supportedLocales": [
+    "vi",
+    "en"
+  ],
+  "defaultLocale": "vi",
+  "clients": [
+    {
+      "clientId": "flowers-web",
+      "name": "flowers-web: its customers sign in (BFF, confidential; ADR 0049)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:FLOWERS_WEB_CLIENT_SECRET)",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "$(env:FLOWERS_URL)/auth/callback"
+      ],
+      "webOrigins": [],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "$(env:FLOWERS_URL)/*"
+      },
+      "fullScopeAllowed": false
+    }
+  ]
+}

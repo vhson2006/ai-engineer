@@ -23,7 +23,6 @@ const ONLY = {
       STORAGE_FORCE_PATH_STYLE: 'SeaweedFS needs path-style bucket URLs',
     },
     'render-worker.env': { RENDER_IGNORE_CERT_ERRORS: "headless Chrome doesn't read NODE_EXTRA_CA_CERTS: the local CA" },
-    'urls.env': { '/^[A-Z]+_(HOST|URL)$/': 'the business sites staging runs (k8s/sites); prod runs none yet' },
   },
   prod: {
     'deployment-service.env': {

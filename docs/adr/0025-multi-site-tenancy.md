@@ -1,6 +1,7 @@
 # 0025. Many client sites: a Keycloak realm per site for customers, one admin realm, shared databases with `site_id`
 
-- **Status:** Accepted, partly implemented (interim content access: ADR 0028)
+- **Status:** Accepted, partly implemented (interim content access: ADR 0028; customers' realms and
+  sign-in on the sites: ADR 0049; the API accepting customers' tokens: not yet)
 - **Date:** 2026-11-10
 - **Related:** 0002 (one realm → several issuers), 0003, 0004 (more than one public realm),
   0010, 0019 (the admin site becomes shared by every site), 0026, 0027

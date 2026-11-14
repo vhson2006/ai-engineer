@@ -24,6 +24,8 @@ describe('defineWebsite', () => {
     expect(site.paths.topic('mon-an')).toBe('/bai-viet/chu-de/mon-an');
     expect(site.legalPages).toEqual(['privacy', 'terms', 'dataDeletion']);
     expect(site.routing).toMatchObject({ locales: ['vi', 'en'], defaultLocale: 'vi', detectLanguage: false, cookieName: 'demo_locale' });
+    // The customers' sign-in handlers are Route Handlers, never localized (ADR 0049).
+    expect(site.routing.bypass).toContain('/auth/');
     expect(site.publicPages.map((page) => page.path)).toEqual(['/', '/bai-viet', '/chinh-sach-bao-mat', '/dieu-khoan-su-dung', '/xoa-du-lieu']);
   });
 

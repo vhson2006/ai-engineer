@@ -193,7 +193,7 @@
       "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": false,
       "redirectUris": [
-        "$(env:WEB_URL)/*"
+        "$(env:WEB_URL)/auth/callback"
       ],
       "webOrigins": [
         "$(env:WEB_URL)"
@@ -232,7 +232,7 @@
       "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": false,
       "redirectUris": [
-        "$(env:ADMIN_URL)/*"
+        "$(env:ADMIN_URL)/auth/callback"
       ],
       "webOrigins": [
         "$(env:ADMIN_URL)"

@@ -71,8 +71,11 @@ export function defineWebsite(business: Business, options: WebsiteOptions = {}) 
     intlByLocale: Object.fromEntries(locales.map((code) => [code, intl(code)])) as Record<Locale, string>,
     /** The language switcher's options. */
     localeOptions: locales.map((code) => ({ code, name: LOCALES[code].name })),
-    /** The proxy's language routing: no detection, the site's own cookie (ADR 0038). */
-    routing: { locales: [...locales], defaultLocale, bypass: [], detectLanguage: false, cookieName: business.cookieName } satisfies LocaleRouting<Locale>,
+    /**
+     * The proxy's language routing: no detection, the site's own cookie (ADR 0038). /auth/* are the
+     * customers' sign-in Route Handlers (ADR 0049), not pages: never sent to /<lang>/auth/….
+     */
+    routing: { locales: [...locales], defaultLocale, bypass: ['/auth/'], detectLanguage: false, cookieName: business.cookieName } satisfies LocaleRouting<Locale>,
     samePath,
     /** "/bai-viet", "/bai-viet/<slug>", "/bai-viet/chu-de/<topic slug>" (pass through href(locale, …)). */
     paths: {
