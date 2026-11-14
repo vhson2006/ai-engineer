@@ -39,6 +39,14 @@ configMapGenerator:
   - name: keycloak-config-sync # the Job's script
     files:
       - keycloak/config-sync.sh
+  # Theme "customers" (ADR 0050), mounted by keycloak/deployment.yaml (keys = its paths, "/" → "-").
+  - name: keycloak-theme-customers
+    files:
+      - login-theme.properties=keycloak/theme-customers/login/theme.properties
+      - login-password-commons.ftl=keycloak/theme-customers/login/password-commons.ftl
+      - login-messages_en.properties=keycloak/theme-customers/login/messages/messages_en.properties
+      - email-theme.properties=keycloak/theme-customers/email/theme.properties
+      - email-messages_en.properties=keycloak/theme-customers/email/messages/messages_en.properties
   - name: krakend-config
     files:
       - krakend/config/krakend.tmpl

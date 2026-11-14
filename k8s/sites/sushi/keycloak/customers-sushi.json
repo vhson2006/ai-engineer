@@ -25,6 +25,8 @@
   "resetPasswordAllowed": true,
   "duplicateEmailsAllowed": false,
   "rememberMe": false,
+  "loginTheme": "customers",
+  "emailTheme": "customers",
   "internationalizationEnabled": true,
   "supportedLocales": [
     "vi",

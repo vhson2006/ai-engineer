@@ -211,6 +211,9 @@ patches:
       resetPasswordAllowed: true,
       duplicateEmailsAllowed: false,
       rememberMe: false,
+      // Keycloak's pages and e-mails with ADR 0050's warnings (base/keycloak/theme-customers).
+      loginTheme: 'customers',
+      emailTheme: 'customers',
       internationalizationEnabled: true,
       supportedLocales: site.locales,
       defaultLocale: site.defaultLocale,

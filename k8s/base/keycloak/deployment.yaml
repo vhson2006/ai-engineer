@@ -111,3 +111,19 @@ spec:
               memory: 768Mi
             limits:
               memory: 1536Mi
+          volumeMounts:
+            - name: theme-customers
+              mountPath: /opt/keycloak/themes/customers
+              readOnly: true
+      volumes:
+        # Theme "customers" of the site realms (ADR 0050), from keycloak/theme-customers/: a change
+        # makes a new ConfigMap name, which rolls Keycloak (themes are read at start).
+        - name: theme-customers
+          configMap:
+            name: keycloak-theme-customers
+            items:
+              - { key: login-theme.properties, path: login/theme.properties }
+              - { key: login-password-commons.ftl, path: login/password-commons.ftl }
+              - { key: login-messages_en.properties, path: login/messages/messages_en.properties }
+              - { key: email-theme.properties, path: email/theme.properties }
+              - { key: email-messages_en.properties, path: email/messages/messages_en.properties }
