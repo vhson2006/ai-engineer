@@ -29,11 +29,11 @@ resources:
 components:
   - listeners # this environment's Gateway listeners (before public-urls)
   - ../../components/public-urls # urls.env -> Gateway, routes, apps' settings
-  - ../../components/public-urls-tls # urls.env -> https listener, redirect
   - ../../components/nats
   - ../../components/apps
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud (ADR 0023)
+  - ../../components/https # LAST: https-only routes + HSTS (urls.env), https listener host
 
 # The images: k8s/images.json (the one list; CI checks this block against it). .github/workflows/
 # images.yml sets each newTag to the commit SHA it built and commits; Argo CD syncs.
@@ -101,14 +101,6 @@ configMapGenerator:
       - CLUSTER_NAME=prod
 
 patches:
-  - path: patches/routes-https.yaml # app routes on https only, HSTS
-    target:
-      kind: HTTPRoute
-      name: ^(www|admin|auth)$
-  - path: patches/routes-https.yaml # the business sites' routes too (k8s/sites)
-    target:
-      kind: HTTPRoute
-      labelSelector: role=business-site
   - path: patches/keycloak.yaml # production mode, 2 replicas, managed DB over TLS
   - target: # managed Postgres: the database and user are created once, by hand (README)
       kind: Deployment

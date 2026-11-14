@@ -1,0 +1,13 @@
+# Every public route (www, admin, auth, each business site): on the https listener only (plain HTTP
+# just redirects), with HSTS. Its value is set by kustomization.yaml from urls.env (HSTS).
+- op: add
+  path: /spec/parentRefs/0/sectionName
+  value: https
+- op: add
+  path: /spec/rules/0/filters
+  value:
+    - type: ResponseHeaderModifier
+      responseHeaderModifier:
+        set:
+          - name: Strict-Transport-Security
+            value: set-by-components-https # urls.env: HSTS

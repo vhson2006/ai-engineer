@@ -6,7 +6,7 @@ apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
 replacements:
-  # The Gateway's http listener (the https one and the redirect: components/public-urls-tls).
+  # The Gateway's http listener (the https one and the redirect: components/https).
   - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WILDCARD_HOST }
     targets:
       - select: { kind: Gateway, name: edge }

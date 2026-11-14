@@ -52,8 +52,10 @@ paths:
 ## Changes
 - **A public address (host, URL, issuer, storage origin) is written once per environment**, in
   `overlays/<env>/urls.env` (ConfigMap `public-urls`): Keycloak, KrakenD and the Job read it,
-  `components/public-urls(-tls)` writes it into the Gateway, the routes and the apps' settings. Never
-  a host name or a public URL in a manifest, a patch or an env file.
+  `components/public-urls` (and `components/https`: the TLS listener, https-only routes, HSTS)
+  writes it into the Gateway, the routes and the apps' settings. Never a host name or a public URL
+  in a manifest, a patch or an env file. HSTS is the `HSTS` line of `urls.env`, raised step by step
+  (ADR 0048): never includeSubDomains, never preload.
 - **A business site in Kubernetes = `k8s/sites/<id>`** from the shared template (ADR 0047), listed by
   the overlay: never a hand-written Deployment for a site. Rules select sites by `role: business-site`.
 - Stateful pieces: StatefulSets with a PVC; prod StorageClass `reclaimPolicy: Retain` + backups.

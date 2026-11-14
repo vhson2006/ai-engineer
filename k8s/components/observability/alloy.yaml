@@ -81,6 +81,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: alloy-env
+            - configMapRef:
+                name: public-urls # the hosts whose certificates it watches (WEB_HOST, ADMIN_HOST, AUTH_HOST)
             - secretRef:
                 name: grafana-cloud
           readinessProbe:

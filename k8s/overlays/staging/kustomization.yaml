@@ -38,7 +38,6 @@ resources:
 components:
   - listeners # this environment's Gateway listeners (before public-urls)
   - ../../components/public-urls # urls.env -> Gateway, routes, apps' settings
-  - ../../components/public-urls-tls # urls.env -> https listener, redirect
   - ../../components/local-data
   - ../../components/nats
   - ../../components/apps
@@ -49,6 +48,7 @@ components:
   - ../../sites/laundry
   - ../../sites/nails
   - ../../sites/wine
+  - ../../components/https # LAST: https-only routes + HSTS (urls.env), https listener host
 
 # The images of k8s/images.json (CI checks this block against it), built by `npm run staging:build`
 # (Docker Desktop's cluster sees the local image store). The tag
@@ -125,14 +125,6 @@ configMapGenerator:
       - CLUSTER_NAME=staging-local
 
 patches:
-  - path: patches/routes-https.yaml # www, admin, auth on https only, HSTS
-    target:
-      kind: HTTPRoute
-      name: ^(www|admin|auth)$
-  - path: patches/routes-https.yaml # the business sites' routes too (k8s/sites)
-    target:
-      kind: HTTPRoute
-      labelSelector: role=business-site
   - path: patches/keycloak.yaml # production mode `start`, https hostname
   - path: patches/apps-local-ca.yaml # apps trust the local CA (calls to https://auth / https://s3)
   - path: patches/sites-local-ca.yaml # the business sites too (their token from https://auth)

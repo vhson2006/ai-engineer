@@ -119,6 +119,41 @@ prometheus.scrape "apps" {
 	scrape_interval = "60s"
 }
 
+// ---- certificates: the TLS of the public hosts, as browsers see it ---------------------------------
+// Every 5 minutes, a TLS handshake with www, admin and auth (urls.env, ConfigMap public-urls). The
+// wildcard certificate covers the business sites of the same domain. probe_ssl_earliest_cert_expiry
+// is the certificate's end (Unix time): Grafana Cloud alerts when it is less than 14 days away
+// (cert-manager renews 30 days before: a failed renewal shows up two weeks ahead), and on
+// probe_success == 0 (no TLS at all). The chain isn't verified here (staging: a private CA): this
+// only measures the expiry. HSTS (urls.env) makes an expired certificate a hard block in browsers.
+prometheus.exporter.blackbox "tls" {
+	config = "{ modules: { tls: { prober: tcp, timeout: 10s, tcp: { tls: true, tls_config: { insecure_skip_verify: true } } } } }"
+
+	target {
+		name    = "www"
+		address = sys.env("WEB_HOST") + ":443"
+		module  = "tls"
+	}
+
+	target {
+		name    = "admin"
+		address = sys.env("ADMIN_HOST") + ":443"
+		module  = "tls"
+	}
+
+	target {
+		name    = "auth"
+		address = sys.env("AUTH_HOST") + ":443"
+		module  = "tls"
+	}
+}
+
+prometheus.scrape "tls" {
+	targets         = prometheus.exporter.blackbox.tls.targets
+	forward_to      = [prometheus.relabel.allowlist.receiver]
+	scrape_interval = "300s"
+}
+
 // Allow-list (Grafana Cloud Free: ~10k active series). A new metric we want on a dashboard is
 // added HERE too; anything else is dropped before it leaves the cluster.
 prometheus.relabel "allowlist" {
@@ -126,7 +161,7 @@ prometheus.relabel "allowlist" {
 
 	rule {
 		source_labels = ["__name__"]
-		regex         = "up|http_server_request_duration_seconds_(bucket|sum|count)|messaging_.+|process_cpu_seconds_total|process_resident_memory_bytes|process_start_time_seconds|nodejs_eventloop_lag_p99_seconds|nodejs_heap_size_used_bytes|nodejs_heap_size_total_bytes"
+		regex         = "up|probe_success|probe_ssl_earliest_cert_expiry|http_server_request_duration_seconds_(bucket|sum|count)|messaging_.+|process_cpu_seconds_total|process_resident_memory_bytes|process_start_time_seconds|nodejs_eventloop_lag_p99_seconds|nodejs_heap_size_used_bytes|nodejs_heap_size_total_bytes"
 		action        = "keep"
 	}
 }

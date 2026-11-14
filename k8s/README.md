@@ -380,6 +380,11 @@ every pod's stdout ── read through the Kubernetes API ───────�
 - **Credentials**: Secret `grafana-cloud` (keys in `k8s/grafana-cloud.env.example`) with a
   write-only token (metrics:write, logs:write, traces:write). Staging: from `k8s/.grafana-cloud.env`;
   prod: External Secrets entry `nest-microservice-prod-grafana-cloud`.
+- **Certificates** (ADR 0048): every 5 minutes Alloy opens TLS to www, admin and auth (`urls.env`)
+  and sends `probe_ssl_earliest_cert_expiry` and `probe_success`. Create two alert rules in Grafana
+  Cloud (Alerting → Alert rules, data source Prometheus), contact point = your email:
+  `probe_ssl_earliest_cert_expiry{cluster="prod"} - time() < 14 * 86400` (renewal failed:
+  cert-manager renews 30 days before) and `probe_success{cluster="prod"} == 0` for 15 min (no TLS).
 - **A new instrumented app**: the scrape annotations on its pod, `OTEL_*` in its env file, and both
   rules of `components/observability/networkpolicies.yaml`.
 
@@ -399,7 +404,7 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 
 | What | Where |
 |---|---|
-| TLS | Gateway listener `https` (:443) with `wildcard-tls`, issued and renewed by cert-manager (DNS-01, DigitalOcean DNS). `:80` only redirects. HSTS on every route |
+| TLS | Gateway listener `https` (:443) with `wildcard-tls`, issued and renewed by cert-manager (DNS-01, DigitalOcean DNS). `:80` only redirects. HSTS on every public route, its value `HSTS` of `urls.env` (ADR 0048) (ramped up after go-live; no includeSubDomains, no preload). Expiry watched by Alloy (`probe_ssl_earliest_cert_expiry`) |
 | Secrets | `overlays/prod/secrets/external-secrets.yaml`: External Secrets Operator copies them from the secret manager (ClusterSecretStore `prod-secrets`). The file lists every entry and field to create |
 | Migrations | `overlays/prod/migration-job.yaml`: `prisma migrate deploy` (image `--target migrate`) before each rollout. Keep migrations backward compatible |
 | Resilience | 2 replicas (KrakenD, Keycloak, apps, nginx), PodDisruptionBudgets, spread over nodes, `maxUnavailable: 0`, probes, resource requests/limits |
