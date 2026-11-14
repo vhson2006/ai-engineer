@@ -70,37 +70,37 @@ images:
     newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: autoparts-web
     newName: ghcr.io/vhson2006/ai-engineer/autoparts-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: flowers-web
     newName: ghcr.io/vhson2006/ai-engineer/flowers-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: hotel-web
     newName: ghcr.io/vhson2006/ai-engineer/hotel-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: laundry-web
     newName: ghcr.io/vhson2006/ai-engineer/laundry-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: nails-web
     newName: ghcr.io/vhson2006/ai-engineer/nails-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: spa-web
     newName: ghcr.io/vhson2006/ai-engineer/spa-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: sushi-web
     newName: ghcr.io/vhson2006/ai-engineer/sushi-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: travel-web
     newName: ghcr.io/vhson2006/ai-engineer/travel-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
   - name: wine-web
     newName: ghcr.io/vhson2006/ai-engineer/wine-web
-    newTag: a0b06883390d4015d16e6ffe0ad70bd024e8e023
+    newTag: 8174194973f20cf7baf33201e1be406fd544f4e2
 
 configMapGenerator:
   - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
