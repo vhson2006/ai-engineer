@@ -65,6 +65,9 @@ an environment quietly different from git.
   are left alone unless the tool created them (its remote state), but a field of a managed object
   not in the file is reset (e.g. a client's flow override made by hand): change the file instead.
 - Editing `users.json` resets the test users' passwords (dev/staging only).
+- A file that declares a user without `groups` removes that user's groups (found on a fresh staging:
+  `otp.json` stripped alice of `/admins`). So `otp.json` runs before `users.json`, whose cache key
+  carries `otp.json`'s checksum: the groups are applied again whenever the code is.
 - One more image (Docker Hub, `adorsys/keycloak-config-cli`) and one powerful credential in prod
   (the master client has realm role `admin`): keep its secret in the secret manager only.
 
