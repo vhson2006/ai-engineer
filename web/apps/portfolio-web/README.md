@@ -33,7 +33,7 @@ Sign in with `carol` (read), `bob` (read + write own) or `alice` (admin), passwo
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests (Vitest) of this app (`src/**/*.test.ts`); the shared code is tested in `packages/core` (`npm test` in `web/` runs all) |
 | `npm run typecheck` | `next typegen` + `tsc --noEmit` |
-| `docker build -f web/apps/portfolio-web/Dockerfile --build-arg SITE_URL=https://www.<domain> -t portfolio-web web` (repo root) | Production image (`output: 'standalone'`, non-root, config from env at runtime). Deployed by `k8s/overlays/prod` (repo root) |
+| `docker build -f web/Dockerfile --build-arg APP=portfolio-web --build-arg SITE_URL=https://www.<domain> -t portfolio-web web` (repo root) | Production image (`output: 'standalone'`, non-root, config from env at runtime). Deployed by `k8s/overlays/prod` (repo root) |
 
 ## Edit the content
 

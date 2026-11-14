@@ -1,0 +1,12 @@
+# The build context of every web image (web/Dockerfile, apps/render-worker/Dockerfile): sources
+# only. Installed and built output is made inside the image; secrets never enter it.
+**/node_modules
+**/.next
+**/.turbo
+**/coverage
+**/*.tsbuildinfo
+**/.env
+**/.env.*
+!**/.env.example
+**/.DS_Store
+**/npm-debug.log*
