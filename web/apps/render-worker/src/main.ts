@@ -35,7 +35,7 @@ async function main() {
   });
   health.listen(config.RENDER_WORKER_PORT);
 
-  const renderer = new Renderer(config.RENDER_CONCURRENCY, config.RENDER_IGNORE_CERT_ERRORS);
+  const renderer = new Renderer(config.RENDER_CONCURRENCY, config.RENDER_IGNORE_CERT_ERRORS, config.REMOTION_PORT);
   log.info('preparing the browser and bundling the compositions');
   await renderer.start();
 

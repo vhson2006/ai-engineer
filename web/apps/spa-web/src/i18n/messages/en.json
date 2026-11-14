@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "An Nhiên Spa: massage and natural treatments in Saigon",
+    "description": "A quiet day spa in Thủ Đức: Vietnamese herbal massage, hot stones, facials and foot rituals with natural products. Open every day; book by phone or Zalo.",
+    "ogImageAlt": "A calm treatment room with a massage table, river stones and frangipani flowers"
+  },
+  "blog": {
+    "title": "Slow living notes",
+    "intro": "Herbs, breathing, sleep and small rituals for busy days, from the therapists of An Nhiên.",
+    "metaTitle": "Articles: wellness, massage and herbal rituals",
+    "metaDescription": "Vietnamese herbs, massage benefits, sleep and simple rituals to slow down, from the therapists of An Nhiên Spa.",
+    "latestIntro": "Herbs, breathing and small rituals for busy days.",
+    "ctaTitle": "Time for a pause?",
+    "ctaText": "Book by phone or Zalo; tell us what you need and we suggest the right treatment."
+  },
+  "footer": {
+    "tagline": "An hour of quiet, a little lighter afterwards."
+  },
+  "hours": {
+    "daily": "Every day"
+  },
+  "nav": {
+    "top": "Home",
+    "treatments": "Treatments",
+    "packages": "Packages",
+    "ritual": "Your visit"
+  },
+  "hero": {
+    "eyebrow": "Day spa · Thủ Đức",
+    "title": "Slow down. Breathe. Feel at peace.",
+    "text": "Vietnamese herbs, warm stones and unhurried hands. An Nhiên means calm and natural: an hour to set the city down.",
+    "book": "Book a treatment",
+    "viewTreatments": "See the treatments",
+    "imageAlt": "A calm treatment room with a massage table, river stones, candles and frangipani flowers",
+    "quote": "“The calmest hour of my week.”",
+    "quoteNote": "How we hope you feel when you leave."
+  },
+  "treatments": {
+    "eyebrow": "Treatments",
+    "title": "Choose your time",
+    "intro": "Prices per person, including herbal tea and a foot soak before each treatment.",
+    "minutes": "{minutes} min",
+    "groups": {
+      "massage": "Massage",
+      "facial": "Facials",
+      "body": "Body & herbs"
+    },
+    "massage": {
+      "items": {
+        "signature": { "name": "An Nhiên signature massage", "desc": "Long, slow strokes and acupressure with warm lemongrass oil." },
+        "hotStone": { "name": "Hot stone massage", "desc": "Warm basalt stones melt tension in the back and shoulders." },
+        "foot": { "name": "Foot reflexology", "desc": "Pressure points of the feet and lower legs, after an herbal soak." }
+      }
+    },
+    "facial": {
+      "items": {
+        "hydrating": { "name": "Hydrating facial", "desc": "Cleanse, gentle exfoliation, aloe mask and a face massage." },
+        "herbal": { "name": "Herbal glow facial", "desc": "A warm herbal compress, turmeric and honey mask, jade roller." }
+      }
+    },
+    "body": {
+      "items": {
+        "scrub": { "name": "Coffee and coconut scrub", "desc": "Smooth, bright skin, finished with a light oil." },
+        "herbalBath": { "name": "Dao herbal bath", "desc": "A wooden tub of the Red Dao's medicinal leaves." }
+      }
+    }
+  },
+  "packages": {
+    "eyebrow": "Packages",
+    "title": "When one treatment isn't enough",
+    "intro": "Combinations our guests come back for.",
+    "signature": "Most loved",
+    "duration": "{minutes} min",
+    "forTwo": "for two",
+    "book": "Book this package",
+    "items": {
+      "pause": { "name": "Lunch pause", "desc": "Foot ritual and a 30-minute back and shoulder massage." },
+      "renew": { "name": "Half-day renewal", "desc": "Herbal bath, scrub, signature massage and hydrating facial, with a light lunch." },
+      "together": { "name": "Together", "desc": "Side by side in our couples' room: herbal soak and a 90-minute massage." }
+    }
+  },
+  "ritual": {
+    "eyebrow": "Your visit",
+    "title": "From the first cup of tea",
+    "intro": "Every visit follows the same quiet rhythm.",
+    "imageAlt": "A relaxation lounge with linen cushions, plants and a herbal tea set",
+    "steps": [
+      { "title": "Arrive", "text": "Ginger tea and a warm herbal foot soak." },
+      { "title": "Talk", "text": "A few questions about pressure, health and what you need today." },
+      { "title": "Treatment", "text": "In a private room, at your pace." },
+      { "title": "Rest", "text": "Stay in the lounge as long as you like." }
+    ],
+    "etiquetteTitle": "Good to know",
+    "etiquette": [
+      "Please arrive 10 minutes early to enjoy the foot soak.",
+      "Tell us about pregnancy, injuries or medical conditions when you book.",
+      "Phones on silent: the spa is a quiet place.",
+      "Changing your time? Let us know at least 3 hours ahead."
+    ]
+  },
+  "questions": {
+    "items": [
+      { "q": "Do I need to book?", "a": "We recommend it, especially in the evening and at weekends. Walk-ins are welcome when a therapist is free." },
+      { "q": "Can I choose a male or female therapist?", "a": "Yes, tell us when you book and we arrange it whenever possible." },
+      { "q": "Are your treatments suitable during pregnancy?", "a": "Some are, after the first trimester and with adapted techniques. Please tell us when you book so we can suggest the right one." },
+      { "q": "What products do you use?", "a": "Natural oils and herbs: lemongrass, ginger, coconut, turmeric, aloe. Tell us about any allergies." },
+      { "q": "Do you sell gift cards?", "a": "Yes, for any treatment or package. Call or message us on Zalo to order one." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Visit us",
+    "title": "Your hour of calm is waiting",
+    "text": "Call or message us on Zalo to book; we confirm your time right away.",
+    "note": "Last treatment starts 90 minutes before closing."
+  }
+}

@@ -1,5 +1,5 @@
 # admin-web (the admin site, ADR 0019; Next.js standalone, :3000), image built from
-# web/apps/admin-web/Dockerfile (context web/). Same hardening as portfolio-web.
+# web/Dockerfile (APP=admin-web, context web/; k8s/images.json). Same hardening as portfolio-web.
 # The overlay provides:
 #   ConfigMap "admin-web-env"  APP_URL, API_URL, KEYCLOAK_ISSUER, KEYCLOAK_CLIENT_ID,
 #                              KEYCLOAK_REQUIRED_ROLE, REDIS_KEY_PREFIX

@@ -1,0 +1,108 @@
+/*
+ * The business sites' extra tokens (ADR 0042), on top of @web/ui/theme.css. A site imports this
+ * after it and sets the values in its globals.css:
+ * - `--brand-strong`: headings and links on light backgrounds.
+ * - `--accent` / `--accent-fg`: the second colour (labels, highlights, the topic chips).
+ * - `--deep` / `--deep-fg`: dark bands (top bar, footer, call-to-action boxes).
+ * Fonts: the site's layout sets `--font-body` and `--font-heading` (next/font variables).
+ * Shape: `--card-radius` (rounded-card), `--button-radius` (rounded-button); headings (`.display`):
+ * `--heading-weight`, `--heading-case`, `--heading-tracking`.
+ */
+@theme inline {
+  --color-brand-strong: var(--brand-strong);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-deep: var(--deep);
+  --color-deep-fg: var(--deep-fg);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --radius-card: var(--card-radius, 1.5rem);
+  --radius-button: var(--button-radius, 9999px);
+}
+
+/* Section and page titles: the site's heading font and character. */
+.display {
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight, 700);
+  text-transform: var(--heading-case, none);
+  letter-spacing: var(--heading-tracking, -0.015em);
+}
+
+/* A section reached from the menu starts right under the sticky header; in @layer base so a
+   utility still overrides it (the hero's scroll-mt-[100vh]: Home = top of page). */
+@layer base {
+  section[id] {
+    scroll-margin-top: 68px;
+  }
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Article bodies (HTML from content-service): text; the layout blocks come from
+   @web/ui/article-layout.css, coloured through --article-accent*. */
+.article-body {
+  --article-accent: var(--brand);
+  --article-accent-soft: var(--brand-soft);
+  --article-accent-strong: var(--brand-strong);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.article-body > * + * {
+  margin-top: 1.1em;
+}
+.article-body h2 {
+  margin-top: 2em;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--brand-strong);
+}
+.article-body h3 {
+  margin-top: 1.6em;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--brand-strong);
+}
+.article-body a {
+  color: var(--brand-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body ul {
+  list-style: disc;
+  padding-left: 1.4em;
+}
+.article-body ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.article-body li + li {
+  margin-top: 0.35em;
+}
+.article-body li::marker {
+  color: var(--brand);
+}
+.article-body blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 1.1em;
+  font-style: italic;
+  color: var(--muted);
+}
+.article-body img {
+  border-radius: 1rem;
+  height: auto;
+  max-width: 100%;
+}
+.article-body figcaption {
+  margin-top: 0.5em;
+  font-size: 0.875rem;
+  color: var(--subtle);
+  text-align: center;
+}
+.article-body hr {
+  border-color: var(--border);
+}

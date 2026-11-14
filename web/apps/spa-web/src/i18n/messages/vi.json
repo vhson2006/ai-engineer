@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "An Nhiên Spa: massage và liệu pháp tự nhiên tại Sài Gòn",
+    "description": "Day spa yên tĩnh ở Thủ Đức: massage thảo dược Việt, đá nóng, chăm sóc da mặt và ngâm chân với sản phẩm tự nhiên. Mở cửa mỗi ngày; đặt lịch qua điện thoại hoặc Zalo.",
+    "ogImageAlt": "Phòng trị liệu yên tĩnh với giường massage, đá cuội và hoa sứ"
+  },
+  "blog": {
+    "title": "Sống chậm",
+    "intro": "Thảo dược, hơi thở, giấc ngủ và những nghi thức nhỏ cho ngày bận rộn, từ các chuyên viên của An Nhiên.",
+    "metaTitle": "Bài viết: chăm sóc sức khoẻ, massage và thảo dược",
+    "metaDescription": "Thảo dược Việt, lợi ích của massage, giấc ngủ và những thói quen đơn giản để sống chậm lại, từ các chuyên viên An Nhiên Spa.",
+    "latestIntro": "Thảo dược, hơi thở và những nghi thức nhỏ cho ngày bận rộn.",
+    "ctaTitle": "Đến lúc nghỉ ngơi?",
+    "ctaText": "Đặt lịch qua điện thoại hoặc Zalo; cho chúng tôi biết bạn cần gì, chúng tôi gợi ý liệu trình phù hợp."
+  },
+  "footer": {
+    "tagline": "Một giờ tĩnh lặng, nhẹ nhõm hơn khi ra về."
+  },
+  "hours": {
+    "daily": "Mỗi ngày"
+  },
+  "nav": {
+    "top": "Trang chủ",
+    "treatments": "Liệu trình",
+    "packages": "Gói dịch vụ",
+    "ritual": "Khi bạn đến"
+  },
+  "hero": {
+    "eyebrow": "Day spa · Thủ Đức",
+    "title": "Chậm lại. Hít thở. An nhiên.",
+    "text": "Thảo dược Việt, đá ấm và đôi tay không vội vàng. An Nhiên là bình yên và tự nhiên: một giờ để đặt thành phố xuống.",
+    "book": "Đặt lịch",
+    "viewTreatments": "Xem liệu trình",
+    "imageAlt": "Phòng trị liệu yên tĩnh với giường massage, đá cuội, nến và hoa sứ",
+    "quote": "“Giờ phút bình yên nhất trong tuần.”",
+    "quoteNote": "Điều chúng tôi mong bạn cảm thấy khi ra về."
+  },
+  "treatments": {
+    "eyebrow": "Liệu trình",
+    "title": "Chọn thời gian của bạn",
+    "intro": "Giá cho một người, đã gồm trà thảo mộc và ngâm chân trước mỗi liệu trình.",
+    "minutes": "{minutes} phút",
+    "groups": {
+      "massage": "Massage",
+      "facial": "Chăm sóc da mặt",
+      "body": "Cơ thể & thảo dược"
+    },
+    "massage": {
+      "items": {
+        "signature": { "name": "Massage đặc trưng An Nhiên", "desc": "Những đường vuốt dài, chậm và bấm huyệt với dầu sả ấm." },
+        "hotStone": { "name": "Massage đá nóng", "desc": "Đá bazan ấm làm tan căng cứng ở lưng và vai." },
+        "foot": { "name": "Bấm huyệt chân", "desc": "Các huyệt ở bàn chân và cẳng chân, sau khi ngâm thảo dược." }
+      }
+    },
+    "facial": {
+      "items": {
+        "hydrating": { "name": "Cấp ẩm da mặt", "desc": "Làm sạch, tẩy da chết nhẹ, mặt nạ nha đam và massage mặt." },
+        "herbal": { "name": "Chăm sóc da thảo mộc", "desc": "Chườm thảo dược ấm, mặt nạ nghệ mật ong, lăn đá ngọc." }
+      }
+    },
+    "body": {
+      "items": {
+        "scrub": { "name": "Tẩy da chết cà phê dừa", "desc": "Da mịn, sáng, kết thúc bằng một lớp dầu nhẹ." },
+        "herbalBath": { "name": "Tắm lá thuốc người Dao", "desc": "Bồn gỗ ngâm lá thuốc của người Dao đỏ." }
+      }
+    }
+  },
+  "packages": {
+    "eyebrow": "Gói dịch vụ",
+    "title": "Khi một liệu trình là chưa đủ",
+    "intro": "Những sự kết hợp khách hàng hay quay lại.",
+    "signature": "Được yêu thích",
+    "duration": "{minutes} phút",
+    "forTwo": "cho hai người",
+    "book": "Đặt gói này",
+    "items": {
+      "pause": { "name": "Nghỉ trưa", "desc": "Ngâm chân và 30 phút massage lưng, vai." },
+      "renew": { "name": "Nửa ngày tái tạo", "desc": "Tắm lá thuốc, tẩy da chết, massage đặc trưng và cấp ẩm da mặt, kèm bữa trưa nhẹ." },
+      "together": { "name": "Bên nhau", "desc": "Cạnh nhau trong phòng đôi: ngâm thảo dược và 90 phút massage." }
+    }
+  },
+  "ritual": {
+    "eyebrow": "Khi bạn đến",
+    "title": "Bắt đầu từ chén trà đầu tiên",
+    "intro": "Mỗi lần ghé đều theo cùng một nhịp chậm rãi.",
+    "imageAlt": "Phòng thư giãn với gối lanh, cây xanh và bộ trà thảo mộc",
+    "steps": [
+      { "title": "Đến nơi", "text": "Trà gừng và ngâm chân thảo dược ấm." },
+      { "title": "Trò chuyện", "text": "Vài câu hỏi về lực tay, sức khoẻ và điều bạn cần hôm nay." },
+      { "title": "Trị liệu", "text": "Trong phòng riêng, theo nhịp của bạn." },
+      { "title": "Nghỉ ngơi", "text": "Ở lại phòng thư giãn bao lâu tuỳ thích." }
+    ],
+    "etiquetteTitle": "Lưu ý",
+    "etiquette": [
+      "Vui lòng đến sớm 10 phút để thư thả ngâm chân.",
+      "Báo cho chúng tôi khi đặt lịch nếu bạn mang thai, có chấn thương hay bệnh lý.",
+      "Để điện thoại ở chế độ im lặng: spa là nơi yên tĩnh.",
+      "Đổi giờ? Báo trước ít nhất 3 tiếng giúp chúng tôi."
+    ]
+  },
+  "questions": {
+    "items": [
+      { "q": "Tôi có cần đặt lịch trước không?", "a": "Nên đặt, nhất là buổi tối và cuối tuần. Khi còn chuyên viên trống, bạn có thể ghé thẳng." },
+      { "q": "Tôi có chọn được chuyên viên nam hay nữ không?", "a": "Được, hãy báo khi đặt lịch, chúng tôi sắp xếp khi có thể." },
+      { "q": "Liệu trình có phù hợp khi mang thai không?", "a": "Một số liệu trình phù hợp sau ba tháng đầu, với kỹ thuật điều chỉnh. Hãy báo khi đặt lịch để chúng tôi gợi ý liệu trình phù hợp." },
+      { "q": "Spa dùng sản phẩm gì?", "a": "Dầu và thảo dược tự nhiên: sả, gừng, dừa, nghệ, nha đam. Hãy cho chúng tôi biết nếu bạn bị dị ứng." },
+      { "q": "Spa có bán thẻ quà tặng không?", "a": "Có, cho mọi liệu trình hoặc gói dịch vụ. Gọi điện hoặc nhắn Zalo để đặt." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Ghé An Nhiên",
+    "title": "Một giờ bình yên đang chờ bạn",
+    "text": "Gọi điện hoặc nhắn Zalo để đặt lịch; chúng tôi xác nhận giờ ngay.",
+    "note": "Liệu trình cuối bắt đầu 90 phút trước giờ đóng cửa."
+  }
+}

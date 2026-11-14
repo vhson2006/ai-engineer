@@ -3,7 +3,7 @@
   "private": true,
   "description": "Monorepo: nest-microservice (API), web (Next.js BFF apps: portfolio-web, admin-web) and k8s (infrastructure for both). Scripts here only drive the local Kubernetes stack; each package has its own package.json.",
   "scripts": {
-    "k8s:up": "node k8s/scripts/sh.mjs k8s/scripts/gateway-install.sh && kubectl apply -k k8s/overlays/dev",
+    "k8s:up": "node k8s/scripts/sh.mjs k8s/scripts/up.sh",
     "k8s:gateway:install": "node k8s/scripts/sh.mjs k8s/scripts/gateway-install.sh",
     "k8s:down": "kubectl delete -k k8s/overlays/dev",
     "k8s:render": "kubectl kustomize k8s/overlays/dev",
@@ -11,8 +11,7 @@
     "k8s:status": "kubectl -n nest-microservice get pods,svc,pvc,gateway,httproute",
     "k8s:forward": "node k8s/scripts/sh.mjs k8s/scripts/port-forward.sh",
     "krakend:check": "node k8s/scripts/sh.mjs k8s/scripts/krakend-check.sh",
-    "keycloak:admin-url": "node k8s/scripts/sh.mjs k8s/scripts/keycloak-admin-url.sh",
-    "keycloak:admin-otp": "node k8s/scripts/sh.mjs k8s/scripts/keycloak-admin-otp.sh",
+    "images:check": "node k8s/scripts/images-check.mjs",
     "staging:build": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh build",
     "staging:up": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh up",
     "staging:status": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh status",

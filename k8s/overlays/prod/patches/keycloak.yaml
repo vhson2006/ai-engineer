@@ -1,5 +1,6 @@
 # Production Keycloak:
-#  - `start` (production mode: strict hostname, no dev defaults); the realm JSON is imported once.
+#  - `start` (production mode: strict hostname, no dev defaults); the realms come from the Job
+#    keycloak-config (ADR 0043).
 #  - two replicas: Keycloak 26 clusters through its database (JDBC_PING, the default cache stack),
 #    so no extra discovery Service is needed; NetworkPolicy lets the pods talk to each other.
 #  - managed Postgres over verified TLS: KC_DB_URL (with sslmode=verify-full and the CA path)
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          args: ['start', '--import-realm']
+          args: ['start']
           env:
             - name: KC_HOSTNAME
               value: https://auth.example.com

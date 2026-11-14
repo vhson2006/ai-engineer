@@ -1,0 +1,518 @@
+{
+  "site": {
+    "id": "spa",
+    "name": "An Nhiên Spa",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "wellness",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Wellness",
+          "slug": "wellness"
+        },
+        {
+          "locale": "vi",
+          "name": "Sống khoẻ",
+          "slug": "song-khoe"
+        }
+      ]
+    },
+    {
+      "key": "treatments",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Treatments",
+          "slug": "treatments"
+        },
+        {
+          "locale": "vi",
+          "name": "Liệu trình",
+          "slug": "lieu-trinh"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "91d5eb2b-a160-4433-860b-24076b96bd64",
+      "source": "ai",
+      "prompt": "A peaceful spa setting with smooth black basalt hot stones arranged on a natural wooden table beside a rolled white towel and soft candlelight, warm relaxing atmosphere",
+      "filename": "A peaceful spa setting with smooth black basalt hot stones a.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 21856,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 51354,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 56772,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:43:12.438Z"
+    },
+    {
+      "id": "0a19c05b-1d30-40ef-afba-73ff975eb4af",
+      "source": "ai",
+      "prompt": "Smooth warm basalt stones resting gently on a person towel-covered back in a tranquil spa room with warm ambient lighting, no face visible, serene atmosphere",
+      "filename": "Smooth warm basalt stones resting gently on a person towel-c.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 25084,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 63690,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 72818,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:43:12.457Z"
+    },
+    {
+      "id": "06c8b47a-c318-458f-9cec-2aa050b39a64",
+      "source": "ai",
+      "prompt": "A minimalist and cozy setting with a wooden foot soaking bowl, natural herbs, fresh ginger and a folded white towel on a serene background, soft natural lighting, tranquil spa aesthetic",
+      "filename": "A minimalist and cozy setting with a wooden foot soaking bow.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 34224,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 84982,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 95948,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:43:51.519Z"
+    },
+    {
+      "id": "462a9d71-4938-4026-96df-2f3891356b23",
+      "source": "ai",
+      "prompt": "A warm wooden basin filled with steaming warm water, fresh ginger slices, lemongrass stalks, and floating herbal leaves placed on a clean wooden floor, soft warm ambient lighting, peaceful home spa atmosphere",
+      "filename": "A warm wooden basin filled with steaming warm water, fresh g.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 40226,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 100406,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 113032,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:43:51.535Z"
+    },
+    {
+      "id": "d9767b12-7351-4e43-9595-d67709b4337f",
+      "source": "ai",
+      "prompt": "A warm and peaceful minimalist bedroom at night, a cozy bed with soft linen sheets, a wooden side table with a warm ambient lamp, gentle natural shadows, calm and relaxing atmosphere, natural light, no text, no logo, no recognizable face.",
+      "filename": "A warm and peaceful minimalist bedroom at night, a cozy bed .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 18856,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 58228,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 67438,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:46:08.038Z"
+    },
+    {
+      "id": "3ccb7939-d10a-4d39-9038-de90c741c624",
+      "source": "ai",
+      "prompt": "A minimalist and cozy spa reception area, warm natural sunlight filtering through sheer curtains, a ceramic teapot with a cup of herbal tea on a low wooden table, small potted green plant, soft linen cushions, calm and soothing atmosphere, realistic photo, no text, no logo",
+      "filename": "A minimalist and cozy spa reception area, warm natural sunli.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 21890,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 60774,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 68614,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:48:28.911Z"
+    },
+    {
+      "id": "29df8def-7142-4178-9eee-6df4699b5553",
+      "source": "ai",
+      "prompt": "A warm and serene spa treatment room, featuring a wooden massage bed with crisp white towels neatly rolled, gentle ambient candlelight, a small wooden tray with amber glass essential oil bottles and dried lavender, natural bamboo decor, soft warm lighting, no people, no text",
+      "filename": "A warm and serene spa treatment room, featuring a wooden mas.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 31654,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 76092,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 83908,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:48:28.929Z"
+    },
+    {
+      "id": "d8cce417-0ef5-4c14-85ce-ba7fd8a8eeda",
+      "source": "ai",
+      "prompt": "A serene minimalist skincare flat lay on natural stone with soft daylight, botanical branches, glass dropper bottle, and clean ceramic bowls, aesthetic spa atmosphere, realistic photography, no text",
+      "filename": "A serene minimalist skincare flat lay on natural stone with .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 38158,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 103864,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 118030,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:49:14.150Z"
+    },
+    {
+      "id": "261871b5-5af4-4c93-89e0-4e66dab22f31",
+      "source": "ai",
+      "prompt": "A close up photo of delicate skincare bottles on a smooth wooden shelf next to a rain-streaked window with soft natural daylight, peaceful spa aesthetics, minimalist, no text, no logo",
+      "filename": "A close up photo of delicate skincare bottles on a smooth wo.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 26744,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 62476,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 69156,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:49:14.167Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "d2a544ad-c993-45bd-9ab5-a3ccc7ef3e2f",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-13T16:09:55.286Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the spa’s eucalyptus and clay.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Treatment names, durations and prices exactly as on the price list.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise medical effects, weight loss or guaranteed results.</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, massage / acupressure, 60 / 90 minutes.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a treatment, a herb, the lounge.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call to book, message on Zalo or drop by.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the spa.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">An Nhiên Spa sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu xanh khuynh diệp và đất nung của spa.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng tên liệu trình, thời lượng và giá như bảng giá.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa tác dụng chữa bệnh, giảm cân hay kết quả chắc chắn.</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, massage / bấm huyệt, 60 / 90 phút.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một liệu trình, một loại thảo dược, phòng thư giãn.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gọi đặt lịch, nhắn Zalo hay ghé spa.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với spa.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của An Nhiên Spa · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "f1b490d1-830e-45ca-b842-c46757600c76",
+      "categoryKey": "treatments",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "91d5eb2b-a160-4433-860b-24076b96bd64",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:44:12.524Z",
+      "createdAt": "2026-11-14T00:43:33.612Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Hot stone massage experience: Process and relaxation benefits",
+          "slug": "hot-stone-massage-experience-process-and-relaxation-benefits",
+          "excerpt": "Learn all about the hot stone massage treatment at An Nhiên Spa, from the authentic soothing sensations to step-by-step techniques that restore your body's energy.",
+          "coverAlt": "A tranquil spa setting with basalt hot stones placed next to soft towels",
+          "body": "<p class=\"tpl-lead\">After long, hectic days filled with work and daily pressure, your body deserves a quiet moment to rest and recharge. The <strong>hot stone massage</strong> treatment at An Nhiên Spa is a harmonious blend of natural heat from mineral stones and gentle hands, melting away fatigue and restoring peace of mind.</p>\n<h2>What is a hot stone massage and what does it feel like?</h2>\n<p>The <strong>hot stone massage</strong> method uses natural volcanic basalt stones, renowned for their superior heat retention and smooth surface. Before starting, the stones are gently warmed to a skin-friendly temperature to slowly release soothing heat.</p>\n<p>As the warm stones glide gently over your body with aromatic essential oils, you will feel deep warmth radiating into every muscle layer. The gentle heat softens tight muscles, dispelling long-accumulated sluggishness. Wrapped in comforting warmth, your entire body slips into a state of complete relaxation, lightness, and tranquility.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/640.webp 640w, {{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/1280.webp 1280w, {{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Step-by-step process of a hot stone massage session</h2>\n<p>To ensure a gentle and safe experience, every session follows a sequential routine tailored to each guest's comfort.</p>\n<h2>Who should try a hot stone massage?</h2>\n<p>This therapy is especially suitable for anyone seeking a peaceful sanctuary to care for body and mind after stressful working hours.</p>\n<h2>Important tips before and after a massage</h2>\n<p>To fully enjoy the relaxation and maintain its soothing benefits, simply arrive with a relaxed mindset and keep a few small tips in mind after your treatment.</p>\n<h2>Frequently asked questions about hot stone massage</h2>\n<p>Here are some common questions from guests when first learning about and experiencing warm stone care.</p>",
+          "readingMinutes": 1,
+          "seoTitle": "Hot stone massage: Process and relaxing experience",
+          "seoDescription": "Explore the detailed hot stone massage treatment at An Nhiên Spa, featuring a step-by-step relaxing process and essential tips to help rejuvenate your energy."
+        },
+        {
+          "locale": "vi",
+          "title": "Trải nghiệm massage đá nóng: Quy trình và lợi ích thư giãn",
+          "slug": "trai-nghiem-massage-da-nong-quy-trinh-va-loi-ich-thu-gian",
+          "excerpt": "Tìm hiểu chi tiết về liệu trình massage đá nóng tại An Nhiên Spa, từ cảm giác thư thái thực tế đến các bước thực hiện giúp tái tạo năng lượng cho cơ thể.",
+          "coverAlt": "Không gian spa thư thái với những viên đá nóng bazan đặt cạnh khăn mềm mại",
+          "body": "<p class=\"tpl-lead\">Sau những ngày dài quay cuồng với công việc và áp lực cuộc sống, cơ thể bạn xứng đáng có một khoảng lặng để nghỉ ngơi và nạp lại năng lượng. Liệu trình <strong>massage đá nóng</strong> tại An Nhiên Spa chính là sự kết hợp hài hòa giữa nhiệt lượng tự nhiên từ đá khoáng và đôi bàn tay mềm mại, giúp xua tan cảm giác mỏi mệt, trả lại sự thanh thản cho tâm trí.</p>\n<h2>Massage đá nóng là gì và cảm giác khi trải nghiệm</h2>\n<p>Phương pháp <strong>massage đá nóng</strong> sử dụng những viên đá bazan tự nhiên có nguồn gốc từ núi lửa, sở hữu đặc tính giữ nhiệt vượt trội và bề mặt nhẵn mịn. Trước khi bắt đầu, đá được làm ấm ở nhiệt độ êm dịu, phù hợp với làn da để truyền dẫn hơi ấm một cách từ từ.</p>\n<p>Khi viên đá ấm áp lướt nhẹ trên cơ thể cùng tinh dầu thơm dịu, bạn sẽ cảm nhận được sự ấm nóng lan tỏa sâu vào từng thớ thịt. Nhiệt lượng nhẹ nhàng làm mềm những vùng cơ bắp đang co cứng, xua đi cảm giác uể oải tích tụ lâu ngày. Cảm giác ấm áp êm dịu bao bọc khắp cơ thể đưa bạn vào trạng thái thả lỏng hoàn toàn, nhẹ nhàng và an yên.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/640.webp 640w, {{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/1280.webp 1280w, {{media}}/0a19c05b-1d30-40ef-afba-73ff975eb4af/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Quy trình từng bước trong một buổi massage đá nóng</h2>\n<p>Để mang đến trải nghiệm êm ái và an toàn, mỗi buổi chăm sóc đều được tiến hành theo các bước tuần tự, chú trọng vào cảm nhận thoải mái của từng khách hàng.</p>\n<h2>Những ai nên trải nghiệm massage đá nóng?</h2>\n<p>Liệu pháp này đặc biệt thích hợp cho những người đang tìm kiếm một khoảng không gian tĩnh lặng để chăm sóc thân tâm sau những giờ làm việc căng thẳng.</p>\n<h2>Một số lưu ý quan trọng trước và sau khi massage</h2>\n<p>Để tận hưởng trọn vẹn sự thư thái và duy trì hiệu quả êm dịu cho cơ thể, bạn nên chuẩn bị tâm lý thoải mái và lưu tâm một vài điều nhỏ sau buổi trị liệu.</p>\n<h2>Giải đáp câu hỏi thường gặp về massage đá nóng</h2>\n<p>Dưới đây là một số thắc mắc quen thuộc của khách hàng khi lần đầu tìm hiểu và trải nghiệm dịch vụ chăm sóc với đá ấm.</p>",
+          "readingMinutes": 2,
+          "seoTitle": "Massage đá nóng: Quy trình và trải nghiệm thư giãn",
+          "seoDescription": "Khám phá chi tiết liệu trình massage đá nóng tại An Nhiên Spa, quy trình từng bước chuẩn thư giãn cùng những lưu ý quan trọng giúp phục hồi năng lượng."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "7219e411-85cc-4f0c-81e4-3926841f9714",
+      "categoryKey": "wellness",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "06c8b47a-c318-458f-9cec-2aa050b39a64",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:44:28.067Z",
+      "createdAt": "2026-11-14T00:44:03.837Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "At-home herbal foot soak: What to prepare for relaxation?",
+          "slug": "at-home-herbal-foot-soak-what-to-prepare-for-relaxation",
+          "excerpt": "A guide to preparing ingredients and steps for an at-home herbal foot soak to relieve fatigue and bring complete relaxation after a busy day.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">After a long day of work and a hectic pace of life, our feet often carry a lot of pressure and become sore. Taking a quiet moment in the evening for an at-home <strong>herbal foot soak</strong> is the gentlest way to care for your body and mind, relax completely, and restore your natural balance.</p>\n<h2>Relaxing benefits of a nightly herbal foot soak routine</h2>\n<p>The feet are home to many vital nerve endings and acupoints directly connected to internal organs. When submerged in warm water infused with delicate herbal aromas, the blood vessels in your feet gradually dilate, promoting smoother and gentler <strong>blood circulation</strong>.</p>\n<p>Beyond easing muscle stiffness after hours of moving or standing, the warmth of the water and natural essential oil aromas gently soothe your senses. As a result, your mind unwinds, everyday worries fade, and you are prepared for a peaceful, <strong>deep sleep</strong>.</p>\n<h2>Preparing the necessary ingredients and tools at home</h2>\n<p>You can easily create a warm foot soak right in your own room using pure natural ingredients found right in your kitchen.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/462a9d71-4938-4026-96df-2f3891356b23/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/462a9d71-4938-4026-96df-2f3891356b23/640.webp 640w, {{media}}/462a9d71-4938-4026-96df-2f3891356b23/1280.webp 1280w, {{media}}/462a9d71-4938-4026-96df-2f3891356b23/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>As for tools, prepare a wooden or plastic <strong>foot basin</strong> deep enough for the water to cover your ankles, a soft cotton towel to dry off afterward, and a quiet, airy space to sit.</p>\n<h2>Steps for a proper herbal foot soak to achieve deep relaxation</h2>\n<p>To achieve the best relaxation from your foot soak routine, following the right steps from preparing warm water to finishing up is essential.</p>\n<h2>Important mistakes to avoid during an herbal foot soak</h2>\n<p>Although this method is very gentle and natural, you should still keep a few basic rules in mind to keep your feet healthy and safe.</p>\n<h2>Frequently asked questions about doing foot soaks at home</h2>\n<p>When starting this routine, many people still wonder about the best timing and how to maintain it consistently to fit their daily lifestyle.</p>",
+          "readingMinutes": 2,
+          "seoTitle": "How to do an at-home herbal foot soak for relaxation",
+          "seoDescription": "Discover how to do a simple, proper herbal foot soak at home to relieve stress and soothe your feet after a busy day."
+        },
+        {
+          "locale": "vi",
+          "title": "Ngâm chân thảo dược tại nhà: Chuẩn bị gì để thư giãn?",
+          "slug": "ngam-chan-thao-duoc-tai-nha-chuan-bi-gi-de-thu-gian",
+          "excerpt": "Hướng dẫn chuẩn bị nguyên liệu và các bước ngâm chân thảo dược tại nhà giúp xua tan mệt mỏi, mang lại cảm giác thư thái trọn vẹn sau ngày dài bận rộn.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Sau một ngày dài tất bật với công việc và nhịp sống hối hả, đôi chân của chúng ta thường phải gánh chịu nhiều áp lực và trở nên nhức mỏi. Dành ra một khoảng lặng nhỏ vào buổi tối để thực hiện liệu pháp <strong>ngâm chân thảo dược</strong> tại nhà là cách dịu dàng nhất để bạn chăm sóc thân tâm, thả lỏng toàn bộ cơ thể và tìm lại sự cân bằng vốn có.</p>\n<h2>Lợi ích thư giãn từ thói quen ngâm chân thảo dược mỗi tối</h2>\n<p>Bàn chân được xem như nơi tập trung nhiều đầu dây thần kinh và huyệt đạo quan trọng liên kết trực tiếp với các cơ quan nội tạng. Khi tiếp xúc với làn nước ấm thoang thoảng hương thơm cỏ cây, các mạch máu ở bàn chân dần giãn nở, hỗ trợ quá trình <strong>lưu thông khí huyết</strong> diễn ra êm ả và trơn tru hơn.</p>\n<p>Không chỉ giải tỏa cảm giác căng cứng của các khối cơ sau hàng giờ di chuyển hay đứng lâu, hơi ấm từ nước ngâm cùng hương thơm tinh dầu tự nhiên còn tác động nhẹ nhàng lên khứu giác. Nhờ đó, tâm trí được xoa dịu, giảm bớt những âu lo thường nhật và chuẩn bị cho một <strong>giấc ngủ sâu</strong> trọn vẹn.</p>\n<h2>Chuẩn bị nguyên liệu và dụng cụ cần thiết tại nhà</h2>\n<p>Bạn hoàn toàn có thể tự tay tạo nên một buổi ngâm chân ấm áp ngay tại gian phòng quen thuộc với những nguyên liệu thuần túy từ thiên nhiên, dễ dàng tìm kiếm ngay trong căn bếp gia đình.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/462a9d71-4938-4026-96df-2f3891356b23/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/462a9d71-4938-4026-96df-2f3891356b23/640.webp 640w, {{media}}/462a9d71-4938-4026-96df-2f3891356b23/1280.webp 1280w, {{media}}/462a9d71-4938-4026-96df-2f3891356b23/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Về phần dụng cụ, bạn hãy chuẩn bị một <strong>chậu ngâm chân</strong> bằng gỗ hoặc nhựa có độ sâu vừa phải để nước ngập qua mắt cá chân, một chiếc khăn bông mềm mại để lau khô sau khi hoàn thành, cùng một không gian ngồi yên tĩnh và thoáng đãng.</p>\n<h2>Các bước ngâm chân thảo dược đúng cách để đạt cảm giác thư thái</h2>\n<p>Để thói quen ngâm chân mang lại hiệu quả thư giãn tối ưu, việc thực hiện đúng trình tự từ khâu chuẩn bị nước ấm đến khi kết thúc là vô cùng cần thiết.</p>\n<h2>Những lưu ý quan trọng cần tránh khi ngâm chân thảo dược</h2>\n<p>Dù phương pháp này rất lành tính và mộc mạc, bạn vẫn nên nắm rõ một vài nguyên tắc căn bản để bảo vệ đôi chân luôn khỏe mạnh và an toàn.</p>\n<h2>Giải đáp những thắc mắc thường gặp khi tự ngâm chân tại nhà</h2>\n<p>Khi bắt đầu thực hành thói quen này, nhiều người vẫn còn những băn khoăn về thời điểm cũng như cách thức duy trì sao cho điều độ và phù hợp nhất với nhịp sinh hoạt.</p>",
+          "readingMinutes": 3,
+          "seoTitle": "Cách ngâm chân thảo dược tại nhà giúp thư giãn",
+          "seoDescription": "Khám phá cách ngâm chân thảo dược tại nhà đơn giản, đúng cách giúp giải tỏa căng thẳng và chăm sóc đôi chân thư thái sau ngày bận rộn."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "f69fae8c-1abb-4dfd-bb29-43512b3941be",
+      "categoryKey": "wellness",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:49:43.826Z",
+      "createdAt": "2026-11-14T00:48:32.356Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Evening relaxation habits to help you recharge",
+          "slug": "evening-relaxation-habits-to-help-you-recharge",
+          "excerpt": "Discover gentle evening relaxation habits that soothe stress, unwind your body, and welcome a restful night's sleep after a long day at work.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">After a long day filled with busy work and the rush of life, our bodies and minds deserve to be pampered. Setting aside a quiet moment for <strong>evening relaxation</strong> is not only a way to shake off fatigue, but also a gentle bridge guiding you into deep sleep and restoring positive energy for a new day.</p>\n<h2>Why is evening relaxation time so important for your body?</h2>\n<p>Throughout the day, your muscles are constantly active, while your mind processes a barrage of information. When night falls, without a smooth transition, the body struggles to release accumulated stress. Practicing <strong>evening relaxation</strong> helps your body gradually slow down, supporting the nervous system to shift into a natural resting state and prepare for recovery.</p>\n<p>This time serves as a vital boundary between work pressures and the peace of your personal life, allowing your mind to truly rest.</p>\n<h2>Create an ideal space to unwind and relieve stress</h2>\n<p>Your surroundings directly affect your mood and emotions. You can start by tidying up your bed, dimming bright lights, and switching to soft warm lighting. A subtle scent of natural essential oils like lavender or sweet orange also soothes the senses, bringing a feeling of peace the moment you step into the room.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d9767b12-7351-4e43-9595-d67709b4337f/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d9767b12-7351-4e43-9595-d67709b4337f/640.webp 640w, {{media}}/d9767b12-7351-4e43-9595-d67709b4337f/1280.webp 1280w, {{media}}/d9767b12-7351-4e43-9595-d67709b4337f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Step away from electronic devices and soothe your eyes</h2>\n<p>Blue light from phone or computer screens strains your eyes and disrupts your natural circadian rhythm. Intentionally disconnecting from technology about thirty minutes before bed is a wonderful gift to give yourself. Instead, listen to soothing instrumental music, read a few gentle pages of a book, or share a warm conversation with loved ones to calm your mind.</p>\n<h2>Gentle stretching exercises to release accumulated tension</h2>\n<p>Simple stretches right on a mat or a soft bed bring noticeable comfort to your <strong>evening relaxation</strong>. They help stimulate blood circulation and relieve stiffness in high-pressure areas such as your neck, shoulders, and lower back.</p>\n<h2>Practice deep breathing and mindfulness before bedtime</h2>\n<p>Slow breathing acts as an anchor, bringing your mind back to the calm of the present moment. Once lying in bed, close your eyes, gently place your hands on your stomach, and focus on each inhale and exhale. Inhale deeply through your nose to expand your chest, then slowly exhale through your lips, relaxing every muscle from head to toe. A few mindful minutes of breathing will melt away the lingering worries of the day.</p>\n<h2>Frequently asked questions about building an evening relaxation routine</h2>\n<p>Setting up an end-of-day self-care routine is not complicated. The answers below will help you easily maintain a healthy, soothing evening lifestyle.</p>",
+          "readingMinutes": 2,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Thói quen thư giãn buổi tối giúp bạn tái tạo năng lượng",
+          "slug": "thoi-quen-thu-gian-buoi-toi-giup-ban-tai-tao-nang-luong",
+          "excerpt": "Khám phá các thói quen thư giãn buổi tối nhẹ nhàng giúp xoa dịu căng thẳng, thả lỏng cơ thể và đón nhận giấc ngủ trọn vẹn sau ngày dài làm việc.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Sau một ngày dài với bộn bề công việc và nhịp sống hối hả, cơ thể và tâm trí của chúng ta đều xứng đáng được nâng niu. Dành ra một khoảng lặng để <strong>thư giãn buổi tối</strong> không chỉ là cách rũ bỏ mệt mỏi mà còn là nhịp cầu dịu êm đưa bạn bước vào giấc ngủ sâu, tái tạo nguồn năng lượng tích cực cho ngày mới.</p>\n<h2>Vì sao thời gian thư giãn buổi tối lại quan trọng đối với cơ thể?</h2>\n<p>Suốt cả ngày, các nhóm cơ luôn trong trạng thái hoạt động liên tục, trong khi tâm trí phải xử lý nhiều luồng thông tin dồn dập. Khi màn đêm buông xuống, nếu thiếu đi bước chuyển giao êm ái, cơ thể sẽ khó lòng thoát khỏi trạng thái căng thẳng tích tụ. Thực hành <strong>thư giãn buổi tối</strong> giúp các cơ quan dần chậm lại, hỗ trợ hệ thần kinh chuyển sang trạng thái nghỉ ngơi tự nhiên và chuẩn bị sẵn sàng cho sự hồi phục.</p>\n<p>Khoảng thời gian này chính là ranh giới cần thiết để bạn tách biệt giữa áp lực công việc và sự bình yên của cuộc sống cá nhân, giúp tâm trí được nghỉ ngơi thực sự.</p>\n<h2>Tạo không gian nghỉ ngơi lý tưởng để giải tỏa căng thẳng</h2>\n<p>Không gian xung quanh tác động trực tiếp đến cảm xúc và tâm trạng của bạn. Bạn có thể bắt đầu bằng việc sắp xếp lại giường ngủ ngăn nắp, giảm bớt ánh đèn rực rỡ và thay bằng ánh sáng vàng dịu nhẹ. Hương thơm thoang thoảng từ tinh dầu thiên nhiên như oải hương hoặc cam ngọt cũng là cách vỗ về các giác quan, mang lại sự bình yên ngay khi bạn bước vào phòng.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d9767b12-7351-4e43-9595-d67709b4337f/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d9767b12-7351-4e43-9595-d67709b4337f/640.webp 640w, {{media}}/d9767b12-7351-4e43-9595-d67709b4337f/1280.webp 1280w, {{media}}/d9767b12-7351-4e43-9595-d67709b4337f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Tạm rời xa thiết bị điện tử và làm dịu đôi mắt</h2>\n<p>Ánh sáng xanh từ màn hình điện thoại hay máy tính là tác nhân khiến đôi mắt luôn trong tình trạng căng thẳng và làm gián đoạn nhịp sinh học tự nhiên. Việc chủ động ngắt kết nối với các thiết bị công nghệ trước khi ngủ khoảng ba mươi phút là món quà quý giá bạn trao cho chính mình. Thay vào đó, bạn có thể lắng nghe một bản nhạc không lời êm dịu, đọc vài trang sách nhẹ nhàng hoặc trò chuyện ấm áp cùng người thân để tâm hồn được lắng đọng.</p>\n<h2>Các động tác giãn cơ nhẹ nhàng giúp giải phóng áp lực tích tụ</h2>\n<p>Những động tác kéo giãn đơn giản ngay trên thảm hoặc giường mềm sẽ mang lại cảm giác thư thái rõ rệt cho việc <strong>thư giãn buổi tối</strong>. Chúng giúp kích thích lưu thông máu và giải tỏa tình trạng căng cứng ở những vùng chịu nhiều áp lực như cổ, vai và thắt lưng.</p>\n<h2>Thực hành hít thở sâu và tĩnh tâm trước giờ đi ngủ</h2>\n<p>Hơi thở chậm rãi chính là chiếc mỏ neo kéo tâm trí trở về với sự tĩnh lặng của hiện tại. Khi đã ngả lưng xuống giường, bạn hãy khép mắt lại, đặt nhẹ hai tay lên bụng và chú tâm vào từng nhịp thở ra vào. Hít vào thật sâu bằng mũi để lồng ngực mở rộng, rồi từ từ thở ra nhẹ nhàng qua khóe môi, thả lỏng từng thớ thịt từ đỉnh đầu đến các ngón chân. Vài phút chú tâm vào hơi thở sẽ xua tan những xao động còn vương vấn trong ngày.</p>\n<h2>Giải đáp thắc mắc thường gặp khi xây dựng thói quen thư giãn buổi tối</h2>\n<p>Việc thiết lập chu trình chăm sóc bản thân vào cuối ngày không hề phức tạp. Một vài lời giải đáp dưới đây sẽ giúp bạn dễ dàng duy trì nếp sống lành mạnh và êm ái mỗi tối.</p>",
+          "readingMinutes": 3,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "89dda2ca-b393-4785-abfc-6cb428b9904d",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "3ccb7939-d10a-4d39-9038-de90c741c624",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:50:39.773Z",
+      "createdAt": "2026-11-14T00:49:21.337Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "First-Time Spa Guide: What to Prepare for a Perfect Experience?",
+          "slug": "first-time-spa-guide-what-to-prepare-for-a-perfect-experience",
+          "excerpt": "A detailed guide from preparation and communicating with your therapist to choosing the right treatment, helping you confidently enjoy your very first session to the fullest.",
+          "coverAlt": "A soothing relaxation space with an herbal tea corner, scented candles, and pristine white towels",
+          "body": "<p class=\"tpl-lead\">Stepping into a space filled with the subtle aroma of essential oils, warm lighting, and gentle music always brings a special sense of peace. However, for those going to a spa for the <strong>first time</strong>, feeling a bit hesitant or unsure about attire, procedures, and interactions is completely natural. Understanding the basics will help you relax comfortably and fully embrace attentive care.</p>\n<h2>Things to prepare before your first spa visit</h2>\n<p>Before your appointment, you do not need to prepare many elaborate items. Most importantly, give yourself a relaxed mindset without a rushed schedule right afterward. Drink plenty of water, and avoid eating too heavily or being too hungry right before your session, as this can cause discomfort during a massage or while lying down for an extended period.</p>\n<h2>How to discuss your needs and physical condition with your therapist</h2>\n<p>Therapists always want to bring the greatest comfort to their clients, but they can only provide the best care when they clearly understand your needs. Don't hesitate to share openly about your health, lifestyle habits, and personal preferences before and throughout the treatment.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Share your health condition</h3><p>Please let us know if you have a history of allergies to essential oils, are pregnant, have open wounds, sensitive skin, or have had recent surgery.</p></div><div class=\"tpl-item\"><h3>Point out aching muscles</h3><p>Indicate areas that are often tense, such as the neck, shoulders, lower back, or calves, so the therapist can focus on soothing them.</p></div><div class=\"tpl-item\"><h3>Adjust the pressure level</h3><p>Pressure that is too firm or too light can affect your experience. Speak up immediately whenever you feel the need to increase or decrease massage pressure.</p></div></section>\n<h2>Suggested gentle treatments for beginners</h2>\n<p>For <strong>first-time spa-goers</strong>, you should prioritize introductory services that focus on gentle relaxation rather than intensive or complex treatments. A soothing start helps your senses gradually adapt and clearly feel your body restore itself.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Basic facial care</h3><p>Includes gentle cleansing, mild exfoliation, and a hydrating mask to leave your skin instantly soft and radiant.</p></div><div class=\"tpl-item\"><h3>Relaxing essential oil massage</h3><p>Combines natural essential oils with smooth, long strokes to relieve muscle tension and promote deeper sleep.</p></div><div class=\"tpl-item\"><h3>Foot soak and foot massage</h3><p>A gentle technique targeting the soles of your feet combined with warm herbs, ideal for those who walk or sit a lot.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/29df8def-7142-4178-9eee-6df4699b5553/1376.webp\" alt=\"A cozy spa room with rolled white towels, scented candles, and a wooden tray of essential oils\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/29df8def-7142-4178-9eee-6df4699b5553/640.webp 640w, {{media}}/29df8def-7142-4178-9eee-6df4699b5553/1280.webp 1280w, {{media}}/29df8def-7142-4178-9eee-6df4699b5553/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>A quiet space with a refreshing scent to melt away daily stress.</figcaption></figure>\n<h2>Etiquette and notes for a relaxing space</h2>\n<p>A spa is a tranquil oasis for everyone seeking inner peace. Maintaining this shared atmosphere is not only a matter of courtesy, but also helps you sink deep into an uninterrupted state of rest.</p>\n<ul class=\"tpl-check\"><li>Switch your mobile phone to vibrate or silent mode so as not to disturb the shared space.</li><li>Speak in a soft, low voice with receptionists and therapists.</li><li>Relax your entire body, focus on steady breathing, and avoid tensing your muscles and joints.</li><li>After finishing, linger on the bed for a few minutes so your body can gradually awaken before sitting up.</li></ul>\n<h2>Answers to common first-time spa concerns</h2>\n<p>Here are answers to the most common questions, giving you complete peace of mind to confidently enjoy every moment of self-care.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Do I need to undress completely?</h3><p>For full-body treatments, you will be guided to wear disposable underwear, and a large towel will always cover parts of your body not being treated to ensure complete privacy.</p></div><div class=\"tpl-item\"><h3>What should I do if the massage pressure hurts?</h3><p>You should speak up right away. Therapists truly appreciate timely feedback so they can adjust their touch to keep you feeling as comfortable as possible.</p></div><div class=\"tpl-item\"><h3>What should I do after a spa session to maintain the benefits?</h3><p>Drink a glass of warm water to help your body naturally flush out toxins, and avoid taking a cold shower for the first few hours.</p></div></section>\n<section class=\"tpl-cta\"><h3>Begin your self-love journey with An Nhiên Spa</h3><p>Set aside the busy workday to gift yourself moments of quiet reflection and renewed energy. An Nhiên Spa is always ready to welcome you with a peaceful space, dedicated care, and the gentlest understanding.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "First Time at a Spa: A Detailed and Easy-to-Follow Preparation Guide",
+          "seoDescription": "A guide for first-time spa-goers: tips on preparation, communicating with your therapist, and choosing the right treatment for the most relaxing experience."
+        },
+        {
+          "locale": "vi",
+          "title": "Cẩm nang cho người lần đầu đi spa: Chuẩn bị gì để trọn vẹn?",
+          "slug": "cam-nang-cho-nguoi-lan-dau-di-spa-chuan-bi-gi-de-tron-ven",
+          "excerpt": "Hướng dẫn chi tiết từ cách chuẩn bị, giao tiếp với kỹ thuật viên đến chọn liệu trình giúp bạn tự tin tận hưởng trọn vẹn buổi chăm sóc đầu tiên.",
+          "coverAlt": "Không gian thư giãn nhẹ nhàng với góc trà thảo mộc, nến thơm và khăn bông trắng muốt",
+          "body": "<p class=\"tpl-lead\">Bước vào một không gian thoang thoảng hương tinh dầu, ánh sáng ấm áp cùng tiếng nhạc êm dịu luôn mang lại cảm giác an yên đặc biệt. Dẫu vậy, với những ai <strong>lần đầu đi spa</strong>, cảm giác bỡ ngỡ hay chút ngần ngại về trang phục, quy trình và cách tương tác là điều hoàn toàn tự nhiên. Việc nắm rõ những điều cơ bản sẽ giúp bạn thoải mái thả lỏng và đón nhận trọn vẹn sự chăm sóc chu đáo.</p>\n<h2>Những điều cần chuẩn bị trước khi đến spa lần đầu tiên</h2>\n<p>Trước buổi hẹn, bạn không cần phải chuẩn bị quá nhiều vật dụng cầu kỳ. Điều quan trọng nhất là tạo cho bản thân một tâm thế nhẹ nhõm, không vướng bận lịch trình gấp gáp ngay sau đó. Hãy uống đủ nước lọc, tránh dùng bữa quá no hoặc để bụng quá đói ngay trước giờ trị liệu vì có thể gây khó chịu trong quá trình massage hay nằm lâu.</p>\n<h2>Cách trao đổi nhu cầu và thể trạng với kỹ thuật viên</h2>\n<p>Kỹ thuật viên luôn mong muốn mang lại cảm giác dễ chịu nhất cho khách hàng, nhưng họ chỉ có thể chăm sóc tốt nhất khi hiểu rõ nhu cầu của bạn. Đừng ngại chia sẻ cởi mở về tình trạng sức khỏe, thói quen sinh hoạt cũng như những mong muốn cá nhân trước và trong suốt liệu trình.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Chia sẻ về tình trạng sức khỏe</h3><p>Hãy thông báo nếu bạn có tiền sử dị ứng tinh dầu, đang mang thai, có vết thương hở, làn da nhạy cảm hoặc vừa phẫu thuật gần đây.</p></div><div class=\"tpl-item\"><h3>Nói rõ vùng cơ đang nhức mỏi</h3><p>Chỉ rõ những vùng thường xuyên căng thẳng như cổ vai gáy, lưng dưới hay bắp chân để chuyên viên tập trung thao tác xoa dịu.</p></div><div class=\"tpl-item\"><h3>Điều chỉnh mức độ lực bấm</h3><p>Lực tay ấn quá mạnh hay quá nhẹ đều ảnh hưởng đến trải nghiệm. Hãy lên tiếng ngay khi cảm thấy cần tăng hoặc giảm lực xoa bóp.</p></div></section>\n<h2>Gợi ý chọn liệu trình nhẹ nhàng cho người mới bắt đầu</h2>\n<p>Đối với người <strong>lần đầu đi spa</strong>, bạn nên ưu tiên những gói dịch vụ có tính chất làm quen, tập trung vào thư giãn dịu nhẹ thay vì các liệu trình chuyên sâu hay can thiệp phức tạp. Sự khởi đầu êm ái sẽ giúp các giác quan dần thích nghi và cảm nhận rõ rệt sự phục hồi của cơ thể.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Chăm sóc da mặt cơ bản</h3><p>Bao gồm các bước làm sạch dịu nhẹ, tẩy tế bào chết lành tính và đắp mặt nạ cấp ẩm giúp làn da mềm mại, tươi sáng tức thì.</p></div><div class=\"tpl-item\"><h3>Massage tinh dầu thư giãn</h3><p>Sử dụng tinh dầu thiên nhiên kết hợp các đường vuốt dài êm ái giúp giải tỏa căng thẳng cơ bắp, hỗ trợ giấc ngủ sâu hơn.</p></div><div class=\"tpl-item\"><h3>Ngâm chân và xoa bóp bàn chân</h3><p>Phương pháp tác động nhẹ nhàng lên lòng bàn chân kết hợp thảo mộc ấm, rất phù hợp cho người hay đi lại hoặc ngồi nhiều.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/29df8def-7142-4178-9eee-6df4699b5553/1376.webp\" alt=\"Không gian phòng spa ấm cúng với khăn cuộn trắng, nến thơm và khay gỗ đựng tinh dầu\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/29df8def-7142-4178-9eee-6df4699b5553/640.webp 640w, {{media}}/29df8def-7142-4178-9eee-6df4699b5553/1280.webp 1280w, {{media}}/29df8def-7142-4178-9eee-6df4699b5553/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Một không gian tĩnh lặng cùng hương thơm dịu mát giúp xua tan căng thẳng thường nhật.</figcaption></figure>\n<h2>Quy tắc ứng xử và lưu ý cần biết trong không gian thư giãn</h2>\n<p>Spa là ốc đảo tĩnh lặng dành cho mọi người tìm về sự thư thái nội tâm. Việc gìn giữ bầu không khí chung không chỉ thể hiện phép lịch thiệp mà còn giúp chính bạn dễ dàng chìm sâu vào trạng thái nghỉ ngơi không gián đoạn.</p>\n<ul class=\"tpl-check\"><li>Chuyển điện thoại di động sang chế độ rung hoặc im lặng để không làm phiền không gian chung.</li><li>Giao tiếp bằng tông giọng nhỏ nhẹ vừa đủ nghe với nhân viên tiếp đón và kỹ thuật viên.</li><li>Thả lỏng toàn bộ cơ thể, tập trung vào hơi thở đều đặn và không cần gồng cứng các khớp xương.</li><li>Sau khi kết thúc, nên nán lại vài phút trên giường để cơ thể dần tỉnh táo trước khi ngồi dậy.</li></ul>\n<h2>Giải đáp những băn khoăn phổ biến khi lần đầu đi spa</h2>\n<p>Dưới đây là lời giải đáp cho những trăn trở thường gặp nhất giúp bạn hoàn toàn an tâm và tự tin tận hưởng từng phút giây chăm sóc bản thân.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Tôi có cần cởi bỏ toàn bộ trang phục không?</h3><p>Đối với các liệu trình toàn thân, bạn sẽ được hướng dẫn dùng nội y chuyên dụng một lần và luôn có khăn lớn phủ kín các phần cơ thể chưa tác động tới nhằm bảo đảm sự kín đáo tối đa.</p></div><div class=\"tpl-item\"><h3>Nếu lực xoa bóp làm tôi đau thì phải làm sao?</h3><p>Bạn nên lên tiếng ngay tại thời điểm đó. Kỹ thuật viên rất trân trọng phản hồi kịp thời để cân chỉnh thao tác sao cho bạn cảm thấy êm ái nhất.</p></div><div class=\"tpl-item\"><h3>Sau buổi spa tôi nên làm gì để giữ hiệu quả?</h3><p>Bạn nên uống thêm một ly nước ấm để hỗ trợ cơ thể đào thải độc tố tự nhiên và tránh tắm ngay bằng nước lạnh trong vòng vài giờ đầu.</p></div></section>\n<section class=\"tpl-cta\"><h3>Bắt đầu hành trình yêu thương bản thân cùng An Nhiên Spa</h3><p>Hãy tạm gác lại những bộn bề công việc để dành tặng cho bản thân những phút giây lắng đọng và nuôi dưỡng lại năng lượng. An Nhiên Spa luôn sẵn sàng đón tiếp bạn với không gian an lành, bàn tay chăm sóc tận tâm và sự thấu hiểu dịu dàng nhất.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Lần đầu đi spa: Cẩm nang chuẩn bị chi tiết và dễ hiểu",
+          "seoDescription": "Cẩm nang cho người lần đầu đi spa: hướng dẫn chuẩn bị, cách giao tiếp với kỹ thuật viên và chọn liệu trình phù hợp để có trải nghiệm thư thái nhất."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "a9b0beea-921d-46a8-a2bb-41493b1cce27",
+      "categoryKey": "treatments",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "d8cce417-0ef5-4c14-85ce-ba7fd8a8eeda",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:51:27.530Z",
+      "createdAt": "2026-11-14T00:50:08.841Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Facial Skin Care for the Dry and Rainy Seasons: Adaptation Secrets",
+          "slug": "facial-skin-care-for-the-dry-and-rainy-seasons-adaptation-secrets",
+          "excerpt": "Understand the differences between the dry and rainy seasons to adjust your gentle facial skin care routine, keeping your skin moisturized and radiant all year round.",
+          "coverAlt": "Natural skin care set on a rustic stone slab",
+          "body": "<p class=\"tpl-lead\">The tropical climate brings distinct shifts between the rainy and dry seasons, leading to subtle changes on your skin's surface. To keep your complexion glowing and healthy, tuning into the weather's rhythm and flexibly adjusting your <strong>facial skin care</strong> routine is an essential self-care step.</p>\n<h2>Why does your skin need a different care routine each season?</h2>\n<p>Skin is a direct reflection of your living environment. When the seasons shift, core elements like temperature, wind, and <strong>air humidity</strong> change abruptly, forcing the skin's self-regulating mechanism to work constantly. If we stick to one fixed routine all year round, the skin can easily fall out of balance.</p>\n<p>On dry, crisp days, moisture on the skin's surface evaporates quickly, causing stratum corneum cells to shrink and creating a tight, stinging feeling. Conversely, drizzly days with excessive humidity stimulate sebaceous glands to overproduce oil, leading to clogged pores if dirt builds up. Understanding this principle will help you take better control of your at-home <strong>facial skin care</strong> journey.</p>\n<h2>Dry season facial skin care: Focus on deep hydration and barrier repair</h2>\n<p>The dry season is characterized by low humidity and dry winds that weaken the <strong>skin barrier</strong>. The most noticeable signs are a rough skin texture, tiny flaky patches around the nostrils or mouth corners, and an uncomfortable tingling sensation after washing your face.</p>\n<p>To soothe your skin during this period, the focus of <strong>facial skin care</strong> is <strong>deep hydration</strong> and solid moisture locking. Prioritize gentle milky cleansers with minimal thick foam to preserve your natural lipid barrier. Additionally, incorporate serums with Hyaluronic Acid, Ceramide, or B5 to strengthen the epidermis before sealing everything with a nourishing rich moisturizer.</p>\n<h2>Rainy season facial skin care: Balancing excess oil and unclogging pores</h2>\n<p>When the rainy season arrives, the air is constantly damp and sultry. This leads to an accumulation of sebum, sweat, and airborne fine dust on the skin, creating an ideal environment for bacteria to multiply and cause unwanted breakouts.</p>\n<p>The rainy season <strong>facial skin care</strong> routine calls for simplicity, with a strong focus on <strong>clarifying cleansing</strong>. Switch to gentle gel cleansers and periodically exfoliate mildly so your pores can breathe. For moisturizing, opt for lightweight textures like lotions or fast-absorbing hydrating gels, avoiding a heavy, suffocating feel on the skin.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/640.webp 640w, {{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/1280.webp 1280w, {{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Quick comparison of skin needs between dry and rainy seasons</h2>\n<p>Each season brings its own challenges for your skin. Comparing these key factors will help you quickly identify what to add or remove from your daily routine.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Cleansing step</h3><p>Dry season: prioritize non-foaming, pH-balanced cleansers. Rainy season: choose gel cleansers that deeply cleanse dirt and excess oil without stripping natural moisture.</p></div><div class=\"tpl-item\"><h3>Moisturizing</h3><p>Dry season: requires multiple hydrating layers paired with a rich occlusive cream. Rainy season: prefers water-based serums and lightweight, fast-absorbing gel moisturizers.</p></div><div class=\"tpl-item\"><h3>Sun protection</h3><p>Dry season: choose sunscreens infused with moisturizing ingredients. Rainy season: prioritize products with a dry-touch finish, good water resistance, and a non-greasy feel.</p></div></section>\n<h2>Steps to switch skin care products smoothly without irritation</h2>\n<p>Abruptly switching all your skin care products can overwhelm your skin and cause adverse reactions. Make the transition gradually so your skin has time to adapt to the new routine.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Step 1: Observe your skin's behavior</h3><p>Spend a few days noting oil production, elasticity, and any tightness after cleansing to accurately assess your skin's current condition.</p></div><div class=\"tpl-item\"><h3>Step 2: Swap one product at a time</h3><p>Don't change everything all at once. Start with your cleanser, followed by your moisturizer, and finally intensive serums.</p></div><div class=\"tpl-item\"><h3>Step 3: Patch test</h3><p>Apply a small amount of the new product to your jawline or inner wrist for 24 to 48 hours to check for reactions before applying it to your entire face.</p></div><div class=\"tpl-item\"><h3>Step 4: Maintain a minimal routine</h3><p>Keep your routine minimal with 3 to 4 essential steps during the first week of introducing new products to give your skin a restful break.</p></div></section>\n<h2>Frequently asked questions about seasonal facial skin care</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Do I need sunscreen on overcast, rainy days?</h3><p>UV rays can still penetrate clouds and glass windows even on gloomy, rainy days. Therefore, applying sunscreen daily is an indispensable protective step year-round.</p></div><div class=\"tpl-item\"><h3>Does oily skin need moisturizer in the rainy season?</h3><p>When oily skin lacks moisture, the sebaceous glands produce even more oil to compensate for lost hydration. Therefore, hydrating with lightweight gel moisturizers is essential.</p></div><div class=\"tpl-item\"><h3>Do I have to change all my skin care products when the seasons change?</h3><p>You don't need to replace everything if your skin is adapting well. Usually, adjusting the texture of your moisturizer or cleanser is enough to keep your skin comfortable.</p></div></section>\n<section class=\"tpl-cta\"><h3>Pampering your skin alongside a serene lifestyle</h3><p>Caring for your skin is like nurturing your soul; it requires patience, understanding, and gentle tenderness. Spend a few minutes each day with An Nhiên Spa to feel every soothing sensation of your skin, turning your at-home <strong>facial skin care</strong> routine into moments of complete peace and relaxation.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Seasonal facial skin care: Dry season and rainy season",
+          "seoDescription": "A guide to adjusting your facial skin care routine for the dry and rainy seasons to keep skin moisturized, balance excess oil, and keep pores naturally clear."
+        },
+        {
+          "locale": "vi",
+          "title": "Chăm sóc da mặt mùa khô và mùa mưa: Bí quyết thích ứng",
+          "slug": "cham-soc-da-mat-mua-kho-va-mua-mua-bi-quyet-thich-ung",
+          "excerpt": "Hiểu rõ sự khác biệt giữa mùa khô và mùa mưa để điều chỉnh chu trình chăm sóc da mặt nhẹ nhàng, giữ da luôn ẩm mượt và rạng rỡ quanh năm.",
+          "coverAlt": "Bộ sản phẩm dưỡng da thiên nhiên trên phiến đá mộc mạc",
+          "body": "<p class=\"tpl-lead\">Khí hậu nhiệt đới luôn mang đến sự biến đổi rõ rệt giữa hai mùa mưa và khô, kéo theo những chuyển biến tinh tế trên bề mặt làn da. Để giữ cho nét diện luôn tươi sáng và khỏe khoắn, việc lắng nghe nhịp điệu của thời tiết và linh hoạt điều chỉnh chu trình <strong>chăm sóc da mặt</strong> là bước chăm chút bản thân vô cùng cần thiết.</p>\n<h2>Vì sao làn da cần thay đổi chế độ chăm sóc theo từng mùa?</h2>\n<p>Làn da là tấm gương phản chiếu trực tiếp môi trường sống bên ngoài. Khi thời tiết chuyển giao, các yếu tố cốt lõi như nhiệt độ, gió và <strong>độ ẩm không khí</strong> thay đổi đột ngột khiến cơ chế tự điều tiết của da phải hoạt động liên tục. Nếu chúng ta giữ nguyên một chu trình cố định quanh năm, da dễ rơi vào trạng thái mất cân bằng sinh lý.</p>\n<p>Vào những ngày hanh hao, hơi nước trên bề mặt da bốc hơi nhanh chóng khiến tế bào sừng co rút, gây cảm giác căng rát. Ngược lại, những ngày mưa rả rích với độ ẩm quá cao lại kích thích tuyến bã nhờn hoạt động mạnh mẽ, dễ gây bít tắc nếu bụi bẩn tích tụ. Hiểu được nguyên lý này sẽ giúp bạn chủ động hơn trong hành trình <strong>chăm sóc da mặt</strong> tại nhà.</p>\n<h2>Chăm sóc da mặt mùa khô: Tập trung cấp ẩm sâu và phục hồi màng bảo vệ</h2>\n<p>Mùa khô đặc trưng bởi độ ẩm không khí xuống thấp cùng những cơn gió hanh làm suy yếu <strong>hàng rào bảo vệ da</strong>. Biểu hiện rõ nhất là bề mặt da trở nên sần sùi, xuất hiện những mảng bong tróc li ti ở cánh mũi hay khóe miệng, tạo cảm giác châm chích khó chịu sau mỗi lần rửa mặt.</p>\n<p>Để xoa dịu làn da trong giai đoạn này, trọng tâm của việc <strong>chăm sóc da mặt</strong> là <strong>cấp ẩm sâu</strong> và khóa ẩm vững chắc. Hãy ưu tiên các sản phẩm rửa mặt dạng sữa dịu nhẹ, hạn chế bọt dày để giữ lại lớp màng lipid tự nhiên. Bên cạnh đó, bạn nên bổ sung các tinh chất chứa Hyaluronic Acid, Ceramide hoặc B5 để củng cố sức đề kháng cho lớp biểu bì trước khi khóa lại bằng một lớp kem dưỡng giàu dưỡng chất.</p>\n<h2>Chăm sóc da mặt mùa mưa: Cân bằng dầu thừa và làm sạch thông thoáng lỗ chân lông</h2>\n<p>Khi mùa mưa đến, không khí luôn trong trạng thái ẩm ướt và oi nồng. Điều này khiến da dễ tích tụ bã nhờn, mồ hôi cùng vô số hạt bụi mịn lơ lửng ngoài môi trường, tạo điều kiện thuận lợi cho vi khuẩn sinh sôi và hình thành các nốt mụn không mong muốn.</p>\n<p>Chu trình <strong>chăm sóc da mặt</strong> mùa mưa đòi hỏi sự tinh giản nhưng phải tập trung tối đa vào bước <strong>làm sạch thông thoáng</strong>. Bạn nên chuyển sang các dòng sữa rửa mặt dạng gel thanh khiết, kết hợp tẩy tế bào chết dịu nhẹ định kỳ để lỗ chân lông luôn được hít thở. Với bước dưỡng ẩm, hãy ưu tiên các kết cấu mỏng nhẹ như lotion hoặc gel dưỡng thấm nhanh, tránh gây cảm giác nặng nề, bí bách cho da.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/640.webp 640w, {{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/1280.webp 1280w, {{media}}/261871b5-5af4-4c93-89e0-4e66dab22f31/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>So sánh nhanh nhu cầu của da giữa mùa khô và mùa mưa</h2>\n<p>Mỗi mùa mang lại một thách thức riêng biệt cho làn da. Việc đối chiếu các tiêu chí then chốt sẽ giúp bạn nhanh chóng nhận biết cần thêm hay bớt điều gì trong chu trình hằng ngày.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Bước làm sạch</h3><p>Mùa khô ưu tiên sữa rửa mặt không tạo bọt, độ pH cân bằng. Mùa mưa cần sữa rửa mặt dạng gel làm sạch sâu bụi bẩn và dầu thừa mà không làm mất đi độ ẩm tự nhiên.</p></div><div class=\"tpl-item\"><h3>Dưỡng ẩm</h3><p>Mùa khô cần nhiều lớp cấp nước kết hợp kem khóa ẩm dạng cream đậm đặc. Mùa mưa chuộng tinh chất gốc nước và kem dưỡng dạng gel mỏng nhẹ, thẩm thấu nhanh.</p></div><div class=\"tpl-item\"><h3>Bảo vệ chống nắng</h3><p>Mùa khô nên chọn kem chống nắng có tích hợp thành phần dưỡng ẩm. Mùa mưa cần ưu tiên sản phẩm có kết cấu ráo mịn, kháng nước tốt và không gây bóng nhờn.</p></div></section>\n<h2>Các bước chuyển đổi sản phẩm dưỡng da mượt mà, không lo kích ứng</h2>\n<p>Việc đột ngột thay đổi toàn bộ mỹ phẩm có thể khiến da bị quá tải và phản ứng tiêu cực. Hãy thực hiện việc chuyển đổi một cách từ tốn để làn da kịp thời thích nghi với chu trình mới.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Bước 1: Quan sát biểu hiện da</h3><p>Dành vài ngày chú ý đến lượng dầu tiết ra, độ đàn hồi và cảm giác khô căng sau khi rửa mặt để đánh giá chính xác tình trạng da hiện tại.</p></div><div class=\"tpl-item\"><h3>Bước 2: Thay đổi từng sản phẩm</h3><p>Không thay đổi toàn bộ cùng lúc. Hãy bắt đầu từ sản phẩm làm sạch, sau đó đến kem dưỡng và cuối cùng mới là các tinh chất chuyên sâu.</p></div><div class=\"tpl-item\"><h3>Bước 3: Thử nghiệm vùng nhỏ</h3><p>Thoa một lượng nhỏ sản phẩm mới lên vùng da quai hàm hoặc cổ tay trong 24 đến 48 giờ để kiểm tra phản ứng trước khi thoa toàn mặt.</p></div><div class=\"tpl-item\"><h3>Bước 4: Duy trì chu trình tối giản</h3><p>Giữ chu trình tinh gọn từ 3 đến 4 bước cơ bản trong tuần đầu tiên đổi sản phẩm nhằm tạo khoảng nghỉ thư thái cho làn da.</p></div></section>\n<h2>Giải đáp những câu hỏi thường gặp khi chăm sóc da mặt theo mùa</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Mùa mưa trời âm u thì có cần dùng kem chống nắng không?</h3><p>Tia UV vẫn có thể xuyên qua mây mù và cửa kính ngay cả trong những ngày mưa ảm đạm. Do đó, thoa kem chống nắng hằng ngày là bước bảo vệ không thể bỏ qua ở bất kỳ thời điểm nào.</p></div><div class=\"tpl-item\"><h3>Da dầu có cần bôi kem dưỡng ẩm vào mùa mưa không?</h3><p>Khi da dầu thiếu ẩm, tuyến bã nhờn sẽ càng tiết nhiều dầu hơn để bù đắp lại lượng nước đã mất. Vì vậy, việc cấp nước bằng các loại gel dưỡng mỏng nhẹ là vô cùng cần thiết.</p></div><div class=\"tpl-item\"><h3>Có bắt buộc phải thay đổi toàn bộ mỹ phẩm khi đổi mùa không?</h3><p>Bạn không cần đổi tất cả mọi thứ nếu làn da vẫn đang thích ứng tốt. Thông thường, chỉ cần điều chỉnh kết cấu của kem dưỡng ẩm hoặc sữa rửa mặt là đủ để da cảm thấy dễ chịu.</p></div></section>\n<section class=\"tpl-cta\"><h3>Yêu chiều làn da cùng nhịp sống an nhiên</h3><p>Chăm sóc làn da cũng giống như nuôi dưỡng tâm hồn, luôn cần sự kiên nhẫn, thấu hiểu và nâng niu nhẹ nhàng. Hãy dành vài phút mỗi ngày cùng An Nhiên Spa cảm nhận từng chuyển động dịu êm của làn da, biến chu trình <strong>chăm sóc da mặt</strong> tại nhà thành những khoảnh khắc bình yên và thư thái trọn vẹn.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Chăm sóc da mặt theo mùa: Mùa khô và mùa mưa",
+          "seoDescription": "Hướng dẫn điều chỉnh chu trình chăm sóc da mặt theo mùa khô và mùa mưa giúp da luôn ẩm mượt, cân bằng dầu thừa và thông thoáng lỗ chân lông tự nhiên."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

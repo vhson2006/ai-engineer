@@ -3,10 +3,13 @@ paths:
   - 'apps/*/src/app/**'
   - 'apps/*/src/seo.ts'
   - 'apps/*/src/site.ts'
+  - 'apps/*/src/site.tsx'
+  - 'apps/*/src/website.ts'
+  - 'packages/site-kit/src/**'
   - 'apps/*/assets/**'
   - 'apps/*/public/**'
   - 'apps/*/next.config.ts'
-  - 'apps/*/Dockerfile'
+  - 'Dockerfile'
   - 'packages/core/src/i18n/seo.ts'
   - 'scripts/generate-icons.mjs'
 ---
@@ -30,8 +33,12 @@ Decision: ADR 0021. portfolio-web is public and optimized for search; admin-web 
 - **Link preview image**: `app/[lang]/opengraph-image.tsx` (Geist from
   `packages/ui/assets/fonts`, traced in `next.config.ts`); `twitter-image.tsx` re-exports it. A site
   whose articles have their own covers can't use it (a file-based image overrides page metadata):
-  nails-web draws its card in a Route Handler (`app/og/[image]/route.ts`) and sets it in `src/seo.ts`.
-- Client sites build page metadata with `localizedPageMetadata` (`@web/core/i18n/seo`) through their `pageMetadata`.
+  the business sites draw their card (`ogCard` of `createSite`, rendered by `@web/site-kit/og`) and
+  serve it from a Route Handler (`app/og/[image]/route.ts` re-exports `site.routes.ogImage`).
+- **Business sites** (`@web/site-kit`, ADRs 0042, 0045): the kit builds everything above
+  (`site.pageMetadata`, `site.structuredData` with an `Article` on article pages, the sitemap from
+  `website.publicPages` + the articles, robots); a site never writes its own `seo.ts`
+  (`npm run check:sites`). Their URLs are permanent: change one only with a redirect.
 - **Icons**: edit `src/app/icon.svg` / `assets/icon-maskable.svg`, then `npm run icons` (in
   `web/`) and commit the generated files. Never hand-edit the PNG/ICO outputs.
 - Root metadata files (`robots.txt`, `sitemap.xml`, `manifest.webmanifest`, icons) must stay

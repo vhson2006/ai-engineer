@@ -25,14 +25,18 @@ resources:
 components:
   - ../../components/local-data # Postgres, Redis in the cluster
   - ../../components/nats
+  - ../../components/keycloak-local # test users, alice's one-time code, dev-cli
+  - ../../components/keycloak-sites # the business sites run on the host in dev
 
 configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-realm # imported on Keycloak's first start only
-    files:
-      - keycloak/realm-nest-microservice.json
+  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
+    literals:
+      - WEB_URL=http://www.localtest.me:8000
+      - ADMIN_URL=http://admin.localtest.me:8000
+      - KEYCLOAK_CONSOLE_URL=http://localhost:8180
 
 patches:
   - path: patches/gateway.yaml # *.localtest.me, port 8000

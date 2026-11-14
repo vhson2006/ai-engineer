@@ -1,0 +1,518 @@
+{
+  "site": {
+    "id": "autoparts",
+    "name": "Pitlane Auto Parts",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "maintenance",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Maintenance",
+          "slug": "maintenance"
+        },
+        {
+          "locale": "vi",
+          "name": "Bảo dưỡng",
+          "slug": "bao-duong"
+        }
+      ]
+    },
+    {
+      "key": "parts",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Parts explained",
+          "slug": "parts-explained"
+        },
+        {
+          "locale": "vi",
+          "name": "Phụ tùng",
+          "slug": "phu-tung"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "3ab43870-17c1-429d-b13f-50edf20f491f",
+      "source": "ai",
+      "prompt": "A detailed high-angle view of a clean car brake disc and caliper visible behind the spokes of an alloy wheel, neutral studio automotive lighting, realistic photography, no text, no logo.",
+      "filename": "A detailed high-angle view of a clean car brake disc and cal.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22220,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 50938,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 55652,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:30:04.668Z"
+    },
+    {
+      "id": "44f58619-01de-46e9-b0e7-3e497d8b58be",
+      "source": "ai",
+      "prompt": "A close-up photograph of a worn car brake pad placed next to a brand new brake pad on a clean workshop table, natural daytime lighting, sharp details, no text, no logo, no people.",
+      "filename": "A close-up photograph of a worn car brake pad placed next to.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 28752,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 78150,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 89090,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:30:04.676Z"
+    },
+    {
+      "id": "d5ec0fc1-00ff-4e8e-a23e-e72b46a75f37",
+      "source": "ai",
+      "prompt": "A modern car parked inside a well-lit clean automotive workshop with its hood open, showcasing the engine compartment, natural lighting, realistic view, no people",
+      "filename": "A modern car parked inside a well-lit clean automotive works.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 30152,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 79174,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 89252,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:32:27.540Z"
+    },
+    {
+      "id": "6d2e0008-8c12-4da9-8daa-3d6facf7a998",
+      "source": "ai",
+      "prompt": "Close-up shot of fresh golden engine oil pouring from a bottle into a car engine filler hole, natural garage daylight, clean engine bay, realistic automotive maintenance",
+      "filename": "Close-up shot of fresh golden engine oil pouring from a bott.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 28312,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 64490,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 71696,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:32:27.548Z"
+    },
+    {
+      "id": "fa4d0c32-803b-4480-b212-c16f845e7784",
+      "source": "ai",
+      "prompt": "A realistic overhead shot of a modern car engine bay with the hood open, focusing on the clean car battery terminals, soft sunlight, diagnostic tools lying nearby, professional garage setting, no text, no logo",
+      "filename": "A realistic overhead shot of a modern car engine bay with th.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 39810,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 99604,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 110378,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:35:15.439Z"
+    },
+    {
+      "id": "e4efcbac-30ad-44f5-8e9b-bc1e7c492a38",
+      "source": "ai",
+      "prompt": "A realistic close-up photo under an open car hood showing a car battery inspection, clean engine compartment, natural daylight, mechanic hands wearing protective gloves pointing at the battery terminal, sharp focus, no text, no logo",
+      "filename": "A realistic close-up photo under an open car hood showing a .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 35554,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 80552,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 89214,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:35:15.451Z"
+    },
+    {
+      "id": "a8e493ac-75b5-46ff-ad35-41e4d7e3d1d8",
+      "source": "ai",
+      "prompt": "A professional car mechanic in a clean uniform holding an authentic spare car part, discussing options with a car owner in a tidy modern workshop",
+      "filename": "A professional car mechanic in a clean uniform holding an au.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 30072,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 68522,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 75400,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:37:23.229Z"
+    },
+    {
+      "id": "176df695-d1ab-4708-a11d-6fe6e6e038f2",
+      "source": "ai",
+      "prompt": "A top-down view of a modern clean automotive mechanics workshop desk with a technical car repair manual, a registration document showing identification codes, and a metal car chassis plate under natural diffused sunlight, professional automotive engineering concept, no logos, no text overlays",
+      "filename": "A top-down view of a modern clean automotive mechanics works.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 31958,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 86172,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 97734,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:38:53.532Z"
+    },
+    {
+      "id": "7be83c7a-bfca-4397-8fe1-72cda36043d4",
+      "source": "ai",
+      "prompt": "A close-up shot of a modern car lower corner of the front windshield showing a clean metallic Vehicle Identification Number VIN plate mounted on the dashboard from the outside, soft natural daylight, no text overlays, no recognizable faces",
+      "filename": "A close-up shot of a modern car lower corner of the front wi.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 11702,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 29038,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 32286,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:38:53.547Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "99121911-d184-4293-9ddd-aae15958dcde",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-13T16:09:20.373Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the store’s orange and graphite.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Part references, prices and warranty terms exactly as the store states them.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Claim a part fits a car before checking its VIN.</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, original / aftermarket, brake pads / discs.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a part, a service, the workshop.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to send a photo on Zalo, call or visit the store.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the store.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Pitlane Auto Parts sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu cam và xám than của cửa hàng.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng mã phụ tùng, giá và điều kiện bảo hành như cửa hàng công bố.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Khẳng định phụ tùng vừa xe khi chưa kiểm tra theo số VIN.</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, chính hãng / thay thế, má phanh / đĩa phanh.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một phụ tùng, một dịch vụ, xưởng lắp đặt.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gửi ảnh qua Zalo, gọi điện hay ghé cửa hàng.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với cửa hàng.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Pitlane Auto Parts · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "ac1b0347-0b71-4583-93c1-80d642661840",
+      "categoryKey": "maintenance",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "3ab43870-17c1-429d-b13f-50edf20f491f",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:31:45.125Z",
+      "createdAt": "2026-11-13T23:30:24.572Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "5 signs you need to replace your car brake pads and why you shouldn't wait",
+          "slug": "5-signs-you-need-to-replace-your-car-brake-pads-and-why-you-shouldn-t-wait",
+          "excerpt": "Recognizing early signs of worn car brake pads helps you drive safely, protects your brake rotors, and prevents costly vehicle damage.",
+          "coverAlt": "Close-up of car brake caliper and rotor through the wheel rim",
+          "body": "<p class=\"tpl-lead\">The braking system is a vital safety component on every car, directly protecting the driver and passengers on every journey. When brake pads wear down excessively, braking performance drops significantly, increasing stopping distances and creating collision risks. Timely recognition of warning signs to proactively <strong>replace brake pads</strong> is an essential skill that helps car owners stay in command and maintain optimal vehicle control.</p>\n<h2>Why do car brake pads wear down faster than you think?</h2>\n<p>Brake pads work on the principle of direct friction against brake rotors to slow down or completely stop wheel rotation. Continuous contact under high pressure and intense heat wears down the friction material over time. Actual wear depends not only on mileage but also heavily on daily driving conditions.</p>\n<p>Cars frequently driven in crowded cities, where stop-and-go traffic demands constant braking, wear through brake pads much faster than highway cruisers. In addition, carrying heavy loads, regularly driving on winding mountain roads, or an aggressive braking style are major causes of rapid friction material wear.</p>\n<h2>5 clear signs it's time to replace your brake pads</h2>\n<p>Most modern brake systems are designed to give specific warnings when friction surfaces wear down to safety limits. Drivers can easily spot these issues through sound, pedal feel, and visual inspection.</p>\n<ul class=\"tpl-check\"><li>A metal wear indicator touching the rotor makes a sharp squealing noise, signaling that the friction layer is almost gone.</li><li>The friction material is completely worn away, causing the metal backing plate to rub directly against the rotor and gouge its surface.</li><li>The brake pedal feels unusually soft, sinks close to the floor, or travel distance is longer than normal.</li><li>Uneven braking force between wheels pulls the car to one side or causes the steering wheel to vibrate when braking.</li><li>Looking through the wheel spokes reveals that the remaining friction lining is too thin compared to the metal backing plate behind it.</li></ul>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/1376.webp\" alt=\"Comparison between worn old car brake pads and new brake pads\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/640.webp 640w, {{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/1280.webp 1280w, {{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Checking the friction layer thickness helps drivers proactively replace brake pads on time.</figcaption></figure>\n<h2>Hidden risks and financial losses of delaying brake pad replacement</h2>\n<p>Many drivers assume they can keep driving on worn pads a little longer. However, delaying not only extends stopping distances in emergency situations, but also causes serious damage to related components.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Warning of damage spreading to brake rotors and pistons</h3><p>Once friction material wears out completely, the metal backing plate grinds straight into the brake rotor, cutting deep grooves, warping the disc, and generating extreme heat that ruins oil seals or seizes brake pistons. Replacing rotors and rebuilding calipers is far more expensive than proactively <strong>replacing brake pads</strong> on time.</p></section>\n<p>What's more, when braking grip drops, drivers lose confidence in handling unexpected road situations. Ensuring safety for yourself and others is always the top priority and should never be compromised by procrastination.</p>\n<h2>How often should you inspect and replace car brake pads?</h2>\n<p>Inspection and replacement intervals depend on pad material, vehicle weight, and individual driving habits. Therefore, checking them routinely during general maintenance or regular oil changes is the safest and most practical way to monitor wear.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Driving techniques to extend brake pad life</h3><p>Drivers should get into the habit of easing off the throttle early and using engine braking down hills rather than riding the brakes. This driving habit helps safely manage speed while preventing excessive heat buildup on the braking surfaces.</p></section>\n<h2>Frequently asked questions about car brake pads</h2>\n<p>Here are answers to the most common questions car owners have when servicing and replacing their brake systems.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Can you replace brake pads on just one wheel?</h3><p>You shouldn't replace them on just one wheel. Brake pads should always be replaced in axle pairs (both front or both rear wheels) to ensure balanced braking force and avoid dangerous pulling to one side under hard braking.</p></div><div class=\"tpl-item\"><h3>Do newly installed brake pads make a slight noise?</h3><p>After installation, new brake pads require a short bedding-in period to seat evenly against the rotor. If unusual noise persists, bring your car to a workshop so technicians can inspect the rotor surface and installation.</p></div><div class=\"tpl-item\"><h3>Do you need to replace the brake rotors when changing brake pads?</h3><p>It's not mandatory to replace both at the same time. Brake rotors only need resurfacing or replacement if they show deep grooves, warping, cracks, or if their thickness has reached manufacturer wear limits.</p></div></section>\n<h2>Proactively stay safe on every journey with Pitlane Auto Parts</h2>\n<p>A solid, precise brake system brings total peace of mind behind the wheel. Recognizing warning signs early, avoiding repair delays, and choosing the right replacement parts are essential responsibilities for every car owner.</p>\n<section class=\"tpl-cta\"><h3>Professional brake pad inspection and replacement</h3><p>Proactively check your brake system today if you notice any unusual signs. Contact Pitlane Auto Parts for technical advice and help choosing quality brake pads engineered to fit your specific car.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "5 warning signs you need to replace car brake pads",
+          "seoDescription": "A guide to recognizing signs of worn car brake pads and the importance of timely replacement to ensure safe vehicle operation."
+        },
+        {
+          "locale": "vi",
+          "title": "5 dấu hiệu cần thay má phanh ô tô và lý do không nên chờ",
+          "slug": "5-dau-hieu-can-thay-ma-phanh-o-to-va-ly-do-khong-nen-cho",
+          "excerpt": "Nhận biết sớm các dấu hiệu mòn má phanh ô tô giúp bạn lái xe an toàn, bảo vệ đĩa phanh và hạn chế các hư hại kỹ thuật tốn kém cho phương tiện.",
+          "coverAlt": "Cận cảnh cùm phanh và đĩa phanh ô tô qua vành xe",
+          "body": "<p class=\"tpl-lead\">Hệ thống phanh là bộ phận an toàn tối quan trọng trên mọi chiếc ô tô, trực tiếp bảo vệ người lái và hành khách trong từng chuyến đi. Khi má phanh mòn quá mức, hiệu quả phanh sẽ suy giảm rõ rệt, làm tăng quãng đường dừng xe và tiềm ẩn nguy cơ va chạm nguy hiểm. Việc nhận biết kịp thời các triệu chứng cảnh báo để chủ động <strong>thay má phanh</strong> là kỹ năng thiết yếu giúp chủ xe luôn làm chủ tay lái và duy trì khả năng kiểm soát xe tối ưu.</p>\n<h2>Vì sao má phanh ô tô hao mòn nhanh hơn bạn nghĩ?</h2>\n<p>Má phanh hoạt động dựa trên nguyên lý ma sát trực tiếp với đĩa phanh nhằm giảm tốc độ hoặc dừng hoàn toàn chuyển động quay của bánh xe. Quá trình tiếp xúc liên tục dưới áp lực lớn và nhiệt độ cao làm cho lớp vật liệu ma sát bị mỏng dần theo thời gian. Mức độ hao mòn thực tế không chỉ phụ thuộc vào quãng đường di chuyển mà còn chịu tác động rất lớn từ điều kiện vận hành hàng ngày.</p>\n<p>Những chiếc xe thường xuyên di chuyển trong các đô thị đông đúc, nơi tài xế phải liên tục nhấn nhả chân phanh do ùn tắc, sẽ có tốc độ mòn má phanh nhanh hơn nhiều so với xe chạy đường trường. Bên cạnh đó, thói quen chở tải nặng, thường xuyên lái xe trên địa hình đèo dốc quanh co hoặc phong cách lái xe hay phanh gấp cũng là những nguyên nhân hàng đầu khiến lớp vật liệu ma sát xuống cấp nhanh chóng.</p>\n<h2>5 dấu hiệu rõ ràng cho thấy đã đến lúc cần thay má phanh</h2>\n<p>Hầu hết các hệ thống phanh hiện đại đều được thiết kế để phát ra những tín hiệu cảnh báo cụ thể khi bề mặt ma sát mòn đến giới hạn an toàn. Người lái hoàn toàn có thể tự nhận biết tình trạng này thông qua thính giác, cảm giác chân phanh và việc quan sát bằng mắt thường.</p>\n<ul class=\"tpl-check\"><li>Thanh chỉ báo mòn bằng kim loại chạm vào mặt đĩa phanh tạo ra tiếng rít sắc bén, báo hiệu lớp ma sát đã mòn gần hết.</li><li>Lớp vật liệu ma sát đã bị triệt tiêu hoàn toàn, khiến phần đế sắt cọ xát trực tiếp lên đĩa kim loại và gây xước mặt đĩa.</li><li>Bàn đạp phanh có cảm giác nhẹ bất thường, tụt sâu gần sát sàn xe hoặc hành trình phanh dài hơn bình thường.</li><li>Lực phanh không đều giữa các bánh xe khiến xe bị kéo lệch hướng hoặc vành tay lái rung lên khi tác động lực phanh.</li><li>Quan sát qua khe nan hoa mâm xe thấy lớp ma sát còn lại quá mỏng so với tấm đế kim loại đỡ phía sau.</li></ul>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/1376.webp\" alt=\"So sánh má phanh ô tô cũ bị mòn và má phanh mới\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/640.webp 640w, {{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/1280.webp 1280w, {{media}}/44f58619-01de-46e9-b0e7-3e497d8b58be/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Quan sát độ dày lớp ma sát giúp người lái chủ động thay má phanh đúng lúc.</figcaption></figure>\n<h2>Nguy cơ tiềm ẩn và tổn thất tài chính khi chậm trễ thay má phanh</h2>\n<p>Không ít chủ xe có tâm lý chủ quan, tiếp tục di chuyển khi má phanh đã mòn với suy nghĩ có thể chờ thêm một thời gian nữa. Tuy nhiên, sự chậm trễ này không chỉ khiến quãng đường dừng xe kéo dài trong những tình huống phanh khẩn cấp mà còn gây ra những hệ lụy nghiêm trọng cho các bộ phận liên quan.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Cảnh báo hư hại lan sang đĩa phanh và cụm piston</h3><p>Khi phần vật liệu ma sát mòn hết, phần đế kim loại tì thẳng vào đĩa phanh sẽ tạo rãnh sâu, làm cong vênh đĩa phanh và sinh nhiệt lượng cực lớn làm hỏng phớt dầu hoặc kẹt cụm piston phanh. Chi phí thay thế cả đĩa phanh lẫn phục hồi cùm phanh sẽ tốn kém hơn rất nhiều so với việc chủ động <strong>thay má phanh</strong> đúng kỳ hạn.</p></section>\n<p>Hơn nữa, khi hệ thống phanh suy giảm độ bám, người lái xe sẽ mất đi sự tự tin khi xử lý tình huống trên đường. Việc đảm bảo an toàn tính mạng cho chính mình và mọi người xung quanh luôn là ưu tiên hàng đầu, không thể đánh đổi bằng sự trì hoãn.</p>\n<h2>Bao lâu thì nên kiểm tra và thay má phanh ô tô định kỳ?</h2>\n<p>Tần suất kiểm tra và thay mới má phanh phụ thuộc vào chất liệu cấu tạo của phụ tùng, khối lượng xe cũng như thói quen điều khiển của từng cá nhân. Do đó, việc duy trì thói quen kiểm tra định kỳ mỗi khi đưa xe đi bảo dưỡng tổng thể hoặc trong những lần thay dầu máy là cách an toàn và thực tế nhất để theo dõi tình trạng ăn mòn.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Kỹ thuật vận hành giúp kéo dài tuổi thọ má phanh</h3><p>Người lái nên tập thói quen giảm ga sớm và tận dụng lực hãm tự nhiên của động cơ khi xuống dốc thay vì rà chân phanh liên tục. Cách lái xe này vừa giúp kiểm soát tốc độ an toàn vừa hạn chế nhiệt độ quá cao tích tụ trên bề mặt phanh.</p></section>\n<h2>Giải đáp thắc mắc thường gặp về má phanh ô tô</h2>\n<p>Dưới đây là lời giải đáp cho những băn khoăn phổ biến nhất của các chủ xe trong quá trình bảo dưỡng và thay thế hệ thống phanh.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Có thể thay má phanh cho từng bánh riêng lẻ không?</h3><p>Không nên thay riêng lẻ một bánh. Má phanh luôn cần được thay đồng bộ theo từng trục (hai bánh trước hoặc hai bánh sau) để đảm bảo lực phanh phân bổ cân bằng, tránh hiện tượng lệch lái nguy hiểm khi phanh gấp.</p></div><div class=\"tpl-item\"><h3>Má phanh mới lắp có xuất hiện tiếng kêu nhẹ không?</h3><p>Sau khi lắp đặt, má phanh mới cần một thời gian ngắn vận hành để các bề mặt tiếp xúc ăn khớp đều với đĩa phanh. Nếu tiếng kêu bất thường vẫn tiếp tục kéo dài, bạn cần đưa xe đến xưởng để kỹ thuật viên kiểm tra lại bề mặt đĩa và khâu lắp đặt.</p></div><div class=\"tpl-item\"><h3>Có cần thay luôn đĩa phanh khi thay má phanh không?</h3><p>Không bắt buộc phải thay cùng lúc. Đĩa phanh chỉ cần láng phẳng bề mặt hoặc thay mới khi có dấu hiệu xước rãnh sâu, cong vênh, rạn nứt hoặc bề dày đã mòn chạm mốc giới hạn do nhà sản xuất quy định.</p></div></section>\n<h2>Chủ động bảo vệ an toàn trên từng cung đường cùng Pitlane Auto Parts</h2>\n<p>Hệ thống phanh vững chãi và hoạt động chính xác mang lại cảm giác an tâm tuyệt đối sau tay lái. Việc nhận diện sớm các dấu hiệu cảnh báo, không trì hoãn sửa chữa và lựa chọn sản phẩm thay thế phù hợp là trách nhiệm hàng đầu của người sở hữu xe hơi.</p>\n<section class=\"tpl-cta\"><h3>Kiểm tra và thay má phanh đúng chuẩn kỹ thuật</h3><p>Hãy chủ động kiểm tra hệ thống phanh ngay hôm nay nếu nhận thấy bất kỳ dấu hiệu khác thường nào. Liên hệ với Pitlane Auto Parts để được hỗ trợ thông tin kỹ thuật và lựa chọn các dòng má phanh chất lượng, tương thích chuẩn xác với dòng xe của bạn.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "5 dấu hiệu cảnh báo cần thay má phanh ô tô",
+          "seoDescription": "Hướng dẫn nhận diện các dấu hiệu mòn má phanh ô tô và tầm quan trọng của việc thay má phanh kịp thời để đảm bảo an toàn vận hành xe."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "26b2c056-0619-4f36-9ae4-752fc121b38d",
+      "categoryKey": "maintenance",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "d5ec0fc1-00ff-4e8e-a23e-e72b46a75f37",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:35:59.233Z",
+      "createdAt": "2026-11-13T23:34:46.590Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Engine Oil and Oil Filter Replacement Schedule for Standard Cars",
+          "slug": "engine-oil-and-oil-filter-replacement-schedule-for-standard-cars",
+          "excerpt": "A detailed guide on engine oil and oil filter replacement intervals for standard cars based on mileage, time, and real-world driving conditions to keep your engine running smoothly.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">The car engine is often compared to the heart of the vehicle, and lubricating oil is the bloodstream nourishing the entire mechanical system within. For everyday passenger cars, understanding the maintenance intervals for engine oil and filters is key to extending vehicle lifespan, saving on repair costs, and ensuring smooth operation.</p>\n<h2>The Importance of Engine Oil and Oil Filters for Car Engines</h2>\n<p>When the engine runs, thousands of metal components reciprocate and rotate at high speeds under intense pressure. Engine oil creates a protective film between contact surfaces, eliminating direct friction and minimizing wear. Beyond lubrication, oil also dissipates heat from deep within the engine bay, cleans carbon deposits from combustion, and prevents metal oxidation.</p>\n<p>Paired with the engine oil is the oil filter. This component captures tiny metal shavings, sludge, and contaminants generated during operation before the oil recirculates through the engine. If the oil filter gets clogged or overloaded, dirty oil passes through the bypass valve directly into the engine, causing severe scratches on metal surfaces.</p>\n<h2>Standard Car Oil Change Schedule by Mileage and Time</h2>\n<p>Typically, the interval for a <strong>car oil change</strong> is determined by two parallel factors: distance traveled and elapsed time, depending on the type of engine oil recommended by the manufacturer for your vehicle.</p>\n<p>Mineral oil usually has the shortest service interval, ranging from 3.000 to 5.000 km or after 3 months. Semi-synthetic oil is a very popular choice for today's mainstream cars, allowing intervals of 5.000 to 7.500 km or about 6 months. With premium full synthetic oil, lifespan can reach 10.000 to 12.000 km or up to 12 months of use.</p>\n<p>Even if the car is driven infrequently and has not reached the specified mileage, anti-oxidation additives in the oil degrade over time due to exposure to air and moisture. Therefore, the time limit is an essential milestone that car owners should not overlook.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/640.webp 640w, {{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/1280.webp 1280w, {{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Driving Conditions That Require Earlier Oil Changes</h2>\n<p>Most manufacturer recommendations in the owner's manual apply to ideal driving conditions. However, the majority of standard cars in urban areas today operate under severe conditions that drivers rarely realize.</p>\n<p>Prolonged traffic congestion forces the engine to idle continuously, raising engine bay temperatures without natural airflow cooling. Additionally, frequent short trips under 5 km shut off the engine before it reaches optimal operating temperature, leading to moisture and unburnt fuel accumulating in the oil pan, which quickly dilutes the oil.</p>\n<h2>How Often Should You Replace the Car Oil Filter?</h2>\n<p>The most common and safest rule recommended by technicians is to replace the oil filter every 2 <strong>car oil changes</strong>, equivalent to about 10.000 km. However, if you use synthetic oil with intervals reaching 10.000 km or frequently drive in dusty environments, replacing the oil filter with every oil change is a worthwhile investment.</p>\n<p>The cost of a typical oil filter is negligible compared to the whole engine, but the consequences of a clogged filter can be extremely expensive. When the filter element is saturated with debris, the bypass valve opens to allow unfiltered oil to flow directly to bearings, quickly scoring cylinders and wearing out bushings.</p>\n<h2>Steps to Check Oil Level and Condition Using the Dipstick</h2>\n<p>Proactively checking your oil level at home every two to four weeks helps you detect abnormal oil consumption or degradation early, well before the oil pressure warning light comes on.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Prepare the parking spot</h3><p>Park on completely level ground, turn off the engine, and wait about 5 to 10 minutes for the engine oil to settle into the oil pan.</p></div><div class=\"tpl-item\"><h3>Pull and wipe the dipstick clean</h3><p>Pop the hood, locate the oil dipstick with a yellow or orange handle, pull it out, and use a clean rag to wipe the tip dry.</p></div><div class=\"tpl-item\"><h3>Measure the actual oil level</h3><p>Insert the dipstick fully back into its tube until seated, then pull it out once more to inspect.</p></div><div class=\"tpl-item\"><h3>Assess oil level and condition</h3><p>Check the oil film between the Min and Max marks, while also evaluating its viscosity and color; if the oil is at the Min mark, top it up, and if it is jet black with a burnt smell, it needs to be replaced.</p></div></section>\n<h2>Frequently Asked Questions About Oil and Filter Changes</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Does a car driven only a few thousand kilometers a year still need an oil change?</h3><p>Yes, you still need an oil change. Once opened and exposed to the air inside the engine, motor oil degrades naturally through oxidation and moisture condensation, even if the mileage driven is very low.</p></div><div class=\"tpl-item\"><h3>Does black engine oil mean it needs to be changed immediately?</h3><p>Not necessarily. Modern motor oils contain dispersant and detergent additives that suspend soot particles in the oil. Therefore, darkening oil indicates it is doing its job well; you should follow the recommended maintenance schedule rather than judging by color alone.</p></div><div class=\"tpl-item\"><h3>Should car owners replace the oil filter at home?</h3><p>Car owners can certainly do it themselves with the right filter removal tools and basic knowledge. However, taking your car to a service facility ensures safe disposal of used oil, correct torque application, and a better overall undercarriage inspection.</p></div></section>\n<section class=\"tpl-cta\"><h3>Proactively Inspect and Service Your Car on Schedule</h3><p>Timely maintenance is the simplest and most cost-effective way to keep your vehicle reliable on every journey. Don't forget to check your service logbook or reminder sticker to schedule care for your car today with Pitlane Auto Parts.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "The Most Detailed Car Oil and Oil Filter Change Schedule | Pitlane Auto Parts",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Lịch Thay Dầu Nhớt Và Lọc Nhớt Cho Xe Ô Tô Phổ Thông",
+          "slug": "lich-thay-dau-nhot-va-loc-nhot-cho-xe-o-to-pho-thong",
+          "excerpt": "Hướng dẫn chi tiết lịch thay dầu nhớt và lọc nhớt cho xe ô tô phổ thông theo số km, thời gian và điều kiện chạy thực tế để giữ động cơ bền bỉ.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Động cơ ô tô được ví như trái tim của chiếc xe, và dầu bôi trơn chính là dòng máu nuôi dưỡng toàn bộ hệ thống cơ khí bên trong. Đối với các dòng xe phổ thông phục vụ nhu cầu di chuyển hàng ngày, việc nắm rõ chu kỳ bảo trì dầu máy và cốc lọc là chìa khóa quan trọng nhất để kéo dài tuổi thọ phương tiện, tiết kiệm chi phí sửa chữa và đảm bảo xe luôn vận hành êm ái.</p>\n<h2>Tầm quan trọng của dầu nhớt và lọc nhớt đối với động cơ ô tô</h2>\n<p>Khi động cơ hoạt động, hàng nghìn chi tiết kim loại chuyển động tịnh tiến và quay với tốc độ cực cao dưới áp suất lớn. Dầu động cơ tạo ra một lớp màng ngăn cách giữa các bề mặt tiếp xúc, triệt tiêu ma sát trực tiếp và hạn chế mài mòn. Không chỉ bôi trơn, dầu còn đóng vai trò giải nhiệt cho các khu vực sâu bên trong buồng máy, làm sạch muội than hình thành từ quá trình đốt cháy và ngăn chặn hiện tượng oxy hóa kim loại.</p>\n<p>Đi kèm với dầu bôi trơn là cốc lọc nhớt. Bộ phận này chịu trách nhiệm thu giữ các mạt kim loại li ti, cặn bẩn và tạp chất phát sinh trong quá trình vận hành trước khi dầu tuần hoàn trở lại động cơ. Nếu lọc nhớt bị tắc nghẽn hoặc quá tải, dầu bẩn sẽ đi qua van xả phụ trực tiếp vào động cơ, khiến các bề mặt kim loại bị cào xước nghiêm trọng.</p>\n<h2>Lịch thay dầu nhớt ô tô tiêu chuẩn theo số kilomet và thời gian</h2>\n<p>Thông thường, chu kỳ <strong>thay dầu nhớt ô tô</strong> được xác định dựa trên hai yếu tố song hành: quãng đường di chuyển và thời gian sử dụng, tùy thuộc vào loại dầu động cơ mà nhà sản xuất khuyến nghị cho dòng xe của bạn.</p>\n<p>Dầu gốc khoáng thường có chu kỳ sử dụng ngắn nhất, dao động trong khoảng 3.000 đến 5.000 km hoặc sau 3 tháng. Dầu bán tổng hợp là lựa chọn rất phổ biến trên các dòng xe phổ thông hiện nay, cho phép xe chạy từ 5.000 đến 7.500 km hoặc khoảng 6 tháng. Với dầu tổng hợp toàn phần cao cấp, tuổi thọ dầu có thể kéo dài từ 10.000 đến 12.000 km hoặc tối đa 12 tháng sử dụng.</p>\n<p>Ngay cả khi xe ít lăn bánh và chưa đi hết số kilomet quy định, các chất phụ gia chống oxy hóa trong dầu vẫn sẽ bị biến tính dần theo thời gian tiếp xúc với không khí và độ ẩm. Do đó, mốc thời gian luôn là giới hạn bắt buộc chủ xe không nên bỏ qua.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/640.webp 640w, {{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/1280.webp 1280w, {{media}}/6d2e0008-8c12-4da9-8daa-3d6facf7a998/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Các điều kiện vận hành khiến bạn phải thay dầu nhớt sớm hơn</h2>\n<p>Hầu hết các khuyến nghị trong sổ tay hướng dẫn của nhà sản xuất đều áp dụng cho điều kiện vận hành lý tưởng. Tuy nhiên, phần lớn ô tô phổ thông tại các đô thị hiện nay lại vận hành trong điều kiện khắc nghiệt mà người dùng ít khi để ý.</p>\n<p>Tình trạng kẹt xe kéo dài buộc động cơ phải nổ cầm chừng liên tục, nhiệt độ khoang máy tăng cao mà không có luồng gió tự nhiên làm mát. Bên cạnh đó, việc thường xuyên di chuyển các quãng đường ngắn dưới 5 km khiến máy chưa kịp đạt nhiệt độ vận hành tối ưu đã phải dừng, dẫn đến hơi ẩm và xăng chưa cháy hết tích tụ trong các-te dầu, làm loãng dầu nhanh chóng.</p>\n<h2>Bao lâu nên thay lọc nhớt ô tô một lần?</h2>\n<p>Quy tắc phổ biến và an toàn nhất được các kỹ thuật viên khuyên dùng là thay lọc nhớt sau mỗi 2 lần <strong>thay dầu nhớt ô tô</strong>, tương đương khoảng 10.000 km. Tuy nhiên, nếu bạn sử dụng loại dầu tổng hợp có chu kỳ kéo dài đến 10.000 km hoặc thường xuyên vận hành trong môi trường nhiều khói bụi, việc thay mới lọc nhớt cùng lúc với mỗi lần thay dầu là khoản đầu tư hoàn toàn xứng đáng.</p>\n<p>Chi phí cho một chiếc cốc lọc nhớt thông thường rất nhỏ so với toàn bộ động cơ, nhưng hậu quả của một chiếc cốc lọc bị nghẽn lại vô cùng tốn kém. Khi màng lọc bị lấp đầy cặn bẩn, van an toàn mở ra cho phép dầu chưa lọc chảy thẳng vào các ổ trục, gây xước xi-lanh và mòn bạc lót nhanh chóng.</p>\n<h2>Các bước tự kiểm tra mức và tình trạng dầu nhớt bằng que thăm dầu</h2>\n<p>Chủ động kiểm tra mức dầu tại nhà định kỳ từ hai đến bốn tuần một lần giúp bạn sớm phát hiện tình trạng hao dầu bất thường hoặc dầu bị biến chất trước khi đèn báo áp suất dầu trên bảng táp-lô kịp bật sáng.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Chuẩn bị vị trí đỗ</h3><p>Đỗ xe trên một mặt phẳng tuyệt đối, tắt máy và đợi khoảng 5 đến 10 phút để dầu động cơ hồi hết về đáy các-te.</p></div><div class=\"tpl-item\"><h3>Rút và lau sạch que thăm</h3><p>Mở nắp ca-pô, tìm vị trí que thăm dầu có tay cầm màu vàng hoặc cam, rút que ra và dùng khăn sạch lau khô toàn bộ phần đầu que.</p></div><div class=\"tpl-item\"><h3>Đo mức dầu thực tế</h3><p>Cắm que thăm dầu trở lại hoàn toàn vào ống dẫn cho đến khi chạm đáy, sau đó rút que ra một lần nữa để quan sát.</p></div><div class=\"tpl-item\"><h3>Đánh giá mức dầu và chất lượng</h3><p>Quan sát vệt dầu bám giữa hai vạch Min và Max; đồng thời đánh giá độ nhớt và màu sắc, nếu dầu ở mức Min cần châm thêm, nếu có màu đen kịt cùng mùi khét thì cần thay mới.</p></div></section>\n<h2>Giải đáp những thắc mắc thường gặp khi thay dầu và lọc nhớt</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Xe cả năm chỉ chạy vài nghìn kilomet có cần thay dầu nhớt không?</h3><p>Có, bạn vẫn cần thay dầu mới. Dầu động cơ sau khi mở nắp và tiếp xúc với không khí bên trong máy sẽ tự thoái hóa do quá trình oxy hóa tự nhiên và ngưng tụ hơi nước, ngay cả khi số kilomet di chuyển rất ít.</p></div><div class=\"tpl-item\"><h3>Dầu nhớt chuyển sang màu đen có phải là dấu hiệu cần thay ngay lập tức?</h3><p>Không hoàn toàn. Dầu nhớt hiện đại có chứa các chất phụ gia phân tán và tẩy rửa nhằm gom muội than trôi nổi trong dầu. Vì vậy dầu chuyển sang màu sẫm là dấu hiệu dầu đang làm việc tốt, bạn nên căn cứ theo lịch bảo dưỡng chuẩn thay vì chỉ nhìn vào màu sắc.</p></div><div class=\"tpl-item\"><h3>Chủ xe có nên tự thay lọc nhớt tại nhà không?</h3><p>Chủ xe hoàn toàn có thể tự thực hiện nếu có đủ dụng cụ mở cốc lọc và kiến thức cơ bản. Tuy nhiên, việc đưa xe đến các cơ sở bảo dưỡng giúp việc thu hồi dầu thải an toàn, đảm bảo siết đúng lực và được kiểm tra tổng thể gầm xe tốt hơn.</p></div></section>\n<section class=\"tpl-cta\"><h3>Chủ động kiểm tra và bảo dưỡng xế cưng đúng định kỳ</h3><p>Bảo dưỡng đúng hạn là biện pháp đơn giản và tiết kiệm nhất để giữ cho chiếc xe của bạn luôn bền bỉ trên mọi hành trình. Đừng quên mở sổ bảo dưỡng hoặc kiểm tra tem nhắc lịch để lên kế hoạch chăm sóc chiếc xe của mình ngay hôm nay cùng Pitlane Auto Parts.</p></section>",
+          "readingMinutes": 7,
+          "seoTitle": "Lịch Thay Dầu Nhớt Và Lọc Nhớt Xe Ô Tô Chi Tiết Nhất | Pitlane Auto Parts",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "72132acc-3cec-49be-97ef-697599c4dcee",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "fa4d0c32-803b-4480-b212-c16f845e7784",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:38:28.325Z",
+      "createdAt": "2026-11-13T23:37:30.194Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Detailed Guide on Checking Your Car Battery Before a Long Trip",
+          "slug": "detailed-guide-on-checking-your-car-battery-before-a-long-trip",
+          "excerpt": "A guide to self-checking your car battery before a long journey, spotting signs of a weak battery, and measuring voltage accurately to keep your vehicle running safely.",
+          "coverAlt": "Checking the car battery under the hood in preparation for a long trip",
+          "body": "<p class=\"tpl-lead\">The battery is regarded as the heart that powers your car's entire operating system. Before every long trip, proactively <strong>checking your car battery</strong> is an important step to ensure complete peace of mind, eliminating the risk of unexpected breakdowns on deserted roads or highways.</p>\n<h2>The Importance of Checking Your Car Battery Before Every Long Trip</h2>\n<p>During long journeys, cars operate continuously in high temperatures under heavy electrical loads like air conditioning, lighting, and navigation systems. If the battery has degraded or lost capacity, the charging system will struggle to maintain stability, easily leading to voltage drops.</p>\n<p>Being stranded due to a dead battery not only disrupts your travel plans but also creates a major headache when searching for roadside assistance in remote areas. Spending about fifteen minutes to <strong>check your car battery</strong> at home is the most effective way to prevent these risks.</p>\n<h2>Warning Signs of a Failing Car Battery</h2>\n<p>Before failing completely, a battery usually gives off clear warning signs during daily driving that you can easily detect with your senses.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Difficulty Starting the Engine</h3><p>The engine cranks slowly, sounding sluggish and taking longer to turn over than usual, especially on the first start of the morning.</p></div><div class=\"tpl-item\"><h3>Flickering Electrical Accessories</h3><p>Headlights appear dimmer than normal at idle, or the infotainment screen and dome lights flicker when multiple electrical devices are on.</p></div><div class=\"tpl-item\"><h3>Dashboard Warning Light</h3><p>The battery symbol light on the instrument cluster illuminates or flashes, indicating a fault in the charging system.</p></div></section>\n<h2>How to Visually Inspect the Battery Case and Terminals</h2>\n<p>Open the hood and inspect the battery thoroughly. A healthy battery should have an intact plastic casing with square, clean edges and no signs of cracks or bulging from overheating.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/1376.webp\" alt=\"Visually inspecting the battery terminals and case under the car hood\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/640.webp 640w, {{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/1280.webp 1280w, {{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Carefully inspect the terminals and casing surface to spot early signs of leaks or corrosion.</figcaption></figure>\n<p>Next, examine the positive and negative terminals. After prolonged use, escaping acid vapors mixed with air can create white or bluish-gray sulfate deposits around the terminal posts, restricting current flow to the starting system.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Quick Tip for Cleaning Battery Terminals</h3><p>If you notice white deposits around the terminals, gently pour a small amount of warm water to dissolve the buildup, scrub it clean with an old toothbrush, and dry it with a soft cloth to improve electrical contact.</p></section>\n<h2>Simple Guide to Measuring Car Battery Voltage with a Multimeter</h2>\n<p>The most accurate way to check remaining battery capacity is by using a digital multimeter. The process of <strong>checking your car battery</strong> using voltage readings follows these basic steps:</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Set Up the Multimeter</h3><p>Turn the multimeter dial to DC voltage (labeled DCV or V with a solid bar) on the 20V setting.</p></div><div class=\"tpl-item\"><h3>Measure Resting Voltage</h3><p>Ensure the ignition is off and the engine is not running. Touch the red probe to the positive terminal (+) and the black probe to the negative terminal (-). A good battery should read between 12,4V and 12,7V.</p></div><div class=\"tpl-item\"><h3>Measure Voltage with the Engine Running</h3><p>Start the engine and let the car idle. Measure the voltage across the battery terminals again. If the alternator is functioning properly, the voltage should stay between 13,7V and 14,7V.</p></div><div class=\"tpl-item\"><h3>Read and Evaluate the Results</h3><p>If resting voltage is below 12,2V, the battery is low on charge. If running voltage is below 13,5V or exceeds 15V, the alternator charging system has an issue.</p></div></section>\n<h2>Essential Safety Tips When Working with Your Battery</h2>\n<p>Car batteries contain highly corrosive sulfuric acid and can generate explosive hydrogen gas during charge and discharge cycles. Therefore, you must strictly follow personal safety rules.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Safety Precautions During Handling</h3><p>Always wear safety glasses and rubber gloves when handling the battery. Never smoke or produce sparks near the engine bay. When removing or installing a battery, always disconnect the negative terminal first and reconnect it last to prevent accidental short circuits against the car body.</p></section>\n<h2>When to Recharge or Replace Your Battery?</h2>\n<p>Depending on the test results and how long the battery has been in service, you can decide whether to recharge it or install a new one to guarantee vehicle safety before setting off.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>When Does the Battery Only Need Recharging?</h3><p>When the measured resting voltage is between 12,0V and 12,3V, the casing is not swollen, and the terminals are undamaged, you simply need to recharge it using a dedicated car battery charger.</p></div><div class=\"tpl-item\"><h3>What Signs Indicate You Need a Full Replacement?</h3><p>If the battery is fully charged but drops quickly below 12V overnight, or shows signs of deformation or cracking, you should replace it immediately.</p></div><div class=\"tpl-item\"><h3>How Often Should a Car Battery Be Thoroughly Inspected?</h3><p>Even if the car still starts fine, the average car battery lifespan is only around two to three years. Periodic checks before long road trips will help you stay in full control.</p></div></section>\n<section class=\"tpl-cta\"><h3>Ready for Every Safe Journey</h3><p>Proactively checking vehicle components before every long trip is the mark of a smart, responsible driver. Equip yourself with the necessary testing tools or visit a trusted auto repair shop for a comprehensive check-up on your car today.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "The Best Way to Check Your Car Battery Yourself Before a Long Trip",
+          "seoDescription": "A guide to checking your car battery before a long trip: recognizing weak battery signs, measuring voltage with a multimeter, and essential safety tips."
+        },
+        {
+          "locale": "vi",
+          "title": "Cách kiểm tra ắc quy ô tô chi tiết trước chuyến đi xa",
+          "slug": "cach-kiem-tra-ac-quy-o-to-chi-tiet-truoc-chuyen-di-xa",
+          "excerpt": "Hướng dẫn tự kiểm tra ắc quy ô tô trước hành trình dài, nhận diện dấu hiệu bình yếu và cách đo điện áp chuẩn xác giúp xe vận hành an toàn.",
+          "coverAlt": "Kiểm tra ắc quy xe hơi dưới nắp ca-pô chuẩn bị cho chuyến đi xa",
+          "body": "<p class=\"tpl-lead\">Ắc quy được ví như trái tim khởi nguồn cho toàn bộ hệ thống vận hành trên xe hơi. Trước mỗi chuyến đi xa, việc chủ động <strong>kiểm tra ắc quy ô tô</strong> là khâu chuẩn bị quan trọng giúp bạn an tâm làm chủ mọi hành trình, loại bỏ triệt để nguy cơ xe chết máy bất ngờ giữa đường vắng hay cao tốc.</p>\n<h2>Tầm quan trọng của việc kiểm tra ắc quy ô tô trước mỗi chuyến đi xa</h2>\n<p>Khi di chuyển trên các cung đường dài, xe phải hoạt động liên tục trong điều kiện nhiệt độ cao cùng nhiều tải điện như điều hòa, hệ thống chiếu sáng và các thiết bị dẫn đường. Nếu bình ắc quy đã suy giảm dung lượng hoặc xuống cấp, hệ thống sạc sẽ khó duy trì trạng thái ổn định, rất dễ dẫn đến hiện tượng sụt áp.</p>\n<p>Việc nằm đường do hỏng ắc quy không chỉ khiến lịch trình di chuyển bị gián đoạn mà còn gây phiền toái lớn khi tìm kiếm dịch vụ cứu hộ ở khu vực hẻo lánh. Dành ra khoảng mười lăm phút tự <strong>kiểm tra ắc quy ô tô</strong> tại nhà là phương án hiệu quả nhất để chủ động phòng tránh rủi ro.</p>\n<h2>Các dấu hiệu cảnh báo ắc quy ô tô đang yếu dần</h2>\n<p>Trước khi hỏng hoàn toàn, bình điện thường phát ra những tín hiệu cảnh báo rõ rệt trong quá trình vận hành hằng ngày mà người lái xe có thể dễ dàng nhận ra bằng giác quan.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Đề nổ khó khăn</h3><p>Động cơ quay chậm, âm thanh đề nổ nặng nề và kéo dài hơn bình thường, đặc biệt là lần khởi động đầu tiên vào buổi sáng.</p></div><div class=\"tpl-item\"><h3>Thiết bị điện chập chờn</h3><p>Ánh sáng đèn pha mờ hơn thường lệ khi nổ cầm chừng, màn hình giải trí hoặc đèn trần nhấp nháy khi bạn bật nhiều thiết bị điện.</p></div><div class=\"tpl-item\"><h3>Đèn báo lỗi táp-lô</h3><p>Đèn báo biểu tượng ắc quy trên bảng đồng hồ trung tâm phát sáng hoặc nhấp nháy, báo hiệu lỗi hệ thống nạp xả năng lượng.</p></div></section>\n<h2>Cách kiểm tra trực quan tình trạng vỏ bình và cọc bình</h2>\n<p>Hãy mở nắp ca-pô và quan sát kỹ lưỡng tổng thể bình ắc quy. Một bình điện khỏe mạnh phải có vỏ nhựa nguyên vẹn, các góc cạnh vuông vắn và không có hiện tượng nứt vỡ hay biến dạng phồng to do quá nhiệt.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/1376.webp\" alt=\"Kiểm tra trực quan cọc bình và vỏ bình ắc quy dưới nắp ca-pô ô tô\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/640.webp 640w, {{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/1280.webp 1280w, {{media}}/e4efcbac-30ad-44f5-8e9b-bc1e7c492a38/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Quan sát kỹ cọc bình và bề mặt vỏ để phát hiện sớm các hiện tượng rò rỉ hay muối bám.</figcaption></figure>\n<p>Tiếp theo, hãy quan sát hai đầu cực âm và cực dương. Sau thời gian dài sử dụng, hơi axit thoát ra kết hợp với không khí có thể tạo thành một lớp muối sunfat màu trắng hoặc xanh xám bám chặt quanh chân cọc, gây cản trở dòng điện truyền vào hệ thống khởi động.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Mẹo làm sạch cọc bình nhanh chóng</h3><p>Nếu phát hiện muối trắng bám quanh cọc bình, bạn có thể dội nhẹ một lượng nhỏ nước ấm để làm tan cặn bẩn, sau đó dùng bàn chải đánh răng cũ chà sạch và lau khô bằng khăn mềm để tăng khả năng tiếp xúc điện.</p></section>\n<h2>Hướng dẫn đo điện áp ắc quy ô tô đơn giản bằng đồng hồ vạn năng</h2>\n<p>Cách chính xác nhất để nắm rõ thực trạng năng lượng dự trữ là sử dụng đồng hồ vạn năng kỹ thuật số. Quy trình <strong>kiểm tra ắc quy ô tô</strong> qua chỉ số điện áp được tiến hành tuần tự theo các bước kỹ thuật cơ bản sau:</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Cài đặt đồng hồ đo</h3><p>Chuyển núm xoay của đồng hồ vạn năng về thang đo điện áp một chiều (ký hiệu DCV hoặc V có gạch ngang) ở dải đo 20V.</p></div><div class=\"tpl-item\"><h3>Đo điện áp nghỉ</h3><p>Đảm bảo chìa khóa điện đã tắt, xe không nổ máy. Đặt que đỏ vào cực dương (+) và que đen vào cực âm (-). Điện áp chuẩn của bình tốt lúc này nên đạt từ 12,4V đến 12,7V.</p></div><div class=\"tpl-item\"><h3>Đo điện áp khi nổ máy</h3><p>Khởi động máy và để xe nổ không tải. Tiếp tục đo điện áp giữa hai cực bình. Nếu máy phát hoạt động tốt, điện áp ổn định trong khoảng 13,7V đến 14,7V.</p></div><div class=\"tpl-item\"><h3>Đọc và đánh giá kết quả</h3><p>Nếu điện áp nghỉ dưới 12,2V, bình đang cạn điện. Nếu khi nổ máy mà điện áp dưới 13,5V hoặc vượt quá 15V, hệ thống sạc máy phát đang gặp trục trặc.</p></div></section>\n<h2>Những lưu ý an toàn cần nhớ khi tự thao tác với ắc quy</h2>\n<p>Bình điện ô tô chứa dung dịch axit sunfuric có tính ăn mòn cực mạnh và có thể phát sinh khí hydro dễ cháy nổ trong quá trình phóng xả năng lượng. Do đó, người thực hiện cần tuân thủ nghiêm ngặt các nguyên tắc bảo hộ cá nhân.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Cảnh báo an toàn khi thao tác</h3><p>Luôn đeo kính bảo hộ và găng tay cao su khi tiếp xúc với bình. Tuyệt đối không hút thuốc hoặc tạo ra tia lửa gần khu vực khoang máy. Khi tháo lắp bình, luôn tháo cực âm trước và gắn cực âm sau cùng để tránh nguy cơ chập mạch thân xe.</p></section>\n<h2>Khi nào cần sạc bảo dưỡng hoặc thay mới bình ắc quy?</h2>\n<p>Tùy thuộc vào kết quả kiểm tra và thời gian hoạt động thực tế, bạn có thể đưa ra quyết định sạc bổ sung năng lượng hay thay bình mới để đảm bảo tính an toàn cho xe trước khi khởi hành.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Khi nào chỉ cần sạc bổ sung cho bình?</h3><p>Khi điện áp nghỉ đo được nằm trong khoảng từ 12,0V đến 12,3V nhưng vỏ bình không phồng rộp và cọc bình không hư hại, bạn chỉ cần sạc bù năng lượng bằng máy sạc chuyên dụng.</p></div><div class=\"tpl-item\"><h3>Dấu hiệu nào cho thấy cần thay mới hoàn toàn?</h3><p>Khi bình đã sạc đầy nhưng vẫn sụt áp nhanh dưới 12V chỉ sau một đêm, hoặc bình có dấu hiệu biến dạng, nứt vỡ thì bạn nên thay mới ngay lập tức.</p></div><div class=\"tpl-item\"><h3>Ắc quy dùng bao lâu thì nên kiểm tra kỹ?</h3><p>Ngay cả khi xe vẫn đề nổ được, tuổi thọ trung bình của bình ắc quy ô tô chỉ kéo dài khoảng hai đến ba năm. Việc kiểm tra định kỳ trước hành trình xa sẽ giúp bạn luôn làm chủ tình huống.</p></div></section>\n<section class=\"tpl-cta\"><h3>Sẵn sàng cho mọi cung đường an toàn</h3><p>Chủ động kiểm tra các chi tiết kỹ thuật trước mỗi chuyến đi xa là thói quen của người lái xe văn minh và an toàn. Hãy trang bị sẵn các thiết bị kiểm tra cần thiết hoặc ghé các xưởng dịch vụ kỹ thuật uy tín để kiểm tra toàn diện xế cưng ngay hôm nay.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Cách Tự Kiểm Tra Ắc Quy Ô Tô Chuẩn Nhất Trước Đi Xa",
+          "seoDescription": "Cẩm nang kiểm tra ắc quy ô tô trước chuyến đi xa: nhận diện dấu hiệu bình yếu, cách đo điện áp bằng đồng hồ vạn năng và lưu ý an toàn cần nhớ."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "9e9e81b9-1e23-4a26-b7fb-ba63d9b34ddf",
+      "categoryKey": "parts",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "a8e493ac-75b5-46ff-ad35-41e4d7e3d1d8",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:38:40.876Z",
+      "createdAt": "2026-11-13T23:37:44.607Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Genuine vs. Replacement Parts: A Guide to Choosing Components",
+          "slug": "genuine-vs-replacement-parts-a-guide-to-choosing-components",
+          "excerpt": "Distinguishing between genuine and replacement parts helps car owners optimize maintenance costs while still ensuring durability and safety for their vehicles.",
+          "coverAlt": "A mechanic advising a car owner next to a genuine parts inventory",
+          "body": "<p class=\"tpl-lead\">When servicing or repairing a car, deciding between <strong>genuine parts</strong> and replacement parts is always a dilemma for many car owners. Understanding the nature, advantages, and drawbacks of each type will help you make a smart choice, ensuring operational safety while optimizing your budget.</p>\n<h2>What Are Genuine and Replacement Parts?</h2>\n<p><strong>Genuine parts</strong> are components manufactured directly by the carmaker or produced by contracted partners under strict technical brand standards. These products come in the automaker's branded packaging with official labels and are distributed through authorized channels.</p>\n<p>Meanwhile, replacement parts—often referred to as aftermarket parts—are engineered and manufactured by independent companies. These manufacturers purchase licenses or design components compatible with specific car models to offer flexible alternatives on the market.</p>",
+          "readingMinutes": 1,
+          "seoTitle": "Genuine vs. Replacement Parts: Which Should You Choose for Your Car?",
+          "seoDescription": "Learn the differences between genuine and replacement (aftermarket) parts. Expert tips for choosing accurate, high-quality auto components."
+        },
+        {
+          "locale": "vi",
+          "title": "Phụ tùng chính hãng và thay thế: Hướng dẫn chọn linh kiện",
+          "slug": "phu-tung-chinh-hang-va-thay-the-huong-dan-chon-linh-kien",
+          "excerpt": "Phân biệt phụ tùng chính hãng và phụ tùng thay thế giúp chủ xe tối ưu chi phí bảo dưỡng mà vẫn đảm bảo độ bền và an toàn kỹ thuật cho ô tô.",
+          "coverAlt": "Một thợ cơ khí đang tư vấn cho chủ xe ô tô cạnh kho phụ tùng chính hãng",
+          "body": "<p class=\"tpl-lead\">Khi bảo dưỡng hoặc sửa chữa ô tô, việc quyết định giữa <strong>phụ tùng chính hãng</strong> và phụ tùng thay thế luôn là bài toán khiến nhiều chủ xe băn khoăn. Hiểu rõ bản chất, ưu điểm và hạn chế của từng phân loại linh kiện sẽ giúp bạn đưa ra lựa chọn sáng suốt, vừa đảm bảo an toàn vận hành vừa tối ưu hóa ngân sách.</p>\n<h2>Khái niệm phụ tùng chính hãng và phụ tùng thay thế</h2>\n<p><strong>Phụ tùng chính hãng</strong> là những linh kiện được sản xuất trực tiếp bởi hãng xe hoặc do các đối tác liên kết chế tạo theo tiêu chuẩn kỹ thuật nghiêm ngặt của thương hiệu đó. Các sản phẩm này mang bao bì, tem nhãn của nhà sản xuất xe và được phân phối qua các kênh ủy quyền chính thức.</p>\n<p>Trong khi đó, phụ tùng thay thế, thường gọi là linh kiện aftermarket, được các công ty cơ khí độc lập nghiên cứu và sản xuất. Những nhà sản xuất này mua bản quyền hoặc tự thiết kế các linh kiện tương thích với từng dòng xe cụ thể nhằm cung cấp thêm giải pháp thay thế linh hoạt trên thị trường.</p>",
+          "readingMinutes": 1,
+          "seoTitle": "Phụ Tùng Chính Hãng và Thay Thế: Nên Chọn Loại Nào Cho Xe?",
+          "seoDescription": "Tìm hiểu sự khác biệt giữa phụ tùng chính hãng và phụ tùng thay thế (aftermarket). Bí quyết chọn linh kiện ô tô chuẩn xác, chất lượng từ chuyên gia."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "1c25c87d-177c-421c-be65-4a8f6fa04109",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "176df695-d1ab-4708-a11d-6fe6e6e038f2",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:42:23.563Z",
+      "createdAt": "2026-11-13T23:39:26.030Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Guide to Looking Up VIN Numbers to Buy the Right Car Parts",
+          "slug": "guide-to-looking-up-vin-numbers-to-buy-the-right-car-parts",
+          "excerpt": "Learn what a VIN is, where to find it on your vehicle, and how to use this identifier to look up exact replacement parts with Pitlane Auto Parts.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">During vehicle operation and maintenance, choosing the right replacement parts is vital for performance and safety. Every car that rolls off the assembly line has a unique identifier known as a <strong>VIN</strong>. Understanding its meaning and knowing how to use this sequence of characters will help car owners eliminate the risk of buying the wrong parts, saving time and installation costs.</p>\n<h2>What Is a Car's VIN and What Does It Mean?</h2>\n<p>The term <strong>VIN</strong> stands for Vehicle Identification Number. Under the international ISO 3779 standard, this sequence consists of exactly 17 characters, including capital letters and numbers. It serves as your vehicle's citizen ID code—globally unique and never duplicated between any two cars.</p>\n<p>The 17-character sequence is divided into three distinct sections that fully describe the vehicle's background. The first three characters represent the manufacturer and country of origin (WMI - World Manufacturer Identifier). The next six characters (VDS - Vehicle Descriptor Section) encode technical specifications such as chassis style, engine type, transmission, and safety features. The final eight characters (VIS - Vehicle Identifier Section) provide the model year, assembly plant, and individual serial production number.</p>\n<h2>Common Locations to Find the VIN on Your Vehicle and Documents</h2>\n<p>Drivers can easily check the <strong>VIN</strong> right on the vehicle without any complicated technical steps. One of the easiest spots to spot it is at the bottom left corner of the front windshield, looking from the outside into the driver's dashboard area. In addition, the metal sticker or plate attached to the driver's door pillar (B-pillar) also displays this information along with recommended tire pressures.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/640.webp 640w, {{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/1280.webp 1280w, {{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Besides external locations, the identifier is also stamped directly onto the metal frame under the hood, typically on the firewall between the engine bay and passenger cabin, or under the front passenger floor mat. If you cannot check the car directly, you can easily look it up on your vehicle's legal documents, such as the Vehicle Registration Certificate, Technical Inspection Certificate, or Motor Vehicle Insurance Policy.</p>\n<h2>Why Is the VIN Decisive for Buying the Right Auto Parts?</h2>\n<p>A common mistake many car owners make is only providing the car model name and year of manufacture when looking for replacement parts. However, within the same generation or model year, manufacturers often offer different engine variants (such as gasoline, diesel, hybrid), different transmissions, or mid-cycle refreshes (facelifts). For instance, the same sedan model from the same year might use different brake pads or control arm ball joints depending on the trim package and market.</p>\n<p>Looking up parts by <strong>VIN</strong> allows technical catalog systems to retrieve the exact original equipment part numbers (OEM Part Numbers) installed at the factory. This completely eliminates guesswork, ensuring replacement parts match exact installation dimensions, mechanical tolerances, and operating standards, preventing incorrect purchases that delay repairs.</p>\n<h2>Step-by-Step Guide to Using a VIN When Ordering Parts</h2>\n<p>To make part searching smooth and fast, car owners should follow these standardized steps before requesting technical assistance from professional parts distributors.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Accurately record all 17 characters</h3><p>Take a clear photo of the metal plate at the base of the windshield, the door pillar, or the chassis number on your vehicle registration to avoid transcription errors.</p></div><div class=\"tpl-item\"><h3>Clarify the required parts</h3><p>Identify the part name, specific mounting position (front/rear, left/right), and symptoms of the damaged part that needs replacing.</p></div><div class=\"tpl-item\"><h3>Provide the VIN to a specialist</h3><p>Send the VIN and list of needed parts to a consultant to look up in the electronic parts catalog (EPC).</p></div><div class=\"tpl-item\"><h3>Confirm the OEM part number</h3><p>Compare the provided part number with the vehicle's recommended specifications to ensure a complete match before placing your order.</p></div></section>\n<h2>Common Mistakes When Reading a VIN and How to Avoid Them</h2>\n<p>Because a <strong>VIN</strong> contains both letters and numbers stamped onto metal or printed in small fonts, misreading characters is common and can cause system decoding errors or retrieve the wrong vehicle configuration.</p>\n<p>Beyond excluded letters, readers should also carefully distinguish between the letter B and the number 8, the letter S and the number 5, or the letter Z and the number 2 when viewing faded or dirty plates. The best way to prevent mistakes is to clean the metal surface before reading it, or cross-check the number stamped on the chassis with the number on your vehicle registration certificate.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Are the VIN and the chassis number the same thing?</h3><p>Chassis number is the common term used in Vietnam for the 17-character identification sequence on internationally standardized vehicles. Therefore, the chassis number on your registration documents is identical to the VIN.</p></div><div class=\"tpl-item\"><h3>Can parts be looked up if some characters are missing?</h3><p>If characters are missing, specialized parts lookup systems will not be able to identify the vehicle configuration. Car owners need to verify the full 17 characters before cross-checking part numbers.</p></div><div class=\"tpl-item\"><h3>Which character indicates the model year?</h3><p>The 10th character in the identification sequence represents the vehicle's model year according to the standardized alphanumeric code from the International Organization for Standardization (ISO).</p></div></section>\n<section class=\"tpl-cta\"><h3>Check your vehicle's VIN today</h3><p>Before contacting Pitlane Auto Parts for advice and replacement parts, please take a photo or note down your vehicle's exact 17-character VIN so we can help you find the right part numbers as quickly and accurately as possible.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "How to Look Up a VIN to Buy the Exact Right Auto Parts",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Hướng dẫn tra cứu số VIN để mua chính xác phụ tùng ô tô",
+          "slug": "huong-dan-tra-cuu-so-vin-de-mua-chinh-xac-phu-tung-o-to",
+          "excerpt": "Tìm hiểu định nghĩa số VIN, vị trí tìm kiếm trên xe và cách dùng dãy số định danh này để tra cứu chính xác phụ tùng thay thế cùng Pitlane Auto Parts.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Trong quá trình vận hành và bảo dưỡng phương tiện, việc chọn mua đúng linh kiện thay thế là yếu tố sống còn đối với hiệu suất cũng như sự an toàn của xe. Mỗi chiếc xe xuất xưởng đều sở hữu một mã định danh duy nhất được gọi là <strong>số VIN</strong>. Hiểu rõ ý nghĩa và biết cách sử dụng dãy ký tự này sẽ giúp chủ xe loại bỏ rủi ro mua nhầm phụ tùng, tiết kiệm tối đa thời gian và chi phí lắp đặt.</p>\n<h2>Số VIN ô tô là gì và ý nghĩa của dãy ký tự định danh</h2>\n<p>Khái niệm <strong>số VIN</strong> là viết tắt của Vehicle Identification Number, tức số nhận dạng phương tiện giao thông. Theo tiêu chuẩn quốc tế ISO 3779, dãy số này gồm đúng 17 ký tự bao gồm chữ cái viết hoa và chữ số. Đây được xem như mã căn cước công dân của phương tiện, mang tính độc bản trên phạm vi toàn cầu và không bao giờ trùng lặp giữa hai chiếc xe bất kỳ.</p>\n<p>Dãy 17 ký tự được phân chia thành ba nhóm thông tin rõ ràng nhằm mô tả toàn diện lai lịch xe. Ba ký tự đầu tiên đại diện cho nhà sản xuất và quốc gia chế tạo (WMI - World Manufacturer Identifier). Sáu ký tự tiếp theo (VDS - Vehicle Descriptor Section) mã hóa cấu hình kỹ thuật cụ thể như kiểu khung gầm, loại động cơ, hệ thống truyền động và trang bị an toàn. Tám ký tự cuối cùng (VIS - Vehicle Identifier Section) cung cấp thông tin về năm sản xuất, nhà máy lắp ráp hoàn thiện và số thứ tự xuất xưởng riêng biệt của từng chiếc xe.</p>\n<h2>Các vị trí phổ biến để tìm thấy số VIN trên xe và giấy tờ</h2>\n<p>Người lái xe có thể dễ dàng kiểm tra <strong>số VIN</strong> ngay trên phương tiện mà không cần can thiệp kỹ thuật phức tạp. Một trong những vị trí dễ quan sát nhất là góc dưới cùng bên trái của kính chắn gió phía trước, nhìn thẳng từ bên ngoài xe vào khu vực táp-lô người lái. Ngoài ra, tấm nhãn kim loại gắn ở trụ cửa xe phía người lái (trụ B) cũng in đầy đủ thông tin này kèm theo áp suất lốp khuyến nghị.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/640.webp 640w, {{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/1280.webp 1280w, {{media}}/7be83c7a-bfca-4397-8fe1-72cda36043d4/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Bên cạnh các vị trí bên ngoài, mã định danh còn được dập trực tiếp trên khung kim loại dưới mui xe, thường nằm tại vách ngăn giữa khoang động cơ và cabin hành khách (firewall), hoặc dưới sàn ghế phụ phía trước. Trong trường hợp không thể trực tiếp kiểm tra xe, chủ sở hữu hoàn toàn có thể tra cứu nhanh thông qua các giấy tờ pháp lý của phương tiện như Giấy chứng nhận đăng ký xe (cà vẹt), Sổ kiểm định an toàn kỹ thuật và bảo vệ môi trường, hoặc Hợp đồng bảo hiểm xe cơ giới.</p>\n<h2>Tại sao số VIN là yếu tố quyết định để mua đúng phụ tùng ô tô?</h2>\n<p>Một lỗi phổ biến của nhiều chủ xe là chỉ cung cấp tên dòng xe và năm sản xuất khi tìm kiếm linh kiện thay thế. Tuy nhiên, trong cùng một thế hệ hoặc cùng một năm đời xe, các hãng sản xuất thường tung ra nhiều phiên bản động cơ khác nhau (như xăng, dầu, hybrid), sử dụng hộp số khác biệt hoặc có những cải tiến kỹ thuật giữa vòng đời (facelift). Ví dụ, cùng một mẫu sedan ra mắt cùng năm có thể dùng má phanh hoặc rô-tuyn càng A khác nhau tùy thuộc vào gói trang bị và thị trường phân phối.</p>\n<p>Việc tra cứu dựa trên <strong>số VIN</strong> cho phép hệ thống tra cứu kỹ thuật truy xuất chính xác từng mã phụ tùng gốc (OEM Part Number) ban đầu được lắp ráp trên xe tại nhà máy. Cách làm này loại bỏ hoàn toàn yếu tố phỏng đoán, bảo đảm linh kiện thay thế chuẩn xác tuyệt đối về kích thước lắp đặt, dung sai cơ khí và tiêu chuẩn vận hành, ngăn ngừa tình trạng mua nhầm dẫn đến gián đoạn quá trình sửa chữa.</p>\n<h2>Quy trình từng bước dùng số VIN khi đặt mua phụ tùng</h2>\n<p>Để việc tìm kiếm linh kiện diễn ra thuận lợi và nhanh chóng, chủ xe nên thực hiện theo các bước chuẩn hóa sau đây trước khi gửi yêu cầu hỗ trợ kỹ thuật đến các đơn vị phân phối phụ tùng chuyên nghiệp.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Ghi nhận chính xác 17 ký tự</h3><p>Chụp lại hình ảnh rõ nét nhãn kim loại ở chân kính chắn gió, trụ cửa xe hoặc mục số khung trên Giấy đăng ký xe để tránh nhầm lẫn khi ghi chép.</p></div><div class=\"tpl-item\"><h3>Làm rõ chi tiết phụ tùng cần mua</h3><p>Xác định rõ tên linh kiện, vị trí lắp đặt cụ thể (trước/sau, trái/phải) cùng hiện tượng hư hỏng của bộ phận cần thay thế.</p></div><div class=\"tpl-item\"><h3>Cung cấp mã định danh cho chuyên viên</h3><p>Chuyển dãy ký tự định danh và danh sách chi tiết hỏng hóc cho tư vấn viên để họ tra cứu trên hệ thống danh mục phụ tùng chính hãng EPC.</p></div><div class=\"tpl-item\"><h3>Xác nhận mã phụ tùng OEM</h3><p>So sánh mã linh kiện phụ tùng được cung cấp với thông số khuyến cáo trên xe để bảo đảm sự trùng khớp hoàn toàn trước khi tiến hành đặt hàng.</p></div></section>\n<h2>Những nhầm lẫn thường gặp khi đọc số VIN và lưu ý phòng tránh</h2>\n<p>Do <strong>số VIN</strong> bao gồm cả chữ cái và chữ số được dập trên kim loại hoặc in cỡ chữ nhỏ, việc đọc nhầm ký tự diễn ra khá phổ biến và khiến quá trình giải mã trên hệ thống bị lỗi hoặc trích xuất sai cấu hình xe.</p>\n<p>Ngoài các ký tự đã bị loại trừ, người đọc cũng cần chú ý phân biệt giữa chữ B và số 8, chữ S và số 5, chữ Z và số 2 khi xem các dãy số bị mờ hoặc bám bụi bẩn. Cách tốt nhất để phòng tránh sai sót là vệ sinh sạch bề mặt tấm kim loại trước khi ghi nhận, hoặc đối chiếu chéo dãy số dập trên khung xe với dãy số in trên sổ đăng kiểm phương tiện.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Số VIN và số khung xe có phải là một không?</h3><p>Số khung là thuật ngữ phổ biến tại Việt Nam dùng để chỉ chính dãy số định danh 17 ký tự trên xe sản xuất theo chuẩn quốc tế. Do đó, số khung trên giấy đăng kiểm hoàn toàn trùng khớp với mã định danh phương tiện.</p></div><div class=\"tpl-item\"><h3>Có thể tra cứu phụ tùng nếu cung cấp thiếu ký tự không?</h3><p>Nếu thiếu ký tự, hệ thống tra cứu phụ tùng chuyên dụng sẽ không thể nhận diện được cấu hình xe. Chủ xe cần kiểm tra lại đầy đủ 17 ký tự trước khi tiến hành đối soát mã phụ tùng.</p></div><div class=\"tpl-item\"><h3>Ký tự nào trong dãy biểu thị năm sản xuất?</h3><p>Ký tự thứ 10 trong dãy mã định danh quy ước năm sản xuất của xe theo bảng quy chuẩn chữ cái và số của tổ chức tiêu chuẩn hóa quốc tế ISO.</p></div></section>\n<section class=\"tpl-cta\"><h3>Kiểm tra số định danh xe của bạn ngay hôm nay</h3><p>Trước khi liên hệ tư vấn và lựa chọn phụ tùng thay thế tại Pitlane Auto Parts, quý khách hãy chụp ảnh hoặc ghi chú chính xác dãy số định danh 17 ký tự trên xe để được hỗ trợ tra cứu mã linh kiện chuẩn xác và nhanh chóng nhất.</p></section>",
+          "readingMinutes": 7,
+          "seoTitle": "Cách tra cứu số VIN để mua đúng phụ tùng ô tô chuẩn xác",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

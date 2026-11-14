@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "Bông Florist: fresh hand-tied bouquets, same-day delivery in Saigon",
+    "description": "Hand-tied bouquets of fresh seasonal flowers, made to order in District 3 and delivered the same day across Saigon. Order by phone or Zalo before 5 pm.",
+    "ogImageAlt": "A hand-tied bouquet of blush peonies and roses on a florist's table"
+  },
+  "blog": {
+    "title": "From the flower table",
+    "intro": "Seasonal flowers, what to give for each occasion, and how to make a bouquet last, from the florists of Bông.",
+    "metaTitle": "Articles: flowers, occasions and flower care",
+    "metaDescription": "Seasonal flowers, bouquet ideas for every occasion and tips to keep cut flowers fresh, from Bông Florist in Saigon.",
+    "latestIntro": "Seasonal flowers and small tips to keep them fresh longer.",
+    "ctaTitle": "Sending flowers today?",
+    "ctaText": "Message us on Zalo with the occasion and your budget; order before 5 pm for same-day delivery."
+  },
+  "footer": {
+    "tagline": "Fresh flowers, tied by hand, delivered the same day."
+  },
+  "hours": {
+    "daily": "Every day"
+  },
+  "nav": {
+    "top": "Home",
+    "collections": "Bouquets",
+    "occasions": "Occasions",
+    "delivery": "Delivery",
+    "care": "Flower care"
+  },
+  "hero": {
+    "eyebrow": "Florist · District 3, Saigon",
+    "title": "Fresh flowers, tied by hand,",
+    "titleAccent": "delivered today",
+    "text": "We choose flowers at the market every morning and tie each bouquet to order, for birthdays, love, thanks or no reason at all.",
+    "order": "Order on Zalo",
+    "browse": "See the bouquets",
+    "imageAlt": "A hand-tied bouquet of blush peonies, garden roses and eucalyptus on a florist's table",
+    "badges": ["Same-day delivery", "Hand-written card", "Photo before delivery"]
+  },
+  "collections": {
+    "eyebrow": "Bouquets",
+    "title": "Our three signature bouquets",
+    "intro": "Each comes in three sizes. Flowers vary with the season: we keep the colours and the spirit of the bouquet.",
+    "sizes": { "s": "Small", "m": "Medium", "l": "Large" },
+    "order": "Order this bouquet",
+    "custom": "Want something else? Tell us the occasion, colours and budget: we design a bouquet just for you.",
+    "items": {
+      "blush": { "name": "Blush", "desc": "Pink roses, white spray roses and eucalyptus, wrapped in cream paper with a silk ribbon.", "imageAlt": "Bouquet of blush pink and white roses in cream paper" },
+      "garden": { "name": "Garden", "desc": "White hydrangeas, ranunculus and chamomile, loose and airy, like a walk in the garden.", "imageAlt": "Garden-style bouquet of white hydrangeas, ranunculus and chamomile" },
+      "sunny": { "name": "Sunny", "desc": "Sunflowers, yellow roses and orange gerberas: a bouquet that smiles back.", "imageAlt": "Bouquet of sunflowers, yellow roses and orange gerberas in kraft paper" }
+    }
+  },
+  "occasions": {
+    "eyebrow": "Occasions",
+    "title": "Flowers for every moment",
+    "intro": "Tell us who they are for: we choose the flowers and the card with you.",
+    "items": [
+      { "title": "Birthdays", "text": "Bright, generous bouquets with a hand-written card." },
+      { "title": "Love & anniversaries", "text": "Roses in every shade, or the flowers of your first date." },
+      { "title": "Grand openings", "text": "Standing flower baskets and table arrangements for a new shop." },
+      { "title": "Graduations", "text": "Light bouquets that are easy to hold for photos." },
+      { "title": "Sympathy", "text": "White and soft colours, delivered discreetly." },
+      { "title": "Just because", "text": "A small bouquet to say thank you, or nothing at all." }
+    ]
+  },
+  "delivery": {
+    "eyebrow": "Delivery",
+    "title": "Same-day delivery across Saigon",
+    "intro": "Order before {time} and we deliver today; later orders go out the next morning.",
+    "zonesTitle": "Delivery fees",
+    "free": "Free",
+    "zones": {
+      "central": { "name": "Central", "areas": "Districts 1, 3, Phú Nhuận" },
+      "inner": { "name": "Inner city", "areas": "Districts 4, 5, 10, Bình Thạnh, Tân Bình" },
+      "outer": { "name": "Further out", "areas": "Thủ Đức, District 7, Gò Vấp, Bình Tân" }
+    },
+    "notes": [
+      "We send you a photo of the bouquet before it leaves the shop.",
+      "Choose a delivery window: morning, afternoon or evening.",
+      "Surprise deliveries: we call the recipient only when we are at the door."
+    ]
+  },
+  "care": {
+    "eyebrow": "Flower care",
+    "title": "Make your bouquet last longer",
+    "intro": "Four small habits that keep cut flowers fresh for a week or more.",
+    "imageAlt": "Fresh tulips in a glass vase with floral scissors on a wooden table",
+    "tips": [
+      { "title": "Cut the stems", "text": "Cut 2 cm off each stem at an angle with sharp scissors as soon as you arrive home." },
+      { "title": "Clean water", "text": "Fill a clean vase with cool water and change it every two days." },
+      { "title": "No leaves in water", "text": "Remove leaves below the water line: they rot and cloud the water." },
+      { "title": "A cool spot", "text": "Keep the vase away from direct sun, fans and the fruit bowl." }
+    ]
+  },
+  "questions": {
+    "items": [
+      { "q": "How do I order?", "a": "Call or message us on Zalo with the bouquet, the size, the delivery address and time, and the card message. We confirm the price and send payment details." },
+      { "q": "Can I choose the exact flowers?", "a": "Yes, as long as they are in season. If a flower is missing at the market, we suggest one in the same colour before making the bouquet." },
+      { "q": "Do you deliver outside Saigon?", "a": "Not for now: only within the city, with the fees shown above." },
+      { "q": "Can I pick up at the shop?", "a": "Of course. Order ahead and the bouquet is ready at the time you choose." },
+      { "q": "Do you make flowers for weddings and events?", "a": "Yes: bridal bouquets, table arrangements and decoration. Contact us at least two weeks ahead for a proposal." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Visit us",
+    "title": "Come and choose your flowers",
+    "text": "The shop is open every day. Drop by to pick your stems, or call and message us on Zalo to order.",
+    "note": "Same-day delivery for orders before 17:00."
+  }
+}

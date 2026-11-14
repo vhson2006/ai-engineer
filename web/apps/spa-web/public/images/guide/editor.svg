@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- The admin article editor, schematic: language tabs, toolbar with the insert-block button and
+       the visual/HTML switch, a body with a layout block, and the side panel with the cover. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e1ece6"/>
+      <stop offset="1" stop-color="#f6f1e9"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1f3a33" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1500" cy="110" r="120" fill="#a8694f" opacity="0.35"/>
+  <circle cx="90" cy="820" r="90" fill="#4f7a6a" opacity="0.10"/>
+
+  <!-- window -->
+  <g filter="url(#shadow)">
+    <rect x="110" y="80" width="1380" height="740" rx="28" fill="#ffffff"/>
+  </g>
+  <rect x="110" y="80" width="1380" height="64" rx="28" fill="#1f3a33"/>
+  <rect x="110" y="116" width="1380" height="28" fill="#1f3a33"/>
+  <circle cx="156" cy="112" r="9" fill="#a8694f"/>
+  <circle cx="186" cy="112" r="9" fill="#a8694f"/>
+  <circle cx="216" cy="112" r="9" fill="#a9cbbd"/>
+  <rect x="560" y="99" width="480" height="26" rx="13" fill="#ffffff" opacity="0.16"/>
+
+  <!-- main card -->
+  <rect x="150" y="180" width="900" height="600" rx="20" fill="#ffffff" stroke="#ddd3c2" stroke-width="2"/>
+  <!-- language tabs -->
+  <rect x="180" y="206" width="170" height="44" rx="12" fill="#e1ece6"/>
+  <rect x="190" y="214" width="72" height="28" rx="8" fill="#ffffff"/>
+  <text x="226" y="234" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1f3a33" text-anchor="middle">VI</text>
+  <circle cx="252" cy="228" r="4" fill="#4f7a6a"/>
+  <text x="300" y="234" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#56645d" text-anchor="middle">EN</text>
+  <circle cx="326" cy="228" r="4" fill="#a8694f"/>
+
+  <!-- title & slug fields -->
+  <rect x="180" y="270" width="840" height="40" rx="10" fill="#f6f1e9" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="198" y="284" width="380" height="12" rx="6" fill="#1f3a33" opacity="0.75"/>
+  <rect x="180" y="322" width="840" height="34" rx="10" fill="#f6f1e9" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="198" y="334" width="260" height="10" rx="5" fill="#56645d" opacity="0.5"/>
+
+  <!-- editor: toolbar -->
+  <rect x="180" y="374" width="840" height="380" rx="14" fill="#ffffff" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="180" y="374" width="840" height="54" rx="14" fill="#f6f1e9"/>
+  <line x1="180" y1="428" x2="1020" y2="428" stroke="#ddd3c2" stroke-width="2"/>
+  <text x="206" y="408" font-family="Georgia, serif" font-size="20" font-weight="700" fill="#56645d">B</text>
+  <text x="238" y="408" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#56645d">I</text>
+  <text x="264" y="408" font-family="Georgia, serif" font-size="20" text-decoration="underline" fill="#56645d">U</text>
+  <line x1="300" y1="390" x2="300" y2="414" stroke="#ddd3c2" stroke-width="2"/>
+  <text x="318" y="408" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#56645d">H2</text>
+  <text x="356" y="408" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#56645d">H3</text>
+  <g fill="#56645d"><circle cx="404" cy="394" r="3"/><circle cx="404" cy="402" r="3"/><circle cx="404" cy="410" r="3"/></g>
+  <g stroke="#56645d" stroke-width="3" stroke-linecap="round"><line x1="412" y1="394" x2="426" y2="394"/><line x1="412" y1="402" x2="426" y2="402"/><line x1="412" y1="410" x2="426" y2="410"/></g>
+  <!-- insert block button (highlighted) -->
+  <rect x="452" y="384" width="150" height="34" rx="10" fill="#a8694f"/>
+  <g transform="translate(468 391)" fill="none" stroke="#1f3a33" stroke-width="2.5">
+    <rect x="0" y="0" width="20" height="20" rx="4"/><line x1="0" y1="8" x2="20" y2="8"/><line x1="8" y1="8" x2="8" y2="20"/>
+  </g>
+  <rect x="498" y="396" width="88" height="10" rx="5" fill="#1f3a33"/>
+  <!-- visual / html switch -->
+  <rect x="836" y="384" width="168" height="34" rx="10" fill="#e1ece6"/>
+  <rect x="841" y="388" width="78" height="26" rx="8" fill="#ffffff"/>
+  <text x="880" y="407" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1f3a33" text-anchor="middle">¶</text>
+  <text x="961" y="407" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#56645d" text-anchor="middle">&lt;/&gt;</text>
+
+  <!-- editor: content -->
+  <rect x="206" y="450" width="560" height="14" rx="7" fill="#1f3a33" opacity="0.8"/>
+  <rect x="206" y="476" width="780" height="10" rx="5" fill="#56645d" opacity="0.35"/>
+  <rect x="206" y="496" width="720" height="10" rx="5" fill="#56645d" opacity="0.35"/>
+  <!-- a layout block (dashed frame with its label) -->
+  <rect x="206" y="526" width="788" height="110" rx="12" fill="#f6f1e9" stroke="#4f7a6a" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="222" y="538" width="150" height="10" rx="5" fill="#56645d" opacity="0.4"/>
+  <rect x="222" y="560" width="250" height="14" rx="7" fill="#1f3a33" opacity="0.7"/>
+  <rect x="222" y="586" width="700" height="10" rx="5" fill="#56645d" opacity="0.3"/>
+  <rect x="222" y="606" width="620" height="10" rx="5" fill="#56645d" opacity="0.3"/>
+  <!-- an image card -->
+  <rect x="206" y="656" width="788" height="74" rx="12" fill="#ffffff" stroke="#ddd3c2" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="222" y="668" width="50" height="50" rx="8" fill="#e1ece6"/>
+  <path d="M230 708 l12 -14 l9 9 l7 -6 l10 11 z" fill="#4f7a6a"/>
+  <circle cx="258" cy="681" r="5" fill="#a8694f"/>
+  <rect x="290" y="672" width="300" height="20" rx="6" fill="#f6f1e9" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="604" y="672" width="370" height="20" rx="6" fill="#f6f1e9" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="290" y="700" width="150" height="20" rx="6" fill="#ffffff" stroke="#4f7a6a" stroke-width="2"/>
+
+  <!-- side panel -->
+  <rect x="1080" y="180" width="370" height="600" rx="20" fill="#ffffff" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="1108" y="208" width="140" height="14" rx="7" fill="#1f3a33" opacity="0.8"/>
+  <rect x="1108" y="244" width="314" height="40" rx="10" fill="#f6f1e9" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="1108" y="300" width="22" height="22" rx="6" fill="#4f7a6a"/>
+  <path d="M1113 311 l4 4 l8 -9" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <rect x="1142" y="305" width="180" height="12" rx="6" fill="#56645d" opacity="0.5"/>
+  <!-- cover -->
+  <rect x="1108" y="346" width="120" height="12" rx="6" fill="#56645d" opacity="0.6"/>
+  <rect x="1108" y="372" width="314" height="196" rx="14" fill="#4f7a6a"/>
+  <circle cx="1380" cy="408" r="22" fill="#a8694f"/>
+  <path d="M1108 540 l90 -96 l64 64 l46 -42 l114 102 v0 a14 14 0 0 1 -14 0 z" fill="#1f3a33" opacity="0.65"/>
+  <rect x="1108" y="584" width="140" height="36" rx="18" fill="#e1ece6"/>
+  <rect x="1262" y="584" width="110" height="36" rx="18" fill="#ffffff" stroke="#ddd3c2" stroke-width="2"/>
+  <rect x="1108" y="700" width="160" height="48" rx="24" fill="#4f7a6a"/>
+  <rect x="1136" y="719" width="104" height="10" rx="5" fill="#ffffff"/>
+
+  <!-- pointer on the insert button -->
+  <g transform="translate(560 420)">
+    <path d="M0 0 L0 46 L12 35 L22 58 L32 54 L22 31 L38 31 Z" fill="#1f3a33" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+</svg>

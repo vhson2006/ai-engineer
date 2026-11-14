@@ -1,0 +1,73 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, the business-site kit, then this site's own look. */
+@import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
+
+/*
+ * Lantern House Hội An: indigo night, lantern amber, old yellow walls and cream linen.
+ * - `--brand` indigo: buttons, links.  - `--accent` lantern amber: labels, prices.
+ * - `--deep` night: dark bands and the footer.
+ * A classic serif, fine lines and nearly square buttons: quiet, timeless hospitality.
+ */
+:root {
+  --bg: #f8f3ea;
+  --surface: #fffcf6;
+  --surface-2: #f1e8d8;
+  --border: #e3d6bf;
+  --fg: #1d2233;
+  --muted: #555a6a;
+  --subtle: #767a88;
+  --brand: #24365c;
+  --brand-hover: #1b2a49;
+  --brand-fg: #fffaf0;
+  --brand-soft: #e4e8f2;
+  --brand-soft-fg: #24365c;
+  --brand-strong: #1a2238;
+  --accent: #d99a3d;
+  --accent-fg: #1a2238;
+  --deep: #1a2238;
+  --deep-fg: #f8f1e3;
+  --card-radius: 0.75rem;
+  --button-radius: 0.125rem;
+  --heading-weight: 600;
+  --heading-tracking: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10141f;
+    --surface: #161b29;
+    --surface-2: #1c2233;
+    --border: #2d3448;
+    --fg: #efe9dc;
+    --muted: #b6b0a3;
+    --subtle: #958f83;
+    --brand: #8fa6d6;
+    --brand-hover: #aabce2;
+    --brand-fg: #0e1320;
+    --brand-soft: rgb(143 166 214 / 0.14);
+    --brand-soft-fg: #c9d5ef;
+    --brand-strong: #f4ead8;
+    --accent: #e8b25c;
+    --deep: #0a0d15;
+  }
+}
+
+/* A thin ornamental rule with a lantern dot in the middle. */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--accent);
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  height: 1px;
+  width: 3rem;
+  background: currentColor;
+  opacity: 0.6;
+}

@@ -2,7 +2,9 @@
 /* Shared design tokens and base styles, then this site's own look on top. */
 @import "@web/ui/theme.css";
 @import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
 @source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
 
 /*
  * Envy Nail Spa: bento grid on porcelain white. Content sits in 24px-radius cards (`rounded-3xl`)
@@ -39,6 +41,18 @@
   --wash-lilac: #faf5fb;
   /* The sticky header's height (site-header.tsx): the menu scrolls a band right under it. */
   --header-h: 4.25rem;
+  /* The kit's tokens (@web/site-kit/theme.css): ink headings, baby-blue labels, an ink band for the
+     featured article, 24 px cards, pill buttons, the bold tight headlines in the body font. */
+  --brand-strong: var(--fg);
+  --accent: var(--baby);
+  --accent-fg: var(--fg);
+  --deep: #263238;
+  --deep-fg: #ffffff;
+  --card-radius: 1.5rem;
+  --button-radius: 9999px;
+  --font-heading: var(--font-body);
+  --heading-weight: 800;
+  --heading-tracking: -0.035em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,7 +93,6 @@
   --color-rose-strong: var(--rose-strong);
   --color-baby-strong: var(--baby-strong);
   --color-lilac-strong: var(--lilac-strong);
-  --font-sans: var(--font-body);
   --animate-float: float 6s ease-in-out infinite;
 
   @keyframes float {
@@ -156,4 +169,14 @@
 }
 .article-body img {
   @apply rounded-3xl;
+}
+
+/* The kit's article pages, in the salon's look: no band behind the title, sentence-case topics. */
+.article-masthead {
+  background: transparent;
+}
+.topic-chip {
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0;
 }

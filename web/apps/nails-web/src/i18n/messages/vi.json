@@ -5,20 +5,10 @@
     "ogImageAlt": "Envy Nails Spa of Wendell: chữ ENVY bên bốn mẫu nail trên các ô màu pastel"
   },
   "common": {
-    "skipToContent": "Chuyển đến nội dung",
-    "language": "Ngôn ngữ",
-    "callNow": "Gọi ngay",
-    "call": "Gọi {phone}",
     "viewMenu": "Xem bảng giá đầy đủ",
-    "from": "Từ {price}",
-    "or": "hoặc",
-    "directions": "Chỉ đường"
+    "or": "hoặc"
   },
   "nav": {
-    "label": "Mục chính",
-    "home": "Trang chủ Envy Nail Spa",
-    "openMenu": "Mở menu",
-    "closeMenu": "Đóng menu",
     "top": "Trang chủ",
     "gallery": "Mẫu nail",
     "artists": "Nghệ nhân",
@@ -27,202 +17,14 @@
     "visit": "Ghé tiệm",
     "blog": "Blog"
   },
-  "hero": {
-    "eyebrow": "Tiệm nail · Wendell, NC 27591",
-    "title": "Thanh lịch",
-    "titleAccent": "trên từng đầu ngón tay",
-    "text": "Trải nghiệm thế giới của những bộ móng là tác phẩm nghệ thuật và những liệu trình tinh tế. Đội ngũ thợ của chúng tôi là những nghệ nhân, biến việc chăm sóc móng thành nghệ thuật.",
-    "signatureLabel": "Đặc biệt",
-    "signatureName": "Royal Herbal Detox Pedicure",
-    "featured": "Mẫu nổi bật",
-    "slide": "Xem mẫu {number}",
-    "pause": "Tạm dừng trình chiếu",
-    "play": "Tiếp tục trình chiếu"
-  },
-  "promise": {
-    "label": "Vì sao khách chọn Envy Nail Spa",
-    "items": {
-      "clean": {
-        "title": "Sạch sẽ & vệ sinh",
-        "text": "Tiêu chuẩn vệ sinh được đặt lên hàng đầu, cẩn thận với từng khách."
-      },
-      "products": {
-        "title": "Sản phẩm cao cấp",
-        "text": "Chỉ dùng sản phẩm chính hãng, cao cấp cho kết quả đẹp và an toàn cho bạn."
-      },
-      "staff": {
-        "title": "Thợ chuyên nghiệp",
-        "text": "Đội ngũ thợ được đào tạo bài bản, có chuyên môn, bạn hoàn toàn yên tâm."
-      },
-      "relax": {
-        "title": "Không gian thư giãn",
-        "text": "Không gian xanh mát, yên tĩnh để bạn nghỉ ngơi trong lúc làm đẹp."
-      }
-    }
-  },
-  "status": {
-    "open": "Đang nhận khách",
-    "closesAt": "Mở đến {time}",
-    "closed": "Hiện đang đóng cửa",
-    "opensAt": "Mở cửa {day} lúc {time}",
-    "today": "hôm nay",
-    "tomorrow": "ngày mai",
-    "checking": "Đang kiểm tra giờ hôm nay…"
-  },
-  "gallery": {
-    "eyebrow": "Bộ sưu tập nail art",
-    "title": "Chọn một mẫu. Chúng tôi làm cho riêng bạn.",
-    "intro": "Những mẫu móng để bạn lấy cảm hứng. Chạm vào một mẫu để xem thời gian, giá ước tính và bảng màu, rồi đặt lịch.",
-    "filtersLabel": "Lọc theo phong cách",
-    "all": "Tất cả",
-    "categories": {
-      "art": "Vẽ nghệ thuật",
-      "gems": "Đính đá & 3D",
-      "french": "French",
-      "minimal": "Cổ điển & tối giản"
-    },
-    "open": "Xem chi tiết",
-    "time": "Thời gian",
-    "timeValue": "Khoảng {min}–{max} phút",
-    "price": "Giá",
-    "total": "Tổng từ",
-    "palette": "Bảng màu sơn",
-    "estimate": "Thời gian là ước lượng, giá tùy độ dài, dáng và tình trạng móng: thợ sẽ xác nhận cả hai trước khi làm.",
-    "book": "Đặt mẫu này",
-    "close": "Đóng",
-    "items": {
-      "floralStiletto": {
-        "name": "Stiletto hoa 3D",
-        "text": "Móng acrylic stiletto dài, hoa cam đắp nổi trên nền vân đá xanh.",
-        "colors": [
-          "Vân xanh trời",
-          "Cam quýt",
-          "Ngọc trai"
-        ]
-      },
-      "mintGoldFoil": {
-        "name": "Bạc hà & nhũ vàng",
-        "text": "Gel bạc hà bóng, điểm vụn lá vàng trên hai móng nhấn.",
-        "colors": [
-          "Bạc hà",
-          "Lá vàng"
-        ]
-      },
-      "classicFrench": {
-        "name": "French cổ điển",
-        "text": "Nền hồng tự nhiên, đầu móng trắng sắc nét.",
-        "colors": [
-          "Hồng phấn",
-          "Trắng"
-        ]
-      },
-      "peacock": {
-        "name": "Lông công",
-        "text": "Xanh pastel với nét vẽ lông vũ và đá đính.",
-        "colors": [
-          "Xanh pistachio",
-          "Xanh rừng",
-          "Xanh sapphire"
-        ]
-      },
-      "milkyPink": {
-        "name": "Hồng sữa",
-        "text": "Gel hồng sữa trong trên móng vuông ngắn.",
-        "colors": [
-          "Hồng sữa",
-          "Trắng sứ"
-        ]
-      },
-      "butterBlossoms": {
-        "name": "Vàng bơ & hoa nhí",
-        "text": "Vàng bơ với hoa nhỏ vẽ tay trên móng nhấn.",
-        "colors": [
-          "Vàng bơ",
-          "Hồng",
-          "Xanh denim"
-        ]
-      },
-      "emeraldDots": {
-        "name": "Trắng & chấm ngọc lục bảo",
-        "text": "Gel trắng với họa tiết chấm xanh lục bảo và đá pha lê.",
-        "colors": [
-          "Trắng",
-          "Lục bảo",
-          "Pha lê"
-        ]
-      },
-      "neonFrench": {
-        "name": "French nhũ neon",
-        "text": "Kết hợp French cổ điển và đầu móng nhũ xanh neon.",
-        "colors": [
-          "Nude",
-          "Xanh neon",
-          "Trắng"
-        ]
-      },
-      "mintConfetti": {
-        "name": "Bạc hà & confetti",
-        "text": "Móng almond bạc hà nhạt, móng nhấn trong suốt có confetti.",
-        "colors": [
-          "Bạc hà",
-          "Tím",
-          "Vàng nắng"
-        ]
-      },
-      "coralPedicure": {
-        "name": "Tay & chân đỏ san hô",
-        "text": "Sắc đỏ san hô cổ điển cho cả tay và chân.",
-        "colors": [
-          "Đỏ san hô"
-        ]
-      },
-      "greenApple": {
-        "name": "Táo xanh",
-        "text": "Trắng bóng với móng nhấn vẽ quả táo xanh.",
-        "colors": [
-          "Trắng",
-          "Xanh táo"
-        ]
-      }
-    }
-  },
-  "artists": {
-    "eyebrow": "Gặp gỡ nghệ nhân",
-    "title": "Ba sở trường, một đội ngũ.",
-    "intro": "Hãy cho tiệm biết kiểu móng bạn muốn khi đặt lịch: chúng tôi sẽ xếp thợ thích làm kiểu đó nhất cho bạn.",
-    "from": "Giá",
-    "book": "Đặt lịch sở trường này",
-    "items": {
-      "handPainted": {
-        "name": "Vẽ tay tỉ mỉ",
-        "text": "Hoa, nét mảnh, chấm bi và mẫu riêng vẽ tay từng móng.",
-        "tags": [
-          "Vẽ tay tự do",
-          "Nhiều màu",
-          "Mẫu theo yêu cầu"
-        ]
-      },
-      "sculpt": {
-        "name": "Đắp & tạo dáng",
-        "text": "Form móng bền đẹp: Gel-X, builder gel và BIAB, tạo dáng hợp với bàn tay bạn.",
-        "tags": [
-          "Gel-X",
-          "Builder gel",
-          "Almond · coffin · stiletto"
-        ]
-      },
-      "effects": {
-        "name": "Hiệu ứng loang",
-        "text": "Ombre, aura, tráng gương và mắt mèo từ tính, đổi sắc theo ánh sáng.",
-        "tags": [
-          "Ombre & aura",
-          "Tráng gương",
-          "Mắt mèo"
-        ]
-      }
-    }
-  },
   "menu": {
+    "label": "Mục chính",
+    "home": "Trang chủ Envy Nail Spa",
+    "open": "Mở menu",
+    "close": "Đóng menu",
+    "articles": "Blog"
+  },
+  "services": {
     "eyebrow": "Bảng giá",
     "title": "Dịch vụ & bảng giá",
     "intro": "Giá có dấu + là giá khởi điểm, tùy độ dài, mẫu vẽ và tình trạng móng. Vui lòng xác nhận với thợ trước khi làm.",
@@ -508,6 +310,201 @@
       }
     }
   },
+  "hero": {
+    "eyebrow": "Tiệm nail · Wendell, NC 27591",
+    "title": "Thanh lịch",
+    "titleAccent": "trên từng đầu ngón tay",
+    "text": "Trải nghiệm thế giới của những bộ móng là tác phẩm nghệ thuật và những liệu trình tinh tế. Đội ngũ thợ của chúng tôi là những nghệ nhân, biến việc chăm sóc móng thành nghệ thuật.",
+    "signatureLabel": "Đặc biệt",
+    "signatureName": "Royal Herbal Detox Pedicure",
+    "featured": "Mẫu nổi bật",
+    "slide": "Xem mẫu {number}",
+    "pause": "Tạm dừng trình chiếu",
+    "play": "Tiếp tục trình chiếu"
+  },
+  "promise": {
+    "label": "Vì sao khách chọn Envy Nail Spa",
+    "items": {
+      "clean": {
+        "title": "Sạch sẽ & vệ sinh",
+        "text": "Tiêu chuẩn vệ sinh được đặt lên hàng đầu, cẩn thận với từng khách."
+      },
+      "products": {
+        "title": "Sản phẩm cao cấp",
+        "text": "Chỉ dùng sản phẩm chính hãng, cao cấp cho kết quả đẹp và an toàn cho bạn."
+      },
+      "staff": {
+        "title": "Thợ chuyên nghiệp",
+        "text": "Đội ngũ thợ được đào tạo bài bản, có chuyên môn, bạn hoàn toàn yên tâm."
+      },
+      "relax": {
+        "title": "Không gian thư giãn",
+        "text": "Không gian xanh mát, yên tĩnh để bạn nghỉ ngơi trong lúc làm đẹp."
+      }
+    }
+  },
+  "status": {
+    "open": "Đang nhận khách",
+    "closesAt": "Mở đến {time}",
+    "closed": "Hiện đang đóng cửa",
+    "opensAt": "Mở cửa {day} lúc {time}",
+    "today": "hôm nay",
+    "tomorrow": "ngày mai",
+    "checking": "Đang kiểm tra giờ hôm nay…"
+  },
+  "gallery": {
+    "eyebrow": "Bộ sưu tập nail art",
+    "title": "Chọn một mẫu. Chúng tôi làm cho riêng bạn.",
+    "intro": "Những mẫu móng để bạn lấy cảm hứng. Chạm vào một mẫu để xem thời gian, giá ước tính và bảng màu, rồi đặt lịch.",
+    "filtersLabel": "Lọc theo phong cách",
+    "all": "Tất cả",
+    "categories": {
+      "art": "Vẽ nghệ thuật",
+      "gems": "Đính đá & 3D",
+      "french": "French",
+      "minimal": "Cổ điển & tối giản"
+    },
+    "open": "Xem chi tiết",
+    "time": "Thời gian",
+    "timeValue": "Khoảng {min}–{max} phút",
+    "price": "Giá",
+    "total": "Tổng từ",
+    "palette": "Bảng màu sơn",
+    "estimate": "Thời gian là ước lượng, giá tùy độ dài, dáng và tình trạng móng: thợ sẽ xác nhận cả hai trước khi làm.",
+    "book": "Đặt mẫu này",
+    "close": "Đóng",
+    "items": {
+      "floralStiletto": {
+        "name": "Stiletto hoa 3D",
+        "text": "Móng acrylic stiletto dài, hoa cam đắp nổi trên nền vân đá xanh.",
+        "colors": [
+          "Vân xanh trời",
+          "Cam quýt",
+          "Ngọc trai"
+        ]
+      },
+      "mintGoldFoil": {
+        "name": "Bạc hà & nhũ vàng",
+        "text": "Gel bạc hà bóng, điểm vụn lá vàng trên hai móng nhấn.",
+        "colors": [
+          "Bạc hà",
+          "Lá vàng"
+        ]
+      },
+      "classicFrench": {
+        "name": "French cổ điển",
+        "text": "Nền hồng tự nhiên, đầu móng trắng sắc nét.",
+        "colors": [
+          "Hồng phấn",
+          "Trắng"
+        ]
+      },
+      "peacock": {
+        "name": "Lông công",
+        "text": "Xanh pastel với nét vẽ lông vũ và đá đính.",
+        "colors": [
+          "Xanh pistachio",
+          "Xanh rừng",
+          "Xanh sapphire"
+        ]
+      },
+      "milkyPink": {
+        "name": "Hồng sữa",
+        "text": "Gel hồng sữa trong trên móng vuông ngắn.",
+        "colors": [
+          "Hồng sữa",
+          "Trắng sứ"
+        ]
+      },
+      "butterBlossoms": {
+        "name": "Vàng bơ & hoa nhí",
+        "text": "Vàng bơ với hoa nhỏ vẽ tay trên móng nhấn.",
+        "colors": [
+          "Vàng bơ",
+          "Hồng",
+          "Xanh denim"
+        ]
+      },
+      "emeraldDots": {
+        "name": "Trắng & chấm ngọc lục bảo",
+        "text": "Gel trắng với họa tiết chấm xanh lục bảo và đá pha lê.",
+        "colors": [
+          "Trắng",
+          "Lục bảo",
+          "Pha lê"
+        ]
+      },
+      "neonFrench": {
+        "name": "French nhũ neon",
+        "text": "Kết hợp French cổ điển và đầu móng nhũ xanh neon.",
+        "colors": [
+          "Nude",
+          "Xanh neon",
+          "Trắng"
+        ]
+      },
+      "mintConfetti": {
+        "name": "Bạc hà & confetti",
+        "text": "Móng almond bạc hà nhạt, móng nhấn trong suốt có confetti.",
+        "colors": [
+          "Bạc hà",
+          "Tím",
+          "Vàng nắng"
+        ]
+      },
+      "coralPedicure": {
+        "name": "Tay & chân đỏ san hô",
+        "text": "Sắc đỏ san hô cổ điển cho cả tay và chân.",
+        "colors": [
+          "Đỏ san hô"
+        ]
+      },
+      "greenApple": {
+        "name": "Táo xanh",
+        "text": "Trắng bóng với móng nhấn vẽ quả táo xanh.",
+        "colors": [
+          "Trắng",
+          "Xanh táo"
+        ]
+      }
+    }
+  },
+  "artists": {
+    "eyebrow": "Gặp gỡ nghệ nhân",
+    "title": "Ba sở trường, một đội ngũ.",
+    "intro": "Hãy cho tiệm biết kiểu móng bạn muốn khi đặt lịch: chúng tôi sẽ xếp thợ thích làm kiểu đó nhất cho bạn.",
+    "from": "Giá",
+    "book": "Đặt lịch sở trường này",
+    "items": {
+      "handPainted": {
+        "name": "Vẽ tay tỉ mỉ",
+        "text": "Hoa, nét mảnh, chấm bi và mẫu riêng vẽ tay từng móng.",
+        "tags": [
+          "Vẽ tay tự do",
+          "Nhiều màu",
+          "Mẫu theo yêu cầu"
+        ]
+      },
+      "sculpt": {
+        "name": "Đắp & tạo dáng",
+        "text": "Form móng bền đẹp: Gel-X, builder gel và BIAB, tạo dáng hợp với bàn tay bạn.",
+        "tags": [
+          "Gel-X",
+          "Builder gel",
+          "Almond · coffin · stiletto"
+        ]
+      },
+      "effects": {
+        "name": "Hiệu ứng loang",
+        "text": "Ombre, aura, tráng gương và mắt mèo từ tính, đổi sắc theo ánh sáng.",
+        "tags": [
+          "Ombre & aura",
+          "Tráng gương",
+          "Mắt mèo"
+        ]
+      }
+    }
+  },
   "booking": {
     "open": "Đặt lịch",
     "title": "Đặt lịch hẹn",
@@ -634,16 +631,16 @@
     "website": "Website",
     "hours": "Giờ mở cửa",
     "imageAlt": "Nến spa, tinh dầu, muối tắm và khăn cuộn",
-    "days": {
-      "monThu": "Thứ 2 – Thứ 5",
-      "fri": "Thứ 6",
-      "sat": "Thứ 7",
-      "sun": "Chủ nhật"
-    },
     "policy": "Quy định của tiệm",
     "follow": "Theo dõi chúng tôi",
     "mapTitle": "Bản đồ: Envy Nails Spa, 2241 Treelight Way, Suite 102, Wendell, NC",
     "openMap": "Mở trong Google Maps"
+  },
+  "hours": {
+    "monThu": "Thứ 2 – Thứ 5",
+    "fri": "Thứ 6",
+    "sat": "Thứ 7",
+    "sun": "Chủ nhật"
   },
   "footer": {
     "tagline": "Dịch vụ làm móng sạch sẽ, chuyên nghiệp, chất lượng cao tại Wendell, North Carolina.",
@@ -651,39 +648,23 @@
     "rights": "© {year} {name}. Bảo lưu mọi quyền.",
     "legal": "Thông tin pháp lý"
   },
-  "articles": {
-    "playVideo": "Phát video",
-    "eyebrow": "Blog",
+  "blog": {
     "title": "Chuyện ở tiệm",
     "intro": "Mẹo chăm sóc móng, giới thiệu dịch vụ và những điều nên biết trước khi ghé, từ Envy Nails Spa of Wendell.",
     "metaTitle": "Blog: mẹo chăm sóc móng và chuyện ở tiệm",
     "metaDescription": "Mẹo chăm sóc móng, so sánh acrylic, bột nhúng, Gel-X và BIAB, và những điều nên biết trước khi đến Envy Nails Spa of Wendell.",
-    "home": "Trang chủ",
-    "breadcrumb": "Đường dẫn",
-    "all": "Tất cả",
-    "categoriesLabel": "Chủ đề",
-    "categoryTitle": "{category}",
-    "categoryDescription": "Các bài viết về {category} từ Envy Nails Spa of Wendell.",
-    "featured": "Nổi bật",
-    "readMore": "Đọc tiếp",
-    "minutes": "{count} phút đọc",
-    "latest": "Từ blog của tiệm",
     "latestIntro": "Mẹo giữ móng đẹp giữa hai lần làm, và giải đáp trước khi bạn đặt lịch.",
-    "viewAll": "Tất cả bài viết",
-    "back": "Quay lại blog",
-    "related": "Đọc thêm",
-    "empty": "Chủ đề này chưa có bài viết.",
     "ctaTitle": "Sẵn sàng làm móng mới?",
-    "ctaText": "Đặt lịch trực tuyến trong một phút, hoặc gọi tiệm khi đi theo nhóm hay có yêu cầu riêng.",
-    "none": "Chưa có bài viết nào được đăng."
+    "ctaText": "Đặt lịch trực tuyến trong một phút, hoặc gọi tiệm khi đi theo nhóm hay có yêu cầu riêng."
   },
-  "notFound": {
-    "title": "Không tìm thấy trang",
-    "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
-    "back": "Về trang chủ"
+  "articles": {
+    "eyebrow": "Blog",
+    "categoryDescription": "Các bài viết về {category} từ Envy Nails Spa of Wendell.",
+    "latest": "Từ blog của tiệm",
+    "back": "Quay lại blog"
   },
   "legal": {
-    "effective": "Ngày hiệu lực: {date}",
+    "updated": "Ngày hiệu lực: {date}",
     "contents": "Mục lục",
     "related": "Xem thêm",
     "links": {

@@ -1,0 +1,545 @@
+{
+  "site": {
+    "id": "sushi",
+    "name": "Kumo Sushi & Omakase",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "menu",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Menu",
+          "slug": "menu"
+        },
+        {
+          "locale": "vi",
+          "name": "Thực đơn",
+          "slug": "thuc-don"
+        }
+      ]
+    },
+    {
+      "key": "craft",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Craft",
+          "slug": "craft"
+        },
+        {
+          "locale": "vi",
+          "name": "Tay nghề",
+          "slug": "tay-nghe"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "367bb15f-f4d2-41d2-9bf8-aff4381c783d",
+      "source": "ai",
+      "prompt": "A serene high-end Japanese omakase restaurant interior, polished wooden counter, soft warm lighting, minimalist aesthetic, beautiful ceramic tableware set neatly, atmospheric and peaceful",
+      "filename": "A serene high-end Japanese omakase restaurant interior, poli.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 27194,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 64888,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 72108,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T16:58:08.371Z"
+    },
+    {
+      "id": "61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6",
+      "source": "ai",
+      "prompt": "A close-up shot of an artisan sushi chef gently placing a fresh piece of nigiri sushi on a dark textured ceramic plate, soft ambient lighting, wooden counter, shallow depth of field, natural and elegant atmosphere",
+      "filename": "A close-up shot of an artisan sushi chef gently placing a fr.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 24520,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 57298,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 63862,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T16:58:08.387Z"
+    },
+    {
+      "id": "8090e238-2c82-4ebc-b25b-4d95393720ce",
+      "source": "ai",
+      "prompt": "A close-up shot of a sushi master's hands carefully shaping a nigiri on a pristine cypress wood counter, soft dramatic warm lighting, Japanese minimalist culinary aesthetics, no faces visible",
+      "filename": "A close-up shot of a sushi master's hands carefully shaping .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 21370,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 53738,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 60150,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:59:14.861Z"
+    },
+    {
+      "id": "d62290c5-d8ea-4ba6-9b7e-8622613c004a",
+      "source": "ai",
+      "prompt": "A close-up shot of sushi rice glistening in a traditional wooden hangiri bowl, wooden shamoji rice paddle beside it, natural soft morning lighting, clean Japanese culinary setting, no people, no text",
+      "filename": "A close-up shot of sushi rice glistening in a traditional wo.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 27180,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 67536,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 75136,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:59:14.881Z"
+    },
+    {
+      "id": "32700f74-8c2e-4032-a0b2-f10fd3b15a30",
+      "source": "ai",
+      "prompt": "A minimalist wooden counter at an authentic Japanese restaurant, featuring an elegant presentation of fresh nigiri and sashimi on a dark ceramic platter, natural warm lighting, close-up shot, soft depth of field",
+      "filename": "A minimalist wooden counter at an authentic Japanese restaur.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 27788,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 65046,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 73110,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T01:02:02.071Z"
+    },
+    {
+      "id": "ca67d55d-07fb-4758-be20-01720df4248c",
+      "source": "ai",
+      "prompt": "A close up shot of a chef's hand placing a fresh salmon nigiri onto a dark slate plate, soft natural side lighting, focus on the glossy fish texture, blurred background",
+      "filename": "A close up shot of a chef's hand placing a fresh salmon nigi.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22404,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 54574,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 61008,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T01:02:02.095Z"
+    },
+    {
+      "id": "41d35015-e62f-41c5-8628-54485d6931f4",
+      "source": "ai",
+      "prompt": "A minimalist overhead shot of an elegant sushi platter on a dark slate board, with nigiri, a ceramic dish with soy sauce, fresh wasabi, and pickled ginger, soft ambient natural lighting, Japanese aesthetic, no people, no text.",
+      "filename": "A minimalist overhead shot of an elegant sushi platter on a .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 31024,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 90554,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 104336,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T01:02:35.319Z"
+    },
+    {
+      "id": "5bad7d00-fa9f-4935-93d3-4581191458d1",
+      "source": "ai",
+      "prompt": "A close-up shot of hands holding a salmon nigiri sushi horizontally, touching the fish gently to dip into a small dark ceramic soy sauce plate, soft warm natural lighting, Japanese wooden dining counter, no faces visible.",
+      "filename": "A close-up shot of hands holding a salmon nigiri sushi horiz.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 23596,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 54008,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 59916,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T01:02:35.337Z"
+    },
+    {
+      "id": "e2ca88ef-dc8b-4fb2-8d3c-d97837e0861f",
+      "source": "ai",
+      "prompt": "A top-down view of an elegant Japanese sushi platter featuring assorted seasonal fish nigiri, minimalist dark stone plate, warm ambient lighting, fine dining presentation, no text, no logo.",
+      "filename": "A top-down view of an elegant Japanese sushi platter featuri.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 37454,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 100918,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 114198,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T01:03:27.006Z"
+    },
+    {
+      "id": "2a0743d5-577a-44e3-b4e2-332969a1742b",
+      "source": "ai",
+      "prompt": "A close up shot of a Japanese sushi chef carefully slicing a fresh seasonal fish on a clean wooden cutting board, soft natural kitchen lighting, professional culinary setting, authentic and focused atmosphere, no visible face.",
+      "filename": "A close up shot of a Japanese sushi chef carefully slicing a.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22008,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 50094,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 56160,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T01:03:27.023Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "97b7fdb3-bede-46cc-bb95-304ac0285822",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-13T16:07:55.069Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the restaurant’s ink, vermilion and gold.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Dish names, prices and hours exactly as on the menu.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise dishes not on the menu, or claim where the fish comes from without knowing.</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, omakase / à la carte, nigiri / sashimi.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a dish, a fish, the counter.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call to book, message on Zalo or drop by.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the restaurant.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Kumo Sushi &amp; Omakase sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu mực, đỏ son và vàng của nhà hàng.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng tên món, giá và giờ mở cửa như thực đơn.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa món chưa có trong thực đơn, hay nói cá “tươi sống” khi không chắc nguồn gốc.</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, omakase / gọi món, nigiri / sashimi.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một món, một loại cá, quầy sushi.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gọi đặt bàn, nhắn Zalo hay ghé nhà hàng.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với nhà hàng.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Kumo Sushi &amp; Omakase · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "81b3d5d3-f696-41e5-bdf0-83b5156534b3",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "367bb15f-f4d2-41d2-9bf8-aff4381c783d",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T16:58:53.991Z",
+      "createdAt": "2026-11-13T16:58:16.547Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "What Is Omakase? A Complete Beginner's Tasting Guide",
+          "slug": "what-is-omakase-a-complete-beginner-s-tasting-guide",
+          "excerpt": "Discover what omakase is with our refined dining guide, helping you confidently step into a high-end Japanese culinary setting with complete ease.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Stepping past the noren curtain into a cozy, serene space infused with the subtle scent of hinoki cypress always brings a thrilling sense of fascination. In high-end Japanese cuisine, no experience is more poetic or deeply connected than an omakase meal. For first-time diners, the question <strong>what is omakase</strong> often comes with a bit of wonder about dining etiquette. Understanding the spirit behind this culinary style will help you fully relax and savor every sensory moment.</p>\n<h2>What is omakase: The philosophical meaning of absolute trust</h2>\n<p>To fully understand <strong>what omakase is</strong>, we look back to the linguistic roots of Japan. The term originates from the verb *omakase suru*, meaning to entrust or place faith in someone else's decision. When you say this to a sushi chef (itamae), it means you leave the meal's menu entirely in their expert hands and culinary artistry.</p>\n<p>Completely different from standard à la carte ordering, an omakase dining experience has no set menu. Based on the freshest ingredients handpicked that day, the turning of the seasons, and even the mood and eating pace of the guest seated across the counter, the chef crafts a unique culinary journey. This is the highest expression of harmony between diner and culinary artisan.</p>\n<blockquote class=\"tpl-pull\"><p>Omakase is not simply a meal, but a symphony of absolute trust between diner and chef.</p></blockquote>\n<h2>How does a typical omakase meal unfold?</h2>\n<p>A standard omakase meal is usually designed like a multi-act play with a rhythmic progression of flavor notes. It begins with delicate appetizers (*otsumami*) to awaken the palate, followed by pristine sashimi courses, before arriving at the centerpiece of the meal: meticulously crafted nigiri sushi shaped right before your eyes.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/640.webp 640w, {{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/1280.webp 1280w, {{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>The sushi progression usually follows a flow from light to rich flavors: starting with white-fleshed fish (*shiromi*), gradually shifting to silver-skinned fish (*hikari-mono*), red tuna (*maguro*), and luscious seafood like sea urchin (*uni*) or grilled sea eel (*anago*). The meal typically concludes with a steaming bowl of comforting miso soup, a sweet dessert-like rolled omelet (*tamagoyaki*), and a warm cup of green tea.</p>\n<h2>Step-by-step guide to enjoying sushi properly for beginners</h2>\n<p>Many hesitate when visiting an omakase restaurant for the first time, worried about breaking complex dining etiquette. In reality, Japanese dining culture embraces natural simplicity and deep respect for the ingredient's original flavor. Here are simple steps to help you enjoy each piece of sushi like a connoisseur.</p>\n<h2>Important cultural etiquette when seated at the omakase counter</h2>\n<p>The sushi counter is an intimate, cozy stage where the boundary between kitchen and dining table dissolves. To ensure a smooth experience for yourself and those around you, observing a few basic courtesies will help you dine with poise and cultural appreciation.</p>\n<h2>Discover an emotional flavor journey with Kumo Sushi &amp; Omakase</h2>\n<p>At <strong>Kumo Sushi &amp; Omakase</strong>, we preserve the authentic beauty of Japanese culinary philosophy: where precision in every cut meets heartfelt hospitality (*omotenashi*). Under the hands of passionate artisans, each piece of sushi is more than just food—it tells the story of thoughtfully sourced seasonal ingredients and a harmonious balance of traditional technique and contemporary creativity.</p>\n<p>Don't let initial hesitation keep you from exploring a wonderful world of flavor. When you are ready to place your trust in us, our counter becomes the gateway to an unforgettable emotional journey where every sense is nurtured and soothed.</p>",
+          "readingMinutes": 3,
+          "seoTitle": "What Is Omakase? A Beginner's Guide to Dining",
+          "seoDescription": "What is omakase? Join Kumo Sushi & Omakase to explore its philosophical meaning and an authentic, refined sushi guide for first-timers."
+        },
+        {
+          "locale": "vi",
+          "title": "Omakase Là Gì? Cẩm Nang Thưởng Thức Trọn Vẹn Cho Người Mới",
+          "slug": "omakase-la-gi-cam-nang-thuong-thuc-tron-ven-cho-nguoi-moi",
+          "excerpt": "Tìm hiểu omakase là gì cùng cẩm nang thưởng thức tinh tế, giúp bạn tự tin bước vào không gian ẩm thực Nhật Bản cao cấp với phong thái thư thái nhất.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bước qua tấm rèm noren để tiến vào một không gian ấm cúng, tĩnh lặng và phảng phất hương thơm của gỗ bách hinoki luôn mang lại cảm giác hồi hộp đầy mê hoặc. Trong thế giới ẩm thực Nhật Bản cao cấp, không có trải nghiệm nào thi vị và đậm đà tính kết nối hơn một bữa tiệc omakase. Đối với những thực khách lần đầu tiếp cận, câu hỏi <strong>omakase là gì</strong> thường đi kèm chút băn khoăn về quy cách thưởng thức. Việc thấu hiểu tinh thần đằng sau phong cách ẩm thực này sẽ giúp bạn hoàn toàn thả lỏng và tận hưởng trọn vẹn từng khoảnh khắc vị giác.</p>\n<h2>Omakase là gì: Ý nghĩa triết lý của sự tin tưởng trọn vẹn</h2>\n<p>Để hiểu rõ <strong>omakase là gì</strong>, chúng ta cần tìm về cội nguồn ngôn ngữ của xứ sở Phù Tang. Thuật ngữ này xuất phát từ động từ *omakase suru*, mang ý nghĩa giao phó, gửi gắm niềm tin vào sự định đoạt của người khác. Khi bạn nói câu này với một đầu bếp sushi (itamae), điều đó đồng nghĩa với việc bạn trao trọn quyền quyết định thực đơn bữa ăn cho sự am tường và tài hoa của họ.</p>\n<p>Khác biệt hoàn toàn với hình thức gọi món thông thường (a la carte), một bữa tiệc omakase không hề có bảng thực đơn cố định. Người đầu bếp sẽ căn cứ vào nguồn nguyên liệu tươi ngon nhất được tuyển chọn trong ngày, sự luân chuyển của bốn mùa và thậm chí là cảm xúc, nhịp độ ăn uống của chính thực khách ngồi đối diện để sáng tạo nên một hải trình phong vị độc bản. Đây chính là biểu hiện cao nhất của sự tương hỗ giữa người thưởng thức và nghệ nhân ẩm thực.</p>\n<blockquote class=\"tpl-pull\"><p>Omakase không chỉ đơn thuần là một bữa ăn, mà là bản giao hưởng của sự tin tưởng tuyệt đối giữa thực khách và người đầu bếp.</p></blockquote>\n<h2>Một bữa ăn omakase thông thường diễn ra như thế nào?</h2>\n<p>Một buổi tiệc omakase tiêu chuẩn thường được thiết kế như một vở kịch nhiều hồi với sự sắp đặt nhịp nhàng của cung bậc hương vị. Bắt đầu từ những món khai vị thanh nhẹ (*otsumami*) nhằm đánh thức vị giác, tiếp nối bằng các đĩa sashimi tinh khiết, sau đó mới bước vào tâm điểm của bữa ăn là các phần nigiri sushi được tạo hình tỉ mỉ ngay trước mắt thực khách.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/640.webp 640w, {{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/1280.webp 1280w, {{media}}/61d03ec2-ca2d-4e2e-8a57-7c4e635f6fc6/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Trật tự phục vụ sushi thường tuân thủ quy luật đi từ vị thanh thoát đến đậm đà: mở đầu với các loại cá thịt trắng (*shiromi*), chuyển dần sang các dòng cá bạc (*hikari-mono*), cá ngừ đỏ (*maguro*), các loại hải sản béo ngậy như nhím biển (*uni*) hay lươn biển nướng (*anago*). Kết thúc bữa tiệc thường là một chén súp miso nóng hổi làm ấm cơ thể, món trứng cuộn *tamagoyaki* ngọt dịu tựa bánh tráng miệng và một tách trà xanh ấm áp.</p>\n<h2>Các bước thưởng thức từng món sushi đúng chuẩn cho người mới bắt đầu</h2>\n<p>Nhiều người ngần ngại khi lần đầu bước vào nhà hàng omakase vì sợ phạm phải các quy tắc bàn ăn phức tạp. Thực tế, văn hóa ẩm thực Nhật Bản hướng tới sự tự nhiên và tôn trọng trọn vẹn hương vị gốc của nguyên liệu. Dưới đây là các bước đơn giản giúp bạn thưởng thức từng miếng sushi đúng chuẩn phong thái sành ăn.</p>\n<h2>Những lưu ý văn hóa quan trọng khi ngồi trước quầy bar omakase</h2>\n<p>Không gian quầy bar sushi (sushi counter) là một sân khấu nhỏ ấm cúng, nơi ranh giới giữa bếp và bàn ăn được xóa nhòa. Để giữ cho trải nghiệm của bản thân và những người xung quanh diễn ra suôn sẻ, việc nắm bắt một số nét lịch thiệp cơ bản sẽ giúp bạn ghi điểm như một người am hiểu văn hóa.</p>\n<h2>Khám phá hành trình vị giác đầy cảm xúc cùng Kumo Sushi &amp; Omakase</h2>\n<p>Tại <strong>Kumo Sushi &amp; Omakase</strong>, chúng tôi gìn giữ nguyên vẹn vẻ đẹp của triết lý ẩm thực Nhật Bản: nơi sự tỉ mỉ trong từng đường dao gặp gỡ tấm lòng hiếu khách chân thành (*omotenashi*). Dưới bàn tay của những người nghệ nhân say mê nghề, mỗi miếng sushi không đơn thuần là món ăn mà còn gói trọn câu chuyện về nguồn gốc nguyên liệu tinh tuyển theo mùa, sự cân bằng giữa kỹ thuật truyền thống và nét sáng tạo đương đại.</p>\n<p>Đừng để những ngập ngừng ban đầu ngăn bạn khám phá thế giới phong vị diệu kỳ. Khi bạn sẵn lòng trao gửi sự tin tưởng, quầy bar của chúng tôi sẽ trở thành nơi mở ra một chuyến du hành cảm xúc khó quên, nơi mọi giác quan đều được nâng niu và xoa dịu.</p>",
+          "readingMinutes": 4,
+          "seoTitle": "Omakase Là Gì? Hướng Dẫn Thưởng Thức Cho Người Mới Bắt Đầu",
+          "seoDescription": "Omakase là gì? Cùng Kumo Sushi & Omakase tìm hiểu ý nghĩa triết lý và cẩm nang thưởng thức sushi chuẩn mực, tinh tế cho người trải nghiệm lần đầu."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "71f7d959-7055-43a2-a972-8fa6d859dd27",
+      "categoryKey": "craft",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "8090e238-2c82-4ebc-b25b-4d95393720ce",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:00:42.876Z",
+      "createdAt": "2026-11-14T00:59:37.262Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "The art of sushi rice: Secrets of vinegar, temperature, and shaping",
+          "slug": "the-art-of-sushi-rice-secrets-of-vinegar-temperature-and-shaping",
+          "excerpt": "Discover why sushi rice plays just as crucial a role as fresh fish in the refined art of omakase dining at Kumo Sushi & Omakase.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">In the world of Japanese cuisine, many diners are drawn in by the fresh, vibrant appearance of sliced seafood, forgetting that <strong>sushi rice</strong> is the true soul that elevates the entire dish. Behind each small piece of nigiri lies the chef's precise calculation—from vinegar acidity and body temperature to the breathing space between grains of rice.</p>\n<h2>Shari and neta: The balanced harmony that defines the soul of sushi</h2>\n<p>In the language of sushi masters, the rice is called <strong>shari</strong>, while the topping is known as <strong>neta</strong>. A sublime piece of sushi is not a solitary showcase of pricey fresh fish, but a harmonious union between the sea and the precious grains of the earth. If the rice falters in texture or taste, even the finest neta loses its inherent value.</p>\n<h2>Vinegar blending: The secret to shaping aroma and flavor profiles for sushi rice</h2>\n<p>Transforming pure white rice into standard <strong>sushi rice</strong> requires a profound understanding of sushizu (sushi vinegar). Depending on the fish featured on the menu, the chef decides whether to use clean, delicate white rice vinegar or red vinegar (akasu) brewed from sake lees for rich depth.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/640.webp 640w, {{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/1280.webp 1280w, {{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Body temperature: The key factor in bringing out the rice grain's tender, chewy texture</h2>\n<p>Temperature is one of the most subtle secrets of classic sushi tradition. <strong>Sushi rice</strong> must never be served ice-cold or piping hot. The ideal temperature when it touches the tongue should closely match human body temperature, hovering around 36 to 37 degrees C.</p>\n<h2>Nigiri shaping technique: The subtle breathing space between rice grains</h2>\n<p>Shaping nigiri may look effortless, but it takes years of practice to master the touch. The pressure must be just enough for the grains to stick together without falling apart when picked up, yet leave room inside for air to circulate. Once in your mouth, the texture of the <strong>sushi rice</strong> immediately loosens and dissolves evenly across the palate.</p>\n<h2>Frequently asked questions about sushi rice in an omakase experience</h2>\n<h2>Experience culinary precision at Kumo Sushi &amp; Omakase</h2>\n<p>At Kumo Sushi &amp; Omakase, even the smallest details of Japanese culinary culture are cherished and respected. By meticulously tending to every grain of <strong>sushi rice</strong>—from selecting the rice and balancing the vinegar ratio to managing temperature at the fingertips—we aim to deliver the pure essence of omakase artistry to our guests.</p>",
+          "readingMinutes": 2,
+          "seoTitle": "Why does sushi rice define the quality of an omakase meal? | Kumo Sushi & Omakase",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Nghệ thuật cơm sushi: Bí mật giấm, nhiệt độ và cách nắn",
+          "slug": "nghe-thuat-com-sushi-bi-mat-giam-nhiet-do-va-cach-nan",
+          "excerpt": "Khám phá vì sao cơm sushi lại đóng vai trò quan trọng ngang ngửa cá tươi trong nghệ thuật ẩm thực omakase tinh tế tại Kumo Sushi & Omakase.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Trong thế giới ẩm thực Nhật Bản, nhiều thực khách thường bị lôi cuốn bởi vẻ ngoài tươi rói của những lát hải sản mà quên rằng <strong>cơm sushi</strong> mới chính là linh hồn nâng đỡ toàn bộ món ăn. Đằng sau mỗi miếng nigiri nhỏ bé là sự tính toán chuẩn xác từ nồng độ giấm, nhiệt độ thân nhiệt cho đến khoảng thở giữa các hạt cơm của người đầu bếp.</p>\n<h2>Shari và neta: Mối tương quan cân bằng tạo nên linh hồn sushi</h2>\n<p>Trong ngôn ngữ chuyên môn của nghệ nhân sushi, phần cơm được gọi là <strong>shari</strong>, còn phần nhân bên trên gọi là <strong>neta</strong>. Một miếng sushi thăng hoa không phải là sự phô diễn đơn độc của cá tươi đắt đỏ, mà là cuộc gặp gỡ hài hòa giữa biển cả và hạt ngọc của đất trời. Nếu phần cơm làm hỏng cấu trúc hoặc vị giác, neta dù hảo hạng đến đâu cũng mất đi giá trị vốn có.</p>\n<h2>Pha trộn giấm: Bí quyết định hình tầng hương và vị cho cơm sushi</h2>\n<p>Quá trình biến đổi từ gạo trắng thuần túy thành <strong>cơm sushi</strong> tiêu chuẩn đòi hỏi sự am hiểu sâu sắc về sushizu (giấm sushi). Tùy thuộc vào từng loại cá phục vụ trong thực đơn, người đầu bếp sẽ quyết định sử dụng giấm gạo trắng mang vị thanh khiết hay giấm đỏ (akasu) ủ từ hèm rượu sake để tạo chiều sâu đậm đà.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/640.webp 640w, {{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/1280.webp 1280w, {{media}}/d62290c5-d8ea-4ba6-9b7e-8622613c004a/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Nhiệt độ thân nhiệt: Yếu tố then chốt kích hoạt độ mềm dẻo của hạt cơm</h2>\n<p>Nhiệt độ là một trong những bí mật tinh tế nhất của trường phái sushi cổ điển. <strong>Cơm sushi</strong> tuyệt đối không được phục vụ lạnh buốt hay nóng hổi bốc khói. Ngưỡng nhiệt hoàn hảo của nắm cơm khi chạm vào đầu lưỡi phải xấp xỉ nhiệt độ cơ thể người, rơi vào khoảng 36 đến 37 độ C.</p>\n<h2>Kỹ thuật nắn nigiri: Khoảng thở tinh tế giữa các hạt cơm</h2>\n<p>Động tác nắn nigiri trông nhẹ nhàng nhưng đòi hỏi nhiều năm rèn luyện cảm giác tay. Lực nắn phải vừa đủ để hạt cơm kết dính không rơi rụng khi gắp, nhưng bên trong vẫn giữ được khoảng trống cho không khí lưu thông. Khi đưa vào miệng, kết cấu <strong>cơm sushi</strong> sẽ lập tức tơi xốp và tan đều trên vòm họng.</p>\n<h2>Những thắc mắc thường gặp về cơm sushi trong trải nghiệm omakase</h2>\n<h2>Thưởng thức sự chuẩn mực tại Kumo Sushi &amp; Omakase</h2>\n<p>Tại Kumo Sushi &amp; Omakase, từng chi tiết nhỏ nhất trong văn hóa ẩm thực xứ Phù Tang đều được nâng niu và tôn trọng tuyệt đối. Bằng việc chăm chút tỉ mỉ cho từng hạt <strong>cơm sushi</strong>, từ khâu chọn gạo, cân chỉnh tỷ lệ giấm đến kiểm soát nhiệt độ trên từng ngón tay, chúng tôi mong muốn gửi gắm trọn vẹn tinh hoa của nghệ thuật omakase đến thực khách.</p>",
+          "readingMinutes": 3,
+          "seoTitle": "Vì sao cơm sushi quyết định đẳng cấp món ăn omakase? | Kumo Sushi & Omakase",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "6d3f2aeb-ee5b-4070-a060-1f6b15b62543",
+      "categoryKey": "menu",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "32700f74-8c2e-4032-a0b2-f10fd3b15a30",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:04:38.033Z",
+      "createdAt": "2026-11-14T01:03:34.078Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Distinguishing Popular Types of Sushi and Tips for Ordering",
+          "slug": "distinguishing-popular-types-of-sushi-and-tips-for-ordering",
+          "excerpt": "A guide to telling nigiri, maki, and sashimi apart, helping you confidently explore the world of sushi and choose dishes that suit your taste.",
+          "coverAlt": "A fresh, delicious sushi and sashimi platter elegantly arranged on a wooden table",
+          "body": "<p class=\"tpl-lead\">Japanese cuisine has always captivated diners with its simplicity, purity, and meticulous preparation. Even so, faced with an extensive menu, many people find themselves confused by familiar names like nigiri, sashimi, or maki. Understanding how to identify the characteristics of <strong>different types of sushi</strong> not only helps you order with confidence, but also ensures a complete, authentic Japanese dining experience.</p>\n<h2>Understanding Sushi and Its Key Differences from Sashimi</h2>\n<p>In Japanese culinary culture, the word sushi actually refers to dishes built upon a foundation of <strong>vinegared rice</strong> (shari), skillfully combined with toppings or fillings (called neta), most commonly fresh seafood, rolled egg, or vegetables. In contrast, sashimi is a distinct category where slices of fresh raw fish or meat are served on their own, highlighting their natural flavor without any vinegared rice.</p>\n<p>Sushi is always centered around lightly seasoned vinegared rice, while sashimi focuses entirely on slices of pure, fresh seafood. Understanding this distinction is the first step to easily navigating the menu at any Japanese restaurant.</p>\n<h2>Nigiri: Subtle Elegance of Vinegared Rice and Fresh Seafood</h2>\n<p>Nigiri represents the pinnacle of the hand-pressed technique (nigiru). A standard piece of nigiri consists of a small, oblong mound of rice shaped to be bite-sized, topped with a delicate slice of fresh seafood such as tuna, salmon, scallops, or boiled shrimp. Between the rice and seafood, the chef typically brushes just enough wasabi to tie the flavors together and add a gentle warmth.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/ca67d55d-07fb-4758-be20-01720df4248c/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/ca67d55d-07fb-4758-be20-01720df4248c/640.webp 640w, {{media}}/ca67d55d-07fb-4758-be20-01720df4248c/1280.webp 1280w, {{media}}/ca67d55d-07fb-4758-be20-01720df4248c/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>The beauty of nigiri lies in its perfect proportions. The rice must not be pressed too tightly, which would crush the grains, nor too loosely, so it won't fall apart when picked up. As it touches the palate, the airy rice grains harmonize effortlessly with the rich, naturally sweet seafood, creating an unforgettable, complete sensation.</p>\n<h2>Maki: Flavorful Seaweed Rolls with Varied Fillings</h2>\n<p>Maki is the general term for rolled sushi, carefully shaped using a traditional bamboo mat (makisu). A crisp layer of roasted nori seaweed wraps around fragrant, tender vinegared rice and colorful fillings inside. Depending on size and construction, maki is divided into thin single-ingredient rolls (hosomaki), thick multi-layered rolls (futomaki), or inside-out rolls with rice on the exterior (uramaki).</p>\n<p>The appeal of maki comes from the versatile variety of fillings, ranging from crisp cucumber and creamy avocado to spicy tuna or crab stick. It perfectly showcases textural diversity and is very approachable for anyone just beginning to explore <strong>different types of sushi</strong>.</p>\n<h2>Sashimi: The Art of Savoring Seafood's Natural Sweetness</h2>\n<p>Although it does not belong to the sushi family due to the absence of rice, sashimi is still a quintessential part of any Japanese feast. This dish celebrates the master knife skills of the chef, where every cut must be decisive to avoid bruising the natural grain of the meat, preserving the natural sweetness and succulent texture of the seafood.</p>\n<p>Sashimi is typically presented with elegance over a bed of crushed ice alongside shredded daikon radish and green shiso leaves. Diners will distinctly appreciate the crisp snap of octopus, the tender juiciness of scallops, or the melt-in-your-mouth richness of ocean salmon.</p>\n<h2>Which to Choose: A Guide to Ordering by Preference and Taste</h2>\n<p>Choosing the right dish depends on your familiarity with Japanese food and the culinary experience you desire for your meal.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Nigiri for Balance</h3><p>The ideal choice for anyone wanting to fully savor the harmony between <strong>delicate starch</strong> and the tender sweetness of fresh seafood.</p></div><div class=\"tpl-item\"><h3>Maki for Variety</h3><p>Perfect for Japanese food beginners or those who enjoy <strong>multiple layers of texture</strong>—crispy, rich, and flavorful—in every slice.</p></div><div class=\"tpl-item\"><h3>Sashimi for Purity</h3><p>Crafted for diners who want to fully appreciate the <strong>pristine flavors</strong> and natural textures of seafood without rice.</p></div></section>\n<p>If dining with friends, you can order a combo platter with sashimi as a light appetizer, followed by seasonal seafood nigiri, and finish the meal with satisfying, beautifully balanced maki rolls.</p>\n<h2>Tips to Fully Enjoy the Flavors at Your Table</h2>\n<p>To fully appreciate the subtlety of Japanese dishes, how you dip condiments and the order in which you eat are just as important as the ingredients.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>The Subtle Art of Dipping into Soy Sauce</h3><p>When enjoying nigiri, tilt the sushi slightly to <strong>dip the seafood into the soy sauce</strong>; avoid letting the rice soak up too much sauce, which can make it fall apart and overpower the delicate, natural sweetness of the fresh fish.</p></section>\n<p>Additionally, enjoy a few slices of sweet and tangy pickled ginger (gari) between dishes. The mild, refreshing spice cleanses your palate, preparing your senses to fully appreciate the unique flavor of the next piece of sushi.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Should You Eat Sushi with Chopsticks or Your Hands?</h3><p>In Japan, you can easily pick up nigiri with your fingers or use chopsticks, depending on your personal preference and comfort.</p></div><div class=\"tpl-item\"><h3>How Should Pickled Ginger (Gari) Be Eaten Correctly?</h3><p>Pickled ginger is meant to cleanse your palate between different dishes; it should not be placed directly on top of sushi when eating.</p></div><div class=\"tpl-item\"><h3>What Is the Ideal Order to Enjoy Different Types of Sushi?</h3><p>The ideal order starts with light, delicate white fish, progresses to richer, oilier red fish, and finishes with flavorful rolls.</p></div></section>\n<section class=\"tpl-cta\"><h3>Discover the Refined Flavors of Japanese Cuisine</h3><p>Let Kumo Sushi &amp; Omakase accompany you on a meticulous culinary journey, where every dish is thoughtfully prepared from fresh ingredients for a complete dining experience.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Distinguishing Types of Sushi and How to Order for Authentic Flavor",
+          "seoDescription": "A detailed guide on how to distinguish popular types of sushi like nigiri, sashimi, and maki, along with tips for ordering authentic Japanese dishes."
+        },
+        {
+          "locale": "vi",
+          "title": "Phân biệt các loại sushi phổ biến và bí quyết gọi món",
+          "slug": "phan-biet-cac-loai-sushi-pho-bien-va-bi-quyet-goi-mon",
+          "excerpt": "Cẩm nang phân biệt nigiri, maki và sashimi giúp bạn tự tin khám phá thế giới các loại sushi và chọn lựa món ăn đúng gu thưởng thức.",
+          "coverAlt": "Đĩa sushi và sashimi tươi ngon được bày biện trang nhã trên bàn gỗ",
+          "body": "<p class=\"tpl-lead\">Thế giới ẩm thực Nhật Bản luôn cuốn hút thực khách bởi sự tinh giản, thanh khiết và tỉ mỉ trong từng đường nét chế biến. Dẫu vậy, khi đứng trước một thực đơn phong phú, không ít người cảm thấy băn khoăn trước các tên gọi quen thuộc như nigiri, sashimi hay maki. Việc nắm vững cách nhận diện và đặc trưng của <strong>các loại sushi</strong> không chỉ giúp bạn tự tin gọi món mà còn mang lại trải nghiệm vị giác trọn vẹn, đúng chuẩn phong vị xứ hoa anh đào.</p>\n<h2>Hiểu đúng về sushi và sự khác biệt cơ bản với sashimi</h2>\n<p>Trong văn hóa ẩm thực Nhật Bản, từ sushi thực chất dùng để chỉ các món ăn có thành phần nền tảng là <strong>cơm trộn giấm</strong> gạo (shari), kết hợp khéo léo với các loại nguyên liệu bên trên hoặc bên trong (gọi là neta), phổ biến nhất là hải sản tươi, trứng cuộn hoặc rau củ. Ngược lại, sashimi là một phạm trù riêng biệt, nơi lát cắt hải sản hoặc thịt tươi được phục vụ độc lập, tôn vinh độ tươi ngon nguyên bản mà không hề có sự hiện diện của cơm giấm.</p>\n<p>Sushi luôn gắn liền với cơm trộn giấm có vị chua thanh nhẹ, trong khi sashimi tập trung hoàn toàn vào lát hải sản tươi sống nguyên chất. Hiểu rõ ranh giới này là bước đầu tiên để bạn dễ dàng làm quen với thực đơn tại bất kỳ nhà hàng Nhật Bản nào.</p>\n<h2>Nigiri: Nét tinh tế từ cơm giấm và lát hải sản tươi</h2>\n<p>Nigiri đại diện cho đỉnh cao của kỹ thuật nặn tay thủ công (nigiru). Một miếng nigiri tiêu chuẩn gồm một vắt cơm nhỏ thon dài vừa vặn một miếng cắn, bên trên đặt một lát hải sản tươi mỏng như cá ngừ, cá hồi, sò điệp hoặc tôm luộc. Giữa cơm và hải sản, đầu bếp thường phết một lượng mù tạt wasabi vừa đủ để kết nối hương vị và tạo độ ấm nồng dịu nhẹ.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/ca67d55d-07fb-4758-be20-01720df4248c/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/ca67d55d-07fb-4758-be20-01720df4248c/640.webp 640w, {{media}}/ca67d55d-07fb-4758-be20-01720df4248c/1280.webp 1280w, {{media}}/ca67d55d-07fb-4758-be20-01720df4248c/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Vẻ đẹp của nigiri nằm ở tỷ lệ cân đối hoàn hảo. Cơm không được nắm quá chặt khiến hạt bị nát, cũng không quá lỏng để tránh rơi rớt khi gắp. Khi đưa vào khoang miệng, hạt cơm tơi xốp hòa quyện nhịp nhàng với độ béo ngậy, ngọt thanh của hải sản tươi sống, tạo nên cảm giác trọn vẹn khó quên.</p>\n<h2>Maki: Cuộn rong biển tròn vị và phong phú nhân</h2>\n<p>Maki là tên gọi chung của các món sushi dạng cuộn, được tạo hình tỉ mỉ bằng mành tre truyền thống (makisu). Lớp rong biển nori nướng giòn thường ôm trọn lớp cơm giấm dẻo thơm cùng phần nhân đa sắc bên trong. Tùy thuộc vào kích thước và cách sắp đặt, maki được chia thành cuộn nhỏ đơn nhân (hosomaki), cuộn lớn nhiều lớp (futomaki) hay cuộn đảo ngược với cơm phủ bên ngoài (uramaki).</p>\n<p>Sự hấp dẫn của maki đến từ sự biến tấu linh hoạt của phần nhân, từ dưa leo thanh mát, quả bơ béo bùi đến cá ngừ cay hay thanh cua. Đây là đại diện tiêu biểu cho sự đa dạng kết cấu, rất thân thiện với những ai mới bắt đầu tìm hiểu về <strong>các loại sushi</strong>.</p>\n<h2>Sashimi: Nghệ thuật thưởng thức vị ngọt tự nhiên của lát cắt hải sản</h2>\n<p>Dù không thuộc họ sushi vì không có cơm, sashimi vẫn luôn xuất hiện song hành như một phần linh hồn của bàn tiệc ẩm thực Nhật. Món ăn này tôn vinh kỹ năng dùng dao bậc thầy của người đầu bếp, nơi từng đường cắt phải dứt khoát để không làm vỡ thớ thịt tự nhiên, bảo toàn lượng nước ngọt và kết cấu mọng nước của hải sản.</p>\n<p>Sashimi thường được bài trí trang nhã trên đĩa đá lạnh cùng củ cải trắng bào sợi và lá tía tô xanh. Thực khách sẽ cảm nhận rõ ràng nhất độ giòn sần sật của bạch tuộc, độ mọng mềm của sò điệp hay vị béo tan nhẹ của lát cá hồi đại dương.</p>\n<h2>Nên chọn món nào: Hướng dẫn gọi món theo sở thích và khẩu vị</h2>\n<p>Việc lựa chọn món ăn phù hợp phụ thuộc vào mức độ quen thuộc và mong muốn trải nghiệm vị giác của bạn trong bữa ăn.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Nigiri cho sự cân bằng</h3><p>Lựa chọn lý tưởng cho ai muốn cảm nhận trọn vẹn sự hòa quyện giữa <strong>tinh bột thanh dịu</strong> và độ ngọt mềm từ hải sản tươi sống.</p></div><div class=\"tpl-item\"><h3>Maki cho sự phong phú</h3><p>Thích hợp với người mới bắt đầu ăn đồ Nhật hoặc thích <strong>nhiều tầng kết cấu</strong> giòn, béo và đậm đà trong từng cuộn cắt.</p></div><div class=\"tpl-item\"><h3>Sashimi cho độ thuần khiết</h3><p>Dành riêng cho thực khách muốn tận hưởng trọn vẹn <strong>hương vị nguyên bản</strong> và kết cấu tự nhiên của hải sản mà không dùng cơm.</p></div></section>\n<p>Nếu dùng bữa cùng bạn bè, bạn có thể gọi một đĩa kết hợp gồm sashimi làm món khai vị thanh nhẹ, tiếp nối bằng nigiri hải sản theo mùa và kết thúc bữa ăn bằng những cuộn maki chắc bụng, hài hòa hương sắc.</p>\n<h2>Mẹo nhỏ giúp bạn thưởng thức trọn vẹn hương vị tại bàn ăn</h2>\n<p>Để cảm nhận trọn vẹn sự tinh tế từ các món ăn Nhật Bản, cách chấm gia vị và thứ tự dùng món đóng vai trò quan trọng không kém gì nguyên liệu.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Cách chấm nước tương tinh tế</h3><p>Khi thưởng thức nigiri, hãy nghiêng nhẹ miếng sushi để <strong>chấm phần hải sản vào nước tương</strong>, tránh để phần cơm hút quá nhiều tương khiến cơm dễ rã và làm át đi vị ngọt thanh tự nhiên của lát cá tươi.</p></section>\n<p>Ngoài ra, hãy sử dụng vài lát gừng ngâm chua ngọt gari xen kẽ giữa các món ăn. Vị thanh cay nhẹ của gừng sẽ giúp tẩy sạch vòm họng, chuẩn bị cho giác quan đón nhận trọn vẹn hương vị độc đáo của lát sushi tiếp theo.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên ăn sushi bằng đũa hay dùng tay trực tiếp?</h3><p>Tại Nhật Bản, bạn hoàn toàn có thể dùng ngón tay nhặt nigiri hoặc dùng đũa gắp tùy theo sở thích và sự thoải mái cá nhân.</p></div><div class=\"tpl-item\"><h3>Gừng muối chua gari dùng như thế nào cho đúng?</h3><p>Gừng chua dùng để thanh tẩy vị giác giữa các món khác nhau, không nên đặt gừng trực tiếp lên trên sushi khi thưởng thức.</p></div><div class=\"tpl-item\"><h3>Thứ tự thưởng thức các loại sushi như thế nào là chuẩn vị?</h3><p>Thứ tự lý tưởng là thưởng thức từ các loại cá thịt trắng thanh nhẹ, chuyển dần sang cá thịt đỏ béo ngậy và kết thúc bằng các món cuộn đậm đà.</p></div></section>\n<section class=\"tpl-cta\"><h3>Khám phá phong vị ẩm thực Nhật Bản tinh tế</h3><p>Hãy để Kumo Sushi &amp; Omakase đồng hành cùng bạn trên hành trình thưởng thức ẩm thực chỉn chu, nơi từng món ăn được chăm chút tỉ mỉ từ nguyên liệu tươi ngon đến trải nghiệm bàn ăn trọn vẹn.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Phân biệt các loại sushi và cách chọn món chuẩn vị",
+          "seoDescription": "Hướng dẫn chi tiết cách phân biệt các loại sushi phổ biến như nigiri, sashimi, maki và mẹo chọn món ngon chuẩn vị Nhật Bản."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "0425cd81-a103-4031-ba13-788301aa0470",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "41d35015-e62f-41c5-8628-54485d6931f4",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:04:55.592Z",
+      "createdAt": "2026-11-14T01:03:40.312Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A Guide to Eating Sushi Properly Like the Japanese",
+          "slug": "a-guide-to-eating-sushi-properly-like-the-japanese",
+          "excerpt": "Discover how to eat sushi the authentic Japanese way, from rules on soy sauce, wasabi, and pickled ginger to the right order for savoring every flavor.",
+          "coverAlt": "An exquisite plate of nigiri sushi with soy sauce and wasabi on a Japanese dining table",
+          "body": "<p class=\"tpl-lead\">Sushi is not merely an elegant dish from the Land of the Rising Sun, but a cultural symbol steeped in aesthetic philosophy and reverence for nature. Mastering the proper <strong>way to eat sushi</strong> not only lets you fully appreciate the delicate flavors of each cut of fresh fish, but also reflects your refinement, courtesy, and appreciation for Japanese culinary art.</p>\n<h2>Proper Japanese Etiquette for Soy Sauce and Wasabi</h2>\n<p>Many people tend to mix wasabi directly into their soy sauce until completely dissolved. However, according to traditional sushi masters, this is a faux pas. Mixing them together overpowers the distinct, pungent aroma of fresh wasabi and turns the soy sauce cloudy, losing its natural clarity.</p>\n<p>When enjoying nigiri sushi, the vinegared rice is gently shaped by the chef to the perfect fluffiness. If you soak the rice in soy sauce, the grains will quickly fall apart, and the harsh saltiness will overpower the natural sweetness of the seafood. Therefore, always turn the sushi slightly so only the fish touches the sauce.</p>\n<h2>The True Purpose of Pickled Ginger (Gari) at the Sushi Table</h2>\n<p>The light-pink slices of sweet and tangy pickled ginger placed beside sushi are often mistaken for a side dish to eat together with the fish. In reality, pickled ginger plays a much more subtle role in your palate's journey.</p>\n<p>The mild spice and clean acidity of gari help refresh your taste buds, cleansing away lingering richness from the previous fish. Thus, you should only pick up a small slice between different pieces of sushi—never place ginger directly on top of your sushi before taking a bite.</p>\n<h2>Should You Eat Sushi with Your Hands or Chopsticks?</h2>\n<p>One of the most common questions about <strong>eating sushi</strong> is whether to use chopsticks or your fingers. In Japanese food culture, both are acceptable, but using your bare hands is the original tradition specifically meant for nigiri and maki.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/640.webp 640w, {{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/1280.webp 1280w, {{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Holding sushi with your thumb and index finger lets you feel the gentle warmth of the rice and the tenderness of the fish without breaking the piece apart. However, for thinly sliced sashimi served without rice, using chopsticks is proper etiquette to maintain table elegance.</p>\n<h2>The Best Order to Eat Sushi for the Full Flavor Experience</h2>\n<p>Enjoying sushi is like a culinary symphony: opening gently, building to a rich crescendo, and closing harmoniously. If you eat rich, fatty fish before lighter varieties, you'll miss out on the subtle nuances of fresh seafood.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Start with White Fish and Delicate Seafood</h3><p>Begin your meal with white fish like flounder, sea bream, or fresh squid. These light, delicate flavors gently awaken your palate without overwhelming it.</p></div><div class=\"tpl-item\"><h3>Move on to Red and Rich, Fatty Fish</h3><p>Gradually transition to lean tuna, followed by salmon and rich tuna belly. The rich, natural fats at this stage create a memorable culinary highlight.</p></div><div class=\"tpl-item\"><h3>Finish with Sweet-Sauced Grilled Sushi and Egg Omelet</h3><p>Conclude your meal with savory-sweet grilled eel, bursting salmon roe, or tender, sweet tamagoyaki egg omelet as a perfect dessert-like finale.</p></div></section>\n<h2>Common Mistakes to Avoid</h2>\n<p>To show full respect to the chef and the craft, eat each piece of sushi in a single bite. Biting it in half scatters the rice grains and spoils the delicate fish-to-rice balance carefully crafted by the chef.</p>\n<p>Also, enjoy your sushi immediately after it is served. The temperature of the seasoned rice and the freshness of the seafood right after preparation offer the ideal state to savor its flavor.</p>\n<h2>Frequently Asked Questions About Sushi Etiquette</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Should you mix wasabi into your soy sauce dish?</h3><p>You should not stir wasabi into soy sauce. Instead, dab a small amount of wasabi directly onto the fish, then dip the fish lightly into soy sauce so each layer of flavor shines through.</p></div><div class=\"tpl-item\"><h3>Is eating sushi with your hands considered impolite?</h3><p>Not at all. You can freely use clean fingertips to eat nigiri sushi. Chopsticks are typically preferred for sashimi or if you prefer not to get rice on your hands.</p></div><div class=\"tpl-item\"><h3>Should you bite sushi in half or eat it in one bite?</h3><p>Sushi is sized to fit comfortably in a single bite. Enjoy the entire piece at once to taste the harmonious blend of tangy vinegared rice and luscious seafood.</p></div></section>\n<section class=\"tpl-cta\"><h3>Experience Refined Japanese Flavors at Kumo Sushi &amp; Omakase</h3><p>Understanding the proper <strong>way to eat sushi</strong> gives you a fresh and deeper appreciation of Japanese culinary culture. Visit Kumo Sushi &amp; Omakase to enjoy a cozy, relaxing space and savor fresh, delicious sushi meticulously crafted by our talented, dedicated chefs.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "How to Eat Sushi: The True Japanese Art",
+          "seoDescription": "An etiquette guide to enjoying sushi: dipping in soy sauce, using wasabi, the purpose of pickled ginger, and a complete culinary experience."
+        },
+        {
+          "locale": "vi",
+          "title": "Hướng Dẫn Cách Ăn Sushi Đúng Điệu Như Người Nhật Bản",
+          "slug": "huong-dan-cach-an-sushi-dung-dieu-nhu-nguoi-nhat-ban",
+          "excerpt": "Khám phá cách ăn sushi chuẩn phong vị Nhật Bản từ quy tắc dùng xì dầu, wasabi, gừng hồng đến thứ tự thưởng thức trọn vẹn vị giác.",
+          "coverAlt": "Đĩa sushi nigiri tinh tế cùng chén xì dầu và wasabi trên bàn ăn Nhật Bản",
+          "body": "<p class=\"tpl-lead\">Sushi không đơn thuần là một món ăn thanh tao của đất nước mặt trời mọc mà còn là một biểu tượng văn hóa thấm đượm triết lý thẩm mỹ và sự trân trọng thiên nhiên. Nắm vững <strong>cách ăn sushi</strong> đúng chuẩn không chỉ giúp bạn cảm nhận trọn vẹn hương vị tinh tế của từng thớ cá tươi ngon mà còn thể hiện sự tinh tế, lịch thiệp và thấu hiểu nghệ thuật ẩm thực xứ Phù Tang.</p>\n<h2>Nguyên tắc sử dụng xì dầu và wasabi đúng chuẩn Nhật Bản</h2>\n<p>Nhiều người có thói quen khuấy đều wasabi vào đĩa xì dầu cho đến khi hòa tan hoàn toàn. Tuy nhiên, theo quy chuẩn truyền thống của các bậc thầy làm sushi, đây là điều không nên làm. Việc hòa lẫn như vậy sẽ làm lấn át hương thơm cay nồng đặc trưng của wasabi tươi, đồng thời khiến xì dầu bị đục và mất đi độ trong thanh khiết vốn có.</p>\n<p>Khi thưởng thức món sushi nắm (nigiri), phần cơm giấm thường được các đầu bếp nén với độ tơi xốp hoàn hảo. Nếu để phần cơm ngấm đẫm xì dầu, hạt cơm sẽ nhanh chóng rã ra và vị mặn gắt sẽ che lấp vị ngọt tự nhiên của hải sản. Do đó, hãy luôn lật nhẹ miếng sushi để phần nhân cá tiếp xúc với bề mặt nước chấm.</p>\n<h2>Ý nghĩa thực sự của gừng hồng (gari) trên bàn sushi</h2>\n<p>Những lát gừng ngâm chua ngọt màu hồng nhạt đặt cạnh đĩa sushi thường bị nhầm lẫn là món ăn kèm dùng chung cùng lúc với cá. Thực chất, gừng hồng mang một trọng trách tinh tế hơn rất nhiều trong hành trình vị giác của thực khách.</p>\n<p>Vị cay nhẹ và chua thanh của gari giúp đánh thức các gai vị giác, tẩy sạch lớp dầu mỡ còn đọng lại từ loại cá trước. Vì vậy, bạn chỉ nên nhón một lát gừng nhỏ và thưởng thức ở khoảng nghỉ giữa hai loại sushi khác nhau, tuyệt đối không đặt gừng trực tiếp lên bề mặt miếng sushi rồi cho vào miệng.</p>\n<h2>Dùng tay hay dùng đũa khi ăn sushi?</h2>\n<p>Một trong những băn khoăn phổ biến nhất về <strong>cách ăn sushi</strong> là lựa chọn giữa đũa và tay. Trong văn hóa ẩm thực Nhật Bản, cả hai hình thức này đều được chấp nhận, nhưng dùng tay trực tiếp mới là nét văn hóa nguyên bản nhất dành riêng cho các món nigiri và maki.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/640.webp 640w, {{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/1280.webp 1280w, {{media}}/5bad7d00-fa9f-4935-93d3-4581191458d1/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Cầm sushi bằng ngón tay cái và ngón trỏ giúp bạn cảm nhận được nhiệt độ ấm nhẹ của cơm và độ mềm mại của lát cá mà không sợ làm vỡ kết cấu miếng sushi. Tuy nhiên, với món sashimi lát mỏng không có cơm, việc sử dụng đũa lại là phép lịch sự bắt buộc để giữ trọn tính tao nhã trên bàn tiệc.</p>\n<h2>Thứ tự thưởng thức các loại sushi để trọn vẹn vị giác</h2>\n<p>Thưởng thức sushi giống như một bản hòa tấu giai điệu ẩm thực có mở đầu nhẹ nhàng, cao trào nồng nàn và kết màn trọn vẹn. Nếu ăn lộn xộn các loại cá béo ngậy trước cá thanh đạm, bạn sẽ khó lòng cảm nhận được sự tinh túy của những loại hải sản tươi ngon.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Khởi đầu với cá thịt trắng và hải sản vị thanh</h3><p>Bắt đầu bữa ăn bằng các loại cá thịt trắng như cá bơn, cá tráp hoặc mực tươi. Những hương vị nhẹ nhàng, thanh tao này giúp đánh thức vị giác nhẹ nhàng mà không gây ngấy.</p></div><div class=\"tpl-item\"><h3>Thưởng thức cá thịt đỏ và cá béo đậm đà</h3><p>Chuyển dần sang cá ngừ nạc, sau đó là cá hồi và các phần bụng cá ngừ béo ngậy. Lượng chất béo tự nhiên đậm đà ở giai đoạn này sẽ tạo nên điểm nhấn ấn tượng cho trải nghiệm.</p></div><div class=\"tpl-item\"><h3>Kết thúc bằng sushi nướng sốt ngọt và trứng cuộn</h3><p>Khép lại bữa ăn với lươn nướng phủ sốt ngọt đậm đà, trứng cá hồi bùng nổ hương vị hoặc món trứng cuộn tamagoyaki mềm ngọt như một nốt nhạc tráng miệng hoàn hảo.</p></div></section>\n<h2>Những điều nên tránh để không làm hỏng hương vị món ăn</h2>\n<p>Để thể hiện trọn vẹn sự tôn trọng với người đầu bếp và bản thân món ăn, thực khách nên lưu ý ăn trọn miếng sushi trong một lần cắn. Việc cắn đôi miếng sushi sẽ khiến các hạt cơm vương vãi, làm hỏng tỷ lệ cân đối giữa cá và cơm mà người làm đã cân chỉnh kỹ lưỡng.</p>\n<p>Ngoài ra, bạn nên thưởng thức sushi ngay sau khi được phục vụ lên đĩa. Nhiệt độ của cơm giấm và độ tươi mát của hải sản ở thời điểm vừa hoàn thiện chính là trạng thái hoàn mỹ nhất để đánh giá trọn vẹn hương vị.</p>\n<h2>Câu hỏi thường gặp về cách ăn sushi đúng điệu</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Có nên hòa tan wasabi vào chén xì dầu không?</h3><p>Bạn không nên khuấy đều wasabi vào xì dầu. Hãy chấm một lượng wasabi vừa phải lên trên lát cá, sau đó mới chấm nhẹ phần cá vào xì dầu để từng tầng hương vị được giải phóng rõ ràng.</p></div><div class=\"tpl-item\"><h3>Dùng tay ăn sushi có bị xem là thiếu lịch sự không?</h3><p>Không bắt buộc. Bạn hoàn toàn có thể dùng các đầu ngón tay sạch để cầm các món sushi nắm nigiri. Đũa thường được ưu tiên dùng cho món sashimi hoặc khi bạn không muốn tay bị dính cơm.</p></div><div class=\"tpl-item\"><h3>Nên cắn đôi sushi hay thưởng thức trọn một miếng?</h3><p>Kích thước của sushi được tính toán để vừa vặn trong một lần ăn. Hãy thưởng thức trọn vẹn cả miếng để cảm nhận sự hòa quyện giữa vị chua thanh của cơm giấm và vị béo ngậy của hải sản.</p></div></section>\n<section class=\"tpl-cta\"><h3>Trải nghiệm phong vị Nhật Bản tinh tế tại Kumo Sushi &amp; Omakase</h3><p>Hiểu rõ <strong>cách ăn sushi</strong> đúng chuẩn sẽ mở ra cho bạn một góc nhìn mới mẻ và sâu sắc về nền ẩm thực Nhật Bản. Hãy ghé Kumo Sushi &amp; Omakase để tận hưởng không gian ấm cúng, thư thái và thưởng thức những miếng sushi tươi ngon được chăm chút tỉ mỉ từ đôi bàn tay tài hoa của các đầu bếp tận tâm.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Cách Ăn Sushi Đúng Chuẩn Nghệ Thuật Nhật Bản",
+          "seoDescription": "Cẩm nang hướng dẫn cách ăn sushi tinh tế: cách chấm xì dầu, sử dụng wasabi, ý nghĩa của gừng hồng và trải nghiệm ẩm thực trọn vẹn."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "fbade717-8c31-468b-9da3-bb431bb55d63",
+      "categoryKey": "craft",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "e2ca88ef-dc8b-4fb2-8d3c-d97837e0861f",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:05:29.269Z",
+      "createdAt": "2026-11-14T01:03:47.645Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Seasonal Fish and the Sushi Chef's Art of Fish Selection",
+          "slug": "seasonal-fish-and-the-sushi-chef-s-art-of-fish-selection",
+          "excerpt": "Discover the Shun philosophy and the sushi chef's meticulous seasonal fish selection to create full-flavored omakase masterpieces.",
+          "coverAlt": "An exquisitely arranged seasonal fish sushi banquet",
+          "body": "<p class=\"tpl-lead\">In Japanese culinary culture, the absolute harmony between human and nature is vividly reflected in every slice of fish laid atop sushi rice. The art of omakase constantly evolves with the passage of time, as the ocean bestows distinct flavors at every moment of the year. Understanding and sourcing <strong>seasonal fish</strong> is not merely a professional skill, but a deep reverence for the ocean's finest gifts.</p>\n<h2>The 'Shun' Philosophy: The Essence of Enjoying Seasonal Fish in Japan</h2>\n<p>The <strong>Shun</strong> philosophy in Japanese cuisine describes the fleeting window when an ingredient reaches peak ripeness in flavor, texture, and nutritional value. The Japanese believe that savoring food at this exact moment brings complete balance to body and mind. For seafood, this concept becomes even more sacred, as each fish species accumulates its ideal fat and firmness only during a specific biological phase of the year.</p>\n<p>Enjoying <strong>seasonal fish</strong> is not just about capturing peak flavors; it is also a way for diners to tune in to the changing seasons. A rich, fatty piece of sushi fish on a freezing winter day or a clean, delicate slice in the heat of midsummer both carry the ocean's story, expressing the deep appreciation sushi artisans pour into every piece.</p>\n<h2>Four Seasons of the Sea: Signature Fish Varieties Throughout the Year</h2>\n<p>Driven by ocean currents and changing climates, the marine world cycles through four distinct seasons, bringing a succession of signature seafood to the sushi counter.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Red Sea Bream (Tai) - Spring</h3><p>A symbol of good fortune, its springtime flesh is firm and delicately sweet, with a gentle pink hue reminiscent of cherry blossom petals.</p></div><div class=\"tpl-item\"><h3>Japanese Sea Bass (Suzuki) - Early Summer</h3><p>A bright white-fleshed fish with a clean, refreshing taste that dispels the summer heat, reaching an ideal fattiness in warm waters.</p></div><div class=\"tpl-item\"><h3>Japanese Sardine (Iwashi) - Midsummer</h3><p>This blue-backed fish accumulates rich layers of fat by midsummer, offering a bold, savory, and irresistibly aromatic flavor.</p></div><div class=\"tpl-item\"><h3>Pacific Saury (Sanma) - Early Autumn</h3><p>An iconic herald of autumn, its thick flesh delivers a deep sweetness as the fish stores energy for the coming cold.</p></div><div class=\"tpl-item\"><h3>Japanese Amberjack (Buri) - Early Winter</h3><p>Tempered by the cold late-autumn currents, this fish develops soft marbled fat and rich umami.</p></div><div class=\"tpl-item\"><h3>Bluefin Tuna (Maguro) - Winter</h3><p>The time when tuna reaches optimal fat content, with every cut showcasing its exquisite texture.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/1376.webp\" alt=\"A sushi chef meticulously slicing seasonal fish on a wooden cutting board\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/640.webp 640w, {{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/1280.webp 1280w, {{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Each delicate slice fully honors the texture and natural sweetness of seasonal ingredients.</figcaption></figure>\n<h2>Early Morning Journey: Rigorous Standards for Selecting Fresh Fish</h2>\n<p>Before dawn breaks, the dedicated sushi chef sets out to source ingredients at early morning seafood markets. To find a catch of <strong>seasonal fish</strong> worthy of omakase, the artisan draws upon all their senses and years of honed experience. Each selected fish must not only be supremely fresh, but also exhibit balanced proportions and flawless condition.</p>\n<ul><li>The eyes must be naturally bulging and clear without cloudiness, reflecting the fresh catch.</li><li>A bright pinkish-red color free of unusual slime is a sign that natural circulation remains intact.</li><li>The body must be firm; when pressed gently with a finger, the flesh should quickly bounce back to its original shape.</li><li>Fresh fish carries only a faint, clean scent of the sea, with no harsh or fishy odor.</li></ul>\n<p>Meticulous attention to every detail is what sets an ordinary dish apart from a culinary masterpiece. Chefs understand that premium ingredients are an irreplaceable foundation.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>How to Recognize the Freshness of Fish</h3><p>When enjoying sushi, you can recognize fish at peak freshness by its naturally lustrous flesh, vibrant tone, and a deep, sweet aftertaste lingering on the palate without feeling overly greasy.</p></section>\n<h2>The Art of Preparation and Preservation to Honor Natural Sweetness</h2>\n<p>After selecting the finest <strong>seasonal fish</strong>, the next challenge lies in the chef's preparation techniques. Japanese fish preparation requires a profound understanding of each species' anatomy—from bleeding and skilled scaling to precise chilling methods that lock in natural sweetness.</p>\n<p>Not all fish taste best immediately after being caught. For certain deep-sea varieties, artisans apply aging techniques under strict temperature and humidity control. This process softens muscle fibers and stimulates the release of natural amino acids to unlock rich <strong>umami</strong>, delivering an unforgettable, melt-in-your-mouth sensation.</p>\n<h2>Experience the Full Flavors of Seasonal Fish at Kumo Sushi &amp; Omakase</h2>\n<p>At Kumo Sushi &amp; Omakase, each menu is crafted like a painting celebrating the beauty of nature throughout the four seasons. Honoring the rhythm of the ocean, we seek out the freshest <strong>seasonal fish</strong> every day to bring guests an authentic and deeply evocative dining experience.</p>\n<p>Sitting at the elegant wooden counter, watching the chef's precise movements, and savoring a piece of sushi capturing the essence of the moment is the most complete way to experience Japanese culinary philosophy.</p>\n<section class=\"tpl-cta\"><h3>Discover Ocean Flavors at Kumo Sushi &amp; Omakase</h3><p>We warmly invite you to visit Kumo Sushi &amp; Omakase to savor the season's finest fish flavors with us.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "The Sushi Chef's Art of Choosing Seasonal Fish",
+          "seoDescription": "Discover the Shun philosophy in Japanese cuisine and how Kumo Sushi & Omakase chefs meticulously select fresh seasonal fish every morning."
+        },
+        {
+          "locale": "vi",
+          "title": "Cá Theo Mùa Và Nghệ Thuật Chọn Cá Của Đầu Bếp Sushi",
+          "slug": "ca-theo-mua-va-nghe-thuat-chon-ca-cua-dau-bep-sushi",
+          "excerpt": "Khám phá triết lý Shun và hành trình tuyển chọn cá theo mùa khắt khe của đầu bếp sushi để tạo nên những tác phẩm omakase trọn vị.",
+          "coverAlt": "Bàn tiệc sushi cá theo mùa được bài trí tinh tế",
+          "body": "<p class=\"tpl-lead\">Trong văn hóa ẩm thực xứ Phù Tang, sự hòa hợp tuyệt đối giữa con người và tự nhiên phản chiếu rõ nét qua từng lát cá đặt trên nắm cơm sushi. Nghệ thuật omakase luôn biến chuyển không ngừng theo dòng chảy thời gian, bởi mỗi khoảnh khắc trong năm biển cả lại ban tặng những phong vị hoàn toàn khác biệt. Việc thấu hiểu và kiếm tìm nguồn <strong>cá theo mùa</strong> không đơn thuần là kỹ năng nghề nghiệp, mà là sự tôn kính đối với món quà tinh túy của đại dương.</p>\n<h2>Triết lý 'Shun': Tinh hoa thưởng thức cá theo mùa của người Nhật</h2>\n<p>Triết lý <strong>Shun</strong> trong ẩm thực Nhật Bản mô tả khoảng thời gian ngắn ngủi khi một nguyên liệu đạt tới độ chín muồi hoàn hảo về cả hương vị, kết cấu lẫn giá trị dinh dưỡng. Người Nhật tin rằng việc thưởng thức thực phẩm đúng thời khắc này mang lại sự cân bằng trọn vẹn cho thân tâm. Đối với hải sản, khái niệm này càng trở nên thiêng liêng khi mỗi loài cá chỉ tích lũy lượng mỡ và độ săn chắc lý tưởng vào một giai đoạn sinh học cụ thể trong năm.</p>\n<p>Thưởng thức <strong>cá theo mùa</strong> không chỉ là nắm bắt hương vị đỉnh cao, mà còn là cách thực khách lắng nghe sự chuyển mình của thời tiết. Một miếng sushi cá béo ngậy vào ngày đông giá buốt hay lát cá thanh khiết giữa trưa hè oi ả đều mang theo trọn vẹn câu chuyện của biển khơi, thể hiện tấm lòng trân quý mà nghệ nhân sushi gửi gắm vào từng tác phẩm.</p>\n<h2>Bốn mùa biển khơi: Những dòng cá đặc trưng theo từng thời điểm trong năm</h2>\n<p>Dưới sự dịch chuyển của các dòng hải lưu và khí hậu, thế giới đại dương xoay vần theo bốn mùa rõ rệt, mang đến những dòng hải sản đặc trưng nối tiếp nhau trên bàn tiệc sushi.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Cá tráp đỏ (Tai) - Tiết xuân</h3><p>Tượng trưng cho sự may mắn, thịt cá mùa xuân săn chắc, ngọt thanh và mang sắc hồng dịu dàng như cánh hoa anh đào.</p></div><div class=\"tpl-item\"><h3>Cá vược biển (Suzuki) - Đầu hạ</h3><p>Dòng cá thịt trắng tươi sáng, vị thanh mát nhẹ nhàng xua tan sự oi ả, đạt độ béo vừa phải trong làn nước ấm.</p></div><div class=\"tpl-item\"><h3>Cá mòi Nhật (Iwashi) - Giữa hạ</h3><p>Loài cá lưng xanh tích tụ lớp mỡ béo ngậy vào giữa hạ, mang lại hương vị đậm đà và bùi thơm quyến rũ.</p></div><div class=\"tpl-item\"><h3>Cá thu đao (Sanma) - Lập thu</h3><p>Biểu tượng báo hiệu mùa thu về, thớ thịt dày dặn với vị ngọt sâu lắng khi cá tích trữ năng lượng chuẩn bị tránh rét.</p></div><div class=\"tpl-item\"><h3>Cá cam (Buri) - Chớm đông</h3><p>Được tôi luyện qua những đợt sóng lạnh cuối thu, cá sở hữu lớp mỡ cẩm thạch mềm mại và vị umami đậm đà.</p></div><div class=\"tpl-item\"><h3>Cá ngừ vây xanh (Maguro) - Mùa đông</h3><p>Thời điểm thịt cá ngừ đạt hàm lượng mỡ tối ưu, các phần thịt phô diễn trọn vẹn kết cấu tuyệt hảo.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/1376.webp\" alt=\"Đầu bếp sushi đang tỉ mỉ cắt lát cá theo mùa trên thớt gỗ\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/640.webp 640w, {{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/1280.webp 1280w, {{media}}/2a0743d5-577a-44e3-b4e2-332969a1742b/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Từng lát cắt tinh xảo tôn vinh trọn vẹn kết cấu và vị ngọt tự nhiên của nguyên liệu mùa vụ.</figcaption></figure>\n<h2>Hành trình buổi sớm: Tiêu chuẩn khắt khe khi đầu bếp chọn cá tươi</h2>\n<p>Khi bình minh còn chưa ló dạng, người đầu bếp sushi tận tụy đã bắt đầu hành trình tuyển chọn nguyên liệu tại các chợ hải sản sớm. Để tìm được mẻ <strong>cá theo mùa</strong> đạt chuẩn phục vụ omakase, người nghệ nhân phải vận dụng toàn bộ giác quan và kinh nghiệm tích lũy qua nhiều năm làm nghề. Mỗi con cá được lựa chọn không chỉ cần độ tươi mới tuyệt đối mà còn phải có vóc dáng cân đối và thể trạng hoàn mỹ.</p>\n<ul><li>Mắt cá phải lồi tự nhiên, giác mạc trong suốt không vẩn đục, phản chiếu sự tươi mới vừa được đánh bắt.</li><li>Màu đỏ hồng tươi sáng và không có chất nhờn bất thường là dấu hiệu nhận biết tuần hoàn tự nhiên còn nguyên vẹn.</li><li>Phần thân cá phải chắc nịch, khi dùng ngón tay ấn nhẹ thì thớ thịt nhanh chóng phục hồi lại trạng thái ban đầu.</li><li>Cá tươi chỉ mang mùi thơm thoang thoảng đặc trưng của biển cả, hoàn toàn không có mùi tanh nồng gắt.</li></ul>\n<p>Sự kỹ tính trong từng chi tiết nhỏ chính là lằn ranh phân định giữa một món ăn thông thường và một kiệt tác ẩm thực. Người đầu bếp luôn hiểu rằng nguyên liệu thượng hạng là nền tảng cốt lõi không thể thay thế.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Cách nhận diện độ tươi ngon của cá</h3><p>Khi thưởng thức sushi, bạn có thể nhận biết cá đạt độ tươi chuẩn qua bề mặt thớ thịt sáng bóng tự nhiên, sắc thái hồng hào tươi tắn và dư vị ngọt sâu đọng lại nơi cuống họng mà không hề để lại cảm giác ngấy.</p></section>\n<h2>Nghệ thuật xử lý và bảo quản tôn vinh trọn vẹn vị ngọt nguyên bản</h2>\n<p>Sau khi chọn được những mẻ <strong>cá theo mùa</strong> hoàn mỹ, thử thách tiếp theo nằm ở kỹ thuật xử lý nguyên liệu của người đầu bếp. Nghệ thuật sơ chế cá Nhật Bản đòi hỏi sự hiểu biết sâu sắc về cấu trúc giải phẫu của từng loài, từ việc xả máu, đánh vảy khéo léo đến phương pháp giữ lạnh chuẩn xác để khóa chặt độ ngọt tự nhiên.</p>\n<p>Không phải loài cá nào cũng ngon nhất khi dùng ngay sau khi đánh bắt. Với một số dòng cá biển sâu, người nghệ nhân sẽ áp dụng kỹ thuật ủ với sự kiểm soát nghiêm ngặt về nhiệt độ và độ ẩm. Quá trình này giúp làm mềm các sợi cơ, kích thích giải phóng axit amin tự nhiên để làm bùng nổ vị <strong>umami</strong> đậm đà, mang đến cảm giác êm mượt khó quên trên đầu lưỡi.</p>\n<h2>Trải nghiệm cá theo mùa trọn vị tại Kumo Sushi &amp; Omakase</h2>\n<p>Tại Kumo Sushi &amp; Omakase, mỗi thực đơn đều được kiến tạo như một bức tranh tôn vinh vẻ đẹp của thiên nhiên bốn mùa. Chúng tôi trân trọng nhịp điệu của biển cả, luôn chú trọng tìm kiếm những dòng <strong>cá theo mùa</strong> tươi ngon nhất mỗi ngày để mang đến cho thực khách trải nghiệm ẩm thực chân phương và trọn vẹn cảm xúc.</p>\n<p>Ngồi trước quầy gỗ thanh nhã, ngắm nhìn từng thao tác chuẩn xác của người đầu bếp và thưởng thức miếng sushi mang hương vị đặc trưng của thời khắc hiện tại là cách trọn vẹn nhất để cảm nhận triết lý ẩm thực Nhật Bản.</p>\n<section class=\"tpl-cta\"><h3>Khám Phá Hương Vị Biển Khơi Tại Kumo Sushi &amp; Omakase</h3><p>Thân mời quý thực khách ghé thăm Kumo Sushi &amp; Omakase để cùng chúng tôi thưởng lãm những hương vị cá mùa vụ tinh túy nhất trong mùa này.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Nghệ Thuật Chọn Cá Theo Mùa Của Đầu Bếp Sushi",
+          "seoDescription": "Khám phá triết lý Shun trong ẩm thực Nhật và cách đầu bếp Kumo Sushi & Omakase tỉ mỉ tuyển chọn nguồn cá theo mùa tươi ngon mỗi sáng."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

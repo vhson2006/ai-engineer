@@ -1,5 +1,5 @@
 import type { StaticImageData } from 'next/image';
-import type { Messages } from '@/i18n/messages';
+import type { Messages } from '@/i18n/dictionaries';
 import imgButterBlossoms from '../../public/images/gallery/envy-10.jpg';
 import imgFloralStiletto from '../../public/images/gallery/envy-12.jpg';
 import imgGreenApple from '../../public/images/gallery/envy-11.png';
@@ -56,14 +56,14 @@ export const salon = {
     { id: 'fri', open: '09:30', close: '19:00' },
     { id: 'sat', open: '09:30', close: '18:00' },
     { id: 'sun', open: '11:30', close: '17:00' },
-  ] as const satisfies readonly { id: keyof Messages['visit']['days']; open: string; close: string }[],
+  ] as const satisfies readonly { id: keyof Messages['hours']; open: string; close: string }[],
 } as const;
 
 /* ── Full menu: tabs of price tables ────────────────────────────── */
 
-type Tables = Messages['menu']['tables'];
+type Tables = Messages['services']['tables'];
 export type TableId = keyof Tables;
-export type MenuTabId = keyof Messages['menu']['tabs'];
+export type MenuTabId = keyof Messages['services']['tabs'];
 /** One price per column of the table (null = not offered). */
 type Row<T extends TableId> = { id: keyof Tables[T]['items']; prices: (Price | null)[] };
 

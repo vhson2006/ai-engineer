@@ -1,0 +1,13 @@
+{
+  "$comment": "Every image the system runs: the ONE list. .github/workflows/images.yml builds them for prod (when `watch` matches a change since the commit the image runs), k8s/scripts/staging.sh for local staging, and k8s/scripts/images-check.mjs (CI) checks that each is in the prod and staging overlays and run by a manifest. `group`: built together, from one commit. `siteUrl`: the public origin baked in (Next.js apps, ADR 0021), `{domain}` = the environment's domain. A new image: an entry here, its Deployment (k8s/components/apps) and an `images:` entry in overlays/prod and overlays/staging (prod: newTag placeholder).",
+  "images": [
+    { "name": "deployment-service", "group": "api", "context": "nest-microservice", "dockerfile": "nest-microservice/Dockerfile", "target": "deployment-service", "watch": "^nest-microservice/" },
+    { "name": "notification-service", "group": "api", "context": "nest-microservice", "dockerfile": "nest-microservice/Dockerfile", "target": "notification-service", "watch": "^nest-microservice/" },
+    { "name": "content-service", "group": "api", "context": "nest-microservice", "dockerfile": "nest-microservice/Dockerfile", "target": "content-service", "watch": "^nest-microservice/" },
+    { "name": "ai-service", "group": "api", "context": "nest-microservice", "dockerfile": "nest-microservice/Dockerfile", "target": "ai-service", "watch": "^nest-microservice/" },
+    { "name": "deployment-migrate", "group": "api", "context": "nest-microservice", "dockerfile": "nest-microservice/Dockerfile", "target": "migrate", "watch": "^nest-microservice/" },
+    { "name": "portfolio-web", "context": "web", "dockerfile": "web/Dockerfile", "app": "portfolio-web", "siteUrl": "https://www.{domain}", "watch": "^web/(Dockerfile|packages/|apps/portfolio-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "admin-web", "context": "web", "dockerfile": "web/Dockerfile", "app": "admin-web", "siteUrl": "https://admin.{domain}", "watch": "^web/(Dockerfile|packages/|apps/admin-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "render-worker", "context": "web", "dockerfile": "web/apps/render-worker/Dockerfile", "watch": "^web/(packages/video/|apps/render-worker/|package(-lock)?\\.json|tsconfig)" }
+  ]
+}

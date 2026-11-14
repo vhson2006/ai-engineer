@@ -25,13 +25,15 @@ import { Reveal } from '@web/ui/reveal';
 import { LegalNotice } from '@/components/legal-notice';
 import { Seal } from '@/components/logo';
 import { Eyebrow, SectionHeading } from '@/components/section-heading';
-import { ArticleGrid } from '@/features/articles/article-card';
-import { articlePaths, latestArticles, type ArticleSummary } from '@/features/articles/data';
-import { bottled, featured, jars, mapEmbedSrc, mapsHref, ruouCan, signatureBrands, winery } from '@/content/winery';
-import { href, type Locale } from '@/i18n/locales';
-import { getLocale, getMessages, type Messages } from '@/i18n/messages';
-import { formatVnd } from '@/lib/format';
-import { structuredData } from '@/seo';
+import type { ArticleSummary } from '@web/site-kit/articles';
+import { mapEmbedSrc, mapsHref } from '@web/site-kit/business';
+import { ArticleGrid } from '@web/site-kit/components/articles';
+import { formatVnd } from '@web/site-kit/format';
+import { href, type Locale } from '@web/site-kit/locales';
+import { business, winery } from '@/content/business';
+import { bottled, featured, jars, ruouCan, signatureBrands } from '@/content/products';
+import type { Messages } from '@/i18n/dictionaries';
+import { site } from '@/site';
 import cabinet from '../../../public/images/cabinet.jpg';
 import displayJars from '../../../public/images/display-jars.jpg';
 import factory from '../../../public/images/factory.jpg';
@@ -55,16 +57,16 @@ const goldPill = cn(
 
 type Ctx = { t: Messages; locale: Locale };
 
-/** One landing page, prerendered per language. Facts: src/content/winery.ts. */
+/** One landing page, prerendered per language. Facts: src/content/business.ts, products: src/content/products.ts. */
 export default async function HomePage() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
+  const [t, locale] = await Promise.all([site.getMessages(), site.getLocale()]);
   const ctx: Ctx = { t, locale };
   // The articles section only when there are articles (none yet, or the API is down: no section).
-  const articles = await latestArticles(locale, 3);
+  const articles = (await site.latestArticles(locale)).slice(0, 3);
   return (
     <>
       {/* The winery (address, phones, map) and the website for search engines. */}
-      <JsonLd data={structuredData(t, locale)} />
+      <JsonLd data={site.structuredData(t, locale)} />
       <Hero {...ctx} />
       <TrustStrip {...ctx} />
       <Reveal>
@@ -131,16 +133,16 @@ function Hero({ t }: Ctx) {
           </ul>
 
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href={winery.orderPhone.href} className={goldPill}>
+            <a href={business.phone.href} className={goldPill}>
               <Phone aria-hidden />
-              {format(t.common.call, { phone: winery.orderPhone.display })}
+              {format(t.common.call, { phone: business.phone.display })}
             </a>
             <a href="#products" className={cn(pill('secondary'), 'border-white/30 bg-white/5 text-white backdrop-blur hover:bg-white/15')}>
               <Wine aria-hidden />
               {t.common.viewProducts}
             </a>
           </div>
-          <LegalNotice tone="light" className="mt-8" />
+          <LegalNotice t={t} tone="light" className="mt-8" />
         </div>
       </Container>
       <div className="absolute right-8 bottom-8 hidden flex-col items-center gap-2 lg:flex" aria-hidden>
@@ -356,16 +358,16 @@ function Counterfeit({ t }: Ctx) {
             <p className="mt-2 leading-relaxed text-fg">
               {richText(t.counterfeit.text, {
                 phone: (
-                  <a href={winery.orderPhone.href} className="font-bold whitespace-nowrap text-brand-strong underline underline-offset-4">
-                    {winery.orderPhone.display}
+                  <a href={business.phone.href} className="font-bold whitespace-nowrap text-brand-strong underline underline-offset-4">
+                    {business.phone.display}
                   </a>
                 ),
               })}
             </p>
           </div>
-          <a href={winery.orderPhone.href} className={pill()}>
+          <a href={business.phone.href} className={pill()}>
             <Phone aria-hidden />
-            {winery.orderPhone.display}
+            {business.phone.display}
           </a>
         </div>
       </Container>
@@ -444,14 +446,14 @@ function LatestArticles({ t, locale, articles }: Ctx & { articles: ArticleSummar
     <section id="articles" className="bg-surface-2 py-14 sm:py-16">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.articles.latestIntro} />
-          <Link href={href(locale, articlePaths.index)} className={cn(pill('secondary'), 'shrink-0 self-start sm:self-auto')}>
+          <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.blog.latestIntro} />
+          <Link href={href(locale, site.website.paths.articles)} className={cn(pill('secondary'), 'shrink-0 self-start sm:self-auto')}>
             {t.articles.viewAll}
             <ArrowRight aria-hidden />
           </Link>
         </div>
         <div className="mt-10">
-          <ArticleGrid articles={articles} locale={locale} t={t} />
+          <ArticleGrid articles={articles} website={site.website} locale={locale} t={t} />
         </div>
       </Container>
     </section>
@@ -513,7 +515,7 @@ function Contact({ t, locale, afterArticles }: Ctx & { afterArticles: boolean })
                 </div>
               ))}
             </dl>
-            <LegalNotice tone="light" className="mt-auto pt-8" />
+            <LegalNotice t={t} tone="light" className="mt-auto pt-8" />
           </div>
 
           {/* Google Maps across the card (keyless embed; www.google.com is allowed in src/proxy.ts
@@ -521,13 +523,13 @@ function Contact({ t, locale, afterArticles }: Ctx & { afterArticles: boolean })
           <div className="relative isolate h-80 border-t border-border bg-surface-2 sm:h-96 lg:col-span-2">
             <iframe
               title={t.contact.mapTitle}
-              src={mapEmbedSrc(locale)}
+              src={mapEmbedSrc(business, locale)}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="absolute inset-0 -z-10 size-full border-0"
             />
             <a
-              href={mapsHref}
+              href={mapsHref(business)}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(pill(), 'absolute bottom-4 left-4 shadow-lg sm:bottom-6 sm:left-6')}

@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Lantern House Hội An: khách sạn boutique gần phố cổ",
+    "description": "Mười tám phòng quanh khoảng sân có hồ bơi và đèn lồng, cách phố cổ Hội An năm phút đi bộ. Đã gồm bữa sáng, xe đạp miễn phí; đặt phòng qua điện thoại, Zalo hoặc email.",
+    "ogImageAlt": "Khách sạn tường vàng kiểu Pháp với đèn lồng lụa soi bóng xuống hồ bơi lúc chạng vạng"
+  },
+  "blog": {
+    "title": "Thư từ Hội An",
+    "intro": "Ăn gì, khi nào ngắm đèn lồng, và những ngày chậm rãi quanh phố cổ, từ đội ngũ Lantern House.",
+    "metaTitle": "Bài viết: kinh nghiệm du lịch Hội An và đời sống địa phương",
+    "metaDescription": "Ẩm thực, lễ hội, cung đường xe đạp và những ngày thong thả ở Hội An, từ đội ngũ Lantern House, khách sạn boutique gần phố cổ.",
+    "latestIntro": "Ẩm thực, lễ hội và những ngày thong thả quanh phố cổ.",
+    "ctaTitle": "Sắp ghé Hội An?",
+    "ctaText": "Cho chúng tôi biết ngày ở và số khách: chúng tôi trả lời tình trạng phòng và giá tốt nhất, thường trong vòng một giờ."
+  },
+  "footer": {
+    "tagline": "Khách sạn nhỏ mười tám phòng, cách phố cổ năm phút."
+  },
+  "hours": {
+    "reception": "Lễ tân"
+  },
+  "nav": {
+    "top": "Trang chủ",
+    "rooms": "Phòng",
+    "amenities": "Tiện ích",
+    "location": "Vị trí",
+    "policies": "Lưu ý"
+  },
+  "hero": {
+    "eyebrow": "Khách sạn boutique · Hội An",
+    "title": "Về nhà trong ánh đèn lồng",
+    "text": "Mười tám phòng quanh khoảng sân có hồ bơi, cách phố cổ năm phút đi bộ. Bữa sáng dưới tán hoa sứ, xe đạp chờ sẵn ở cổng.",
+    "book": "Đặt phòng",
+    "viewRooms": "Xem các phòng",
+    "imageAlt": "Tường vàng và đèn lồng lụa của khách sạn soi bóng xuống hồ bơi lúc chạng vạng"
+  },
+  "rooms": {
+    "eyebrow": "Phòng",
+    "title": "Ba kiểu phòng",
+    "intro": "Phòng nào cũng có điều hoà, vòi sen mưa, ga giường chất lượng và nhìn ra vườn hoặc hồ bơi.",
+    "perNight": "mỗi đêm",
+    "size": "{size} m²",
+    "guests": "Tối đa {count} khách",
+    "breakfast": "Đã gồm bữa sáng",
+    "book": "Hỏi phòng này",
+    "items": {
+      "garden": {
+        "name": "Garden Twin",
+        "bed": "Hai giường đơn",
+        "imageAlt": "Phòng hai giường trắng mở ra hiên vườn",
+        "features": ["Hiên vườn riêng", "Rèm tre, phía yên tĩnh", "Hợp với bạn bè đi cùng nhau"]
+      },
+      "deluxe": {
+        "name": "Deluxe King",
+        "bed": "Một giường king",
+        "imageAlt": "Phòng deluxe với giường king, nội thất gỗ tối màu và đèn lồng",
+        "features": ["Ban công nhìn xuống sân", "Đèn lồng và nội thất gỗ tối màu", "Bộ pha trà, cà phê"]
+      },
+      "suite": {
+        "name": "Lantern Suite",
+        "bed": "Một giường king và một sofa giường",
+        "imageAlt": "Phòng suite với ghế mây và bồn tắm đặt cạnh cửa sổ lớn",
+        "features": ["Bồn tắm cạnh cửa sổ", "Khu tiếp khách riêng", "Dọn phòng buổi tối kèm bánh địa phương"]
+      }
+    }
+  },
+  "amenities": {
+    "eyebrow": "Tiện ích",
+    "title": "Đủ đầy cho những ngày thong thả",
+    "intro": "Nhỏ đủ để nhớ tên bạn, tiện nghi như một khách sạn lớn hơn.",
+    "poolAlt": "Hồ bơi xanh ngọc giữa hàng dừa và ghế tắm nắng bằng gỗ",
+    "courtyardAlt": "Khu vườn trong sân với cây nhiệt đới và đèn lồng",
+    "items": [
+      { "title": "Hồ bơi trong sân", "text": "Mở từ 7:00 đến 21:00, khăn đặt sẵn cạnh ghế." },
+      { "title": "Đã gồm bữa sáng", "text": "Cao lầu, bánh mì, trái cây và trứng theo ý bạn, phục vụ đến 10:30." },
+      { "title": "Xe đạp miễn phí", "text": "Đạp ra phố cổ hay cánh đồng; bản đồ có tại lễ tân." },
+      { "title": "Đưa đón sân bay", "text": "Xe riêng từ sân bay Đà Nẵng, theo yêu cầu (có phí)." },
+      { "title": "Wi-Fi nhanh", "text": "Khắp khách sạn, kể cả cạnh hồ bơi." },
+      { "title": "Giặt ủi", "text": "Giặt trong ngày, tính theo ký." }
+    ]
+  },
+  "location": {
+    "eyebrow": "Vị trí",
+    "title": "Trên một con phố yên tĩnh, gần mọi thứ",
+    "intro": "Đủ xa chợ đêm để ngủ ngon, đủ gần để đi bộ đi ăn tối.",
+    "imageAlt": "Phố cổ Hội An về đêm dưới những dây đèn lồng lụa nhiều màu",
+    "modes": {
+      "walk": "{minutes} phút đi bộ",
+      "bike": "{minutes} phút đạp xe",
+      "car": "{minutes} phút đi ô tô"
+    },
+    "places": {
+      "oldTown": "Phố cổ và Chùa Cầu",
+      "market": "Chợ Hội An",
+      "traQue": "Làng rau Trà Quế",
+      "anBang": "Biển An Bàng",
+      "myson": "Thánh địa Mỹ Sơn",
+      "airport": "Sân bay Đà Nẵng"
+    }
+  },
+  "policies": {
+    "eyebrow": "Lưu ý",
+    "title": "Trước khi bạn đến",
+    "checkInLabel": "Nhận phòng",
+    "checkOutLabel": "Trả phòng",
+    "from": "từ {time}",
+    "until": "trước {time}",
+    "items": [
+      { "title": "Đặt phòng", "text": "Qua điện thoại, Zalo hoặc email. Chúng tôi xác nhận bằng văn bản với giá, các khoản đã gồm và điều kiện huỷ." },
+      { "title": "Huỷ phòng", "text": "Điều kiện tuỳ theo mùa và loại giá; được ghi rõ trong xác nhận trước khi bạn thanh toán bất cứ khoản nào." },
+      { "title": "Trẻ em", "text": "Trẻ dưới 6 tuổi ở miễn phí cùng phòng bố mẹ; có nôi em bé theo yêu cầu." },
+      { "title": "Thú cưng và hút thuốc", "text": "Chúng tôi chưa nhận thú cưng. Chỉ hút thuốc ngoài vườn, xa các phòng." }
+    ]
+  },
+  "questions": {
+    "items": [
+      { "q": "Có nhận phòng sớm được không?", "a": "Được, khi phòng đã sẵn sàng. Nếu chưa, bạn cứ gửi hành lý, dùng hồ bơi và bữa sáng, chúng tôi gọi khi phòng xong." },
+      { "q": "Đi từ sân bay về khách sạn thế nào?", "a": "Sân bay Đà Nẵng cách khoảng 45 phút đi ô tô. Chúng tôi sắp xếp xe riêng theo yêu cầu; giá được xác nhận khi đặt phòng." },
+      { "q": "Khách sạn có chỗ đỗ xe không?", "a": "Có chỗ cho xe máy, xe đạp trong sân; ô tô gửi ở bãi có phí cách hai phút." },
+      { "q": "Khách sạn có tổ chức tour không?", "a": "Lễ tân đặt giúp lớp nấu ăn, làm đèn lồng, đi thuyền thúng và tham quan Mỹ Sơn với các đối tác địa phương tin cậy." },
+      { "q": "Bữa sáng có luôn được bao gồm không?", "a": "Có, cho mọi phòng và mọi đêm." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Liên hệ",
+    "title": "Chúng tôi sẽ thắp sẵn đèn lồng chờ bạn",
+    "text": "Gọi điện, nhắn Zalo hoặc gửi email ngày ở của bạn: chúng tôi trả lời tình trạng phòng và giá tốt nhất.",
+    "note": "Lễ tân phục vụ cả ngày lẫn đêm."
+  }
+}

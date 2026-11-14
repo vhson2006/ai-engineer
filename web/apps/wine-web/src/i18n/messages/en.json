@@ -1,23 +1,19 @@
 {
   "meta": {
     "title": "Khang Hưng Tửu · Traditional rice and herbal wines from Long An since 1991",
-    "description": "Khang Hưng Tửu winery in Bến Lức, Long An: traditional Gò Đen rice wine, herbal wines, Central Highlands jar wine and steamed wine since 1991. Registered trademark. For adults 18+."
+    "description": "Khang Hưng Tửu winery in Bến Lức, Long An: traditional Gò Đen rice wine, herbal wines, Central Highlands jar wine and steamed wine since 1991. Registered trademark. For adults 18+.",
+    "ogImageAlt": "Khang Hưng Tửu · Traditional rice and herbal wines from Long An since 1991"
   },
   "common": {
-    "skipToContent": "Skip to content",
-    "language": "Language",
     "callNow": "Call to order",
-    "call": "Call {phone}",
-    "zalo": "Message on Zalo",
     "viewProducts": "See our products",
-    "directions": "Get directions",
     "perXi": "/ xị"
   },
-  "legal": {
+  "notices": {
     "age": "Not for people under 18 or pregnant women.",
     "drive": "If you drink, don't drive."
   },
-  "policies": {
+  "legal": {
     "updated": "Last updated: {date}",
     "contents": "Contents",
     "related": "See also",
@@ -270,10 +266,6 @@
     "orderOnly": "Order only through the number printed on our cans: {phone}"
   },
   "nav": {
-    "label": "Main",
-    "home": "Khang Hưng Tửu home",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
     "top": "Home",
     "products": "Products",
     "range": "Our range",
@@ -281,6 +273,13 @@
     "about": "About us",
     "articles": "Articles",
     "contact": "Contact"
+  },
+  "menu": {
+    "label": "Main",
+    "home": "Khang Hưng Tửu home",
+    "open": "Open menu",
+    "close": "Close menu",
+    "articles": "Articles"
   },
   "brand": {
     "tagline": "Long An · Since 1991",
@@ -417,49 +416,24 @@
     },
     "mapTitle": "Google Maps: Khang Hưng Tửu winery"
   },
-  "articles": {
-    "playVideo": "Play the video",
-    "eyebrow": "Articles",
+  "blog": {
     "title": "Stories from Gò Đen",
     "intro": "Brand stories, the craft, how to serve our wines and partner news from Khang Hưng Tửu.",
     "metaTitle": "Articles",
     "metaDescription": "Articles from Khang Hưng Tửu: the brand's story, the infusion room and quality lab, how to serve warm wine and rượu cần, and restaurant partnerships. For adults 18 and over.",
-    "categoriesLabel": "Topics",
-    "all": "All",
+    "latestIntro": "The newest stories, guides and news from the winery.",
+    "ctaTitle": "Order or visit the winery",
+    "ctaText": "Call or message us on Zalo to order. Restaurants and resellers are welcome: we'll come to you."
+  },
+  "articles": {
     "categoryTitle": "Topic: {category}",
     "categoryDescription": "Khang Hưng Tửu articles about {category}.",
-    "featured": "Featured",
-    "readMore": "Read more",
-    "minutes": "{count} min read",
-    "published": "Published {date}",
-    "empty": "No articles in this topic yet.",
     "latest": "Latest articles",
-    "latestIntro": "The newest stories, guides and news from the winery.",
-    "viewAll": "All articles",
     "related": "More on this topic",
-    "share": "Share",
-    "shareFacebook": "Share on Facebook",
-    "copyLink": "Copy link",
-    "copied": "Copied",
     "back": "All articles",
-    "breadcrumb": "Breadcrumb",
-    "none": "No article has been published yet."
-  },
-  "templates": {
-    "metaTitle": "Article templates",
-    "eyebrow": "Article templates",
-    "title": "10 ready-made article templates",
-    "intro": "Pick a template to see it in full. Grey images are where real photos go; text in [square brackets] is to be replaced. This page is for reviewing templates and is hidden from search engines.",
-    "preview": "Preview",
-    "bestFor": "Best for",
-    "blocks": "Layout pieces",
-    "chip": "Template {number}",
-    "banner": "Template {number}/{total} · {name}. Sample content: replace the text in [square brackets] and the grey images.",
-    "languageNote": "The sample text is in Vietnamese, the site's main language.",
-    "all": "All templates",
-    "previous": "Previous template",
-    "next": "Next template",
-    "navLabel": "Switch template"
+    "empty": "No articles in this topic yet.",
+    "featured": "Featured",
+    "viewAll": "All articles"
   },
   "footer": {
     "tagline": "Traditional rice and herbal wines from Bến Lức, Long An, since 1991.",
@@ -468,9 +442,5 @@
     "rights": "© {year} {name}. All rights reserved.",
     "legal": "Legal information"
   },
-  "notFound": {
-    "title": "Page not found",
-    "text": "The page you're looking for doesn't exist or has moved.",
-    "back": "Back to home"
-  }
+  "hours": {}
 }

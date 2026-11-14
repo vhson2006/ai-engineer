@@ -5,14 +5,7 @@
     "ogImageAlt": "The Giặt sấy SFaster sign: one machine per customer · Clean – Fresh – Fast"
   },
   "common": {
-    "skipToContent": "Skip to content",
-    "language": "Language",
-    "call": "Call {phone}",
-    "callNow": "Call now",
-    "zalo": "Message on Zalo",
-    "directions": "Get directions",
     "viewPrices": "See prices",
-    "from": "From {price}",
     "units": {
       "load": "/ load",
       "kg": "/ kg",
@@ -27,15 +20,18 @@
     "hours": "Mon–Fri {weekdays} · Sat–Sun {weekend}"
   },
   "nav": {
-    "label": "Main",
-    "home": "SFaster home",
     "top": "Home",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
     "prices": "Prices",
     "process": "How it works",
     "faq": "FAQ",
     "contact": "Contact",
+    "articles": "Articles"
+  },
+  "menu": {
+    "label": "Main",
+    "home": "SFaster home",
+    "open": "Open menu",
+    "close": "Close menu",
     "articles": "Articles"
   },
   "brand": {
@@ -55,10 +51,22 @@
   "highlights": {
     "label": "Why SFaster",
     "items": {
-      "oneMachine": { "title": "One customer, one machine", "text": "Your laundry is never washed with anyone else's." },
-      "clean": { "title": "Clean & fresh", "text": "Branded detergent, softener and dryer sheets in every load." },
-      "fast": { "title": "Fast", "text": "Front-loading washers and dryers, washed and dried in one visit." },
-      "labelled": { "title": "Bagged & labelled", "text": "Each customer's laundry is bagged separately with its own ticket." }
+      "oneMachine": {
+        "title": "One customer, one machine",
+        "text": "Your laundry is never washed with anyone else's."
+      },
+      "clean": {
+        "title": "Clean & fresh",
+        "text": "Branded detergent, softener and dryer sheets in every load."
+      },
+      "fast": {
+        "title": "Fast",
+        "text": "Front-loading washers and dryers, washed and dried in one visit."
+      },
+      "labelled": {
+        "title": "Bagged & labelled",
+        "text": "Each customer's laundry is bagged separately with its own ticket."
+      }
     }
   },
   "prices": {
@@ -128,22 +136,52 @@
     "title": "Drop off, we wash, you pick up",
     "imageAlt": "Shelves of finished laundry in separate white bags, each with its own ticket",
     "steps": [
-      { "title": "Drop off", "text": "Bring your laundry to the shop, or call or message us on Zalo first." },
-      { "title": "Weigh & ticket", "text": "We weigh your laundry and write you a ticket with the price." },
-      { "title": "Your own machine", "text": "Your laundry is washed and dried on its own: one customer, one machine." },
-      { "title": "Bag, label, pick up", "text": "Clean laundry is bagged with your ticket, ready for you to collect." }
+      {
+        "title": "Drop off",
+        "text": "Bring your laundry to the shop, or call or message us on Zalo first."
+      },
+      {
+        "title": "Weigh & ticket",
+        "text": "We weigh your laundry and write you a ticket with the price."
+      },
+      {
+        "title": "Your own machine",
+        "text": "Your laundry is washed and dried on its own: one customer, one machine."
+      },
+      {
+        "title": "Bag, label, pick up",
+        "text": "Clean laundry is bagged with your ticket, ready for you to collect."
+      }
     ]
   },
   "faq": {
     "eyebrow": "FAQ",
     "title": "Common questions",
     "items": [
-      { "q": "Is my laundry washed with other people's?", "a": "No. SFaster works on one customer, one machine: each customer's laundry is washed and dried on its own." },
-      { "q": "How is the price calculated?", "a": "Clothes and bedding are priced by the weight measured when you drop off; dry cleaning and other services are priced per item, pair or kilo (see the price list)." },
-      { "q": "Can wool, silk, leather or suits go in the machine?", "a": "Those are better in our dry cleaning service, which keeps their shape and material. See the dry cleaning prices." },
-      { "q": "When can I pick my laundry up?", "a": "It depends on how much you bring and the service. Call or message us on Zalo and we'll tell you when it will be ready." },
-      { "q": "How does wash 7 times, get 1 free work?", "a": "After 7 paid washes, your next one is free. Ask at the counter for the details." },
-      { "q": "When is the shop open?", "a": "Monday to Friday from 7:00 to 19:00; Saturdays and Sundays from 7:00 to 17:00. Closed on public holidays." }
+      {
+        "q": "Is my laundry washed with other people's?",
+        "a": "No. SFaster works on one customer, one machine: each customer's laundry is washed and dried on its own."
+      },
+      {
+        "q": "How is the price calculated?",
+        "a": "Clothes and bedding are priced by the weight measured when you drop off; dry cleaning and other services are priced per item, pair or kilo (see the price list)."
+      },
+      {
+        "q": "Can wool, silk, leather or suits go in the machine?",
+        "a": "Those are better in our dry cleaning service, which keeps their shape and material. See the dry cleaning prices."
+      },
+      {
+        "q": "When can I pick my laundry up?",
+        "a": "It depends on how much you bring and the service. Call or message us on Zalo and we'll tell you when it will be ready."
+      },
+      {
+        "q": "How does wash 7 times, get 1 free work?",
+        "a": "After 7 paid washes, your next one is free. Ask at the counter for the details."
+      },
+      {
+        "q": "When is the shop open?",
+        "a": "Monday to Friday from 7:00 to 19:00; Saturdays and Sundays from 7:00 to 17:00. Closed on public holidays."
+      }
     ]
   },
   "contact": {
@@ -152,11 +190,13 @@
     "text": "Come straight in during opening hours, or call or message us on Zalo first.",
     "address": "Address",
     "hours": "Opening hours",
-    "weekdays": "Monday – Friday",
-    "weekend": "Saturday, Sunday",
     "holidays": "Closed on public holidays",
     "phone": "Hotline & Zalo",
     "mapTitle": "Map to the SFaster laundry"
+  },
+  "hours": {
+    "weekdays": "Monday – Friday",
+    "weekend": "Saturday, Sunday"
   },
   "footer": {
     "tagline": "Wash & dry laundry: one customer, one machine. Clean, fresh, fast.",
@@ -165,36 +205,18 @@
     "rights": "© {year} {name}. All rights reserved.",
     "legal": "Legal information"
   },
-  "articles": {
-    "playVideo": "Play the video",
-    "eyebrow": "Articles",
+  "blog": {
     "title": "Laundry tips & shop notes",
     "intro": "Drop-off tips, choosing the right service and how we price your laundry, from SFaster.",
     "metaTitle": "Articles: laundry tips and shop notes",
     "metaDescription": "Tips for dropping off laundry, when to choose dry cleaning, and how SFaster prices laundry by weight or by item.",
-    "home": "Home",
-    "breadcrumb": "Breadcrumb",
-    "all": "All",
-    "categoriesLabel": "Topics",
-    "categoryTitle": "{category}",
-    "categoryDescription": "Articles about {category} from SFaster laundry.",
-    "featured": "Featured",
-    "readMore": "Read more",
-    "minutes": "{count} min read",
-    "latest": "New articles",
     "latestIntro": "Small tips for cleaner laundry, and answers before you drop off.",
-    "viewAll": "All articles",
-    "back": "Back to articles",
-    "related": "Keep reading",
-    "empty": "No articles in this topic yet.",
-    "none": "No article has been published yet.",
     "ctaTitle": "Laundry to do today?",
     "ctaText": "Bring it to the shop, or call or message us on Zalo first."
   },
-  "notFound": {
-    "title": "Page not found",
-    "text": "The page you're looking for doesn't exist or has moved.",
-    "back": "Back to home"
+  "articles": {
+    "categoryDescription": "Articles about {category} from SFaster laundry.",
+    "none": "No article has been published yet."
   },
   "legal": {
     "updated": "Last updated: {date}",
@@ -216,9 +238,7 @@
           "paragraphs": [
             "{name} (“we”), {address}, phone and Zalo {phone}, decides why and how the personal data described in this policy is processed."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "du-lieu-thu-thap",
@@ -252,9 +272,7 @@
           "paragraphs": [
             "We process data with your consent (for example when you contact us and give us information), when it is needed to provide the service you asked for, or when the law requires it. You may withdraw your consent at any time; this does not affect processing done before."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "chia-se",
@@ -277,9 +295,7 @@
             "The website has no sign-in and does not connect to social media accounts. When you follow a link to Zalo, Facebook or another platform, you leave our website and that platform's policy applies.",
             "If we later add sign-in or sharing with a social media account, we will only ask for the minimum permissions needed, describe them in this policy before using them, and you will always be able to ask us to delete your data as described on the Delete your data page."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "luu-tru",
@@ -299,9 +315,7 @@
           "paragraphs": [
             "The website is only served over an encrypted connection (HTTPS) and never stores your passwords or payment details. Only the people who need it to serve you can access your data."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "quyen",
@@ -323,9 +337,7 @@
           "paragraphs": [
             "Call or message us on Zalo at {phone}, or visit the shop at {address}. We may ask a few questions to make sure you own the data before acting on your request."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "tre-em",
@@ -333,9 +345,7 @@
           "paragraphs": [
             "The website and the service are meant for adults. We do not knowingly collect children's data; a child's data is only processed with the consent of a parent or guardian, as the law requires."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "thay-doi",
@@ -343,9 +353,7 @@
           "paragraphs": [
             "When this policy changes, we update this page and the “Last updated” date at the top. Important changes will be clearly announced on the website."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "lien-he",
@@ -353,9 +361,7 @@
           "paragraphs": [
             "{name}, {address}. Phone and Zalo: {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         }
       ]
     },
@@ -371,9 +377,7 @@
             "The prices and service information on the website come from the shop's price board and are indicative only. The price that applies is the one displayed in the shop when you drop off your laundry; the price estimator only gives an approximation.",
             "We may update prices, opening hours and the website's content at any time."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "dich-vu",
@@ -381,9 +385,7 @@
           "paragraphs": [
             "The website presents the shop's services; laundry is dropped off and collected at the shop or as agreed by phone or Zalo. The details of each order (how weight is counted, items needing special care, when to collect) are agreed with the shop when you drop it off. For any question, call or message us on Zalo at {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "bai-viet",
@@ -391,9 +393,7 @@
           "paragraphs": [
             "The articles on the website are general advice on laundry and care. Where they differ, follow the instructions on the item's care label."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "so-huu",
@@ -401,9 +401,7 @@
           "paragraphs": [
             "The name, sign, pictures, articles and design of the website belong to {name} or are used lawfully. You may share links to the website and short quotes with the source; you may not copy content for commercial use without our permission."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "su-dung-hop-le",
@@ -423,9 +421,7 @@
           "paragraphs": [
             "The website links to, and embeds content from, Google Maps, YouTube, Zalo, Facebook and other platforms. We do not control and are not responsible for their content or policies."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "trach-nhiem",
@@ -433,9 +429,7 @@
           "paragraphs": [
             "We try to keep the information accurate and the website running, but cannot guarantee it is always free of errors or interruptions. To the extent permitted by law, we are not liable for damage arising from the use of information on the website. This does not affect your rights as a consumer under Vietnamese law."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "luat-ap-dung",
@@ -443,9 +437,7 @@
           "paragraphs": [
             "These terms are governed by Vietnamese law. Disputes are first settled by negotiation; failing that, by the competent authority as provided by law."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "thay-doi",
@@ -453,9 +445,7 @@
           "paragraphs": [
             "When these terms change, we update this page and the “Last updated” date at the top. Continuing to use the website afterwards means you accept the new terms."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "lien-he",
@@ -463,9 +453,7 @@
           "paragraphs": [
             "{name}, {address}. Phone and Zalo: {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         }
       ]
     },
@@ -480,9 +468,7 @@
           "paragraphs": [
             "Your contact details (name, phone number), your messages with the shop, your order details, and any data we received from your social media account (if any)."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "cach-yeu-cau",
@@ -503,9 +489,7 @@
             "If you messaged the shop on Facebook, Zalo or another platform, you can delete the conversation on your side in that app. To have us delete the shop's copy, send a request as above.",
             "If you signed in or connected a social media account to the website (once this is available), you can remove its access in the platform's settings (for example Facebook: Settings & privacy → Settings → Apps and websites), then send a deletion request as above."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "giu-lai",
@@ -513,9 +497,7 @@
           "paragraphs": [
             "Some data may have to be kept when the law requires it (for example accounting records) or to settle an open complaint. We then keep only what is needed and delete it when the period ends."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "lien-he",
@@ -523,9 +505,7 @@
           "paragraphs": [
             "{name}, {address}. Phone and Zalo: {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         }
       ]
     }

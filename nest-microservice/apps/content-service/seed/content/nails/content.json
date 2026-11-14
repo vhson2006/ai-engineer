@@ -1,0 +1,634 @@
+{
+  "site": {
+    "id": "nails",
+    "name": "Envy Nails Spa of Wendell",
+    "locales": [
+      "en",
+      "vi"
+    ],
+    "defaultLocale": "en"
+  },
+  "categories": [
+    {
+      "key": "care",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Nail care",
+          "slug": "nail-care"
+        },
+        {
+          "locale": "vi",
+          "name": "Chăm sóc móng",
+          "slug": "cham-soc-mong"
+        }
+      ]
+    },
+    {
+      "key": "services",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Services",
+          "slug": "services"
+        },
+        {
+          "locale": "vi",
+          "name": "Dịch vụ",
+          "slug": "dich-vu"
+        }
+      ]
+    },
+    {
+      "key": "salon",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Salon notes",
+          "slug": "salon"
+        },
+        {
+          "locale": "vi",
+          "name": "Tin tiệm",
+          "slug": "tin-tiem"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "7d3a75d1-711c-40a7-bb08-59fb68d57d1a",
+      "source": "ai",
+      "prompt": "A top-down realistic photo of well-groomed female hands displaying a smooth, high-gloss gel manicure on a bright white marble background, soft natural lighting, elegant aesthetic, no text",
+      "filename": "A top-down realistic photo of well-groomed female hands disp.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 11140,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 29822,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 33644,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T11:49:55.263Z"
+    },
+    {
+      "id": "e384a963-20e7-4260-8dac-d26a2b9a060f",
+      "source": "ai",
+      "prompt": "A realistic close-up photo of neat female hands with glossy neutral gel manicured nails, resting naturally on a clean light oak table next to a ceramic cup, warm natural morning light, no people, no text",
+      "filename": "A realistic close-up photo of neat female hands with glossy .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 20744,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 54322,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 60146,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T11:49:55.286Z"
+    },
+    {
+      "id": "dc233c3d-4771-4fdb-898f-201f3a7254be",
+      "source": "ai",
+      "prompt": "A close up flat lay photograph of elegant manicured fingernails with shiny neutral gel polish resting on a textured linen towel next to a small glass dropper bottle of cuticle oil in soft natural morning light.",
+      "filename": "A close up flat lay photograph of elegant manicured fingerna.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 42634,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 124966,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 141136,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:10:18.584Z"
+    },
+    {
+      "id": "a494ffd8-1f7a-4f30-b34e-6f449b2234c9",
+      "source": "ai",
+      "prompt": "Close up photo of hands wearing clean yellow rubber gloves while washing dishes in natural daylight, no face visible, soft focus kitchen background",
+      "filename": "Close up photo of hands wearing clean yellow rubber gloves w.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 27382,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 66744,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 75644,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:10:18.594Z"
+    },
+    {
+      "id": "82c1d5f5-a2e8-49a8-88f0-cf342114dd87",
+      "source": "ai",
+      "prompt": "A top-down aesthetic photo of healthy manicured hands resting on a clean, soft linen towel next to a dropper bottle of amber cuticle oil and a glass nail file, soft warm morning lighting, no text, no logo",
+      "filename": "A top-down aesthetic photo of healthy manicured hands restin.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 30936,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 94246,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 106948,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:11:18.589Z"
+    },
+    {
+      "id": "ec6de0d4-5d37-4ae7-ab55-a87f3995708c",
+      "source": "ai",
+      "prompt": "Close-up of clean, well-cared-for hands holding a glass bottle with an oil dropper, soft natural window light, calm neutral background, realistic photography",
+      "filename": "Close-up of clean, well-cared-for hands holding a glass bott.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 14526,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 35520,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 39680,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:11:18.598Z"
+    },
+    {
+      "id": "1d428932-1860-4921-b7c1-33ddc90a07f3",
+      "source": "ai",
+      "prompt": "A close up photo of well-manicured hands showcasing elegant neutral nails, resting on a clean marble surface with soft natural lighting, warm tone, no text, no logo, professional quality",
+      "filename": "A close up photo of well-manicured hands showcasing elegant .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 12912,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 32692,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 36400,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:12:53.922Z"
+    },
+    {
+      "id": "3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5",
+      "source": "ai",
+      "prompt": "A clean, bright aesthetic salon manicure workstation with neutral nail color swatches, fine dip powder containers, soft natural daylight, shallow depth of field, no people, no text, no logos",
+      "filename": "A clean, bright aesthetic salon manicure workstation with ne.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 19758,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 47264,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 51308,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:12:53.939Z"
+    },
+    {
+      "id": "8d2103b5-bc0b-4902-bfaa-148bfac3855d",
+      "source": "ai",
+      "prompt": "A warm, elegant still life of natural manicured hands resting beside a glass bottle of cuticle oil, a tube of moisturizing hand lotion, and soft neutral textiles in bright morning light",
+      "filename": "A warm, elegant still life of natural manicured hands restin.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 23576,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 59622,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 67486,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:15:03.242Z"
+    },
+    {
+      "id": "b09aa93c-9bb6-4e82-a2a8-40faf2139402",
+      "source": "ai",
+      "prompt": "A close up photo of manicured female hands applying nourishing cuticle oil with a glass dropper, soft neutral background, cozy knit sweater, gentle natural lighting",
+      "filename": "A close up photo of manicured female hands applying nourishi.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 20990,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 52468,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 56428,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:15:03.256Z"
+    },
+    {
+      "id": "b4e43de1-2545-47a5-bc6e-7f586928d156",
+      "source": "ai",
+      "prompt": "A serene, beautifully lit salon setting showing manicured hands resting on a clean minimalist workstation with polished tools and elegant bottles, natural daylight, soft shadows, no text, no logo.",
+      "filename": "A serene, beautifully lit salon setting showing manicured ha.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 18754,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 47486,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 52640,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:16:36.896Z"
+    },
+    {
+      "id": "93cf7fff-d270-49e0-8f45-76f6864db5a9",
+      "source": "ai",
+      "prompt": "Realistic close-up photograph of hands receiving a relaxing hand massage on a clean white salon towel, warm natural daylight, gentle aesthetic, no logos, no text, no recognizable faces.",
+      "filename": "Realistic close-up photograph of hands receiving a relaxing .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 21430,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 53552,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 61444,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:16:36.937Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "d2453b6f-b0bb-4326-b251-c5bba54b2609",
+      "categoryKey": "salon",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-12T08:51:39.127Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the salon’s pastel colours.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Prices and hours exactly as on the salon’s menu and opening hours.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise what the salon hasn’t confirmed (promotions, service times, staff names).</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, gel / acrylic, regular polish / gel polish.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a service, a nail look, the salon itself.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to book online, call or drop by.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the salon.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Envy Nails Spa sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu pastel của tiệm.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng giá và giờ như bảng giá, giờ mở cửa của tiệm.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa điều tiệm chưa xác nhận (khuyến mãi, thời gian làm, tên thợ).</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, gel / acrylic, sơn thường / sơn gel.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một dịch vụ, một mẫu nail, không gian tiệm.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc đặt lịch trực tuyến, gọi điện hay ghé tiệm.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với tiệm.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Envy Nails Spa · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "08883e6e-a923-4773-98b7-53403ac9937f",
+      "categoryKey": "care",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "7d3a75d1-711c-40a7-bb08-59fb68d57d1a",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T14:49:50.121Z",
+      "createdAt": "2026-11-13T11:50:02.977Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "How to Make Your Gel Manicure Last Longer",
+          "slug": "how-to-make-your-gel-manicure-last-longer",
+          "excerpt": "Discover practical everyday tips to protect your nails, avoid early chipping, and make your gel manicure last longer between salon visits.",
+          "coverAlt": "A top-down view of beautifully manicured hands with soft gel polish resting on a bright marble surface",
+          "body": "<p class=\"tpl-lead\">A fresh salon set feels fantastic, but daily life with busy schedules and household chores can quickly put your polish to the test. With a few simple habits, you can keep your nails looking polished and help your <strong>gel manicure last longer</strong> without extra stress.</p>\n<h2>Why Gel Manicures Need Everyday Care</h2>\n<p>Gel polish forms a strong, cured seal over the nail plate, making it far more durable than traditional polish. However, your natural nail underneath remains flexible and porous. Frequent contact with water, detergents, and physical impacts causes natural nails to expand and contract, which gradually weakens the gel bond over time.</p>\n<blockquote class=\"tpl-pull\"><p>Maintaining a pristine finish depends just as much on daily care at home as it does on expert application.</p></blockquote>\n<h2>Smart Daily Habits to Protect Your Polish</h2>\n<p>Preventing early chips often comes down to small, mindful adjustments in how you handle everyday tasks.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Slip on protective gloves</h3><p>Wear rubber gloves whenever you wash dishes or handle cleaning products to shield the gel seal from harsh detergents.</p></div><div class=\"tpl-item\"><h3>Treat nails as jewels, not tools</h3><p>Use the pads of your fingers, keys, or a pen rather than your nail tips to open cans, packages, or soda tabs.</p></div><div class=\"tpl-item\"><h3>Limit hot water exposure</h3><p>Avoid prolonged soaking in steaming water or hot tubs, which can seep into microscopic edges and lift the polish.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/1376.webp\" alt=\"Manicured hands with shiny neutral gel polish resting on a clean wooden table next to a warm mug\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/640.webp 640w, {{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/1280.webp 1280w, {{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Simple daily precautions help preserve the shine and bond of your gel polish.</figcaption></figure>\n<h2>Keep Your Cuticles and Nails Hydrated</h2>\n<p>Brittle, dehydrated nails tend to bend and crack, leading to lifted polish along the free edge. Supple nails provide a stable foundation that moves naturally without breaking the cured gel layer.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>The Nighttime Moisture Habit</h3><p>Massage a drop of <strong>cuticle oil</strong> around your nail beds every evening before bed, then apply a nourishing hand cream to lock in moisture overnight.</p></section>\n<h2>Common Mistakes That Cause Early Peeling</h2>\n<p>When a corner starts to catch on clothing or hair, the temptation to pull it away can be overwhelming. Doing so creates lasting damage that compromises future manicures.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Avoid the Urge to Peel</h3><p>Never pick, pry, or peel loose gel off your nails. Tearing off lifted polish removes delicate layers of your natural nail plate, creating an uneven surface that makes future manicures lift even faster.</p></section>\n<h2>When to Refresh Your Manicure at the Salon</h2>\n<p>Even with diligent care, your natural nails continue to grow, shifting the balance of weight forward and creating a visible gap near the cuticle after two to three weeks. Visiting the salon for a scheduled refresh ensures the old product is removed gently without scraping, giving your natural nails the care they need to stay strong.</p>\n<section class=\"tpl-cta\"><h3>Plan Your Next Salon Visit</h3><p>Keep your nails looking elegant and refreshed. Schedule your next appointment at Envy Nails Spa of Wendell for professional nail care designed around your routine.</p></section>",
+          "readingMinutes": 2,
+          "seoTitle": "How to Make Your Gel Manicure Last Longer",
+          "seoDescription": "Keep your gel manicure looking fresh and chip-free with easy daily care tips from Envy Nails Spa of Wendell."
+        },
+        {
+          "locale": "vi",
+          "title": "Cách giữ móng gel bền đẹp lâu hơn",
+          "slug": "cach-giu-mong-gel-ben-dep-lau-hon",
+          "excerpt": "Khám phá những mẹo thực tế hàng ngày để bảo vệ móng, tránh bong tróc sớm và giữ bộ móng gel bền đẹp lâu hơn giữa các lần đến tiệm.",
+          "coverAlt": "Góc nhìn từ trên xuống của đôi bàn tay được làm móng tuyệt đẹp với lớp sơn gel mềm mại đặt trên mặt đá cẩm thạch sáng bóng",
+          "body": "<p class=\"tpl-lead\">Một bộ móng mới làm ở tiệm mang lại cảm giác thật tuyệt vời, nhưng nhịp sống bận rộn và việc nhà hàng ngày có thể nhanh chóng thử thách độ bền của lớp sơn. Chỉ với một vài thói quen đơn giản, bạn có thể giữ cho móng luôn chỉn chu và giúp <strong>móng gel bền đẹp lâu hơn</strong> mà không cần tốn nhiều công sức.</p>\n<h2>Vì sao móng gel cần được chăm sóc hàng ngày</h2>\n<p>Sơn gel tạo thành một lớp phủ chắc chắn đã qua sấy đèn trên bề mặt móng, giúp sơn bền hơn nhiều so với sơn thường. Tuy nhiên, móng thật bên dưới vẫn có độ dẻo và độ xốp. Việc tiếp xúc thường xuyên với nước, chất tẩy rửa và các va chạm vật lý khiến móng thật giãn nở và co lại, từ đó làm yếu dần liên kết gel theo thời gian.</p>\n<blockquote class=\"tpl-pull\"><p>Duy trì lớp sơn hoàn hảo phụ thuộc vào việc chăm sóc hàng ngày tại nhà cũng nhiều như kỹ thuật sơn chuyên nghiệp tại tiệm.</p></blockquote>\n<h2>Thói quen thông minh hàng ngày để bảo vệ lớp sơn</h2>\n<p>Ngăn ngừa tình trạng bong tróc sớm thường bắt đầu từ những điều chỉnh nhỏ, cẩn thận trong cách bạn làm các công việc hàng ngày.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Đeo găng tay bảo vệ</h3><p>Đeo găng tay cao su bất cứ khi nào bạn rửa bát hoặc tiếp xúc với các sản phẩm tẩy rửa để bảo vệ lớp gel khỏi các hóa chất mạnh.</p></div><div class=\"tpl-item\"><h3>Xem móng là trang sức, không phải công cụ</h3><p>Dùng phần thịt đầu ngón tay, chìa khóa hoặc bút thay vì dùng đầu móng để mở đồ hộp, bưu phẩm hoặc nắp lon nước ngọt.</p></div><div class=\"tpl-item\"><h3>Hạn chế tiếp xúc với nước nóng</h3><p>Tránh ngâm móng lâu trong nước nóng bốc hơi hoặc bồn nước nóng, vì nước có thể len lỏi vào các kẽ siêu nhỏ và làm bong tróc lớp sơn.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/1376.webp\" alt=\"Đôi bàn tay được làm móng với lớp sơn gel màu trung tính sáng bóng đặt trên bàn gỗ sạch cạnh một chiếc cốc ấm\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/640.webp 640w, {{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/1280.webp 1280w, {{media}}/e384a963-20e7-4260-8dac-d26a2b9a060f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Những lưu ý đơn giản hàng ngày giúp giữ gìn độ bóng và độ bám dính của lớp sơn gel.</figcaption></figure>\n<h2>Giữ ẩm cho móng và vùng da quanh móng</h2>\n<p>Móng giòn, thiếu ẩm rất dễ bị uốn cong và nứt gãy, dẫn đến việc lớp sơn bị hở ở phần đầu móng. Móng dẻo dai tạo nên lớp nền vững chắc, có thể cử động tự nhiên mà không làm vỡ lớp gel đã sấy cứng.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Thói quen dưỡng ẩm ban đêm</h3><p>Massage một giọt <strong>dầu dưỡng viền móng</strong> quanh gốc móng vào mỗi tối trước khi ngủ, sau đó thoa kem dưỡng tay để khóa ẩm suốt đêm.</p></section>\n<h2>Những sai lầm phổ biến khiến móng nhanh bong tróc</h2>\n<p>Khi một góc móng bắt đầu vướng vào quần áo hay tóc, bạn sẽ rất muốn bóc nó ra ngay. Tuy nhiên, việc này sẽ gây tổn thương lâu dài và ảnh hưởng đến những lần làm móng tiếp theo.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Kìm chế thói quen cạy, bóc móng</h3><p>Tuyệt đối không cạy, nạy hoặc bóc lớp gel bị bong ra khỏi móng. Bóc lớp sơn bong tróc sẽ làm mất đi các lớp mỏng manh trên bề mặt móng thật, tạo nên bề mặt không bằng phẳng khiến những bộ móng sau này càng dễ bong hơn.</p></section>\n<h2>Khi nào nên làm mới bộ móng tại tiệm</h2>\n<p>Dù bạn chăm sóc kỹ lưỡng, móng thật vẫn tiếp tục dài ra, làm trọng tâm móng dồn về phía trước và để lộ khoảng trống rõ rệt gần gốc móng sau hai đến ba tuần. Đến tiệm để làm mới định kỳ giúp lớp sơn cũ được tháo bỏ nhẹ nhàng mà không cần cạo móng, mang lại cho móng thật sự chăm sóc cần thiết để luôn chắc khỏe.</p>\n<section class=\"tpl-cta\"><h3>Lên kế hoạch cho lần ghé tiệm tiếp theo</h3><p>Giữ cho đôi móng luôn thanh lịch và tươi mới. Hãy đặt lịch hẹn tiếp theo tại Envy Nails Spa of Wendell để được chăm sóc móng chuyên nghiệp, phù hợp với thói quen sinh hoạt của bạn.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Cách giữ móng gel bền đẹp lâu hơn",
+          "seoDescription": "Giữ cho bộ móng gel luôn tươi mới và không bị bong tróc với các mẹo chăm sóc hàng ngày đơn giản từ Envy Nails Spa of Wendell."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "cf87fcdf-7233-4bfb-91bc-09123d8f591c",
+      "categoryKey": "care",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "dc233c3d-4771-4fdb-898f-201f3a7254be",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:12:28.761Z",
+      "createdAt": "2026-11-13T17:11:25.374Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Gel Manicure Aftercare: Keep Nails Strong and Shiny",
+          "slug": "gel-manicure-aftercare-keep-nails-strong-and-shiny",
+          "excerpt": "Learn how proper gel manicure aftercare protects natural nail strength while keeping your salon color flawless, vibrant, and long-lasting.",
+          "coverAlt": "Manicured hands with glossy gel polish resting on linen.",
+          "body": "<p class=\"tpl-lead\">Walking out of the salon with a fresh set of glossy, durable nails is an unbeatable feeling. A professional gel service offers brilliant shine and smudge-free endurance that traditional polish cannot match. However, the secret to preserving that mirror-like finish while maintaining the health of your natural nail bed lies in your daily routine. Implementing intentional <strong>gel manicure aftercare</strong> safeguards your nail plates, prevents premature lifting, and keeps your hands looking pristine for weeks.</p>\n<h2>Why Gel Manicure Aftercare Matters for Nail Health</h2>\n<p>Gel polish forms a tight, resilient polymer bond over the nail plate under LED or UV light. While this hard seal offers superb protection against daily wear, it also creates a barrier that can trap dryness if underlying moisture is neglected. Understanding the purpose of dedicated <strong>gel manicure aftercare</strong> allows you to preserve both the visible gloss and the physical integrity of your natural nails beneath the coating.</p>\n<p>When your natural nails become parched, they tend to shrink and flex away from the rigid gel overlay. This microscopic movement causes air pockets, which lead directly to peeling and chipping. By prioritizing consistent nail care, you support the natural <strong>flexibility and resilience</strong> of the nail plate, allowing the gel layer to remain bonded comfortably without stressing the delicate keratin layers underneath.</p>\n<h2>Daily Moisture Routines for Cuticles and Nails</h2>\n<p>Hydration is the single most important factor in keeping your gel finish flexible and your nail matrix thriving. While gel polish repels water on the surface, your cuticles, proximal nail fold, and the underside of the free edge still need active nourishment. Incorporating a dedicated hydration ritual into your morning and evening habits makes a noticeable difference in preventing brittleness.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Dispense Quality Cuticle Oil</h3><p>Dispense a single drop of cuticle oil containing jojoba or sweet almond oil at the base of each clean nail.</p></div><div class=\"tpl-item\"><h3>Massage Deeply into Surrounding Skin</h3><p>Use your thumb to massage the oil gently in small circular motions into the cuticle, lateral nail folds, and under the tip.</p></div><div class=\"tpl-item\"><h3>Seal with a Nourishing Hand Cream</h3><p>Apply a rich, fragrance-free hand cream over your entire hands to lock in the oil and create a protective barrier.</p></div></section>\n<p>Jojoba oil molecules are uniquely small, allowing them to penetrate deep into dry skin and beneath the edges of the cured gel. Consistent application keeps the surrounding tissue soft, which prevents ragged hangnails that tempt picking.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Hydration on the Go</h3><p>Keep a small roller bottle of nourishing cuticle oil on your nightstand and another by your desk. Applying oil right before sleep allows the treatment to absorb deeply without being washed away by daytime hand hygiene.</p></section>\n<h2>Everyday Habits That Protect Your Gel Polish</h2>\n<p>Our hands perform thousands of tasks each day, exposing our manicures to friction, pressure, and harsh household chemicals. Developing mindful habits safeguards the cured edge of the polish and prevents micro-fractures that dull your shine. Treat your nails as delicate jewels rather than utility tools when opening packages, unbuckling latches, or handling rough surfaces.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/1376.webp\" alt=\"A woman wearing durable rubber protective gloves while washing ceramic dishes by hand.\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/640.webp 640w, {{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/1280.webp 1280w, {{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Wearing household gloves shields your gel manicure from harsh cleaning agents and hot water.</figcaption></figure>\n<p>Excessive submersion in warm water is another common culprit behind lifted gel. Water causes the natural nail plate to expand; once dry, it contracts, disrupting the adhesive seal along the sidewalls. Always wear <strong>protective household gloves</strong> when washing dishes, cleaning countertops, or tending to garden chores. This simple step keeps cleaning chemicals from stripping natural oils and drying out the gel surface.</p>\n<h2>What to Avoid: Protecting the Natural Nail Plate</h2>\n<p>The greatest threat to nail health during a gel cycle is mechanical trauma. When a corner of gel starts to lift, the temptation to peel it off can feel overwhelming. However, peeling cured gel forcibly pulls away the top layers of the nail plate, leaving the surface thinned, uneven, and prone to painful splitting.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Resist the Urge to Peel</h3><p>Never pick, scrape, or peel away lifting gel polish. Forcible peeling strips vital keratin layers, resulting in white surface patches, thinning, and long-term nail sensitivity that can take months to grow out.</p></section>\n<p>Avoid filing the top surface of your gel or using metal implements to pry beneath the edges. If an edge catches on hair or clothing, gently buff the snag smooth with an emery board or secure it with a tiny drop of clear top coat until you can have it properly repaired or removed by a salon professional.</p>\n<h2>Safe Removal and When to Give Nails a Rest</h2>\n<p>Proper removal is an essential pillar of effective <strong>gel manicure aftercare</strong>. The safe removal process involves breaking the top gloss layer with a gentle file, soaking the nails in pure acetone using wrapped cotton pads, and allowing the product to dissolve naturally. The softened gel should slide off effortlessly with an orangewood stick; scraping with force should never occur.</p>\n<p>If you notice that your natural nails feel thin, excessively flexible, or fragile after multiple consecutive gel applications, consider taking a brief recovery break. A rest period of two to three weeks allows you to focus solely on <strong>intensive nail conditioning</strong> with strengthening treatments, rich balms, and keratin-boosting care before scheduling your next fresh color application.</p>\n<h2>Frequently Asked Questions About Post-Gel Care</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>How often should I apply cuticle oil over gel polish?</h3><p>Applying cuticle oil two to three times daily delivers the best results. At minimum, massage it into your cuticles once every evening before bed to counteract the drying effects of daily hand washing.</p></div><div class=\"tpl-item\"><h3>Can I file or trim my nails while wearing gel polish?</h3><p>It is best to avoid shaping your nails once the gel has been cured. Filing breaks the protective seal applied by the technician along the free edge, which allows moisture and oils to slip underneath and prompt premature chipping.</p></div><div class=\"tpl-item\"><h3>Do long hot baths or saunas ruin a gel manicure?</h3><p>Prolonged exposure to hot steam causes the natural nail to soften and expand rapidly, which can loosen the bond of the gel. Keep showers warm rather than piping hot and dry your hands thoroughly afterward.</p></div><div class=\"tpl-item\"><h3>How long should I leave a gel manicure on?</h3><p>A standard gel manicure is designed to wear comfortably for two to three weeks. Leaving gel on past three weeks shifts the balance point forward as the nail grows, placing undue strain on the apex and risking breakage.</p></div></section>\n<section class=\"tpl-cta\"><h3>Keep Your Nails Glowing Between Salon Visits</h3><p>Prioritize your nail health between salon appointments by adopting gentle daily habits and consistent moisture routines. Treat your hands with the mindful attention they deserve to enjoy vibrant, resilient nails all year round.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Gel Manicure Aftercare Guide for Healthy Nails",
+          "seoDescription": "Discover expert gel manicure aftercare tips to extend polish life and protect your natural nail plates between professional salon visits."
+        },
+        {
+          "locale": "vi",
+          "title": "Chăm sóc móng sau khi sơn gel: Giữ móng chắc khỏe và sáng bóng",
+          "slug": "cham-soc-mong-sau-khi-son-gel-giu-mong-chac-khoe-va-sang-bong",
+          "excerpt": "Tìm hiểu cách chăm sóc móng sau khi sơn gel đúng cách để bảo vệ độ chắc khỏe tự nhiên của móng, đồng thời giữ màu sơn luôn hoàn hảo, rạng rỡ và bền đẹp.",
+          "coverAlt": "Bàn tay được chăm sóc tỉ mỉ với lớp sơn gel bóng bẩy đặt trên nền vải lanh.",
+          "body": "<p class=\"tpl-lead\">Cảm giác bước ra khỏi tiệm với bộ móng bóng đẹp, bền chắc thật tuyệt vời. Dịch vụ sơn gel chuyên nghiệp mang đến độ bóng bẩy rạng rỡ và độ bền không lem mà sơn thường khó sánh bằng. Tuy nhiên, bí quyết để giữ trọn độ bóng như gương ấy và duy trì sức khỏe cho móng tự nhiên lại nằm ở thói quen hằng ngày của bạn. Việc thực hiện <strong>chăm sóc móng sau khi sơn gel</strong> đúng cách sẽ bảo vệ bề mặt móng, chống bong tróc sớm và giữ cho đôi tay luôn hoàn hảo trong nhiều tuần.</p>\n<h2>Vì sao chăm sóc móng sau khi sơn gel lại quan trọng cho sức khỏe của móng</h2>\n<p>Sơn gel tạo thành một lớp liên kết polymer bền chắc trên bề mặt móng dưới ánh đèn LED hoặc UV. Dù lớp phủ cứng này bảo vệ móng rất tốt trước những tác động hằng ngày, nó cũng tạo nên một lớp màng có thể khiến móng bị khô nếu không được cấp ẩm. Hiểu rõ tầm quan trọng của việc <strong>chăm sóc móng sau khi sơn gel</strong> sẽ giúp bạn vừa duy trì được vẻ sáng bóng bên ngoài, vừa bảo vệ độ chắc khỏe tự nhiên của móng bên dưới lớp sơn.</p>\n<p>Khi móng tự nhiên bị thiếu ẩm, chúng có xu hướng co lại và tách khỏi lớp gel cứng bên trên. Sự xê dịch cực nhỏ này tạo ra các bọt khí, trực tiếp dẫn đến hiện tượng bong tróc và mẻ móng. Bằng cách chăm sóc móng đều đặn, bạn sẽ duy trì được <strong>độ dẻo dai và đàn hồi</strong> tự nhiên của móng, giúp lớp gel bám chắc thoải mái mà không gây áp lực lên các lớp keratin mỏng manh bên dưới.</p>\n<h2>Quy trình dưỡng ẩm hằng ngày cho viền móng và móng</h2>\n<p>Cấp ẩm là yếu tố quan trọng nhất để giữ cho lớp sơn gel dẻo dai và nuôi dưỡng mầm móng phát triển khỏe mạnh. Mặc dù bề mặt sơn gel chống thấm nước, nhưng vùng da quanh móng, nếp gấp móng và mặt dưới đầu móng vẫn rất cần được nuôi dưỡng. Việc duy trì thói quen dưỡng ẩm vào mỗi sáng và tối sẽ tạo nên sự khác biệt rõ rệt trong việc ngăn ngừa móng giòn gãy.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Nhỏ dầu dưỡng viền móng chất lượng cao</h3><p>Nhỏ một giọt dầu dưỡng chứa dầu jojoba hoặc dầu hạnh nhân ngọt vào gốc của từng chiếc móng đã được làm sạch.</p></div><div class=\"tpl-item\"><h3>Mát-xa kỹ vào vùng da quanh móng</h3><p>Dùng ngón tay cái mát-xa nhẹ nhàng theo chuyển động tròn nhỏ vào phần viền móng, hai bên mép móng và dưới đầu móng.</p></div><div class=\"tpl-item\"><h3>Khóa ẩm bằng kem dưỡng da tay</h3><p>Thoa một lớp kem dưỡng tay giàu dưỡng chất, không mùi lên toàn bộ bàn tay để khóa dầu dưỡng và tạo màng chắn bảo vệ.</p></div></section>\n<p>Phân tử dầu jojoba có kích thước siêu nhỏ, giúp thẩm thấu sâu vào vùng da khô và len lỏi dưới mép lớp gel đã hơ khô. Thoa dầu đều đặn sẽ giúp vùng da quanh móng luôn mềm mại, ngăn ngừa xước măng rô gây khó chịu.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Dưỡng ẩm mọi lúc mọi nơi</h3><p>Hãy để một chai dầu dưỡng viền móng dạng lăn nhỏ ở đầu giường và một chai tại bàn làm việc. Thoa dầu ngay trước khi đi ngủ sẽ giúp dưỡng chất thẩm thấu sâu mà không lo bị trôi đi do rửa tay ban ngày.</p></section>\n<h2>Thói quen hằng ngày giúp bảo vệ lớp sơn gel</h2>\n<p>Đôi tay của chúng ta làm hàng nghìn việc mỗi ngày, khiến bộ móng dễ bị ma sát, chịu lực tác động và tiếp xúc với hóa chất tẩy rửa mạnh. Hình thành những thói quen cẩn thận sẽ bảo vệ đầu móng sơn gel và ngăn ngừa các vết nứt li ti làm mờ độ bóng. Hãy nâng niu móng tay như những món trang sức quý giá thay vì dùng chúng như công cụ khi mở gói hàng, cạy nắp hay chạm vào các bề mặt thô ráp.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/1376.webp\" alt=\"Người phụ nữ đeo găng tay cao su bảo vệ bền chắc khi rửa chén đĩa sứ bằng tay.\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/640.webp 640w, {{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/1280.webp 1280w, {{media}}/a494ffd8-1f7a-4f30-b34e-6f449b2234c9/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Đeo găng tay gia dụng giúp bảo vệ bộ móng sơn gel khỏi các chất tẩy rửa mạnh và nước nóng.</figcaption></figure>\n<p>Ngâm tay quá lâu trong nước ấm cũng là nguyên nhân phổ biến khiến sơn gel bị bong. Nước làm cho bản móng tự nhiên nở ra; khi khô, móng co lại làm phá vỡ độ bám dính dọc theo các mép móng. Hãy luôn đeo <strong>găng tay bảo hộ gia dụng</strong> khi rửa bát, lau dọn bàn bếp hay làm vườn. Bước đơn giản này ngăn hóa chất tẩy rửa lấy đi lớp dầu tự nhiên và làm khô bề mặt gel.</p>\n<h2>Những điều cần tránh: Bảo vệ bề mặt móng tự nhiên</h2>\n<p>Mối đe dọa lớn nhất đối với sức khỏe của móng khi sơn gel là các tổn thương vật lý. Khi một góc móng gel bắt đầu bong, bạn sẽ rất muốn bóc nó ra. Tuy nhiên, việc cố tình bóc lớp gel đã hơ cứng sẽ kéo theo các lớp biểu bì trên bề mặt móng, khiến móng bị mỏng, sần sùi và dễ gãy nứt gây đau đớn.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Đừng tự ý bóc sơn gel</h3><p>Tuyệt đối không cạy, cạo hoặc bóc lớp sơn gel đang bong. Việc bóc móng thô bạo sẽ lột đi các lớp keratin quan trọng, để lại các đốm trắng, làm mỏng móng và khiến móng nhạy cảm, yếu ớt trong nhiều tháng cho đến khi mọc lại hoàn toàn.</p></section>\n<p>Tránh dũa lên bề mặt gel hoặc dùng dụng cụ kim loại để cạy dưới mép móng. Nếu mép móng bị vướng vào tóc hay quần áo, hãy nhẹ nhàng dũa mịn chỗ vướng bằng giũa móng mềm hoặc chấm một giọt sơn bóng không màu để cố định tạm thời cho đến khi bạn có thể đến tiệm nhờ thợ chuyên nghiệp sửa hoặc tháo móng đúng cách.</p>\n<h2>Tháo móng an toàn và thời điểm nên để móng nghỉ ngơi</h2>\n<p>Tháo móng đúng cách là một phần cốt lõi trong việc <strong>chăm sóc móng sau khi sơn gel</strong> hiệu quả. Quy trình tháo móng an toàn bao gồm dũa nhẹ để phá vỡ lớp bóng trên cùng, ủ móng bằng bông gòn thấm acetone nguyên chất và quấn giấy bạc để sơn gel tự tan rã. Lớp gel mềm sau đó sẽ được gạt nhẹ nhàng bằng que gỗ cam; tuyệt đối không được dùng lực để cạo móng.</p>\n<p>Nếu nhận thấy móng tự nhiên bị mỏng, quá mềm hoặc dễ gãy sau nhiều lần sơn gel liên tục, bạn hãy cân nhắc cho móng nghỉ ngơi một thời gian. Khoảng nghỉ từ hai đến ba tuần sẽ cho phép bạn tập trung hoàn toàn vào việc <strong>dưỡng móng chuyên sâu</strong> với các liệu trình phục hồi độ chắc khỏe, sáp dưỡng đậm đặc và tinh chất bổ sung keratin trước khi sơn màu mới.</p>\n<h2>Câu hỏi thường gặp về chăm sóc sau khi sơn gel</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên thoa dầu dưỡng viền móng bao lâu một lần khi đang sơn gel?</h3><p>Thoa dầu dưỡng viền móng từ hai đến ba lần mỗi ngày sẽ mang lại hiệu quả tốt nhất. Tối thiểu, hãy mát-xa dầu vào viền móng mỗi tối trước khi ngủ để bù lại lượng ẩm mất đi do rửa tay trong ngày.</p></div><div class=\"tpl-item\"><h3>Tôi có thể dũa hoặc cắt móng khi đang sơn gel không?</h3><p>Tốt nhất bạn không nên tạo hình lại móng sau khi gel đã được hơ khô. Việc dũa sẽ làm hỏng lớp màng bảo vệ mà thợ móng đã khóa ở đầu móng, khiến nước và dầu thừa dễ len lỏi vào bên dưới và gây bong tróc sớm.</p></div><div class=\"tpl-item\"><h3>Tắm nước nóng lâu hoặc xông hơi có làm hỏng lớp sơn gel không?</h3><p>Tiếp xúc lâu với hơi nóng sẽ khiến móng tự nhiên mềm đi và giãn nở nhanh, làm lỏng liên kết của lớp gel. Bạn nên tắm nước ấm vừa phải thay vì nước quá nóng và lau thật khô tay sau đó.</p></div><div class=\"tpl-item\"><h3>Nên giữ móng sơn gel trong bao lâu?</h3><p>Một bộ móng sơn gel tiêu chuẩn được thiết kế để giữ đẹp và thoải mái từ hai đến ba tuần. Giữ lớp gel quá ba tuần sẽ làm trọng tâm móng dồn về phía trước khi móng dài ra, tạo áp lực lên điểm chịu lực của móng và dễ gây gãy móng.</p></div></section>\n<section class=\"tpl-cta\"><h3>Giữ móng luôn rạng rỡ giữa các lần ghé tiệm</h3><p>Hãy ưu tiên sức khỏe của móng giữa các lần đến tiệm bằng cách duy trì những thói quen nhẹ nhàng hằng ngày và quy trình dưỡng ẩm đều đặn. Chăm sóc đôi tay chu đáo và xứng tầm để luôn sở hữu bộ móng khỏe đẹp, rạng rỡ suốt quanh năm.</p></section>",
+          "readingMinutes": 8,
+          "seoTitle": "Hướng dẫn chăm sóc móng sau khi sơn gel để móng luôn khỏe đẹp",
+          "seoDescription": "Khám phá các mẹo chăm sóc móng sơn gel từ chuyên gia giúp giữ màu bền lâu và bảo vệ bề mặt móng tự nhiên giữa các lần đến tiệm."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "6987fe73-6bb1-40cd-aa21-1e52c284be6f",
+      "categoryKey": "care",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "82c1d5f5-a2e8-49a8-88f0-cf342114dd87",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:13:47.176Z",
+      "createdAt": "2026-11-13T17:11:41.849Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "How to Strengthen Brittle Nails: A Daily Care Guide",
+          "slug": "how-to-strengthen-brittle-nails-a-daily-care-guide",
+          "excerpt": "Struggling with brittle nails? Learn the telltale signs of weakness, common daily triggers, and practical routines to restore nail resilience and beauty.",
+          "coverAlt": "Aesthetic flat lay of manicured natural nails with cuticle oil and a glass file",
+          "body": "<p class=\"tpl-lead\">Few things feel as frustrating as noticing a fresh split or tear across your manicured fingers just when your nails were finally beginning to grow. For many beauty enthusiasts, <strong>brittle nails</strong> present an ongoing struggle that makes everyday tasks feel like a hazard to nail health. The good news is that fragile nails rarely require complex overhauls to regain their resilience. By learning how your nail plates respond to everyday environments and building mindful hydration habits, you can encourage durable, vibrant growth with expert guidance from Envy Nails Spa of Wendell.</p>\n<h2>Recognizing the Common Signs of Brittle Nails</h2>\n<p>Your nails are composed of layered sheets of a fibrous protein known as keratin. In healthy natural nails, these compact layers bond smoothly together, creating a firm yet slightly flexible shield over your nail beds. When internal moisture balances drop or external stressors compromise that bond, the keratin sheets begin to separate and lose their structural integrity, resulting in classic symptoms of <strong>brittle nails</strong>.</p>\n<p>Understanding early warning signs helps you step in with supportive care before minor fraying turns into painful breaks deep into the nail bed. While some nail variations are completely normal, consistent fragility typically signals that your nail plates are craving extra moisture and gentler handling.</p>\n<ul class=\"tpl-check\"><li>Horizontal peeling or flaking at the free edge of the nail tip</li><li>Vertical ridges that feel rough, uneven, or prone to snagging</li><li>Frequent chipping or breaking under minimal pressure</li><li>Extreme inflexibility, causing the nail to snap rather than bend slightly</li><li>A dry, chalky surface texture that lacks a natural sheen</li></ul>\n<p>If you notice one or more of these symptoms appearing regularly, your hands are signaling a need for intentional protection. Recognizing these markers allows you to adjust your routine before structural damage weakens the entire plate.</p>\n<h2>Everyday Triggers That Weaken Your Nail Plates</h2>\n<p>Nails do not become brittle overnight; rather, daily environmental exposure gradually strips away their natural protective lipids. One of the most frequent culprits is repeated immersion in water. When your hands soak during dishwashing, cleaning, or long baths, the nail plate absorbs water and swells. As the nail dries, it shrinks rapidly. This constant expansion and contraction cycle strains the keratin matrix, leading directly to dried-out, <strong>brittle nails</strong>.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/640.webp 640w, {{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/1280.webp 1280w, {{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Household cleaning agents and alcohol-rich sanitizers also contribute heavily to nail dehydration. Harsh surfactants dissolve natural surface oils, leaving both your cuticles and the nail body vulnerable to roughness. Similarly, mechanical stress—such as using your fingernails to open soda cans, scrape stickers, or pry open packaging—places excessive force onto the weakest points of the nail, accelerating chips and splits.</p>\n<h2>Daily Habits to Strengthen and Protect Fragile Nails</h2>\n<p>Transforming weak plates into durable, resilient tips requires simple, repeated actions. The first line of defense is creating a physical barrier against environmental moisture loss. Wearing cotton-lined rubber gloves whenever you handle domestic cleaning products or wash dishes keeps damaging detergents far away from your delicate nail tissue.</p>\n<p>In addition to shielding your hands from harsh chemicals, maintaining consistent nail length while repairing damage makes a substantial difference. Keeping your nails trimmed slightly shorter and filed into rounded or squoval contours decreases the surface area exposed to everyday knocks and snags, allowing the nail matrix time to produce stronger tissue.</p>\n<p>Patience plays a crucial role throughout this process. Because fingernails grow slowly from the cuticle forward, habits adopted today will reveal their strongest results across the coming weeks as fresh, nourished keratin emerges.</p>\n<h2>Simple Nail Care Steps for Proper Hydration and Maintenance</h2>\n<p>Rebuilding moisture within the nail plate is best achieved through a structured daily regimen that treats both the nail body and the surrounding eponychium. Integrating this straightforward sequence into your morning or evening routine provides long-lasting comfort and shine.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Cleanse with Care</h3><p>Wash your hands using a mild, non-stripping cleanser and lukewarm water, then pat your fingers dry gently rather than rubbing vigorously.</p></div><div class=\"tpl-item\"><h3>File in One Direction</h3><p>Shape your edges using a fine-grit glass or cushioned emery board, moving smoothly in one direction from edge to center without sawing back and forth.</p></div><div class=\"tpl-item\"><h3>Nourish the Matrix</h3><p>Massage a dedicated cuticle oil into the base and sides of each nail to deliver essential fatty acids directly to the active growth zone.</p></div><div class=\"tpl-item\"><h3>Lock In Hydration</h3><p>Layer a rich, emollient hand cream over your entire hand to seal in the restorative oils and form an invisible barrier against moisture loss.</p></div></section>\n<p>Scheduling professional manicures can also significantly assist in managing fragile nails. Skilled technicians can trim loose edges cleanly, treat dried cuticles without harsh clipping, and apply fortifying base coats that provide structure while your natural nails regain their strength.</p>\n<h2>Frequently Asked Questions About Weak Nails</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Can brittle nails truly be repaired?</h3><p>While nails are made of non-living keratin cells, you can effectively rehydrate the existing plate and protect the active nail matrix at the base so newly formed nail growth emerges flexible and strong.</p></div><div class=\"tpl-item\"><h3>Why is back-and-forth filing bad for fragile nails?</h3><p>Sawing back and forth creates microscopic fissures along the edge of the nail plate. These microscopic tears easily catch on clothing and expand into deep splits.</p></div><div class=\"tpl-item\"><h3>Does wearing clear polish help protect weak nails?</h3><p>Yes, a quality clear base coat or protective nail polish acts as a light shield, preventing excess water absorption and reducing daily friction against the nail plate.</p></div><div class=\"tpl-item\"><h3>How long does it take to see stronger nail growth?</h3><p>A standard nail routine typically shows noticeable improvements in overall flexibility within a few weeks, with full nail plate renewal taking several months.</p></div></section>\n<section class=\"tpl-cta\"><h3>Restore Your Nails at Envy Nails Spa of Wendell</h3><p>Give your hands the attentive, revitalizing care they deserve. Visit Envy Nails Spa of Wendell for a soothing professional manicure that nourishes, shapes, and protects your natural nails.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "How to Fix Brittle Nails: Daily Care & Salon Tips",
+          "seoDescription": "Discover how to identify and repair brittle nails with expert tips, protective daily habits, and restorative hydration from Envy Nails Spa of Wendell."
+        },
+        {
+          "locale": "vi",
+          "title": "Cách làm chắc móng giòn dễ gãy: Cẩm nang chăm sóc mỗi ngày",
+          "slug": "cach-lam-chac-mong-gion-de-gay-cam-nang-cham-soc-moi-ngay",
+          "excerpt": "Bạn đang phiền lòng vì móng giòn dễ gãy? Hãy tìm hiểu các dấu hiệu móng yếu, những nguyên nhân thường gặp hàng ngày và quy trình chăm sóc thiết thực để phục hồi vẻ đẹp cùng độ chắc khỏe cho móng.",
+          "coverAlt": "Hình ảnh flat lay nghệ thuật của bộ móng tự nhiên được cắt tỉa cẩn thận cùng dầu dưỡng viền móng và dũa thủy tinh",
+          "body": "<p class=\"tpl-lead\">Ít có cảm giác nào khó chịu bằng việc vừa thấy móng bắt đầu dài ra thì lại phát hiện một vết nứt hay rách mới trên bàn tay vừa làm móng. Với nhiều tín đồ làm đẹp, <strong>móng giòn dễ gãy</strong> là một nỗi ám ảnh dai dẳng, khiến những công việc thường nhật cũng có thể làm tổn hại móng. Tin vui là móng yếu hiếm khi cần đến các biện pháp can thiệp phức tạp để lấy lại độ dẻo dai. Bằng cách hiểu rõ phản ứng của phiến móng trước môi trường xung quanh và duy trì thói quen dưỡng ẩm chu đáo, bạn hoàn toàn có thể nuôi dưỡng móng chắc khỏe, rạng rỡ với sự đồng hành chuyên nghiệp từ Envy Nails Spa of Wendell.</p>\n<h2>Nhận biết các dấu hiệu phổ biến của móng giòn dễ gãy</h2>\n<p>Móng tay được cấu tạo từ các lớp protein dạng sợi gọi là keratin. Ở móng tự nhiên khỏe mạnh, những lớp xếp chặt này liên kết mượt mà với nhau, tạo nên lớp khiên vững chắc nhưng vẫn có độ đàn hồi nhẹ bảo vệ giường móng. Khi độ ẩm bên trong suy giảm hoặc các tác nhân bên ngoài phá vỡ liên kết đó, các lớp keratin sẽ bắt đầu tách rời và mất đi cấu trúc vốn có, dẫn đến các dấu hiệu điển hình của <strong>móng giòn dễ gãy</strong>.</p>\n<p>Hiểu được các dấu hiệu cảnh báo sớm giúp bạn kịp thời chăm sóc trước khi những vết xước nhỏ biến thành những vết gãy sâu gây đau đớn ở giường móng. Dù một số thay đổi nhỏ ở móng là hoàn toàn bình thường, nhưng tình trạng móng liên tục yếu thường là dấu hiệu cho thấy phiến móng đang cần thêm độ ẩm và sự nâng niu nhẹ nhàng hơn.</p>\n<ul class=\"tpl-check\"><li>Bong tróc hoặc tách lớp theo chiều ngang ở đầu móng</li><li>Các đường vân dọc thô ráp, không đều hoặc dễ bị vướng mắc</li><li>Thường xuyên mẻ hoặc gãy dù chỉ chịu lực nhẹ</li><li>Móng quá cứng nhắc, dễ gãy vụn thay vì uốn cong nhẹ</li><li>Bề mặt móng khô ráp, mờ đục và thiếu đi độ bóng tự nhiên</li></ul>\n<p>Nếu nhận thấy một hoặc nhiều biểu hiện trên xuất hiện thường xuyên, đôi tay bạn đang nhắc nhở rằng chúng cần được bảo vệ kỹ lưỡng hơn. Nhận biết những dấu hiệu này sẽ giúp bạn điều chỉnh thói quen chăm sóc trước khi tổn thương cấu trúc làm suy yếu toàn bộ phiến móng.</p>\n<h2>Những tác nhân hàng ngày làm suy yếu phiến móng</h2>\n<p>Móng không trở nên giòn chỉ sau một đêm; thực tế, việc tiếp xúc hàng ngày với môi trường sẽ dần lấy đi lớp lipid bảo vệ tự nhiên. Một trong những thủ phạm phổ biến nhất là việc ngâm nước liên tục. Khi tay bạn tiếp xúc nhiều với nước lúc rửa bát, dọn dẹp hoặc ngâm bồn lâu, phiến móng sẽ hút nước và nở ra. Khi móng khô đi, nó lại co lại nhanh chóng. Chu kỳ giãn nở và co rút liên tục này gây áp lực lên cấu trúc keratin, trực tiếp dẫn đến tình trạng khô ráp, <strong>móng giòn dễ gãy</strong>.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/640.webp 640w, {{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/1280.webp 1280w, {{media}}/ec6de0d4-5d37-4ae7-ab55-a87f3995708c/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Các chất tẩy rửa gia dụng và nước rửa tay chứa nhiều cồn cũng là nguyên nhân lớn gây mất nước ở móng. Các chất hoạt động bề mặt mạnh sẽ hòa tan lớp dầu tự nhiên, khiến cả vùng da quanh móng lẫn thân móng dễ bị thô ráp. Tương tự, tác động lực cơ học—như dùng móng tay để bật nắp lon, cạo nhãn dán hay cạy mở bao bì—sẽ dồn áp lực lớn lên những điểm yếu nhất của móng, khiến móng nhanh bị mẻ và nứt.</p>\n<h2>Thói quen hàng ngày giúp củng cố và bảo vệ móng yếu</h2>\n<p>Để biến những phiến móng yếu ớt thành đầu móng chắc khỏe và dẻo dai đòi hỏi những thói quen đơn giản nhưng đều đặn. Lớp bảo vệ đầu tiên là tạo hàng rào ngăn ngừa mất độ ẩm. Đeo găng tay cao su lót cotton mỗi khi tiếp xúc với hóa chất tẩy rửa hoặc rửa bát sẽ giúp bảo vệ mô móng nhạy cảm khỏi các chất tẩy rửa gây hại.</p>\n<p>Bên cạnh việc che chắn cho đôi tay khỏi hóa chất mạnh, việc duy trì độ dài móng phù hợp trong quá trình phục hồi tổn thương cũng tạo nên khác biệt rõ rệt. Giữ móng hơi ngắn và dũa theo dáng tròn hoặc vuông bo góc (squoval) sẽ giảm bớt diện tích tiếp xúc với các va chạm và vướng mắc thường nhật, tạo thời gian cho mầm móng sản sinh các mô khỏe hơn.</p>\n<p>Sự kiên nhẫn đóng vai trò vô cùng quan trọng trong suốt quá trình này. Vì móng tay mọc chậm từ gốc móng ra ngoài, những thói quen tốt từ hôm nay sẽ mang lại kết quả rõ rệt nhất trong vài tuần tới khi lớp keratin mới, đầy đủ dưỡng chất dần lộ diện.</p>\n<h2>Các bước chăm sóc móng đơn giản để cấp ẩm và duy trì độ chắc khỏe</h2>\n<p>Cách tốt nhất để phục hồi độ ẩm cho phiến móng là tuân theo quy trình chăm sóc hàng ngày bài bản, nuôi dưỡng cả thân móng lẫn vùng da quanh móng. Đưa các bước đơn giản này vào thói quen buổi sáng hoặc tối sẽ mang lại độ bóng khỏe và cảm giác dễ chịu lâu dài.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Làm sạch nhẹ nhàng</h3><p>Rửa tay bằng xà phòng dịu nhẹ, không gây khô da cùng nước ấm, sau đó thấm khô nhẹ nhàng thay vì chà xát mạnh.</p></div><div class=\"tpl-item\"><h3>Dũa móng theo một chiều</h3><p>Định hình viền móng bằng dũa thủy tinh mịn hoặc dũa xốp mềm, di chuyển nhẹ nhàng theo một chiều từ mép vào giữa, tránh dũa qua lại như cưa.</p></div><div class=\"tpl-item\"><h3>Nuôi dưỡng mầm móng</h3><p>Thoa và mát-xa dầu dưỡng viền móng chuyên dụng vào phần gốc và hai bên mép móng để cung cấp các axit béo thiết yếu trực tiếp cho vùng móng đang phát triển.</p></div><div class=\"tpl-item\"><h3>Khóa ẩm</h3><p>Thoa một lớp kem dưỡng tay giàu dưỡng chất lên toàn bộ bàn tay để khóa lại lớp dầu phục hồi và tạo màng chắn vô hình ngăn ngừa mất nước.</p></div></section>\n<p>Đặt lịch làm móng chuyên nghiệp cũng hỗ trợ đắc lực trong việc chăm sóc móng yếu. Các kỹ thuật viên lành nghề có thể tỉa gọn gàng các phần móng xước, chăm sóc phần da khô mà không cắt phạm, đồng thời sơn thêm lớp sơn lót tăng cường giúp định hình cấu trúc trong khi móng tự nhiên dần lấy lại độ chắc khỏe.</p>\n<h2>Các câu hỏi thường gặp về móng yếu</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Móng giòn dễ gãy có thực sự phục hồi được không?</h3><p>Dù móng được tạo nên từ các tế bào keratin không sống, bạn hoàn toàn có thể cấp ẩm hiệu quả cho phiến móng hiện tại và bảo vệ mầm móng ở gốc móng để phần móng mới mọc ra được chắc khỏe và dẻo dai.</p></div><div class=\"tpl-item\"><h3>Vì sao dũa qua lại nhiều lần lại gây hại cho móng yếu?</h3><p>Thao tác dũa qua lại như kéo cưa tạo ra những vết nứt siêu nhỏ dọc theo mép phiến móng. Những vết xước li ti này rất dễ vướng vào quần áo và phát triển thành những vết nứt sâu.</p></div><div class=\"tpl-item\"><h3>Sơn móng bóng không màu có giúp bảo vệ móng yếu không?</h3><p>Có, một lớp sơn lót không màu hoặc sơn bóng chất lượng tốt sẽ hoạt động như tấm khiên nhẹ, ngăn móng hút quá nhiều nước và giảm ma sát hàng ngày lên phiến móng.</p></div><div class=\"tpl-item\"><h3>Mất bao lâu để thấy móng mọc chắc khỏe hơn?</h3><p>Một quy trình chăm sóc móng chuẩn thường mang lại cải thiện rõ rệt về độ đàn hồi trong vài tuần, và cần vài tháng để toàn bộ phiến móng thay mới hoàn toàn.</p></div></section>\n<section class=\"tpl-cta\"><h3>Phục hồi bộ móng của bạn tại Envy Nails Spa of Wendell</h3><p>Hãy dành cho đôi bàn tay sự chăm sóc chu đáo và hồi sinh xứng đáng. Ghé thăm Envy Nails Spa of Wendell để trải nghiệm dịch vụ làm móng chuyên nghiệp, thư giãn giúp nuôi dưỡng, tạo phom và bảo vệ bộ móng tự nhiên của bạn.</p></section>",
+          "readingMinutes": 7,
+          "seoTitle": "Cách khắc phục móng giòn dễ gãy: Chăm sóc hàng ngày & Lời khuyên từ salon",
+          "seoDescription": "Khám phá cách nhận biết và phục hồi móng giòn dễ gãy với những mẹo chuyên môn, thói quen bảo vệ hàng ngày cùng các giải pháp cấp ẩm phục hồi từ Envy Nails Spa of Wendell."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "0033c950-9c56-48be-ae90-bae097bfe04e",
+      "categoryKey": "services",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "1d428932-1860-4921-b7c1-33ddc90a07f3",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:15:48.413Z",
+      "createdAt": "2026-11-13T17:13:48.795Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Gel vs Acrylic vs Dip: Complete Manicure Comparison Guide",
+          "slug": "gel-vs-acrylic-vs-dip-complete-manicure-comparison-guide",
+          "excerpt": "Explore the key differences in gel vs acrylic vs dip powder manicures to discover which style offers the right balance of strength, look, and wear.",
+          "coverAlt": "Collection of neutral gel, acrylic, and dip powder manicures on well-groomed hands",
+          "body": "<p class=\"tpl-lead\">Walking into a nail salon presents an exciting array of choices, but selecting the right enhancement can sometimes feel overwhelming. Understanding the distinctions in <strong>gel vs acrylic vs dip</strong> helps you choose a manicure that looks gorgeous while supporting your everyday lifestyle.</p>\n<h2>Understanding the Basics: Gel, Acrylic, and Dip Powder</h2>\n<p>Each manicure category relies on distinct chemical formulations designed to coat or extend the natural nail. While all three create durable color and polished shine, they achieve their results through completely different technologies. Knowing the core composition of each system makes it easier to understand how they perform over weeks of wear.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Gel Polish</h3><p>A liquid oligomer formula applied like traditional lacquer that hardens exclusively under <strong>ultraviolet or LED light</strong> for a flexible, glossy finish.</p></div><div class=\"tpl-item\"><h3>Acrylic Enhancements</h3><p>A blend of liquid monomer and powder polymer that forms a moldable paste, allowing technicians to build <strong>custom length and shape</strong>.</p></div><div class=\"tpl-item\"><h3>Dip Powder</h3><p>A system using resin-based base coats and finely milled <strong>pigmented acrylic powder</strong> that bonds in layers without requiring a light unit.</p></div></section>\n<h2>Application and Curing: How Each Method Works</h2>\n<p>The service steps for these three treatments differ significantly at the manicure table. Gel manicures follow a rhythm similar to standard polish: a base coat, two layers of color, and a protective top coat. Between each thin layer, your hands rest inside an LED or UV lamp for thirty to sixty seconds, meaning the set is <strong>completely dry instantly</strong>.</p>\n<p>Acrylic application is a sculptural art form. The technician saturates a brush in liquid monomer, picks up a bead of powder, and quickly shapes the mixture across your natural nail or artificial tip. It sets naturally through air exposure as the chemical bond solidifies. In contrast, dip powder relies on brushing on a medical-grade resin adhesive, dipping the nail into fine powder, and repeating the cycle until full opacity is achieved. A brush-on activator is applied at the end to cure and harden the layers without lamp exposure.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/1376.webp\" alt=\"Manicure setup displaying nail color swatches and professional nail care tools\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/640.webp 640w, {{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/1280.webp 1280w, {{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Each manicure technique uses unique tools and application methods to achieve lasting beauty.</figcaption></figure>\n<h2>Durability, Flexibility, and Everyday Wear</h2>\n<p>When comparing <strong>gel vs acrylic vs dip</strong>, durability depends largely on how you use your hands. Gel provides natural flex, making it ideal for nails with slight bend. It typically delivers two to three weeks of chip-free wear without feeling heavy. However, excessive exposure to moisture or rough manual work can cause premature lifting at the edges.</p>\n<p>Acrylic provides unmatched structural strength and hardness, making it the premier choice for dramatic extensions, coffin or stiletto shapes, and clients who are hard on their hands. Dip powder sits in a comfortable middle zone: it feels sturdier and harder than gel polish, often lasting three to four weeks without chipping, yet feels slightly lighter on the nail plate than a full acrylic set.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Lifestyle Match Tip</h3><p>If your daily routine involves typing, cooking, or gardening, consider how rigid you want your nails to feel. Flexible nails bend with pressure, while rigid structures resist impact but require mindful hand movements.</p></section>\n<h2>Removal and Nail Maintenance Considerations</h2>\n<p>Safe removal is essential to maintaining healthy natural nails regardless of the method you choose. Never peel, pry, or force enhancements off your nail plate, as this strips away the delicate protective layers of keratin. Each system requires a dedicated soak in acetone to safely dissolve the product bond.</p>\n<p>Gel polish softens quickly, typically requiring ten to fifteen minutes of soaking before gently wiping away. Dip powder requires a slightly longer soak, often fifteen to twenty minutes, because of its dense layered construction. Acrylic takes the longest to remove and often benefits from periodic fills every two to three weeks rather than frequent full removals, helping maintain your investment while preserving the natural nail beneath.</p>\n<h2>Gel vs Acrylic vs Dip: Which Option Fits Your Routine?</h2>\n<p>Choosing the best enhancement comes down to your personal priorities: maintenance frequency, desired length, and sensory comfort. Evaluating <strong>gel vs acrylic vs dip</strong> through your daily schedule ensures you leave the salon with a set that fits seamlessly into your lifestyle.</p>\n<section class=\"tpl-summary\"><h3>Quick Selection Guide</h3><ul class=\"tpl-check\"><li>Choose gel if you prefer a light, natural feel, keep your natural nail length, and want easy removals.</li><li>Choose acrylic if you want extra length, sculpted custom shapes, or maximum resistance against bending.</li><li>Choose dip powder if you want extended durability without light curing and enjoy a reinforced, chip-resistant finish.</li></ul></section>\n<h2>Choosing Your Next Set at Envy Nails Spa of Wendell</h2>\n<p>At Envy Nails Spa of Wendell, our nail technicians are dedicated to helping you achieve beautiful, long-lasting results that suit your style. Whether you are transitioning from one system to another or exploring enhancements for the first time, our team takes the time to assess your nail condition and listen to your preferences.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Is dip powder just acrylic in disguise?</h3><p>Dip powder utilizes a finely ground acrylic powder combined with a resin base, whereas traditional acrylic combines powder with a liquid monomer to create a workable paste.</p></div><div class=\"tpl-item\"><h3>Will enhancements ruin my natural nails?</h3><p>None of these methods inherently damage your nails when applied and removed by a trained professional. Damage typically happens when enhancements are improperly peeled or filed off at home.</p></div><div class=\"tpl-item\"><h3>Can you combine different manicure types?</h3><p>Gel polish can be applied over acrylic extensions or dip powder sets if you desire a specialty gel shade or unique gel nail art.</p></div></section>\n<section class=\"tpl-cta\"><h3>Find Your Perfect Manicure Today</h3><p>Ready to discover your ideal manicure? Speak with one of our experienced nail technicians at Envy Nails Spa of Wendell to tailor your next set to your lifestyle.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Gel vs Acrylic vs Dip: Which Manicure Is Best?",
+          "seoDescription": "Compare gel vs acrylic vs dip powder manicures. Learn about application, durability, maintenance, and which option best matches your daily routine."
+        },
+        {
+          "locale": "vi",
+          "title": "Gel vs Acrylic vs Dip: Hướng dẫn so sánh toàn diện các kiểu làm móng",
+          "slug": "gel-vs-acrylic-vs-dip-huong-dan-so-sanh-toan-dien-cac-kieu-lam-mong",
+          "excerpt": "Khám phá những khác biệt cốt lõi giữa móng gel, acrylic và dip powder để tìm ra kiểu móng cân bằng hoàn hảo giữa độ bền, tính thẩm mỹ và độ tiện lợi.",
+          "coverAlt": "Bộ sưu tập các mẫu móng gel, acrylic và dip powder tông màu trung tính trên đôi bàn tay được chăm sóc chu đáo",
+          "body": "<p class=\"tpl-lead\">Bước vào tiệm nail với vô vàn lựa chọn hấp dẫn đôi khi có thể khiến bạn bối rối. Hiểu rõ sự khác biệt giữa <strong>gel, acrylic và dip</strong> sẽ giúp bạn chọn được bộ móng vừa lộng lẫy vừa phù hợp hoàn hảo với lối sống hàng ngày.</p>\n<h2>Tìm hiểu kiến thức cơ bản: Gel, Acrylic và Dip Powder</h2>\n<p>Mỗi phương pháp làm móng đều sử dụng công thức hóa học riêng biệt để phủ hoặc nối dài móng tự nhiên. Dù cả ba đều mang lại màu sắc bền đẹp cùng độ bóng bẩy, nhưng chúng đạt được kết quả này qua những công nghệ hoàn toàn khác nhau. Hiểu rõ thành phần cốt lõi của từng phương pháp sẽ giúp bạn biết được chúng giữ được độ bền ra sao qua nhiều tuần.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Sơn Gel</h3><p>Công thức oligomer dạng lỏng được quét như sơn móng truyền thống và chỉ đông cứng dưới <strong>tia cực tím (UV) hoặc ánh sáng LED</strong>, mang lại lớp hoàn thiện dẻo dai và bóng mượt.</p></div><div class=\"tpl-item\"><h3>Móng đắp bột Acrylic</h3><p>Sự kết hợp giữa chất lỏng monomer và bột polymer tạo thành hỗn hợp dẻo dễ tạo hình, cho phép thợ nail tạo <strong>độ dài và phom dáng theo ý muốn</strong>.</p></div><div class=\"tpl-item\"><h3>Bột nhúng (Dip Powder)</h3><p>Hệ thống sử dụng lớp nền gốc nhựa resin và <strong>bột acrylic siêu mịn có màu</strong> liên kết theo từng lớp mà không cần đến đèn hơ.</p></div></section>\n<h2>Quy trình thực hiện và làm khô: Cách thức hoạt động của từng phương pháp</h2>\n<p>Các bước thực hiện của ba phương pháp này khác nhau đáng kể tại bàn làm móng. Sơn móng gel có quy trình tương tự sơn thường: một lớp sơn lót, hai lớp sơn màu và một lớp sơn phủ bảo vệ. Giữa mỗi lớp mỏng, tay bạn sẽ được hơ dưới đèn LED hoặc UV từ ba mươi đến sáu mươi giây, đồng nghĩa với việc bộ móng <strong>khô hoàn toàn ngay lập tức</strong>.</p>\n<p>Đắp móng acrylic là một nghệ thuật điêu khắc. Kỹ thuật viên nhúng cọ vào chất lỏng monomer, lấy một viên bột và nhanh chóng tạo hình hỗn hợp trên móng thật hoặc móng giả. Móng sẽ khô tự nhiên ngoài không khí khi các liên kết hóa học đông cứng lại. Ngược lại, bột nhúng dựa trên việc quét lớp keo resin y tế, nhúng móng vào bột mịn và lặp lại quy trình cho đến khi đạt độ phủ mong muốn. Cuối cùng, một lớp chất kích hoạt dạng quét sẽ được thoa lên để làm khô và cứng các lớp móng mà không cần dùng đèn.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/1376.webp\" alt=\"Bàn làm móng trưng bày bảng màu móng và các dụng cụ chăm sóc móng chuyên nghiệp\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/640.webp 640w, {{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/1280.webp 1280w, {{media}}/3e1f9da2-4544-4b7a-b8f9-179db2c2dcb5/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Mỗi kỹ thuật làm móng đều sử dụng dụng cụ và phương pháp riêng biệt để mang lại vẻ đẹp bền lâu.</figcaption></figure>\n<h2>Độ bền, độ dẻo dai và sự tiện lợi hàng ngày</h2>\n<p>Khi so sánh <strong>gel, acrylic và dip</strong>, độ bền phụ thuộc phần lớn vào tần suất và cách bạn dùng tay. Gel có độ đàn hồi tự nhiên, rất lý tưởng cho móng có độ cong nhẹ. Lớp gel thường bền từ hai đến ba tuần không tróc mẻ mà không tạo cảm giác nặng nề. Tuy nhiên, việc tiếp xúc nhiều với nước hoặc làm việc nặng bằng tay có thể khiến móng bị hở viền sớm.</p>\n<p>Acrylic mang lại độ cứng và độ bền cấu trúc vượt trội, là lựa chọn hàng đầu để nối dài móng ấn tượng, tạo dáng coffin hay stiletto, cũng như cho những ai thường xuyên dùng lực tay. Bột nhúng nằm ở khoảng giữa rất dễ chịu: cứng cáp và chắc chắn hơn sơn gel, thường bền từ ba đến bốn tuần không lo mẻ, nhưng lại nhẹ hơn so với một bộ móng đắp bột acrylic hoàn chỉnh.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Mẹo chọn theo lối sống</h3><p>Nếu sinh hoạt hàng ngày của bạn gồm đánh máy, nấu ăn hoặc làm vườn, hãy cân nhắc mức độ cứng của móng mà bạn mong muốn. Móng mềm dẻo sẽ uốn cong khi chịu lực, trong khi móng cứng chịu lực tốt hơn nhưng đòi hỏi bạn phải cử động tay khéo léo và chú ý hơn.</p></section>\n<h2>Lưu ý khi tháo móng và chăm sóc móng</h2>\n<p>Tháo móng an toàn là yếu tố then chốt để duy trì móng thật khỏe mạnh dù bạn chọn phương pháp nào. Đừng bao giờ tự bóc, cạy hay giật móng giả ra khỏi bề mặt móng, vì điều này sẽ làm bong tróc các lớp sừng keratin bảo vệ mỏng manh. Mỗi phương pháp đều cần ngâm acetone chuyên dụng để làm tan liên kết sản phẩm một cách an toàn.</p>\n<p>Sơn gel mềm ra nhanh chóng, thường chỉ cần ngâm từ mười đến mười lăm phút trước khi lau nhẹ. Bột nhúng cần ngâm lâu hơn một chút, khoảng mười lăm đến hai mươi phút do kết cấu nhiều lớp dày đặc. Acrylic mất nhiều thời gian tháo nhất và thích hợp nhất là dặm bột định kỳ mỗi hai đến ba tuần thay vì tháo làm mới liên tục, vừa tiết kiệm chi phí vừa bảo vệ móng thật bên dưới.</p>\n<h2>Gel, Acrylic hay Dip: Lựa chọn nào phù hợp với bạn?</h2>\n<p>Việc lựa chọn phương pháp tốt nhất phụ thuộc vào ưu tiên cá nhân của bạn: tần suất chăm sóc, độ dài mong muốn và cảm giác thoải mái trên tay. Cân nhắc giữa <strong>gel, acrylic và dip</strong> dựa trên lịch trình hàng ngày sẽ giúp bạn rời tiệm với bộ móng phù hợp hoàn hảo với phong cách sống của mình.</p>\n<section class=\"tpl-summary\"><h3>Bảng hướng dẫn chọn nhanh</h3><ul class=\"tpl-check\"><li>Chọn gel nếu bạn thích cảm giác nhẹ nhàng, tự nhiên, giữ độ dài móng thật và muốn tháo móng dễ dàng.</li><li>Chọn acrylic nếu bạn muốn nối dài móng, tạo phom dáng thiết kế riêng hoặc cần độ cứng cáp tối đa chống gãy gập.</li><li>Chọn dip powder nếu bạn muốn móng bền lâu mà không cần hơ đèn, đồng thời thích lớp phủ cứng cáp, chống tróc mẻ.</li></ul></section>\n<h2>Lựa chọn bộ móng tiếp theo tại Envy Nails Spa of Wendell</h2>\n<p>Tại Envy Nails Spa of Wendell, đội ngũ kỹ thuật viên của chúng tôi luôn tận tâm giúp bạn sở hữu bộ móng đẹp, bền lâu và đúng phong cách. Dù bạn muốn đổi sang kiểu móng khác hay lần đầu trải nghiệm, chúng tôi luôn sẵn sàng kiểm tra tình trạng móng và lắng nghe sở thích của bạn.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Bột nhúng có phải chỉ là móng acrylic trá hình?</h3><p>Bột nhúng sử dụng bột acrylic xay mịn kết hợp với lớp nền resin, trong khi acrylic truyền thống kết hợp bột với chất lỏng monomer để tạo thành hỗn hợp dẻo dễ tạo hình.</p></div><div class=\"tpl-item\"><h3>Làm móng có làm hỏng móng thật không?</h3><p>Không có phương pháp nào vốn dĩ gây hại cho móng khi được thực hiện và tháo bởi kỹ thuật viên chuyên nghiệp. Hư tổn thường xảy ra khi bạn tự ý bóc hoặc dũa móng sai cách tại nhà.</p></div><div class=\"tpl-item\"><h3>Có thể kết hợp các kiểu làm móng khác nhau không?</h3><p>Bạn hoàn toàn có thể sơn gel lên móng nối acrylic hoặc bộ móng nhúng bột nếu muốn một màu gel đặc biệt hoặc các mẫu vẽ nail art bằng gel độc đáo.</p></div></section>\n<section class=\"tpl-cta\"><h3>Tìm kiểu móng hoàn hảo cho bạn ngay hôm nay</h3><p>Bạn đã sẵn sàng tìm kiếm bộ móng lý tưởng? Hãy trò chuyện cùng các kỹ thuật viên giàu kinh nghiệm tại Envy Nails Spa of Wendell để thiết kế bộ móng tiếp theo phù hợp nhất với phong cách sống của bạn.</p></section>",
+          "readingMinutes": 7,
+          "seoTitle": "Gel, Acrylic hay Dip: Kiểu móng nào là tốt nhất?",
+          "seoDescription": "So sánh móng gel, acrylic và dip powder. Tìm hiểu về quy trình thực hiện, độ bền, cách chăm sóc và lựa chọn phù hợp nhất với thói quen hàng ngày của bạn."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "a4f291cd-ab9f-4071-8a0f-7abc94e5b775",
+      "categoryKey": "care",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "8d2103b5-bc0b-4902-bfaa-148bfac3855d",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:16:58.132Z",
+      "createdAt": "2026-11-13T17:15:56.166Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Complete Dry Season Guide to Hand, Foot, and Cuticle Care",
+          "slug": "complete-dry-season-guide-to-hand-foot-and-cuticle-care",
+          "excerpt": "Discover practical daily routines and salon-approved tips to protect your nails, hydrate dry cuticles, and soften rough heels all season long.",
+          "coverAlt": "Warm aesthetic flat lay featuring a bottle of cuticle oil, rich hand cream, and clean natural manicured nails on a soft linen cloth",
+          "body": "<p class=\"tpl-lead\">When temperatures drop and indoor heating turns on, the moisture in the air drops rapidly, leaving your skin thirsty and vulnerable. Cold winds strip natural oils away, turning smooth hands rough and creating painful hangnails. A dedicated approach to <strong>cuticle care</strong> and total extremity hydration is essential to keep your hands and feet resilient, comfortable, and beautifully polished through the harshest months of the year.</p>\n<h2>Why Dry Weather Affects Your Hands, Feet, and Cuticles</h2>\n<p>The skin on your hands and feet has unique physiological needs compared to the rest of your body. Hands possess few sebaceous glands, which means they produce very little natural oil to lock in hydration. When you add frequent handwashing, sanitizing gels, and brisk winds to the equation, the skin barrier quickly becomes compromised, leading to flaking, irritation, and tautness.</p>\n<p>Cuticles and feet face similar seasonal stress. Cuticles serve as your nail matrix's primary defense shield, protecting new nail growth from bacteria, water, and debris. When air loses humidity, cuticles dry out, shrink, and tear easily. Meanwhile, your feet often spend hours bundled inside heavy socks and structured boots, leading to friction that encourages hardened calluses and cracked heels.</p>\n<h2>Essential Daily Cuticle Care to Prevent Peeling and Cracking</h2>\n<p>Healthy nail growth starts at the root, making dedicated <strong>cuticle care</strong> a vital foundation for your beauty routine. When cuticles dry out, they separate from the nail plate, causing stubborn peeling and sore hangnails that tempt you to pull or pick at them. Consistent daily conditioning helps preserve the elastic seal that keeps your nail bed safe and balanced.</p>\n<p>Incorporate nourishing oils like jojoba, almond, or vitamin E into your daily regimen. Jojoba oil is especially effective because its molecular structure closely resembles your skin's natural sebum, allowing it to penetrate deeply rather than simply resting on the surface. Massage a drop into each nail bed morning and night to stimulate circulation and maintain soft, supple tissue.</p>\n<h2>Hand Hydration Habits for Lasting Softness</h2>\n<p>Moisturizing only when your hands already feel tight is often too late to prevent chapping. True hydration requires a proactive rhythm throughout your day. Switch to lukewarm water instead of hot water when washing your hands, as extreme temperatures strip surface lipids instantly. Pat your skin dry gently with a clean towel instead of rubbing, leaving hands slightly damp before applying lotion.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/640.webp 640w, {{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/1280.webp 1280w, {{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Look for rich hand creams packed with humectants like glycerin and hyaluronic acid, combined with occlusive barriers like shea butter or ceramides. Humectants pull water deep into the epidermis, while occlusives lock that hydration in place. Keep a portable tube at your workspace and inside your bag so reapplying becomes second nature.</p>\n<h2>Restoring Dry, Tired Feet and Heels</h2>\n<p>During colder months, feet are easily forgotten until thick calluses or uncomfortable heel fissures appear. Because the soles of your feet carry your full body weight, dry skin thickens rapidly under pressure. Maintaining smooth heels requires gentle physical exfoliation paired with concentrated moisture.</p>\n<p>Use a gentle foot file or pumice stone on damp skin once or twice a week while showering to smooth rough patches without aggravating healthy tissue. Follow up immediately with a rich foot cream containing urea or lactic acid, which softens stubborn buildup. Slipping on soft cotton socks after applying cream traps moisture and speeds up replenishment overnight.</p>\n<h2>Common Cold-Weather Nail Care Mistakes to Avoid</h2>\n<p>Even with regular moisturizing, everyday habits can quietly sabotage your progress. One common misstep is going outdoors without protective gloves. Unprotected exposure to biting wind quickly strips away newly applied lotions and leaves nail tips brittle and prone to splitting.</p>\n<p>Another frequent error is using your nails as tools to open packages, scrape labels, or pry lids. Dry nails lose flexibility and break easily under sudden tension. Always use the proper household tools to preserve your manicure and prevent painful breaks.</p>",
+          "readingMinutes": 3,
+          "seoTitle": "Dry Season Nail and Cuticle Care Guide",
+          "seoDescription": "Keep hands, cuticles, and feet soft during the dry season. Discover professional cuticle care tips, foot routines, and daily hydration habits."
+        },
+        {
+          "locale": "vi",
+          "title": "Cẩm nang toàn diện chăm sóc tay, chân và lớp biểu bì trong mùa khô",
+          "slug": "cam-nang-toan-dien-cham-soc-tay-chan-va-lop-bieu-bi-trong-mua-kho",
+          "excerpt": "Khám phá các thói quen hàng ngày thực tế cùng bí quyết chuẩn salon để bảo vệ móng, dưỡng ẩm cho lớp biểu bì khô ráp và làm mềm gót chân nứt nẻ suốt cả mùa.",
+          "coverAlt": "Bức ảnh flat lay mang tông màu ấm áp gồm một lọ dầu dưỡng biểu bì, kem dưỡng da tay đậm đặc và bộ móng tay tự nhiên sạch đẹp trên nền vải lanh mềm mại",
+          "body": "<p class=\"tpl-lead\">Khi nhiệt độ giảm xuống và máy sưởi trong nhà bật lên, độ ẩm không khí giảm nhanh chóng, khiến làn da trở nên khô ráp và dễ tổn thương. Những cơn gió lạnh cuốn đi lớp dầu tự nhiên, khiến đôi tay mịn màng trở nên thô ráp và xuất hiện những vết xước măng rô đau nhức. Chú trọng <strong>chăm sóc lớp biểu bì</strong> và cấp ẩm toàn diện cho tay chân là điều vô cùng cần thiết để giữ cho đôi bàn tay, bàn chân luôn khỏe đẹp, thoải mái và chỉn chu suốt những tháng khắc nghiệt nhất trong năm.</p>\n<h2>Vì sao thời tiết hanh khô lại ảnh hưởng đến tay, chân và lớp biểu bì?</h2>\n<p>Vùng da ở bàn tay và bàn chân có những đặc điểm sinh lý riêng biệt so với phần còn lại của cơ thể. Bàn tay có rất ít tuyến bã nhờn, đồng nghĩa với việc chúng tiết ra rất ít dầu tự nhiên để khóa ẩm. Khi kết hợp với việc rửa tay thường xuyên, dùng gel sát khuẩn và tiếp xúc với gió lạnh, hàng rào bảo vệ da sẽ nhanh chóng bị suy yếu, dẫn đến tình trạng bong tróc, kích ứng và căng rát.</p>\n<p>Lớp biểu bì quanh móng và bàn chân cũng chịu áp lực tương tự theo mùa. Lớp biểu bì đóng vai trò như lá chắn phòng thủ chính cho mầm móng, bảo vệ móng mới mọc khỏi vi khuẩn, nước và bụi bẩn. Khi không khí mất đi độ ẩm, lớp biểu bì sẽ khô lại, co rút và dễ rách. Trong khi đó, đôi chân thường phải bó chặt hàng giờ liền trong tất dày và ủng cứng, gây ra ma sát làm hình thành các vết chai cứng và nứt nẻ gót chân.</p>\n<h2>Chăm sóc lớp biểu bì hàng ngày để ngăn ngừa bong tróc và nứt nẻ</h2>\n<p>Một bộ móng khỏe đẹp bắt đầu từ gốc rễ, chính vì vậy việc chuyên tâm <strong>chăm sóc lớp biểu bì</strong> là nền tảng quan trọng trong quy trình làm đẹp của bạn. Khi biểu bì khô ráp, chúng sẽ tách rời khỏi bản móng, gây bong tróc dai dẳng và xước măng rô khiến bạn đau nhức, dễ có thói quen giật hay cắn móng. Dưỡng ẩm đều đặn mỗi ngày sẽ giúp duy trì lớp màng đàn hồi bảo vệ giường móng luôn an toàn và khỏe mạnh.</p>\n<p>Hãy bổ sung các loại dầu dưỡng như jojoba, hạnh nhân hoặc vitamin E vào quy trình chăm sóc hàng ngày của bạn. Dầu jojoba đặc biệt hiệu quả vì cấu trúc phân tử của nó gần giống với bã nhờn tự nhiên của da, giúp thấm sâu vào bên trong thay vì chỉ nằm lại trên bề mặt. Thoa và massage một giọt lên từng giường móng vào mỗi sáng và tối để kích thích lưu thông máu và giữ cho các mô luôn mềm mại, mịn màng.</p>\n<h2>Thói quen dưỡng ẩm cho đôi tay mềm mịn dài lâu</h2>\n<p>Chỉ thoa kem dưỡng khi tay đã bắt đầu căng rát thường là đã quá muộn để ngăn ngừa nứt nẻ. Việc cấp ẩm thực sự đòi hỏi một thói quen chủ động trong suốt cả ngày. Hãy chuyển sang dùng nước ấm thay vì nước nóng khi rửa tay, vì nhiệt độ quá cao sẽ làm trôi đi lớp lipid trên bề mặt da ngay lập tức. Dùng khăn sạch thấm nhẹ cho khô thay vì chà xát mạnh, để lại chút độ ẩm tự nhiên trên tay trước khi thoa kem dưỡng.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/640.webp 640w, {{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/1280.webp 1280w, {{media}}/b09aa93c-9bb6-4e82-a2a8-40faf2139402/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Hãy chọn các loại kem dưỡng da tay đậm đặc chứa các chất hút ẩm như glycerin và hyaluronic acid, kết hợp với các thành phần khóa ẩm như bơ hạt mỡ hoặc ceramide. Chất hút ẩm sẽ đưa nước sâu vào lớp biểu bì, trong khi chất khóa ẩm sẽ giữ độ ẩm đó lại bên trong. Đừng quên để một tuýp kem nhỏ tại bàn làm việc và một tuýp trong túi xách để việc thoa lại kem trở thành một thói quen tự nhiên.</p>\n<h2>Phục hồi đôi chân và gót chân khô ráp, mệt mỏi</h2>\n<p>Vào những tháng lạnh hơn, đôi chân rất dễ bị lãng quên cho đến khi các vết chai dày cộm hoặc vết nứt gót chân gây đau rát xuất hiện. Vì lòng bàn chân phải nâng đỡ toàn bộ trọng lượng cơ thể nên da khô sẽ dày lên rất nhanh dưới áp lực này. Để giữ cho gót chân luôn mịn màng, bạn cần kết hợp giữa việc tẩy tế bào chết vật lý nhẹ nhàng và cấp ẩm chuyên sâu.</p>\n<p>Dùng giũa chân nhẹ nhàng hoặc đá bọt chà lên vùng da ẩm từ 1 đến 2 lần mỗi tuần khi tắm để làm mịn các vùng da thô ráp mà không gây tổn thương các mô khỏe mạnh. Sau đó, thoa ngay một lớp kem dưỡng chân giàu dưỡng chất chứa urea hoặc axit lactic để làm mềm các mảng da sừng tích tụ cứng đầu. Mang một đôi tất cotton mềm mại sau khi thoa kem sẽ giúp khóa ẩm và đẩy nhanh quá trình phục hồi suốt đêm.</p>\n<h2>Những sai lầm chăm sóc móng mùa lạnh cần tránh</h2>\n<p>Ngay cả khi bạn dưỡng ẩm thường xuyên, những thói quen hàng ngày vẫn có thể âm thầm làm giảm hiệu quả chăm sóc. Một sai lầm phổ biến là đi ra ngoài trời mà không đeo găng tay bảo vệ. Việc tiếp xúc trực tiếp với gió lạnh cắt da sẽ nhanh chóng cuốn trôi lớp kem vừa bôi và khiến đầu móng trở nên giòn, dễ gãy hoặc chẻ ngọn.</p>\n<p>Một sai lầm thường gặp khác là dùng móng tay như một công cụ để cạy mở các gói hàng, bóc nhãn dán hoặc nạy nắp hộp. Móng khô sẽ mất đi độ đàn hồi và rất dễ gãy khi chịu lực đột ngột. Hãy luôn dùng đúng dụng cụ gia dụng phù hợp để bảo vệ bộ móng xinh của bạn và tránh những vết gãy đau nhức.</p>",
+          "readingMinutes": 5,
+          "seoTitle": "Cẩm nang chăm sóc móng và lớp biểu bì trong mùa khô",
+          "seoDescription": "Giữ cho bàn tay, lớp biểu bì và bàn chân luôn mềm mại trong mùa khô hanh. Khám phá các bí quyết chăm sóc biểu bì chuyên nghiệp, thói quen dưỡng chân và mẹo cấp ẩm mỗi ngày."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "d59984e1-a81f-4102-8155-201525b551b7",
+      "categoryKey": "salon",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "b4e43de1-2545-47a5-bc6e-7f586928d156",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:19:42.477Z",
+      "createdAt": "2026-11-13T17:18:58.723Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "What to Expect at Your Salon Manicure Appointment",
+          "slug": "what-to-expect-at-your-salon-manicure-appointment",
+          "excerpt": "Discover every step of a classic manicure appointment, from polish selection to soothing hand massages and long-lasting nail care.",
+          "coverAlt": "Neatly arranged professional manicure tools, clean towels, and glass bottles of polish resting on a natural stone salon counter.",
+          "body": "<p class=\"tpl-lead\">Stepping into a salon for a <strong>manicure appointment</strong> should feel like an immediate breath of fresh air. Whether you are treating yourself to your very first professional nail session or maintaining a cherished beauty ritual, knowing what to anticipate allows you to sit back, unwind, and fully savor the pampering experience at Envy Nails Spa of Wendell.</p>\n<h2>Arriving and Selecting Your Ideal Polish Shade</h2>\n<p>Your visit begins the moment you enter the salon reception area. After checking in for your <strong>manicure appointment</strong>, you are invited to browse the vibrant display of nail lacquers and finishes. Rows of pristine bottles present an inspiring array of choices, spanning from subtle translucent nudes and classic French pinks to rich jewel tones, bold statement reds, and modern seasonal pastels.</p>\n<p>Taking time with the polish collection is an essential part of the salon ritual. You can compare swatches directly against your skin tone or consult with your technician about whether regular lacquer, durable gel, or dip powder best aligns with your daily routine and personal aesthetic.</p>\n<p>If you are torn between two shades, hold the display swatches against your natural nail bed under the salon lighting. Cool undertones often complement berry tones and crisp whites, while warmer skin tones pair beautifully with corals, creamy taupes, and golden-flecked neutrals.</p>\n<h2>Hand Preparation and Cleansing</h2>\n<p>Once seated at the manicure table, your nail technician begins by sanitizing both their hands and yours. If you are wearing existing polish, this is gently removed using a targeted, acetone or non-acetone formula designed to dissolve pigment without stripping natural moisture from the nail surface.</p>\n<p>Next comes the soothing hand soak. Your fingertips rest in a small basin of warm, conditioned water infused with gentle skin softeners. This crucial preparation stage relaxes the hand muscles, washes away residual oils, and softens the delicate skin surrounding the nail bed, paving the way for meticulous grooming.</p>\n<h2>Gentle Nail Shaping and Cuticle Care</h2>\n<p>Nail architecture defines the overall appearance of your hands. Your technician will ask about your preferred nail silhouette, taking into account the natural shape of your fingers and personal lifestyle demands. Popular options include soft square, rounded, elegant almond, oval, and squoval contours.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Precision Filing</h3><p>Using a fine-grit professional file, the technician shapes the free edge in a single, fluid direction to prevent splitting or fraying of delicate natural fibers.</p></div><div class=\"tpl-item\"><h3>Gentle Surface Buffing</h3><p>A light foam buffer smooths ridges across the plate, creating an even foundation for optimal polish adherence.</p></div><div class=\"tpl-item\"><h3>Cuticle Softening</h3><p>A specialized softening cream or solution is applied to the perimeter of each nail to loosen stubborn dead tissue.</p></div><div class=\"tpl-item\"><h3>Tidying and Detailing</h3><p>Using a sterile metal pusher or soft orange stick, the technician gently eases the cuticle backward, carefully trimming only loose hangnails.</p></div></section>\n<p>Healthy cuticle management focuses on safety and neatness. Professional care protects the vital protective barrier around the nail matrix while providing a smooth perimeter that allows your chosen polish to lay seamlessly.</p>\n<h2>Exfoliation and Relaxing Hand Massage</h2>\n<p>A premier <strong>manicure appointment</strong> balances aesthetic detailing with restorative self-care. During the exfoliation stage, a fragrant scrub is gently worked over your hands and wrists, lifting dull surface cells and revitalizing tired skin. Warm, damp towels are often wrapped around your hands to rinse away the scrub and encourage deeper relaxation.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/1376.webp\" alt=\"A close-up view of hands resting on a clean white towel during a soothing hand massage at a manicure station.\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/640.webp 640w, {{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/1280.webp 1280w, {{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>A dedicated hand massage provides deep relaxation and restores moisture during your salon visit.</figcaption></figure>\n<p>Following exfoliation, the technician applies a rich moisturizing lotion or therapeutic body butter. Through rhythmic effleurage and targeted pressure point movements across the palms, fingers, and wrists, the massage melts away joint tension caused by typing, driving, and daily repetitive tasks.</p>\n<h2>Precision Polish Application and Setting</h2>\n<p>Before applying any color, your technician uses an alcohol or acetone wipe to dehydrate the nail surface, ensuring that no lingering oils compromise adhesion. Then, the multi-step painting process commences with steady, calibrated brush strokes.</p>\n<p>First, a nourishing base coat is swept across the nail, acting as an anchor for the pigment and shielding the natural plate from staining. Next, two thin, uniform coats of your selected color are applied, capping the free edges to forestall premature chipping. A protective, high-gloss top coat seals the layers, delivering brilliant shine and resilience.</p>\n<p>Depending on your selection, drying takes place either under an LED or UV lamp for gel finishes, or beneath a specialized salon fan and drying station for traditional lacquer formulations.</p>\n<h2>Finishing Touches and Aftercare Advice</h2>\n<p>The final stage of your <strong>manicure appointment</strong> seals in moisture and ensures lasting results. A drop of nutrient-rich cuticle oil is massaged into the base of each nail, restoring hydration stripped during cleansing and protecting the newly painted surfaces from minor bumps as you prepare to depart.</p>\n<section class=\"tpl-summary\"><h3>Essential Post-Manicure Care Habits</h3><ul class=\"tpl-check\"><li>Apply cuticle oil or a dense hand balm every evening before bed to keep the nail bed flexible and prevent hangnails.</li><li>Wear rubber gloves when handling household detergents, washing dishes, or working in the garden to shield your polish from harsh chemicals.</li><li>Avoid using your nails as tools to peel tape, open beverage cans, or pry objects apart.</li><li>Schedule maintenance visits every two to three weeks to sustain optimal nail plate structure and tidy cuticles.</li></ul></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>How long does a standard manicure appointment usually take?</h3><p>A standard traditional manicure typically takes between 30 and 45 minutes, while gel services with LED curing and extended hand massages may require 45 to 60 minutes.</p></div><div class=\"tpl-item\"><h3>Should I trim or file my nails before coming to the salon?</h3><p>No special preparation is required. It is helpful to arrive with natural nails free of tough enhancements, but technicians can readily remove old polish or gel during the session.</p></div><div class=\"tpl-item\"><h3>Can I shape my cuticles at home before my visit?</h3><p>It is best to leave nail trimming and shaping entirely to your technician. They can properly balance your nail length with your lifestyle and prevent uneven edges or ingrown corners.</p></div><div class=\"tpl-item\"><h3>How frequently should I schedule a professional manicure?</h3><p>We advise against cutting your own cuticles at home. Technicians use sanitized tools and gentle methods to soften and push back the skin without risking irritation.</p></div></section>\n<section class=\"tpl-cta\"><h3>Refresh Your Nails with Expert Care</h3><p>Treat your hands to the attentive care they deserve. Whether you are seeking a fresh seasonal color, sophisticated nail shaping, or a peaceful break from your busy day, book your next <strong>manicure appointment</strong> with the welcoming professionals at Envy Nails Spa of Wendell.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Your Manicure Appointment Guide: What to Expect",
+          "seoDescription": "Learn what happens during a professional manicure appointment, including nail prep, cuticle care, shaping, massage, and expert polish application."
+        },
+        {
+          "locale": "vi",
+          "title": "Những Điều Cần Biết Khi Đi Làm Móng (Manicure)",
+          "slug": "nhung-dieu-can-biet-khi-di-lam-mong-manicure",
+          "excerpt": "Khám phá từng bước trong một buổi làm móng cổ điển, từ chọn màu sơn đến massage tay thư giãn và chăm sóc móng bền đẹp.",
+          "coverAlt": "Dụng cụ làm móng chuyên nghiệp được sắp xếp gọn gàng, khăn sạch và các lọ sơn móng bằng thủy tinh đặt trên bàn salon đá tự nhiên.",
+          "body": "<p class=\"tpl-lead\">Bước vào salon cho một <strong>buổi làm móng (manicure)</strong> sẽ mang lại cảm giác nhẹ nhàng, thư thái ngay tức thì. Dù bạn lần đầu tiên trải nghiệm dịch vụ làm móng chuyên nghiệp hay đang duy trì thói quen làm đẹp quen thuộc, việc biết trước quy trình sẽ giúp bạn yên tâm thư giãn và tận hưởng trọn vẹn trải nghiệm chăm sóc tại Envy Nails Spa of Wendell.</p>\n<h2>Đến Nơi và Chọn Màu Sơn Lý Tưởng</h2>\n<p>Trải nghiệm bắt đầu ngay khi bạn bước vào khu vực lễ tân của salon. Sau khi làm thủ tục cho <strong>buổi làm móng</strong>, bạn sẽ được mời chiêm ngưỡng bộ sưu tập phong phú các màu sơn và hiệu ứng bóng. Hàng dài các lọ sơn mới tinh mang đến vô vàn lựa chọn đầy cảm hứng, từ các tông nude trong trẻo nhẹ nhàng, hồng kiểu Pháp cổ điển cho đến các tông màu đá quý sang trọng, sắc đỏ nổi bật và gam pastel hợp mùa.</p>\n<p>Dành thời gian lựa chọn sơn là một phần thú vị của trải nghiệm tại salon. Bạn có thể ướm trực tiếp mẫu màu lên da tay hoặc nhờ chuyên viên tư vấn xem sơn thường, sơn gel bền màu hay bột nhúng (dip powder) sẽ phù hợp nhất với thói quen sinh hoạt và phong cách riêng của bạn.</p>\n<p>Nếu bạn đang phân vân giữa hai tông màu, hãy đặt bảng mẫu lên móng thật dưới ánh đèn của salon. Tông da lạnh thường rất hợp với sắc màu quả mọng (berry) và trắng tinh khôi, trong khi tông da ấm lại nổi bật với sắc san hô, màu nâu xám kem và các màu trung tính ánh vàng.</p>\n<h2>Vệ Sinh và Chuẩn Bị Cho Đôi Tay</h2>\n<p>Khi bạn đã ngồi vào bàn làm móng, chuyên viên sẽ bắt đầu bằng việc khử khuẩn tay cho cả hai người. Nếu bạn đang có lớp sơn cũ, chuyên viên sẽ nhẹ nhàng tẩy sạch bằng dung dịch chuyên dụng (chứa acetone hoặc không chứa acetone) giúp hòa tan sắc tố mà không làm mất đi độ ẩm tự nhiên trên bề mặt móng.</p>\n<p>Tiếp theo là bước ngâm tay thư giãn. Các đầu ngón tay của bạn được ngâm trong một chiếc bát nhỏ chứa nước ấm pha dưỡng chất làm mềm da dịu nhẹ. Bước chuẩn bị quan trọng này giúp thả lỏng các cơ bàn tay, loại bỏ dầu thừa còn sót lại và làm mềm vùng da quanh móng, tạo điều kiện thuận lợi cho các bước chăm sóc tỉ mỉ tiếp theo.</p>\n<h2>Tạo Phom Móng Nhẹ Nhàng và Chăm Sóc Da Quanh Móng</h2>\n<p>Phom dáng móng quyết định diện mạo tổng thể cho đôi bàn tay của bạn. Chuyên viên sẽ hỏi về dáng móng bạn yêu thích, đồng thời cân nhắc theo hình dáng tự nhiên của ngón tay và nhu cầu sinh hoạt hàng ngày. Các kiểu móng phổ biến bao gồm vuông mềm (soft square), tròn, hạnh nhân thanh lịch (almond), oval và vuông bo tròn (squoval).</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Dũa Định Hình Chuẩn Xác</h3><p>Sử dụng cây dũa chuyên dụng có độ nhám mịn, chuyên viên sẽ dũa mép móng theo một chiều nhất định để tránh làm nứt mẻ hay xước sợi móng tự nhiên.</p></div><div class=\"tpl-item\"><h3>Làm Mịn Bề Mặt Móng</h3><p>Một cây phao mịn sẽ nhẹ nhàng làm phẳng các đường gờ trên bề mặt móng, tạo nền tảng mịn màng giúp lớp sơn bám dính tốt nhất.</p></div><div class=\"tpl-item\"><h3>Làm Mềm Da Viền Móng</h3><p>Kem hoặc dung dịch làm mềm chuyên dụng được thoa quanh viền mỗi móng để làm mềm các tế bào da chết cứng đầu.</p></div><div class=\"tpl-item\"><h3>Làm Sạch và Cắt Tỉa Chi Tiết</h3><p>Bằng cây đẩy da kim loại đã tiệt trùng hoặc que gỗ chuyên dụng, chuyên viên sẽ nhẹ nhàng đẩy gọn phần da viền móng ra sau và chỉ cẩn thận cắt tỉa phần da xước bong ra ngoài.</p></div></section>\n<p>Chăm sóc da viền móng đúng cách luôn chú trọng đến sự an toàn và gọn gàng. Kỹ thuật chuyên nghiệp sẽ bảo vệ lớp màng chắn quan trọng quanh gốc móng, đồng thời tạo đường viền mượt mà để lớp sơn của bạn lên màu thật hoàn hảo.</p>\n<h2>Tẩy Tế Bào Chết và Massage Tay Thư Giãn</h2>\n<p>Một <strong>buổi làm móng</strong> cao cấp luôn kết hợp hài hòa giữa tính thẩm mỹ và sự chăm sóc phục hồi. Trong bước tẩy tế bào chết, hỗn hợp tẩy da chết thơm dịu được massage nhẹ nhàng trên bàn tay và cổ tay, cuốn đi các tế bào xỉn màu và tiếp thêm sức sống cho làn da mệt mỏi. Khăn ấm mềm thường được quấn quanh bàn tay để lau sạch hỗn hợp và giúp bạn thư giãn sâu hơn.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/1376.webp\" alt=\"Cận cảnh đôi bàn tay đặt trên khăn trắng sạch sẽ trong lúc được massage thư giãn tại bàn làm móng.\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/640.webp 640w, {{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/1280.webp 1280w, {{media}}/93cf7fff-d270-49e0-8f45-76f6864db5a9/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Bài massage tay chuyên sâu mang lại sự thư giãn tối đa và phục hồi độ ẩm trong suốt buổi làm móng.</figcaption></figure>\n<p>Sau khi tẩy tế bào chết, chuyên viên sẽ thoa kem dưỡng ẩm sâu hoặc bơ dưỡng thể phục hồi. Bằng các động tác vuốt nhịp nhàng và ấn huyệt chính xác trên lòng bàn tay, ngón tay và cổ tay, bài massage sẽ xua tan sự căng cứng ở các khớp do gõ phím, lái xe và các công việc lặp đi lặp lại hàng ngày.</p>\n<h2>Kỹ Thuật Sơn Móng Chuẩn Xác và Làm Khô</h2>\n<p>Trước khi sơn màu, chuyên viên sẽ dùng miếng lau tẩm cồn hoặc dung dịch khử ẩm để làm sạch bề mặt móng, đảm bảo không còn dầu thừa gây ảnh hưởng đến độ bám dính. Sau đó, quy trình sơn nhiều lớp bắt đầu với những đường cọ đều đặn và chuẩn xác.</p>\n<p>Đầu tiên, một lớp sơn lót (base coat) giàu dưỡng chất được quét lên móng, vừa giúp giữ màu sơn vừa bảo vệ móng thật không bị ố vàng. Tiếp theo là hai lớp sơn màu mỏng, đều, có khóa đầu móng cẩn thận để tránh bong tróc sớm. Cuối cùng, một lớp sơn bóng bảo vệ (top coat) sẽ khóa lại các lớp sơn, mang đến độ sáng bóng rực rỡ và bền đẹp.</p>\n<p>Tùy vào lựa chọn của bạn, móng sẽ được làm khô dưới đèn LED hoặc UV đối với sơn gel, hoặc dưới quạt sấy chuyên dụng của salon đối với các dòng sơn truyền thống.</p>\n<h2>Hoàn Thiện và Lời Khuyên Chăm Sóc Sau Khi Làm Móng</h2>\n<p>Bước cuối cùng của <strong>buổi làm móng</strong> giúp khóa ẩm và duy trì độ bền cho bộ móng. Một giọt dầu dưỡng viền móng giàu dưỡng chất được massage nhẹ nhàng vào chân móng, giúp phục hồi độ ẩm đã mất trong quá trình vệ sinh và bảo vệ bề mặt móng mới sơn khỏi những va quẹt nhẹ khi bạn chuẩn bị ra về.</p>\n<section class=\"tpl-summary\"><h3>Thói Quen Cần Thiết Để Chăm Sóc Móng Sau Khi Làm</h3><ul class=\"tpl-check\"><li>Thoa dầu dưỡng viền móng hoặc sáp dưỡng tay đậm đặc mỗi tối trước khi đi ngủ để giữ cho khóe móng mềm mại và ngăn ngừa xước măng rô.</li><li>Đeo găng tay cao su khi tiếp xúc với chất tẩy rửa, rửa bát hoặc làm vườn để bảo vệ lớp sơn khỏi các hóa chất mạnh.</li><li>Tránh dùng móng tay như một công cụ để bóc băng dính, bật nắp lon nước hay cạy mở các vật cứng.</li><li>Đặt lịch chăm sóc móng định kỳ mỗi 2 đến 3 tuần để duy trì kết cấu móng chắc khỏe và vùng viền móng gọn gàng.</li></ul></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Một buổi làm móng thông thường mất bao lâu?</h3><p>Một buổi làm móng truyền thống thường mất từ 30 đến 45 phút, trong khi dịch vụ sơn gel cần hơ đèn LED kèm massage tay chuyên sâu có thể mất từ 45 đến 60 phút.</p></div><div class=\"tpl-item\"><h3>Tôi có nên tự cắt hoặc dũa móng trước khi đến salon không?</h3><p>Bạn không cần chuẩn bị trước. Bạn chỉ cần để móng tự nhiên và không gắn các phụ kiện khó tháo, các chuyên viên hoàn toàn có thể giúp bạn tẩy sơn cũ hoặc sơn gel ngay tại buổi làm móng.</p></div><div class=\"tpl-item\"><h3>Tôi có thể tự cắt da quanh móng tại nhà trước khi đến không?</h3><p>Tốt nhất bạn nên để chuyên viên đảm nhận hoàn toàn việc cắt tỉa và tạo phom móng. Họ sẽ giúp cân đối độ dài móng phù hợp với thói quen sinh hoạt và tránh tình trạng móng bị gồ ghề hay mọc đâm vào khóe.</p></div><div class=\"tpl-item\"><h3>Tôi nên đi làm móng chuyên nghiệp bao lâu một lần?</h3><p>Chúng tôi khuyên bạn không nên tự cắt da móng tại nhà. Các chuyên viên sử dụng dụng cụ đã tiệt trùng cùng phương pháp nhẹ nhàng để làm mềm và đẩy da mà không gây trầy xước, kích ứng.</p></div></section>\n<section class=\"tpl-cta\"><h3>Làm Mới Bộ Móng Cùng Sự Chăm Sóc Chuyên Nghiệp</h3><p>Hãy dành cho đôi bàn tay sự chăm sóc chu đáo xứng đáng. Dù bạn muốn thử một màu sơn mới hợp mùa, tạo phom móng tinh tế hay chỉ đơn giản là tìm một khoảng lặng thư giãn giữa ngày bận rộn, hãy đặt lịch hẹn <strong>làm móng</strong> tiếp theo với đội ngũ thân thiện tại Envy Nails Spa of Wendell.</p></section>",
+          "readingMinutes": 8,
+          "seoTitle": "Cẩm Nang Đi Làm Móng: Những Điều Bạn Nên Biết",
+          "seoDescription": "Tìm hiểu quy trình trong một buổi làm móng chuyên nghiệp, bao gồm chuẩn bị móng, chăm sóc da quanh móng, tạo phom, massage và sơn móng chuẩn kỹ thuật."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

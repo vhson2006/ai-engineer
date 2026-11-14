@@ -1,20 +1,19 @@
 # syntax=docker/dockerfile:1
 # render-worker (ADR 0039): renders the video studio's MP4s with Remotion (headless Chrome + the
-# ffmpeg Remotion ships). Build context = the web workspace (web/):
+# ffmpeg Remotion ships). Not Next.js, so not web/Dockerfile. Build context = the web workspace (web/):
 #   docker build -f web/apps/render-worker/Dockerfile -t render-worker web
 # Debian (glibc): Chrome Headless Shell doesn't run on Alpine. All configuration comes from env.
 ARG NODE_IMAGE=node:24.22.1-bookworm-slim
 
+# Every workspace's package.json, and nothing else (as in web/Dockerfile): no hand-kept list.
+FROM ${NODE_IMAGE} AS manifests
+WORKDIR /web
+COPY . .
+RUN find . -type f ! -name package.json ! -name package-lock.json -delete && find . -type d -empty -delete
+
 FROM ${NODE_IMAGE} AS deps
 WORKDIR /web
-# Manifests first (cached layer). Every workspace in package-lock.json must be listed here.
-COPY package.json package-lock.json ./
-COPY apps/render-worker/package.json apps/render-worker/
-COPY apps/admin-web/package.json apps/admin-web/
-COPY apps/portfolio-web/package.json apps/portfolio-web/
-COPY packages/core/package.json packages/core/
-COPY packages/ui/package.json packages/ui/
-COPY packages/video/package.json packages/video/
+COPY --from=manifests /web ./
 RUN npm ci -w render-worker --omit=dev
 
 FROM ${NODE_IMAGE} AS runtime

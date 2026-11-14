@@ -2,7 +2,9 @@
 /* Shared design tokens and base styles, then this site's own look on top. */
 @import "@web/ui/theme.css";
 @import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
 @source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
 
 /*
  * Giặt sấy SFaster, from the shop sign: fresh green, sunny yellow (the "SFaster" lettering),
@@ -28,6 +30,14 @@
   --sun-deep: #f2a900;
   --cherry: #e3262f;
   --deep: #0a5124;
+  --deep-fg: #ffffff;
+  /* The kit's tokens (@web/site-kit/theme.css): sun labels on green, round shapes, chunky headings. */
+  --accent: var(--sun);
+  --accent-fg: #0a5124;
+  --card-radius: 2rem;
+  --button-radius: 9999px;
+  --heading-weight: 800;
+  --heading-tracking: -0.025em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,13 +61,9 @@
 }
 
 @theme inline {
-  --color-brand-strong: var(--brand-strong);
   --color-sun: var(--sun);
   --color-sun-deep: var(--sun-deep);
   --color-cherry: var(--cherry);
-  --color-deep: var(--deep);
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display-round);
 }
 
 /* A section reached from the menu starts right under the sticky header (66 px at every width):
@@ -69,10 +75,6 @@
   }
 }
 
-details summary::-webkit-details-marker {
-  display: none;
-}
-
 /* The sign's lettering: yellow fill, dark green outline, soft drop shadow. */
 .sign-letters {
   color: var(--sun);
@@ -81,8 +83,9 @@ details summary::-webkit-details-marker {
   text-shadow: 0 0.06em 0 #0b4a20, 0 0.12em 0.2em rgb(0 0 0 / 0.25);
 }
 
-/* Soap bubbles (decoration on green bands). */
-.bubbles {
+/* Soap bubbles (decoration on green bands: the footer, the article's call to action). */
+.bubbles,
+.article-cta {
   background-image:
     radial-gradient(circle at 12% 30%, rgb(255 255 255 / 0.16) 0 26px, transparent 27px),
     radial-gradient(circle at 18% 70%, rgb(255 255 255 / 0.1) 0 12px, transparent 13px),
@@ -163,4 +166,9 @@ details summary::-webkit-details-marker {
 }
 .article-body hr {
   @apply my-12 border-border;
+}
+
+/* The kit's article pages, in the shop's look: the call to action on the green band. */
+.article-cta {
+  background-color: var(--brand);
 }

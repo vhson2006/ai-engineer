@@ -38,6 +38,8 @@ export class Renderer {
   constructor(
     private readonly concurrency: number,
     private readonly ignoreCertificateErrors = false,
+    /** Remotion's local bundle server: a fixed port (config REMOTION_PORT), never one it picks. */
+    private readonly port: number | null = null,
   ) {}
 
   /** Downloads the headless browser if needed and bundles the compositions. */
@@ -55,7 +57,7 @@ export class Renderer {
     const poster = join(dir, 'poster.jpg');
     try {
       const chromiumOptions = { ignoreCertificateErrors: this.ignoreCertificateErrors };
-      const selected = await selectComposition({ serveUrl: this.serveUrl, id: composition, inputProps: props, chromiumOptions });
+      const selected = await selectComposition({ serveUrl: this.serveUrl, id: composition, inputProps: props, chromiumOptions, port: this.port });
       await renderMedia({
         serveUrl: this.serveUrl,
         composition: selected,
@@ -67,6 +69,7 @@ export class Renderer {
         outputLocation: file,
         concurrency: this.concurrency,
         chromiumOptions,
+        port: this.port,
         onProgress: ({ progress }) => onProgress(progress),
       });
       const durationMs = Math.round((selected.durationInFrames / selected.fps) * 1000);

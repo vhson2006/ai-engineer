@@ -1,0 +1,360 @@
+{
+  "common": {
+    "skipToContent": "Chuyển đến nội dung",
+    "language": "Ngôn ngữ",
+    "call": "Gọi {phone}",
+    "callNow": "Gọi ngay",
+    "zalo": "Nhắn Zalo",
+    "email": "Gửi email",
+    "directions": "Chỉ đường",
+    "from": "Từ {price}"
+  },
+  "menu": {
+    "label": "Menu chính",
+    "home": "Trang chủ",
+    "open": "Mở menu",
+    "close": "Đóng menu",
+    "articles": "Bài viết",
+    "faq": "Hỏi đáp",
+    "contact": "Liên hệ"
+  },
+  "contact": {
+    "address": "Địa chỉ",
+    "hours": "Giờ mở cửa",
+    "phone": "Hotline & Zalo",
+    "email": "Email",
+    "mapTitle": "Bản đồ đường đến {name}"
+  },
+  "faq": {
+    "eyebrow": "Hỏi đáp",
+    "title": "Câu hỏi thường gặp",
+    "more": "Còn câu hỏi khác? Gọi hoặc nhắn Zalo {phone}."
+  },
+  "footer": {
+    "explore": "Khám phá",
+    "contact": "Liên hệ",
+    "rights": "© {year} {name}. Bảo lưu mọi quyền.",
+    "legal": "Thông tin pháp lý",
+    "sample": "Website mẫu: doanh nghiệp, địa chỉ, số điện thoại, giá và hình ảnh đều là hư cấu."
+  },
+  "articles": {
+    "playVideo": "Phát video",
+    "eyebrow": "Bài viết",
+    "home": "Trang chủ",
+    "breadcrumb": "Đường dẫn",
+    "all": "Tất cả",
+    "categoriesLabel": "Chủ đề",
+    "categoryTitle": "{category}",
+    "categoryDescription": "Các bài viết về {category} từ {name}.",
+    "featured": "Nổi bật",
+    "readMore": "Đọc tiếp",
+    "minutes": "{count} phút đọc",
+    "latest": "Bài viết mới",
+    "viewAll": "Tất cả bài viết",
+    "back": "Quay lại bài viết",
+    "related": "Đọc thêm",
+    "empty": "Chủ đề này chưa có bài viết.",
+    "none": "Chưa có bài viết nào được đăng.",
+    "share": "Chia sẻ",
+    "shareFacebook": "Chia sẻ lên Facebook",
+    "copyLink": "Sao chép liên kết",
+    "copied": "Đã sao chép"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
+    "back": "Về trang chủ"
+  },
+  "legal": {
+    "updated": "Cập nhật lần cuối: {date}",
+    "contents": "Nội dung",
+    "related": "Xem thêm",
+    "links": {
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản sử dụng",
+      "dataDeletion": "Xoá dữ liệu cá nhân"
+    },
+    "privacy": {
+      "title": "Chính sách bảo mật",
+      "description": "{name} thu thập dữ liệu cá nhân nào, dùng vào việc gì, chia sẻ với ai, lưu bao lâu, và quyền của bạn với dữ liệu của mình.",
+      "intro": "Chính sách này giải thích cách {name} thu thập, sử dụng và bảo vệ dữ liệu cá nhân khi bạn dùng website, liên hệ với chúng tôi hoặc sử dụng dịch vụ, theo quy định của pháp luật Việt Nam về bảo vệ dữ liệu cá nhân.",
+      "sections": [
+        {
+          "id": "ben-kiem-soat",
+          "title": "Ai chịu trách nhiệm về dữ liệu của bạn",
+          "paragraphs": [
+            "{name} (“chúng tôi”), địa chỉ {address}, điện thoại và Zalo {phone}, email {email}, là bên quyết định mục đích và cách xử lý dữ liệu cá nhân nêu trong chính sách này."
+          ],
+          "items": []
+        },
+        {
+          "id": "du-lieu-thu-thap",
+          "title": "Dữ liệu chúng tôi thu thập",
+          "paragraphs": [
+            "Website không có tài khoản, không có biểu mẫu và không yêu cầu bạn nhập thông tin cá nhân. Chúng tôi chỉ có dữ liệu của bạn trong các trường hợp sau:"
+          ],
+          "items": [
+            "Khi bạn gọi điện, gửi email, nhắn Zalo hoặc nhắn tin qua mạng xã hội: tên hoặc tên hiển thị, số điện thoại hoặc email, nội dung tin nhắn và thông tin về yêu cầu mà bạn cung cấp.",
+            "Khi bạn đặt chỗ, đặt hàng hoặc đến trực tiếp: thông tin cần để phục vụ bạn (tên, số điện thoại) và chi tiết đặt chỗ, đơn hàng (ngày, giờ, sản phẩm, ghi chú của bạn).",
+            "Khi bạn truy cập website: dữ liệu kỹ thuật do trình duyệt tự gửi (địa chỉ IP, loại trình duyệt và thiết bị, trang đã xem, thời điểm truy cập), ghi trong nhật ký máy chủ.",
+            "Một cookie duy nhất, {cookie}, ghi nhớ ngôn ngữ bạn chọn (tối đa 1 năm). Website không dùng cookie quảng cáo, công cụ phân tích hay theo dõi."
+          ]
+        },
+        {
+          "id": "muc-dich",
+          "title": "Chúng tôi dùng dữ liệu để làm gì",
+          "paragraphs": [
+            "Chúng tôi không dùng dữ liệu của bạn để quảng cáo và không bán, cho thuê hay trao đổi dữ liệu với bất kỳ ai."
+          ],
+          "items": [
+            "Trả lời câu hỏi, tư vấn và báo giá khi bạn liên hệ.",
+            "Thực hiện dịch vụ, đơn hàng bạn đã đặt và liên hệ với bạn về việc đó.",
+            "Vận hành, bảo mật và khắc phục lỗi của website.",
+            "Thực hiện nghĩa vụ theo quy định của pháp luật."
+          ]
+        },
+        {
+          "id": "co-so",
+          "title": "Cơ sở để xử lý dữ liệu",
+          "paragraphs": [
+            "Chúng tôi xử lý dữ liệu khi bạn đồng ý (ví dụ khi bạn chủ động liên hệ và cung cấp thông tin), khi cần để thực hiện dịch vụ bạn yêu cầu, hoặc khi pháp luật yêu cầu. Bạn có thể rút lại sự đồng ý bất cứ lúc nào; việc rút lại không ảnh hưởng đến việc xử lý đã thực hiện trước đó."
+          ],
+          "items": []
+        },
+        {
+          "id": "chia-se",
+          "title": "Chia sẻ dữ liệu và bên thứ ba",
+          "paragraphs": [
+            "Chúng tôi chỉ để bên khác tiếp cận dữ liệu khi thật sự cần thiết:"
+          ],
+          "items": [
+            "Nhà cung cấp hạ tầng lưu trữ và vận hành website (máy chủ, lưu trữ hình ảnh), chỉ để cung cấp website cho bạn.",
+            "Zalo, Facebook và các nền tảng nhắn tin: khi bạn liên hệ qua các nền tảng này, nền tảng xử lý dữ liệu theo chính sách riêng của họ.",
+            "Google Maps được nhúng ở mục Liên hệ: khi bản đồ hiển thị, Google có thể đặt cookie và thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
+            "Video YouTube trong một số bài viết: trước khi bạn bấm phát chỉ hiện ảnh xem trước (từ i.ytimg.com); khi bấm, trình phát tải từ youtube-nocookie.com và Google có thể đặt cookie, thu thập dữ liệu theo Chính sách quyền riêng tư của Google (policies.google.com/privacy).",
+            "Cơ quan nhà nước có thẩm quyền, khi pháp luật yêu cầu."
+          ]
+        },
+        {
+          "id": "mang-xa-hoi",
+          "title": "Mạng xã hội và đăng nhập",
+          "paragraphs": [
+            "Website hiện không có chức năng đăng nhập hay kết nối tài khoản mạng xã hội. Khi bạn bấm vào liên kết tới Zalo, Facebook hay nền tảng khác, bạn rời website của chúng tôi và chính sách của nền tảng đó được áp dụng.",
+            "Nếu sau này chúng tôi bổ sung đăng nhập hoặc chia sẻ bằng tài khoản mạng xã hội, chúng tôi chỉ yêu cầu những quyền tối thiểu cần thiết, nêu rõ trong chính sách này trước khi áp dụng, và bạn luôn có thể yêu cầu xoá dữ liệu theo hướng dẫn ở trang Xoá dữ liệu cá nhân."
+          ],
+          "items": []
+        },
+        {
+          "id": "luu-tru",
+          "title": "Thời gian lưu trữ",
+          "paragraphs": [
+            "Chúng tôi chỉ giữ dữ liệu trong thời gian cần cho các mục đích nêu trên, sau đó xoá hoặc ẩn danh:"
+          ],
+          "items": [
+            "Thông tin đặt chỗ, đơn hàng: đến khi hoàn tất và mọi khiếu nại liên quan đã được giải quyết.",
+            "Nhật ký máy chủ: trong thời gian ngắn, để bảo mật và khắc phục lỗi.",
+            "Dữ liệu pháp luật buộc phải lưu (ví dụ chứng từ kế toán, khai báo lưu trú): theo thời hạn luật định."
+          ]
+        },
+        {
+          "id": "bao-mat",
+          "title": "Bảo mật",
+          "paragraphs": [
+            "Website chỉ phục vụ qua kết nối mã hoá (HTTPS) và không lưu mật khẩu hay thông tin thanh toán của bạn. Chỉ những người cần thiết để phục vụ bạn mới được tiếp cận dữ liệu."
+          ],
+          "items": []
+        },
+        {
+          "id": "quyen",
+          "title": "Quyền của bạn",
+          "paragraphs": [
+            "Với dữ liệu cá nhân của mình, bạn có quyền:"
+          ],
+          "items": [
+            "Được biết dữ liệu nào được xử lý và vì sao.",
+            "Đồng ý, hoặc rút lại sự đồng ý.",
+            "Xem, sao chép và yêu cầu chỉnh sửa dữ liệu.",
+            "Yêu cầu xoá dữ liệu, hạn chế hoặc phản đối việc xử lý.",
+            "Khiếu nại, tố cáo hoặc khởi kiện theo quy định của pháp luật."
+          ]
+        },
+        {
+          "id": "thuc-hien-quyen",
+          "title": "Thực hiện quyền của bạn",
+          "paragraphs": [
+            "Hãy gọi điện hoặc nhắn Zalo {phone}, gửi email {email}, hoặc đến trực tiếp tại {address}. Chúng tôi có thể hỏi một vài thông tin để xác minh bạn là chủ của dữ liệu trước khi thực hiện yêu cầu."
+          ],
+          "items": []
+        },
+        {
+          "id": "tre-em",
+          "title": "Trẻ em",
+          "paragraphs": [
+            "Website dành cho người trưởng thành. Chúng tôi không cố ý thu thập dữ liệu của trẻ em; dữ liệu của trẻ em chỉ được xử lý khi có sự đồng ý của cha mẹ hoặc người giám hộ theo quy định."
+          ],
+          "items": []
+        },
+        {
+          "id": "thay-doi",
+          "title": "Thay đổi chính sách",
+          "paragraphs": [
+            "Khi chính sách thay đổi, chúng tôi cập nhật trang này và ngày “Cập nhật lần cuối” ở đầu trang. Thay đổi quan trọng sẽ được thông báo rõ trên website."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "{name}, {address}. Điện thoại và Zalo: {phone}. Email: {email}."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "title": "Điều khoản sử dụng",
+      "description": "Điều khoản khi sử dụng website {name}: thông tin và giá tham khảo, đặt chỗ và đặt hàng, bài viết, quyền sở hữu nội dung và luật áp dụng.",
+      "intro": "Các điều khoản này áp dụng khi bạn sử dụng website của {name}. Bằng việc sử dụng website, bạn đồng ý với các điều khoản dưới đây. Cách chúng tôi xử lý dữ liệu cá nhân được nêu trong Chính sách bảo mật.",
+      "sections": [
+        {
+          "id": "thong-tin-gia",
+          "title": "Thông tin và giá",
+          "paragraphs": [
+            "Giá và thông tin dịch vụ trên website chỉ để tham khảo. Giá áp dụng là giá chúng tôi xác nhận khi bạn đặt chỗ hoặc đặt hàng.",
+            "Chúng tôi có thể cập nhật giá, giờ mở cửa và nội dung website bất cứ lúc nào."
+          ],
+          "items": []
+        },
+        {
+          "id": "dich-vu",
+          "title": "Đặt chỗ và đặt hàng",
+          "paragraphs": [
+            "Website giới thiệu dịch vụ của chúng tôi; website không tự nhận đặt chỗ, đơn hàng hay thanh toán. Bạn đặt qua điện thoại, Zalo, email hoặc trực tiếp, và các điều kiện cụ thể (ngày, giờ, giá, đặt cọc, huỷ) được thống nhất với chúng tôi lúc đó. Mọi thắc mắc, hãy gọi hoặc nhắn Zalo {phone}."
+          ],
+          "items": []
+        },
+        {
+          "id": "bai-viet",
+          "title": "Bài viết",
+          "paragraphs": [
+            "Bài viết trên website là thông tin và lời khuyên chung, không thay thế tư vấn chuyên môn cho trường hợp cụ thể của bạn."
+          ],
+          "items": []
+        },
+        {
+          "id": "so-huu",
+          "title": "Quyền sở hữu nội dung",
+          "paragraphs": [
+            "Tên, logo, hình ảnh, bài viết và thiết kế của website thuộc về {name} hoặc được sử dụng hợp pháp. Bạn được chia sẻ liên kết tới website và trích dẫn ngắn có ghi nguồn; không được sao chép nội dung để dùng cho mục đích thương mại khi chưa được chúng tôi đồng ý."
+          ],
+          "items": []
+        },
+        {
+          "id": "su-dung-hop-le",
+          "title": "Sử dụng hợp lệ",
+          "paragraphs": [
+            "Khi sử dụng website, bạn không được:"
+          ],
+          "items": [
+            "Tấn công, dò quét lỗ hổng hoặc làm quá tải website.",
+            "Thu thập nội dung tự động ở mức làm ảnh hưởng tới hoạt động của website.",
+            "Giả danh chúng tôi hoặc dùng website cho mục đích trái pháp luật."
+          ]
+        },
+        {
+          "id": "ben-thu-ba",
+          "title": "Liên kết và nội dung của bên thứ ba",
+          "paragraphs": [
+            "Website có liên kết và nội dung nhúng từ Google Maps, YouTube, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
+          ],
+          "items": []
+        },
+        {
+          "id": "trach-nhiem",
+          "title": "Giới hạn trách nhiệm",
+          "paragraphs": [
+            "Chúng tôi cố gắng giữ thông tin chính xác và website hoạt động ổn định, nhưng không bảo đảm website luôn không có lỗi hay gián đoạn. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về thiệt hại phát sinh từ việc sử dụng thông tin trên website. Điều này không làm ảnh hưởng đến quyền lợi của bạn với tư cách người tiêu dùng theo pháp luật Việt Nam."
+          ],
+          "items": []
+        },
+        {
+          "id": "luat-ap-dung",
+          "title": "Luật áp dụng",
+          "paragraphs": [
+            "Các điều khoản này tuân theo pháp luật Việt Nam. Tranh chấp được giải quyết trước hết bằng thương lượng; nếu không thành, sẽ được giải quyết tại cơ quan có thẩm quyền theo quy định của pháp luật."
+          ],
+          "items": []
+        },
+        {
+          "id": "thay-doi",
+          "title": "Thay đổi điều khoản",
+          "paragraphs": [
+            "Khi điều khoản thay đổi, chúng tôi cập nhật trang này và ngày “Cập nhật lần cuối” ở đầu trang. Việc bạn tiếp tục sử dụng website sau đó đồng nghĩa với việc chấp nhận điều khoản mới."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "{name}, {address}. Điện thoại và Zalo: {phone}. Email: {email}."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "dataDeletion": {
+      "title": "Hướng dẫn xoá dữ liệu cá nhân",
+      "description": "Cách yêu cầu {name} xoá dữ liệu cá nhân của bạn, kể cả dữ liệu nhận được qua Facebook, Zalo và các mạng xã hội khác.",
+      "intro": "Trang này hướng dẫn cách yêu cầu {name} xoá dữ liệu cá nhân của bạn, kể cả dữ liệu nhận được qua mạng xã hội.",
+      "sections": [
+        {
+          "id": "du-lieu",
+          "title": "Dữ liệu bạn có thể yêu cầu xoá",
+          "paragraphs": [
+            "Thông tin liên hệ (tên, số điện thoại, email), tin nhắn với chúng tôi, thông tin đặt chỗ hoặc đơn hàng, và mọi dữ liệu chúng tôi nhận được từ tài khoản mạng xã hội của bạn (nếu có)."
+          ],
+          "items": []
+        },
+        {
+          "id": "cach-yeu-cau",
+          "title": "Cách gửi yêu cầu",
+          "paragraphs": [
+            "Chúng tôi xử lý yêu cầu sớm nhất có thể, trong thời hạn pháp luật quy định, và không thu phí."
+          ],
+          "items": [
+            "Gọi điện hoặc nhắn Zalo {phone}, gửi email {email}, hoặc đến trực tiếp tại {address}.",
+            "Cho chúng tôi biết tên và số điện thoại, email hoặc tài khoản mạng xã hội bạn đã dùng để liên hệ, và dữ liệu bạn muốn xoá.",
+            "Chúng tôi xác minh bạn là chủ của dữ liệu, xoá dữ liệu và báo lại cho bạn khi đã hoàn tất."
+          ]
+        },
+        {
+          "id": "mang-xa-hoi",
+          "title": "Dữ liệu từ mạng xã hội",
+          "paragraphs": [
+            "Nếu bạn đã nhắn tin cho chúng tôi qua Facebook, Zalo hay nền tảng khác, bạn có thể tự xoá cuộc trò chuyện ở phía bạn trong ứng dụng đó. Để chúng tôi xoá bản lưu ở phía chúng tôi, hãy gửi yêu cầu như trên.",
+            "Nếu bạn đã đăng nhập hoặc kết nối tài khoản mạng xã hội với website (khi chức năng này có), bạn có thể gỡ quyền truy cập trong phần cài đặt của nền tảng (ví dụ Facebook: Cài đặt và quyền riêng tư → Cài đặt → Ứng dụng và trang web), rồi gửi yêu cầu xoá như trên."
+          ],
+          "items": []
+        },
+        {
+          "id": "giu-lai",
+          "title": "Dữ liệu phải giữ lại",
+          "paragraphs": [
+            "Một số dữ liệu có thể phải giữ lại khi pháp luật yêu cầu (ví dụ chứng từ kế toán, khai báo lưu trú) hoặc để giải quyết một khiếu nại chưa xong. Khi đó, chúng tôi chỉ giữ phần cần thiết và xoá khi hết thời hạn."
+          ],
+          "items": []
+        },
+        {
+          "id": "lien-he",
+          "title": "Liên hệ",
+          "paragraphs": [
+            "{name}, {address}. Điện thoại và Zalo: {phone}. Email: {email}."
+          ],
+          "items": []
+        }
+      ]
+    }
+  }
+}

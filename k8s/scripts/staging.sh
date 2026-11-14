@@ -2,7 +2,7 @@
 # LOCAL STAGING: the whole system in the local Docker Desktop cluster, production images, HTTPS.
 # (k8s/overlays/staging; never touches production.) Run from the repo root through npm:
 #
-#   npm run staging:build      build the 5 production images (Docker Desktop's cluster sees them)
+#   npm run staging:build      build the production images of k8s/images.json (Docker Desktop's cluster sees them)
 #   npm run staging:up         install/refresh everything, scale dev down, deploy, migrate, wait
 #   npm run staging:trust-ca   trust the local CA in Windows (once): HTTPS padlock, no warning
 #   npm run staging:status     pods, certificate, URLs
@@ -30,16 +30,27 @@ require_local_cluster() {
   fi
 }
 
+# The images: k8s/images.json (the one list, also read by .github/workflows/images.yml).
+# One line per image, "|"-separated: name, context, dockerfile, target, app, site URL ({domain} = this one).
+STAGING_DOMAIN=staging.localtest.me
+images() {
+  node -e '
+    const { images } = require("./k8s/images.json");
+    for (const i of images) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", (i.siteUrl ?? "").replace("{domain}", process.argv[1])].join("|"));
+  ' "$STAGING_DOMAIN"
+}
+
 build() {
   say "Building production images (tag :staging)"
-  docker build --target deployment-service -t local/deployment-service:staging nest-microservice
-  docker build --target notification-service -t local/notification-service:staging nest-microservice
-  docker build --target content-service -t local/content-service:staging nest-microservice
-  docker build --target ai-service -t local/ai-service:staging nest-microservice
-  docker build --target migrate -t local/deployment-migrate:staging nest-microservice
-  docker build -f web/apps/portfolio-web/Dockerfile --build-arg SITE_URL=https://www.staging.localtest.me -t local/portfolio-web:staging web
-  docker build -f web/apps/admin-web/Dockerfile -t local/admin-web:staging web
-  docker build -f web/apps/render-worker/Dockerfile -t local/render-worker:staging web
+  local name context dockerfile target app site args
+  while IFS='|' read -r name context dockerfile target app site; do
+    args=(-f "$dockerfile" -t "local/$name:staging")
+    [ -n "$target" ] && args+=(--target "$target")
+    [ -n "$app" ] && args+=(--build-arg "APP=$app")
+    [ -n "$site" ] && args+=(--build-arg "SITE_URL=$site")
+    echo "· $name"
+    docker build "${args[@]}" "$context"
+  done < <(images)
   echo "Done. Docker Desktop's cluster uses the local image store: no push, no pull."
 }
 
@@ -110,7 +121,7 @@ scale_dev_down() {
 
 up() {
   require_local_cluster
-  for img in deployment-service notification-service content-service ai-service deployment-migrate portfolio-web admin-web render-worker; do
+  for img in $(images | cut -d"|" -f1); do
     docker image inspect "local/$img:staging" >/dev/null 2>&1 || { echo "Missing image local/$img:staging: run npm run staging:build first." >&2; exit 1; }
   done
   say "NGINX Gateway Fabric"
@@ -123,12 +134,12 @@ up() {
   say "Deploying k8s/overlays/staging into $NS"
   kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
   kubectl -n "$NS" create configmap local-ca --from-file=ca.crt="$CA_FILE" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
-  kubectl -n "$NS" delete job db-migrate nats-setup --ignore-not-found >/dev/null # a Job's template is immutable
+  kubectl -n "$NS" delete job db-migrate nats-setup keycloak-config --ignore-not-found >/dev/null # a Job's template is immutable
   # Content-addressed tags: a node that already has local/<img>:staging keeps its OLD copy
   # (IfNotPresent), so each build is deployed as local/<img>:<image id>; a rebuild changes the tag,
   # which also rolls the Deployments.
   local rewrite=()
-  for img in deployment-service notification-service content-service ai-service deployment-migrate portfolio-web admin-web render-worker; do
+  for img in $(images | cut -d"|" -f1); do
     local id
     id=$(docker image inspect -f '{{.Id}}' "local/$img:staging" | sed 's/^sha256://' | cut -c1-12)
     docker tag "local/$img:staging" "local/$img:$id"
@@ -141,14 +152,12 @@ up() {
   kubectl -n "$NS" rollout status statefulset/postgres statefulset/redis statefulset/nats statefulset/seaweedfs --timeout=300s
   kubectl -n "$NS" wait job/db-migrate job/nats-setup --for=condition=Complete --timeout=600s
   kubectl -n "$NS" rollout status deploy/keycloak --timeout=600s
+  # The realms (app realm, admin-site sign-in flow, realm master's admin URL): ADR 0043.
+  kubectl -n "$NS" wait job/keycloak-config --for=condition=Complete --timeout=900s
   kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/content-service deploy/ai-service deploy/portfolio-web deploy/admin-web deploy/render-worker --timeout=300s
   kubectl -n "$NS" wait certificate --all --for=condition=Ready --timeout=180s
   if [ -f "$GRAFANA_ENV" ]; then kubectl -n "$NS" rollout status deploy/alloy --timeout=180s; fi
 
-  say "Keycloak admin realm (Frontend URL + brute-force detection)"
-  NS="$NS" bash k8s/scripts/keycloak-admin-url.sh http://localhost:8181
-  say "Admin site sign-in: password + one-time code (client admin-web)"
-  NS="$NS" bash k8s/scripts/keycloak-admin-otp.sh
 
   status
 }

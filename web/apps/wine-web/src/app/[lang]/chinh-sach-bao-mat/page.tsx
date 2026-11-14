@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import { LegalDocument, legalMetadata } from '@/features/legal/legal-page';
-import { getLocale, getMessages } from '@/i18n/messages';
+import { site } from '@/site';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return legalMetadata(t, locale, 'privacy');
-}
-
-/** Static, one page per language; the text is in the dictionaries (policies.privacy). */
-export default async function PrivacyPage() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return <LegalDocument page="privacy" t={t} locale={locale} />;
-}
+/** Static, one page per language; the text is this site's own (src/i18n/messages, legal.privacy), the facts its business's. */
+const page = site.routes.legal('privacy');
+export const generateMetadata = page.metadata;
+export default page.Page;

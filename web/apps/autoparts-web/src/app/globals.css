@@ -1,0 +1,63 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, the business-site kit, then this site's own look. */
+@import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
+
+/*
+ * Pitlane Auto Parts: graphite, steel and signal orange, like a pit wall.
+ * - `--brand` signal orange: buttons, links (dark text on it).  - `--accent` yellow: labels.
+ * - `--deep` graphite: the hero, dark bands and the footer.
+ * Tight corners, condensed uppercase headings: a workshop, precise and direct.
+ */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #e9ebef;
+  --border: #d6dae1;
+  --fg: #15171c;
+  --muted: #4a505c;
+  --subtle: #6b7280;
+  --brand: #f26a1b;
+  --brand-hover: #d95a10;
+  --brand-fg: #170a02;
+  --brand-soft: #fde7d9;
+  --brand-soft-fg: #9a3d07;
+  --brand-strong: #15171c;
+  --accent: #f5c518;
+  --accent-fg: #15171c;
+  --deep: #15171c;
+  --deep-fg: #f4f5f7;
+  --card-radius: 0.5rem;
+  --button-radius: 0.375rem;
+  --heading-weight: 600;
+  --heading-case: uppercase;
+  --heading-tracking: 0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --surface: #171a20;
+    --surface-2: #1e222a;
+    --border: #2c313b;
+    --fg: #eef0f3;
+    --muted: #a7aebb;
+    --subtle: #8a92a0;
+    --brand: #ff7d33;
+    --brand-hover: #ff9657;
+    --brand-fg: #170a02;
+    --brand-soft: rgb(255 125 51 / 0.14);
+    --brand-soft-fg: #ffc19c;
+    --brand-strong: #ffffff;
+    --deep: #08090c;
+  }
+}
+
+/* Diagonal hazard stripes: a thin band at the top of the hero. */
+.hazard {
+  background: repeating-linear-gradient(-45deg, var(--accent) 0 14px, var(--deep) 14px 28px);
+  height: 8px;
+}

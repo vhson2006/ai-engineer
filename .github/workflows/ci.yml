@@ -54,7 +54,7 @@ jobs:
           echo "web=$(has "^web/|$ci")" >> "$GITHUB_OUTPUT"
           # KrakenD forwards what the web app sends (root CLAUDE.md rule 6): k8s/ is rendered and
           # validated as well when the contracts or the web API helpers change.
-          echo "k8s=$(has "^k8s/|^nest-microservice/libs/common/src/contracts/|^web/packages/core/src/api/|$ci")" >> "$GITHUB_OUTPUT"
+          echo "k8s=$(has "^k8s/|^nest-microservice/libs/common/src/contracts/|^web/packages/core/src/api/|^web/Dockerfile$|^web/apps/[^/]+/package\.json$|$ci")" >> "$GITHUB_OUTPUT"
 
   api:
     name: API (nest-microservice)
@@ -79,7 +79,7 @@ jobs:
       - run: npm run build
 
   web:
-    name: Web (portfolio-web, admin-web, packages)
+    name: Web (apps, packages)
     needs: changes
     if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
       - run: npm ci
-      - run: npm run check # typecheck + lint + tests of every workspace
+      - run: npm run check # check:sites + typecheck + lint + tests of every workspace
 
   k8s:
     name: Kubernetes manifests + KrakenD
@@ -103,6 +103,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5.0.0
+      - name: The image list agrees with the overlays and manifests (k8s/images.json)
+        run: node k8s/scripts/images-check.mjs
       - name: Render every overlay (kubectl kustomize)
         run: |
           for overlay in dev staging prod; do

@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { format } from '@web/core/i18n/format';
 import { cn } from '@web/ui';
 import type { HoursRow } from '@/features/booking/slots';
-import { LOCALES, type Locale } from '@/i18n/locales';
-import type { Messages } from '@/i18n/messages';
+import type { Locale } from '@web/site-kit/locales';
+import { website } from '@/website';
+import type { Messages } from '@/i18n/dictionaries';
 import { formatTime } from '@/lib/format';
 import { openStatus, salonClock, type OpenStatus } from '@/lib/open-status';
 
@@ -48,7 +49,7 @@ export function OpenStatusBadge({
           ? labels.today
           : inDays === 1
             ? labels.tomorrow
-            : new Intl.DateTimeFormat(LOCALES[locale].intl, { weekday: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(2026, 10, 1 + weekday)));
+            : new Intl.DateTimeFormat(website.intl(locale), { weekday: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(2026, 10, 1 + weekday)));
       detail = format(labels.opensAt, { day, time: formatTime(locale, time) });
     }
   }

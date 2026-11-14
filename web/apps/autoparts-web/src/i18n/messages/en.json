@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "title": "Pitlane Auto Parts: car parts and fitting in Saigon",
+    "description": "Brakes, filters, oil, batteries, suspension and more for everyday cars, with fitting in our workshop. Send a photo or your VIN on Zalo and we check the right part for you.",
+    "ogImageAlt": "New brake disc, caliper, spark plugs and an oil filter on a dark workbench"
+  },
+  "blog": {
+    "title": "Workshop notes",
+    "intro": "When to change your brake pads, which oil your engine needs, and other questions from the workshop floor.",
+    "metaTitle": "Articles: car maintenance and parts explained",
+    "metaDescription": "Maintenance intervals, how to choose brake pads, oil and batteries, and simple checks you can do yourself, from Pitlane Auto Parts.",
+    "latestIntro": "Maintenance tips and parts explained, without the jargon.",
+    "ctaTitle": "Not sure which part fits?",
+    "ctaText": "Send us a photo of the old part or your VIN on Zalo: we check it and quote the right one."
+  },
+  "footer": {
+    "tagline": "The right part, the first time. Parts and fitting for everyday cars."
+  },
+  "hours": {
+    "weekdays": "Monday – Saturday",
+    "sunday": "Sunday"
+  },
+  "nav": {
+    "top": "Home",
+    "categories": "Parts",
+    "catalog": "Catalogue",
+    "order": "How to order",
+    "workshop": "Workshop"
+  },
+  "hero": {
+    "eyebrow": "Car parts · fitting · advice",
+    "title": "The right part, the first time",
+    "text": "Brakes, filters, oil, batteries and suspension for everyday cars. Send us a photo or your VIN and we check that the part fits before you pay.",
+    "ask": "Ask on Zalo",
+    "viewCatalog": "Browse the catalogue",
+    "imageAlt": "New brake disc, caliper, spark plugs, oil filter and timing belt on a dark workbench",
+    "points": ["Fitment checked by VIN", "Fitting in our workshop", "Clear warranty on every part"]
+  },
+  "categories": {
+    "eyebrow": "Parts",
+    "title": "What we carry",
+    "intro": "Wear parts and maintenance items for sedans, hatchbacks, SUVs and light vans.",
+    "items": {
+      "brakes": { "name": "Brakes", "text": "Pads, discs, drums, fluid" },
+      "filters": { "name": "Filters", "text": "Oil, air, cabin, fuel" },
+      "oil": { "name": "Oil & fluids", "text": "Engine oil, gearbox, power steering" },
+      "battery": { "name": "Batteries", "text": "12 V batteries, testing and fitting" },
+      "suspension": { "name": "Suspension", "text": "Shock absorbers, links, bushes" },
+      "lighting": { "name": "Lighting", "text": "Bulbs, LED, fog lights" },
+      "belts": { "name": "Belts", "text": "Timing kits, serpentine belts" },
+      "cooling": { "name": "Cooling", "text": "Radiators, coolant, hoses" }
+    }
+  },
+  "catalog": {
+    "eyebrow": "Catalogue",
+    "title": "A few parts and prices",
+    "intro": "A sample of what is on our shelves. Prices include VAT; fitting is quoted separately.",
+    "note": "Can't find your part? We order most parts within 1–3 working days.",
+    "labels": {
+      "all": "All parts",
+      "search": "Search parts",
+      "searchPlaceholder": "Part or vehicle, e.g. brake, SUV",
+      "part": "Part",
+      "fits": "Fits",
+      "price": "Price",
+      "inStock": "In stock",
+      "onOrder": "On order (1–3 days)",
+      "empty": "No part matches. Ask us on Zalo: we probably have it.",
+      "count": "{count} parts"
+    },
+    "items": {
+      "padsFront": { "name": "Front brake pads (set)", "fits": "Sedans and hatchbacks 1.5–2.0 L" },
+      "discsFront": { "name": "Front brake discs (pair)", "fits": "Sedans 1.5–2.0 L, compact SUVs" },
+      "oilFilter": { "name": "Oil filter", "fits": "Most petrol engines up to 2.5 L" },
+      "airFilter": { "name": "Engine air filter", "fits": "Sedans, hatchbacks, compact SUVs" },
+      "cabinFilter": { "name": "Cabin filter, activated carbon", "fits": "Most cars from 2012" },
+      "oil5w30": { "name": "Synthetic engine oil 5W-30, 4 L", "fits": "Petrol engines needing 5W-30" },
+      "battery60": { "name": "Battery 12 V 60 Ah", "fits": "Sedans and compact SUVs" },
+      "shocksFront": { "name": "Front shock absorbers (pair)", "fits": "Compact SUVs and crossovers" },
+      "ledH4": { "name": "LED headlight bulbs H4 (pair)", "fits": "Cars with H4 headlights" },
+      "timingKit": { "name": "Timing belt kit with tensioner", "fits": "1.5–1.8 L petrol engines" },
+      "serpentine": { "name": "Serpentine belt", "fits": "Most 4-cylinder engines" },
+      "coolant": { "name": "Long-life coolant, 4 L", "fits": "All engines, ready to use" },
+      "radiator": { "name": "Aluminium radiator", "fits": "Sedans 1.5–2.0 L" }
+    }
+  },
+  "order": {
+    "eyebrow": "How to order",
+    "title": "Three messages to the right part",
+    "intro": "Most wrong parts come from a guess. We check first.",
+    "steps": [
+      { "title": "Send a photo or your VIN", "text": "On Zalo: the old part, the registration paper or the VIN under the windscreen." },
+      { "title": "We check the fit", "text": "We confirm the exact part, its price and whether it is in stock or on order." },
+      { "title": "Collect, deliver or fit", "text": "Pick it up, have it delivered in the city, or book a slot in our workshop." }
+    ]
+  },
+  "workshop": {
+    "eyebrow": "Workshop",
+    "title": "Fitting while you wait",
+    "intro": "Two bays next to the store. Most jobs take less than an hour.",
+    "imageAlt": "A car on a lift in a clean workshop bay with a red tool trolley",
+    "from": "From {price}",
+    "free": "Free with a battery",
+    "services": {
+      "oilChange": { "name": "Oil & filter change", "text": "With a 20-point check." },
+      "brakes": { "name": "Brake pads or discs", "text": "Front or rear axle, brake test included." },
+      "battery": { "name": "Battery test & fitting", "text": "We test the charging system too." },
+      "check": { "name": "Pre-trip check", "text": "Tyres, lights, fluids, brakes, belts." }
+    },
+    "warrantyTitle": "Warranty",
+    "warranty": ["New parts only, with the manufacturer's warranty.", "Fitting work guaranteed for 3 months or 5,000 km.", "We keep your old parts to show you, if you wish."]
+  },
+  "questions": {
+    "items": [
+      { "q": "How do I know the part fits my car?", "a": "Send us your VIN or a photo of the registration paper and the old part. We check the exact reference before you buy." },
+      { "q": "Do you deliver?", "a": "Yes, within the city by motorbike courier on the same day for parts in stock; the fee depends on the distance." },
+      { "q": "Can I return a part?", "a": "Unused parts in their original box can be returned within 7 days with the receipt. Electrical parts that have been fitted cannot be returned." },
+      { "q": "Do I need to book the workshop?", "a": "Booking by phone or Zalo is best; walk-ins are welcome when a bay is free." },
+      { "q": "Do you sell original or aftermarket parts?", "a": "Both. We explain the difference in price and lifetime, and you choose." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Visit the store",
+    "title": "Bring the old part, we'll match it",
+    "text": "Come to the counter with your old part or your car papers, or call and message us on Zalo first.",
+    "note": "Workshop: last job accepted one hour before closing."
+  }
+}

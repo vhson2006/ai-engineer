@@ -1,0 +1,100 @@
+# Keycloak configuration as code (ADR 0043): keycloak-config-cli applies the files of ConfigMap
+# "keycloak-config" (base: realm.json, master.json; components keycloak-local / keycloak-sites and
+# prod add theirs, see config-sync.sh) to Keycloak, then exits. The files are the same in every
+# environment; the environment gives the values they reference as $(env:NAME): ConfigMap
+# "keycloak-config-env" (WEB_URL, ADMIN_URL, KEYCLOAK_CONSOLE_URL) and Secret "keycloak-clients"
+# (WEB_CLIENT_SECRET, ADMIN_WEB_CLIENT_SECRET, the sites' <SITE>_WEB_CLIENT_SECRET). The ONE way realm settings reach Keycloak: a fresh cluster gets its realm
+# from it (Keycloak no longer imports a realm at start), a running one gets every change. No script
+# with kcadm, no "imported only when the realm doesn't exist".
+#
+# prod (Argo CD): a PostSync hook, recreated on every sync (BeforeHookCreation): Keycloak is up.
+# dev and staging: `npm run k8s:up` / `npm run staging:up` delete the previous Job before applying.
+# Credentials: Secret "keycloak-admin" (bootstrap admin) and, in prod, Secret "keycloak-config-cli"
+# (the master client it switches to, so the bootstrap admin can be removed); see config-sync.sh.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: keycloak-config
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 4
+  activeDeadlineSeconds: 1800
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app: keycloak-config # allowed to reach keycloak :8080 (components/network-policies)
+    spec:
+      restartPolicy: OnFailure
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: keycloak-config
+          # Built for Keycloak 26.1; its admin API calls work with the 26.4 server (checked on 26.4.7).
+          image: adorsys/keycloak-config-cli:6.5.1-26.1.0
+          command: ['sh', '/sync/config-sync.sh']
+          env:
+            - name: KEYCLOAK_URL
+              value: http://keycloak:8080
+            - name: JAVA_TOOL_OPTIONS
+              value: -XX:MaxRAMPercentage=75 -Djava.io.tmpdir=/tmp
+            # $(env:NAME) in every file; an undefined name fails the run (never an empty value).
+            - name: IMPORT_VARSUBSTITUTION_ENABLED
+              value: 'true'
+            - name: KC_BOOTSTRAP_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-admin
+                  key: KC_BOOTSTRAP_ADMIN_USERNAME
+            - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-admin
+                  key: KC_BOOTSTRAP_ADMIN_PASSWORD
+            - name: KEYCLOAK_CONFIG_CLI_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-config-cli
+                  key: KEYCLOAK_CONFIG_CLI_SECRET
+                  optional: true # prod only
+          envFrom:
+            - configMapRef:
+                name: keycloak-config-env
+            - secretRef:
+                name: keycloak-clients
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+            - name: sync
+              mountPath: /sync
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+      volumes:
+        - name: config
+          configMap:
+            name: keycloak-config
+        - name: sync
+          configMap:
+            name: keycloak-config-sync
+        - name: tmp
+          emptyDir: {}

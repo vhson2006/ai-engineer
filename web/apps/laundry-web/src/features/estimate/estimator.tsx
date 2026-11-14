@@ -4,8 +4,8 @@ import { Minus, Plus, Scale } from 'lucide-react';
 import { useId, useState } from 'react';
 import { format } from '@web/core/i18n/format';
 import { cn } from '@web/ui';
-import { LOCALES, type Locale } from '@/i18n/locales';
-import { formatVnd } from '@/lib/format';
+import { LOCALES, type Locale } from '@web/site-kit/locales';
+import { formatVnd } from '@web/site-kit/format';
 import { estimate, type EstimateKind } from '@/lib/pricing';
 
 export interface EstimatorLabels {

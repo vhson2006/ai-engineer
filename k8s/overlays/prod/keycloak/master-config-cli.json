@@ -1,0 +1,27 @@
+{
+  "realm": "master",
+  "clients": [
+    {
+      "clientId": "keycloak-config-cli",
+      "name": "keycloak-config-cli: the Job that applies the Keycloak configuration (ADR 0043)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:KEYCLOAK_CONFIG_CLI_SECRET)",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-keycloak-config-cli",
+      "enabled": true,
+      "serviceAccountClientId": "keycloak-config-cli",
+      "realmRoles": [
+        "admin"
+      ]
+    }
+  ]
+}

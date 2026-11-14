@@ -5,9 +5,8 @@
 #                      how Keycloak is reached. KrakenD and the services may fetch the JWKS through
 #                      the in-cluster URL (KC_HOSTNAME_BACKCHANNEL_DYNAMIC) and the issuer still matches.
 #   KC_HOSTNAME_ADMIN  admin console URL, never published on the Gateway (port-forward / VPN only).
-# and generates the ConfigMap "keycloak-realm" (realm JSON, imported on startup ONLY if the realm
-# doesn't exist yet; later changes are ignored, see k8s/README.md) and the Secrets
-# "keycloak-admin" / "keycloak-db".
+# and generates the ConfigMap "keycloak-config" and the Secrets "keycloak-admin" / "keycloak-db".
+# Keycloak imports no realm: the Job keycloak-config applies the realms (ADR 0043).
 # `start-dev` is for local use; a production overlay switches to `start --optimized`.
 apiVersion: apps/v1
 kind: Deployment
@@ -50,7 +49,7 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:26.4.7
-          args: ['start-dev', '--import-realm']
+          args: ['start-dev']
           env:
             - name: KC_DB
               value: postgres
@@ -79,16 +78,12 @@ spec:
               containerPort: 8080
             - name: management
               containerPort: 9000
-          volumeMounts:
-            - name: realm
-              mountPath: /opt/keycloak/data/import
-              readOnly: true
           startupProbe:
             httpGet:
               path: /health/started
               port: management
             periodSeconds: 5
-            failureThreshold: 60 # first start (DB schema + realm import) can take a while
+            failureThreshold: 60 # first start (DB schema) can take a while
           readinessProbe:
             httpGet:
               path: /health/ready
@@ -105,7 +100,3 @@ spec:
               memory: 768Mi
             limits:
               memory: 1536Mi
-      volumes:
-        - name: realm
-          configMap:
-            name: keycloak-realm

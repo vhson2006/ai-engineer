@@ -1,0 +1,64 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, the business-site kit, then this site's own look. */
+@import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
+
+/*
+ * Kumo Sushi & Omakase: rice paper, sumi ink, vermilion (the torii red) and a little gold.
+ * - `--brand` vermilion: buttons, links.  - `--accent` gold: labels, small highlights.
+ * - `--deep` ink: the night bands (hero overlay, omakase, footer).
+ * Sharp corners and a light serif: a quiet, precise room.
+ */
+:root {
+  --bg: #f7f3ea;
+  --surface: #fffdf8;
+  --surface-2: #efe8da;
+  --border: #e2d8c4;
+  --fg: #1b1a17;
+  --muted: #5d564a;
+  --subtle: #7b7366;
+  --brand: #b8322a;
+  --brand-hover: #9b2821;
+  --brand-fg: #fffaf0;
+  --brand-soft: #f6e1dc;
+  --brand-soft-fg: #8f241e;
+  --brand-strong: #2a1f1a;
+  --accent: #c49a4a;
+  --accent-fg: #1b1a17;
+  --deep: #16161a;
+  --deep-fg: #f4efe4;
+  --card-radius: 0.25rem;
+  --button-radius: 0.25rem;
+  --heading-weight: 500;
+  --heading-tracking: -0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214;
+    --surface: #1a1a1d;
+    --surface-2: #212125;
+    --border: #33312d;
+    --fg: #efe9dc;
+    --muted: #b2aa9a;
+    --subtle: #948c7d;
+    --brand: #e2584d;
+    --brand-hover: #ee7a70;
+    --brand-fg: #170b09;
+    --brand-soft: rgb(226 88 77 / 0.14);
+    --brand-soft-fg: #f5b2aa;
+    --brand-strong: #f4ecdd;
+    --accent: #d4ad62;
+    --deep: #0b0b0d;
+  }
+}
+
+/* A thin vermilion rule, like a brush stroke under a title. */
+.brush {
+  background: linear-gradient(90deg, var(--brand) 0 70%, transparent);
+  height: 3px;
+  width: 4rem;
+}

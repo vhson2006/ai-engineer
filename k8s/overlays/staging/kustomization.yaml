@@ -1,5 +1,5 @@
 # LOCAL STAGING: the whole system in the local cluster, built and run like production, with HTTPS.
-#   npm run staging:build   build the 5 production images and load them into the cluster nodes
+#   npm run staging:build   build the production images of k8s/images.json (the cluster sees them)
 #   npm run staging:up      cert-manager + local CA, CoreDNS rule, scale dev to 0, apply this, migrate
 #   npm run staging:trust-ca   trust the local CA in Windows once (padlock without warnings)
 #   npm run staging:down    remove staging (data too); `npm run k8s:up` brings dev back
@@ -40,8 +40,10 @@ components:
   - ../../components/apps
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
+  - ../../components/keycloak-local # test users, alice's one-time code, dev-cli (local only)
 
-# Built by `npm run staging:build` (Docker Desktop's cluster sees the local image store). The tag
+# The images of k8s/images.json (CI checks this block against it), built by `npm run staging:build`
+# (Docker Desktop's cluster sees the local image store). The tag
 # `staging` is replaced at deploy time by the image id (staging.sh), so a rebuild is always picked up.
 images:
   - name: deployment-service
@@ -73,9 +75,11 @@ configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-realm # dev realm with the staging URLs (test users, dev-cli: local only)
-    files:
-      - keycloak/realm-nest-microservice.json
+  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
+    literals:
+      - WEB_URL=https://www.staging.localtest.me
+      - ADMIN_URL=https://admin.staging.localtest.me
+      - KEYCLOAK_CONSOLE_URL=http://localhost:8181
   - name: deployment-service-env
     envs:
       - env/deployment-service.env

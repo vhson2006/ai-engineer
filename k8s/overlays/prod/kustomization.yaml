@@ -6,7 +6,8 @@
 #   https://auth.example.com  Keycloak (app realm only; admin console via port-forward)
 #   KrakenD and the services are NOT public: only the web apps' servers call KrakenD (in cluster).
 #
-# Replace example.com everywhere in this folder (and in the realm JSON) with the real domain.
+# Replace example.com everywhere in this folder with the real domain (and set the repository
+# variable PROD_DOMAIN for the web images).
 # Data: DigitalOcean managed Postgres (databases "deployment", "notification", "content", "ai" and "keycloak") and managed Valkey;
 # NATS runs in the cluster. Secrets come from the secret manager through External Secrets.
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -31,7 +32,8 @@ components:
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud (ADR 0023)
 
-# .github/workflows/images.yml sets each newTag to the commit SHA it built and commits; Argo CD syncs.
+# The images: k8s/images.json (the one list; CI checks this block against it). .github/workflows/
+# images.yml sets each newTag to the commit SHA it built and commits; Argo CD syncs.
 # Images are private (GHCR, like the repository): pods pull them with the Secret "ghcr-pull".
 images:
   - name: deployment-service
@@ -45,14 +47,12 @@ images:
     newTag: 7e619f823f7fcaff8c296a506a1332c4443ddeac
   - name: ai-service
     newName: ghcr.io/vhson2006/ai-engineer/ai-service
-    # Not a commit: images.yml builds every API image on the next run and writes the real tag.
     newTag: 7e619f823f7fcaff8c296a506a1332c4443ddeac
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
     newTag: 7e619f823f7fcaff8c296a506a1332c4443ddeac
   - name: render-worker
     newName: ghcr.io/vhson2006/ai-engineer/render-worker
-    # Not a commit: images.yml builds it on the next run and writes the real tag.
     newTag: 918f3e2e5928928d4a71218ad8b9087ae6bcc89d
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
@@ -65,9 +65,15 @@ configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-realm # no test users, no dev-cli, no client secret (see k8s/README.md)
+  - name: keycloak-config # + the master client the Job signs in with (ADR 0043); no test users, no dev-cli
+    behavior: merge
     files:
-      - keycloak/realm-nest-microservice.json
+      - keycloak/master-config-cli.json
+  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
+    literals:
+      - WEB_URL=https://www.example.com
+      - ADMIN_URL=https://admin.example.com
+      - KEYCLOAK_CONSOLE_URL=http://localhost:8180
   - name: deployment-service-env
     envs:
       - env/deployment-service.env

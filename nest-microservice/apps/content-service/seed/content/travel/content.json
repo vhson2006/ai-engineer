@@ -1,0 +1,545 @@
+{
+  "site": {
+    "id": "travel",
+    "name": "Gió Mùa Travel",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "destinations",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Destinations",
+          "slug": "destinations"
+        },
+        {
+          "locale": "vi",
+          "name": "Điểm đến",
+          "slug": "diem-den"
+        }
+      ]
+    },
+    {
+      "key": "tips",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Travel tips",
+          "slug": "travel-tips"
+        },
+        {
+          "locale": "vi",
+          "name": "Kinh nghiệm",
+          "slug": "kinh-nghiem"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "52b2b0c2-ee20-46d9-902f-de3672e40042",
+      "source": "ai",
+      "prompt": "A luxury modern white cruise ship anchored in calm emerald water surrounded by limestone karst islands of Ha Long Bay under a clear blue sky, natural cinematic lighting, wide angle, high resolution, realistic travel photography.",
+      "filename": "A luxury modern white cruise ship anchored in calm emerald w.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 33878,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 107710,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 125678,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:53:50.613Z"
+    },
+    {
+      "id": "be4f82e3-368f-4e47-b623-0a668b8f16ac",
+      "source": "ai",
+      "prompt": "A neat open carry-on suitcase placed on a wooden bench inside a modern cruise cabin with large panoramic windows showing limestone karsts and calm emerald sea water in natural daylight, minimalist travel aesthetic, realistic photography, no text, no people.",
+      "filename": "A neat open carry-on suitcase placed on a wooden bench insid.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 32156,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 98300,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 112118,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:53:50.631Z"
+    },
+    {
+      "id": "1e7e6d4a-deb4-4c6e-bbc8-88c90d44c063",
+      "source": "ai",
+      "prompt": "A wide angle panoramic photograph of the majestic Dong Van Karst Plateau in Ha Giang, featuring the turquoise Nho Que river flowing through Tu San canyon with winding mountain passes under a soft sunny sky.",
+      "filename": "A wide angle panoramic photograph of the majestic Dong Van K.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 43416,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 133990,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 159570,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:54:31.252Z"
+    },
+    {
+      "id": "351e1a2c-f54c-45b8-a098-8d36a61ecfdf",
+      "source": "ai",
+      "prompt": "A scenic road in Ha Giang winding between stone walls and rustic clay houses with blooming pink peach blossoms and white plum flowers in spring, misty mountains in the background, soft natural morning light.",
+      "filename": "A scenic road in Ha Giang winding between stone walls and ru.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 70462,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 239662,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 275616,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:54:31.272Z"
+    },
+    {
+      "id": "e7443baa-a6e8-4e92-9379-1ca35b8ad2ac",
+      "source": "ai",
+      "prompt": "A panoramic horizontal shot of Hoi An ancient town in the warm afternoon light, glowing yellow heritage houses reflecting on the quiet river, silk lanterns, calm water, aesthetic travel photography, no people",
+      "filename": "A panoramic horizontal shot of Hoi An ancient town in the wa.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 46806,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 142082,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 164008,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:55:06.667Z"
+    },
+    {
+      "id": "6170edb9-8211-403e-ac4a-969f3353118f",
+      "source": "ai",
+      "prompt": "A peaceful street in Hoi An ancient town with ancient yellow painted walls, traditional wooden doors, pink bougainvillea flowers, bicycles parked, soft morning sunlight, no people, authentic travel photography",
+      "filename": "A peaceful street in Hoi An ancient town with ancient yellow.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 50532,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 158826,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 183950,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:55:06.696Z"
+    },
+    {
+      "id": "1b10d16b-1c5c-4734-87a2-c3b4f131d222",
+      "source": "ai",
+      "prompt": "A peaceful landscape view of rolling hills under soft dawn sunlight, an empty rustic wooden terrace with gentle morning mist, warm golden hour lighting, fine art photography, no text, no people.",
+      "filename": "A peaceful landscape view of rolling hills under soft dawn s.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 41520,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 125510,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 144872,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:57:59.507Z"
+    },
+    {
+      "id": "6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0",
+      "source": "ai",
+      "prompt": "A small group of four friends sitting at a wooden table outdoors in a scenic mountainous valley, enjoying local tea in warm morning light, candid view, natural colors, highly detailed, no visible faces, no text.",
+      "filename": "A small group of four friends sitting at a wooden table outd.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 43014,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 113388,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 128700,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:57:59.525Z"
+    },
+    {
+      "id": "998e7435-b7af-43d3-b102-a0fedd8b5b00",
+      "source": "ai",
+      "prompt": "A panoramic realistic coastal photo of Phu Quoc islands during the dry season, crystal clear turquoise water, limestone cliffs, green tropical trees, sunny clear sky, no people",
+      "filename": "A panoramic realistic coastal photo of Phu Quoc islands duri.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 49958,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 166290,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 192914,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:58:40.212Z"
+    },
+    {
+      "id": "45ead889-101d-42c5-bcf1-8bd87db4502f",
+      "source": "ai",
+      "prompt": "A realistic underwater photo of a vibrant coral reef in clear turquoise ocean water in Phu Quoc, sunlight rays filtering down, small tropical fish, natural light, no people",
+      "filename": "A realistic underwater photo of a vibrant coral reef in clea.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 68784,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 207704,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 234398,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:58:40.237Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "75cdf1cb-a2d5-4db1-a988-ec440b532f7a",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-13T16:08:45.776Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the agency’s sea and sunset colours.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Itineraries, prices and inclusions exactly as in the quotes.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise good weather, availability or prices not yet confirmed.</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, group / private tour, dry / rainy season.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a destination, a guide, a dish.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call, message on Zalo or visit the office.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the agency.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Gió Mùa Travel sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu biển và hoàng hôn của công ty.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng lịch trình, giá và những gì đã bao gồm như báo giá.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa thời tiết đẹp, chỗ trống hay giá chưa được xác nhận.</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, tour nhóm / tour riêng, mùa khô / mùa mưa.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một điểm đến, một hướng dẫn viên, một món ăn.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gọi điện, nhắn Zalo hay ghé văn phòng.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với công ty.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Gió Mùa Travel · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "cf2393c7-9553-40f1-a5bb-a7652d229d22",
+      "categoryKey": "tips",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "52b2b0c2-ee20-46d9-902f-de3672e40042",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:55:30.320Z",
+      "createdAt": "2026-11-14T00:54:38.220Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Packing Tips for a Ha Long Bay Cruise",
+          "slug": "packing-tips-for-a-ha-long-bay-cruise",
+          "excerpt": "A detailed and light packing guide for an overnight cruise on Ha Long Bay, making your trip seamless and memorable.",
+          "coverAlt": "A luxury cruise ship standing out amidst the turquoise waters and limestone islands of Ha Long Bay",
+          "body": "<p class=\"tpl-lead\">An overnight getaway on the bay always brings a sense of relaxation and novel experiences. To ensure your sightseeing trip on a <strong>Ha Long cruise</strong> goes smoothly, packing smartly, bringing just what you need, and matching your itinerary on the water is an essential step.</p>\n<h2>Identification and Essential Documents to Bring</h2>\n<p>Before packing your clothes, make sure you have prepared all necessary legal documents. Port authorities and cruise operators always require identity checks before guests check into their cabins to ensure maritime safety.</p>\n<ul class=\"tpl-check\"><li><strong>Citizen ID card</strong> or a valid passport for each member of your group.</li><li><strong>Birth certificate</strong> (certified copy or original) for accompanying children.</li><li><strong>E-ticket</strong> or booking confirmation code from your travel agency.</li><li><strong>Cash</strong> in moderation to pay for personal drinks or extra expenses not included in the tour package.</li></ul>\n<h2>Choosing Suitable Outfits for Each Activity on a Ha Long Cruise</h2>\n<p>The journey on a <strong>Ha Long cruise</strong> usually includes diverse activities, from relaxing on the sundeck watching the sunset and kayaking to exploring caves and enjoying cozy dinners. Therefore, choosing versatile outfits will help you move comfortably while getting wonderful souvenir photos.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Swimming and Kayaking Outfits</h3><p>Opt for comfortable swimwear paired with a light cover-up and quick-drying clothes for easy kayaking or swimming in the clear blue sea.</p></div><div class=\"tpl-item\"><h3>Cave Exploration Outfits</h3><p>Prioritize dynamic, sweat-absorbent clothing along with sneakers or sandals featuring good grip for easy movement on slippery stone steps.</p></div><div class=\"tpl-item\"><h3>Dinner Outfits on Board</h3><p>An elegant dress or a smart shirt will help you feel confident and blend right into the cruise's sophisticated dining room ambiance.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/1376.webp\" alt=\"Neatly packed travel luggage placed by a window overlooking the bay\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/640.webp 640w, {{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/1280.webp 1280w, {{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Organizing your clothes systematically helps save space inside your cabin.</figcaption></figure>\n<h2>Personal Toiletries, Sunscreen, and Mosquito Repellent</h2>\n<p>Although most cabins on a <strong>Ha Long cruise</strong> provide towels, shampoo, and toothbrushes, packing your own familiar items ensures maximum peace of mind and comfort for sensitive skin.</p>\n<p>Sunlight reflecting off the sea surface carries relatively strong UV rays, while sightseeing areas near natural vegetation can have insects. Therefore, protective health products are essential items in your bag.</p>\n<h2>Electronic Devices and Accessories to Capture Beautiful Moments</h2>\n<p>The breathtaking beauty of the heritage landscape is an endless inspiration for photography lovers. To never miss a stunning sunrise or sunset, make sure your photography gear is well prepared with protective accessories.</p>\n<ul><li><strong>Dedicated waterproof phone pouch</strong> to take photos comfortably while kayaking.</li><li><strong>Power bank</strong> with suitable capacity to keep your devices charged during excursions outside your cabin.</li><li><strong>Selfie stick</strong> or mini tripod to easily capture the expansive scenery of the bay.</li></ul>\n<h2>Items to Leave at Home for Lighter Packing</h2>\n<p>Ship cabins are typically designed to be cozy and space-efficient. Carrying oversized suitcases or bulky items will cause inconvenience in your living space and make walking across the boarding bridge tiring.</p>\n<section class=\"tpl-summary\"><h3>Unnecessary Items on Board</h3><ul class=\"tpl-check\"><li>Leave oversized suitcases at home; use a backpack or a medium-sized carry-on suitcase instead.</li><li>Avoid bringing thin high heels, as they can easily cause slips on wooden deck floors.</li><li>Do not bring high-wattage heating appliances like irons or mini electric pots to comply with maritime fire safety regulations.</li></ul></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Are hair dryers and drinking water available on the cruise?</h3><p>Yes, most cruises provide hair dryers in the bathrooms and complimentary bottled mineral water daily.</p></div><div class=\"tpl-item\"><h3>Is cell phone service and Wi-Fi stable on the bay?</h3><p>Mobile signal is usually stable near the shore, but it may weaken as the ship travels deeper into secluded, enclosed bay areas.</p></div><div class=\"tpl-item\"><h3>Should I bring seasickness medication?</h3><p>You should proactively bring seasickness medication and take it before departure, even though large cruises typically sail very smoothly on calm waters.</p></div></section>\n<section class=\"tpl-cta\"><h3>Plan Your Green Bay Getaway with Gió Mùa Travel</h3><p>Contact Gió Mùa Travel today for detailed itinerary advice and let us accompany you on a complete, unforgettable journey to the heritage bay.</p></section>",
+          "readingMinutes": 3,
+          "seoTitle": "Packing Tips for a Ha Long Bay Cruise",
+          "seoDescription": "Packing tips for an overnight Ha Long cruise: outfits, documents, and essentials to keep your trip light and complete."
+        },
+        {
+          "locale": "vi",
+          "title": "Kinh nghiệm chuẩn bị hành lý đi du thuyền Hạ Long",
+          "slug": "kinh-nghiem-chuan-bi-hanh-ly-di-du-thuyen-ha-long",
+          "excerpt": "Cẩm nang hướng dẫn chuẩn bị hành lý chi tiết và gọn nhẹ cho chuyến du thuyền ngủ đêm trên vịnh Hạ Long, giúp chuyến đi thêm trọn vẹn.",
+          "coverAlt": "Du thuyền sang trọng nổi bật giữa làn nước xanh ngắt và những đảo đá vôi vịnh Hạ Long",
+          "body": "<p class=\"tpl-lead\">Một chuyến nghỉ dưỡng ngủ đêm trên vịnh biển luôn mang lại cảm giác thư thái và những trải nghiệm mới lạ. Để chuyến đi khám phá cảnh đẹp trên <strong>du thuyền Hạ Long</strong> diễn ra suôn sẻ, việc sắp xếp hành lý thông minh, vừa đủ dùng và phù hợp với lịch trình trên mặt nước là bước chuẩn bị vô cùng quan trọng.</p>\n<h2>Giấy tờ tùy thân và các vật phẩm quan trọng bắt buộc phải mang theo</h2>\n<p>Trước khi đóng gói quần áo, hãy đảm bảo bạn đã chuẩn bị đầy đủ các giấy tờ pháp lý cần thiết. Ban quản lý cảng tàu và các hãng tàu luôn yêu cầu kiểm tra giấy tờ tùy thân trước khi du khách làm thủ tục nhận phòng trên tàu để đảm bảo an toàn hàng hải.</p>\n<ul class=\"tpl-check\"><li><strong>Căn cước công dân</strong> hoặc hộ chiếu còn hạn sử dụng cho từng thành viên trong đoàn.</li><li><strong>Giấy khai sinh</strong> bản sao trích lục hoặc bản gốc đối với trẻ em đi cùng.</li><li><strong>Vé điện tử</strong> hoặc mã xác nhận đặt phòng từ công ty lữ hành.</li><li><strong>Tiền mặt</strong> vừa đủ để thanh toán đồ uống cá nhân hoặc các chi phí phát sinh ngoài gói tour.</li></ul>\n<h2>Lựa chọn trang phục phù hợp cho từng hoạt động trên du thuyền Hạ Long</h2>\n<p>Hành trình trải nghiệm trên <strong>du thuyền Hạ Long</strong> thường bao gồm nhiều hoạt động phong phú từ thư giãn trên boong tàu ngắm hoàng hôn, chèo thuyền kayak, thăm hang động cho đến các bữa tối ấm cúng. Do đó, việc phối đồ thông minh sẽ giúp bạn vừa thoải mái vận động vừa có những bức ảnh kỷ niệm ưng ý.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Trang phục tắm biển và chèo kayak</h3><p>Nên chọn đồ bơi thoải mái, kèm áo choàng nhẹ và quần áo mau khô để thuận tiện chèo kayak hoặc đắm mình trong làn nước biển trong xanh.</p></div><div class=\"tpl-item\"><h3>Đồ khám phá hang động</h3><p>Ưu tiên trang phục năng động, thấm hút mồ hôi tốt và giày thể thao hoặc sandal có độ bám dính cao để di chuyển dễ dàng trên bậc đá trơn.</p></div><div class=\"tpl-item\"><h3>Trang phục tiệc tối trên tàu</h3><p>Một chiếc váy thanh lịch hoặc áo sơ mi lịch sự sẽ giúp bạn cảm thấy tự tin và hòa nhập vào không gian sang trọng của phòng ăn du thuyền.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/1376.webp\" alt=\"Hành lý du lịch gọn gàng đặt bên cửa sổ nhìn ra vịnh biển\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/640.webp 640w, {{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/1280.webp 1280w, {{media}}/be4f82e3-368f-4e47-b623-0a668b8f16ac/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Sắp xếp trang phục khoa học giúp tiết kiệm không gian trong cabin nghỉ ngơi.</figcaption></figure>\n<h2>Đồ dùng vệ sinh cá nhân và sản phẩm chống nắng, chống muỗi</h2>\n<p>Mặc dù hầu hết các cabin trên <strong>du thuyền Hạ Long</strong> đều cung cấp sẵn khăn tắm, dầu gội và bàn chải, việc tự chuẩn bị các món đồ quen thuộc của cá nhân vẫn mang lại sự an tâm và thoải mái tối đa cho làn da nhạy cảm.</p>\n<p>Ánh nắng phản chiếu từ mặt nước biển thường có cường độ tia cực tím khá mạnh, trong khi các khu vực tham quan gần thảm thực vật tự nhiên có thể xuất hiện côn trùng. Vì vậy, các sản phẩm bảo vệ sức khỏe là vật dụng không thể xem nhẹ trong túi đồ của bạn.</p>\n<h2>Thiết bị điện tử và phụ kiện hỗ trợ ghi lại khoảnh khắc đẹp</h2>\n<p>Vẻ đẹp ngoạn mục của non nước di sản là nguồn cảm hứng bất tận cho những người yêu nhiếp ảnh. Để không bỏ lỡ khoảnh khắc bình minh hay hoàng hôn rực rỡ, các thiết bị ghi hình cần được chuẩn bị kỹ lưỡng kèm theo các phụ kiện bảo vệ an toàn.</p>\n<ul><li><strong>Túi chống nước chuyên dụng</strong> cho điện thoại để thoải mái chụp ảnh khi đang chèo thuyền kayak.</li><li><strong>Sạc dự phòng</strong> dung lượng phù hợp đảm bảo nguồn năng lượng cho thiết bị trong suốt hành trình bên ngoài cabin.</li><li><strong>Gậy tự sướng</strong> hoặc chân máy mini giúp bạn dễ dàng bắt trọn khung cảnh rộng lớn của vịnh biển.</li></ul>\n<h2>Những món đồ nên để ở nhà để hành lý luôn gọn gàng</h2>\n<p>Không gian trong cabin tàu thủy thường được thiết kế ấm cúng, tối ưu diện tích. Do đó, việc mang theo vali quá khổ hay những vật dụng cồng kềnh sẽ gây bất tiện cho sinh hoạt chung và làm việc di chuyển qua cầu tàu trở nên nặng nề.</p>\n<section class=\"tpl-summary\"><h3>Những thứ không cần thiết trên tàu</h3><ul class=\"tpl-check\"><li>Để vali cỡ đại ở nhà, thay vào đó nên sử dụng balo hoặc vali xách tay cỡ vừa.</li><li>Hạn chế mang theo giày cao gót nhọn vì dễ gây trơn trượt trên sàn gỗ boong tàu.</li><li>Không mang các thiết bị nhiệt công suất cao như bàn là hay nồi nấu mini nhằm tuân thủ quy định phòng cháy chữa cháy trên biển.</li></ul></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Trên du thuyền có sẵn máy sấy tóc và nước uống không?</h3><p>Có, hầu hết các tàu đều có máy sấy tóc trong phòng tắm và cung cấp nước khoáng đóng chai theo tiêu chuẩn mỗi ngày.</p></div><div class=\"tpl-item\"><h3>Sóng điện thoại và mạng internet trên vịnh có ổn định không?</h3><p>Sóng điện thoại thường ổn định ở khu vực gần bờ nhưng có thể yếu dần khi tàu di chuyển sâu vào các vùng vịnh kín và hẻo lánh.</p></div><div class=\"tpl-item\"><h3>Có cần mang theo thuốc chống say sóng không?</h3><p>Bạn nên chủ động mang theo thuốc chống say tàu xe uống trước giờ tàu khởi hành, dù các du thuyền lớn thường di chuyển rất êm ái trên mặt nước lặng.</p></div></section>\n<section class=\"tpl-cta\"><h3>Lên kế hoạch cho kỳ nghỉ vịnh xanh cùng Gió Mùa Travel</h3><p>Hãy liên hệ ngay với Gió Mùa Travel để được tư vấn lịch trình chi tiết và đồng hành cùng bạn trong chuyến khám phá vịnh di sản thật trọn vẹn và đáng nhớ.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Kinh nghiệm chuẩn bị hành lý đi du thuyền Hạ Long",
+          "seoDescription": "Kinh nghiệm chuẩn bị hành lý cho chuyến du thuyền Hạ Long ngủ đêm: trang phục, giấy tờ và đồ dùng cần thiết giúp chuyến đi gọn gàng, trọn vẹn."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "e1cfe3d5-c51b-43bf-8a42-547e7dd2bde2",
+      "categoryKey": "destinations",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "1e7e6d4a-deb4-4c6e-bbc8-88c90d44c063",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:55:47.809Z",
+      "createdAt": "2026-11-14T00:55:13.483Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Best Time to Visit Hà Giang: A Four-Season Travel Guide",
+          "slug": "best-time-to-visit-ha-giang-a-four-season-travel-guide",
+          "excerpt": "Discover the magnificent beauty of Hà Giang through every month of the year to choose the ideal time for your highland adventure.",
+          "coverAlt": "Panoramic view of the winding mountain pass along Tu Sản Canyon and the emerald Nho Quế River in Hà Giang",
+          "body": "<p class=\"tpl-lead\">Located at the northernmost point of the country, this stone plateau always holds an irresistible allure with its spectacular mountain passes, towering jagged limestone peaks, and the rustic cultural charm of local ethnic communities. With every passing season, this land puts on a new coat, leaving many travelers wondering <strong>which season is best</strong> and most worth visiting in Hà Giang.</p>\n<h2>When is Hà Giang most beautiful: The changing four-season portrait of the stone plateau</h2>\n<p>If someone asks when this land is at its most captivating, the answer lies in your personal travel preferences. Nature has blessed this destination with four distinct seasons and breathtakingly shifting landscapes. Spring is gentle with blooming wild blossoms, summer is lush green across endless mountain ridges, autumn glows golden with ripe rice paddies, and winter settles peacefully beneath floating seas of clouds.</p>\n<blockquote class=\"tpl-pull\"><p>Every season on the stone plateau tells its own unique story, where flowers bloom even from rocks and morning mists weave a mystical landscape.</p></blockquote>\n<h2>January to March: Vibrant spring colors of peach blossoms, plum flowers, and highland festivals</h2>\n<p>The beginning of the year brings chilly weather, yet the landscape brightens up with vibrant floral shades. Across hillslopes, alongside winding roads, and in front of earthen rammed-wall houses, <strong>pale peach blossoms</strong> and <strong>white plum flowers</strong> bloom together to create an extraordinarily poetic scene. This is also the time when travelers can immerse themselves in the lively atmosphere of spring markets and unique cultural events such as the Gầu Tào or Lồng Tồng festivals.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/640.webp 640w, {{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/1280.webp 1280w, {{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>April to August: Sparkling water-pouring season and cool, green summer days</h2>\n<p>In May and June, early summer showers signal the water-pouring season across the terraced fields of Hoàng Su Phì. Each curving field reflects the sky like layered, colossal silk ribbons embracing the mountain flanks. Moving into July and August, the entire plateau dons a vibrant green coat full of life, while the emerald Nho Quế River flows gently through Tu Sản Canyon, creating a refreshing, peaceful haven in the heart of summer.</p>\n<h2>September to October: Marvel at the magnificent golden terraced rice season</h2>\n<p>When autumn arrives, the question of <strong>which season is best to visit Hà Giang</strong> is almost always answered by the golden harvest season in Hoàng Su Phì. The terraced fields stretching from mountain ridges down to valley floors are bathed in shimmering gold, releasing the fragrant scent of freshly ripening rice. Gentle autumn sunlight illuminates the local villages, crafting an opulent, tranquil scenery that leaves every visitor in awe.</p>\n<h2>October to December: Buckwheat flower season and cloud hunting atop mountain passes</h2>\n<p>The end of the year marks the peak travel season, attracting travelers from all over. Across Đồng Văn, Mèo Vạc, and Lũng Cú, vast carpets of <strong>buckwheat flowers</strong> undergo a magical color transition from white to soft pink, and finally to deep purple. As winter's chill sweeps across Mã Pí Lèng Pass, floating seas of clouds roll over the deep valleys, delivering a profound, exhilarating sense of triumph.</p>\n<h2>Tips for choosing the best time to visit Hà Giang for you</h2>\n<p>Whether your dream is to admire blooming flowers, gaze at golden rice fields, or go cloud hunting in the vast highlands, you can easily pick the perfect time for yourself. To plan your itinerary with ease, check out these standout periods below:</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Season of Flowers &amp; Festivals (January - March)</h3><p>Perfect for dreamers eager to admire peach and plum blossoms in full bloom while experiencing the warm lifestyle of local people during early-year festivals.</p></div><div class=\"tpl-item\"><h3>Golden Rice Season (September - October)</h3><p>Designed entirely for those who adore spectacular landscapes of terraced rice fields drenched in vibrant gold and filled with sweet fragrance.</p></div><div class=\"tpl-item\"><h3>Buckwheat Flower &amp; Cloud Season (October - December)</h3><p>Ideal for road trips to hunt clouds on high passes, take part in the buckwheat flower festival, and embrace the signature chill of the rocky highlands.</p></div></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Which time of year is coldest in Hà Giang?</h3><p>Early in the year from January to March and late in the year from October to December are periods when highland temperatures drop noticeably; night temperatures can plummet, so make sure to pack thick coats, gloves, and warm scarves.</p></div><div class=\"tpl-item\"><h3>What is the best month to see buckwheat flowers?</h3><p>Buckwheat flowers begin to open in October, reach their most beautiful pink-purple peak in November, and last until early December across the rocky slopes of Đồng Văn and Mèo Vạc.</p></div><div class=\"tpl-item\"><h3>What should you keep in mind when riding a motorbike on Hà Giang mountain passes?</h3><p>Steep and winding mountain roads require confident driving skills, well-prepared and safe vehicles, and checking the weather forecast before setting off.</p></div></section>\n<section class=\"tpl-cta\"><h3>Plan your trip to explore Hà Giang today</h3><p>Every season visiting the stone plateau brings fresh, unforgettable emotions. Pack your bags and get ready to embark on a journey with Gió Mùa Travel to fully take in the magnificent beauty of this legendary northern borderland.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Best Time to Visit Hà Giang: A Complete 12-Month Guide",
+          "seoDescription": "Discover when Hà Giang is at its most beautiful during the year, featuring detailed insights into the peach blossom, golden ripe rice, and vast buckwheat flower seasons."
+        },
+        {
+          "locale": "vi",
+          "title": "Hà Giang mùa nào đẹp nhất: Cẩm nang du lịch bốn mùa",
+          "slug": "ha-giang-mua-nao-dep-nhat-cam-nang-du-lich-bon-mua",
+          "excerpt": "Khám phá vẻ đẹp kỳ vĩ của Hà Giang qua từng tháng trong năm để lựa chọn thời điểm du lịch lý tưởng nhất cho hành trình khám phá vùng cao.",
+          "coverAlt": "Toàn cảnh cung đường đèo uốn lượn bên hẻm Tu Sản và dòng sông Nho Quế xanh ngọc bích tại Hà Giang",
+          "body": "<p class=\"tpl-lead\">Nằm nơi địa đầu Tổ quốc, mảnh đất cao nguyên đá luôn mang trong mình sức hút mãnh liệt với những cung đèo ngoạn mục, những dãy núi tai mèo sừng sững và nét đẹp văn hóa mộc mạc của đồng bào vùng cao. Mỗi mùa đi qua, vùng đất này lại khoác lên mình một tấm áo mới khiến nhiều người băn khoăn tự hỏi <strong>Hà Giang mùa nào đẹp</strong> và đáng đi nhất.</p>\n<h2>Hà Giang mùa nào đẹp: Bức tranh cao nguyên đá bốn mùa biến chuyển</h2>\n<p>Nếu có ai hỏi thời điểm nào vùng đất này cuốn hút nhất, câu trả lời nằm ở chính sở thích trải nghiệm của bạn. Thiên nhiên ưu ái cho nơi đây bốn mùa thời tiết với cảnh quan biến đổi ngoạn mục. Mùa xuân dịu dàng trong sắc hoa rừng nở rộ, mùa hè xanh ngắt cùng những triền núi ngút ngàn, mùa thu vàng ươm sắc lúa chín và mùa đông lắng đọng với biển mây bồng bềnh.</p>\n<blockquote class=\"tpl-pull\"><p>Mỗi mùa trên cao nguyên đá là một câu chuyện riêng biệt, nơi sỏi đá cũng nở hoa và sương giăng dệt nên bức tranh huyền ảo.</p></blockquote>\n<h2>Tháng 1 đến tháng 3: Sắc xuân rực rỡ của hoa đào, hoa mận và lễ hội vùng cao</h2>\n<p>Khoảng thời gian đầu năm là lúc tiết trời se lạnh nhưng không gian lại bừng sáng bởi sắc hoa. Trên khắp các sườn đồi, ven con đường uốn lượn và trước hiên nhà trình tường, <strong>hoa đào phai</strong> và <strong>hoa mận trắng</strong> cùng bung nở tạo nên khung cảnh nên thơ lạ kỳ. Đây cũng là dịp du khách có thể hòa mình vào không khí nhộn nhịp của các phiên chợ xuân và lễ hội văn hóa đặc sắc như Lễ hội Gầu Tào hay Lễ hội Lồng Tồng.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/640.webp 640w, {{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/1280.webp 1280w, {{media}}/351e1a2c-f54c-45b8-a098-8d36a61ecfdf/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Tháng 4 đến tháng 8: Mùa nước đổ óng ánh và những ngày hè xanh mát</h2>\n<p>Vào tháng 5 và tháng 6, những cơn mưa rào đầu hạ báo hiệu mùa nước đổ trên ruộng bậc thang Hoàng Su Phì. Từng thửa ruộng uốn lượn phản chiếu mây trời lấp lánh như những dải lụa khổng lồ xếp tầng ôm lấy lưng núi. Bước sang tháng 7 và tháng 8, cả cao nguyên khoác lên màu áo xanh biếc tràn đầy sức sống, dòng sông Nho Quế màu ngọc bích êm đềm trôi qua hẻm Tu Sản tạo nên không gian mát lành, thanh bình giữa ngày hè.</p>\n<h2>Tháng 9 đến tháng 10: Chiêm ngưỡng mùa lúa chín vàng bậc thang kỳ vĩ</h2>\n<p>Khi thu sang, câu hỏi <strong>Hà Giang mùa nào đẹp</strong> thường được nhắc đến với câu trả lời gắn liền cùng mùa vàng Hoàng Su Phì. Những thửa ruộng bậc thang trải dài từ đỉnh núi xuống tận thung lũng nhuộm màu vàng óng ả, tỏa hương thơm ngát của lúa non vừa chín tới. Ánh nắng thu vàng dịu nhẹ chiếu rọi khắp bản làng, tạo nên khung cảnh trù phú, bình yên khiến bất cứ ai đặt chân tới cũng phải ngỡ ngàng.</p>\n<h2>Tháng 10 đến tháng 12: Mùa hoa tam giác mạch và săn mây trên đỉnh đèo</h2>\n<p>Cuối năm là mùa du lịch cao điểm thu hút đông đảo bước chân xê dịch. Khắp Đồng Văn, Mèo Vạc và Lũng Cú rực rỡ những vạt <strong>hoa tam giác mạch</strong> chuyển sắc kỳ diệu từ trắng sang hồng phớt rồi tím thẫm. Khi cái lạnh mùa đông tràn về trên đèo Mã Pí Lèng, biển mây bồng bềnh cuộn trôi dưới thung lũng sâu thẳm, mang lại cảm giác chinh phục vô cùng tự hào và xúc động.</p>\n<h2>Lời khuyên chọn thời điểm du lịch Hà Giang phù hợp nhất với bạn</h2>\n<p>Tùy thuộc vào mong muốn ngắm hoa, chiêm ngưỡng mùa lúa hay săn mây đại ngàn, bạn hoàn toàn có thể lựa chọn khoảng thời gian lý tưởng cho riêng mình. Để dễ dàng lên lịch trình, hãy tham khảo các giai đoạn nổi bật dưới đây:</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Mùa hoa mùa hội (Tháng 1 - Tháng 3)</h3><p>Thích hợp cho những tâm hồn mộng mơ, say mê ngắm hoa đào, hoa mận khoe sắc thắm cùng nếp sống ấm áp của đồng bào trong dịp lễ hội đầu năm.</p></div><div class=\"tpl-item\"><h3>Mùa lúa chín vàng (Tháng 9 - Tháng 10)</h3><p>Dành trọn vẹn cho những người yêu cảnh quan ngoạn mục của các tầng ruộng bậc thang nhuộm sắc vàng rực rỡ và hương lúa thơm ngào ngạt.</p></div><div class=\"tpl-item\"><h3>Mùa tam giác mạch &amp; Mây (Tháng 10 - Tháng 12)</h3><p>Lý tưởng cho những chuyến phượt săn mây trên đèo cao, hòa mình vào lễ hội hoa tam giác mạch và cảm nhận cái rét đặc trưng vùng núi đá.</p></div></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Thời điểm nào trong năm tại Hà Giang có thời tiết lạnh nhất?</h3><p>Đầu năm từ tháng 1 đến tháng 3 và dịp cuối năm từ tháng 10 đến tháng 12 là thời điểm khí hậu vùng cao hạ nhiệt rõ rệt, ban đêm nhiệt độ có thể xuống rất thấp nên cần mang đủ áo khoác dày, găng tay và khăn ấm.</p></div><div class=\"tpl-item\"><h3>Nên đi ngắm hoa tam giác mạch vào tháng mấy đẹp nhất?</h3><p>Hoa tam giác mạch bắt đầu hé nở từ tháng 10, rộ sắc hồng tím đẹp nhất vào tháng 11 và kéo dài đến đầu tháng 12 trên khắp các triền đá Đồng Văn, Mèo Vạc.</p></div><div class=\"tpl-item\"><h3>Lái xe máy trên cung đường đèo Hà Giang cần chú ý điều gì?</h3><p>Đoạn đường đèo dốc quanh co đòi hỏi tay lái vững vàng, chuẩn bị phương tiện an toàn và luôn cập nhật dự báo thời tiết trước mỗi hành trình xuất phát.</p></div></section>\n<section class=\"tpl-cta\"><h3>Lên kế hoạch khám phá Hà Giang ngay hôm nay</h3><p>Mỗi mùa ghé thăm cao nguyên đá đều mang lại cho bạn những xúc cảm mới lạ và khó quên. Hãy chuẩn bị hành trang, sẵn sàng khởi hành cùng Gió Mùa Travel để chiêm ngưỡng trọn vẹn nét đẹp tuyệt vời của mảnh đất nơi địa đầu non sông.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Hà Giang mùa nào đẹp: Cẩm nang trọn vẹn 12 tháng",
+          "seoDescription": "Khám phá Hà Giang mùa nào đẹp nhất trong năm với gợi ý chi tiết về cảnh sắc mùa hoa đào, mùa lúa chín vàng và mùa hoa tam giác mạch bạt ngàn."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "a0e83aee-51bf-4c4b-a4ee-316c73e9cda8",
+      "categoryKey": "destinations",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "e7443baa-a6e8-4e92-9379-1ca35b8ad2ac",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:56:15.625Z",
+      "createdAt": "2026-11-14T00:55:30.500Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A relaxing 3-day, 2-night Hoi An itinerary for first-timers",
+          "slug": "a-relaxing-3-day-2-night-hoi-an-itinerary-for-first-timers",
+          "excerpt": "A detailed 3-day, 2-night Hoi An travel itinerary to help you fully explore the ancient charm, distinct cuisine, and peaceful rhythm of Hoi An.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Hoi An Ancient Town holds an irresistible charm with its mossy yellow walls, quiet yin-yang tiled roofs, and the poetic Hoai River. For first-time visitors to this heritage land, a balanced plan between sightseeing, relaxing, and soaking in local culture is essential. The <strong>3-day, 2-night Hoi An</strong> itinerary below is designed for you to leisurely and intimately experience the heartbeat of the ancient town.</p>\n<h2>Overview and preparation tips for your Hoi An trip</h2>\n<p>The best time to plan your trip is during the dry season, when the weather is dry, sunny, and pleasant. For a smooth trip, book your flight to Da Nang Airport or train ticket in advance, then take a transfer to central Hoi An. Staying at a hotel or homestay near the ancient town will make walking, renting a bicycle, and soaking in daily life much more convenient.</p>\n<h2>Day 1: Check-in, stroll through the ancient town, and admire lanterns at night</h2>\n<p>The first day of your <strong>3-day, 2-night Hoi An</strong> trip is the perfect time to tune into the nostalgic atmosphere, appreciate the unique blend of East-West architecture, and marvel at the sparkling streets lit up at night.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><p>Arrive in Hoi An, check in, drop off your luggage, and take some time to recharge after your journey.</p></div><div class=\"tpl-item\"><p>Stroll along Tran Phu and Nguyen Thai Hoc streets, visit the Japanese Covered Bridge and historic assembly halls, and pause to enjoy a refreshing herbal tea.</p></div><div class=\"tpl-item\"><p>Admire hundreds of colorful lanterns illuminating both banks of the Hoai River, release floating flower lanterns for good luck, and savor riverside night street food.</p></div></section>\n<h2>Day 2: Experience craft village culture and catch the ocean breeze at An Bang Beach</h2>\n<p>Leaving the mossy ancient town behind for the morning, your second day takes you into the peaceful countryside of time-honored traditional craft villages. You can rent a bicycle to pedal along tree-lined village paths, learn about herb farming in Tra Que, or watch the skillful hands of Thanh Ha pottery artisans shape clay into works of art.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6170edb9-8211-403e-ac4a-969f3353118f/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6170edb9-8211-403e-ac4a-969f3353118f/640.webp 640w, {{media}}/6170edb9-8211-403e-ac4a-969f3353118f/1280.webp 1280w, {{media}}/6170edb9-8211-403e-ac4a-969f3353118f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>As afternoon arrives, head to An Bang Beach to enjoy the cool ocean breeze. This beach is famous for its smooth white sand and pristine, rustic charm. Listening to the crashing waves, sipping a cold drink at a beachfront café, and watching the sunset will bring pure relaxation to your soul.</p>\n<h2>Day 3: Explore local cuisine and pick out meaningful souvenirs</h2>\n<p>The morning of your final day is a wonderful chance to immerse yourself in the simple rhythm of Hoi An Market. This bustling riverside market brings together the full flavors of Central Vietnamese cuisine, where you can freely savor authentic local dishes before packing up to head home.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><p>The famed noodle dish with chewy golden noodles, fragrant char siu pork, rich savory broth, and fresh Tra Que herbs.</p></div><div class=\"tpl-item\"><p>A warm, crispy banh mi packed with rich pâté, char-grilled meat, and signature sauce that leaves an unforgettable impression.</p></div><div class=\"tpl-item\"><p>A rustic terracotta whistle souvenir shaped from clay in the pottery village, creating cheerful sounds and evoking nostalgic Hoi An childhood memories.</p></div></section>\n<h2>Important tips for a seamless Hoi An trip</h2>\n<p>Hoi An is a UNESCO World Heritage site with strict conservation standards. For a respectful and meaningful trip, keep in mind public etiquette and local customs.</p>\n<ul class=\"tpl-check\"><li>Dress modestly and respectfully when visiting sacred monuments, assembly halls, and temples.</li><li>Opt for walking or cycling during pedestrian hours when motorbikes are restricted, so you can fully enjoy the peaceful atmosphere.</li><li>Help keep the town clean; avoid littering into the Hoai River or along the alleys of the ancient town.</li><li>Ask for permission before taking photos of local residents or elderly vendors selling their goods.</li></ul>\n<h2>Frequently asked questions about a 3-day, 2-night Hoi An trip</h2>\n<p>Here are answers to the most common questions travelers ask when planning their first trip to Hoi An.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><p>This timeframe is plenty of time to stroll through the ancient town, visit traditional craft villages, enjoy the sea breeze, and savor famous local dishes without feeling rushed.</p></div><div class=\"tpl-item\"><p>The most popular and convenient ways to get around are cycling and walking. For farther spots like An Bang Beach or Thanh Ha pottery village, you can hail a taxi or rent a motorbike.</p></div><div class=\"tpl-item\"><p>You can easily combine visits to famous stops in Da Nang on your way from the airport to Hoi An with a well-planned schedule.</p></div></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Hoi An 3 days 2 nights itinerary: A first-timer's guide",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Lịch trình Hội An 3 ngày 2 đêm thảnh thơi cho người đi lần đầu",
+          "slug": "lich-trinh-hoi-an-3-ngay-2-dem-thanh-thoi-cho-nguoi-di-lan-dau",
+          "excerpt": "Gợi ý lịch trình du lịch Hội An 3 ngày 2 đêm chi tiết, giúp bạn khám phá trọn vẹn nét đẹp cổ kính, ẩm thực đặc sắc và nhịp sống êm đềm nơi phố Hội.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Phố cổ Hội An luôn mang sức hút khó cưỡng bởi những bức tường vàng rêu phong, mái ngói âm dương trầm mặc cùng dòng sông Hoài thơ mộng. Đối với những ai lần đầu đặt chân đến mảnh đất di sản này, một kế hoạch cân bằng giữa tham quan, nghỉ ngơi và thưởng thức văn hóa bản địa là điều vô cùng quan trọng. Lịch trình <strong>Hội An 3 ngày 2 đêm</strong> dưới đây được thiết kế để bạn cảm nhận trọn vẹn nhịp sống phố Hội một cách thong thả và tinh tế nhất.</p>\n<h2>Tổng quan và kinh nghiệm chuẩn bị trước chuyến đi Hội An</h2>\n<p>Thời điểm lý tưởng nhất để lên kế hoạch cho chuyến đi là vào mùa khô, khi tiết trời khô ráo, nắng vàng chan hòa và bầu không khí dễ chịu. Để hành trình diễn ra thuận lợi, bạn nên đặt trước vé máy bay đến sân bay Đà Nẵng hoặc vé tàu hỏa, sau đó di chuyển bằng xe đưa đón về trung tâm Hội An. Lựa chọn lưu trú tại các khách sạn hay homestay gần khu vực phố cổ sẽ giúp việc đi dạo, thuê xe đạp và cảm nhận cuộc sống thường nhật trở nên thuận tiện hơn rất nhiều.</p>\n<h2>Ngày 1: Check-in, dạo bước phố cổ và ngắm đèn lồng về đêm</h2>\n<p>Ngày đầu tiên của chuyến đi <strong>Hội An 3 ngày 2 đêm</strong> là khoảng thời gian để bạn bắt nhịp với không gian hoài cổ, cảm nhận sự giao thoa kiến trúc Đông - Tây đặc sắc và chiêm ngưỡng vẻ đẹp lung linh khi phố lên đèn.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><p>Đến Hội An nhận phòng, cất hành lý và dành chút thời gian nghỉ ngơi để nạp lại năng lượng sau chặng đường dài di chuyển.</p></div><div class=\"tpl-item\"><p>Dạo bước trên các con phố Trần Phú, Nguyễn Thái Học, ghé thăm Chùa Cầu, các hội quán cổ kính và dừng chân thưởng thức một ly trà thảo mộc mát lành.</p></div><div class=\"tpl-item\"><p>Ngắm nhìn hàng trăm chiếc lồng đèn rực rỡ sắc màu thắp sáng hai bên bờ sông Hoài, trải nghiệm thả hoa đăng cầu may mắn và thưởng thức ẩm thực đêm ven sông.</p></div></section>\n<h2>Ngày 2: Trải nghiệm văn hóa làng nghề và đón gió biển An Bàng</h2>\n<p>Rời xa khu phố cổ rêu phong trong một buổi sáng, hành trình ngày thứ hai sẽ đưa bạn về với miền quê thanh bình của các làng nghề truyền thống lâu đời. Bạn có thể thuê xe đạp để thong dong trên những con đường làng rợp bóng cây xanh, tìm hiểu nghề trồng rau tại Trà Quế hoặc ngắm nhìn đôi bàn tay khéo léo của các nghệ nhân làng gốm Thanh Hà nhào nặn từng khối đất sét.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6170edb9-8211-403e-ac4a-969f3353118f/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6170edb9-8211-403e-ac4a-969f3353118f/640.webp 640w, {{media}}/6170edb9-8211-403e-ac4a-969f3353118f/1280.webp 1280w, {{media}}/6170edb9-8211-403e-ac4a-969f3353118f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Khi buổi chiều buông xuống, hãy dành thời gian di chuyển ra biển An Bàng để tận hưởng làn gió biển mát rượi. Bãi biển nơi đây nổi tiếng với dải cát trắng mịn màng và nét mộc mạc nguyên sơ. Ngồi lắng nghe tiếng sóng vỗ, thưởng thức một ly nước mát tại quán ven biển và đón hoàng hôn buông xuống sẽ mang lại cảm giác thư thái tuyệt đối cho tâm hồn.</p>\n<h2>Ngày 3: Khám phá ẩm thực bản địa và chọn quà lưu niệm ý nghĩa</h2>\n<p>Buổi sáng ngày cuối cùng là cơ hội tuyệt vời để hòa mình vào nhịp sống bình dị tại chợ Hội An. Khu chợ sầm uất ven sông tụ hội đầy đủ hương sắc của ẩm thực miền Trung, nơi bạn có thể thỏa thích nếm thử những món ăn mang đậm phong vị quê nhà trước khi sửa soạn hành lý trở về.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><p>Món mì trứ danh với sợi mì dai vàng óng ả, thịt xá xíu thơm lừng hòa quyện cùng nước dùng đậm đà và rau thơm Trà Quế.</p></div><div class=\"tpl-item\"><p>Ổ bánh mì nóng giòn với lớp nhân pa-tê béo ngậy, thịt nướng xém cạnh kèm nước sốt đặc trưng khiến thực khách nhớ mãi.</p></div><div class=\"tpl-item\"><p>Món quà lưu niệm dân dã được nặn bằng đất nung từ làng gốm, mang tiếng thổi vui tai và đậm chất ký ức tuổi thơ phố Hội.</p></div></section>\n<h2>Những lưu ý quan trọng để hành trình Hội An trọn vẹn hơn</h2>\n<p>Hội An là di sản văn hóa thế giới với những quy chuẩn bảo tồn nghiêm ngặt. Để có một chuyến trải nghiệm văn minh và ý nghĩa, bạn nên lưu tâm đến các quy tắc ứng xử nơi công cộng cũng như phong cách sinh hoạt tại địa phương.</p>\n<ul class=\"tpl-check\"><li>Lựa chọn trang phục lịch sự, kín đáo khi vào tham quan các di tích, hội quán, đền chùa linh thiêng.</li><li>Ưu tiên đi bộ hoặc sử dụng xe đạp trong các khung giờ phố cổ cấm xe máy để tận hưởng trọn vẹn không gian yên tĩnh.</li><li>Giữ gìn vệ sinh chung, không vứt rác bừa bãi xuống dòng sông Hoài hay trên các lối đi trong khu phố cổ.</li><li>Hỏi ý kiến trước khi chụp ảnh người dân bản địa hoặc các tiểu thương lớn tuổi đang ngồi bán hàng.</li></ul>\n<h2>Giải đáp các thắc mắc thường gặp về chuyến đi Hội An 3 ngày 2 đêm</h2>\n<p>Dưới đây là lời giải đáp cho những thắc mắc phổ biến nhất mà du khách thường băn khoăn khi chuẩn bị hành trình khám phá phố Hội lần đầu tiên.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><p>Khoảng thời gian này hoàn toàn đủ để bạn vừa dạo quanh phố cổ, tham quan các làng nghề truyền thống, vừa có thời gian đón gió biển và thưởng thức trọn vẹn các món ngon nổi tiếng mà không cảm thấy vội vã.</p></div><div class=\"tpl-item\"><p>Phương tiện di chuyển phổ biến và thích hợp nhất là xe đạp hoặc đi bộ tản bộ. Đối với các điểm xa hơn như biển An Bàng hay làng gốm Thanh Hà, bạn có thể gọi taxi hoặc thuê xe máy.</p></div><div class=\"tpl-item\"><p>Bạn hoàn toàn có thể kết hợp ghé thăm các điểm dừng chân nổi tiếng tại Đà Nẵng trên đường di chuyển từ sân bay về Hội An nếu sắp xếp thời gian biểu một cách khoa học.</p></div></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Lịch trình Hội An 3 ngày 2 đêm: Cẩm nang đi lần đầu",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "83fe39a4-9c03-4187-8013-977b4774be59",
+      "categoryKey": "tips",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "1b10d16b-1c5c-4734-87a2-c3b4f131d222",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:00:06.626Z",
+      "createdAt": "2026-11-14T00:59:22.454Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Small group tour guide: Benefits and booking tips",
+          "slug": "small-group-tour-guide-benefits-and-booking-tips",
+          "excerpt": "Discover the outstanding benefits of small group tours and key questions to ask before booking for a complete trip with Gió Mùa Travel.",
+          "coverAlt": "Sunrise view on a peaceful hill where visitors leisurely take in the scenery",
+          "body": "<p class=\"tpl-lead\">Rushed trips packed with tight schedules are giving way to private, flexible, and experiential vacations. <strong>Small group tours</strong> are becoming the top choice for many families and close friends seeking deep connection and relaxed exploration.</p>\n<h2>The appeal of today's small group travel trend</h2>\n<p>Instead of joining crowded tour groups, more and more travelers choose to travel in small groups of people they know. This trend stems from the desire for a relaxed getaway, free from time pressure or the discomfort of blending into strangers' routines.</p>\n<p>A trip today is no longer just about stopping for a quick photo and moving on. Modern travelers value <strong>immersive experiences</strong>—taking time to understand local culture, savor fine cuisine, and cherish meaningful moments with loved ones.</p>\n<h2>Outstanding benefits of choosing a small group tour</h2>\n<p>It is no coincidence that <strong>small group tours</strong> are so warmly embraced by travel enthusiasts. The biggest difference lies in the level of personalization and the relaxed pace throughout the journey.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Flexible itinerary</h3><p>Members can easily agree to adjust departure times, stop for a rest, or linger longer at favorite spots without worrying about affecting a large group.</p></div><div class=\"tpl-item\"><h3>Private space</h3><p>Traveling only with family or close friends creates a cozy, private atmosphere for conversation, completely away from the crowds.</p></div><div class=\"tpl-item\"><h3>Attentive care</h3><p>The tour guide and service team can attend closely to each member, paying careful attention to everyone's dietary tastes and personal preferences.</p></div></section>\n<p>In addition, traveling in a modest-sized group makes accessing pristine sights, local eateries, or winding village roads much easier than with large tour buses.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/1376.webp\" alt=\"A group of friends enjoying tea amidst peaceful nature\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/640.webp 640w, {{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/1280.webp 1280w, {{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Small-scale trips bring a sense of relaxation and deep connection.</figcaption></figure>\n<h2>Key questions to ask before finalizing your small group tour booking</h2>\n<p>To ensure your trip goes as expected, discussing every detail thoroughly with the tour operator before signing a contract is essential. Don't hesitate to ask about every point to avoid unexpected misunderstandings during the trip.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Tips when speaking with a travel consultant</h3><p>Before placing a deposit, clarify four main points: 1. Will any guests outside your group be joined in? 2. How are meals and room standards specifically arranged? 3. How flexible is the policy on changing sightseeing spots? 4. Are all costs all-inclusive, or are there additional surcharges?</p></section>\n<p>A reputable operator is always transparent about every service detail, from the type of transportation and room conditions to the list of entrance tickets. This thorough preparation ensures your <strong>small group tour</strong> runs as smoothly and comfortably as possible.</p>\n<h2>Tips for reaching consensus for a seamless small group trip</h2>\n<p>Even when traveling with loved ones, disagreements over itineraries or dining preferences can still arise without careful preparation. Listening to and understanding one another is the key to preserving complete joy throughout the trip.</p>\n<section class=\"tpl-summary\"><h3>Tips for harmonizing opinions within the group</h3><ul class=\"tpl-check\"><li>Clearly identify the group's shared preference, prioritizing relaxing getaways or active exploration.</li><li>Appoint one member as the main contact person to communicate smoothly with the travel company.</li><li>Respect the habits and physical condition of each member, especially when traveling with young children or seniors.</li><li>Set aside free time so each individual can explore according to their own interests.</li></ul></section>\n<p>When every member feels their preferences are respected, the trip becomes not only a chance to enjoy beautiful sights, but also an opportunity to strengthen family bonds and friendships.</p>\n<h2>Partner with Gió Mùa Travel to design your ideal itinerary</h2>\n<p>Understanding the desire for a relaxed, intimate vacation, Gió Mùa Travel is always ready to listen to your unique requests to craft the most well-balanced itinerary. Whether you wish to retreat to quiet high mountains or sun-drenched coastlines, your <strong>small group tour</strong> will be thoughtfully tailored with a personal touch for your group.</p>\n<section class=\"tpl-cta\"><h3>Design a small group tour with Gió Mùa Travel</h3><p>Contact Gió Mùa Travel today for detailed consultation and let's craft the perfect private trip for your group.</p></section>",
+          "readingMinutes": 3,
+          "seoTitle": "Tips for booking small group tours with Gió Mùa Travel",
+          "seoDescription": "Discover the benefits of small group tours and essential booking tips with Gió Mùa Travel for a private, flexible, and memorable vacation."
+        },
+        {
+          "locale": "vi",
+          "title": "Cẩm nang đi tour nhóm nhỏ: Lợi ích và kinh nghiệm đặt tour",
+          "slug": "cam-nang-di-tour-nhom-nho-loi-ich-va-kinh-nghiem-dat-tour",
+          "excerpt": "Khám phá lợi ích vượt trội của tour nhóm nhỏ và những câu hỏi then chốt cần làm rõ trước khi đặt tour để có chuyến đi trọn vẹn cùng Gió Mùa Travel.",
+          "coverAlt": "Khung cảnh bình minh trên ngọn đồi yên bình nơi đoàn du khách thảnh thơi ngắm cảnh",
+          "body": "<p class=\"tpl-lead\">Những chuyến du lịch vội vã chạy theo lịch trình dày đặc đang dần nhường chỗ cho những kỳ nghỉ riêng tư, linh hoạt và giàu tính trải nghiệm. Hình thức <strong>tour nhóm nhỏ</strong> đang trở thành ưu tiên hàng đầu của nhiều gia đình và hội bạn thân khi mong muốn tìm kiếm sự gắn kết trọn vẹn và không gian khám phá thảnh thơi.</p>\n<h2>Sức hút của xu hướng du lịch theo nhóm nhỏ hiện nay</h2>\n<p>Thay vì tham gia các đoàn khách đông đúc, ngày càng nhiều người lựa chọn đi du lịch theo nhóm giới hạn số lượng thành viên quen biết. Xu hướng này bắt nguồn từ nhu cầu tận hưởng kỳ nghỉ thoải mái, không chịu áp lực về thời gian hay cảm giác gò bó khi phải hòa lẫn vào nhịp sinh hoạt của người lạ.</p>\n<p>Mỗi chuyến đi giờ đây không đơn thuần là việc dừng chân chụp vội một bức ảnh rồi rời đi. Người đi du lịch hiện đại đề cao <strong>trải nghiệm sâu sắc</strong>, dành thời gian lắng nghe văn hóa bản địa, thưởng thức ẩm thực tinh tế và tận hưởng những khoảnh khắc quây quần ý nghĩa bên người thân yêu.</p>\n<h2>Những lợi ích vượt trội khi lựa chọn tour nhóm nhỏ</h2>\n<p>Không phải ngẫu nhiên mà hình thức <strong>tour nhóm nhỏ</strong> lại nhận được sự đón nhận nồng nhiệt từ những người đam mê xê dịch. Khác biệt lớn nhất nằm ở mức độ cá nhân hóa và sự thảnh thơi trong suốt hành trình di chuyển.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Lịch trình linh hoạt</h3><p>Các thành viên dễ dàng thống nhất điều chỉnh giờ giấc xuất phát, dừng lại nghỉ ngơi hoặc nán lại lâu hơn ở những điểm đến ưa thích mà không lo ảnh hưởng đến đoàn lớn.</p></div><div class=\"tpl-item\"><h3>Không gian riêng tư</h3><p>Chuyến đi chỉ bao gồm gia đình hoặc bạn bè thân thiết, mang lại không gian trò chuyện ấm cúng, riêng tư và hoàn toàn tách biệt khỏi ồn ào.</p></div><div class=\"tpl-item\"><h3>Chăm sóc tận tâm</h3><p>Đội ngũ phục vụ và hướng dẫn viên có thể chăm sóc chu đáo từng thành viên, chú ý kỹ càng đến khẩu vị ăn uống và sở thích cá nhân của cả nhóm.</p></div></section>\n<p>Bên cạnh đó, việc di chuyển theo nhóm quy mô vừa phải giúp việc tiếp cận các địa danh hoang sơ, quán ăn bản địa hay những con đường làng quanh co trở nên thuận tiện hơn rất nhiều so với những dòng xe du lịch cỡ lớn.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/1376.webp\" alt=\"Nhóm bạn cùng thưởng trà giữa khung cảnh thiên nhiên thanh bình\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/640.webp 640w, {{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/1280.webp 1280w, {{media}}/6b81f85f-c993-40d9-8c8d-4e62ac0ed8e0/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Những chuyến du lịch quy mô nhỏ mang đến cảm giác thư thái và gắn kết sâu sắc.</figcaption></figure>\n<h2>Bộ câu hỏi cần làm rõ trước khi chốt đặt tour nhóm nhỏ</h2>\n<p>Để đảm bảo kỳ nghỉ diễn ra đúng như mong đợi, việc trao đổi cặn kẽ với đơn vị lữ hành trước khi ký hợp đồng là điều vô cùng quan trọng. Đừng ngần ngại hỏi rõ từng chi tiết để tránh những hiểu lầm không đáng có trong chuyến đi.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Lời khuyên khi trao đổi với tư vấn viên</h3><p>Trước khi đặt cọc, bạn nên làm rõ bốn vấn đề chính: 1. Hành trình này có ghép thêm khách ngoài nhóm hay không? 2. Thực đơn ăn uống và tiêu chuẩn phòng ngủ được bố trí cụ thể ra sao? 3. Chính sách thay đổi điểm tham quan linh hoạt đến mức nào? 4. Các khoản chi phí đã bao gồm trọn gói dịch vụ hay còn phát sinh phụ phí nào khác?</p></section>\n<p>Một đơn vị tổ chức uy tín sẽ luôn minh bạch trong từng thông tin dịch vụ, từ loại phương tiện di chuyển, điều kiện phòng ở cho đến danh mục vé tham quan. Sự chuẩn bị kỹ lưỡng này giúp chuyến <strong>tour nhóm nhỏ</strong> của bạn được vận hành trơn tru và thoải mái nhất.</p>\n<h2>Kinh nghiệm thống nhất ý kiến để chuyến đi nhóm nhỏ trọn vẹn</h2>\n<p>Dù đi cùng người thân quen, việc bất đồng quan điểm về lịch trình hoặc sở thích ăn uống vẫn có thể xảy ra nếu không được chuẩn bị chu đáo. Sự lắng nghe và thấu hiểu lẫn nhau chính là chìa khóa giữ gìn niềm vui trọn vẹn suốt hành trình.</p>\n<section class=\"tpl-summary\"><h3>Bí quyết dung hòa ý kiến trong nhóm</h3><ul class=\"tpl-check\"><li>Xác định rõ mong muốn chung của cả đoàn, ưu tiên nghỉ dưỡng thư thái hay khám phá trải nghiệm.</li><li>Cử một thành viên làm đầu mối liên lạc chính để trao đổi thông tin mạch lạc với công ty lữ hành.</li><li>Tôn trọng thói quen sinh hoạt và thể trạng của từng thành viên, đặc biệt khi có trẻ nhỏ hoặc người lớn tuổi.</li><li>Dành sẵn những khoảng thời gian tự do để mỗi cá nhân có thể tự do dạo chơi theo sở thích riêng.</li></ul></section>\n<p>Khi mỗi thành viên đều cảm thấy sở thích của mình được tôn trọng, chuyến đi sẽ không chỉ là cơ hội ngắm nhìn cảnh đẹp mà còn là dịp thắt chặt tình cảm gia đình và tình bạn bè.</p>\n<h2>Đồng hành cùng Gió Mùa Travel để thiết kế hành trình ưng ý</h2>\n<p>Thấu hiểu mong muốn về một kỳ nghỉ thong thả và ấm cúng, Gió Mùa Travel luôn sẵn sàng lắng nghe từng nguyện vọng riêng biệt của du khách để xây dựng lộ trình hài hòa nhất. Dù bạn mong muốn tìm về những vùng núi cao tĩnh lặng hay bờ biển ngập tràn nắng gió, chuyến <strong>tour nhóm nhỏ</strong> của bạn đều được thiết kế chỉn chu, mang dấu ấn riêng của từng tập thể.</p>\n<section class=\"tpl-cta\"><h3>Thiết kế tour nhóm nhỏ cùng Gió Mùa Travel</h3><p>Hãy liên hệ ngay với Gió Mùa Travel để nhận tư vấn chi tiết và cùng nhau phác thảo nên chuyến du lịch riêng tư trọn vẹn nhất cho nhóm của bạn.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Kinh nghiệm đặt tour nhóm nhỏ cùng Gió Mùa Travel",
+          "seoDescription": "Khám phá lợi ích của tour nhóm nhỏ và các kinh nghiệm quan trọng khi đặt tour cùng Gió Mùa Travel để có kỳ nghỉ riêng tư, linh hoạt và đáng nhớ."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "4e99176f-15b8-47d9-bda1-942dd42ba2ac",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "998e7435-b7af-43d3-b102-a0fedd8b5b00",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:00:26.350Z",
+      "createdAt": "2026-11-14T00:59:30.043Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Phú Quốc Dry Season: Coral Diving and What You Need to Know",
+          "slug": "phu-quoc-dry-season-coral-diving-and-what-you-need-to-know",
+          "excerpt": "Phú Quốc dry season travel guide: Fully discover the beauty of vibrant coral reefs, top diving spots, and marine conservation tips.",
+          "coverAlt": "Clear blue skies, turquoise waters, and coral reefs in Phú Quốc during the dry season",
+          "body": "<p class=\"tpl-lead\">Under the brilliant golden sunshine and calm, mirror-like sea, <strong>Phú Quốc dry season</strong> is the best time of the year to immerse yourself in crystal-clear water and marvel at the magical beauty of natural coral reefs. A true diving trip not only opens up a shimmering ocean view, but also brings deeply connected experiences with the nature of the pearl island.</p>\n<h2>The golden time to experience Phú Quốc dry season and coral diving</h2>\n<p>The dry season on the pearl island usually begins towards the end of the year and lasts into the first few months of the next. This is the most pleasant time of year with clear blue skies, moderate humidity, warm sunshine, and significantly less rain. Gentle breezes keep the sea calm, creating favorable conditions for speedboats or wooden boats to take visitors out to the offshore islands.</p>\n<p>In particular, seawater clarity during <strong>Phú Quốc dry season</strong> reaches an ideal level. Expanded underwater visibility allows sunlight to easily penetrate the water layers, reflecting brightly onto coral communities and swimming schools of fish. Compared to the rainy season when rough waves stir up sandy beds, the dry season offers a safe, pleasant diving experience and panoramic views of pristine ocean scenery.</p>\n<h2>The most ideal coral diving spots on the pearl island</h2>\n<p>The waters around the pearl island boast a rich ecosystem with hundreds of interlaced hard and soft coral species. Concentrated most densely in the An Thới archipelago in the south, each dive spot holds its own distinct and captivating charm.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Mây Rút Island</h3><p>Standing out with bottom-clear blue water and gentle sloping beaches, this spot features table coral reefs at moderate depths, making it very convenient for beginners.</p></div><div class=\"tpl-item\"><h3>Gầm Ghì Island</h3><p>Known as the pristine coral kingdom with dense coral beds and diverse shapes, from branch corals to vibrantly colored brain corals.</p></div><div class=\"tpl-item\"><h3>Móng Tay Island</h3><p>A peaceful scene with calm emerald waters, gently sloping fringing reefs, and schools of butterflyfish and clownfish swimming close to the rocky edge.</p></div></section>\n<h2>Choosing the right diving option for you</h2>\n<p>When traveling during <strong>Phú Quốc dry season</strong>, depending on your physical condition, swimming ability, and exploration preferences, you can choose the most suitable experience for a comfortable trip.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Snorkeling</h3><p>The most popular method: you only need a diving mask, snorkel, and life jacket to float on the water and observe the coral reefs below—suitable for all ages.</p></div><div class=\"tpl-item\"><h3>Scuba Diving</h3><p>A deep-dive experience with an oxygen tank under the direct guidance of a professional instructor, helping you get up close with marine life.</p></div><div class=\"tpl-item\"><h3>Seawalker</h3><p>Put on a specialized oxygen helmet to stroll freely on the sandy ocean floor just like on land, without wetting your hair or needing advanced swimming skills.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/1376.webp\" alt=\"Vibrant coral reefs beneath the crystal-clear waters of Phú Quốc\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/640.webp 640w, {{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/1280.webp 1280w, {{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>The diverse natural coral world beneath the sea of the pearl island.</figcaption></figure>\n<h2>Essential gear for a Phú Quốc dry season diving trip</h2>\n<p>A complete sea trip requires thorough preparation of clothing and essential personal items. You should choose comfortable swimwear, sunglasses, and a thick towel to stay warm right after getting out of the water.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Tips for preparing clothing and personal items</h3><p>Opt for long-sleeved swimwear made of stretchy materials to shield your skin from harsh UV rays and minimize scratches from accidental brushes against hidden rocks. Additionally, prepare a dedicated waterproof phone pouch and take seasickness medication before the speedboat departs if you are sensitive to boat motion.</p></section>\n<h2>Safety rules and coral reef ecosystem protection</h2>\n<p>Corals are living organisms that grow extremely slowly, taking decades to form large reefs, yet they are remarkably sensitive to human impact. Being a responsible traveler means proactively respecting the integrity of the ocean floor.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Important notes on safety and coral reef conservation</h3><p>Strictly <strong>do not step on, touch, or break off coral</strong> to take home as souvenirs. When swimming and diving, maintain a safe distance from rocky shelves, always stay with your group, and follow your guide's instructions. Use only <strong>reef-safe sunscreen</strong> free of oxybenzone and octinoxate to avoid harming marine life.</p></section>\n<h2>Frequently asked questions for first-time coral divers</h2>\n<p>If this is your first time trying diving, you may have questions regarding your swimming skills as well as overall safety during the journey.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Can non-swimmers go coral diving?</h3><p>Absolutely. Options like snorkeling with a standard life vest or seawalking are designed to be beginner-friendly, with support staff always by your side.</p></div><div class=\"tpl-item\"><h3>Can people with nearsightedness join coral diving?</h3><p>Yes. You can use prescription diving masks or wear snug-fitting soft contact lenses before putting on your diving mask.</p></div><div class=\"tpl-item\"><h3>What sea weather conditions should I look out for on diving day?</h3><p>Even though the weather is very stable during this season, you should still check the daily marine forecast and consult with the boat captain or tour guide about currents at the dive spot before heading into the water.</p></div></section>\n<section class=\"tpl-cta\"><h3>Begin your Phú Quốc dry season journey with Gió Mùa Travel</h3><p>Plan your trip to explore the beauty of the pearl island with Gió Mùa Travel today to embrace calm seas, fresh air, and countless unforgettable moments in the vast ocean.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Phú Quốc Dry Season: Coral Diving Experience",
+          "seoDescription": "Phú Quốc dry season coral diving guide: the golden time, top dive spots, essential gear, and rules to protect coral safely on the pearl island."
+        },
+        {
+          "locale": "vi",
+          "title": "Phú Quốc Mùa Khô: Lặn Ngắm San Hô và Điều Cần Biết",
+          "slug": "phu-quoc-mua-kho-lan-ngam-san-ho-va-dieu-can-biet",
+          "excerpt": "Kinh nghiệm du lịch Phú Quốc mùa khô: Khám phá trọn vẹn vẻ đẹp của các rạn san hô rực rỡ, gợi ý tọa độ lặn đẹp và lưu ý bảo vệ môi trường biển.",
+          "coverAlt": "Khung cảnh biển trời trong xanh và rạn san hô Phú Quốc mùa khô",
+          "body": "<p class=\"tpl-lead\">Dưới ánh nắng vàng rực rỡ cùng mặt biển phẳng lặng như gương, <strong>Phú Quốc mùa khô</strong> chính là thời điểm hoàn hảo nhất trong năm để đắm mình vào làn nước trong vắt và chạm vào vẻ đẹp kỳ ảo của các rạn san hô tự nhiên. Một chuyến lặn biển đúng nghĩa không chỉ mở ra khung cảnh đại dương lung linh mà còn mang đến những trải nghiệm gắn kết sâu sắc cùng thiên nhiên đảo ngọc.</p>\n<h2>Thời điểm vàng trải nghiệm Phú Quốc mùa khô và lặn ngắm san hô</h2>\n<p>Mùa khô tại đảo ngọc thường bắt đầu vào khoảng cuối năm và kéo dài sang các tháng đầu năm sau. Đây là giai đoạn thời tiết chiều lòng người nhất với trời cao trong xanh, độ ẩm vừa phải, nắng ấm chan hòa và lượng mưa giảm đáng kể. Gió thổi nhẹ giúp mặt biển luôn êm ả, tạo điều kiện thuận lợi cho các chuyến cano hay tàu gỗ đưa du khách ra các hòn đảo ngoài khơi.</p>\n<p>Đặc biệt, độ trong của nước biển trong thời gian <strong>Phú Quốc mùa khô</strong> đạt mức lý tưởng. Tầm nhìn dưới nước mở rộng giúp ánh nắng mặt trời dễ dàng xuyên thấu qua các tầng nước, phản chiếu rực rỡ lên các quần thể san hô và đàn cá bơi lội. So với mùa mưa khi sóng lớn khuấy đục đáy cát, mùa khô đem lại trải nghiệm lặn an toàn, dễ chịu và ngắm nhìn trọn vẹn cảnh sắc đại dương hoang sơ.</p>\n<h2>Những tọa độ lặn ngắm san hô lý tưởng nhất tại đảo ngọc</h2>\n<p>Vùng biển đảo ngọc sở hữu hệ sinh thái phong phú với hàng trăm loài san hô cứng mềm đan xen. Tập trung dày đặc nhất ở khu vực quần đảo An Thới phía Nam, mỗi điểm lặn lại mang một nét cuốn hút và đặc trưng riêng biệt.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Hòn Mây Rút</h3><p>Nổi bật với làn nước trong xanh thấu đáy và bãi cát thoai thoải, nơi đây sở hữu những rạn san hô bàn nằm ở độ sâu vừa phải, rất thuận tiện cho người mới làm quen.</p></div><div class=\"tpl-item\"><h3>Hòn Gầm Ghì</h3><p>Được mệnh danh là vương quốc san hô hoang sơ với mật độ thảm san hô dày đặc, đa dạng hình thái từ san hô cành đến san hô não rực rỡ sắc màu.</p></div><div class=\"tpl-item\"><h3>Hòn Móng Tay</h3><p>Khung cảnh thanh bình với làn nước ngọc bích phẳng lặng, rạn san hô viền bờ thoải cùng nhiều đàn cá bướm, cá hề bơi lượn sát mép đá.</p></div></section>\n<h2>Lựa chọn hình thức lặn biển phù hợp với bạn</h2>\n<p>Khi du lịch <strong>Phú Quốc mùa khô</strong>, tùy theo tình trạng thể lực, khả năng bơi lội và sở thích khám phá của từng người, bạn có thể lựa chọn hình thức trải nghiệm phù hợp để có chuyến đi thoải mái nhất.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Lặn bằng ống thở (Snorkeling)</h3><p>Phương thức phổ biến nhất, bạn chỉ cần trang bị kính lặn, ống thở và áo phao để thả nổi trên mặt nước và quan sát các rạn san hô phía dưới, phù hợp với mọi độ tuổi.</p></div><div class=\"tpl-item\"><h3>Lặn bình khí (Scuba Diving)</h3><p>Trải nghiệm lặn sâu cùng bình dưỡng khí dưới sự dẫn dắt trực tiếp của huấn luyện viên chuyên nghiệp, giúp bạn tiếp cận cự ly gần với đời sống sinh vật biển.</p></div><div class=\"tpl-item\"><h3>Đi bộ dưới biển (Seawalker)</h3><p>Đội mũ dưỡng khí chuyên dụng để dạo bước tự do trên thềm cát đáy biển như trên cạn mà không làm ướt tóc hay cần kỹ năng bơi lội phức tạp.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/1376.webp\" alt=\"Rạn san hô đầy màu sắc dưới làn nước biển trong vắt tại Phú Quốc\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/640.webp 640w, {{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/1280.webp 1280w, {{media}}/45ead889-101d-42c5-bcf1-8bd87db4502f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Thế giới san hô tự nhiên đa dạng dưới đáy biển đảo ngọc.</figcaption></figure>\n<h2>Hành trang cần chuẩn bị cho chuyến lặn biển Phú Quốc mùa khô</h2>\n<p>Một chuyến đi biển trọn vẹn đòi hỏi sự chuẩn bị kỹ lưỡng về trang phục cũng như các đồ dùng cá nhân cần thiết. Bạn nên chọn đồ bơi thoải mái, kính râm và một chiếc khăn bông dày để giữ ấm cơ thể ngay sau khi rời khỏi mặt nước.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Mẹo chuẩn bị trang phục và đồ dùng cá nhân</h3><p>Bạn nên ưu tiên trang phục bơi dài tay bằng chất liệu co giãn tốt để vừa che chắn làn da khỏi tia cực tím gay gắt, vừa hạn chế trầy xước khi vô tình cọ phải đá ngầm. Ngoài ra, hãy chuẩn bị túi chống nước chuyên dụng cho điện thoại và uống thuốc say sóng trước khi cano khởi hành nếu bạn có tiền sử nhạy cảm với chuyển động của tàu thuyền.</p></section>\n<h2>Nguyên tắc an toàn và bảo vệ hệ sinh thái san hô</h2>\n<p>San hô là những sinh vật sống phát triển vô cùng chậm rãi, cần nhiều thập kỷ để hình thành các rạn lớn nhưng lại cực kỳ nhạy cảm trước tác động từ con người. Trở thành một người du lịch văn minh đồng nghĩa với việc bạn chủ động tôn trọng sự toàn vẹn của lòng đại dương.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Lưu ý quan trọng về an toàn và bảo tồn rạn san hô</h3><p>Tuyệt đối <strong>không dẫm đạp, sờ mó hay bẻ vụn san hô</strong> để mang về làm kỷ niệm. Khi bơi lặn, hãy giữ khoảng cách an toàn với thềm đá, luôn bơi theo nhóm và lắng nghe hiệu lệnh của hướng dẫn viên. Chỉ sử dụng <strong>kem chống nắng thân thiện với rạn san hô</strong> (Reef-safe) không chứa các chất oxybenzone và octinoxate nhằm tránh gây độc hại cho các loài thủy sinh.</p></section>\n<h2>Giải đáp thắc mắc thường gặp cho người lặn ngắm san hô lần đầu</h2>\n<p>Nếu đây là lần đầu tiên bạn thử sức với hoạt động lặn biển, chắc hẳn sẽ có những thắc mắc về kỹ năng bơi lội cũng như độ an toàn trong suốt hải trình.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Người không biết bơi có lặn ngắm san hô được không?</h3><p>Hoàn toàn được. Các hình thức như lặn ống thở kèm áo phao tiêu chuẩn hoặc đi bộ dưới đáy biển đều được thiết kế thân thiện, luôn có người hỗ trợ túc trực cạnh bạn.</p></div><div class=\"tpl-item\"><h3>Người bị cận thị có thể tham gia lặn biển ngắm san hô không?</h3><p>Có. Bạn có thể sử dụng các loại kính lặn có tròng độ cận sẵn hoặc đeo kính áp tròng loại mềm vừa khít mắt trước khi đeo kính bảo hộ lặn biển.</p></div><div class=\"tpl-item\"><h3>Cần lưu ý gì về thời tiết biển trong ngày đi lặn?</h3><p>Dù thời tiết trong mùa này rất ổn định, bạn vẫn nên theo dõi bản tin biển hàng ngày và trao đổi kỹ với thuyền trưởng hoặc hướng dẫn viên về dòng chảy tại điểm lặn trước khi xuống nước.</p></div></section>\n<section class=\"tpl-cta\"><h3>Bắt đầu chuyến du ngoạn Phú Quốc mùa khô cùng Gió Mùa Travel</h3><p>Lên lịch trình khám phá vẻ đẹp đảo ngọc cùng Gió Mùa Travel ngay hôm nay để đón một mùa biển êm dịu, trong lành và đầy ắp những khoảnh khắc gắn kết khó quên giữa đại dương bao la.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Phú Quốc Mùa Khô: Kinh Nghiệm Lặn Ngắm San Hô",
+          "seoDescription": "Cẩm nang lặn ngắm san hô Phú Quốc mùa khô: thời điểm vàng, gợi ý điểm lặn đẹp, trang bị cần chuẩn bị và quy tắc bảo vệ san hô biển đảo ngọc an toàn."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

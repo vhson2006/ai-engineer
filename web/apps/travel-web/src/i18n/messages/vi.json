@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": "Gió Mùa Travel: tour nhóm nhỏ khắp Việt Nam",
+    "description": "Tour nhóm nhỏ khởi hành từ Đà Nẵng: du thuyền Hạ Long, cung đường Hà Giang, Hội An đèn lồng và biển Phú Quốc, với hướng dẫn viên địa phương và giá ghi rõ những gì đã bao gồm.",
+    "ogImageAlt": "Ruộng bậc thang lúc hoàng hôn trên núi rừng Tây Bắc"
+  },
+  "blog": {
+    "title": "Ghi chép hành trình",
+    "intro": "Mùa nào đi đâu, nên mang gì, và những góc nhỏ hướng dẫn viên của chúng tôi yêu thích, từ đội ngũ Gió Mùa.",
+    "metaTitle": "Bài viết: kinh nghiệm du lịch và điểm đến Việt Nam",
+    "metaDescription": "Mùa đẹp, danh sách đồ cần mang, món ăn địa phương và những góc ít người biết của Việt Nam, từ hướng dẫn viên Gió Mùa Travel.",
+    "latestIntro": "Mùa đẹp, đồ cần mang và những góc nhỏ hướng dẫn viên của chúng tôi yêu thích.",
+    "ctaTitle": "Đang lên kế hoạch đi chơi?",
+    "ctaText": "Cho chúng tôi biết ngày đi và đoàn gồm những ai: trong một ngày, bạn nhận lịch trình và báo giá rõ ràng."
+  },
+  "footer": {
+    "tagline": "Nhóm nhỏ, hướng dẫn viên địa phương, Việt Nam theo nhịp riêng của nó."
+  },
+  "hours": {
+    "weekdays": "Thứ Hai – Thứ Bảy",
+    "sunday": "Chủ nhật"
+  },
+  "nav": {
+    "top": "Trang chủ",
+    "tours": "Tour",
+    "why": "Vì sao chọn chúng tôi",
+    "plan": "Cách đặt tour"
+  },
+  "hero": {
+    "eyebrow": "Tour nhóm nhỏ từ Đà Nẵng",
+    "title": "Theo cơn gió mùa đi khắp Việt Nam",
+    "text": "Vịnh biển và đảo đá, đèo núi, phố cổ đèn lồng và những bãi biển yên tĩnh. Nhóm nhỏ, hướng dẫn viên địa phương, và mức giá nói rõ đã bao gồm những gì.",
+    "plan": "Lên kế hoạch",
+    "viewTours": "Xem các tour",
+    "imageAlt": "Ruộng bậc thang lúc hoàng hôn trên núi rừng Tây Bắc",
+    "stats": [
+      { "value": "4", "label": "hành trình đặc trưng" },
+      { "value": "≤ 16", "label": "khách mỗi đoàn" },
+      { "value": "100%", "label": "hướng dẫn viên địa phương" }
+    ]
+  },
+  "tours": {
+    "eyebrow": "Tour",
+    "title": "Bốn hành trình, từ Bắc vào Nam",
+    "intro": "Tour nào cũng có thể đi riêng cho gia đình, bạn bè, và dời sang ngày phù hợp với bạn.",
+    "from": "Từ",
+    "perPerson": "mỗi người lớn",
+    "duration": "{days} ngày {nights} đêm",
+    "group": "Tối đa {count} khách",
+    "ask": "Hỏi về tour này",
+    "regions": {
+      "north": "Miền Bắc",
+      "centre": "Miền Trung",
+      "south": "Miền Nam"
+    },
+    "items": {
+      "haLong": {
+        "name": "Vịnh Hạ Long trên du thuyền gỗ",
+        "summary": "Một đêm trên du thuyền gỗ giữa các đảo đá, chèo kayak lúc bình minh.",
+        "highlights": ["Ngủ đêm trên vịnh, cabin nhìn ra biển", "Chèo kayak trong một vụng nước yên tĩnh", "Tập thái cực quyền đón bình minh trên boong"]
+      },
+      "haGiang": {
+        "name": "Cung đường Hà Giang",
+        "summary": "Đèo núi và phiên chợ vùng cực Bắc, đi ô tô hoặc ngồi sau xe máy cùng tài xế bản địa.",
+        "highlights": ["Đèo Mã Pí Lèng và sông Nho Quế", "Phiên chợ vùng cao sáng Chủ nhật", "Ngủ homestay nhà sàn"]
+      },
+      "hoiAn": {
+        "name": "Hội An & Ngũ Hành Sơn",
+        "summary": "Phố cổ trong ánh đèn lồng, lớp học nấu ăn và bờ biển Đà Nẵng.",
+        "highlights": ["Dạo phố cổ lúc chiều tối", "Đi chợ và học nấu món Hội An", "Đạp xe qua làng rau Trà Quế"]
+      },
+      "phuQuoc": {
+        "name": "Những ngày ở đảo Phú Quốc",
+        "summary": "Cát trắng, làng chài và chuyến tàu ra quần đảo phía Nam.",
+        "highlights": ["Lặn ngắm san hô quanh quần đảo An Thới", "Một buổi sáng ở làng chài", "Hoàng hôn trên bờ biển phía Tây"]
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Vì sao đi cùng chúng tôi",
+    "title": "Đi chậm hơn, thấy nhiều hơn",
+    "intro": "Chúng tôi là một nhóm nhỏ ở Đà Nẵng. Cung đường nào cũng là cung đường chúng tôi đã tự đi qua.",
+    "items": [
+      { "title": "Hướng dẫn viên địa phương", "text": "Những người lớn lên ở chính nơi bạn sắp đến: biết tiếng địa phương, quán ăn ngon, đường tắt." },
+      { "title": "Nhóm nhỏ", "text": "Tối đa mười sáu khách, mười khách với tour vùng núi, để mỗi điểm dừng vẫn thật gần gũi." },
+      { "title": "Giá rõ ràng", "text": "Báo giá ghi rõ những gì đã gồm và chưa gồm. Không có khoản phí bất ngờ trên đường." },
+      { "title": "Du lịch nhẹ nhàng", "text": "Homestay gia đình, bình nước dùng lại và ưu tiên cơ sở địa phương ở mọi nơi có thể." }
+    ]
+  },
+  "plan": {
+    "eyebrow": "Cách đặt tour",
+    "title": "Từ tin nhắn đầu tiên đến buổi sáng đầu tiên",
+    "intro": "Không thanh toán trực tuyến, không biểu mẫu: chỉ là một cuộc trò chuyện với người thuộc từng cung đường.",
+    "steps": [
+      { "title": "Kể cho chúng tôi", "text": "Ngày đi, số người và điều bạn muốn xem, qua điện thoại, Zalo hoặc email." },
+      { "title": "Nhận kế hoạch", "text": "Trong một ngày: lịch trình từng ngày và báo giá ghi rõ mọi khoản đã bao gồm." },
+      { "title": "Xác nhận", "text": "Điều chỉnh tuỳ ý, rồi xác nhận bằng một khoản đặt cọc; cách đặt cọc sẽ được hướng dẫn khi trao đổi." },
+      { "title": "Lên đường", "text": "Hướng dẫn viên đón bạn ở sân bay hoặc khách sạn. Chúng tôi luôn liên lạc được trong suốt chuyến đi." }
+    ],
+    "includesTitle": "Thường đã bao gồm",
+    "includes": ["Hướng dẫn viên và xe đưa đón trong tour", "Khách sạn, homestay hoặc cabin du thuyền", "Các bữa ăn ghi trong lịch trình", "Vé tham quan và tàu thuyền"],
+    "excludesTitle": "Thường chưa bao gồm",
+    "excludes": ["Vé máy bay đến điểm khởi hành", "Bảo hiểm du lịch", "Đồ uống và chi tiêu cá nhân", "Tiền tip cho hướng dẫn viên và tài xế"]
+  },
+  "questions": {
+    "items": [
+      { "q": "Tôi có thể đặt tour riêng không?", "a": "Có. Tour nào cũng đi riêng được cho nhóm của bạn, vào ngày bạn chọn; giá tuỳ theo số người." },
+      { "q": "Mùa nào đi đẹp nhất?", "a": "Tuỳ vùng: miền Bắc đẹp từ tháng 9 đến tháng 11 và tháng 3 đến tháng 5, miền Trung từ tháng 2 đến tháng 8, Phú Quốc từ tháng 11 đến tháng 4. Chúng tôi sẽ tư vấn khi bạn lên kế hoạch." },
+      { "q": "Bên bạn có đặt vé máy bay không?", "a": "Chúng tôi không bán vé máy bay, nhưng sẽ gợi ý chuyến bay phù hợp với lịch trình và đón bạn tại sân bay." },
+      { "q": "Nếu thời tiết làm thay đổi lịch trình thì sao?", "a": "Du thuyền và tàu thuyền có thể bị cơ quan chức năng tạm dừng khi có bão. Khi đó chúng tôi đổi chương trình trong ngày hoặc đổi ngày, và giải thích các lựa chọn trước khi bạn đi." },
+      { "q": "Cung đường Hà Giang có hợp với trẻ em không?", "a": "Đi ô tô thì được, từ khoảng 8 tuổi; đường đèo khá quanh co. Lựa chọn đi xe máy cùng tài xế dành cho người lớn." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Liên hệ",
+    "title": "Cùng lên kế hoạch cho chuyến đi",
+    "text": "Gọi điện, nhắn Zalo hoặc gửi email; hoặc ghé văn phòng bên sông Hàn uống ly cà phê và xem bản đồ cùng chúng tôi.",
+    "note": "Ngoài giờ làm việc, tin nhắn được trả lời vào sáng hôm sau."
+  }
+}

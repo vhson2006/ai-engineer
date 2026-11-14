@@ -5,14 +5,7 @@
     "ogImageAlt": "Biển hiệu Giặt sấy SFaster: Mỗi người 1 máy · Sạch – Thơm – Nhanh"
   },
   "common": {
-    "skipToContent": "Chuyển đến nội dung",
-    "language": "Ngôn ngữ",
-    "call": "Gọi {phone}",
-    "callNow": "Gọi ngay",
-    "zalo": "Nhắn Zalo",
-    "directions": "Chỉ đường",
     "viewPrices": "Xem bảng giá",
-    "from": "Từ {price}",
     "units": {
       "load": "/ lần",
       "kg": "/ kg",
@@ -27,15 +20,18 @@
     "hours": "T2–T6 {weekdays} · T7, CN {weekend}"
   },
   "nav": {
-    "label": "Mục chính",
-    "home": "Trang chủ SFaster",
     "top": "Trang chủ",
-    "openMenu": "Mở menu",
-    "closeMenu": "Đóng menu",
     "prices": "Bảng giá",
     "process": "Quy trình",
     "faq": "Hỏi đáp",
     "contact": "Liên hệ",
+    "articles": "Bài viết"
+  },
+  "menu": {
+    "label": "Mục chính",
+    "home": "Trang chủ SFaster",
+    "open": "Mở menu",
+    "close": "Đóng menu",
     "articles": "Bài viết"
   },
   "brand": {
@@ -55,10 +51,22 @@
   "highlights": {
     "label": "Vì sao chọn SFaster",
     "items": {
-      "oneMachine": { "title": "Mỗi người 1 máy", "text": "Đồ của bạn không bao giờ giặt chung với người khác." },
-      "clean": { "title": "Sạch & thơm", "text": "Nước giặt, nước xả và giấy thơm chính hãng cho mỗi mẻ." },
-      "fast": { "title": "Nhanh", "text": "Máy giặt cửa trước và máy sấy, giặt sấy trọn gói một lần." },
-      "labelled": { "title": "Đóng túi, dán phiếu", "text": "Đồ mỗi khách được đóng túi riêng, có phiếu riêng." }
+      "oneMachine": {
+        "title": "Mỗi người 1 máy",
+        "text": "Đồ của bạn không bao giờ giặt chung với người khác."
+      },
+      "clean": {
+        "title": "Sạch & thơm",
+        "text": "Nước giặt, nước xả và giấy thơm chính hãng cho mỗi mẻ."
+      },
+      "fast": {
+        "title": "Nhanh",
+        "text": "Máy giặt cửa trước và máy sấy, giặt sấy trọn gói một lần."
+      },
+      "labelled": {
+        "title": "Đóng túi, dán phiếu",
+        "text": "Đồ mỗi khách được đóng túi riêng, có phiếu riêng."
+      }
     }
   },
   "prices": {
@@ -128,22 +136,52 @@
     "title": "Gửi đồ, tiệm giặt, bạn nhận",
     "imageAlt": "Kệ đồ đã giặt xong, mỗi khách một túi trắng riêng có dán phiếu",
     "steps": [
-      { "title": "Gửi đồ", "text": "Mang đồ tới tiệm, hoặc gọi điện, nhắn Zalo trước cho tiệm." },
-      { "title": "Cân & ghi phiếu", "text": "Tiệm cân đồ và ghi phiếu kèm giá cho bạn." },
-      { "title": "Giặt máy riêng", "text": "Đồ của bạn được giặt và sấy riêng: mỗi người 1 máy." },
-      { "title": "Đóng túi, nhận đồ", "text": "Đồ sạch được đóng túi kèm phiếu, chờ bạn tới lấy." }
+      {
+        "title": "Gửi đồ",
+        "text": "Mang đồ tới tiệm, hoặc gọi điện, nhắn Zalo trước cho tiệm."
+      },
+      {
+        "title": "Cân & ghi phiếu",
+        "text": "Tiệm cân đồ và ghi phiếu kèm giá cho bạn."
+      },
+      {
+        "title": "Giặt máy riêng",
+        "text": "Đồ của bạn được giặt và sấy riêng: mỗi người 1 máy."
+      },
+      {
+        "title": "Đóng túi, nhận đồ",
+        "text": "Đồ sạch được đóng túi kèm phiếu, chờ bạn tới lấy."
+      }
     ]
   },
   "faq": {
     "eyebrow": "Hỏi đáp",
     "title": "Câu hỏi thường gặp",
     "items": [
-      { "q": "Đồ của tôi có bị giặt chung với người khác không?", "a": "Không. SFaster giặt theo nguyên tắc mỗi người 1 máy: đồ của mỗi khách được giặt và sấy riêng." },
-      { "q": "Giá được tính như thế nào?", "a": "Quần áo và mền drap tính theo cân nặng khi gửi; giặt hấp và các dịch vụ khác tính theo cái, đôi hoặc ký (xem bảng giá)." },
-      { "q": "Đồ len, lụa, da, vest có giặt máy được không?", "a": "Các loại đồ này nên chọn dịch vụ giặt hấp để giữ form và chất liệu. Xem giá ở mục Giặt hấp." },
-      { "q": "Khi nào tôi lấy được đồ?", "a": "Tùy số lượng đồ và dịch vụ. Gọi điện hoặc nhắn Zalo, tiệm sẽ báo giờ có đồ cho bạn." },
-      { "q": "Ưu đãi giặt 7 lần tặng 1 áp dụng thế nào?", "a": "Sau 7 lần giặt, lần tiếp theo được tặng. Hỏi nhân viên tại quầy để biết chi tiết." },
-      { "q": "Tiệm mở cửa lúc nào?", "a": "Thứ Hai đến thứ Sáu từ 7:00 đến 19:00; thứ Bảy và Chủ nhật từ 7:00 đến 17:00. Tiệm nghỉ các ngày lễ theo lịch chung." }
+      {
+        "q": "Đồ của tôi có bị giặt chung với người khác không?",
+        "a": "Không. SFaster giặt theo nguyên tắc mỗi người 1 máy: đồ của mỗi khách được giặt và sấy riêng."
+      },
+      {
+        "q": "Giá được tính như thế nào?",
+        "a": "Quần áo và mền drap tính theo cân nặng khi gửi; giặt hấp và các dịch vụ khác tính theo cái, đôi hoặc ký (xem bảng giá)."
+      },
+      {
+        "q": "Đồ len, lụa, da, vest có giặt máy được không?",
+        "a": "Các loại đồ này nên chọn dịch vụ giặt hấp để giữ form và chất liệu. Xem giá ở mục Giặt hấp."
+      },
+      {
+        "q": "Khi nào tôi lấy được đồ?",
+        "a": "Tùy số lượng đồ và dịch vụ. Gọi điện hoặc nhắn Zalo, tiệm sẽ báo giờ có đồ cho bạn."
+      },
+      {
+        "q": "Ưu đãi giặt 7 lần tặng 1 áp dụng thế nào?",
+        "a": "Sau 7 lần giặt, lần tiếp theo được tặng. Hỏi nhân viên tại quầy để biết chi tiết."
+      },
+      {
+        "q": "Tiệm mở cửa lúc nào?",
+        "a": "Thứ Hai đến thứ Sáu từ 7:00 đến 19:00; thứ Bảy và Chủ nhật từ 7:00 đến 17:00. Tiệm nghỉ các ngày lễ theo lịch chung."
+      }
     ]
   },
   "contact": {
@@ -152,11 +190,13 @@
     "text": "Ghé thẳng tiệm trong giờ mở cửa, hoặc gọi điện, nhắn Zalo trước.",
     "address": "Địa chỉ",
     "hours": "Giờ mở cửa",
-    "weekdays": "Thứ Hai – Thứ Sáu",
-    "weekend": "Thứ Bảy, Chủ nhật",
     "holidays": "Nghỉ lễ theo lịch chung",
     "phone": "Hotline & Zalo",
     "mapTitle": "Bản đồ đường đến tiệm Giặt sấy SFaster"
+  },
+  "hours": {
+    "weekdays": "Thứ Hai – Thứ Sáu",
+    "weekend": "Thứ Bảy, Chủ nhật"
   },
   "footer": {
     "tagline": "Giặt sấy quần áo: mỗi người 1 máy. Sạch – Thơm – Nhanh.",
@@ -165,36 +205,18 @@
     "rights": "© {year} {name}. Bảo lưu mọi quyền.",
     "legal": "Thông tin pháp lý"
   },
-  "articles": {
-    "playVideo": "Phát video",
-    "eyebrow": "Bài viết",
+  "blog": {
     "title": "Mẹo giặt giũ & chuyện ở tiệm",
     "intro": "Mẹo gửi đồ, cách chọn dịch vụ và cách tiệm tính giá, từ Giặt sấy SFaster.",
     "metaTitle": "Bài viết: mẹo giặt giũ và chuyện ở tiệm",
     "metaDescription": "Mẹo gửi đồ ở tiệm giặt, khi nào nên chọn giặt hấp, và cách Giặt sấy SFaster tính giá theo ký, theo món.",
-    "home": "Trang chủ",
-    "breadcrumb": "Đường dẫn",
-    "all": "Tất cả",
-    "categoriesLabel": "Chủ đề",
-    "categoryTitle": "{category}",
-    "categoryDescription": "Các bài viết về {category} từ Giặt sấy SFaster.",
-    "featured": "Nổi bật",
-    "readMore": "Đọc tiếp",
-    "minutes": "{count} phút đọc",
-    "latest": "Bài viết mới",
     "latestIntro": "Mẹo nhỏ để đồ giặt sạch đẹp, và giải đáp trước khi bạn gửi đồ.",
-    "viewAll": "Tất cả bài viết",
-    "back": "Quay lại bài viết",
-    "related": "Đọc thêm",
-    "empty": "Chủ đề này chưa có bài viết.",
-    "none": "Tiệm chưa đăng bài viết nào.",
     "ctaTitle": "Cần giặt đồ hôm nay?",
     "ctaText": "Mang đồ tới tiệm, hoặc gọi điện, nhắn Zalo trước cho tiệm."
   },
-  "notFound": {
-    "title": "Không tìm thấy trang",
-    "text": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi.",
-    "back": "Về trang chủ"
+  "articles": {
+    "categoryDescription": "Các bài viết về {category} từ Giặt sấy SFaster.",
+    "none": "Tiệm chưa đăng bài viết nào."
   },
   "legal": {
     "updated": "Cập nhật lần cuối: {date}",
@@ -216,9 +238,7 @@
           "paragraphs": [
             "{name} (“chúng tôi”), địa chỉ {address}, điện thoại và Zalo {phone}, là bên quyết định mục đích và cách xử lý dữ liệu cá nhân nêu trong chính sách này."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "du-lieu-thu-thap",
@@ -252,9 +272,7 @@
           "paragraphs": [
             "Chúng tôi xử lý dữ liệu khi bạn đồng ý (ví dụ khi bạn chủ động liên hệ và cung cấp thông tin), khi cần để thực hiện dịch vụ bạn yêu cầu, hoặc khi pháp luật yêu cầu. Bạn có thể rút lại sự đồng ý bất cứ lúc nào; việc rút lại không ảnh hưởng đến việc xử lý đã thực hiện trước đó."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "chia-se",
@@ -277,9 +295,7 @@
             "Website hiện không có chức năng đăng nhập hay kết nối tài khoản mạng xã hội. Khi bạn bấm vào liên kết tới Zalo, Facebook hay nền tảng khác, bạn rời website của chúng tôi và chính sách của nền tảng đó được áp dụng.",
             "Nếu sau này chúng tôi bổ sung đăng nhập hoặc chia sẻ bằng tài khoản mạng xã hội, chúng tôi chỉ yêu cầu những quyền tối thiểu cần thiết, nêu rõ trong chính sách này trước khi áp dụng, và bạn luôn có thể yêu cầu xoá dữ liệu theo hướng dẫn ở trang Xoá dữ liệu cá nhân."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "luu-tru",
@@ -299,9 +315,7 @@
           "paragraphs": [
             "Website chỉ phục vụ qua kết nối mã hoá (HTTPS) và không lưu mật khẩu hay thông tin thanh toán của bạn. Chỉ những người cần thiết để phục vụ bạn mới được tiếp cận dữ liệu."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "quyen",
@@ -323,9 +337,7 @@
           "paragraphs": [
             "Hãy gọi điện hoặc nhắn Zalo {phone}, hoặc đến cửa hàng tại {address}. Chúng tôi có thể hỏi một vài thông tin để xác minh bạn là chủ của dữ liệu trước khi thực hiện yêu cầu."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "tre-em",
@@ -333,9 +345,7 @@
           "paragraphs": [
             "Website và dịch vụ dành cho người trưởng thành. Chúng tôi không cố ý thu thập dữ liệu của trẻ em; dữ liệu của trẻ em chỉ được xử lý khi có sự đồng ý của cha mẹ hoặc người giám hộ theo quy định."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "thay-doi",
@@ -343,9 +353,7 @@
           "paragraphs": [
             "Khi chính sách thay đổi, chúng tôi cập nhật trang này và ngày “Cập nhật lần cuối” ở đầu trang. Thay đổi quan trọng sẽ được thông báo rõ trên website."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "lien-he",
@@ -353,9 +361,7 @@
           "paragraphs": [
             "{name}, {address}. Điện thoại và Zalo: {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         }
       ]
     },
@@ -371,9 +377,7 @@
             "Giá và thông tin dịch vụ trên website lấy từ bảng giá tại cửa hàng và chỉ để tham khảo. Giá áp dụng là giá niêm yết tại cửa hàng vào thời điểm bạn gửi đồ; công cụ ước tính giá chỉ cho kết quả gần đúng.",
             "Chúng tôi có thể cập nhật giá, giờ mở cửa và nội dung website bất cứ lúc nào."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "dich-vu",
@@ -381,9 +385,7 @@
           "paragraphs": [
             "Website giới thiệu dịch vụ của cửa hàng; việc nhận và trả đồ diễn ra tại cửa hàng hoặc theo trao đổi qua điện thoại, Zalo. Điều kiện cụ thể của từng đơn (cách tính khối lượng, đồ cần xử lý riêng, thời điểm nhận lại) do cửa hàng trao đổi với bạn khi nhận đồ. Mọi thắc mắc, hãy gọi hoặc nhắn Zalo {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "bai-viet",
@@ -391,9 +393,7 @@
           "paragraphs": [
             "Bài viết trên website chỉ mang tính tham khảo về giặt giũ và chăm sóc đồ dùng. Khi có khác biệt, hãy làm theo hướng dẫn trên nhãn của sản phẩm."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "so-huu",
@@ -401,9 +401,7 @@
           "paragraphs": [
             "Tên, biển hiệu, hình ảnh, bài viết và thiết kế của website thuộc về {name} hoặc được sử dụng hợp pháp. Bạn được chia sẻ liên kết tới website và trích dẫn ngắn có ghi nguồn; không được sao chép nội dung để dùng cho mục đích thương mại khi chưa được chúng tôi đồng ý."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "su-dung-hop-le",
@@ -423,9 +421,7 @@
           "paragraphs": [
             "Website có liên kết và nội dung nhúng từ Google Maps, YouTube, Zalo, Facebook và các nền tảng khác. Chúng tôi không kiểm soát và không chịu trách nhiệm về nội dung hay chính sách của các nền tảng đó."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "trach-nhiem",
@@ -433,9 +429,7 @@
           "paragraphs": [
             "Chúng tôi cố gắng giữ thông tin chính xác và website hoạt động ổn định, nhưng không bảo đảm website luôn không có lỗi hay gián đoạn. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về thiệt hại phát sinh từ việc sử dụng thông tin trên website. Điều này không làm ảnh hưởng đến quyền lợi của bạn với tư cách người tiêu dùng theo pháp luật Việt Nam."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "luat-ap-dung",
@@ -443,9 +437,7 @@
           "paragraphs": [
             "Các điều khoản này tuân theo pháp luật Việt Nam. Tranh chấp được giải quyết trước hết bằng thương lượng; nếu không thành, sẽ được giải quyết tại cơ quan có thẩm quyền theo quy định của pháp luật."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "thay-doi",
@@ -453,9 +445,7 @@
           "paragraphs": [
             "Khi điều khoản thay đổi, chúng tôi cập nhật trang này và ngày “Cập nhật lần cuối” ở đầu trang. Việc bạn tiếp tục sử dụng website sau đó đồng nghĩa với việc chấp nhận điều khoản mới."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "lien-he",
@@ -463,9 +453,7 @@
           "paragraphs": [
             "{name}, {address}. Điện thoại và Zalo: {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         }
       ]
     },
@@ -480,9 +468,7 @@
           "paragraphs": [
             "Thông tin liên hệ (tên, số điện thoại), tin nhắn với cửa hàng, thông tin đơn giặt, và mọi dữ liệu chúng tôi nhận được từ tài khoản mạng xã hội của bạn (nếu có)."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "cach-yeu-cau",
@@ -503,9 +489,7 @@
             "Nếu bạn đã nhắn tin cho cửa hàng qua Facebook, Zalo hay nền tảng khác, bạn có thể tự xoá cuộc trò chuyện ở phía bạn trong ứng dụng đó. Để chúng tôi xoá bản lưu ở phía cửa hàng, hãy gửi yêu cầu như trên.",
             "Nếu bạn đã đăng nhập hoặc kết nối tài khoản mạng xã hội với website (khi chức năng này có), bạn có thể gỡ quyền truy cập trong phần cài đặt của nền tảng (ví dụ Facebook: Cài đặt và quyền riêng tư → Cài đặt → Ứng dụng và trang web), rồi gửi yêu cầu xoá như trên."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "giu-lai",
@@ -513,9 +497,7 @@
           "paragraphs": [
             "Một số dữ liệu có thể phải giữ lại khi pháp luật yêu cầu (ví dụ chứng từ kế toán) hoặc để giải quyết một khiếu nại chưa xong. Khi đó, chúng tôi chỉ giữ phần cần thiết và xoá khi hết thời hạn."
           ],
-          "items": [
-
-          ]
+          "items": []
         },
         {
           "id": "lien-he",
@@ -523,9 +505,7 @@
           "paragraphs": [
             "{name}, {address}. Điện thoại và Zalo: {phone}."
           ],
-          "items": [
-
-          ]
+          "items": []
         }
       ]
     }

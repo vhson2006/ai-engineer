@@ -28,9 +28,12 @@ k8s/
 │   ├── namespace.yaml
 │   ├── gateway/                 #   Gateway "edge" + HTTPRoutes www/auth (*.example.com); no api route
 │   ├── krakend/                 #   Deployment + Service + config/krakend.tmpl, config/templates/*.tmpl
-│   └── keycloak/                #   Deployment + Service (no hostname, no realm, no secrets)
+│   └── keycloak/                #   Deployment + Service; realm.json + master.json (the same in every
+│                                #   environment, values $(env:…)) + the Job keycloak-config (ADR 0043)
 ├── components/
-│   ├── local-data/              # Postgres, Redis (ACL users), SeaweedFS (S3 for files) in the cluster: dev only
+│   ├── local-data/              # Postgres, Redis (ACL users), SeaweedFS (S3 for files) in the cluster: dev, staging
+│   ├── keycloak-local/          # Keycloak test users, alice's OTP, dev-cli: dev, staging
+│   ├── keycloak-sites/          # the business sites' Keycloak clients: where the sites run (dev)
 │   ├── nats/                    # NATS (single instance): dev and prod
 │   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster: staging, prod
 │   ├── network-policies/        # default deny + allowed flows: staging and prod
@@ -39,14 +42,15 @@ k8s/
 │   ├── dev/                     # entry point: npm run k8s:up  (= kubectl apply -k k8s/overlays/dev)
 │   │   ├── kustomization.yaml   #   base + local-data + nats + the files below
 │   │   ├── krakend/settings/env.json      # issuer, JWKS URL, backends (host.docker.internal)
-│   │   ├── keycloak/            #   realm JSON (clients, roles, groups, test users) + dev Secrets
+│   │   ├── keycloak/            #   dev Secrets (bootstrap admin, DB, client secrets)
 │   │   ├── patches/             #   gateway.yaml (*.localtest.me:8000), keycloak.yaml (KC_HOSTNAME)
 │   │   ├── gateway-proxy.yaml   #   NginxProxy: DNS resolver for the ExternalName backend
 │   │   └── portfolio-web.yaml   #   Service -> Next.js on your machine
 │   └── prod/                    # DOKS, deployed by Argo CD: HTTPS, External Secrets, migration Job,
 │                                #   2 replicas + PDBs + spread, NetworkPolicies (see "Production" below)
 ├── platform/prod/               # cluster-level, applied once: ClusterIssuers, DNS token, Argo CD Application
-└── scripts/                     # gateway-install.sh, krakend-check.sh, port-forward.{sh,ps1}
+├── images.json                  # THE list of images (CI builds, staging builds, images-check.mjs)
+└── scripts/                     # up.sh, staging.sh, gateway-install.sh, krakend-check.sh, images-check.mjs, port-forward.{sh,ps1}
 
 A new environment = a new `overlays/<env>/` with its own settings, patches and secrets.
 `base/` stays untouched. `npm run k8s:render` / `npm run k8s:render:prod` print what an overlay produces.
@@ -69,9 +73,8 @@ A new environment = a new `overlays/<env>/` with its own settings, patches and s
 ```bash
 kubectl config current-context        # make sure you are on the local cluster (e.g. docker-desktop)
 npm run k8s:up                        # installs NGINX Gateway Fabric once, then kubectl apply -k k8s/overlays/dev
+                                      # (and the Job keycloak-config: the realms, ADR 0043)
 npm run k8s:status                    # wait until all 6 pods are Running 1/1 (Keycloak: ~1-2 min)
-npm run keycloak:admin-url             # once per fresh cluster: Keycloak admin console (ADR 0004)
-npm run keycloak:admin-otp             # once per fresh cluster: admin site = admins; superadmins + OTP (ADRs 0019, 0030)
 npm run k8s:forward                   # Postgres/Redis/NATS for the apps + admin UIs (Ctrl+C to stop)
 ```
 
@@ -151,20 +154,32 @@ If KrakenD answers but returns errors for `/api/...`, check that `npm run start:
 
 | What | Where |
 |---|---|
-| Admin Console (private, port-forward) | http://localhost:8180/admin (user `admin` / `admin`, realm `master`; once per fresh cluster: `npm run keycloak:admin-url`, which also enables brute-force detection on `master`) |
+| Admin Console (private, port-forward) | http://localhost:8180/admin (user `admin` / `admin`, realm `master`; its Frontend URL and brute-force detection come from `keycloak/master.json`) |
 | Realm `nest-microservice` | http://auth.localtest.me:8000/realms/nest-microservice/.well-known/openid-configuration |
 | JWKS (public keys) | `.../realms/nest-microservice/protocol/openid-connect/certs` (from the cluster: `http://keycloak.nest-microservice.svc.cluster.local:8080/...`) |
 | Management (health, metrics) | http://localhost:9000/health/ready, http://localhost:9000/metrics |
 | Account console (end users) | http://auth.localtest.me:8000/realms/nest-microservice/account |
 
-The realm is imported from [`keycloak/realm-nest-microservice.json`](overlays/dev/keycloak/realm-nest-microservice.json):
+**Configuration as code (ADR 0043).** Everything below comes from files applied by the Job
+`keycloak-config` (keycloak-config-cli) on every `npm run k8s:up` / `staging:up` / Argo CD sync, on a
+fresh cluster and on a running one alike. **The same files in every environment**:
+[`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
+groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
+[`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
+code, `dev-cli`); [`components/keycloak-sites/`](components/keycloak-sites/) (dev: the business sites'
+clients and service accounts); prod adds `master-config-cli.json`. What differs per environment is
+only a value, written `$(env:NAME)` in the files: ConfigMap `keycloak-config-env` of the overlay
+(`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
+Change Keycloak by changing these files, not the console: a field of a managed object that the file
+doesn't set is reset at the next deploy.
+Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 
 | Clients | Purpose |
 |---|---|
 | `deployments-api` | Resource server: owns the roles `deployment:read`, `deployment:write`, `deployment:admin`; it's the token audience |
-| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `http://www.localtest.me:8000/*` and `http://localhost:3000/*`) |
-| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `http://admin.localtest.me:8000/*`, `http://localhost:3100/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
-| `dev-cli` | **Dev only**: password grant for curl tests |
+| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `$WEB_URL/*`: `http://www.localtest.me:8000/*` in dev) |
+| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `$ADMIN_URL/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
+| `dev-cli` | **dev and staging only** (`components/keycloak-local`): password grant for curl tests |
 
 | Group | Roles | Test user (password `password`) |
 |---|---|---|
@@ -173,11 +188,10 @@ The realm is imported from [`keycloak/realm-nest-microservice.json`](overlays/de
 | `admins` | read, write, admin + `admin-web:admin`, `admin-web:superadmin`, `content:admin` | `alice` (also has a **dev-only OTP**: see `web/apps/admin-web/README.md`) |
 | `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `dana` (`/sites/nails`), `erin` (`/sites/wine`) |
 
-**Admin site sign-in** (ADRs 0019, 0030): `npm run keycloak:admin-otp`, once per fresh cluster (after
-`k8s:up`; `staging:up` runs it), creates the flow `browser-admin-otp` and binds it to the client
-`admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
+**Admin site sign-in** (ADRs 0019, 0030): the flow `browser-admin-otp` (in `realm.json`), bound to the
+client `admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
 then the one-time code for `admin-web:superadmin` only (a superadmin without OTP is made to set it up). portfolio-web keeps the
-realm's default flow. Re-running it rebuilds the flow (idempotent).
+realm's default flow.
 
 Get a token for testing (access token lives 5 minutes):
 
@@ -191,13 +205,15 @@ even when Keycloak is reached from inside the cluster or through the port-forwar
 The admin console uses its own URL (`KC_HOSTNAME_ADMIN=http://localhost:8180`), which is never
 published on the Gateway. Its login runs on realm `master`, whose **Frontend URL must be
 `http://localhost:8180`** too, otherwise the console hangs (it would log in through
-`auth.localtest.me`, where the Gateway answers 404 for `master`). Set once per fresh cluster:
-`npm run keycloak:admin-url` (stored in Keycloak's database; the app realm is untouched). Verifiers (KrakenD, services) must use that
+`auth.localtest.me`, where the Gateway answers 404 for `master`): `master.json`, applied last by the
+Job (the new issuer invalidates its token, so it repeats that run once). Verifiers (KrakenD, services) must use that
 issuer, and may fetch the JWKS through the in-cluster URL.
 
-**The realm JSON is imported only when the realm doesn't exist.** Changes made in the Admin Console
-are stored in Postgres (database `keycloak`) and survive restarts. To re-import after editing the
-JSON: delete the realm in the Admin Console, then `kubectl -n nest-microservice rollout restart deploy/keycloak`.
+People are not configuration: users created in the console (and their passwords, OTP) stay in
+Postgres (database `keycloak`). The test users of `users.json` get the file's passwords back when that
+file changes. A public site (ADR 0042) = its group `/sites/<id>` in `realm.json` and its client `<id>-web`
+and service account in `components/keycloak-sites/sites.json` (secret `<ID>_WEB_CLIENT_SECRET` in the
+environment's Secret `keycloak-clients`).
 
 ## Object storage (uploaded files)
 
@@ -366,26 +382,30 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 | Resilience | 2 replicas (KrakenD, Keycloak, apps, nginx), PodDisruptionBudgets, spread over nodes, `maxUnavailable: 0`, probes, resource requests/limits |
 | Isolation | `overlays/prod/networkpolicies.yaml`: default deny + only the flows listed in the file |
 | Telemetry | `components/observability`: Alloy → Grafana Cloud, label `cluster=prod` ([Observability](#observability-grafana-cloud)) |
-| Images | `kustomization.yaml` `images:`: `.github/workflows/images.yml` sets the tags to the commit SHA |
+| Images | `k8s/images.json` (the list), `kustomization.yaml` `images:`: `.github/workflows/images.yml` sets the tags to the commit SHA |
 
 ### Images
 
+**The one list of images: [`images.json`](images.json)** (how each is built, what it watches,
+the web apps' public origin). CI (`npm run images:check`) checks that the overlays' `images:` and the
+manifests agree with it; `staging:build` and the workflow below build from it.
+
 Built by CI, not by hand: after CI passes on `main`, `.github/workflows/images.yml` builds every
-image whose code changed since the commit it is tagged with in `overlays/prod/kustomization.yaml`
-(the 4 API images always together; one of them changed or on `newTag: placeholder` rebuilds all), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>`
-(private, like the repository; pods pull with the Secret `ghcr-pull`) and commits the new
-`newTag`s to `main` as `github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all.
-portfolio-web needs the repository variable `PROD_SITE_URL` (its public origin, ADR 0021);
-without it the image is built for `https://www.example.com`. What the workflow runs:
+image whose watched files changed since the commit it is tagged with in `overlays/prod/kustomization.yaml`
+(the API images always together, `group` of the list; one of them changed or on `newTag: placeholder`
+rebuilds all), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>` (private, like the
+repository; pods pull with the Secret `ghcr-pull`) and commits the new `newTag`s to `main` as
+`github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all. The web apps bake their public
+origin in (ADR 0021): set the repository variable `PROD_DOMAIN` (e.g. `example.com` →
+`https://www.example.com`, `https://admin.example.com`). What the workflow runs:
 
 ```bash
-# nest-microservice
-docker build --target deployment-service   -t ghcr.io/<user>/nest-microservice/deployment-service:<sha> .
-docker build --target notification-service -t ghcr.io/<user>/nest-microservice/notification-service:<sha> .
-docker build --target migrate              -t ghcr.io/<user>/nest-microservice/deployment-migrate:<sha> .
-# web apps (Next.js standalone), from the repo root: context = the web workspace
-docker build -f web/apps/portfolio-web/Dockerfile --build-arg SITE_URL=https://www.example.com \n  -t ghcr.io/<user>/portfolio-web:<sha> web   # SITE_URL: canonical/hreflang/sitemap origin (ADR 0021)
-docker build -f web/apps/admin-web/Dockerfile     -t ghcr.io/<user>/admin-web:<sha> web
+# nest-microservice (context nest-microservice/), one target per image
+docker build --target deployment-service -t ghcr.io/<user>/<repo>/deployment-service:<sha> nest-microservice
+# every Next.js app: ONE Dockerfile (web/Dockerfile), context = the web workspace
+docker build -f web/Dockerfile --build-arg APP=portfolio-web --build-arg SITE_URL=https://www.example.com   -t ghcr.io/<user>/<repo>/portfolio-web:<sha> web
+# render-worker (Remotion + Chrome, Debian): its own Dockerfile
+docker build -f web/apps/render-worker/Dockerfile -t ghcr.io/<user>/<repo>/render-worker:<sha> web
 ```
 
 All run as non-root with a read-only root filesystem; configuration comes from env at runtime.
@@ -393,7 +413,7 @@ All run as non-root with a read-only root filesystem; configuration comes from e
 ### Bootstrap (once per cluster)
 
 1. **DigitalOcean**: DOKS cluster; the domain in DO DNS; managed Postgres with databases
-   `deployment`, `notification`, `content` and `keycloak` (one user each); managed Valkey with one ACL user
+   `deployment`, `notification`, `content`, `ai` and `keycloak` (one user each); managed Valkey with one ACL user
    per web app (`web` on `~web:*`, `admin-web` on `~admin-web:*`, commands as in
    `components/local-data/redis/users.acl`); an API token with domain read/write (for cert-manager).
 2. **Cluster add-ons**:
@@ -424,21 +444,23 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    never. With AWS S3 or R2 instead, make the public bucket readable as a whole (bucket policy /
    R2 public domain), unset that variable, and set `STORAGE_PROVIDER` / `STORAGE_REGION` /
    `STORAGE_R2_ACCOUNT_ID`.
-5. **Replace placeholders**: `example.com` (overlay, realm JSON, ClusterIssuer email) and set the
-   repository variable `PROD_SITE_URL`, then *Run workflow* on Images. The GitHub repository is
+5. **Replace placeholders**: `example.com` (overlay, ClusterIssuer email) and set the
+   repository variable `PROD_DOMAIN`, then *Run workflow* on Images. The GitHub repository is
    private: give Argo CD read access (a deploy key or a read-only token, `argocd repo add`).
 6. `kubectl apply -k k8s/platform/prod`: ClusterIssuers, DNS token, Argo CD Application. Argo CD
    then syncs `overlays/prod`.
 7. **DNS**: `www`, `admin`, `auth` → the external IP of Service `edge-nginx` (no `api`: the API is private)
    (`kubectl -n nest-microservice get svc edge-nginx`).
-8. **Keycloak, after the first start**: first `npm run keycloak:admin-url` (kubectl context = prod;
-   realm `master` Frontend URL → `http://localhost:8180`, needs the bootstrap admin, so before
-   removing it). The realm has no client secret in git. Admin console:
-   `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin,
-   clients `web` and `admin-web` → Credentials → copy each secret into its secret manager entry
-   (`KEYCLOAK_CLIENT_SECRET`); `npm run keycloak:admin-otp` (admin site: admins only + OTP, ADR
-   0019; before removing the bootstrap admin too); create real named admins in `master` with OTP required, enable
-   brute-force detection on `master`, then remove the bootstrap admin.
+8. **Keycloak, after the first sync**: the Job `keycloak-config` (PostSync hook, ADR 0043) has created
+   both realms, the admin-site flow and realm `master`'s Frontend URL, signing in with the bootstrap
+   admin, and the master client `keycloak-config-cli` (secret entry
+   `nest-microservice-prod-keycloak-config-cli`: create it BEFORE the first sync) it uses from then on.
+   The clients `web` and `admin-web` already have the secrets of the entries `…-portfolio-web` /
+   `…-admin-web` (`KEYCLOAK_CLIENT_SECRET`, random values you chose in step 3: the Job sets them,
+   Secret `keycloak-clients`). Admin console
+   `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin:
+   create real named admins in `master` with OTP required, then remove the bootstrap admin (the next
+   sync signs in as `keycloak-config-cli`).
 
 Check: `kubectl get certificate,externalsecret -n nest-microservice` (Ready=True),
 `curl -I http://www.example.com` (301 to https). `https://api.example.com` must NOT answer: the API is

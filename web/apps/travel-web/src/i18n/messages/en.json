@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": "Gió Mùa Travel: small-group tours of Vietnam",
+    "description": "Small-group tours from Đà Nẵng: Hạ Long Bay by junk, the Hà Giang loop, Hội An by lantern light and the beaches of Phú Quốc, with local guides and prices that say what they include.",
+    "ogImageAlt": "Rice terraces at golden hour in the mountains of northern Vietnam"
+  },
+  "blog": {
+    "title": "Travel notes",
+    "intro": "Where to go each season, what to pack, and the small places our guides love, from the Gió Mùa team.",
+    "metaTitle": "Articles: travel tips and destinations in Vietnam",
+    "metaDescription": "Seasons, packing lists, local food and hidden corners of Vietnam, from the guides of Gió Mùa Travel.",
+    "latestIntro": "Seasons, packing lists and the small places our guides love.",
+    "ctaTitle": "Planning a trip?",
+    "ctaText": "Tell us your dates and who is travelling: we send an itinerary and a clear quote within a day."
+  },
+  "footer": {
+    "tagline": "Small groups, local guides, Vietnam at its own pace."
+  },
+  "hours": {
+    "weekdays": "Monday – Saturday",
+    "sunday": "Sunday"
+  },
+  "nav": {
+    "top": "Home",
+    "tours": "Tours",
+    "why": "Why us",
+    "plan": "How it works"
+  },
+  "hero": {
+    "eyebrow": "Small-group tours from Đà Nẵng",
+    "title": "Follow the monsoon wind across Vietnam",
+    "text": "Bays and karst islands, mountain passes, lantern-lit towns and quiet beaches. Small groups, local guides, and a price that tells you exactly what is included.",
+    "plan": "Plan my trip",
+    "viewTours": "See the tours",
+    "imageAlt": "Rice terraces at golden hour in the mountains of northern Vietnam",
+    "stats": [
+      { "value": "4", "label": "signature journeys" },
+      { "value": "≤ 16", "label": "guests per group" },
+      { "value": "100%", "label": "local guides" }
+    ]
+  },
+  "tours": {
+    "eyebrow": "Tours",
+    "title": "Four journeys, north to south",
+    "intro": "Every tour can be private for your family or friends, and moved to the dates that suit you.",
+    "from": "From",
+    "perPerson": "per adult",
+    "duration": "{days} days, {nights} nights",
+    "group": "Up to {count} guests",
+    "ask": "Ask about this tour",
+    "regions": {
+      "north": "North",
+      "centre": "Centre",
+      "south": "South"
+    },
+    "items": {
+      "haLong": {
+        "name": "Hạ Long Bay by junk",
+        "summary": "A night on a wooden junk among the karst islands, kayaks at dawn.",
+        "highlights": ["Overnight cruise, cabin with a view", "Kayaking in a quiet lagoon", "Sunrise tai chi on the deck"]
+      },
+      "haGiang": {
+        "name": "The Hà Giang loop",
+        "summary": "Mountain passes and market towns of the far north, by car or with an easy rider.",
+        "highlights": ["Mã Pí Lèng pass and the Nho Quế river", "A Sunday hill-tribe market", "Homestay nights in stilt houses"]
+      },
+      "hoiAn": {
+        "name": "Hội An & the Marble Mountains",
+        "summary": "The old town by lantern light, a cooking class and the coast at Đà Nẵng.",
+        "highlights": ["Old town walk at dusk", "Market visit and cooking class", "Cycling through vegetable villages"]
+      },
+      "phuQuoc": {
+        "name": "Phú Quốc island days",
+        "summary": "White sand, fishing villages and a boat to the southern islands.",
+        "highlights": ["Snorkelling around the An Thới islands", "A morning at a fishing village", "Sunset on the west coast"]
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Why travel with us",
+    "title": "Travel slower, see more",
+    "intro": "We are a small team from Đà Nẵng. Every route is one we have walked ourselves.",
+    "items": [
+      { "title": "Local guides", "text": "Guides who grew up where you are going: the dialect, the food stalls, the shortcuts." },
+      { "title": "Small groups", "text": "Sixteen guests at most, ten in the mountains, so every stop stays personal." },
+      { "title": "Clear prices", "text": "The quote lists what is included and what is not. No surprise fees on the road." },
+      { "title": "Lighter footprint", "text": "Family-run homestays, refillable bottles and local businesses wherever we can." }
+    ]
+  },
+  "plan": {
+    "eyebrow": "How it works",
+    "title": "From first message to first morning",
+    "intro": "No online payment, no forms: a conversation with someone who knows the road.",
+    "steps": [
+      { "title": "Tell us", "text": "Your dates, how many travellers and what you hope to see, by phone, Zalo or email." },
+      { "title": "Get a plan", "text": "Within a day: a day-by-day itinerary and a quote listing everything it includes." },
+      { "title": "Confirm", "text": "Adjust anything you like, then confirm with a deposit; we explain how when we talk." },
+      { "title": "Go", "text": "Your guide meets you at the airport or hotel. We stay reachable for the whole trip." }
+    ],
+    "includesTitle": "Usually included",
+    "includes": ["Local guide and transport during the tour", "Hotels, homestays or the cruise cabin", "Meals listed in the itinerary", "Entrance tickets and boat trips"],
+    "excludesTitle": "Usually not included",
+    "excludes": ["Flights to the starting city", "Travel insurance", "Drinks and personal expenses", "Tips for guides and drivers"]
+  },
+  "questions": {
+    "items": [
+      { "q": "Can I book a private tour?", "a": "Yes. Every tour can be private for your group, on the dates you choose; the price depends on the group size." },
+      { "q": "When is the best season?", "a": "It depends on the region: the north is best from September to November and March to May, the centre from February to August, Phú Quốc from November to April. We advise you when you plan." },
+      { "q": "Do you arrange flights?", "a": "We do not sell flights, but we suggest the best ones for your itinerary and meet you at the airport." },
+      { "q": "What if the weather changes the plan?", "a": "Cruises and boat trips can be cancelled by the authorities in a storm. We then change the day's programme or the date, and explain the options before you travel." },
+      { "q": "Is the Hà Giang loop suitable for children?", "a": "By car, yes, from about 8 years old; the roads are winding. The easy-rider option is for adults." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Contact",
+    "title": "Let's plan your trip",
+    "text": "Call, message us on Zalo or email; or come to our office by the Hàn river for a coffee and a map.",
+    "note": "Outside office hours, messages are answered the next morning."
+  }
+}

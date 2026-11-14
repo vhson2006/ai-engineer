@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@web/core": "*",
+    "@web/site-kit": "*",
     "@web/ui": "*",
     "lucide-react": "^1.70.0",
     "next": "16.4.5",

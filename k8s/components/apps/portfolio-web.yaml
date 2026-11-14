@@ -1,4 +1,4 @@
-# portfolio-web (Next.js standalone, :3000), image built from web/apps/portfolio-web/Dockerfile (context web/).
+# portfolio-web (Next.js standalone, :3000), image built from web/Dockerfile (APP=portfolio-web, context web/; k8s/images.json).
 # The overlay provides:
 #   ConfigMap "portfolio-web-env"  APP_URL, API_URL, KEYCLOAK_ISSUER, KEYCLOAK_CLIENT_ID
 #   Secret    "portfolio-web"      KEYCLOAK_CLIENT_SECRET, SESSION_ENCRYPTION_KEY, REDIS_URL

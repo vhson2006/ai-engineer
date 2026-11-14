@@ -1,16 +1,14 @@
 import { format } from '@web/core/i18n/format';
-import { salon } from '@/content/salon';
-import { articlePaths } from '@/features/articles/data';
-import { href } from '@/i18n/locales';
-import { getLocale, getMessages } from '@/i18n/messages';
-import { LEGAL_PATHS, type LegalPage } from '@/site';
+import { LegalLinks } from '@web/site-kit/components/chrome';
+import { href } from '@web/site-kit/locales';
+import { business } from '@/content/business';
+import { site } from '@/site';
 import { Logo } from './logo';
-
-const LEGAL_LINKS: LegalPage[] = ['privacy', 'terms'];
 
 /** A slim footer (contact and hours live in the Visit bento); room at the bottom for the quick bar. */
 export async function SiteFooter() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
+  const [t, locale] = await Promise.all([site.getMessages(), site.getLocale()]);
+  const { website } = site;
   const home = href(locale, '/');
   // The home page's bands, in their order (the blog link opens the blog page).
   const explore = [
@@ -38,7 +36,7 @@ export async function SiteFooter() {
                 </li>
               ))}
               <li>
-                <a href={href(locale, articlePaths.index)} className={chip}>
+                <a href={href(locale, website.paths.articles)} className={chip}>
                   {t.nav.blog}
                 </a>
               </li>
@@ -51,7 +49,7 @@ export async function SiteFooter() {
           </nav>
         </div>
         <ul aria-label={t.visit.follow} className="mt-6 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
-          {salon.socials.map((social) => (
+          {business.socials.map((social) => (
             <li key={social.id}>
               <a href={social.href} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-fg hover:underline">
                 {social.label}
@@ -60,19 +58,9 @@ export async function SiteFooter() {
           ))}
         </ul>
         <div className="mt-6 flex flex-col gap-3 border-t border-border pt-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>{format(t.footer.rights, { year: '2026', name: salon.legalName })}</p>
+          <p>{format(t.footer.rights, { year: '2026', name: business.legalName })}</p>
           {/* Privacy policy and terms: on every page (search engines, the SMS program's registration). */}
-          <nav aria-label={t.footer.legal}>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2">
-              {LEGAL_LINKS.map((page) => (
-                <li key={page}>
-                  <a href={href(locale, LEGAL_PATHS[page])} className="underline-offset-4 hover:text-fg hover:underline">
-                    {t.legal.links[page]}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <LegalLinks website={website} t={t} locale={locale} linkClassName="hover:text-fg" />
         </div>
       </div>
     </footer>

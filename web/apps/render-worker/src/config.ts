@@ -9,6 +9,12 @@ const schema = z.object({
   LOG_LEVEL: z.enum(['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'silent']).default('info'),
   /** /health for probes (never published). */
   RENDER_WORKER_PORT: z.coerce.number().int().min(0).max(65535).default(3005),
+  /**
+   * The local server Remotion serves the bundle from to its headless browser (127.0.0.1 only).
+   * Fixed: left to Remotion it takes the first free port from 3000 and collides with the web apps
+   * in dev (3000–4000). Must be free on the worker's host.
+   */
+  REMOTION_PORT: z.coerce.number().int().min(1024).max(65535).default(3006),
   /** Browser tabs per render (Remotion `concurrency`): CPU cores / 2 is a good start. */
   RENDER_CONCURRENCY: z.coerce.number().int().min(1).max(16).default(1),
   /** One render may take minutes: JetStream waits this long without an ack (kept alive while rendering). */

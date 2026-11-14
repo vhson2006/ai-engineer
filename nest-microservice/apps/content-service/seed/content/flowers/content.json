@@ -1,0 +1,518 @@
+{
+  "site": {
+    "id": "flowers",
+    "name": "Bông Florist",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "care",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Flower care",
+          "slug": "flower-care"
+        },
+        {
+          "locale": "vi",
+          "name": "Chăm hoa",
+          "slug": "cham-hoa"
+        }
+      ]
+    },
+    {
+      "key": "occasions",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Occasions",
+          "slug": "occasions"
+        },
+        {
+          "locale": "vi",
+          "name": "Dịp tặng",
+          "slug": "dip-tang"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "48d13f0b-de2b-4fc6-8bb4-66984aeafafd",
+      "source": "ai",
+      "prompt": "A graceful floral arrangement in a clear glass vase on a rustic wooden table, soft morning sunlight, airy and cozy living room, natural warm tones.",
+      "filename": "A graceful floral arrangement in a clear glass vase on a rus.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 33246,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 87904,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 99958,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:39:52.392Z"
+    },
+    {
+      "id": "d7282ee5-691f-4aa9-aeb8-bb52cff81959",
+      "source": "ai",
+      "prompt": "A close-up shot of hands using sharp shears to trim fresh flower stems at a 45-degree angle in clean water, natural soft window lighting, wooden countertop, shallow depth of field.",
+      "filename": "A close-up shot of hands using sharp shears to trim fresh fl.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 30292,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 72592,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 81964,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:39:52.407Z"
+    },
+    {
+      "id": "a07c0d5a-741d-4a2d-aa5c-5d91fc3317fd",
+      "source": "ai",
+      "prompt": "A warm and inviting florist workshop with an array of fresh roses in various soft hues like blush pink, deep red, warm peach, and cream white displayed in rustic ceramic vases on a wooden table, soft morning sunlight, realistic photography, no text, no logo, no recognizable face.",
+      "filename": "A warm and inviting florist workshop with an array of fresh .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 55118,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 137734,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 154266,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:03:42.776Z"
+    },
+    {
+      "id": "a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b",
+      "source": "ai",
+      "prompt": "A beautifully hand-tied bouquet of garden roses in shades of deep red and soft blush pink, wrapped in textured natural kraft paper with a silky cream ribbon, placed on a sunlit wooden bench, soft focus background, realistic photography, no text, no logo, no people.",
+      "filename": "A beautifully hand-tied bouquet of garden roses in shades of.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 43164,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 103270,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 114530,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:03:42.791Z"
+    },
+    {
+      "id": "ad4cafcd-f6a9-4f8b-aafb-e5663e6edc27",
+      "source": "ai",
+      "prompt": "A bright, airy Saigon floral studio bathed in morning natural sunlight, a wooden table with an assortment of fresh seasonal flowers in ceramic vases, clean minimalist aesthetic, no people, no text, realistic photography",
+      "filename": "A bright, airy Saigon floral studio bathed in morning natura.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 51334,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 129290,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 143358,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:05:26.247Z"
+    },
+    {
+      "id": "5ae8234f-c748-4249-9ed2-8e215f060868",
+      "source": "ai",
+      "prompt": "A rustic ceramic vase filled with vibrant sunflowers and bright yellow chrysanthemums on a wooden dining table, warm morning sunlight streaming through a window, no people, no text, realistic photography",
+      "filename": "A rustic ceramic vase filled with vibrant sunflowers and bri.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 38204,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 98570,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 107648,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:05:26.267Z"
+    },
+    {
+      "id": "dbe57641-57a1-477e-8f71-1ac12e4dc929",
+      "source": "ai",
+      "prompt": "An elegant grand opening flower basket on a natural wooden reception counter, featuring pastel yellow orchids, soft cream roses and eucalyptus leaves, warm morning light, modern minimalist interior, no people, no text.",
+      "filename": "An elegant grand opening flower basket on a natural wooden r.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 31536,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 86188,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 97098,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:21:44.743Z"
+    },
+    {
+      "id": "d8c39a7f-9c2c-4f25-b8c4-0fb19be4c856",
+      "source": "ai",
+      "prompt": "A wide angle shot of an elegant condolence flower arrangement in soft white and cream tones, placed against a neutral calm background, peaceful morning natural light, no text, no people",
+      "filename": "A wide angle shot of an elegant condolence flower arrangemen.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 24772,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 65092,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 72652,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:26:28.782Z"
+    },
+    {
+      "id": "38e1794a-7337-4eb0-87a9-38052fa134ef",
+      "source": "ai",
+      "prompt": "A serene, elegant condolence floral arrangement featuring white orchids, white chrysanthemums, and soft green foliage on a minimalist wooden pedestal, bathed in soft diffused natural light, peaceful atmosphere, no people, no text",
+      "filename": "A serene, elegant condolence floral arrangement featuring wh.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 20230,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 51494,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 57334,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:26:28.797Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "99fcfc61-2346-4a74-94a1-ce0cf96fbf78",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-13T16:09:03.061Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the shop’s pink and sage.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Bouquet prices, delivery fees and order cut-off exactly as the shop states them.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise out-of-season flowers or delivery times not confirmed.</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, bouquet / basket, roses / chrysanthemums.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a flower, a bouquet, the flower table.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call, message on Zalo or drop by.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the shop.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Bông Florist sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu hồng và xanh lá của tiệm.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng giá bó hoa, phí giao và giờ nhận đơn như tiệm công bố.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa loài hoa trái mùa hay giờ giao chưa được xác nhận.</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, hoa bó / hoa giỏ, hoa hồng / hoa cúc.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một loài hoa, một bó hoa, bàn cắm hoa.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gọi điện, nhắn Zalo hay ghé tiệm.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với tiệm.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Bông Florist · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "41146e36-144d-4bff-ae44-2238e558f4dc",
+      "categoryKey": "care",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "48d13f0b-de2b-4fc6-8bb4-66984aeafafd",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:13:11.193Z",
+      "createdAt": "2026-11-13T23:42:25.008Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "7 Simple Tips to Keep Cut Flowers Fresh Longer at Home",
+          "slug": "7-simple-tips-to-keep-cut-flowers-fresh-longer-at-home",
+          "excerpt": "Discover secrets to keeping flowers fresh longer with stem trimming techniques, water treatment, and vase placement to keep your living space filled with vibrant blooms.",
+          "coverAlt": "A beautiful fresh flower vase on a wooden table brightening up the living room",
+          "body": "<p class=\"tpl-lead\">A vibrant vase of flowers not only brightens up a room but also brings a sense of peace and positive inspiration for each new day. However, watching petals wilt away after just a few short days is always disappointing. Understanding that, <strong>Bông Florist</strong> would like to share helpful tips to make <strong>keeping flowers fresh longer</strong> effortless, helping each bloom stay vibrant in your beloved home.</p>\n<h2>Why Cut Flowers Wilt Quickly and Key Principles to Remember</h2>\n<p>Once cut from the mother plant, flower stems lose their natural source of nutrients and rely entirely on the water absorbed from the vase to stay alive. The biggest reason flowers wither quickly is the uncontrolled growth of bacteria at the stem base. Bacteria invade and clog the water-conducting capillaries, causing the flowers to become severely dehydrated even when the vase is full.</p>\n<p>The core principle to keeping stems full of vitality is ensuring bacteria-free water and an unobstructed water path from stem to petals. Simply caring for them properly right from the very first steps will significantly extend the life of your arrangement.</p>\n<h2>Thoroughly Clean the Vase Before Use</h2>\n<p>Many people tend to just give their old vase a quick rinse with water before arranging fresh flowers. In reality, grime and bacteria built up from previous arrangements cling stubbornly to the bottom and sides, ready to attack newly arranged, tender stems.</p>\n<p>Wash the vase thoroughly with dish soap, scrubbing every corner, and rinse well with clean water. A bacteria-free vase is the most important first step to prevent mold and build a solid foundation to <strong>keep flowers fresh longer</strong>.</p>\n<h2>Trim Foliage from Submerged Stems</h2>\n<p>Leaves submerged in water for too long rot quickly, creating an ideal breeding ground for microorganisms, causing unpleasant odors, and clouding the water. When the water gets contaminated, the stems soften, rot, and block nutrient flow.</p>\n<p>Before arranging, gently strip off all leaves from the lower part of the stem, keeping only a moderate amount on top so the vase looks balanced and harmonious.</p>\n<h2>Cut Stems at a 45-Degree Angle</h2>\n<p>Stem-cutting technique is one of the most vital secrets determining how well flowers absorb water. If you cut straight across, the stem rests flat against the bottom of the vase, severely limiting water intake and causing blooms to wilt quickly from thirst.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Use Sharp Cutting Tools</h3><p>Choose a razor blade or sharp floral shears for a clean cut, avoiding crushing the water-conducting vessels.</p></div><div class=\"tpl-item\"><h3>Trim Underwater</h3><p>Place stem bases in a bowl of water or cut under a gentle stream of running water to prevent air bubbles from entering the stem capillaries.</p></div><div class=\"tpl-item\"><h3>Make a Perfect 45-Degree Slanted Cut</h3><p>Cut cleanly at a 45-degree angle to maximize the water absorption surface for the stem.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/640.webp 640w, {{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/1280.webp 1280w, {{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Prepare Clean Water and Add Flower Food</h2>\n<p>Water for flowers should be clean and at room temperature. You don't need too much water in the vase; filling it to about one-third or halfway up the stems is usually enough to prevent them from becoming waterlogged.</p>\n<p>You can also add a packet of floral food mixed according to instructions. These nutrients provide sugars that help petals open evenly, while containing bactericides to inhibit bacterial growth, keeping vase water clear and clean for days.</p>\n<h2>Choose a Cool Location Away from Drafts</h2>\n<p>Where you display the vase greatly affects how long flowers last. Spots with direct sunlight, near air conditioner drafts, or close to heat-emitting appliances like TVs or refrigerators will cause petals to lose moisture extremely fast.</p>\n<p>Prioritize displaying your vase in cool spots with gentle diffused light and moderate airflow to keep the floral colors vibrant.</p>\n<h2>Make a Habit of Daily Water Changes and Re-trimming</h2>\n<p>Caring for flowers is like caring for a little friend—it requires consistency and mindfulness. Changing the water every day or every other day eliminates bacteria that have begun to form in the vase.</p>\n<p>With each water change, take a moment to cut a short 1 to 2-centimeter slice off the stem base at an angle. This removes softening ends and opens fresh, clear pathways so stems can keep drawing water effectively.</p>\n<h2>Frequently Asked Questions About Keeping Flowers Fresh Longer</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Does using dull scissors to cut flowers affect them?</h3><p>You should use sharp floral shears or a razor blade. Avoid dull scissors because crushing force damages the vascular tissues in the stems.</p></div><div class=\"tpl-item\"><h3>Should I spray water directly on the petals to keep them moist?</h3><p>Avoid misting petals directly, as lingering moisture can cause brown spots and petal rot; instead, gently mist the surrounding air.</p></div><div class=\"tpl-item\"><h3>Should I use cold or warm water for flowers?</h3><p>Room temperature water is ideal for most common tropical and temperate flowers.</p></div></section>\n<section class=\"tpl-cta\"><h3>Bring Home Fresh Blooms with Bông Florist</h3><p>Arranging flowers is a wonderful way to bring nature and peaceful energy into your home. Visit Bông Florist today to handpick the freshest, most vibrant blooms for your living space.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "7 Simple Tips to Keep Vase Flowers Fresh Longer",
+          "seoDescription": "Discover 7 simple tips from Bông Florist to keep vase flowers fresh longer at home, from stem-cutting techniques to preparing the perfect flower water."
+        },
+        {
+          "locale": "vi",
+          "title": "7 Mẹo Đơn Giản Giúp Giữ Hoa Tươi Lâu Trong Bình Cắm Tại Nhà",
+          "slug": "7-meo-don-gian-giup-giu-hoa-tuoi-lau-trong-binh-cam-tai-nha",
+          "excerpt": "Bật mí bí quyết giữ hoa tươi lâu với kỹ thuật cắt tỉa cành, xử lý nước và chọn vị trí đặt bình giúp không gian sống luôn ngập tràn sắc hoa rạng rỡ.",
+          "coverAlt": "Bình hoa tươi đẹp cắm trên bàn gỗ sáng bừng không gian phòng khách",
+          "body": "<p class=\"tpl-lead\">Một bình hoa rực rỡ không chỉ làm bừng sáng góc phòng mà còn mang lại cảm giác bình yên và nguồn cảm hứng tích cực cho mỗi ngày mới. Tuy nhiên, ngắm nhìn những cánh hoa nhanh chóng héo rũ sau vài ngày ngắn ngủi luôn để lại nhiều tiếc nuối. Hiểu được điều đó, <strong>Bông Florist</strong> xin gửi đến bạn những kinh nghiệm hữu ích để việc <strong>giữ hoa tươi lâu</strong> trở nên thật nhẹ nhàng, giúp từng nhành hoa khoe sắc bền bỉ nhất trong tổ ấm thân thương.</p>\n<h2>Vì sao hoa cắm bình nhanh tàn và nguyên tắc cần nhớ</h2>\n<p>Khi bị cắt rời khỏi cây mẹ, cành hoa mất đi nguồn cung cấp dinh dưỡng tự nhiên và phải tự duy trì sự sống hoàn toàn qua lượng nước hấp thụ từ bình cắm. Nguyên nhân lớn nhất khiến hoa nhanh héo úa là do sự phát triển mất kiểm soát của vi khuẩn ở phần cuống hoa. Vi khuẩn xâm nhập làm tắc nghẽn các mao mạch dẫn nước, khiến hoa bị mất nước trầm trọng dù bình vẫn đầy ắp.</p>\n<p>Nguyên tắc cốt lõi để giữ cho cành hoa luôn tràn đầy sức sống chính là đảm bảo nguồn nước sạch khuẩn và thông thoáng đường dẫn nước từ gốc lên đến cánh hoa. Chỉ cần bạn chăm sóc đúng cách ngay từ những bước đầu tiên, tuổi thọ của bình hoa sẽ được kéo dài đáng kể.</p>\n<h2>Vệ sinh bình cắm hoa thật sạch trước khi dùng</h2>\n<p>Nhiều người thường có thói quen chỉ tráng sơ bình hoa cũ bằng nước trước khi cắm đợt hoa mới. Thực tế, cặn bẩn và vi khuẩn tích tụ từ lần cắm trước vẫn bám chặt nơi đáy và thành bình, sẵn sàng tấn công những cành hoa non nớt vừa mới được cắm vào.</p>\n<p>Hãy rửa thật kỹ bình cắm bằng nước rửa chén và cọ rửa mọi ngóc ngách, sau đó tráng lại nhiều lần bằng nước sạch. Một chiếc bình cắm sạch khuẩn chính là bước khởi đầu quan trọng nhất giúp ngăn ngừa nấm mốc và tạo nền tảng vững chắc để <strong>giữ hoa tươi lâu</strong>.</p>\n<h2>Tỉa sạch lá ở phần thân ngập nước</h2>\n<p>Lá cây khi bị ngâm lâu trong nước sẽ nhanh chóng bị thối rữa, tạo môi trường thuận lợi cho vi sinh vật sinh sôi, gây mùi khó chịu và làm đục nước cắm. Khi nước bị nhiễm bẩn, gốc hoa sẽ bị thối mềm và tắc mạch dẫn dinh dưỡng.</p>\n<p>Trước khi cắm, bạn nên nhẹ nhàng tuốt bỏ toàn bộ phần lá phía dưới thân cành, chỉ giữ lại một lượng lá vừa phải ở phía trên để bình hoa trông cân đối và hài hòa.</p>\n<h2>Kỹ thuật cắt vát gốc cành hoa 45 độ</h2>\n<p>Kỹ thuật cắt gốc là một trong những bí quyết quan trọng nhất quyết định khả năng hút nước của hoa. Nếu bạn cắt ngang gốc, cành hoa sẽ áp sát vào đáy bình khiến diện tích tiếp xúc với nước bị hạn chế tối đa, làm hoa nhanh héo rũ vì khát nước.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Chuẩn bị dụng cụ sắc ngọt</h3><p>Lựa chọn dao lam hoặc kéo chuyên dụng thật sắc bén để vết cắt dứt khoát, tránh làm dập nát các mao mạch dẫn nước.</p></div><div class=\"tpl-item\"><h3>Cắt tỉa dưới làn nước</h3><p>Đặt gốc cành vào chậu nước hoặc cắt dưới vòi nước chảy nhẹ để ngăn bọt khí lọt vào mao mạch cành hoa.</p></div><div class=\"tpl-item\"><h3>Tạo góc vát 45 độ hoàn hảo</h3><p>Cắt dứt khoát một góc nghiêng 45 độ để mở rộng diện tích hút nước tối đa cho thân cành.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/640.webp 640w, {{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/1280.webp 1280w, {{media}}/d7282ee5-691f-4aa9-aeb8-bb52cff81959/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Chuẩn bị nước sạch và bổ sung dinh dưỡng cho hoa</h2>\n<p>Nguồn nước dùng để cắm hoa nên là nước sạch ở nhiệt độ phòng. Lượng nước trong bình không cần quá nhiều, thông thường chỉ cần ngập từ một phần ba đến một nửa chiều cao cành hoa để hạn chế thân bị úng nước.</p>\n<p>Bạn có thể sử dụng thêm gói dưỡng hoa chuyên dụng được pha đúng tỷ lệ chỉ dẫn. Dưỡng chất cung cấp đường nuôi cánh hoa nở bung đều đặn, đồng thời chứa chất ức chế vi khuẩn phát triển, duy trì nước trong bình luôn thanh sạch suốt nhiều ngày.</p>\n<h2>Chọn vị trí đặt bình hoa mát mẻ, tránh gió lùa</h2>\n<p>Vị trí đặt bình ảnh hưởng rất lớn đến độ bền của hoa. Những nơi có ánh nắng mặt trời trực tiếp chiếu vào, gần luồng gió của máy lạnh hoặc các thiết bị tỏa nhiệt như tivi, tủ lạnh sẽ khiến cánh hoa thoát hơi nước cực kỳ nhanh.</p>\n<p>Hãy ưu tiên trưng bày bình hoa ở những góc thoáng mát, có ánh sáng tán xạ nhẹ nhàng và không khí lưu thông vừa phải để giữ màu sắc của hoa luôn đằm thắm.</p>\n<h2>Thói quen thay nước và cắt gốc định kỳ mỗi ngày</h2>\n<p>Chăm sóc hoa cũng giống như chăm sóc một người bạn nhỏ, cần sự đều đặn và chu đáo. Việc thay nước mới mỗi ngày hoặc cách ngày sẽ loại bỏ lượng vi khuẩn bắt đầu hình thành trong bình.</p>\n<p>Mỗi lần thay nước, bạn hãy tiện tay cắt vát gốc cành hoa thêm một đoạn ngắn khoảng 1 đến 2 centimet. Thao tác này giúp loại bỏ phần gốc đã bắt đầu thâm mềm, mở ra đường dẫn mới thông suốt giúp cành hoa tiếp tục hút nước mạnh mẽ.</p>\n<h2>Giải đáp những thắc mắc thường gặp để giữ hoa tươi lâu</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Dùng kéo cùn cắt hoa có ảnh hưởng gì không?</h3><p>Bạn nên dùng kéo chuyên dụng sắc bén hoặc dao lam. Tránh dùng kéo cùn vì lực bóp sẽ làm dập nát mạch gỗ của thân cành.</p></div><div class=\"tpl-item\"><h3>Có nên xịt nước trực tiếp lên cánh hoa để giữ ẩm?</h3><p>Không nên xịt trực tiếp lên cánh hoa vì độ ẩm đọng lại dễ gây đốm nâu và thối cánh, chỉ nên phun sương nhẹ nhàng vào không khí xung quanh.</p></div><div class=\"tpl-item\"><h3>Nên dùng nước lạnh hay nước ấm để cắm hoa?</h3><p>Nước ở nhiệt độ phòng là lựa chọn lý tưởng nhất cho hầu hết các loại hoa nhiệt đới và ôn đới thông thường.</p></div></section>\n<section class=\"tpl-cta\"><h3>Mang Sắc Hoa Tươi Mới Cùng Bông Florist</h3><p>Cắm hoa là một hành trình thú vị mang thiên nhiên và năng lượng an lành vào căn nhà bạn. Ghé thăm Bông Florist để tự tay chọn lựa những cành hoa tươi mới, rạng ngời nhất cho không gian sống của bạn ngay hôm nay.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "7 Mẹo Đơn Giản Giúp Giữ Hoa Tươi Lâu Trong Bình Cắm",
+          "seoDescription": "Khám phá 7 mẹo đơn giản để giữ hoa tươi lâu trong bình cắm tại nhà từ Bông Florist, từ kỹ thuật cắt tỉa cành đến chuẩn bị nước cắm hoàn hảo."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "b2463655-d4de-4dce-aca7-3607a5c12087",
+      "categoryKey": "occasions",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "a07c0d5a-741d-4a2d-aa5c-5d91fc3317fd",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:11:02.955Z",
+      "createdAt": "2026-11-14T00:05:32.896Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Rose Color Meanings and How to Choose Flowers for Every Special Occasion",
+          "slug": "rose-color-meanings-and-how-to-choose-flowers-for-every-special-occasion",
+          "excerpt": "Discover the subtle meanings behind rose colors to pick the perfect loving gift for birthdays, anniversaries, or heartfelt thank-yous.",
+          "coverAlt": "Fresh, vibrant roses in various colors placed on a rustic wooden table",
+          "body": "<p class=\"tpl-lead\">Roses have long been gentle messengers of sincere feelings between people. Each color carries its own delicate whisper, expressing sentiments that words sometimes cannot capture. Understanding <strong>rose color meanings</strong> makes it easy to choose the perfect bouquet and convey your heartfelt love in every memorable moment.</p>\n<h2>The Symbolic Meanings of Popular Rose Colors</h2>\n<p>In the vibrant world of fresh flowers, the rich colors of rose petals are a silent yet deeply emotional language. Exploring <strong>rose color meanings</strong> reveals a colorful tapestry of human emotion. From passionate romance to soft, gentle warmth, each shade carries its own depth, helping you express understanding and appreciation for the recipient.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Passionate Red Roses</h3><p>A classic bloom representing deep love, an enduring flame of passion, and a sacred bond.</p></div><div class=\"tpl-item\"><h3>Sweet Pink Roses</h3><p>The embodiment of grace, gentle sweetness, and the fluttering feelings of budding romance.</p></div><div class=\"tpl-item\"><h3>Pure White Roses</h3><p>A symbol of innocence, pure hearts, reverence, and peaceful, hopeful new beginnings.</p></div><div class=\"tpl-item\"><h3>Radiant Yellow Roses</h3><p>The color of bright sunshine, symbolizing steadfast friendship, joy, and wishes of prosperity.</p></div><div class=\"tpl-item\"><h3>Enthusiastic Orange Roses</h3><p>A vibrant blend that brings warm energy, passion, and abundant creativity.</p></div><div class=\"tpl-item\"><h3>Noble Purple Roses</h3><p>Evoking mystery, captivating enchantment, steadfast devotion, and love at first sight.</p></div></section>\n<h2>Choosing Red and Pink Roses for Romantic Occasions</h2>\n<p>Anniversaries, Valentine's Day, and romantic proposals always call for an unforgettable emotional touch. A bouquet of vibrant <strong>red roses</strong> with a thoughtfully curated stem count is the clearest way to affirm that special someone's place in your heart. If she prefers an understated look, soft pastel pinks—or a blend of both—create a harmonious, warm arrangement.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/1376.webp\" alt=\"A bouquet of red and sweet pink roses wrapped in rustic craft paper\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/640.webp 640w, {{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/1280.webp 1280w, {{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Combining red and pastel pink roses brings a look that is both deeply romantic and gracefully charming.</figcaption></figure>\n<h2>Choosing Radiant Roses for Friends' and Loved Ones' Birthdays</h2>\n<p>Birthdays are a wonderful time to share joy and hope for a lucky new year ahead. When choosing a gift for friends or beloved family members, look for blooms that brighten the room and inspire an upbeat, cheerful spirit.</p>\n<ul class=\"tpl-check\"><li>Bright yellow roses symbolize true friendship, sending wishes for success and smooth sailing.</li><li>Vibrant coral-orange roses bring a cheerful vibe full of energy to any birthday celebration.</li><li>Blend butter-cream roses with pastel pinks to express gentle love for a mother or sister.</li><li>Accent with natural foliage like eucalyptus to give the bouquet a breezy, modern flair.</li></ul>\n<h2>Expressing Heartfelt Gratitude with Elegant Rose Hues</h2>\n<p>Saying thank you to teachers, partners, or someone who lent a hand during tough times calls for subtlety and tact. Roses in soft hues like ivory, butter cream, or peach are ideal for conveying deep gratitude and respect. These refined shades are not overwhelming, yet they exude thoughtful elegance that easily touches the heart.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Tips for Arranging Thank-You Flowers</h3><p>When choosing a thank-you gift for a business partner or manager, opt for ceramic vase arrangements or elegant woven baskets so they can easily display them on a desk or in a shared space.</p></section>\n<h2>Quick Tips to Keep Roses Fresh and Beautiful</h2>\n<p>Besides knowing <strong>rose color meanings</strong>, caring for your flowers properly is the secret to keeping them fresh and beautifully shaped. With just a few simple daily care steps, you can enjoy your vase of flowers for days longer.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Trim the Stems at an Angle</h3><p>Use sharp shears to cut the stems at a 45-degree angle under running water. This increases the surface area for moisture absorption and prevents air bubbles from blocking the stems.</p></div><div class=\"tpl-item\"><h3>Strip Submerged Leaves</h3><p>Remove any leaves along the lower stems that would sit underwater, preventing decomposition that can cloud the water and cause bacteria to grow.</p></div><div class=\"tpl-item\"><h3>Change the Water Regularly</h3><p>Change the water in the vase once a day and lightly mist the outer petals to help maintain their natural moisture.</p></div><div class=\"tpl-item\"><h3>Find the Right Spot</h3><p>Place your vase in an airy, cool spot; keep it away from heat sources, direct sunlight, and strong drafts.</p></div></section>\n<h2>Frequently Asked Questions When Choosing Roses as Gifts</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>What color roses should I choose for my mother?</h3><p>Shades like soft pink, butter cream, or gentle yellow-pink are wonderful choices, conveying deep gratitude and wishes for peace and happiness.</p></div><div class=\"tpl-item\"><h3>Can I mix different rose colors in one arrangement?</h3><p>Yes! Pairing complementary shades—like deep pink, soft blush, and ivory—makes the bouquet look softer, more natural, and full of emotion.</p></div><div class=\"tpl-item\"><h3>Could gifting yellow roses cause a misunderstanding?</h3><p>Modern yellow roses mainly symbolize warm friendship, optimism, and prosperity. If you want to gift them to a romantic partner, choose a soft cream-yellow paired with delicate greenery.</p></div></section>\n<section class=\"tpl-cta\"><h3>Share Your Love with Bông Florist</h3><p>Each fresh bloom is a gentle melody waiting to be heard. Visit Bông Florist to explore our thoughtful, elegant rose arrangements and find the perfect gift for your loved ones.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Rose Color Meanings and Tips for Choosing Flowers for Every Occasion",
+          "seoDescription": "Learn about the meanings of rose colors and how to choose the right bouquet for anniversaries, birthdays, or sincere thank-yous from Bông Florist."
+        },
+        {
+          "locale": "vi",
+          "title": "Ý nghĩa màu hoa hồng và cách chọn hoa cho từng dịp đặc biệt",
+          "slug": "y-nghia-mau-hoa-hong-va-cach-chon-hoa-cho-tung-dip-dac-biet",
+          "excerpt": "Khám phá ý nghĩa màu hoa hồng tinh tế để chọn được món quà trọn vẹn yêu thương cho dịp sinh nhật, kỷ niệm tình yêu hay gửi lời cảm ơn chân thành.",
+          "coverAlt": "Những cành hoa hồng tươi tắn với nhiều sắc màu đặt trên bàn gỗ mộc mạc",
+          "body": "<p class=\"tpl-lead\">Hoa hồng từ lâu đã trở thành sứ giả dịu dàng gửi trao những rung cảm chân thành giữa người với người. Mỗi sắc hoa lại mang trong mình một lời thì thầm riêng biệt, giúp biểu đạt trọn vẹn tâm ý mà đôi khi câu chữ khó lòng diễn tả hết. Thấu hiểu <strong>ý nghĩa màu hoa hồng</strong> sẽ giúp bạn dễ dàng chọn được bó hoa hoàn hảo, gửi trọn yêu thương đến người nhận trong từng khoảnh khắc đáng nhớ.</p>\n<h2>Ý nghĩa biểu trưng của các sắc màu hoa hồng phổ biến</h2>\n<p>Trong thế giới hoa tươi muôn màu, sắc thắm của cánh hoa chính là ngôn ngữ thầm lặng nhưng dạt dào cảm xúc. Tìm hiểu <strong>ý nghĩa màu hoa hồng</strong> mở ra bức tranh đa dạng về tâm tư tình cảm của con người. Từ nét nồng nàn quyến rũ đến vẻ mộc mạc dịu êm, từng sắc độ đều chứa đựng chiều sâu ý nghĩa riêng biệt, giúp người trao tặng thể hiện sự thấu hiểu và trân trọng đối với người nhận.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Hồng đỏ nồng thắm</h3><p>Sắc hoa kinh điển đại diện cho tình yêu sâu đậm, ngọn lửa đam mê bất tận và sự gắn kết thiêng liêng.</p></div><div class=\"tpl-item\"><h3>Hồng phấn ngọt ngào</h3><p>Hiện thân của vẻ đẹp trang nhã, sự dịu dàng êm ái cùng những rung động ngọt ngào lúc mới chớm nở.</p></div><div class=\"tpl-item\"><h3>Hồng trắng thuần khiết</h3><p>Biểu tượng cho nét ngây thơ, tâm hồn trong sáng, lòng thành kính và những khởi đầu an lành, vẹn tròn.</p></div><div class=\"tpl-item\"><h3>Hồng vàng rạng rỡ</h3><p>Màu của ánh nắng rạng ngời, tượng trưng cho tình bạn son sắt, niềm hoan hỷ và lời chúc thịnh vượng.</p></div><div class=\"tpl-item\"><h3>Hồng cam nhiệt huyết</h3><p>Sự pha trộn rực rỡ mang nguồn năng lượng ấm áp, lòng nhiệt thành và tinh thần sáng tạo dồi dào.</p></div><div class=\"tpl-item\"><h3>Hồng tím quý phái</h3><p>Gợi nhắc nét cuốn hút bí ẩn, sự mê đắm thủy chung và niềm say mê khó cưỡng ngay từ ánh nhìn đầu.</p></div></section>\n<h2>Gợi ý chọn hoa hồng đỏ và hồng phấn cho những dịp gắn liền với tình yêu</h2>\n<p>Những dịp kỷ niệm ngày yêu, ngày lễ tình nhân hay lời cầu hôn lãng mạn luôn cần một dấu ấn cảm xúc khó quên. Một bó <strong>hoa hồng đỏ</strong> thắm với số lượng bông được chăm chút tỉ mỉ là cách trực tiếp nhất để khẳng định vị trí độc tôn của đối phương trong trái tim bạn. Nếu nàng yêu thích vẻ đẹp nền nã, bạn có thể lựa chọn tone hồng pastel nhẹ nhàng hoặc kết hợp xen kẽ để tạo nên tổng thể hài hòa, ấm áp.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/1376.webp\" alt=\"Bó hoa hồng đỏ kết hợp hồng phấn ngọt ngào bọc giấy mộc mạc\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/640.webp 640w, {{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/1280.webp 1280w, {{media}}/a1c46f4c-f9bf-4a60-bfd6-2ceb4e89c42b/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Sự kết hợp giữa hồng đỏ và hồng pastel mang đến nét đẹp vừa nồng nàn vừa duyên dáng.</figcaption></figure>\n<h2>Lựa chọn sắc hoa hồng rạng rỡ mừng ngày sinh nhật bạn bè và người thân</h2>\n<p>Ngày sinh nhật là thời điểm tuyệt vời để lan tỏa niềm vui và hy vọng về một tuổi mới ngập tràn may mắn. Khi chọn quà tặng bạn bè đồng trang lứa hay người thân thương trong gia đình, hãy ưu tiên những sắc hoa có khả năng thắp sáng không gian và khơi gợi tinh thần lạc quan, phấn chấn.</p>\n<ul class=\"tpl-check\"><li>Hoa hồng vàng tươi sáng tượng trưng cho tình bạn chân thành, gửi gắm lời chúc thành công và thuận lợi.</li><li>Hoa hồng cam san hô nổi bật, mang lại cảm xúc hồ hởi, tràn ngập sinh khí cho bữa tiệc sinh nhật.</li><li>Kết hợp hoa hồng kem bơ và hồng pastel để gửi gắm sự yêu thương dịu dàng dành cho mẹ hoặc chị gái.</li><li>Phối điểm thêm các loại lá phụ tự nhiên như khuynh diệp để tăng vẻ phóng khoáng, hiện đại cho bó hoa.</li></ul>\n<h2>Gửi lời cảm ơn chân thành qua những đóa hoa hồng tone thanh nhã</h2>\n<p>Lời tri ân gửi đến thầy cô, đối tác hay người đã giúp đỡ mình trong lúc khó khăn luôn cần sự tinh tế và ý nhị. Những đóa hoa hồng tone màu nhẹ nhàng như trắng ngà, vàng kem hay hồng đào chính là phương tiện truyền tải thông điệp về sự trân trọng và biết ơn sâu sắc. Sắc hoa nhã nhặn không quá choáng ngợp nhưng lại toát lên chiều sâu lịch thiệp, dễ dàng chạm đến trái tim người đón nhận.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Lưu ý khi phối hoa cảm ơn</h3><p>Khi chọn hoa tặng cảm ơn đối tác hoặc cấp trên, nên ưu tiên các thiết kế hoa cắm bình gốm hoặc giỏ mây thanh lịch để người nhận thuận tiện trưng bày tại bàn làm việc hoặc không gian sinh hoạt chung.</p></section>\n<h2>Mẹo nhỏ giúp giữ hoa hồng tươi lâu và giữ form dáng đẹp</h2>\n<p>Bên cạnh việc nắm rõ <strong>ý nghĩa màu hoa hồng</strong>, chăm sóc hoa đúng cách cũng là bí quyết giữ lại trọn vẹn nét tươi mới và form hoa hoàn hảo. Chỉ với một vài thao tác chăm chút đơn giản mỗi ngày, bạn có thể kéo dài tuổi thọ của bình hoa trong nhà thêm nhiều ngày.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Cắt chéo gốc hoa</h3><p>Dùng kéo sắc cắt vát gốc cành hoa một góc 45 độ dưới vòi nước chảy để tăng tiết diện hút ẩm, tránh tạo bọt khí làm nghẽn mạch dẫn.</p></div><div class=\"tpl-item\"><h3>Vệ sinh cành lá ngập nước</h3><p>Ngắt bỏ bớt những lá phía dưới cuống có nguy cơ chìm trong nước, ngăn ngừa hiện tượng phân hủy gây đục nước và sinh khuẩn.</p></div><div class=\"tpl-item\"><h3>Thay nước định kỳ</h3><p>Thay nước bình mỗi ngày một lần và dùng bình xịt phun sương nhẹ nhàng lên mặt ngoài cánh hoa để giữ độ ẩm tự nhiên.</p></div><div class=\"tpl-item\"><h3>Chọn vị trí trưng bày phù hợp</h3><p>Đặt bình hoa ở khu vực thoáng đãng, mát mẻ; tránh xa nguồn nhiệt cao, ánh nắng chiếu rọi trực tiếp hay quạt gió thổi mạnh.</p></div></section>\n<h2>Giải đáp thắc mắc thường gặp khi chọn hoa hồng làm quà tặng</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên chọn hoa hồng màu gì để dành tặng mẹ?</h3><p>Những gam màu như hồng phấn, kem bơ hay hồng vàng dịu là lựa chọn tuyệt vời, gửi gắm lòng biết ơn sâu sắc và lời chúc bình an, hạnh phúc dành tặng mẹ.</p></div><div class=\"tpl-item\"><h3>Có thể kết hợp nhiều màu hoa hồng trong một thiết kế không?</h3><p>Có, việc phối màu theo gam màu tương đồng như hồng đậm, hồng nhạt và trắng kem giúp bó hoa trông mềm mại, tự nhiên và giàu cảm xúc hơn.</p></div><div class=\"tpl-item\"><h3>Tặng hoa hồng vàng có sợ mang ý nghĩa hiểu lầm không?</h3><p>Hoa hồng vàng hiện đại chủ yếu tượng trưng cho tình bạn ấm áp, niềm tin và sự thịnh vượng. Nếu muốn tặng người yêu, bạn có thể chọn sắc vàng kem dịu mắt kết hợp hoa lá phụ tinh tế.</p></div></section>\n<section class=\"tpl-cta\"><h3>Gửi gắm yêu thương cùng Bông Florist</h3><p>Mỗi đóa hoa tươi thắm là một giai điệu cảm xúc dịu êm chờ được cất lên. Hãy ghé thăm Bông Florist để khám phá những thiết kế hoa hồng tinh tế, ấm áp và tìm cho mình món quà hoàn hảo nhất gửi tặng người thân yêu.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Ý nghĩa màu hoa hồng và bí quyết chọn hoa từng dịp",
+          "seoDescription": "Tìm hiểu chi tiết ý nghĩa màu hoa hồng cùng cách chọn hoa tinh tế cho ngày kỷ niệm, sinh nhật hay lời cảm ơn chân thành từ Bông Florist."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "ce33c3ee-f706-4218-ae13-472f6e7f272d",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "ad4cafcd-f6a9-4f8b-aafb-e5663e6edc27",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:25:06.816Z",
+      "createdAt": "2026-11-14T00:05:39.292Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Seasonal Flowers in Saigon: Tips for Choosing Beautiful Blooms All Year Round",
+          "slug": "seasonal-flowers-in-saigon-tips-for-choosing-beautiful-blooms-all-year-round",
+          "excerpt": "Discover how to choose seasonal flowers in Saigon to keep your living space filled with delicate scents and colors, lasting freshness, and in harmony with the southern climate.",
+          "coverAlt": "A vase of seasonal fresh flowers delicately arranged in a light-filled space in Saigon",
+          "body": "<p class=\"tpl-lead\">Saigon doesn't have four distinct seasons like the North; instead, it gently transitions between the rainy and sunny seasons. Yet, the world of flora here still gracefully shifts throughout the year. Choosing <strong>seasonal flowers</strong> not only helps you find long-lasting stems that bloom to their fullest, but it is also a wonderful way to bring nature's rhythm into every corner of your living space.</p>\n<h2>Saigon's Unique Climate and the Significance of Choosing Seasonal Flowers</h2>\n<p>Saigon's climate is characterized by warm temperatures year-round, alternating between a sun-drenched dry season and sudden rainy spells. This weather directly affects the longevity and bloom of every stem. If your floral arrangements aren't suited to your room's temperature and humidity, the flowers can easily fade quickly or wilt before even opening.</p>\n<p>Prioritizing <strong>seasonal flowers</strong> is an elegant habit of flower lovers. Blooms harvested during their natural growing season always feature sturdy stems, thick petals, and the most vibrant colors. Enjoying flowers in their prime season also brings a deep connection to nature, giving every arrangement on your desk or coffee table its own lively story.</p>\n<h2>The Warm, Sunny Dry Season: Vibrant Colors with Resilient Blooms</h2>\n<p>From around December to April, Saigon enters days filled with golden sunshine. High temperatures and low humidity mean you should look for flowers that retain moisture well and have resilient petals.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/640.webp 640w, {{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/1280.webp 1280w, {{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>During sunny, dry days, tropical blooms like <strong>sunflowers</strong>, peony chrysanthemums, mokara orchids, or gerberas are ideal choices. Not only do they adapt well to dry air, but they also radiate abundant energy, brightening your room with vibrant, fresh beauty.</p>\n<h2>The Cool Rainy Season: The Romantic Charm of Graceful Blooms</h2>\n<p>As rain showers begin to visit from May to November, the city air turns cooler and more humid. This is a wonderful time to enjoy flowers with delicate, gentle beauty and subtle, calming fragrances.</p>\n<p>The rainy season is perfect for <strong>lotuses</strong>, water lilies, lilies, or majestic hydrangeas. The high humidity helps delicate petals stay soft without dehydrating. A vase of pure, shyly blooming lotuses in your room on a rainy Saigon afternoon always brings complete peace to the soul.</p>\n<h2>Year-End Seasonal Transition: Warm Floral Hues for the Festive Season</h2>\n<p>From late November to January, Saigon experiences rare, crisp breezes in the early mornings and late nights. This cool weather welcomes an abundance of vibrant festive blooms, signaling that the season of family reunions is just around the corner.</p>\n<p>Stems of <strong>gladioli</strong>, dahlias, pink peach blossoms, and yellow mai flowers begin to appear everywhere. Choosing flowers during this time usually leans toward warm shades of vibrant red, orange, and gold to warm up your living space and share wishes of luck and peace for the new year.</p>\n<h2>Tips for Caring for Flowers and Keeping Them Fresh in Saigon's Climate</h2>\n<p>Whether arranging flowers in the rainy or dry season, understanding your blooms' needs and room temperature is the key to keeping your vase fresh for longer. Hot, humid air can cause bacteria to grow rapidly in the vase water, leading to rotting stems.</p>\n<p>Along with changing water regularly, trimming away any leaves submerged underwater to prevent decay and using a small packet of flower food will provide extra nutrients for every bud to bloom fully.</p>\n<h2>Frequently Asked Questions About Choosing Seasonal Flowers</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Why should I prioritize seasonal flowers over out-of-season blooms?</h3><p>Flowers in season grow naturally and robustly, featuring sturdy stems and petals full of vitality, so they last longer and retain their truest colors.</p></div><div class=\"tpl-item\"><h3>Does Saigon's dry season weather make flowers wilt faster?</h3><p>Higher temperatures can cause flowers to lose moisture quickly. However, if you choose heat-tolerant varieties and remember to add cool, fresh water daily, your flowers will stay radiantly fresh.</p></div><div class=\"tpl-item\"><h3>Is an air-conditioned room suitable for displaying flowers in the rainy season?</h3><p>Flowers love cool air but are very sensitive to direct drafts. You should place your vase in an airy spot away from direct airflow to prevent the petal edges from bruising and wilting.</p></div></section>",
+          "readingMinutes": 3,
+          "seoTitle": "Seasonal Flowers in Saigon: Choosing Elegant, Beautiful Blooms All Year Round",
+          "seoDescription": "This guide to choosing seasonal flowers in Saigon from Bông Florist helps you find radiant blooms that are best suited to the southern climate."
+        },
+        {
+          "locale": "vi",
+          "title": "Hoa Theo Mùa Ở Sài Gòn: Gợi Ý Chọn Hoa Đẹp Từng Thời Điểm",
+          "slug": "hoa-theo-mua-o-sai-gon-goi-y-chon-hoa-dep-tung-thoi-diem",
+          "excerpt": "Khám phá cách chọn hoa theo mùa tại Sài Gòn để không gian sống luôn ngập tràn sắc hương tinh tế, tươi lâu và phù hợp với từng nhịp thời tiết phương Nam.",
+          "coverAlt": "Bình hoa tươi theo mùa được bài trí tinh tế trong không gian ngập tràn ánh sáng tại Sài Gòn",
+          "body": "<p class=\"tpl-lead\">Sài Gòn không có bốn mùa rõ rệt như phương Bắc mà chỉ lặng lẽ luân chuyển giữa hai mùa mưa nắng. Thế nhưng, đời sống hoa lá nơi đây vẫn uyển chuyển chuyển mình theo từng thời khắc trong năm. Việc lựa chọn <strong>hoa theo mùa</strong> không chỉ giúp bạn tìm được những cành hoa tươi lâu, đạt độ bung nở trọn vẹn nhất mà còn là cách mang nhịp điệu thiên nhiên hòa vào từng góc nhỏ của không gian sống.</p>\n<h2>Đặc trưng khí hậu Sài Gòn và ý nghĩa của việc chọn hoa theo mùa</h2>\n<p>Khí hậu Sài Gòn đặc trưng với nền nhiệt cao quanh năm và sự luân phiên giữa mùa khô tràn ngập nắng cùng mùa mưa rả rích bất chợt. Thời tiết này tác động trực tiếp đến sức bền và độ bung nở của từng cành hoa. Nếu cắm hoa không tương thích với độ ẩm và nền nhiệt trong phòng, hoa rất dễ nhanh tàn hoặc héo rũ trước khi kịp hé nụ.</p>\n<p>Ưu tiên lựa chọn <strong>hoa theo mùa</strong> là thói quen tinh tế của những người yêu hoa. Những cành hoa được thu hoạch đúng vụ sinh trưởng tự nhiên luôn sở hữu thân cành cứng cáp, cánh hoa dày dặn và sắc màu đậm đà nhất. Thưởng thức hoa đúng thời điểm cũng mang lại cảm xúc kết nối sâu sắc với tự nhiên, giúp mỗi bình hoa trên bàn làm việc hay phòng khách đều mang một câu chuyện riêng giàu sức sống.</p>\n<h2>Mùa khô nắng ấm: Rực rỡ sắc màu cùng các loài hoa bền bỉ</h2>\n<p>Từ khoảng tháng mười hai đến tháng tư năm sau, Sài Gòn bước vào những tháng ngày ngập tràn nắng vàng. Nền nhiệt cao và độ ẩm thấp đòi hỏi bạn nên chọn những loài hoa có khả năng giữ nước tốt và cánh hoa dẻo dai.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/640.webp 640w, {{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/1280.webp 1280w, {{media}}/5ae8234f-c748-4249-9ed2-8e215f060868/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Trong những ngày nắng ráo, các loài hoa mang sắc thái nhiệt đới như <strong>hoa hướng dương</strong>, cúc mẫu đơn, lan mokara hay hoa đồng tiền là lựa chọn lý tưởng. Chúng không chỉ thích nghi tốt với không khí hanh khô mà còn phản chiếu năng lượng dồi dào, thắp sáng gian phòng bằng nét đẹp rạng rỡ và tươi mới.</p>\n<h2>Mùa mưa dịu mát: Nét lãng mạn của những đóa hoa thanh tao</h2>\n<p>Khi những cơn mưa rào bắt đầu ghé thăm từ tháng năm đến tháng mười một, bầu không khí thành phố trở nên ẩm ướt và dịu mát hơn. Đây là thời điểm tuyệt vời để bạn tận hưởng những loài hoa mang vẻ đẹp thanh mảnh, nhẹ nhàng và phảng phất hương thơm trầm lắng.</p>\n<p>Mùa mưa rất phù hợp với các đóa <strong>hoa sen</strong>, hoa súng, hoa ly hay những chùm cẩm tú cầu kiêu kỳ. Độ ẩm không khí cao giúp cho các cánh hoa mỏng manh giữ được độ mềm mại mà không bị mất nước. Một bình sen thanh khiết nở e ấp giữa gian phòng trong buổi chiều mưa Sài Gòn luôn mang lại cảm giác an yên tuyệt đối cho tâm hồn.</p>\n<h2>Giai đoạn cuối năm chuyển mùa: Sắc hoa ấm áp đón không khí lễ hội</h2>\n<p>Khoảng thời gian từ cuối tháng mười một đến tháng giêng là lúc Sài Gòn đón những cơn gió se lạnh hiếm hoi vào sáng sớm và đêm muộn. Tiết trời mát mẻ này là dịp hội tụ của muôn vàn loài hoa lễ hội rực rỡ, báo hiệu những ngày sum vầy đang đến gần.</p>\n<p>Những cành <strong>hoa lay ơn</strong>, hoa thược dược, đào bích hay mai vàng bắt đầu xuất hiện rộn ràng. Chọn hoa trong giai đoạn này thường thiên về các gam màu ấm áp như đỏ, cam, vàng rực rỡ nhằm sưởi ấm không gian sống và gửi gắm những lời chúc may mắn, an lành cho năm mới.</p>\n<h2>Bí quyết chăm sóc và giữ hoa luôn tươi lâu trong thời tiết Sài Gòn</h2>\n<p>Dù cắm hoa vào mùa mưa hay mùa khô, việc thấu hiểu tập tính của hoa và nhiệt độ trong phòng là chìa khóa giúp bình hoa lưu giữ vẻ tươi mới bền lâu. Không khí oi nóng có thể làm vi khuẩn phát triển nhanh trong nước cắm, khiến cuống hoa mau úng.</p>\n<p>Bên cạnh việc thay nước sạch, việc tỉa bớt các lá chìm dưới nước để tránh phân hủy và sử dụng một lượng nhỏ gói dưỡng hoa chuyên dụng sẽ cung cấp thêm dinh dưỡng cho từng búp hoa bung nở trọn vẹn.</p>\n<h2>Giải đáp những thắc mắc thường gặp khi chọn hoa theo mùa</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Tại sao nên ưu tiên cắm hoa theo mùa thay vì hoa trái mùa?</h3><p>Hoa đúng mùa sinh trưởng tự nhiên khỏe mạnh, thân cành dẻo dai và cánh hoa căng tràn nhựa sống, nhờ đó hoa tươi lâu hơn và giữ được màu sắc chuẩn nhất.</p></div><div class=\"tpl-item\"><h3>Thời tiết mùa khô ở Sài Gòn có làm hoa nhanh tàn hơn không?</h3><p>Nhiệt độ cao có thể làm hoa thoát hơi nước nhanh. Tuy nhiên, nếu bạn chọn đúng loại hoa chịu nhiệt và chú ý châm nước mát mỗi ngày, hoa vẫn giữ được độ tươi rực rỡ.</p></div><div class=\"tpl-item\"><h3>Phòng máy lạnh có thích hợp để trưng hoa mùa mưa không?</h3><p>Hoa thích không khí mát mẻ nhưng rất nhạy cảm với gió thổi trực tiếp. Bạn nên đặt bình hoa ở góc thoáng, tránh luồng gió phả thẳng để cánh hoa không bị thâm héo mép.</p></div></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Hoa Theo Mùa Ở Sài Gòn: Chọn Hoa Đẹp Tinh Tế Cả Năm",
+          "seoDescription": "Cẩm nang chọn hoa theo mùa tại Sài Gòn từ Bông Florist giúp bạn tìm được những đóa hoa tươi rạng rỡ và phù hợp nhất với khí hậu phương Nam."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "5949ecc1-661a-44d2-915e-38dcbb87f718",
+      "categoryKey": "occasions",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:25:02.705Z",
+      "createdAt": "2026-11-14T00:21:49.373Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A Guide to Choosing Elegant and Lucky Grand Opening Flowers",
+          "slug": "a-guide-to-choosing-elegant-and-lucky-grand-opening-flowers",
+          "excerpt": "Tips on choosing grand opening flowers suited to your space, prosperous flower shades, and meaningful wishes to convey the best of luck to the recipient.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">A congratulatory gift for a business launch is more than just social etiquette; it is a sincere wish for lasting prosperity. Choosing a thoughtful, fitting <strong>grand opening floral</strong> design will help you make a great impression on partners and friends.</p>\n<h2>The Meaning of Grand Opening Flowers in Business Culture</h2>\n<p>In business culture, opening the doors to welcome the first guests carries great significance for the fortune and smooth progress of the journey ahead. A gift of fresh flowers always represents abundant vitality, symbolizing fresh beginnings that will take root and thrive.</p>\n<p>Set in a place of honor, each basket or stand of <strong>grand opening flowers</strong> conveys wishes for flourishing business, smooth sailing in every deal, and partnerships that grow stronger over time.</p>\n<h2>Should You Choose a Standing Flower Stand or a Tabletop Basket for a Grand Opening?</h2>\n<p>Depending on the venue and the scale of the celebration, each floral design brings out its aesthetic appeal in its own way. Factoring in the display space shows the sender's thoughtfulness and attention to detail.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Stately Standing Flower Stands</h3><p>With their impressive height, standing flower racks create a grand presence, making them ideal for storefronts, building lobbies, or spacious commercial centers.</p></div><div class=\"tpl-item\"><h3>Cozy Tabletop Flower Baskets</h3><p>Compact and graceful, flower baskets are the ideal choice for reception desks, cash registers, or cafés and spas with cozy spaces.</p></div><div class=\"tpl-item\"><h3>Luxurious Artistic Vases</h3><p>Floral arrangements in ceramic vases offer a contemporary touch, making them an excellent choice for executive offices or minimalist showrooms.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/640.webp 640w, {{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/1280.webp 1280w, {{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>The Meaning of Grand Opening Flower Colors for Wealth and Good Fortune</h2>\n<p>Flower colors are a visual language that directly touches emotions and carries auspicious feng shui meanings for opening day.</p>\n<ul><li>Vibrant Red: Symbolizes passion, breakthrough power, and bright good fortune for an auspicious start.</li><li>Opulent Yellow: Carries the energy of sunlight, symbolizing abundant wealth, prosperity, and lasting success.</li><li>Fresh Orange: Conveys positive energy, enduring bonds, and an endless creative spirit.</li><li>Soft Pastel: A modern aesthetic trend for young brands, showcasing an elegant style and meticulous care.</li></ul>\n<section class=\"tpl-callout tpl-tip\"><h3>Tips for Matching Colors with Brand Identity</h3><p>If you know the owner's brand identity colors in advance, you can ask the florist to design a matching <strong>grand opening floral</strong> palette to create a delightful surprise and leave a lasting impression.</p></section>\n<h2>Top Favorite Grand Opening Flowers</h2>\n<p>Choosing the right flowers elevates your gift, discreetly yet meaningfully delivering your best wishes.</p>\n<ul class=\"tpl-check\"><li>Phalaenopsis Orchid: Regal and long-lasting beauty, symbolizing abundance and sustained growth.</li><li>Gerbera Daisy: Renowned for its symbolism, it brings financial luck and plentiful wealth.</li><li>Anthurium: Uniquely shaped like a sail catching the wind, symbolizing rapid advancement and success.</li><li>Sunflower: Always facing the sun, representing steadfast determination and a bright future.</li></ul>\n<h2>Short and Meaningful Grand Opening Wishes to Accompany Your Flowers</h2>\n<p>Alongside a vibrant floral arrangement, a banner or greeting card is essential to add the sender's personal touch.</p>\n<section class=\"tpl-callout tpl-note\"><h3>The Ideal Delivery Time</h3><p>Schedule your flower delivery 30 to 60 minutes before the official opening ceremony. This gives the recipient plenty of time to arrange the display nicely before welcoming guests.</p></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>How Far in Advance Should You Order Grand Opening Flowers?</h3><p>Ordering 1 to 2 days in advance is ideal, allowing the florist to source and arrange the highest-quality fresh blooms.</p></div><div class=\"tpl-item\"><h3>What Style of Flowers Suits a Small Space?</h3><p>A small tabletop basket or a single-stem Phalaenopsis orchid pot is a great fit, maintaining an elegant look without crowding walkways.</p></div><div class=\"tpl-item\"><h3>How Should You Word the Banner for a Formal Look?</h3><p>Keep it concise, such as '[Sender's Name] - Wishing You a Prosperous Grand Opening' or 'Smooth Beginnings - Boundless Success.'</p></div></section>\n<section class=\"tpl-cta\"><h3>Share Prosperity with Bông Florist</h3><p>Let Bông Florist help you choose the most harmonious and refined <strong>grand opening floral</strong> designs, perfectly conveying your sincere wishes for success and prosperity to your partners.</p></section>",
+          "readingMinutes": 3,
+          "seoTitle": "Guide to Choosing Elegant Grand Opening Flowers | Bông Florist",
+          "seoDescription": "Discover how to choose elegant grand opening flowers with suggestions on standing floral stands, tabletop baskets, lucky color meanings, and heartfelt wishes from Bông Florist."
+        },
+        {
+          "locale": "vi",
+          "title": "Hướng dẫn chọn hoa khai trương tinh tế và mang lại may mắn",
+          "slug": "huong-dan-chon-hoa-khai-truong-tinh-te-va-mang-lai-may-man",
+          "excerpt": "Gợi ý cách chọn hoa khai trương phù hợp không gian, sắc hoa thịnh vượng và lời chúc ý nghĩa giúp gửi gắm trọn vẹn may mắn đến người nhận.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Món quà chúc mừng ngày khởi đầu kinh doanh không đơn thuần là phép lịch sự trong giao tiếp mà còn là lời chúc phát đạt gửi gắm trọn vẹn sự chân thành. Lựa chọn một thiết kế <strong>hoa khai trương</strong> chỉn chu, đúng điệu sẽ giúp bạn ghi điểm tuyệt đối trong mắt đối tác và bạn bè.</p>\n<h2>Ý nghĩa của hoa khai trương trong văn hóa kinh doanh</h2>\n<p>Trong văn hóa kinh doanh, ngày mở cửa đón những vị khách đầu tiên mang ý nghĩa quan trọng đối với vận khí và sự suôn sẻ của cả chặng đường phía trước. Một món quà từ hoa tươi luôn đại diện cho nguồn sinh khí dồi dào, tượng trưng cho những điều mới mẻ đang đâm chồi nảy lộc.</p>\n<p>Hiện diện ở vị trí trang trọng, mỗi lẵng hay kệ <strong>hoa khai trương</strong> thay cho lời chúc kinh doanh hồng phát, các thương vụ thuận buồm xuôi gió và mối quan hệ hợp tác thêm phần bền chặt theo thời gian.</p>\n<h2>Nên chọn kệ hoa đứng hay lẵng hoa để bàn cho ngày khai trương?</h2>\n<p>Tùy thuộc vào không gian tổ chức và quy mô của buổi tiệc mừng, kiểu dáng hoa sẽ phát huy công năng thẩm mỹ theo từng cách riêng biệt. Việc cân nhắc diện tích bày trí thể hiện sự chu đáo và tinh ý của người gửi tặng.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Kệ hoa đứng bề thế</h3><p>Sở hữu chiều cao ấn tượng, kệ đứng tạo vẻ hoành tráng, thích hợp đặt trước cửa hàng, sảnh tòa nhà hoặc trung tâm thương mại có không gian rộng rãi.</p></div><div class=\"tpl-item\"><h3>Lẵng hoa để bàn ấm cúng</h3><p>Thiết kế nhỏ gọn, trang nhã, lẵng hoa là giải pháp tối ưu cho bàn tiếp tân, quầy thu ngân hoặc các quán cà phê, spa có diện tích khiêm tốn.</p></div><div class=\"tpl-item\"><h3>Bình hoa nghệ thuật sang trọng</h3><p>Mẫu hoa cắm trong bình gốm mang nét đẹp đương đại, rất phù hợp gửi tặng văn phòng giám đốc hoặc những showroom theo phong cách tối giản.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/640.webp 640w, {{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/1280.webp 1280w, {{media}}/dbe57641-57a1-477e-8f71-1ac12e4dc929/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Ý nghĩa các tông màu hoa khai trương mang lại tài lộc và may mắn</h2>\n<p>Màu sắc của hoa là ngôn ngữ thị giác trực tiếp tác động đến cảm xúc và mang những tầng ý nghĩa phong thủy tốt lành cho ngày đầu ra mắt.</p>\n<ul><li>Sắc đỏ nồng nàn: Biểu tượng cho nhiệt huyết, sức mạnh bứt phá và điềm lành rực rỡ trong ngày vui khởi đầu.</li><li>Sắc vàng phú quý: Mang năng lượng của ánh sáng mặt trời, tượng trưng cho tiền tài dồi dào, sự thịnh vượng và vị thế vững bền.</li><li>Sắc cam tươi mới: Truyền tải năng lượng tích cực, sự gắn kết bền bỉ và tinh thần sáng tạo không ngừng.</li><li>Sắc pastel nhẹ nhàng: Xu hướng thẩm mỹ hiện đại dành cho những thương hiệu trẻ, thể hiện phong cách thanh lịch và sự chỉn chu.</li></ul>\n<section class=\"tpl-callout tpl-tip\"><h3>Mẹo chọn màu theo nhận diện thương hiệu</h3><p>Nếu biết trước màu nhận diện thương hiệu của gia chủ, bạn có thể gợi ý thợ hoa thiết kế bảng màu <strong>hoa khai trương</strong> tương đồng để tạo sự bất ngờ và ấn tượng sâu sắc.</p></section>\n<h2>Gợi ý các loài hoa khai trương được yêu thích nhất</h2>\n<p>Lựa chọn loài hoa phù hợp sẽ nâng tầm giá trị món quà, giúp gửi gắm thông điệp chúc phúc một cách kín đáo nhưng sâu sắc.</p>\n<ul class=\"tpl-check\"><li>Lan hồ điệp: Vẻ đẹp vương giả, bền bỉ, tượng trưng cho sự sung túc và phát triển lâu dài.</li><li>Hoa đồng tiền: Cái tên nói lên tất cả, mang lại may mắn về mặt tài chính và tài lộc rủng rỉnh.</li><li>Hoa hồng môn: Mang hình dáng độc đáo như chiếc thuyền đón gió, biểu trưng cho sự thăng tiến vượt bậc.</li><li>Hoa hướng dương: Loài hoa luôn hướng về phía ánh dương, đại diện cho ý chí kiên định và tương lai rạng ngời.</li></ul>\n<h2>Những câu chúc mừng khai trương ngắn gọn và ý nghĩa đi kèm hoa</h2>\n<p>Đi cùng lẵng hoa rạng rỡ không thể thiếu một dải băng rôn hoặc tấm thiệp chúc mừng ghi dấu ấn cá nhân của người tặng.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Thời điểm giao hoa lý tưởng</h3><p>Hãy đặt hoa giao tới địa điểm trước giờ khai mạc chính thức từ 30 đến 60 phút. Khoảng thời gian này giúp người nhận có thể thong thả sắp xếp vị trí trưng bày đẹp mắt nhất trước khi đón khách.</p></section>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên đặt hoa khai trương trước bao lâu?</h3><p>Thời gian lý tưởng là trước 1 đến 2 ngày để cửa hàng hoa có sự chuẩn bị chu đáo nhất về nguồn hoa tươi đạt chất lượng cao.</p></div><div class=\"tpl-item\"><h3>Không gian quán nhỏ thì nên chọn hoa dáng nào?</h3><p>Một lẵng hoa để bàn nhỏ nhắn hoặc chậu lan hồ điệp đơn cành sẽ là lựa chọn vừa vặn, giữ được sự sang trọng mà không chiếm nhiều lối đi.</p></div><div class=\"tpl-item\"><h3>Nội dung băng rôn nên viết thế nào cho trang trọng?</h3><p>Bạn nên dùng nội dung súc tích như 'Tên người gửi - Chúc mừng khai trương hồng phát' hoặc 'Khởi đầu hanh thông - Vạn sự cát tường'.</p></div></section>\n<section class=\"tpl-cta\"><h3>Gửi trao thịnh vượng cùng Bông Florist</h3><p>Hãy để Bông Florist cùng bạn lựa chọn những thiết kế <strong>hoa khai trương</strong> hài hòa và tinh tế nhất, giúp gửi trọn vẹn thành ý và lời chúc phát tài đến đối tác của bạn.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Hướng dẫn chọn hoa khai trương tinh tế | Bông Florist",
+          "seoDescription": "Tìm hiểu cách chọn hoa khai trương tinh tế với gợi ý về kệ đứng, lẵng hoa để bàn, ý nghĩa màu sắc tài lộc và lời chúc ý nghĩa từ Bông Florist."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "7d05eb6d-0582-48d9-96f7-58ea73465d6d",
+      "categoryKey": "occasions",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "d8c39a7f-9c2c-4f25-b8c4-0fb19be4c856",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:29:36.604Z",
+      "createdAt": "2026-11-14T00:27:23.518Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A Guide to Choosing Dignified and Meaningful Condolence Flowers",
+          "slug": "a-guide-to-choosing-dignified-and-meaningful-condolence-flowers",
+          "excerpt": "A detailed guide to choosing funeral flowers, colors, and respectful condolence messages to help you express your deepest sympathies to the bereaved family.",
+          "coverAlt": "A tranquil setting with elegant white condolence flowers",
+          "body": "<p class=\"tpl-lead\">In life's most sorrowful moments of farewell, the presence of <strong>condolence flowers</strong> serves as a quiet yet profound comfort. A thoughtfully arranged floral stand or basket not only honors the departed, but also offers warm, gentle solace to the grieving family.</p>\n<h2>The Deep Meaning of Sending Condolence Flowers in Funeral Culture</h2>\n<p>For generations, fresh flowers have always carried their own language of emotion. In a solemn funeral setting, blossoms soften the gloomy atmosphere, symbolizing the cycle of life and peaceful rebirth in eternity. Sending <strong>condolence flowers</strong> bridges life and remembrance, reminding us of the cherished memories left behind.</p>\n<blockquote class=\"tpl-pull\"><p>Each funeral bloom offered is a prayer of peace for the departed soul and a heartfelt message of comfort for those left behind.</p></blockquote>\n<h2>Popular Condolence Flowers and Their Subtle Messages of Sympathy</h2>\n<p>Not every flower is suitable for the sacred atmosphere of a funeral. Understanding the meaning behind each bloom helps you choose an appropriate floral tribute, expressing deep respect without any unintentional misunderstandings.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>White Chrysanthemums</h3><p>Symbolizing rebirth, filial piety, and pure mourning, widely used in traditional funerals.</p></div><div class=\"tpl-item\"><h3>Phalaenopsis Orchids</h3><p>Radiating graceful, lasting, and dignified beauty, reflecting deep sympathy and absolute reverence.</p></div><div class=\"tpl-item\"><h3>White Lilies</h3><p>Signifying soul purity, virtue, and a peaceful farewell to eternal rest.</p></div></section>\n<h2>How to Choose Funeral Flower Colors Based on Age and Circumstances</h2>\n<p>The color of <strong>condolence flowers</strong> carries strong symbolism and largely depends on the age and faith of the deceased. If the departed passed away young or unmarried, <strong>pure white</strong> is the most respectful choice, honoring their innocence and conveying immense sorrow. Bright, vibrant colors should be avoided in this case to maintain reverence.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/1376.webp\" alt=\"An elegant condolence flower basket with orchids and white chrysanthemums\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/640.webp 640w, {{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/1280.webp 1280w, {{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>White and soft purple tones are often preferred to preserve a solemn atmosphere.</figcaption></figure>\n<p>For the elderly who lived a long, fulfilling life, tones of yellow, purple, or white mixed with yellow signify a celebrated life and a peaceful return to ancestors. Additionally, in certain regions or Christian families, soft purple and white flowers are preferred as symbols of remembrance and the hope of resurrection.</p>\n<h2>Sample Condolence Messages and Proper Banner Inscriptions</h2>\n<p>The ribbon banner on the flower stand is where you sign your name and convey your final prayer. The message should be concise, use proper honorifics, and avoid casual language or excessive phrasing unfitting for a funeral.</p>\n<ul class=\"tpl-check\"><li>Kính viếng (Respectful Homage): The most formal and common phrase, expressing reverence and homage to the departed.</li><li>Thành kính phân ưu (Heartfelt Condolences): An empathetic phrasing that emphasizes sharing the burden of grief with the bereaved family.</li><li>Vô cùng thương tiếc (Deeply Mourned): Typically used by close relatives, immediate family, or long-time peers and friends.</li><li>Xin chia buồn cùng gia đình (With Sympathy to the Family): A simple, approachable message that remains appropriately polite.</li></ul>\n<h2>The Right Time to Send Funeral Flowers to the Family</h2>\n<p>Timing your floral delivery correctly is an essential etiquette rule. Sending flowers too early before the wake officially begins, or too late right as the procession departs, may cause inconvenience or disrupt the family's arrangements.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Timing notes for sending flowers</h3><p>The best time to deliver funeral flowers is after the encoffining ceremony and wake preparations are complete, once guests are welcomed, and before the funeral procession takes place.</p></section>\n<h2>Frequently Asked Questions When Ordering Condolence Flowers</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Should I choose a standing flower spray or a tabletop basket?</h3><p>A tall standing spray is ideal for spacious funeral homes. For services held at a private home with limited space, an elegant tabletop flower basket or arrangement is a more fitting, thoughtful choice.</p></div><div class=\"tpl-item\"><h3>What flowers are suitable for a young person's funeral?</h3><p>Pure white chrysanthemums, white orchids, or white lilies are the most fitting choices for a young person, symbolizing purity and deep sorrow.</p></div><div class=\"tpl-item\"><h3>Can a company or collective name be written on the ribbon banner?</h3><p>Yes, you can clearly include the name of your company, group, or team of colleagues, along with a respectful phrase such as 'With deepest sympathy from the Board of Directors and Staff of [Company Name]'.</p></div></section>\n<section class=\"tpl-cta\"><h3>Convey Your Heartfelt Respect with Bông Florist</h3><p>Let Bông Florist accompany you with solemn, refined, and heartfelt funeral flowers to send your deepest condolences to the grieving family.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Tips for Choosing Dignified and Meaningful Condolence Flowers",
+          "seoDescription": "Guidance on choosing funeral flowers, colors, and proper condolence messages to help you convey your heartfelt grief and sincere support."
+        },
+        {
+          "locale": "vi",
+          "title": "Kinh nghiệm chọn hoa chia buồn trang trọng và trọn vẹn nghĩa tình",
+          "slug": "kinh-nghiem-chon-hoa-chia-buon-trang-trong-va-tron-ven-nghia-tinh",
+          "excerpt": "Hướng dẫn chi tiết cách chọn hoa chia buồn, màu sắc và lời viếng chuẩn mực giúp bạn gửi gắm trọn vẹn niềm tiếc thương cùng gia quyến.",
+          "coverAlt": "Không gian tĩnh lặng với hoa chia buồn màu trắng tao nhã",
+          "body": "<p class=\"tpl-lead\">Trong những thời khắc chia ly đau buồn nhất của một đời người, sự hiện diện của <strong>hoa chia buồn</strong> tựa như lời an ủi thầm lặng nhưng sâu lắng. Một kệ hoa hay lẵng hoa được chuẩn bị chu đáo không chỉ thể hiện tấm lòng tiếc thương đối với người đã khuất, mà còn là niềm động viên tinh tế, ấm áp gửi đến gia quyến đang mang nặng nỗi đau mất mát.</p>\n<h2>Ý nghĩa sâu sắc của việc gửi hoa chia buồn trong văn hóa tang lễ</h2>\n<p>Từ ngàn đời nay, hoa tươi luôn mang trong mình ngôn ngữ riêng của cảm xúc. Trong không gian tang lễ trang nghiêm, sắc hoa làm dịu bớt bầu không khí u uất, tượng trưng cho quy luật sinh lão bệnh tử và sự tái sinh thanh thản nơi thế giới vĩnh hằng. Gửi tặng <strong>hoa chia buồn</strong> chính là nhịp cầu nối kết giữa sự sống và sự tưởng nhớ, nhắc nhở chúng ta về những kỷ niệm đẹp đẽ mà người nằm xuống đã để lại.</p>\n<blockquote class=\"tpl-pull\"><p>Mỗi đóa hoa viếng gửi trao là một lời nguyện cầu bình an cho linh hồn người quá cố và lời sẻ chia chân thành nhất đến người ở lại.</p></blockquote>\n<h2>Các loài hoa chia buồn phổ biến và thông điệp sẻ chia tinh tế</h2>\n<p>Không phải loài hoa nào cũng phù hợp với không gian linh thiêng của nhà tang lễ. Việc thấu hiểu ý nghĩa của từng đóa hoa sẽ giúp bạn lựa chọn thiết kế viếng tang chuẩn mực, bày tỏ sự kính trọng sâu sắc mà không gây hiểu lầm đáng tiếc.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Hoa cúc trắng</h3><p>Biểu trưng cho sự tái sinh, tấm lòng hiếu kính và niềm tiếc thương thanh bạch, rất phổ biến trong tang lễ truyền thống.</p></div><div class=\"tpl-item\"><h3>Hoa lan hồ điệp</h3><p>Mang nét đẹp thanh tao, bền bỉ và trang trọng, thể hiện sự đồng cảm sâu sắc và lòng tôn kính tuyệt đối.</p></div><div class=\"tpl-item\"><h3>Hoa huệ trắng</h3><p>Tượng trưng cho tâm hồn trong sạch, đức tin hướng thiện và lời tiễn đưa an lành về cõi vĩnh hằng.</p></div></section>\n<h2>Cách lựa chọn màu sắc hoa viếng phù hợp với từng độ tuổi và hoàn cảnh</h2>\n<p>Màu sắc của <strong>hoa chia buồn</strong> mang tính biểu cảm rất cao và phụ thuộc nhiều vào độ tuổi cũng như tín ngưỡng của người quá cố. Nếu người đã khuất ra đi khi tuổi đời còn trẻ hoặc chưa lập gia đình, sắc <strong>trắng tinh khôi</strong> là lựa chọn trang trọng nhất, thể hiện sự trong trắng và nỗi tiếc thương vô hạn. Tránh dùng các gam màu sặc sỡ trong trường hợp này để giữ trọn sự tôn kính.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/1376.webp\" alt=\"Lẵng hoa chia buồn trang nhã với hoa lan và hoa cúc trắng\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/640.webp 640w, {{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/1280.webp 1280w, {{media}}/38e1794a-7337-4eb0-87a9-38052fa134ef/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Sắc hoa trắng và tím nhạt thường được ưu tiên nhằm giữ trọn vẹn nét trang nghiêm.</figcaption></figure>\n<p>Đối với người mất đã cao tuổi, hưởng thọ trăm tuổi thì tông màu vàng, tím hoặc trắng kết hợp vàng lại mang hàm ý tưởng nhớ cuộc đời viên mãn, thanh thản về với tổ tiên. Ngoài ra, tại một số vùng miền hoặc gia đình theo đạo Thiên Chúa, sắc hoa tím nhạt và trắng thường được ưu tiên lựa chọn vì tượng trưng cho sự hoài niệm và niềm hy vọng phục sinh.</p>\n<h2>Mẫu lời nhắn và cách ghi chữ trên dải băng rôn trang trọng, đúng phép</h2>\n<p>Băng rôn cài trên kệ hoa là nơi bạn xưng danh và gửi lời nguyện cầu cuối cùng. Lời nhắn cần súc tích, chuẩn mực về ngôi thứ và tránh những câu từ quá suồng sã hoặc hoa mỹ không đúng hoàn cảnh tang lễ.</p>\n<ul class=\"tpl-check\"><li>Kính viếng: Cụm từ thông dụng và trang trọng nhất, mang hàm ý cung kính dâng lễ vật để tưởng nhớ người đã khuất.</li><li>Thành kính phân ưu: Cách diễn đạt thấu cảm, nhấn mạnh vào việc chia sẻ bớt gánh nặng đau thương cùng gia quyến.</li><li>Vô cùng thương tiếc: Thường dùng khi người viếng có mối quan hệ thân thiết, ruột thịt hoặc bạn bè đồng trang lứa gắn bó lâu năm.</li><li>Xin chia buồn cùng gia đình: Câu viếng mộc mạc, gần gũi nhưng vẫn đảm bảo tính lịch thiệp cần thiết.</li></ul>\n<h2>Thời điểm thích hợp để gửi hoa viếng đến gia quyến</h2>\n<p>Gửi hoa đúng thời điểm là quy tắc ứng xử vô cùng quan trọng mà người viếng cần lưu ý. Nếu gửi hoa quá sớm khi gia đình chưa phát tang hoặc gửi quá trễ khi đã chuẩn bị di quan, món quà viếng sẽ vô tình gây phiền hà hoặc làm xáo trộn công việc nội bộ của tang gia.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Lưu ý về thời gian gửi hoa</h3><p>Thời điểm gửi hoa viếng chuẩn xác nhất là sau khi gia đình hoàn tất lễ khâm liệm, phát tang và bắt đầu mở cửa đón khách viếng, cho đến trước giờ tổ chức lễ di quan.</p></section>\n<h2>Giải đáp thắc mắc thường gặp khi đặt hoa chia buồn</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên chọn kệ hoa đứng hay lẵng hoa để bàn?</h3><p>Nên chọn kệ hoa đứng cao ráo nếu tang lễ tổ chức tại nhà tang lễ có sảnh rộng. Với tang lễ tại nhà riêng có không gian hạn chế, một lẵng hoa hoặc giỏ hoa để bàn trang nhã sẽ là lựa chọn phù hợp và tinh tế hơn.</p></div><div class=\"tpl-item\"><h3>Đi viếng người trẻ tuổi nên chọn loại hoa nào?</h3><p>Hoa cúc trắng, hoa lan trắng hoặc hoa huệ trắng thuần khiết là những gợi ý chuẩn mực nhất khi viếng người trẻ tuổi, thể hiện sự trong sạch và lòng xót xa tột cùng.</p></div><div class=\"tpl-item\"><h3>Có thể ghi tên tập thể hoặc cơ quan lên băng rôn không?</h3><p>Bạn hoàn toàn có thể ghi rõ tên công ty, hội nhóm hoặc tập thể đồng nghiệp, kèm theo đại từ kính cẩn như 'Ban Lãnh đạo cùng tập thể nhân viên công ty kính viếng'.</p></div></section>\n<section class=\"tpl-cta\"><h3>Gửi trao tấm lòng thành kính cùng Bông Florist</h3><p>Hãy để Bông Florist đồng hành cùng bạn chuẩn bị những đóa hoa viếng trang trọng, tinh tế và trọn vẹn lòng thành kính gửi đến tang gia.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Kinh nghiệm chọn hoa chia buồn trang trọng và ý nghĩa",
+          "seoDescription": "Kinh nghiệm chọn hoa chia buồn, màu sắc và lời viếng chuẩn mực giúp bạn gửi gắm trọn vẹn niềm tiếc thương cùng sự sẻ chia chân thành."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

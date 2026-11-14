@@ -40,9 +40,13 @@ paths:
 - Prod secrets: secret manager → External Secrets. Never commit a secret.
 
 ## Bootstrap state outside git (redo after a fresh cluster or a recreated namespace)
-- `npm run keycloak:admin-url` and `npm run keycloak:admin-otp` (stored in Keycloak's database).
-- The realm JSON is imported only when the realm doesn't exist: on a running Keycloak, apply realm
-  changes (clients, roles, mappers, groups, brute-force) with kcadm as well.
+- Keycloak's configuration is NOT bootstrap state any more (ADR 0043): realms `nest-microservice` and
+  `master` come from the same files in every environment (`base/keycloak/`, components
+  `keycloak-local` and `keycloak-sites`), with each environment's values (`keycloak-config-env`,
+  Secret `keycloak-clients`), applied by the Job `keycloak-config` on every k8s:up / staging:up /
+  Argo CD sync. Change the files, never the console or a kcadm script; never one environment's copy
+  of a realm; no people in `realm.json`. prod still needs, once: named admins in `master`, then the
+  bootstrap admin removed.
 - `npm run k8s:down` deletes the namespace and its PVCs (all data).
 
 ## Changes

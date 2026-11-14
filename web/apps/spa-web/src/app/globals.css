@@ -1,0 +1,58 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, the business-site kit, then this site's own look. */
+@import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
+
+/*
+ * An Nhiên Spa: eucalyptus, warm sand, river stone and a touch of clay.
+ * - `--brand` eucalyptus: buttons, links.  - `--accent` clay: labels, durations.
+ * - `--deep` forest: dark bands and the footer.
+ * Soft serif headings, roomy spacing, pebble-round corners: calm, unhurried.
+ */
+:root {
+  --bg: #f6f1e9;
+  --surface: #fffdf9;
+  --surface-2: #ece5d8;
+  --border: #ddd3c2;
+  --fg: #22302b;
+  --muted: #56645d;
+  --subtle: #78847e;
+  --brand: #4f7a6a;
+  --brand-hover: #406557;
+  --brand-fg: #ffffff;
+  --brand-soft: #e1ece6;
+  --brand-soft-fg: #36584b;
+  --brand-strong: #1f3a33;
+  --accent: #a8694f;
+  --accent-fg: #ffffff;
+  --deep: #1f3a33;
+  --deep-fg: #f3eee4;
+  --card-radius: 1.25rem;
+  --button-radius: 9999px;
+  --heading-weight: 500;
+  --heading-tracking: -0.02em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111a17;
+    --surface: #17221e;
+    --surface-2: #1d2a25;
+    --border: #2d3d37;
+    --fg: #ece7dc;
+    --muted: #b1b9b2;
+    --subtle: #929b94;
+    --brand: #86b8a5;
+    --brand-hover: #a1cbbb;
+    --brand-fg: #0c1714;
+    --brand-soft: rgb(134 184 165 / 0.14);
+    --brand-soft-fg: #bfe0d3;
+    --brand-strong: #eaf3ee;
+    --accent: #d39a80;
+    --accent-fg: #1b0f0a;
+    --deep: #0a1210;
+  }
+}
