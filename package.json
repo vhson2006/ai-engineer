@@ -16,6 +16,7 @@
     "staging:up": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh up",
     "staging:status": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh status",
     "staging:trust-ca": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh trust-ca",
+    "staging:stop": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh stop",
     "staging:down": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh down"
   }
 }

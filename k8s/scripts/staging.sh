@@ -6,7 +6,8 @@
 #   npm run staging:up         install/refresh everything, scale dev down, deploy, migrate, wait
 #   npm run staging:trust-ca   trust the local CA in Windows (once): HTTPS padlock, no warning
 #   npm run staging:status     pods, certificate, URLs
-#   npm run staging:down       delete staging (namespace + data); `npm run k8s:up` brings dev back
+#   npm run staging:stop       stop staging, KEEP its data (volumes), bring dev back; staging:up resumes it
+#   npm run staging:down       delete staging WITH its data (a fresh start); `npm run k8s:up` brings dev back
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 export MSYS_NO_PATHCONV=1
@@ -112,7 +113,27 @@ telemetry() {
   fi
 }
 
-scale_dev_down() {
+# The Gateway's nginx Deployment is made by NGINX Gateway Fabric, not by our manifests: applying
+# them doesn't bring it back after a scale to 0 (staging:up scales dev down, staging:stop staging).
+wake_gateway() { # namespace
+  if [ "$(kubectl -n "$1" get deploy edge-nginx -o jsonpath='{.spec.replicas}' 2>/dev/null)" = "0" ]; then
+    kubectl -n "$1" scale deploy edge-nginx --replicas=1 >/dev/null
+  fi
+}
+
+scale_dev_stop() {
+  require_local_cluster
+  if ! kubectl get namespace "$NS" >/dev/null 2>&1; then echo "No staging to stop."; exit 0; fi
+  say "Stopping staging (namespace $NS): every pod to 0, its volumes and data KEPT"
+  kubectl -n "$NS" scale deploy,statefulset --all --replicas=0 >/dev/null
+  # Finished Jobs (migrations, streams, Keycloak configuration): staging:up runs them again.
+  kubectl -n "$NS" delete job --all --ignore-not-found >/dev/null
+  say "Bringing dev back"
+  bash k8s/scripts/up.sh
+  echo "Staging stopped; npm run staging:up resumes it with the same data (npm run staging:down deletes it)."
+}
+
+down() {
   if kubectl get ns "$DEV_NS" >/dev/null 2>&1; then
     say "Scaling dev ($DEV_NS) to 0 to free memory (data kept; npm run k8s:up restores it)"
     kubectl -n "$DEV_NS" scale deploy,statefulset --all --replicas=0 >/dev/null
@@ -146,6 +167,7 @@ up() {
     rewrite+=(-e "s#local/$img:staging#local/$img:$id#g")
   done
   kubectl kustomize k8s/overlays/staging | sed "${rewrite[@]}" | kubectl apply -f - >/dev/null
+  wake_gateway "$NS" # resumed after staging:stop
   telemetry
 
   say "Waiting for the data stores, the migrations, the JetStream streams and the apps"
@@ -155,6 +177,7 @@ up() {
   # The realms (app realm, admin-site sign-in flow, realm master's admin URL): ADR 0043.
   kubectl -n "$NS" wait job/keycloak-config --for=condition=Complete --timeout=900s
   kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/content-service deploy/ai-service deploy/portfolio-web deploy/admin-web deploy/render-worker --timeout=300s
+  kubectl -n "$NS" rollout status deploy -l role=business-site --timeout=300s # k8s/sites
   kubectl -n "$NS" wait certificate --all --for=condition=Ready --timeout=180s
   if [ -f "$GRAFANA_ENV" ]; then kubectl -n "$NS" rollout status deploy/alloy --timeout=180s; fi
 
@@ -199,6 +222,7 @@ case "${1:-}" in
   up) up ;;
   status) status ;;
   trust-ca) trust_ca ;;
+  stop) stop ;;
   down) down ;;
-  *) echo "usage: staging.sh build|up|status|trust-ca|down" >&2; exit 2 ;;
+  *) echo "usage: staging.sh build|up|status|trust-ca|stop|down" >&2; exit 2 ;;
 esac

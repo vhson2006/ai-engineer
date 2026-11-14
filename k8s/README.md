@@ -334,7 +334,8 @@ npm run staging:build      # docker build the 5 images (local/<name>:staging); n
 npm run staging:up         # NGF, cert-manager, local CA, CoreDNS rule, dev → 0, apply, migrate, wait, admin OTP flow
 npm run staging:trust-ca   # once: import the CA (Windows asks to confirm); restart the browser
 npm run staging:status
-npm run staging:down       # delete the namespace (data too); npm run k8s:up brings dev back
+npm run staging:stop       # stop it, KEEP its data, bring dev back; staging:up resumes it
+npm run staging:down       # delete the namespace WITH its data (fresh start); npm run k8s:up brings dev back
 ```
 
 | URL | What |

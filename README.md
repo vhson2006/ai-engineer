@@ -35,8 +35,9 @@ npm run staging:trust-ca   # once: trust the local CA (localtest.me only) in Win
 ```
 
 Open https://www.staging.localtest.me (sign in `bob` / `password`) and
-https://admin.staging.localtest.me (`alice` + one-time code). `npm run staging:down` removes
-it, `npm run k8s:up` brings dev back. Details: [`k8s/README.md`](k8s/README.md#local-staging), ADR 0018.
+https://admin.staging.localtest.me (`alice` + one-time code). `npm run staging:stop` stops it
+and brings dev back, keeping its data (`staging:up` resumes it); `npm run staging:down` deletes it
+with its data (then `npm run k8s:up`). Details: [`k8s/README.md`](k8s/README.md#local-staging), ADR 0018.
 
 ## CI (GitHub Actions)
 

@@ -2,7 +2,8 @@
 #   npm run staging:build   build the production images of k8s/images.json (the cluster sees them)
 #   npm run staging:up      cert-manager + local CA, CoreDNS rule, scale dev to 0, apply this, migrate
 #   npm run staging:trust-ca   trust the local CA in Windows once (padlock without warnings)
-#   npm run staging:down    remove staging (data too); `npm run k8s:up` brings dev back
+#   npm run staging:stop    stop staging, keep its data, bring dev back (staging:up resumes it)
+#   npm run staging:down    remove staging WITH its data; `npm run k8s:up` brings dev back
 #
 #   https://www.staging.localtest.me    portfolio-web (in the cluster, production image)
 #   https://admin.staging.localtest.me  admin-web (admins only: role + password + one-time code)
