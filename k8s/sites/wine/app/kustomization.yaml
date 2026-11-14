@@ -10,6 +10,8 @@ configMapGenerator:
     literals:
       - APP=wine-web
       - CLIENT_SECRET_KEY=WINE_WEB_CLIENT_SECRET
+      - REALM=site-wine
+      - 'REDIS_KEY_PREFIX=wine-web:'
 
 components:
   - ../../_template

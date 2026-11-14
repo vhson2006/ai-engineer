@@ -6,13 +6,14 @@
 //   node k8s/scripts/images-plan.mjs --since-deployed  per image, since the commit prod runs (its newTag
 //                                                      in overlays/prod); a placeholder tag = changed
 //   node k8s/scripts/images-plan.mjs --all             every image
-// Options: --env prod|staging (only the images that run there; default: all), --domain <domain>
-// (`{domain}` of siteUrl; default example.com), --registry <prefix> (default local).
+// Options: --env prod|staging (only the images that run there, their SITE_URL from that
+// environment's urls.env; default: all, SITE_URL of prod), --registry <prefix> (default local).
 // An image of a `group` (the API images, one commit) pulls in the rest of its group. Changes to docs
 // (*.md, docs/, .claude/) never count.
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { siteUrl } from './site-url.mjs';
 
 const root = join(import.meta.dirname, '..', '..');
 const args = process.argv.slice(2);
@@ -21,7 +22,6 @@ const option = (name, fallback) => {
   return i >= 0 ? args[i + 1] : fallback;
 };
 const env = option('env');
-const domain = option('domain', 'example.com');
 const registry = option('registry', 'local');
 const { images } = JSON.parse(readFileSync(join(root, 'k8s/images.json'), 'utf8'));
 const candidates = images.filter((image) => !env || (image.environments ?? ['prod', 'staging']).includes(env));
@@ -71,7 +71,7 @@ const matrix = candidates
     context: image.context,
     file: image.dockerfile,
     target: image.target ?? '',
-    args: [image.app && `APP=${image.app}`, image.siteUrl && `SITE_URL=${image.siteUrl.replace('{domain}', domain)}`].filter(Boolean).join('\n'),
+    args: [image.app && `APP=${image.app}`, image.siteUrl && `SITE_URL=${siteUrl(image, env ?? 'prod')}`].filter(Boolean).join('\n'),
     image: `${registry}/${image.name}`,
   }));
 process.stdout.write(`${JSON.stringify(matrix)}\n`);

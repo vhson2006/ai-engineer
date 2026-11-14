@@ -4,17 +4,21 @@ import type { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { lang } from 'next/root-params';
-import type { ReactElement, ReactNode } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { Suspense, type ReactElement, type ReactNode } from 'react';
+import { ArrowLeft, UserRound } from 'lucide-react';
+import { createCallbackRoute, createLoginRoute, createLogoutRoute } from '@web/core/auth/routes';
+import { safeReturnTo } from '@web/core/auth/safe-redirect';
+import { getSessionUser } from '@web/core/auth/session';
 import { format } from '@web/core/i18n/format';
 import { localizedPath } from '@web/core/i18n/paths';
 import { localizedPageMetadata, localizedSitemap, type PreviewImage } from '@web/core/i18n/seo';
-import { Container, buttonClass } from '@web/ui';
+import { Card, Container, buttonClass, richText } from '@web/ui';
 import { CoverImage } from '@web/ui/cover-image';
 import { JsonLd } from '@web/ui/json-ld';
 import { createArticles, type Article, type ArticleCovers } from './articles';
 import { mapsHref } from './business';
 import { ArticleBody, ArticleGrid, ArticleMeta, ArticlesHeader, FeaturedArticle, TopicChip } from './components/articles';
+import { ACCOUNT_PATH } from './components/account';
 import { ContactButtons } from './components/chrome';
 import { LegalDocument } from './components/legal';
 import { ShareBar } from './components/share-bar';
@@ -272,7 +276,55 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
     return { cacheKey: `${code}/${article.id}/${article.title}`, render: async () => draw(code, await config.loadMessages(code), article) };
   });
 
+  /** Customers' pages (ADR 0049): never indexed, never in the sitemap. */
+  const privatePage = async (title: string): Promise<Metadata> => ({ title, robots: { index: false, follow: false } });
+
   const routes = {
+    /**
+     * Customers sign in (ADR 0049): app/auth/{login,callback,logout}/route.ts re-export these. The
+     * shared OIDC handlers of @web/core (PKCE, session in Redis, httpOnly cookie), with the site's
+     * customers' realm (KEYCLOAK_ISSUER = site-<id>). After signing in: the account page.
+     */
+    authLogin: { GET: createLoginRoute({ locales: website.locales, defaultReturnTo: ACCOUNT_PATH }) },
+    authCallback: { GET: createCallbackRoute() },
+    authLogout: { POST: createLogoutRoute() },
+
+    /** /[lang]/login: the sign-in button, and why the last attempt failed (?error=). */
+    login: {
+      async metadata(): Promise<Metadata> {
+        const { t } = await context();
+        return privatePage(t.account.loginTitle);
+      },
+      async Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+        const { t, locale } = await context();
+        return (
+          <AccountCard title={t.account.loginTitle} intro={format(t.account.loginIntro, { name: business.name })}>
+            <Suspense fallback={<div className="mt-8 h-11 animate-pulse rounded-button bg-surface-2" />}>
+              <LoginActions searchParams={searchParams} t={t} locale={locale} />
+            </Suspense>
+          </AccountCard>
+        );
+      },
+    },
+
+    /** /[lang]/account: who is signed in, and signing out. */
+    account: {
+      async metadata(): Promise<Metadata> {
+        const { t } = await context();
+        return privatePage(t.account.accountTitle);
+      },
+      async Page() {
+        const { t, locale } = await context();
+        return (
+          <AccountCard title={t.account.accountTitle} intro={format(t.account.accountIntro, { name: business.name })}>
+            <Suspense fallback={<div className="mt-8 h-24 animate-pulse rounded-button bg-surface-2" />}>
+              <AccountDetails t={t} locale={locale} />
+            </Suspense>
+          </AccountCard>
+        );
+      },
+    },
+
     /** The articles index: the featured article as a spread, then the rest, newest first. */
     articlesIndex: {
       async metadata(): Promise<Metadata> {
@@ -525,7 +577,7 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
       return [...pages, ...lists.flat()];
     },
 
-    /** /robots.txt: the whole site is public (no sign-in, no forms). */
+    /** /robots.txt: everything may be crawled; the account pages say noindex themselves (seo.md). */
     robots(): MetadataRoute.Robots {
       return { rules: [{ userAgent: '*', allow: '/' }], sitemap: absoluteUrl('/sitemap.xml'), host: new URL(siteUrl).host };
     },
@@ -569,6 +621,101 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
     latestArticles,
     routes,
   };
+}
+
+function AccountCard({ title, intro, children }: { title: string; intro: string; children: ReactNode }) {
+  return (
+    <Container className="flex justify-center py-20 sm:py-28">
+      <Card padding="p-8" className="w-full max-w-md">
+        <span className="inline-flex size-12 items-center justify-center rounded-xl bg-surface-2 text-brand">
+          <UserRound aria-hidden className="size-6" />
+        </span>
+        <h1 className="mt-6 text-2xl font-bold tracking-tight">{title}</h1>
+        <p className="mt-2 text-pretty text-muted">{intro}</p>
+        {children}
+      </Card>
+    </Container>
+  );
+}
+
+/** The request-dependent part of the sign-in page (error, session), streamed after the card. */
+async function LoginActions({
+  searchParams,
+  t,
+  locale,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  t: BaseMessages;
+  locale: Locale;
+}) {
+  const params = await searchParams;
+  const errors = t.account.errors;
+  const error = typeof params.error === 'string' && params.error in errors ? errors[params.error as keyof typeof errors] : undefined;
+  const returnTo = safeReturnTo(typeof params.returnTo === 'string' ? params.returnTo : undefined, href(locale, ACCOUNT_PATH));
+  const user = await getSessionUser().catch(() => null); // session store down: shown as signed out
+  if (user) {
+    return (
+      <div className="mt-8">
+        <p className="text-sm text-muted">{richText(t.account.signedInAs, { name: <span className="font-medium text-fg">{user.name}</span> })}</p>
+        <Link href={returnTo} prefetch={false} className={`${buttonClass.primary} mt-4 w-full`}>
+          {t.account.continue}
+        </Link>
+      </div>
+    );
+  }
+  return (
+    <div className="mt-8">
+      {error && (
+        <p role="alert" className="mb-4 rounded-button bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </p>
+      )}
+      {/* A plain <a>: /auth/login is a route handler that redirects to Keycloak, not a page. */}
+      <a href={`/auth/login?returnTo=${encodeURIComponent(returnTo)}`} className={`${buttonClass.primary} w-full`}>
+        {t.account.signIn}
+      </a>
+    </div>
+  );
+}
+
+/** The signed-in customer, or a way to sign in. */
+async function AccountDetails({ t, locale }: { t: BaseMessages; locale: Locale }) {
+  const user = await getSessionUser().catch(() => null);
+  if (!user) {
+    return (
+      <div className="mt-8">
+        <p className="text-sm text-muted">{t.account.signedOut}</p>
+        <a href={`/auth/login?returnTo=${encodeURIComponent(href(locale, ACCOUNT_PATH))}`} className={`${buttonClass.primary} mt-4 w-full`}>
+          {t.account.signIn}
+        </a>
+      </div>
+    );
+  }
+  const rows: [string, string | undefined][] = [
+    [t.account.name, user.name],
+    [t.account.username, user.username],
+    [t.account.email, user.email],
+  ];
+  return (
+    <div className="mt-8">
+      <dl className="divide-y divide-border rounded-card border border-border">
+        {rows
+          .filter(([, value]) => value)
+          .map(([label, value]) => (
+            <div key={label} className="flex justify-between gap-4 px-4 py-3 text-sm">
+              <dt className="text-muted">{label}</dt>
+              <dd className="truncate font-medium">{value}</dd>
+            </div>
+          ))}
+      </dl>
+      {/* POST, from this origin only (CSRF: proxy + the handler), then Keycloak ends its session. */}
+      <form action="/auth/logout" method="post" className="mt-6">
+        <button type="submit" className={`${buttonClass.secondary} w-full`}>
+          {t.account.signOut}
+        </button>
+      </form>
+    </div>
+  );
 }
 
 /** Prerendered once per build: the sitemap's lastModified for the fixed pages. */

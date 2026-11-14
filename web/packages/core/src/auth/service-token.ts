@@ -2,12 +2,14 @@ import 'server-only';
 import * as client from 'openid-client';
 
 /**
- * The token of a PUBLIC site's own server (no visitor signs in): Keycloak client credentials of
+ * The token of a PUBLIC site's own server (not a visitor's): Keycloak client credentials of
  * a confidential client with a service account (ADR 0032), e.g. laundry-web → content:read on
  * /sites/laundry. Server only, never sent to the browser; kept in memory until 30 s before it
  * expires, one request to Keycloak at a time.
  *
- * Env: KEYCLOAK_ISSUER, KEYCLOAK_CLIENT_ID, KEYCLOAK_CLIENT_SECRET (no Redis, no sessions).
+ * Env: API_KEYCLOAK_ISSUER (the realm the API trusts, nest-microservice), KEYCLOAK_CLIENT_ID,
+ * KEYCLOAK_CLIENT_SECRET (no Redis, no sessions). A site's KEYCLOAK_ISSUER is its customers' realm
+ * (ADR 0049): the same client id and secret exist in both.
  */
 const SKEW_MS = 30_000;
 const KEYCLOAK_TIMEOUT_S = 5;
@@ -24,7 +26,7 @@ function env(name: string): string {
 
 function config(): Promise<client.Configuration> {
   configPromise ??= (async () => {
-    const issuer = new URL(env('KEYCLOAK_ISSUER'));
+    const issuer = new URL(env('API_KEYCLOAK_ISSUER'));
     const local = issuer.protocol === 'http:' && (['localhost', '127.0.0.1'].includes(issuer.hostname) || (process.env.NODE_ENV !== 'production' && issuer.hostname.endsWith('.localtest.me')));
     return client.discovery(issuer, env('KEYCLOAK_CLIENT_ID'), env('KEYCLOAK_CLIENT_SECRET'), undefined, {
       timeout: KEYCLOAK_TIMEOUT_S,

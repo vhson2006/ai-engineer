@@ -10,6 +10,8 @@ configMapGenerator:
     literals:
       - APP=sushi-web
       - CLIENT_SECRET_KEY=SUSHI_WEB_CLIENT_SECRET
+      - REALM=site-sushi
+      - 'REDIS_KEY_PREFIX=sushi-web:'
 
 components:
   - ../../_template

@@ -14,7 +14,7 @@ One repository (ADR 0015). This file is always loaded; each package's `CLAUDE.md
 ```
 Browser ──▶ edge Gateway ─┬─ www.*   ─▶ portfolio-web ─┐
                           ├─ admin.* ─▶ admin-web ─────┴─Bearer──▶ KrakenD (PRIVATE) ──▶ services ──▶ Postgres
-                          └─ auth.*  ─▶ Keycloak (app realm)                                └─ NATS events ──▶ consumers
+                          └─ auth.*  ─▶ Keycloak (app + site realms)                         └─ NATS events ──▶ consumers
 Browser ◀─ presigned URLs ─▶ object storage
 ```
 

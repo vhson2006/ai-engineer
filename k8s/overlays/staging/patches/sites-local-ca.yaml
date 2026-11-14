@@ -7,3 +7,7 @@
 - op: add
   path: /spec/template/spec/containers/0/volumeMounts/-
   value: { name: local-ca, mountPath: /etc/local-ca, readOnly: true }
+# Their customers' sessions (ADR 0049) are in the local Redis: the label its NetworkPolicy admits.
+- op: add
+  path: /spec/template/metadata/labels/redis-client
+  value: 'true'

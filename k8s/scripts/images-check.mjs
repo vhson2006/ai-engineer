@@ -5,6 +5,7 @@
 // Plain Node, no dependencies: node k8s/scripts/images-check.mjs (repo root).
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { siteUrl } from './site-url.mjs';
 
 const root = join(import.meta.dirname, '..', '..');
 const { images } = JSON.parse(readFileSync(join(root, 'k8s/images.json'), 'utf8'));
@@ -41,6 +42,14 @@ for (const image of images) {
   if (!site && !new RegExp(`^\\s*image: ${image.name}\\s*$`, 'm').test(manifests)) problems.push(`${image.name}: no manifest runs it (image: ${image.name})`);
   if (!existsSync(join(root, image.dockerfile))) problems.push(`${image.name}: ${image.dockerfile} not found`);
   if (image.app && !existsSync(join(root, image.context, 'apps', image.app, 'package.json'))) problems.push(`${image.name}: app ${image.app} is not a workspace of ${image.context}/apps`);
+  // Its SITE_URL comes from each environment's urls.env (site-url.mjs): every key must be there.
+  for (const overlay of ['prod', 'staging'].filter((env) => runsIn(image, env))) {
+    try {
+      siteUrl(image, overlay);
+    } catch (error) {
+      problems.push(error.message);
+    }
+  }
   try {
     new RegExp(image.watch);
   } catch {

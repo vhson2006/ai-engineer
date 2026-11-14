@@ -7,7 +7,7 @@ import { join, relative } from 'node:path';
 const apps = join(import.meta.dirname, '..', 'apps');
 
 /** Each site's own files: its facts, its configuration, the kit bound to it, its words. */
-const REQUIRED = ['src/content/business.ts', 'src/website.ts', ['src/site.ts', 'src/site.tsx'], 'src/i18n/dictionaries.ts', 'src/proxy.ts', 'src/app/sitemap.ts', 'src/app/robots.ts', 'src/app/[lang]/not-found.tsx'];
+const REQUIRED = ['src/content/business.ts', 'src/website.ts', ['src/site.ts', 'src/site.tsx'], 'src/i18n/dictionaries.ts', 'src/proxy.ts', 'src/app/sitemap.ts', 'src/app/robots.ts', 'src/app/[lang]/not-found.tsx', 'src/app/auth/login/route.ts', 'src/app/auth/callback/route.ts', 'src/app/auth/logout/route.ts', 'src/app/[lang]/login/page.tsx', 'src/app/[lang]/account/page.tsx'];
 
 /** What the kit does: a copy would drift (SEO, legal texts, articles, languages). */
 const FORBIDDEN = [
@@ -23,6 +23,9 @@ const FORBIDDEN_IMPORTS = [
   ['@web/core/content/site-articles', 'the site’s articles: site.articles / site.latestArticles'],
   ['@web/core/i18n/seo', 'page metadata: site.pageMetadata'],
 ];
+
+/** Customers sign in (ADR 0049): the kit's routes, re-exported by every site. */
+const SIGN_IN = ['auth/login/route.ts', 'auth/callback/route.ts', 'auth/logout/route.ts', '[lang]/login/page.tsx', '[lang]/account/page.tsx'];
 
 /** The shared routes are one-line re-exports of the kit's (site.routes.*). */
 const KIT_ROUTE = /site\.routes\./;
@@ -61,7 +64,8 @@ for (const name of sites) {
   // Built in CI without the private API, run on a read-only filesystem: the ISR pages regenerated
   // at runtime stay in memory (next.config.ts), else the articles index and sitemap never refresh.
   if (!/isrFlushToDisk:\s*false/.test(readFileSync(join(root, 'next.config.ts'), 'utf8'))) problems.push(`${name}: next.config.ts must set experimental.isrFlushToDisk: false`);
-  for (const route of ['sitemap.ts', 'robots.ts', '[lang]/not-found.tsx']) {
+  // Customers' sign-in (ADR 0049): the kit's handlers and pages, never a site's own.
+  for (const route of ['sitemap.ts', 'robots.ts', '[lang]/not-found.tsx', ...SIGN_IN]) {
     const file = join(root, 'src/app', route);
     if (existsSync(file) && !KIT_ROUTE.test(readFileSync(file, 'utf8'))) problems.push(`${name}: src/app/${route} must re-export site.routes`);
   }

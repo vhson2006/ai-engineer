@@ -2,4 +2,13 @@ user default off
 user healthcheck on nopass -@all +ping
 user web on >web-dev-redis-password resetkeys ~web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
 user admin-web on >admin-web-dev-redis-password resetkeys ~admin-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user autoparts-web on >autoparts-web-dev-redis-password resetkeys ~autoparts-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user flowers-web on >flowers-web-dev-redis-password resetkeys ~flowers-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user hotel-web on >hotel-web-dev-redis-password resetkeys ~hotel-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user laundry-web on >laundry-web-dev-redis-password resetkeys ~laundry-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user nails-web on >nails-web-dev-redis-password resetkeys ~nails-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user spa-web on >spa-web-dev-redis-password resetkeys ~spa-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user sushi-web on >sushi-web-dev-redis-password resetkeys ~sushi-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user travel-web on >travel-web-dev-redis-password resetkeys ~travel-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
+user wine-web on >wine-web-dev-redis-password resetkeys ~wine-web:* resetchannels -@all +get +set +del +getdel +incr +expire +ping
 user admin on >admin-dev-redis-password ~* &* +@all

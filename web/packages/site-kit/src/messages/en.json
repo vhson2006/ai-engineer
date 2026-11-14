@@ -356,5 +356,29 @@
         }
       ]
     }
+  },
+  "account": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "myAccount": "My account",
+    "loginTitle": "Sign in",
+    "loginIntro": "Sign in to your {name} account.",
+    "continue": "Continue",
+    "signedInAs": "You are signed in as {name}.",
+    "accountTitle": "My account",
+    "accountIntro": "Your {name} account.",
+    "signedOut": "You are not signed in.",
+    "name": "Name",
+    "email": "Email",
+    "username": "Username",
+    "errors": {
+      "denied": "You cancelled signing in.",
+      "expired": "Your sign-in took too long. Please try again.",
+      "failed": "We could not finish signing you in. Please try again.",
+      "forbidden": "This account cannot sign in here.",
+      "unavailable": "Sign-in is not answering right now. Please try again in a few minutes.",
+      "session_unavailable": "Our sign-in is briefly unavailable. Please try again in a few minutes.",
+      "rate_limited": "Too many sign-in attempts from your network. Please wait a few minutes and try again."
+    }
   }
 }

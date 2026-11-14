@@ -1,6 +1,7 @@
-# Kumo Sushi & Omakase (sample): its Keycloak client sushi-web and service account (group /sites/sushi, content:read;
-# ADR 0032), applied by the Job keycloak-config. Its secret: SUSHI_WEB_CLIENT_SECRET of the overlay's
-# Secret "keycloak-clients". Dev lists only this part (the sites run on the developer's machine).
+# Kumo Sushi & Omakase (sample): its Keycloak client sushi-web and service account (group
+# /sites/sushi, content:read; ADR 0032) and realm site-sushi for its customers (ADR 0049), applied
+# by the Job keycloak-config. Its secret: SUSHI_WEB_CLIENT_SECRET of the overlay's Secret "keycloak-
+# clients". Dev lists only this part (the sites run on the developer's machine).
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
@@ -9,3 +10,4 @@ configMapGenerator:
     behavior: merge
     files:
       - site-sushi.json
+      - customers-sushi.json # realm site-sushi: its customers (ADR 0049)

@@ -10,6 +10,8 @@ configMapGenerator:
     literals:
       - APP=laundry-web
       - CLIENT_SECRET_KEY=LAUNDRY_WEB_CLIENT_SECRET
+      - REALM=site-laundry
+      - 'REDIS_KEY_PREFIX=laundry-web:'
 
 components:
   - ../../_template

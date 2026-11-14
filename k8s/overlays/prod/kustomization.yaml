@@ -6,8 +6,8 @@
 #   https://auth.example.com  Keycloak (app realm only; admin console via port-forward)
 #   KrakenD and the services are NOT public: only the web apps' servers call KrakenD (in cluster).
 #
-# Replace example.com everywhere in this folder with the real domain (and set the repository
-# variable PROD_DOMAIN for the web images).
+# Replace example.com everywhere in this folder with the real domain (urls.env: also the public
+# origin the web images are built for, k8s/scripts/site-url.mjs).
 # Data: DigitalOcean managed Postgres (databases "deployment", "notification", "content", "ai" and "keycloak") and managed Valkey;
 # NATS runs in the cluster. Secrets come from the secret manager through External Secrets.
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -33,6 +33,17 @@ components:
   - ../../components/apps
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud (ADR 0023)
+  # The business sites (k8s/sites/<id>: app, Keycloak client and customers' realm, host from
+  # urls.env), like staging. Each on a subdomain for now; its own domain later (k8s/README.md).
+  - ../../sites/autoparts
+  - ../../sites/flowers
+  - ../../sites/hotel
+  - ../../sites/laundry
+  - ../../sites/nails
+  - ../../sites/spa
+  - ../../sites/sushi
+  - ../../sites/travel
+  - ../../sites/wine
   - ../../components/https # LAST: https-only routes + HSTS (urls.env), https listener host
 
 # The images: k8s/images.json (the one list; CI checks this block against it). .github/workflows/
@@ -63,6 +74,33 @@ images:
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
     newTag: 7e619f823f7fcaff8c296a506a1332c4443ddeac
+  - name: autoparts-web
+    newName: ghcr.io/vhson2006/ai-engineer/autoparts-web
+    newTag: placeholder
+  - name: flowers-web
+    newName: ghcr.io/vhson2006/ai-engineer/flowers-web
+    newTag: placeholder
+  - name: hotel-web
+    newName: ghcr.io/vhson2006/ai-engineer/hotel-web
+    newTag: placeholder
+  - name: laundry-web
+    newName: ghcr.io/vhson2006/ai-engineer/laundry-web
+    newTag: placeholder
+  - name: nails-web
+    newName: ghcr.io/vhson2006/ai-engineer/nails-web
+    newTag: placeholder
+  - name: spa-web
+    newName: ghcr.io/vhson2006/ai-engineer/spa-web
+    newTag: placeholder
+  - name: sushi-web
+    newName: ghcr.io/vhson2006/ai-engineer/sushi-web
+    newTag: placeholder
+  - name: travel-web
+    newName: ghcr.io/vhson2006/ai-engineer/travel-web
+    newTag: placeholder
+  - name: wine-web
+    newName: ghcr.io/vhson2006/ai-engineer/wine-web
+    newTag: placeholder
 
 configMapGenerator:
   - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
@@ -96,6 +134,9 @@ configMapGenerator:
   - name: admin-web-env
     envs:
       - env/admin-web.env
+  - name: business-sites-env # every business site (API_KEYCLOAK_ISSUER, STORAGE_ORIGINS: urls.env)
+    literals:
+      - API_URL=http://krakend.nest-microservice.svc.cluster.local:8080
   - name: alloy-env
     literals:
       - CLUSTER_NAME=prod

@@ -10,6 +10,8 @@ configMapGenerator:
     literals:
       - APP=spa-web
       - CLIENT_SECRET_KEY=SPA_WEB_CLIENT_SECRET
+      - REALM=site-spa
+      - 'REDIS_KEY_PREFIX=spa-web:'
 
 components:
   - ../../_template

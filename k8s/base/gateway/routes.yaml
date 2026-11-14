@@ -14,10 +14,12 @@ spec:
   hostnames:
     - auth.set-by-public-urls.invalid # components/public-urls: AUTH_HOST
   rules:
-    # Keycloak's recommended public paths, narrowed to OUR realm: login pages, token, certs (JWKS),
-    # logout, userinfo, account. /admin, /realms/master, /metrics and /health stay private.
+    # Keycloak's recommended public paths, narrowed to OUR realms: login pages, token, certs (JWKS),
+    # logout, userinfo, account. nest-microservice (staff, the apps) and site-<id> (each business
+    # site's customers, ADR 0049). /admin, /realms/master, /metrics and /health stay private.
     - matches:
         - path: { type: PathPrefix, value: /realms/nest-microservice }
+        - path: { type: PathPrefix, value: /realms/site- }
         - path: { type: PathPrefix, value: /resources }
       backendRefs:
         - name: keycloak

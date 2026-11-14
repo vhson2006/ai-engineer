@@ -11,7 +11,7 @@ paths:
 `krakend.md`.
 
 ## Exposure (what the Internet can reach)
-- **Public = `www.*`, `admin.*`, `auth.*` (app realm + `/resources` only) and object storage via
+- **Public = `www.*`, `admin.*`, `auth.*` (realms `nest-microservice` and `site-*` + `/resources` only) and object storage via
   presigned URLs.** Nothing else gets a Gateway route: no `api.<domain>`, no LoadBalancer/NodePort
   for KrakenD or a service, no KrakenD CORS (ADR 0003). Prod NetworkPolicy `krakend-from-web`.
 - **Admin site** (ADR 0019): public but locked by the `admin-web` browser flow (non-admins refused,
