@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
     '/og/bai-viet/[lang]/[image]': ['../../packages/ui/assets/fonts/*.ttf'],
   },
   cacheComponents: true,
+  experimental: {
+    // ISR pages regenerated at runtime stay in memory: the container's filesystem is read-only
+    // (k8s), and each pod keeps its own small cache (ADR 0045).
+    isrFlushToDisk: false,
+  },
   partialPrefetching: true,
   poweredByHeader: false,
   allowedDevOrigins: ['wine.localtest.me'],

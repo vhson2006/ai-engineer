@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
     '/og/[image]': ogFiles,
   },
   cacheComponents: true,
+  experimental: {
+    // ISR pages regenerated at runtime stay in memory: the container's filesystem is read-only
+    // (k8s), and each pod keeps its own small cache (ADR 0045).
+    isrFlushToDisk: false,
+  },
   partialPrefetching: true,
   poweredByHeader: false,
   allowedDevOrigins: ['nails.localtest.me'],

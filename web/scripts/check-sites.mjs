@@ -58,6 +58,9 @@ for (const name of sites) {
     }
   }
   if (!readFileSync(join(root, 'src/proxy.ts'), 'utf8').includes('siteProxy(')) problems.push(`${name}: src/proxy.ts must be the kit's siteProxy(website.routing)`);
+  // Built in CI without the private API, run on a read-only filesystem: the ISR pages regenerated
+  // at runtime stay in memory (next.config.ts), else the articles index and sitemap never refresh.
+  if (!/isrFlushToDisk:\s*false/.test(readFileSync(join(root, 'next.config.ts'), 'utf8'))) problems.push(`${name}: next.config.ts must set experimental.isrFlushToDisk: false`);
   for (const route of ['sitemap.ts', 'robots.ts', '[lang]/not-found.tsx']) {
     const file = join(root, 'src/app', route);
     if (existsSync(file) && !KIT_ROUTE.test(readFileSync(file, 'utf8'))) problems.push(`${name}: src/app/${route} must re-export site.routes`);
