@@ -5,6 +5,7 @@
   "scripts": {
     "k8s:up": "node k8s/scripts/sh.mjs k8s/scripts/up.sh",
     "k8s:gateway:install": "node k8s/scripts/sh.mjs k8s/scripts/gateway-install.sh",
+    "k8s:stop": "node k8s/scripts/sh.mjs k8s/scripts/stop.sh",
     "k8s:down": "kubectl delete -k k8s/overlays/dev",
     "k8s:render": "kubectl kustomize k8s/overlays/dev",
     "k8s:render:prod": "kubectl kustomize k8s/overlays/prod",

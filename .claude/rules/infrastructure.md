@@ -50,7 +50,9 @@ paths:
 - Content is not bootstrap state either (ADR 0044): staging and prod get the sites' snapshot from
   the Job `content-import` (each site's version once, table `content_imports`); dev:
   `npm run seed:content -- --all`. Never content created by hand to make an environment usable.
-- `npm run k8s:down` deletes the namespace and its PVCs (all data).
+- `npm run k8s:stop` stops dev and keeps its data (`k8s:up` resumes); `npm run k8s:down` deletes the
+  namespace and its PVCs (all data). The local-cluster scripts share `k8s/scripts/local.sh` (they
+  refuse any context but `docker-desktop`: dev and prod share the namespace name).
 
 ## Changes
 - **A public address (host, URL, issuer, storage origin) is written once per environment**, in
