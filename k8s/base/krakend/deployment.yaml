@@ -33,6 +33,12 @@ spec:
               value: /etc/krakend/settings
             - name: FC_TEMPLATES
               value: /etc/krakend/templates
+            # The tokens' issuer (Keycloak's public URL): the environment's urls.env.
+            - name: KEYCLOAK_ISSUER
+              valueFrom:
+                configMapKeyRef:
+                  name: public-urls
+                  key: KEYCLOAK_ISSUER
           ports:
             - name: http
               containerPort: 8080

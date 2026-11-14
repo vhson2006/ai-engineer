@@ -14,3 +14,4 @@ resources:
   - portfolio-web.yaml
   - admin-web.yaml
   - nats-setup-job.yaml # JetStream streams, before / with the services (ADR 0024)
+  - content-import-job.yaml # the content snapshot, each site's version once (ADR 0044)

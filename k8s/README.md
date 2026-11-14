@@ -26,33 +26,38 @@ private (npm run k8s:forward): KrakenD :8080, Keycloak admin :8180, management :
 k8s/
 ├── base/                        # what every environment runs (placeholder host names, no secrets)
 │   ├── namespace.yaml
-│   ├── gateway/                 #   Gateway "edge" + HTTPRoutes www/auth (*.example.com); no api route
+│   ├── gateway/                 #   Gateway "edge" + HTTPRoutes www/admin/auth (hosts from urls.env); no api route
 │   ├── krakend/                 #   Deployment + Service + config/krakend.tmpl, config/templates/*.tmpl
 │   └── keycloak/                #   Deployment + Service; realm.json + master.json (the same in every
 │                                #   environment, values $(env:…)) + the Job keycloak-config (ADR 0043)
 ├── components/
 │   ├── local-data/              # Postgres, Redis (ACL users), SeaweedFS (S3 for files) in the cluster: dev, staging
 │   ├── keycloak-local/          # Keycloak test users, alice's OTP, dev-cli: dev, staging
-│   ├── keycloak-sites/          # the business sites' Keycloak clients: where the sites run (dev)
 │   ├── nats/                    # NATS (single instance): dev and prod
-│   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster: staging, prod
+│   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster,
+│   │                            #   Jobs nats-setup and content-import (the sites' content, ADR 0044): staging, prod
 │   ├── network-policies/        # default deny + allowed flows: staging and prod
 │   └── observability/           # Grafana Alloy → Grafana Cloud (metrics, logs, traces; ADR 0023): staging and prod
 ├── overlays/
 │   ├── dev/                     # entry point: npm run k8s:up  (= kubectl apply -k k8s/overlays/dev)
 │   │   ├── kustomization.yaml   #   base + local-data + nats + the files below
-│   │   ├── krakend/settings/env.json      # issuer, JWKS URL, backends (host.docker.internal)
+│   │   ├── urls.env             #   THE public addresses of the environment (hosts, URLs, issuer)
+│   │   ├── krakend/settings/env.json      # JWKS URL, backends (host.docker.internal)
 │   │   ├── keycloak/            #   dev Secrets (bootstrap admin, DB, client secrets)
-│   │   ├── patches/             #   gateway.yaml (*.localtest.me:8000), keycloak.yaml (KC_HOSTNAME)
+│   │   ├── listeners/           #   the Gateway's listeners (:8000)
 │   │   ├── gateway-proxy.yaml   #   NginxProxy: DNS resolver for the ExternalName backend
 │   │   └── portfolio-web.yaml   #   Service -> Next.js on your machine
 │   └── prod/                    # DOKS, deployed by Argo CD: HTTPS, External Secrets, migration Job,
 │                                #   2 replicas + PDBs + spread, NetworkPolicies (see "Production" below)
 ├── platform/prod/               # cluster-level, applied once: ClusterIssuers, DNS token, Argo CD Application
+├── sites/                       # the business sites (ADR 0047): _template + one folder per site
+│                                #   (app/ names, keycloak/ client, host from urls.env); an overlay lists ../../sites/<id>
 ├── images.json                  # THE list of images (CI builds, staging builds, images-check.mjs)
 └── scripts/                     # up.sh, staging.sh, gateway-install.sh, krakend-check.sh, images-check.mjs, port-forward.{sh,ps1}
 
-A new environment = a new `overlays/<env>/` with its own settings, patches and secrets.
+A new environment = a new `overlays/<env>/` with its own `urls.env` (every public address: host
+names, URLs, the token issuer, the storage origins; `components/public-urls` writes them where they
+are needed), listeners, settings, patches and secrets.
 `base/` stays untouched. `npm run k8s:render` / `npm run k8s:render:prod` print what an overlay produces.
 ```
 
@@ -131,7 +136,7 @@ KrakenD uses **Flexible Configuration** (a Go template rendered at startup). Rul
 |---|---|
 | [`base/krakend/config/krakend.tmpl`](base/krakend/config/krakend.tmpl) | All public routes, the same in every environment |
 | [`base/krakend/config/templates/endpoint.tmpl`](base/krakend/config/templates/endpoint.tmpl) | The security of one endpoint, written once: Keycloak token check (RS256, JWKS, issuer, audience, roles) + rate limits |
-| [`overlays/dev/krakend/settings/env.json`](overlays/dev/krakend/settings/env.json) | Dev values: issuer, in-cluster JWKS URL, backends (`host.docker.internal`), rate limits, log level |
+| [`overlays/dev/krakend/settings/env.json`](overlays/dev/krakend/settings/env.json) | Dev values: in-cluster JWKS URL, backends (`host.docker.internal`), rate limits, log level |
 
 Every endpoint validates the Keycloak token and forwards `Authorization` to the service, which
 checks it again, and is rate limited (read: 200/s per endpoint, 20/s per user token; write: 50/s and
@@ -166,9 +171,9 @@ fresh cluster and on a running one alike. **The same files in every environment*
 [`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
 groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
 [`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
-code, `dev-cli`); [`components/keycloak-sites/`](components/keycloak-sites/) (dev: the business sites'
-clients and service accounts); prod adds `master-config-cli.json`. What differs per environment is
-only a value, written `$(env:NAME)` in the files: ConfigMap `keycloak-config-env` of the overlay
+code, `dev-cli`); [`sites/<id>/keycloak/`](sites/) (a business site's client and service account, in
+the environments that list it); prod adds `master-config-cli.json`. What differs per environment is
+only a value, written `$(env:NAME)` in the files: ConfigMap `public-urls` (the overlay's `urls.env`)
 (`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
 Change Keycloak by changing these files, not the console: a field of a managed object that the file
 doesn't set is reset at the next deploy.
@@ -181,12 +186,12 @@ Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 | `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `$ADMIN_URL/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
 | `dev-cli` | **dev and staging only** (`components/keycloak-local`): password grant for curl tests |
 
-| Group | Roles | Test user (password `password`) |
+| Group | Roles | Test user (password `Dev-Staging-2026!`) |
 |---|---|---|
 | `viewers` | read | `carol` |
 | `developers` | read, write | `bob` |
 | `admins` | read, write, admin + `admin-web:admin`, `admin-web:superadmin`, `content:admin` | `alice` (also has a **dev-only OTP**: see `web/apps/admin-web/README.md`) |
-| `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `dana` (`/sites/nails`), `erin` (`/sites/wine`) |
+| `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `<site>-admin` for each of the nine sites (`nails-admin` in `/sites/nails`, `wine-admin` in `/sites/wine`…) |
 
 **Admin site sign-in** (ADRs 0019, 0030): the flow `browser-admin-otp` (in `realm.json`), bound to the
 client `admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
@@ -197,10 +202,10 @@ Get a token for testing (access token lives 5 minutes):
 
 ```bash
 TOKEN=$(curl -s http://auth.localtest.me:8000/realms/nest-microservice/protocol/openid-connect/token \
-  -d grant_type=password -d client_id=dev-cli -d username=bob -d password=password | jq -r .access_token)
+  -d grant_type=password -d client_id=dev-cli -d username=bob --data-urlencode 'password=Dev-Staging-2026!' | jq -r .access_token)
 ```
 
-Every token has `iss = http://auth.localtest.me:8000/realms/nest-microservice` (fixed by `KC_HOSTNAME`),
+Every token has `iss = http://auth.localtest.me:8000/realms/nest-microservice` (fixed by `KC_HOSTNAME` = `AUTH_URL` of `urls.env`),
 even when Keycloak is reached from inside the cluster or through the port-forward.
 The admin console uses its own URL (`KC_HOSTNAME_ADMIN=http://localhost:8180`), which is never
 published on the Gateway. Its login runs on realm `master`, whose **Frontend URL must be
@@ -212,8 +217,8 @@ issuer, and may fetch the JWKS through the in-cluster URL.
 People are not configuration: users created in the console (and their passwords, OTP) stay in
 Postgres (database `keycloak`). The test users of `users.json` get the file's passwords back when that
 file changes. A public site (ADR 0042) = its group `/sites/<id>` in `realm.json` and its client `<id>-web`
-and service account in `components/keycloak-sites/sites.json` (secret `<ID>_WEB_CLIENT_SECRET` in the
-environment's Secret `keycloak-clients`).
+and service account in `sites/<id>/keycloak/` (secret `<ID>_WEB_CLIENT_SECRET` in the environment's
+Secret `keycloak-clients`).
 
 ## Object storage (uploaded files)
 
@@ -301,6 +306,25 @@ kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statef
 kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statefulset/nats deployment/krakend deployment/keycloak deployment/edge-nginx --replicas=1
 ```
 
+## Business sites (ADR 0047)
+
+Every business site runs from one template, [`sites/_template`](sites/_template/): a Deployment,
+a Service and a route, the same for all. A site's folder `sites/<id>/` only names it (`app/`: its
+app and client-secret key; `keycloak/`: its Keycloak client) and takes its host and URL from the
+overlay's `urls.env`. To run a site in an environment:
+
+1. `components:` of the overlay: `- ../../sites/<id>`;
+2. `urls.env`: `<ID>_HOST` and `<ID>_URL`;
+3. `images:`: `<id>-web` (and its entry in `images.json`, `environments` listing the overlay);
+4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`.
+
+Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
+`role: business-site` (NetworkPolicies, the https-only route patch). Staging runs all nine
+(`https://<id>.staging.localtest.me`: each site 160 Mi requested, 384 Mi limit; give WSL 12 GB,
+`.wslconfig`); prod none yet (each real site needs its domain,
+certificate and DNS). Site images build without the API: their article pages fill in at runtime
+(ISR, about a minute; ADR 0047).
+
 ## Local staging
 
 The production setup in the local cluster, with HTTPS (ADR 0018): `overlays/staging`, namespace
@@ -309,10 +333,11 @@ local CA through cert-manager (as in prod with Let's Encrypt).
 
 ```bash
 npm run staging:build      # docker build the 5 images (local/<name>:staging); no registry needed
-npm run staging:up         # NGF, cert-manager, local CA, CoreDNS rule, dev → 0, apply, migrate, wait, admin OTP flow
+npm run staging:up         # NGF, cert-manager, local CA, CoreDNS rule, dev → 0, apply, migrate, realms, content, wait
 npm run staging:trust-ca   # once: import the CA (Windows asks to confirm); restart the browser
 npm run staging:status
-npm run staging:down       # delete the namespace (data too); npm run k8s:up brings dev back
+npm run staging:stop       # stop it, KEEP its data, bring dev back; staging:up resumes it
+npm run staging:down       # delete the namespace WITH its data (fresh start); npm run k8s:up brings dev back
 ```
 
 | URL | What |
@@ -321,6 +346,7 @@ npm run staging:down       # delete the namespace (data too); npm run k8s:up bri
 | https://admin.staging.localtest.me | admin-web (alice: password + one-time code) |
 | https://auth.staging.localtest.me | Keycloak, app realm only |
 | https://s3.staging.localtest.me | SeaweedFS (presigned uploads/downloads) |
+| https://&lt;site&gt;.staging.localtest.me | the nine business sites: nails, wine, laundry, sushi, travel, flowers, autoparts, hotel, spa |
 | http://*.staging.localtest.me:8001 | → 301 to https (port 80 is Windows') |
 | `kubectl -n nest-staging port-forward svc/keycloak 8181:8080` | admin console http://localhost:8181/admin |
 
@@ -328,7 +354,14 @@ npm run staging:down       # delete the namespace (data too); npm run k8s:up bri
   other domain). The certificate (no key) is exported to `k8s/.local-ca.crt` (git-ignored).
 - **In-cluster DNS**: a CoreDNS rule maps `*.staging.localtest.me` to the staging Gateway, so pods
   reach Keycloak and S3 through the same HTTPS URLs as browsers (public DNS does this in prod).
+- **Content**: a fresh staging gets the nine sites, their articles and images from the Job
+  `content-import` (ADR 0044), as prod does; each site's snapshot version once, so `staging:stop`
+  / `staging:up` keep what you changed. `staging:down` starts over.
 - **Rebuild after a code change**: `npm run staging:build && npm run staging:up` (restarts the apps).
+- **Memory**: staging's limits add up to about 12 GB (the nine sites, Keycloak, render-worker…),
+  and Docker Desktop's nodes all share ONE WSL VM (each node reports the whole VM: Kubernetes never
+  sees the shortage, Linux kills pods, exit 137). WSL takes half the RAM by default: set it in
+  `%USERPROFILE%\.wslconfig` (`[wsl2]` / `memory=12GB` / `swap=4GB`), `wsl --shutdown`, restart Docker.
 - `staging.sh` refuses any kubectl context other than `docker-desktop`.
 - **Telemetry (optional)**: `cp k8s/grafana-cloud.env.example k8s/.grafana-cloud.env` (git-ignored),
   fill in your Grafana Cloud stack (the file says where each value is), then `npm run staging:up`.
@@ -357,6 +390,11 @@ every pod's stdout ── read through the Kubernetes API ───────�
 - **Credentials**: Secret `grafana-cloud` (keys in `k8s/grafana-cloud.env.example`) with a
   write-only token (metrics:write, logs:write, traces:write). Staging: from `k8s/.grafana-cloud.env`;
   prod: External Secrets entry `nest-microservice-prod-grafana-cloud`.
+- **Certificates** (ADR 0048): every 5 minutes Alloy opens TLS to www, admin and auth (`urls.env`)
+  and sends `probe_ssl_earliest_cert_expiry` and `probe_success`. Create two alert rules in Grafana
+  Cloud (Alerting → Alert rules, data source Prometheus), contact point = your email:
+  `probe_ssl_earliest_cert_expiry{cluster="prod"} - time() < 14 * 86400` (renewal failed:
+  cert-manager renews 30 days before) and `probe_success{cluster="prod"} == 0` for 15 min (no TLS).
 - **A new instrumented app**: the scrape annotations on its pod, `OTEL_*` in its env file, and both
   rules of `components/observability/networkpolicies.yaml`.
 
@@ -376,7 +414,7 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 
 | What | Where |
 |---|---|
-| TLS | Gateway listener `https` (:443) with `wildcard-example-com-tls`, issued and renewed by cert-manager (DNS-01, DigitalOcean DNS). `:80` only redirects. HSTS on every route |
+| TLS | Gateway listener `https` (:443) with `wildcard-tls`, issued and renewed by cert-manager (DNS-01, DigitalOcean DNS). `:80` only redirects. HSTS on every public route, its value `HSTS` of `urls.env` (ADR 0048) (ramped up after go-live; no includeSubDomains, no preload). Expiry watched by Alloy (`probe_ssl_earliest_cert_expiry`) |
 | Secrets | `overlays/prod/secrets/external-secrets.yaml`: External Secrets Operator copies them from the secret manager (ClusterSecretStore `prod-secrets`). The file lists every entry and field to create |
 | Migrations | `overlays/prod/migration-job.yaml`: `prisma migrate deploy` (image `--target migrate`) before each rollout. Keep migrations backward compatible |
 | Resilience | 2 replicas (KrakenD, Keycloak, apps, nginx), PodDisruptionBudgets, spread over nodes, `maxUnavailable: 0`, probes, resource requests/limits |
@@ -387,7 +425,7 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 ### Images
 
 **The one list of images: [`images.json`](images.json)** (how each is built, what it watches,
-the web apps' public origin). CI (`npm run images:check`) checks that the overlays' `images:` and the
+the web apps' public origin). CI (`npm run k8s:check`) checks that the overlays' `images:` and the
 manifests agree with it; `staging:build` and the workflow below build from it.
 
 Built by CI, not by hand: after CI passes on `main`, `.github/workflows/images.yml` builds every
@@ -444,7 +482,8 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    never. With AWS S3 or R2 instead, make the public bucket readable as a whole (bucket policy /
    R2 public domain), unset that variable, and set `STORAGE_PROVIDER` / `STORAGE_REGION` /
    `STORAGE_R2_ACCOUNT_ID`.
-5. **Replace placeholders**: `example.com` (overlay, ClusterIssuer email) and set the
+5. **Replace placeholders**: `example.com` and the bucket names in `overlays/prod/urls.env` (the one
+   file with the environment's public addresses), the ClusterIssuer email, and set the
    repository variable `PROD_DOMAIN`, then *Run workflow* on Images. The GitHub repository is
    private: give Argo CD read access (a deploy key or a read-only token, `argocd repo add`).
 6. `kubectl apply -k k8s/platform/prod`: ClusterIssuers, DNS token, Argo CD Application. Argo CD
@@ -461,6 +500,11 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin:
    create real named admins in `master` with OTP required, then remove the bootstrap admin (the next
    sync signs in as `keycloak-config-cli`).
+
+9. **Content, after the first sync**: the Job `content-import` (PostSync hook, ADR 0044) has
+   imported the nine sites, their topics, articles (status kept) and images into the managed
+   database and Spaces (URLs on the CDN), once per site and snapshot version: later syncs skip them,
+   and what the admins change stays. Follow it: `kubectl -n nest-microservice logs job/content-import`.
 
 Check: `kubectl get certificate,externalsecret -n nest-microservice` (Ready=True),
 `curl -I http://www.example.com` (301 to https). `https://api.example.com` must NOT answer: the API is

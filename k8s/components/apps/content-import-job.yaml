@@ -1,0 +1,69 @@
+# Imports the content snapshot (ADR 0044: the sites, their topics, articles and images, in git
+# under nest-microservice/apps/content-service/seed/content) into this environment, then exits.
+# Each site's snapshot version is imported ONCE (table content_imports): afterwards the
+# environment owns its content, and what the admins edit or delete stays so. The same in every
+# environment that runs it (staging, prod): only the env differs (content-service's database,
+# bucket and CDN, so image URLs and object ACLs are this environment's).
+# Same image as the migrations (Dockerfile --target migrate, which carries the snapshot); the
+# script waits for the migrations itself (table content_imports), like nats-setup waits for NATS.
+# It needs no NATS: the published articles' events go into the outbox table, and content-service's
+# relay publishes them.
+#
+# prod (Argo CD): a PostSync hook, after the migrations and the apps, recreated on every sync.
+# staging: `npm run staging:up` deletes the previous Job, applies, and waits for it.
+# dev: no Job, `npm run seed:content -- --all` on the host (nest-microservice/).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: content-import
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  backoffLimit: 4
+  activeDeadlineSeconds: 1800
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app: content-import # allowed to reach postgres :5432 in staging (networkpolicies-local-data)
+    spec:
+      restartPolicy: OnFailure
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: content-import
+          image: deployment-migrate
+          command: ['node', 'dist/apps/content-import/seed-content', '--deploy']
+          # content-service's own settings: its database, bucket, public URL (urls.env), NATS.
+          envFrom:
+            - configMapRef:
+                name: content-service-env
+            - secretRef:
+                name: content-db
+            - secretRef:
+                name: content-storage
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 64Mi

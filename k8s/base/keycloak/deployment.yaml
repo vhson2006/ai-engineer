@@ -1,11 +1,11 @@
 # Keycloak (identity provider), backed by Postgres (database "keycloak").
 #
-# Each overlay sets (patches/keycloak.yaml):
+# From the environment's urls.env (ConfigMap public-urls):
 #   KC_HOSTNAME        public URL; every token gets  iss = <KC_HOSTNAME>/realms/<realm>, no matter
 #                      how Keycloak is reached. KrakenD and the services may fetch the JWKS through
 #                      the in-cluster URL (KC_HOSTNAME_BACKCHANNEL_DYNAMIC) and the issuer still matches.
 #   KC_HOSTNAME_ADMIN  admin console URL, never published on the Gateway (port-forward / VPN only).
-# and generates the ConfigMap "keycloak-config" and the Secrets "keycloak-admin" / "keycloak-db".
+# The overlay also generates the ConfigMap "keycloak-config" and the Secrets "keycloak-admin" / "keycloak-db".
 # Keycloak imports no realm: the Job keycloak-config applies the realms (ADR 0043).
 # `start-dev` is for local use; a production overlay switches to `start --optimized`.
 apiVersion: apps/v1
@@ -59,6 +59,17 @@ spec:
             # Only the Gateway and port-forwards can reach this pod.
             - name: KC_PROXY_HEADERS
               value: xforwarded
+            # Public URL (every token's issuer) and the admin console's: this environment's urls.env.
+            - name: KC_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: public-urls
+                  key: AUTH_URL
+            - name: KC_HOSTNAME_ADMIN
+              valueFrom:
+                configMapKeyRef:
+                  name: public-urls
+                  key: KEYCLOAK_CONSOLE_URL
             - name: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
               value: 'true'
             - name: KC_HTTP_ENABLED

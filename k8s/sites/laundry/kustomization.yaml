@@ -1,0 +1,24 @@
+# Giặt sấy SFaster in an environment: list this component in the overlay. It brings the site
+# (app/: Deployment, Service, route), its Keycloak client (keycloak/) and writes its public address
+# from the overlay's urls.env: LAUNDRY_HOST (the route) and LAUNDRY_URL (APP_URL). The overlay also needs
+# the image laundry-web in `images:` and LAUNDRY_WEB_CLIENT_SECRET in Secret "keycloak-clients".
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - app
+
+components:
+  - keycloak
+
+replacements:
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.LAUNDRY_HOST }
+    targets:
+      - select: { kind: HTTPRoute, name: laundry-web }
+        fieldPaths:
+          - spec.hostnames.0
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.LAUNDRY_URL }
+    targets:
+      - select: { kind: Deployment, name: laundry-web }
+        fieldPaths:
+          - spec.template.spec.containers.[name=web].env.[name=APP_URL].value

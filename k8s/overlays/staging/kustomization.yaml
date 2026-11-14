@@ -2,7 +2,8 @@
 #   npm run staging:build   build the production images of k8s/images.json (the cluster sees them)
 #   npm run staging:up      cert-manager + local CA, CoreDNS rule, scale dev to 0, apply this, migrate
 #   npm run staging:trust-ca   trust the local CA in Windows once (padlock without warnings)
-#   npm run staging:down    remove staging (data too); `npm run k8s:up` brings dev back
+#   npm run staging:stop    stop staging, keep its data, bring dev back (staging:up resumes it)
+#   npm run staging:down    remove staging WITH its data; `npm run k8s:up` brings dev back
 #
 #   https://www.staging.localtest.me    portfolio-web (in the cluster, production image)
 #   https://admin.staging.localtest.me  admin-web (admins only: role + password + one-time code)
@@ -35,12 +36,25 @@ resources:
   - networkpolicies-local-data.yaml
 
 components:
+  - listeners # this environment's Gateway listeners (before public-urls)
+  - ../../components/public-urls # urls.env -> Gateway, routes, apps' settings
   - ../../components/local-data
   - ../../components/nats
   - ../../components/apps
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
   - ../../components/keycloak-local # test users, alice's one-time code, dev-cli (local only)
+  # The business sites staging runs (k8s/sites/<id>: app, Keycloak client, host from urls.env).
+  - ../../sites/autoparts
+  - ../../sites/flowers
+  - ../../sites/hotel
+  - ../../sites/laundry
+  - ../../sites/nails
+  - ../../sites/spa
+  - ../../sites/sushi
+  - ../../sites/travel
+  - ../../sites/wine
+  - ../../components/https # LAST: https-only routes + HSTS (urls.env), https listener host
 
 # The images of k8s/images.json (CI checks this block against it), built by `npm run staging:build`
 # (Docker Desktop's cluster sees the local image store). The tag
@@ -70,16 +84,41 @@ images:
   - name: admin-web
     newName: local/admin-web
     newTag: staging
+  - name: autoparts-web
+    newName: local/autoparts-web
+    newTag: staging
+  - name: flowers-web
+    newName: local/flowers-web
+    newTag: staging
+  - name: hotel-web
+    newName: local/hotel-web
+    newTag: staging
+  - name: laundry-web
+    newName: local/laundry-web
+    newTag: staging
+  - name: nails-web
+    newName: local/nails-web
+    newTag: staging
+  - name: spa-web
+    newName: local/spa-web
+    newTag: staging
+  - name: sushi-web
+    newName: local/sushi-web
+    newTag: staging
+  - name: travel-web
+    newName: local/travel-web
+    newTag: staging
+  - name: wine-web
+    newName: local/wine-web
+    newTag: staging
 
 configMapGenerator:
+  - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
+    envs:
+      - urls.env
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
-    literals:
-      - WEB_URL=https://www.staging.localtest.me
-      - ADMIN_URL=https://admin.staging.localtest.me
-      - KEYCLOAK_CONSOLE_URL=http://localhost:8181
   - name: deployment-service-env
     envs:
       - env/deployment-service.env
@@ -101,16 +140,19 @@ configMapGenerator:
   - name: admin-web-env
     envs:
       - env/admin-web.env
+  - name: business-sites-env # every business site (KEYCLOAK_ISSUER, STORAGE_ORIGINS: urls.env)
+    literals:
+      - API_URL=http://krakend.nest-staging.svc.cluster.local:8080
+      - NODE_EXTRA_CA_CERTS=/etc/local-ca/ca.crt
   - name: alloy-env
     literals:
       - CLUSTER_NAME=staging-local
 
 patches:
-  - path: patches/gateway.yaml # https on 443 (local CA), http 8001 → redirect, *.staging.localtest.me
-  - path: patches/routes-https.yaml # www, admin, auth on https only, HSTS
-    target:
-      kind: HTTPRoute
-      name: ^(www|admin|auth)$
   - path: patches/keycloak.yaml # production mode `start`, https hostname
   - path: patches/apps-local-ca.yaml # apps trust the local CA (calls to https://auth / https://s3)
+  - path: patches/sites-local-ca.yaml # the business sites too (their token from https://auth)
+    target:
+      kind: Deployment
+      labelSelector: role=business-site
   - path: patches/seaweedfs-cors.yaml # browsers on https://www.staging.localtest.me may PUT

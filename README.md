@@ -21,7 +21,7 @@ cd web && npm install && npm run dev   # both sites (once before: cp .env.exampl
 ```
 
 Open http://www.localtest.me:8000 and sign in with `carol` (read), `bob` (read + write own) or
-`alice` (admin), password `password`. Keycloak admin: http://localhost:8180/admin (`admin` /
+`alice` (admin), password `Dev-Staging-2026!`. Keycloak admin: http://localhost:8180/admin (`admin` /
 `admin`). The API (private, like in prod): http://localhost:8080 through the port-forward.
 Admin site: http://admin.localtest.me:8000, `alice` + a one-time code (dev OTP secret in
 [`web/apps/admin-web/README.md`](web/apps/admin-web/README.md)).
@@ -34,9 +34,10 @@ npm run staging:up         # cert-manager + local CA, scale dev down, deploy, mi
 npm run staging:trust-ca   # once: trust the local CA (localtest.me only) in Windows
 ```
 
-Open https://www.staging.localtest.me (sign in `bob` / `password`) and
-https://admin.staging.localtest.me (`alice` + one-time code). `npm run staging:down` removes
-it, `npm run k8s:up` brings dev back. Details: [`k8s/README.md`](k8s/README.md#local-staging), ADR 0018.
+Open https://www.staging.localtest.me (sign in `bob` / `Dev-Staging-2026!`) and
+https://admin.staging.localtest.me (`alice` + one-time code). `npm run staging:stop` stops it
+and brings dev back, keeping its data (`staging:up` resumes it); `npm run staging:down` deletes it
+with its data (then `npm run k8s:up`). Details: [`k8s/README.md`](k8s/README.md#local-staging), ADR 0018.
 
 ## CI (GitHub Actions)
 

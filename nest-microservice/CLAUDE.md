@@ -14,7 +14,8 @@ here are relative to this package, except `k8s/...` and `docs/adr/...` (root fol
 | `apps/nats-setup/` | Creates/updates the JetStream streams, then exits: their one owner (ADR 0024). |
 | `libs/common/` (`@app/common`) | Contracts (DTOs, responses, events, roles), auth, logging, observability, errors (RFC 9457), database errors, `HttpClient`, object storage, NATS/outbox/inbox. |
 
-Images: `Dockerfile --target deployment-service|notification-service|content-service|ai-service|migrate`.
+Images: `Dockerfile --target deployment-service|notification-service|content-service|ai-service|migrate`
+(`migrate` also runs the Jobs nats-setup and content-import: the content snapshot, ADR 0044).
 Infrastructure (KrakenD, Keycloak, Postgres, Redis, NATS): `k8s/README.md`.
 
 ## Commands

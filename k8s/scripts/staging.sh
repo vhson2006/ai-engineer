@@ -6,7 +6,8 @@
 #   npm run staging:up         install/refresh everything, scale dev down, deploy, migrate, wait
 #   npm run staging:trust-ca   trust the local CA in Windows (once): HTTPS padlock, no warning
 #   npm run staging:status     pods, certificate, URLs
-#   npm run staging:down       delete staging (namespace + data); `npm run k8s:up` brings dev back
+#   npm run staging:stop       stop staging, KEEP its data (volumes), bring dev back; staging:up resumes it
+#   npm run staging:down       delete staging WITH its data (a fresh start); `npm run k8s:up` brings dev back
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 export MSYS_NO_PATHCONV=1
@@ -36,7 +37,7 @@ STAGING_DOMAIN=staging.localtest.me
 images() {
   node -e '
     const { images } = require("./k8s/images.json");
-    for (const i of images) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", (i.siteUrl ?? "").replace("{domain}", process.argv[1])].join("|"));
+    for (const i of images.filter((i) => (i.environments ?? ["staging"]).includes("staging"))) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", (i.siteUrl ?? "").replace("{domain}", process.argv[1])].join("|"));
   ' "$STAGING_DOMAIN"
 }
 
@@ -112,6 +113,26 @@ telemetry() {
   fi
 }
 
+# The Gateway's nginx Deployment is made by NGINX Gateway Fabric, not by our manifests: applying
+# them doesn't bring it back after a scale to 0 (staging:up scales dev down, staging:stop staging).
+wake_gateway() { # namespace
+  if [ "$(kubectl -n "$1" get deploy edge-nginx -o jsonpath='{.spec.replicas}' 2>/dev/null)" = "0" ]; then
+    kubectl -n "$1" scale deploy edge-nginx --replicas=1 >/dev/null
+  fi
+}
+
+stop() {
+  require_local_cluster
+  if ! kubectl get namespace "$NS" >/dev/null 2>&1; then echo "No staging to stop."; exit 0; fi
+  say "Stopping staging (namespace $NS): every pod to 0, its volumes and data KEPT"
+  kubectl -n "$NS" scale deploy,statefulset --all --replicas=0 >/dev/null
+  # Finished Jobs (migrations, streams, Keycloak configuration): staging:up runs them again.
+  kubectl -n "$NS" delete job --all --ignore-not-found >/dev/null
+  say "Bringing dev back"
+  bash k8s/scripts/up.sh
+  echo "Staging stopped; npm run staging:up resumes it with the same data (npm run staging:down deletes it)."
+}
+
 scale_dev_down() {
   if kubectl get ns "$DEV_NS" >/dev/null 2>&1; then
     say "Scaling dev ($DEV_NS) to 0 to free memory (data kept; npm run k8s:up restores it)"
@@ -134,7 +155,7 @@ up() {
   say "Deploying k8s/overlays/staging into $NS"
   kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
   kubectl -n "$NS" create configmap local-ca --from-file=ca.crt="$CA_FILE" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
-  kubectl -n "$NS" delete job db-migrate nats-setup keycloak-config --ignore-not-found >/dev/null # a Job's template is immutable
+  kubectl -n "$NS" delete job db-migrate nats-setup keycloak-config content-import --ignore-not-found >/dev/null # a Job's template is immutable
   # Content-addressed tags: a node that already has local/<img>:staging keeps its OLD copy
   # (IfNotPresent), so each build is deployed as local/<img>:<image id>; a rebuild changes the tag,
   # which also rolls the Deployments.
@@ -146,6 +167,7 @@ up() {
     rewrite+=(-e "s#local/$img:staging#local/$img:$id#g")
   done
   kubectl kustomize k8s/overlays/staging | sed "${rewrite[@]}" | kubectl apply -f - >/dev/null
+  wake_gateway "$NS" # resumed after staging:stop
   telemetry
 
   say "Waiting for the data stores, the migrations, the JetStream streams and the apps"
@@ -154,7 +176,10 @@ up() {
   kubectl -n "$NS" rollout status deploy/keycloak --timeout=600s
   # The realms (app realm, admin-site sign-in flow, realm master's admin URL): ADR 0043.
   kubectl -n "$NS" wait job/keycloak-config --for=condition=Complete --timeout=900s
+  # The content snapshot, each site's version once (ADR 0044): the sites, articles and images.
+  kubectl -n "$NS" wait job/content-import --for=condition=Complete --timeout=900s
   kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/content-service deploy/ai-service deploy/portfolio-web deploy/admin-web deploy/render-worker --timeout=300s
+  kubectl -n "$NS" rollout status deploy -l role=business-site --timeout=300s # k8s/sites
   kubectl -n "$NS" wait certificate --all --for=condition=Ready --timeout=180s
   if [ -f "$GRAFANA_ENV" ]; then kubectl -n "$NS" rollout status deploy/alloy --timeout=180s; fi
 
@@ -167,8 +192,8 @@ status() {
   kubectl -n "$NS" get pods,certificate 2>/dev/null || echo "staging is not deployed"
   cat <<MSG
 
-  https://www.staging.localtest.me    the site (sign in: bob / password)
-  https://admin.staging.localtest.me  the admin site (alice / password + one-time code, web/apps/admin-web/README.md)
+  https://www.staging.localtest.me    the site (sign in: bob / Dev-Staging-2026!)
+  https://admin.staging.localtest.me  the admin site (alice / Dev-Staging-2026! + one-time code; <site>-admin: one site)
   https://auth.staging.localtest.me   Keycloak (app realm)
   https://s3.staging.localtest.me     object storage (presigned URLs)
   Admin console: kubectl -n $NS port-forward svc/keycloak 8181:8080 → http://localhost:8181/admin
@@ -199,6 +224,7 @@ case "${1:-}" in
   up) up ;;
   status) status ;;
   trust-ca) trust_ca ;;
+  stop) stop ;;
   down) down ;;
-  *) echo "usage: staging.sh build|up|status|trust-ca|down" >&2; exit 2 ;;
+  *) echo "usage: staging.sh build|up|status|trust-ca|stop|down" >&2; exit 2 ;;
 esac

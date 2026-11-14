@@ -24,13 +24,13 @@ Specific to this app:
   Articles come from content-service, site `sushi`, with this server's service account (Keycloak
   client `sushi-web`, ADR 0032). Topics: menu, craft, guide (keys = fallback covers in `src/site.ts`),
   seeded with the writers' guide and the sample articles by
-  `npm run seed:content -- sushi` in nest-microservice (snapshot `apps/content-service/seed/content/sushi/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/components/keycloak-sites/sites.json`, applied on deploy (ADR 0043).
+  `npm run seed:content -- sushi` in nest-microservice (snapshot `apps/content-service/seed/content/sushi/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/sites/sushi/keycloak`, applied on deploy (ADR 0043).
 - Photos in `public/images/` (hero, chef, counter, omakase, sake; `og-default.jpg` 1200×630 from the hero) were generated
   with Gemini (AI_GEMINI_IMAGE_MODEL of ai-service): no text, logos or identifiable people. The
   writers' guide drawings (`images/guide/`, `images/placeholder/`) are laundry's, recoloured.
 - Languages: Vietnamese (default, ADR 0038) and English; cookie `sushi_locale`. Prices in VND.
 - No booking form: phone, Zalo and email. A form = `/new-form`, then extend the kit's legal texts.
-- Not deployed yet: no Dockerfile, k8s manifests or Gateway route.
+- Deployment: `k8s/sites/sushi` (ADR 0047: the shared template; image from `web/Dockerfile`); not run by any environment yet.
 
 `npm run dev` (http://localhost:3500), `npm test`, `npm run typecheck`, `npm run lint`: from this
 folder or from `web/` (`npm run dev:sushi`).

@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "npm run prisma:generate",
-    "build": "nest build deployment-service && nest build notification-service && nest build content-service && nest build ai-service && nest build nats-setup",
+    "build": "nest build deployment-service && nest build notification-service && nest build content-service && nest build ai-service && nest build nats-setup && nest build content-import",
     "start:deployment": "nest start deployment-service --watch",
     "start:notification": "nest start notification-service --watch",
     "start:content": "nest start content-service --watch",

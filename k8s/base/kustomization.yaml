@@ -1,10 +1,12 @@
 # What every environment runs: edge Gateway + routes, KrakenD (API gateway), Keycloak (identity).
 # Not deployable on its own: an overlay (overlays/<env>) adds the environment's values:
-#   - ConfigMap "krakend-settings"  (KrakenD settings/env.json: issuer, JWKS, backends)
-#   - ConfigMap "keycloak-config-env" (WEB_URL, ADMIN_URL, KEYCLOAK_CONSOLE_URL) and Secret
-#     "keycloak-clients" (client secrets): the values of the shared Keycloak files (ADR 0043);
+#   - ConfigMap "public-urls" (overlays/<env>/urls.env: every public address of the environment,
+#     read by Keycloak, KrakenD and the Job keycloak-config; components/public-urls writes them into
+#     the Gateway, the routes and the apps' settings)
+#   - ConfigMap "krakend-settings"  (KrakenD settings/env.json: JWKS, backends, rate limits)
+#   - Secret "keycloak-clients" (client secrets): the values of the shared Keycloak files (ADR 0043);
 #     Secrets "keycloak-admin" / "keycloak-db" (prod also "keycloak-config-cli")
-#   - host names and listeners of the Gateway, Keycloak's KC_HOSTNAME
+#   - the Gateway's listeners (overlays/<env>/listeners)
 #   - data stores (dev: components/local-data; elsewhere: managed services)
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -29,7 +31,7 @@ resources:
 # rolls the KrakenD pods on `npm run k8s:up`.
 configMapGenerator:
   # The Keycloak configuration, the same files in every environment (ADR 0043). Test users and
-  # dev-cli: components/keycloak-local; the business sites' clients: components/keycloak-sites.
+  # dev-cli: components/keycloak-local; a business site's client: k8s/sites/<id>/keycloak.
   - name: keycloak-config
     files:
       - keycloak/realm.json

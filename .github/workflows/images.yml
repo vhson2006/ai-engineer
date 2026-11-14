@@ -59,40 +59,14 @@ jobs:
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
           registry="ghcr.io/${OWNER_REPO,,}" # GHCR names must be lower case
 
-          # true when files matching $2 (minus docs) changed since the commit the image $1 runs.
-          changed() {
-            local deployed
-            deployed=$(yq ".images[] | select(.name == \"$1\") | .newTag" "$OVERLAY")
-            if [ "$EVENT" = "workflow_dispatch" ] || ! git cat-file -e "$deployed^{commit}" 2>/dev/null; then
-              echo true; return
-            fi
-            if git diff --name-only "$deployed" HEAD | grep -E "$2" | grep -qvE '\.md$|/docs/|/\.claude/'; then
-              echo true
-            else
-              echo false
-            fi
-          }
-          # The images and what each watches: k8s/images.json (the one list). An image whose
-          # files changed is built; so is every image of its group (the API images share one
-          # commit: deployment-migrate must match deployment-service, ADR 0007/migration Job).
-          changed_names=()
-          while IFS=$'\t' read -r name watch; do
-            if [ "$(changed "$name" "$watch")" = true ]; then changed_names+=("$name"); fi
-          done < <(jq -r '.images[] | [.name, .watch] | @tsv' k8s/images.json)
-          changed_json=$(printf '%s\n' "${changed_names[@]}" | jq -R 'select(. != "")' | jq -sc .)
-          echo "changed: $changed_json"
-          if [ "$DOMAIN" = example.com ] && jq -e --argjson c "$changed_json" '[.images[] | select(.siteUrl and (.name as $n | $c | index($n)))] | length > 0' k8s/images.json >/dev/null; then
+          # Which images (k8s/images.json) to build: k8s/scripts/images-plan.mjs, shared with the PR
+          # check of ci.yml. Changed since the commit prod runs (its newTag), with their group (the API
+          # images share one commit: deployment-migrate must match deployment-service).
+          if [ "$EVENT" = "workflow_dispatch" ]; then mode=--all; else mode=--since-deployed; fi
+          matrix=$(node k8s/scripts/images-plan.mjs "$mode" --env prod --domain "$DOMAIN" --registry "$registry")
+          if [ "$DOMAIN" = example.com ] && echo "$matrix" | grep -q 'SITE_URL='; then
             echo "::warning::Repository variable PROD_DOMAIN is not set: the web apps are built for example.com"
           fi
-          matrix=$(jq -c --arg r "$registry" --arg domain "$DOMAIN" --argjson c "$changed_json" '
-            .images as $all
-            | ([$all[] | select(.name as $n | $c | index($n)) | .group // empty] | unique) as $groups
-            | [$all[]
-                | select((.name as $n | $c | index($n)) or ((.group // "") as $g | $g != "" and ($groups | index($g))))
-                | {name, context, file: .dockerfile, target: (.target // ""),
-                   args: ([(if .app then "APP=" + .app else empty end),
-                           (if .siteUrl then "SITE_URL=" + (.siteUrl | split("{domain}") | join($domain)) else empty end)] | join("\n")),
-                   image: ($r + "/" + .name)}]' k8s/images.json)
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "any=$([ "$matrix" = "[]" ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
           echo "$matrix" | jq .

@@ -52,7 +52,7 @@ Specific to this app:
   YouTube embeds): change them, and the date, with any new data collection. Not reviewed by a lawyer yet.
 - SEO is the kit's (`.claude/rules/seo.md`): JSON-LD `LaundryOrDryCleaner` + `WebSite`, + `Article`
   on an article; default preview `public/images/og-default.jpg`.
-- Not deployed yet: no Dockerfile, k8s manifests or Gateway route.
+- Deployment: `k8s/sites/laundry` (ADR 0047: the shared template; image from `web/Dockerfile`), run by local staging (`https://laundry.staging.localtest.me`); not in prod yet.
 
 `npm run dev` (http://localhost:3400), `npm test`, `npm run typecheck`, `npm run lint`:
 from this folder or from `web/` (`npm run dev:laundry`).

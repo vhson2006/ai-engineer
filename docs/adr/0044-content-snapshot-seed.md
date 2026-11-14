@@ -1,10 +1,11 @@
 # 0044. A content snapshot in git seeds the sites' articles and images
 
-- **Status:** Accepted, implemented (dev)
+- **Status:** Accepted, implemented (dev; staging and prod by the Job content-import)
 - **Date:** 2026-11-14
 - **Related:** 0033 (layout blocks; its seed of templates is replaced), 0034 (media library), 0037
   (AI images), 0041 (AI-written articles), 0042 (sample sites),
-  `nest-microservice/apps/content-service/scripts/{export-content,seed-content,content-snapshot}.ts`
+  `nest-microservice/apps/content-service/scripts/{export-content,seed-content,content-snapshot}.ts`,
+  `k8s/components/apps/content-import-job.yaml`
 
 ## Context
 
@@ -38,12 +39,29 @@ it, so it undid an editor's unpublishing.
   seed with a clear error. Idempotent.
 - The writers' guide is part of the snapshot like any article; the TypeScript templates and
   `seed:article-templates` are removed.
-- **Dev and local staging only.** Production content of real businesses is never seeded.
+- **Every environment gets the snapshot, without anyone creating content by hand**:
+  - **staging and prod**: the Job `content-import` (`k8s/components/apps`) runs
+    `seed-content --deploy` on every deploy (prod: Argo CD PostSync hook; staging: `staging:up`
+    waits for it), with content-service's settings (database, bucket, CDN URL, object ACL), from the
+    image `deployment-migrate` (same commit as the migrations; it carries the snapshot). Staging
+    rehearses exactly what prod runs.
+  - **dev**: `npm run seed:content -- --all|<sites>` by hand (the services run on the host).
+- **Each site's snapshot is imported once per environment**: `content.json` has a `version`; table
+  `content_imports` records (site, version). `--deploy` imports only the versions not recorded,
+  then never again: from then on the environment owns its content, and what its admins edit or
+  delete stays so (a deleted article does not come back on the next deploy). `--deploy` never
+  overwrites (`--overwrite` is refused with it). To ship new articles of a site, add them to the
+  snapshot and raise its `version`: the next deploy adds the missing articles and keeps the rest.
+- The snapshot holds content only, nothing to test with: the test users and the `dev-cli` client
+  stay in `k8s/components/keycloak-local` (dev and staging, never prod).
 
 ## Consequences
 
 - Content survives a fresh cluster, as it was on 2026-11-14; what changes afterwards in a
-  database stays there.
+  database stays there. A fresh staging and the first prod deploy come up with the nine sites,
+  their articles and images.
+- Raising a site's `version` re-adds the snapshot's articles that the environment no longer has
+  (the deleted ones too): remove from the snapshot what must not come back.
 - The repository holds about 20 MB of images (WebP), once: the snapshot being fixed, it does not
   grow.
 - The seed writes rows with Prisma (the service's own client, inside one transaction per article)

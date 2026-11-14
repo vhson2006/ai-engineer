@@ -27,10 +27,13 @@ resources:
   - migration-job.yaml
 
 components:
+  - listeners # this environment's Gateway listeners (before public-urls)
+  - ../../components/public-urls # urls.env -> Gateway, routes, apps' settings
   - ../../components/nats
   - ../../components/apps
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud (ADR 0023)
+  - ../../components/https # LAST: https-only routes + HSTS (urls.env), https listener host
 
 # The images: k8s/images.json (the one list; CI checks this block against it). .github/workflows/
 # images.yml sets each newTag to the commit SHA it built and commits; Argo CD syncs.
@@ -62,6 +65,9 @@ images:
     newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
 
 configMapGenerator:
+  - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
+    envs:
+      - urls.env
   - name: krakend-settings
     files:
       - krakend/settings/env.json
@@ -69,11 +75,6 @@ configMapGenerator:
     behavior: merge
     files:
       - keycloak/master-config-cli.json
-  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
-    literals:
-      - WEB_URL=https://www.example.com
-      - ADMIN_URL=https://admin.example.com
-      - KEYCLOAK_CONSOLE_URL=http://localhost:8180
   - name: deployment-service-env
     envs:
       - env/deployment-service.env
@@ -100,11 +101,6 @@ configMapGenerator:
       - CLUSTER_NAME=prod
 
 patches:
-  - path: patches/gateway.yaml # HTTPS listener + wildcard certificate, real host names
-  - path: patches/routes-https.yaml # app routes on https only, HSTS
-    target:
-      kind: HTTPRoute
-      name: ^(www|admin|auth)$
   - path: patches/keycloak.yaml # production mode, 2 replicas, managed DB over TLS
   - target: # managed Postgres: the database and user are created once, by hand (README)
       kind: Deployment

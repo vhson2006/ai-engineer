@@ -24,7 +24,7 @@ cd ../.. && npm install      # once, in web/: installs the whole workspace
 npm run dev                  # in web/ (or here): open http://www.localtest.me:8000 (edge Gateway -> :3000)
 ```
 
-Sign in with `carol` (read), `bob` (read + write own) or `alice` (admin), password `password`.
+Sign in with `carol` (read), `bob` (read + write own) or `alice` (admin), password `Dev-Staging-2026!`.
 
 | Script | |
 |---|---|

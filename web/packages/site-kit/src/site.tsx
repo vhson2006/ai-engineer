@@ -50,6 +50,12 @@ export interface SiteConfig<M extends BaseMessages> {
   legal?: { facts?: Record<string, string>; after?: (t: M, locale: Locale) => ReactNode };
 }
 
+/**
+ * The one param a dynamic route prerenders when there is nothing to list (Next.js needs at least
+ * one with ensureStatic): answered 404 without calling the API, so a build needs no API at all.
+ */
+const NONE = '__none__';
+
 type SlugParams = { params: Promise<{ slug: string }> };
 type TopicParams = { params: Promise<{ category: string }> };
 type LangParams = { params: { lang: string } };
@@ -299,10 +305,11 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
       async staticParams({ params }: LangParams) {
         const topics = isLocale(params.lang) ? await articles.listTopics(params.lang) : [];
         // ensureStatic needs at least one entry: an unknown segment, answered by notFound().
-        return topics.length ? topics.map((topic) => ({ category: topic.slug })) : [{ category: 'none' }];
+        return topics.length ? topics.map((topic) => ({ category: topic.slug })) : [{ category: NONE }];
       },
       async metadata({ params }: TopicParams): Promise<Metadata> {
         const [{ category }, { t, locale }] = await Promise.all([params, context()]);
+        if (category === NONE) return {};
         const topic = await articles.topicBySlug(locale, category);
         if (!topic) return {};
         return pageMetadata({
@@ -315,6 +322,7 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
       },
       async Page({ params }: TopicParams) {
         const [{ category }, { t, locale }] = await Promise.all([params, context()]);
+        if (category === NONE) notFound();
         const topic = await articles.topicBySlug(locale, category);
         if (!topic) {
           const own = await articles.topicSlugInLocale(locale, category);
@@ -349,10 +357,11 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
     article: {
       async staticParams({ params }: LangParams) {
         const list = isLocale(params.lang) ? await articles.listArticles(params.lang) : [];
-        return list.length ? list.map((article) => ({ slug: article.slug })) : [{ slug: 'none' }];
+        return list.length ? list.map((article) => ({ slug: article.slug })) : [{ slug: NONE }];
       },
       async metadata({ params }: SlugParams): Promise<Metadata> {
         const [{ slug }, { t, locale }] = await Promise.all([params, context()]);
+        if (slug === NONE) return {};
         const article = await articles.getArticle(locale, slug);
         if (!article) return {};
         return pageMetadata({
@@ -367,6 +376,7 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
       },
       async Page({ params }: SlugParams) {
         const [{ slug }, { t, locale }] = await Promise.all([params, context()]);
+        if (slug === NONE) notFound();
         const article = await articles.getArticle(locale, slug);
         if (!article) {
           const own = await articles.slugInLocale(locale, slug);
@@ -537,7 +547,7 @@ export function createSite<M extends BaseMessages>(config: SiteConfig<M>) {
           website.locales.map(async (code) => (await articles.listArticles(code).catch(() => [])).map((article) => ({ lang: code, image: `${article.slug}.png` }))),
         );
         const params = lists.flat();
-        return params.length ? params : [{ lang: website.defaultLocale, image: 'none.png' }];
+        return params.length ? params : [{ lang: website.defaultLocale, image: `${NONE}.png` }];
       },
       async GET(_request: Request, { params }: ArticleImageParams) {
         return articleImageHandler(await params);

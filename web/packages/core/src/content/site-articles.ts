@@ -21,6 +21,16 @@ import {
 
 const PAGE_SIZE = 100; // the API's maximum: every article of the site in one call
 
+/**
+ * `next build` without an API (a production image, built in CI: the API is private, ADR 0003):
+ * nothing to read yet, so no article, no topic. Returned INSIDE the cached functions, cached for
+ * minutes like a real answer: a page prerendered with it (the articles index, the sitemap, the
+ * landing page's latest articles) is regenerated with the real articles minutes after it is first
+ * served (ISR), never frozen empty. Pages of one article or topic aren't prerendered then: each is
+ * rendered on its first request, complete, and cached.
+ */
+const noApiAtBuild = () => process.env.NEXT_PHASE === 'phase-production-build' && !process.env.API_URL;
+
 export class ContentUnavailableError extends Error {
   constructor(result: Extract<ApiResult<unknown>, { ok: false }>) {
     super(`content API: ${result.status} ${result.code} [requestId=${result.requestId}]`);
@@ -35,6 +45,7 @@ export async function listSiteTopics(siteId: string, locale: string, locales: re
   'use cache';
   cacheLife('minutes');
   cacheTag(`content:${siteId}`);
+  if (noApiAtBuild()) return [];
   const result = await listSiteCategories(siteId);
   if (!result.ok) throw new ContentUnavailableError(result);
   return [...result.data]
@@ -52,6 +63,7 @@ export async function listSiteArticles(siteId: string, locale: string, topicSlug
   'use cache';
   cacheLife('minutes');
   cacheTag(`content:${siteId}`);
+  if (noApiAtBuild()) return [];
   const result = await listPublishedArticles(siteId, { locale, category: topicSlug, limit: PAGE_SIZE });
   if (!result.ok) {
     if (result.status === 404) return []; // an unknown topic
@@ -68,6 +80,7 @@ export async function getSiteArticle(siteId: string, locale: string, slug: strin
   'use cache';
   cacheLife('minutes');
   cacheTag(`content:${siteId}`);
+  if (noApiAtBuild()) return null;
   const result = await getPublishedArticle(siteId, locale, slug);
   if (!result.ok) {
     if (result.status === 404 || result.status === 400) return null; // unknown, or not a valid slug

@@ -2,16 +2,17 @@
 # Keycloak configuration as code (ADR 0043): applies the files of ConfigMap "keycloak-config"
 # (mounted on /config) to the running Keycloak with keycloak-config-cli. The ONE way realm settings
 # reach Keycloak, on a fresh cluster and on a running one alike. Every environment shares the same
-# files; what differs comes from the environment (ConfigMap "keycloak-config-env": URLs; Secret
+# files; what differs comes from the environment (ConfigMap "public-urls": the URLs of urls.env; Secret
 # "keycloak-clients": client secrets), substituted where a file says $(env:NAME). Each file is its
 # own run with its own cache key: keycloak-config-cli stores one checksum per realm and key, and
 # skips a run whose file has not changed; a run never deletes what another file created.
 #   realm.json              (base) realm nest-microservice: roles, clients web/admin-web, groups,
 #                           the admin-site sign-in flow. No people: a run would reset passwords.
-#   sites.json              (components/keycloak-sites) the business sites' clients + service accounts
+#   site-<id>.json          (k8s/sites/<id>/keycloak) a business site's client + service account
 #   dev-cli.json            (components/keycloak-local) the password-grant client for curl tests
-#   users.json, otp.json    (components/keycloak-local) test users; alice's one-time code. otp.json
-#                           is applied once: afterwards Keycloak answers 409, not an error here.
+#   otp.json, users.json    (components/keycloak-local) alice's one-time code, then the test users
+#                           (in that order, see below). otp.json is applied once: afterwards
+#                           Keycloak answers 409, not an error here.
 #   master-config-cli.json  (prod) the master client this Job signs in with from then on
 #   master.json             (base) realm master, LAST: console Frontend URL, brute-force detection
 set -eu
@@ -50,11 +51,18 @@ run_if() { # file, cache key: only when the environment has that file
 }
 
 run /config/realm.json realm
-run_if sites.json sites
+for file in /config/site-*.json; do
+  if [ -f "$file" ]; then run "$file" "$(basename "$file" .json)"; fi
+done
 run_if dev-cli.json dev-cli
-run_if users.json users
+# otp.json BEFORE users.json: applying a user without `groups` (otp.json declares alice only for her
+# one-time code) REMOVES her groups. So users.json comes after, and its cache key carries otp.json's
+# checksum: whenever otp.json is applied anew, the users' groups are applied again too.
 if [ -f /config/otp.json ]; then
   run /config/otp.json otp || echo "otp.json not applied: alice already has a one-time code (Keycloak 409)"
+fi
+if [ -f /config/users.json ]; then
+  run /config/users.json "users-$(cksum < /config/otp.json 2>/dev/null | cut -d' ' -f1)"
 fi
 run_if master-config-cli.json master-config-cli
 # Last: a NEW Frontend URL of realm master changes the issuer of master tokens, so the token this

@@ -1,6 +1,7 @@
 // k8s/images.json is the one list of images. CI (job k8s) checks that the rest agrees with it:
-// every image is in the `images:` of overlays/prod and overlays/staging (and nothing else is), is
-// run by a manifest (`image: <name>`), has its Dockerfile, and a web app's `app` is a workspace.
+// every image is in the `images:` of the overlays it runs in (`environments`, default prod and
+// staging; and nothing else is), is run by a manifest (`image: <name>`, or k8s/sites/<id> for a
+// business site <id>-web), has its Dockerfile, and a web app's `app` is a workspace.
 // Plain Node, no dependencies: node k8s/scripts/images-check.mjs (repo root).
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -25,15 +26,19 @@ function yamlFiles(dir) {
   });
 }
 
+const runsIn = (image, overlay) => (image.environments ?? ['prod', 'staging']).includes(overlay);
 for (const overlay of ['prod', 'staging']) {
   const listed = overlayImages(overlay);
-  for (const name of names) if (!listed.includes(name)) problems.push(`overlays/${overlay}: images: has no entry for ${name}`);
-  for (const name of listed) if (!names.includes(name)) problems.push(`overlays/${overlay}: images: lists ${name}, which k8s/images.json doesn't have`);
+  const expected = images.filter((image) => runsIn(image, overlay)).map((image) => image.name);
+  for (const name of expected) if (!listed.includes(name)) problems.push(`overlays/${overlay}: images: has no entry for ${name}`);
+  for (const name of listed) if (!expected.includes(name)) problems.push(`overlays/${overlay}: images: lists ${name}, which k8s/images.json doesn't run there`);
 }
 
 const manifests = yamlFiles(join(root, 'k8s')).map((file) => readFileSync(file, 'utf8')).join('\n');
 for (const image of images) {
-  if (!new RegExp(`^\\s*image: ${image.name}\\s*$`, 'm').test(manifests)) problems.push(`${image.name}: no manifest runs it (image: ${image.name})`);
+  // A business site's image (<id>-web) is run by its component k8s/sites/<id> (the shared template).
+  const site = image.name.endsWith('-web') && existsSync(join(root, 'k8s/sites', image.name.slice(0, -'-web'.length), 'app'));
+  if (!site && !new RegExp(`^\\s*image: ${image.name}\\s*$`, 'm').test(manifests)) problems.push(`${image.name}: no manifest runs it (image: ${image.name})`);
   if (!existsSync(join(root, image.dockerfile))) problems.push(`${image.name}: ${image.dockerfile} not found`);
   if (image.app && !existsSync(join(root, image.context, 'apps', image.app, 'package.json'))) problems.push(`${image.name}: app ${image.app} is not a workspace of ${image.context}/apps`);
   try {

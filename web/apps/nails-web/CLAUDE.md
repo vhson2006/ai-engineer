@@ -83,8 +83,7 @@ Specific to this app:
   `opengraph-image.tsx`: a file-based image would override article covers), drawn by
   `src/og-card.tsx` (wordmark, hero headline, four gallery looks; Geist and the images traced in
   `next.config.ts`).
-- Not deployed yet: no Dockerfile, k8s manifests or Gateway route (the `nails-web` Keycloak client is
-  in the dev realm only).
+- Deployment: `k8s/sites/nails` (ADR 0047: the shared template; image from `web/Dockerfile`), run by local staging (`https://nails.staging.localtest.me`); not in prod yet.
 
 `npm run dev` (http://localhost:3200), `npm test`, `npm run typecheck`, `npm run lint`:
 from this folder or from `web/` (`npm run dev:nails`).

@@ -396,3 +396,15 @@ model ArticleDraftJob {
   @@index([articleId], map: "ix_article_draft_jobs_article_id")
   @@map("article_draft_jobs")
 }
+
+/// The content snapshot versions imported into this database (ADR 0044): the Job content-import
+/// (seed-content.ts --deploy) imports a site's snapshot once per version, then never again.
+model ContentImport {
+  siteId    String   @map("site_id") @db.VarChar(50)
+  version   Int
+  articles  Int
+  appliedAt DateTime @default(now()) @map("applied_at") @db.Timestamptz(6)
+
+  @@id([siteId, version], map: "pk_content_imports")
+  @@map("content_imports")
+}

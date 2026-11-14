@@ -12,7 +12,7 @@
  * start:dev (dev stack + k8s:forward). Rewrites `apps/content-service/seed/content/<siteId>/`.
  */
 import '../src/env';
-import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -117,6 +117,9 @@ async function main() {
       if (missing.length)
         throw new Error(`${siteId}: articles use missing images ${missing.join(', ')}`);
 
+      const version = existsSync(contentFile(siteId))
+        ? (JSON.parse(readFileSync(contentFile(siteId), 'utf8')) as SiteSnapshot).version
+        : 1;
       rmSync(join(SNAPSHOT_DIR, siteId), { recursive: true, force: true });
       let bytes = 0;
       for (const m of media) {
@@ -134,6 +137,9 @@ async function main() {
       }
 
       const snapshot: SiteSnapshot = {
+        // The version is the snapshot's, kept across exports: raise it by hand to have the deploys
+        // import this site again (ADR 0044).
+        version,
         site: {
           id: site.id,
           name: site.name,

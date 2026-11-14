@@ -11,7 +11,7 @@
       "credentials": [
         {
           "type": "password",
-          "value": "password",
+          "value": "Dev-Staging-2026!",
           "temporary": false
         }
       ],
@@ -29,7 +29,7 @@
       "credentials": [
         {
           "type": "password",
-          "value": "password",
+          "value": "Dev-Staging-2026!",
           "temporary": false
         }
       ],
@@ -48,7 +48,7 @@
       "credentials": [
         {
           "type": "password",
-          "value": "password",
+          "value": "Dev-Staging-2026!",
           "temporary": false
         }
       ],
@@ -58,16 +58,16 @@
       ]
     },
     {
-      "username": "dana",
-      "email": "dana@example.com",
-      "firstName": "Dana",
+      "username": "nails-admin",
+      "email": "nails-admin@example.com",
+      "firstName": "Nails",
       "lastName": "Site admin",
       "enabled": true,
       "emailVerified": true,
       "credentials": [
         {
           "type": "password",
-          "value": "password",
+          "value": "Dev-Staging-2026!",
           "temporary": false
         }
       ],
@@ -77,22 +77,155 @@
       ]
     },
     {
-      "username": "erin",
-      "email": "erin@example.com",
-      "firstName": "Erin",
+      "username": "wine-admin",
+      "email": "wine-admin@example.com",
+      "firstName": "Wine",
       "lastName": "Site admin",
       "enabled": true,
       "emailVerified": true,
       "credentials": [
         {
           "type": "password",
-          "value": "password",
+          "value": "Dev-Staging-2026!",
           "temporary": false
         }
       ],
       "groups": [
         "/site-admins",
         "/sites/wine"
+      ]
+    },
+    {
+      "username": "laundry-admin",
+      "email": "laundry-admin@example.com",
+      "firstName": "Laundry",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/laundry"
+      ]
+    },
+    {
+      "username": "sushi-admin",
+      "email": "sushi-admin@example.com",
+      "firstName": "Sushi",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/sushi"
+      ]
+    },
+    {
+      "username": "travel-admin",
+      "email": "travel-admin@example.com",
+      "firstName": "Travel",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/travel"
+      ]
+    },
+    {
+      "username": "flowers-admin",
+      "email": "flowers-admin@example.com",
+      "firstName": "Flowers",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/flowers"
+      ]
+    },
+    {
+      "username": "autoparts-admin",
+      "email": "autoparts-admin@example.com",
+      "firstName": "Autoparts",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/autoparts"
+      ]
+    },
+    {
+      "username": "hotel-admin",
+      "email": "hotel-admin@example.com",
+      "firstName": "Hotel",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/hotel"
+      ]
+    },
+    {
+      "username": "spa-admin",
+      "email": "spa-admin@example.com",
+      "firstName": "Spa",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Dev-Staging-2026!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/spa"
       ]
     }
   ]

@@ -2,7 +2,8 @@
   KrakenD Flexible Configuration: the API, written once for every environment. PRIVATE: only
   the web apps' servers call it (no Gateway route, no CORS: no browser ever calls it directly).
   Rendered at startup with FC_ENABLE=1 (see base/krakend/deployment.yaml):
-    .env.*                 settings/env.json, provided by each overlay (issuer, JWKS URL, backends, rate limits)
+    .env.*                 settings/env.json, provided by each overlay (JWKS URL, backends, rate limits);
+                           the issuer: env KEYCLOAK_ISSUER (ConfigMap public-urls)
     templates/*.tmpl       reusable blocks: endpoint.tmpl (token check + rate limits of one endpoint)
   Go text/template + Sprig functions. `marshal` writes a value as JSON (quotes and escaping included).
   Check the rendered result:  npm run krakend:check   (prints errors, writes nothing)

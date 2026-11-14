@@ -1,0 +1,24 @@
+# Giặt sấy SFaster (web/apps/laundry-web): the business-site template with this site's names.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+  - name: site
+    options:
+      annotations:
+        config.kubernetes.io/local-config: 'true' # read by the template, never deployed
+    literals:
+      - APP=laundry-web
+      - CLIENT_SECRET_KEY=LAUNDRY_WEB_CLIENT_SECRET
+
+components:
+  - ../../_template
+
+# Read by the template; then dropped here, so that several sites can sit in one environment.
+patches:
+  - patch: |-
+      $patch: delete
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: site

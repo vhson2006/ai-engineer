@@ -1,0 +1,61 @@
+{
+  "realm": "nest-microservice",
+  "clients": [
+    {
+      "clientId": "laundry-web",
+      "name": "laundry-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:LAUNDRY_WEB_CLIENT_SECRET)",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-laundry-web",
+      "enabled": true,
+      "serviceAccountClientId": "laundry-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/laundry"
+      ]
+    }
+  ]
+}

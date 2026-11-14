@@ -1,0 +1,9 @@
+# Every business site calls https://auth.staging.localtest.me (its client-credentials token), whose
+# certificate comes from the local CA: mount ConfigMap "local-ca" (NODE_EXTRA_CA_CERTS points at it,
+# ConfigMap business-sites-env). Selected by label: a new site needs nothing here.
+- op: add
+  path: /spec/template/spec/volumes/-
+  value: { name: local-ca, configMap: { name: local-ca } }
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/-
+  value: { name: local-ca, mountPath: /etc/local-ca, readOnly: true }

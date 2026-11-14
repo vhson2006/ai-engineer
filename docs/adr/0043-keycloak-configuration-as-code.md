@@ -30,7 +30,7 @@ an environment quietly different from git.
   `staging:up` delete the previous Job and apply.
 - **The same files in every environment** (revised 2026-11-14: the realm was first one copy per
   environment, and the copies had drifted). What differs is a value, referenced as `$(env:NAME)`
-  and given by the environment: ConfigMap `keycloak-config-env` (`WEB_URL`, `ADMIN_URL`,
+  and given by the environment: ConfigMap `public-urls` (the overlay's `urls.env`: `WEB_URL`, `ADMIN_URL`,
   `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (`WEB_CLIENT_SECRET`,
   `ADMIN_WEB_CLIENT_SECRET`, the sites' `<SITE>_WEB_CLIENT_SECRET`; prod: External Secrets, from the
   SAME secret-manager entries the web apps read, so no client secret is copied by hand). A missing
@@ -40,8 +40,8 @@ an environment quietly different from git.
   - `realm.json` (`k8s/base/keycloak/`): realm `nest-microservice`, its roles, clients, groups and the
     admin-site flow `browser-admin-otp` bound to `admin-web` (was `keycloak-admin-otp.sh`). **No
     people**: an applied user gets the file's password back.
-  - `sites.json` (component `keycloak-sites`, in the environments where the business sites run:
-    dev): each site's client `<id>-web` and its service account in `/sites/<id>` (ADR 0032).
+  - `site-<id>.json` (`k8s/sites/<id>/keycloak`, in the environments that list the site; dev lists
+    all nine, ADR 0047): the site's client `<id>-web` and its service account in `/sites/<id>` (ADR 0032).
   - `users.json`, `otp.json`, `dev-cli.json` (component `keycloak-local`: dev, staging): the test
     users (applied when the file changes, then their passwords are the file's again), alice's
     one-time code (applied once; afterwards Keycloak answers 409, expected and logged), the
@@ -60,11 +60,14 @@ an environment quietly different from git.
 ## Consequences
 
 - A change to Keycloak's configuration is a change to a file in git, applied by the next deploy.
-  A new site = its group in `realm.json` and its client and service account in `sites.json`, once.
+  A new site = its group in `realm.json` and its client and service account in `k8s/sites/<id>/keycloak`.
 - Only realms master and nest-microservice are managed; resources created by hand in the console
   are left alone unless the tool created them (its remote state), but a field of a managed object
   not in the file is reset (e.g. a client's flow override made by hand): change the file instead.
 - Editing `users.json` resets the test users' passwords (dev/staging only).
+- A file that declares a user without `groups` removes that user's groups (found on a fresh staging:
+  `otp.json` stripped alice of `/admins`). So `otp.json` runs before `users.json`, whose cache key
+  carries `otp.json`'s checksum: the groups are applied again whenever the code is.
 - One more image (Docker Hub, `adorsys/keycloak-config-cli`) and one powerful credential in prod
   (the master client has realm role `admin`): keep its secret in the secret manager only.
 

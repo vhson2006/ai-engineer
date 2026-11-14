@@ -31,6 +31,14 @@ the nine sites).
   `.next` and env files out of the context.
 - The repository variable `PROD_DOMAIN` (was `PROD_SITE_URL`) gives the domain the web images are
   built for.
+- **Which images to build is decided in one place, `k8s/scripts/images-plan.mjs`** (added
+  2026-11-14): `images.yml` asks it for the images changed since the commit prod runs, and **a pull
+  request builds the images it touches, without pushing** (job `images` of `ci.yml`): a broken
+  Dockerfile or build fails before the merge, not after it (when prod would silently stay on the
+  old tags). `environments` in the list says where an image runs (prod, staging).
+- **Staging and prod keep the same settings**: `k8s/scripts/env-parity.mjs` (CI) refuses a key one
+  of them has and the other doesn't, unless it is listed there with its reason; an exception that
+  is no longer needed is refused too.
 
 ## Consequences
 

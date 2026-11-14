@@ -1,0 +1,35 @@
+# With HTTPS (staging, prod). List it LAST among the overlay's components: it applies to what the
+# others bring (the listeners component's https listener, the business sites' routes).
+#  - every public route (www, admin, auth, label role=business-site) attaches to the https listener
+#    only, with the HSTS header, its value from urls.env (HSTS: ramped up after go-live, see there);
+#  - host names of the https listener and of the http -> https redirect route, from urls.env.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+patches:
+  - path: routes-https.yaml
+    target:
+      kind: HTTPRoute
+      name: ^(www|admin|auth)$
+  - path: routes-https.yaml
+    target:
+      kind: HTTPRoute
+      labelSelector: role=business-site
+
+replacements:
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WILDCARD_HOST }
+    targets:
+      - select: { kind: Gateway, name: edge }
+        fieldPaths:
+          - spec.listeners.[name=https].hostname
+      - select: { kind: HTTPRoute, name: https-redirect }
+        fieldPaths:
+          - spec.hostnames.0
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.HSTS }
+    targets:
+      - select: { kind: HTTPRoute, name: ^(www|admin|auth)$ }
+        fieldPaths:
+          - spec.rules.0.filters.[type=ResponseHeaderModifier].responseHeaderModifier.set.[name=Strict-Transport-Security].value
+      - select: { kind: HTTPRoute, labelSelector: role=business-site }
+        fieldPaths:
+          - spec.rules.0.filters.[type=ResponseHeaderModifier].responseHeaderModifier.set.[name=Strict-Transport-Security].value

@@ -35,7 +35,7 @@ Then get a token from Keycloak and call the API **through KrakenD** (`localhost:
 
 ```bash
 TOKEN=$(curl -s http://auth.localtest.me:8000/realms/nest-microservice/protocol/openid-connect/token \
-  -d grant_type=password -d client_id=dev-cli -d username=bob -d password=password | jq -r .access_token)
+  -d grant_type=password -d client_id=dev-cli -d username=bob --data-urlencode 'password=Dev-Staging-2026!' | jq -r .access_token)
 
 curl -i -X POST http://localhost:8080/api/deployments \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
@@ -65,7 +65,7 @@ curl -i -X PATCH http://localhost:8080/api/deployments/<id>   -H "Authorization:
 # → 200 with the deployment
 ```
 
-Test users (password `password`): `carol` can read, `bob` can also create and change his own
+Test users (password `Dev-Staging-2026!`): `carol` can read, `bob` can also create and change his own
 deployments, `alice` (admin) can change anyone's. No token → 401, missing role → 403.
 
 | URL | What |

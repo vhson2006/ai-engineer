@@ -6,8 +6,8 @@
 #
 # KrakenD (the API) is NOT published: only the web apps' servers call it, inside the cluster.
 #
-# Placeholder host names (example.com) and a plain HTTP listener: each overlay sets its own
-# domain and listeners (dev: *.localtest.me on :8000; prod: :443 with a TLS certificate).
+# Placeholder host names (written in from overlays/<env>/urls.env by components/public-urls) and a
+# plain HTTP listener: each overlay sets its listeners (overlays/<env>/listeners: dev :8000; prod :443, TLS).
 #
 # NGF turns this Gateway into an nginx Deployment + a LoadBalancer Service named "edge-nginx".
 #
@@ -23,7 +23,7 @@ spec:
     - name: http
       protocol: HTTP
       port: 80
-      hostname: '*.example.com'
+      hostname: '*.set-by-public-urls.invalid' # components/public-urls: WILDCARD_HOST
       allowedRoutes:
         namespaces:
           from: Same
