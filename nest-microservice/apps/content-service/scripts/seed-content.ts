@@ -19,7 +19,7 @@
  * site's missing articles again. From nest-microservice/ with the .env of start:dev, or in the
  * image `deployment-migrate` (dist/apps/content-import, the env of content-service). Bodies go
  * through the service's sanitizer with this environment's media prefix; publishing writes the same
- * outbox events as the service. Acts as a system user.
+ * outbox events as the service (published by content-service's relay). Acts as a system user.
  */
 import '../src/env';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -32,7 +32,7 @@ import {
   ARTICLE_EVENTS,
   CONTENT_ROLES,
   OBJECT_STORAGE,
-  OutboxRelay,
+  StorageModule,
   type AuthUser,
   type MediaContentType,
   type ObjectStorage,
@@ -40,7 +40,6 @@ import {
 import { unpublishedEvent, liveEvent } from '../src/articles/article-events';
 import { toArticleHtml } from '../src/articles/article-html';
 import { WITH_TRANSLATIONS } from '../src/articles/articles.mapper';
-import { ArticlesModule } from '../src/articles/articles.module';
 import { CategoriesService } from '../src/categories/categories.service';
 import { CONTENT_ENV_SCHEMA } from '../src/content-service.module';
 import { MediaUrls } from '../src/media/media-urls';
@@ -65,14 +64,18 @@ const SYSTEM_USER: AuthUser = {
 };
 const IMMUTABLE = 'public, max-age=31536000, immutable';
 
+/**
+ * Only what the import uses: no NATS, scheduler or cleanup jobs. The events go through the outbox
+ * table; content-service's relay (always running, polls every second) publishes them.
+ */
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, validationSchema: CONTENT_ENV_SCHEMA }),
     PrismaModule,
     SitesModule,
-    ArticlesModule,
+    StorageModule,
   ],
-  providers: [CategoriesService],
+  providers: [CategoriesService, MediaUrls],
 })
 class SeedModule {}
 
@@ -99,7 +102,6 @@ async function main() {
     const prisma = app.get(PrismaService);
     const storage = app.get<ObjectStorage>(OBJECT_STORAGE);
     const urls = app.get(MediaUrls);
-    const outbox = app.get(OutboxRelay);
     if (deploy) await migrated(prisma, logger);
 
     for (const snap of snapshots) {
@@ -188,7 +190,6 @@ async function main() {
         const result = await restore(a);
         counts[result]++;
       }
-      outbox.poke();
       await prisma.contentImport.upsert({
         where: { siteId_version: { siteId, version: snap.version } },
         create: { siteId, version: snap.version, articles: snap.articles.length },
@@ -280,7 +281,7 @@ async function main() {
       }
     }
   } finally {
-    await app.close(); // stops the outbox relay after it has published the events
+    await app.close();
   }
 }
 

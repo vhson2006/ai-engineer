@@ -6,6 +6,8 @@
 # bucket and CDN, so image URLs and object ACLs are this environment's).
 # Same image as the migrations (Dockerfile --target migrate, which carries the snapshot); the
 # script waits for the migrations itself (table content_imports), like nats-setup waits for NATS.
+# It needs no NATS: the published articles' events go into the outbox table, and content-service's
+# relay publishes them.
 #
 # prod (Argo CD): a PostSync hook, after the migrations and the apps, recreated on every sync.
 # staging: `npm run staging:up` deletes the previous Job, applies, and waits for it.
@@ -24,7 +26,7 @@ spec:
   template:
     metadata:
       labels:
-        app: content-import # allowed to reach nats :4222 (components/network-policies)
+        app: content-import # allowed to reach postgres :5432 in staging (networkpolicies-local-data)
     spec:
       restartPolicy: OnFailure
       enableServiceLinks: false
