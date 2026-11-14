@@ -1,7 +1,7 @@
 # 0050. Customers' accounts: e-mail and password, Google, passkeys; never linked at sign-in; Keycloak sends the e-mails
 
-- **Status:** Accepted, partly implemented: the realms' settings, e-mail and Google (off until an
-  environment has a Google client). Not yet: the theme, the deletion of unverified accounts.
+- **Status:** Accepted, implemented (dev; Google off until an environment has a Google client;
+  prod needs the secret manager entry `nest-microservice-prod-keycloak-customer-auth`)
 - **Date:** 2026-11-14
 - **Related:** 0025 (a realm per site), 0049 (customers sign in: this adds registration, recovery,
   Google and passkeys), 0043 (Keycloak as code), 0010 (tokens never in the browser), 0004
@@ -44,7 +44,8 @@ real Chrome before deciding:
 - **Only Keycloak sends e-mail:** each realm's `smtpServer` from `$(env:SMTP_*)`, its own display
   name. Gmail with an app password for now; another SMTP relay (Resend) = new values in the
   environment's Secret, nothing else. Dev uses Mailpit. No mail code in the API.
-- **Unverified accounts are deleted after 24 hours** by a job (TypeScript, Keycloak Admin API).
+- **Unverified accounts are deleted after 24 hours** by an hourly CronJob (plain Node, Keycloak
+  Admin API, a client per realm allowed to manage users).
 - **A login and e-mail theme** (FreeMarker templates, no Java, mounted from a ConfigMap): the
   verification mail and its confirmation page say "didn't sign up at <site>? don't click";
   "sign out other devices" is checked by default; the reset mail announces the activation mail

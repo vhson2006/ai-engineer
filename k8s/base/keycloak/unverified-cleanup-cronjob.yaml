@@ -1,0 +1,72 @@
+# Every hour: delete the customers' accounts never activated within 24 hours (ADR 0050), in every
+# realm site-<id> of this environment (keycloak/unverified-cleanup.mjs). Its client
+# "unverified-cleanup" in each realm (k8s/scripts/sites.mjs) signs in with
+# UNVERIFIED_CLEANUP_CLIENT_SECRET of Secret keycloak-customer-auth.
+# Follow a run: kubectl -n <ns> logs job/<the latest unverified-cleanup-…>
+# Try it now:   kubectl -n <ns> create job --from=cronjob/unverified-cleanup unverified-cleanup-now
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: unverified-cleanup
+spec:
+  schedule: '17 * * * *'
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 600
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels:
+            app: unverified-cleanup # allowed to reach keycloak :8080 (components/network-policies)
+        spec:
+          restartPolicy: Never
+          enableServiceLinks: false
+          automountServiceAccountToken: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000 # the image's "node" user
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: unverified-cleanup
+              image: node:24.22.1-alpine # web/Dockerfile's
+              command: ['node', '/app/unverified-cleanup.mjs']
+              env:
+                - name: KEYCLOAK_URL
+                  value: http://keycloak:8080
+                - name: MAX_AGE_HOURS
+                  value: '24'
+                - name: UNVERIFIED_CLEANUP_CLIENT_SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      name: keycloak-customer-auth
+                      key: UNVERIFIED_CLEANUP_CLIENT_SECRET
+              volumeMounts:
+                - name: config # the realms: its customers-<id>.json files
+                  mountPath: /config
+                  readOnly: true
+                - name: app
+                  mountPath: /app
+                  readOnly: true
+              resources:
+                requests:
+                  cpu: 10m
+                  memory: 64Mi
+                limits:
+                  memory: 128Mi
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ['ALL']
+          volumes:
+            - name: config
+              configMap:
+                name: keycloak-config
+            - name: app
+              configMap:
+                name: keycloak-unverified-cleanup

@@ -9,6 +9,7 @@
 #   krakend ─▶ deployment-service :3001, content-service :3003
 #   krakend, deployment-service, content-service ─▶ keycloak :8080   (JWKS)
 #   keycloak-config (Job) ─▶ keycloak :8080   (applies the realms, ADR 0043)
+#   unverified-cleanup (CronJob) ─▶ keycloak :8080   (deletes accounts never activated, ADR 0050)
 #   keycloak ◀─▶ keycloak (all ports)         (cluster cache between replicas)
 #   deployment-service, notification-service, content-service, ai-service, render-worker, nats-setup (Job) ─▶ nats :4222
 #
@@ -181,6 +182,9 @@ spec:
         - podSelector:
             matchLabels:
               app: keycloak-config # Job: applies the realms (ADR 0043)
+        - podSelector:
+            matchLabels:
+              app: unverified-cleanup # CronJob: deletes accounts never activated (ADR 0050)
       ports:
         - port: 8080
           protocol: TCP

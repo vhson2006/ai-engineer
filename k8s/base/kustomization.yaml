@@ -24,6 +24,7 @@ resources:
   - keycloak/deployment.yaml
   - keycloak/service.yaml
   - keycloak/config-job.yaml # keycloak-config-cli: applies ConfigMap keycloak-config (ADR 0043)
+  - keycloak/unverified-cleanup-cronjob.yaml # deletes customers' accounts never activated (ADR 0050)
   - gateway/gateway.yaml
   - gateway/routes.yaml
 
@@ -39,6 +40,9 @@ configMapGenerator:
   - name: keycloak-config-sync # the Job's script
     files:
       - keycloak/config-sync.sh
+  - name: keycloak-unverified-cleanup # the CronJob's script (ADR 0050)
+    files:
+      - keycloak/unverified-cleanup.mjs
   # Theme "customers" (ADR 0050), mounted by keycloak/deployment.yaml (keys = its paths, "/" → "-").
   - name: keycloak-theme-customers
     files:

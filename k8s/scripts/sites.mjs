@@ -277,6 +277,27 @@ patches:
           attributes: { 'pkce.code.challenge.method': 'S256', 'post.logout.redirect.uris': `$(env:${ID}_URL)/*` },
           fullScopeAllowed: false,
         },
+        {
+          clientId: 'unverified-cleanup',
+          name: 'CronJob unverified-cleanup: deletes the accounts never activated within 24 h (ADR 0050)',
+          enabled: true,
+          publicClient: false,
+          clientAuthenticatorType: 'client-secret',
+          secret: '$(env:UNVERIFIED_CLEANUP_CLIENT_SECRET)',
+          standardFlowEnabled: false,
+          implicitFlowEnabled: false,
+          directAccessGrantsEnabled: false,
+          serviceAccountsEnabled: true,
+          fullScopeAllowed: true, // its token carries the realm-management roles below
+        },
+      ],
+      users: [
+        {
+          username: 'service-account-unverified-cleanup',
+          enabled: true,
+          serviceAccountClientId: 'unverified-cleanup',
+          clientRoles: { 'realm-management': ['query-users', 'view-users', 'manage-users'] },
+        },
       ],
     }),
     [`components/keycloak-local/test-customers-${id}.json`]: json({
@@ -330,17 +351,19 @@ function environmentProblems() {
     if (!existsSync(example)) problems.push(`web/apps/${app}: the app (on @web/site-kit)`);
     else if (envFile(example).APP_URL !== devUrl) problems.push(`web/apps/${app}/.env.example: APP_URL=${devUrl}`);
   }
-  // The customers' realms read SMTP_* and GOOGLE_* (ADR 0050): every environment has them; the
-  // local ones send to Mailpit.
-  const customerAuth = {
-    'overlays/dev/keycloak/secret.yaml': 'name: keycloak-customer-auth\n',
-    'overlays/staging/secrets.yaml': 'name: keycloak-customer-auth\n',
-    'overlays/prod/secrets/external-secrets.yaml': 'name: keycloak-customer-auth\n',
-    'overlays/dev/kustomization.yaml': '- ../../components/mailpit',
-    'overlays/staging/kustomization.yaml': '- ../../components/mailpit',
-  };
-  for (const [file, text] of Object.entries(customerAuth)) {
-    if (sites.length && !has(file, text)) problems.push(`${file}: ${text.trim()} (the customers' e-mail and Google, ADR 0050)`);
+  // The customers' realms read Secret keycloak-customer-auth (SMTP_*, GOOGLE_*, the cleanup
+  // client's secret; ADR 0050): every environment has it; the local ones send to Mailpit.
+  const customerAuth = [
+    ['overlays/dev/keycloak/secret.yaml', 'name: keycloak-customer-auth\n'],
+    ['overlays/dev/keycloak/secret.yaml', 'UNVERIFIED_CLEANUP_CLIENT_SECRET:'],
+    ['overlays/staging/secrets.yaml', 'name: keycloak-customer-auth\n'],
+    ['overlays/staging/secrets.yaml', 'UNVERIFIED_CLEANUP_CLIENT_SECRET:'],
+    ['overlays/prod/secrets/external-secrets.yaml', 'name: keycloak-customer-auth\n'],
+    ['overlays/dev/kustomization.yaml', '- ../../components/mailpit'],
+    ['overlays/staging/kustomization.yaml', '- ../../components/mailpit'],
+  ];
+  for (const [file, text] of customerAuth) {
+    if (sites.length && !has(file, text)) problems.push(`${file}: ${text.trim()} (the customers' accounts, ADR 0050)`);
   }
   const listed = new Set(sites.map((site) => site.id));
   for (const dir of readdirSync(k8s('sites'), { withFileTypes: true })) {

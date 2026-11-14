@@ -143,6 +143,33 @@
         "post.logout.redirect.uris": "$(env:TRAVEL_URL)/*"
       },
       "fullScopeAllowed": false
+    },
+    {
+      "clientId": "unverified-cleanup",
+      "name": "CronJob unverified-cleanup: deletes the accounts never activated within 24 h (ADR 0050)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:UNVERIFIED_CLEANUP_CLIENT_SECRET)",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-unverified-cleanup",
+      "enabled": true,
+      "serviceAccountClientId": "unverified-cleanup",
+      "clientRoles": {
+        "realm-management": [
+          "query-users",
+          "view-users",
+          "manage-users"
+        ]
+      }
     }
   ]
 }

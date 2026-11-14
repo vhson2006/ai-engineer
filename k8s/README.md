@@ -188,6 +188,11 @@ svc/mailpit 8026:8025`. Google is off there until you put your own client in the
 `k8s/.keycloak-local.env` ([`keycloak-local.env.example`](keycloak-local.env.example)): `k8s:up` /
 `staging:up` turn it into Secret `keycloak-local`, which the Job reads last (it can also send real
 mail through Gmail). Prod: the secret manager entry `nest-microservice-prod-keycloak-customer-auth`.
+Their pages and e-mails use the theme `customers` ([`base/keycloak/theme-customers`](base/keycloak/theme-customers/):
+warnings in the activation e-mail and page, "sign out other devices" checked; a ConfigMap mounted
+into Keycloak). The CronJob **`unverified-cleanup`** deletes every hour the accounts never activated
+within 24 hours, in each realm of the environment (its client `unverified-cleanup`; run it now:
+`kubectl -n nest-microservice create job --from=cronjob/unverified-cleanup unverified-cleanup-now`).
 Change Keycloak by changing these files, not the console: a field of a managed object that the file
 doesn't set is reset at the next deploy.
 Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
