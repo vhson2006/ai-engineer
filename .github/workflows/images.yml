@@ -7,9 +7,10 @@
 # not with the previous push: a failed run is caught up by the next one, and a placeholder tag
 # builds everything. Run it by hand (Actions → Images → Run workflow) to rebuild everything.
 #
-# portfolio-web bakes its public origin in at build time (SEO, ADR 0021): set the repository
-# variable PROD_SITE_URL (Settings → Secrets and variables → Actions → Variables). Until then it
-# uses https://www.example.com, like the rest of the prod overlay.
+# Which images exist, how each is built and what it watches: k8s/images.json (the one list). The
+# web apps bake their public origin in at build time (SEO, ADR 0021): set the repository variable
+# PROD_DOMAIN (Settings → Secrets and variables → Actions → Variables), e.g. example.com for
+# https://www.example.com. Until then they use example.com, like the rest of the prod overlay.
 name: Images
 
 on:
@@ -52,7 +53,7 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           OWNER_REPO: ${{ github.repository }}
-          SITE_URL: ${{ vars.PROD_SITE_URL || 'https://www.example.com' }}
+          DOMAIN: ${{ vars.PROD_DOMAIN || 'example.com' }}
         run: |
           sha=$(git rev-parse HEAD)
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
@@ -71,44 +72,27 @@ jobs:
               echo false
             fi
           }
-          # The API images are built together (one commit): any of them changed, or still on a
-          # placeholder tag (a new image), rebuilds all of them.
-          api=false
-          for image in deployment-service notification-service content-service ai-service deployment-migrate; do
-            if [ "$(changed "$image" '^nest-microservice/')" = true ]; then api=true; fi
-          done
-          portfolio=$(changed portfolio-web '^web/(packages/|apps/portfolio-web/|package(-lock)?\.json|tsconfig)')
-          admin=$(changed admin-web '^web/(packages/|apps/admin-web/|package(-lock)?\.json|tsconfig)')
-          worker=$(changed render-worker '^web/(packages/video/|apps/render-worker/|package(-lock)?\.json|tsconfig)')
-          echo "api=$api portfolio-web=$portfolio admin-web=$admin render-worker=$worker"
-
-          if [ "$SITE_URL" = "https://www.example.com" ] && [ "$portfolio" = true ]; then
-            echo "::warning::Repository variable PROD_SITE_URL is not set: portfolio-web is built for https://www.example.com"
+          # The images and what each watches: k8s/images.json (the one list). An image whose
+          # files changed is built; so is every image of its group (the API images share one
+          # commit: deployment-migrate must match deployment-service, ADR 0007/migration Job).
+          changed_names=()
+          while IFS=$'\t' read -r name watch; do
+            if [ "$(changed "$name" "$watch")" = true ]; then changed_names+=("$name"); fi
+          done < <(jq -r '.images[] | [.name, .watch] | @tsv' k8s/images.json)
+          changed_json=$(printf '%s\n' "${changed_names[@]}" | jq -R 'select(. != "")' | jq -sc .)
+          echo "changed: $changed_json"
+          if [ "$DOMAIN" = example.com ] && jq -e --argjson c "$changed_json" '[.images[] | select(.siteUrl and (.name as $n | $c | index($n)))] | length > 0' k8s/images.json >/dev/null; then
+            echo "::warning::Repository variable PROD_DOMAIN is not set: the web apps are built for example.com"
           fi
-
-          # One entry per image. The API images share one commit (deployment-migrate must
-          # match deployment-service: ADR 0007/migration Job), so they are built together.
-          matrix=$(jq -cn \
-            --arg r "$registry" --arg site "$SITE_URL" \
-            --argjson api "$api" --argjson portfolio "$portfolio" --argjson admin "$admin" --argjson worker "$worker" '
-            [
-              ($api | if . then
-                {name:"deployment-service",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"deployment-service",   args:""},
-                {name:"notification-service", context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"notification-service", args:""},
-                {name:"content-service",      context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"content-service",      args:""},
-                {name:"ai-service",           context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"ai-service",           args:""},
-                {name:"deployment-migrate",   context:"nest-microservice", file:"nest-microservice/Dockerfile", target:"migrate",              args:""}
-              else empty end),
-              ($portfolio | if . then
-                {name:"portfolio-web", context:"web", file:"web/apps/portfolio-web/Dockerfile", target:"", args:("SITE_URL=" + $site)}
-              else empty end),
-              ($admin | if . then
-                {name:"admin-web", context:"web", file:"web/apps/admin-web/Dockerfile", target:"", args:""}
-              else empty end),
-              ($worker | if . then
-                {name:"render-worker", context:"web", file:"web/apps/render-worker/Dockerfile", target:"", args:""}
-              else empty end)
-            ] | map(. + {image: ($r + "/" + .name)})')
+          matrix=$(jq -c --arg r "$registry" --arg domain "$DOMAIN" --argjson c "$changed_json" '
+            .images as $all
+            | ([$all[] | select(.name as $n | $c | index($n)) | .group // empty] | unique) as $groups
+            | [$all[]
+                | select((.name as $n | $c | index($n)) or ((.group // "") as $g | $g != "" and ($groups | index($g))))
+                | {name, context, file: .dockerfile, target: (.target // ""),
+                   args: ([(if .app then "APP=" + .app else empty end),
+                           (if .siteUrl then "SITE_URL=" + (.siteUrl | split("{domain}") | join($domain)) else empty end)] | join("\n")),
+                   image: ($r + "/" + .name)}]' k8s/images.json)
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "any=$([ "$matrix" = "[]" ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
           echo "$matrix" | jq .

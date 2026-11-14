@@ -1,5 +1,5 @@
 /**
- * Client roles of `deployments-api` in Keycloak (k8s/overlays/<env>/keycloak/realm.json).
+ * Client roles of `deployments-api` in Keycloak (k8s/base/keycloak/realm.json).
  * KrakenD checks them per endpoint (k8s/base/krakend/config/krakend.tmpl); the service checks them again
  * with @Roles() and applies the ownership rule:
  *   READ  list and read deployments

@@ -41,10 +41,12 @@ paths:
 
 ## Bootstrap state outside git (redo after a fresh cluster or a recreated namespace)
 - Keycloak's configuration is NOT bootstrap state any more (ADR 0043): realms `nest-microservice` and
-  `master` come from `overlays/<env>/keycloak/*.json`, applied by the Job `keycloak-config` on every
-  k8s:up / staging:up / Argo CD sync. Change the files, never the console or a kcadm script; no
-  people in `realm.json`. prod still needs, once: the client secrets of `web`/`admin-web` copied to
-  the secret manager, named admins in `master`, then the bootstrap admin removed.
+  `master` come from the same files in every environment (`base/keycloak/`, components
+  `keycloak-local` and `keycloak-sites`), with each environment's values (`keycloak-config-env`,
+  Secret `keycloak-clients`), applied by the Job `keycloak-config` on every k8s:up / staging:up /
+  Argo CD sync. Change the files, never the console or a kcadm script; never one environment's copy
+  of a realm; no people in `realm.json`. prod still needs, once: named admins in `master`, then the
+  bootstrap admin removed.
 - `npm run k8s:down` deletes the namespace and its PVCs (all data).
 
 ## Changes

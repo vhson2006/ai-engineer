@@ -1,5 +1,5 @@
 /**
- * Client roles of `content-api` in Keycloak (k8s/overlays/<env>/keycloak/realm.json).
+ * Client roles of `content-api` in Keycloak (k8s/base/keycloak/realm.json).
  * KrakenD checks them per endpoint (k8s/base/krakend/config/krakend.tmpl); content-service checks
  * them again with @Roles() and then applies the SITE rule (ADR 0025, see SITE_GROUP_PREFIX):
  *   READ     list and read the content of your sites (drafts included)

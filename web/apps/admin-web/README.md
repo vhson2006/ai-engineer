@@ -50,7 +50,7 @@ Staging: https://admin.staging.localtest.me (same accounts).
 |---|---|
 | `npm run dev` | Dev server on :3100 (the dev Gateway routes `admin.localtest.me:8000` there) |
 | `npm test` / `npm run typecheck` / `npm run lint` | Vitest (dictionaries) / `next typegen` + `tsc` / ESLint |
-| `docker build -f web/apps/admin-web/Dockerfile -t admin-web web` (repo root) | Production image |
+| `docker build -f web/Dockerfile --build-arg APP=admin-web --build-arg SITE_URL=https://admin.<domain> -t admin-web web` (repo root) | Production image |
 
 ## Structure
 

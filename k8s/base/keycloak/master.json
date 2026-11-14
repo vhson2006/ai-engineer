@@ -1,7 +1,7 @@
 {
   "realm": "master",
   "attributes": {
-    "frontendUrl": "http://localhost:8181"
+    "frontendUrl": "$(env:KEYCLOAK_CONSOLE_URL)"
   },
   "bruteForceProtected": true,
   "permanentLockout": false,

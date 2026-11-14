@@ -50,7 +50,9 @@ npm run icons                  # after editing an app's icon.svg
 ```
 
 Packages are TypeScript source (Turbopack compiles them; each `exports` map is the public API;
-Tailwind scans `packages/ui/src` via `@source`). Docker images build with context `web/`: a new
-package's `package.json` goes into every app Dockerfile's `deps` stage.
+Tailwind scans `packages/ui/src` via `@source`). Images build with context `web/`: every Next.js
+app with ONE `Dockerfile` (`--build-arg APP=<app> --build-arg SITE_URL=<public origin>`), which
+picks up every workspace's `package.json` by itself (no list to keep); render-worker has its own.
+Which images exist: `k8s/images.json` (repo root).
 
 If a convention changes, update this file and the matching rule in the same change.

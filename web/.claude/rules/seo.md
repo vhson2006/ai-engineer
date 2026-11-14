@@ -9,7 +9,7 @@ paths:
   - 'apps/*/assets/**'
   - 'apps/*/public/**'
   - 'apps/*/next.config.ts'
-  - 'apps/*/Dockerfile'
+  - 'Dockerfile'
   - 'packages/core/src/i18n/seo.ts'
   - 'scripts/generate-icons.mjs'
 ---
