@@ -1,7 +1,8 @@
 # 0049. Customers sign in on the business sites: a realm per site, the kit's BFF session
 
 - **Status:** Accepted, implemented (dev, staging; prod runs no site yet). The API does not accept
-  customers' tokens yet: nothing a customer does calls it.
+  customers' tokens yet: nothing a customer does calls it. Registration, recovery, Google and
+  passkeys: ADR 0050.
 - **Date:** 2026-11-14
 - **Related:** 0025 (a realm per site for customers: this implements its sign-in part), 0010
   (tokens never in the browser), 0019 (the shared OIDC handlers), 0032 (the sites' service
@@ -20,9 +21,7 @@ handlers of `@web/core` (Authorization Code + PKCE, tokens sealed in Redis, an h
 - **Keycloak**: realm `site-<id>` per site (`k8s/sites/<id>/keycloak/customers-<id>.json`, applied
   by the Job keycloak-config in every environment that runs the site): the site's name and
   languages, the same brute-force detection as the staff realm, sessions 1 day idle / 7 days max,
-  and client `<id>-web` (confidential, PKCE S256, redirect `<ID>_URL/auth/callback`). **No
-  self-registration and no "forgot password"** yet: both need e-mail, and the system sends none.
-  The client has the same id and secret as the site's service account in `nest-microservice`: one
+  and client `<id>-web` (confidential, PKCE S256, redirect `<ID>_URL/auth/callback`). The client has the same id and secret as the site's service account in `nest-microservice`: one
   app, one secret (`<ID>_WEB_CLIENT_SECRET`).
 - **Public paths**: the `auth.*` route publishes `/realms/nest-microservice` and `/realms/site-*`
   (plus `/resources`); `/admin` and `/realms/master` stay private. Customers sign in at

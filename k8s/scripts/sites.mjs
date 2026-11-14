@@ -189,7 +189,6 @@ patches:
       ...shared,
       // Customers stay signed in longer than staff (8 h idle in nest-microservice).
       ssoSessionIdleTimeout: 86400,
-      // No e-mail is sent (no SMTP): no self-registration, no "forgot password" yet.
       registrationAllowed: false,
       resetPasswordAllowed: false,
       rememberMe: false,
