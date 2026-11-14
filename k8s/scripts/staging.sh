@@ -121,7 +121,7 @@ wake_gateway() { # namespace
   fi
 }
 
-scale_dev_stop() {
+stop() {
   require_local_cluster
   if ! kubectl get namespace "$NS" >/dev/null 2>&1; then echo "No staging to stop."; exit 0; fi
   say "Stopping staging (namespace $NS): every pod to 0, its volumes and data KEPT"
@@ -133,7 +133,7 @@ scale_dev_stop() {
   echo "Staging stopped; npm run staging:up resumes it with the same data (npm run staging:down deletes it)."
 }
 
-down() {
+scale_dev_down() {
   if kubectl get ns "$DEV_NS" >/dev/null 2>&1; then
     say "Scaling dev ($DEV_NS) to 0 to free memory (data kept; npm run k8s:up restores it)"
     kubectl -n "$DEV_NS" scale deploy,statefulset --all --replicas=0 >/dev/null
