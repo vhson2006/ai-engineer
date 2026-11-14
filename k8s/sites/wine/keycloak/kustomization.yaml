@@ -11,3 +11,11 @@ configMapGenerator:
     files:
       - site-wine.json
       - customers-wine.json # realm site-wine: its customers (ADR 0049)
+
+# Its customers' sign-in pages are public: /realms/site-wine on the auth.* route (base/gateway).
+patches:
+  - target: { kind: HTTPRoute, name: auth }
+    patch: |-
+      - op: add
+        path: /spec/rules/0/matches/-
+        value: { path: { type: PathPrefix, value: /realms/site-wine } }

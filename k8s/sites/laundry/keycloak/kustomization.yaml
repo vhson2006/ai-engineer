@@ -11,3 +11,11 @@ configMapGenerator:
     files:
       - site-laundry.json
       - customers-laundry.json # realm site-laundry: its customers (ADR 0049)
+
+# Its customers' sign-in pages are public: /realms/site-laundry on the auth.* route (base/gateway).
+patches:
+  - target: { kind: HTTPRoute, name: auth }
+    patch: |-
+      - op: add
+        path: /spec/rules/0/matches/-
+        value: { path: { type: PathPrefix, value: /realms/site-laundry } }
