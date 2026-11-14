@@ -1,6 +1,7 @@
-# Envy Nails Spa of Wendell: its Keycloak client nails-web and service account (group /sites/nails, content:read;
-# ADR 0032), applied by the Job keycloak-config. Its secret: NAILS_WEB_CLIENT_SECRET of the overlay's
-# Secret "keycloak-clients". Dev lists only this part (the sites run on the developer's machine).
+# Envy Nails Spa of Wendell: its Keycloak client nails-web and service account (group /sites/nails,
+# content:read; ADR 0032) and realm site-nails for its customers (ADR 0049), applied by the Job
+# keycloak-config. Its secret: NAILS_WEB_CLIENT_SECRET of the overlay's Secret "keycloak-clients".
+# Dev lists only this part (the sites run on the developer's machine).
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
@@ -9,3 +10,4 @@ configMapGenerator:
     behavior: merge
     files:
       - site-nails.json
+      - customers-nails.json # realm site-nails: its customers (ADR 0049)

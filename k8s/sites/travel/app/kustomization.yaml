@@ -10,6 +10,8 @@ configMapGenerator:
     literals:
       - APP=travel-web
       - CLIENT_SECRET_KEY=TRAVEL_WEB_CLIENT_SECRET
+      - REALM=site-travel
+      - 'REDIS_KEY_PREFIX=travel-web:'
 
 components:
   - ../../_template

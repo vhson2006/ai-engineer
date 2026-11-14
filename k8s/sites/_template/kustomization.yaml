@@ -1,9 +1,11 @@
 # What every business site runs (ADRs 0042, 0045): one Deployment, its Service and its public
 # route, built from web/Dockerfile. A Component used by k8s/sites/<id>/app, whose ConfigMap "site"
-# (local, never deployed) names the app (APP = <id>-web) and its client secret's key; the rules below
-# write them in. Everything else is the same for every site:
-#   - ConfigMap "business-sites-env" of the overlay: API_URL, KEYCLOAK_ISSUER, STORAGE_ORIGINS
+# (local, never deployed) names the app (APP = <id>-web), its client secret's key, its customers'
+# realm (REALM = site-<id>) and its Redis key prefix; the rules below write them in. Everything else
+# is the same for every site:
+#   - ConfigMap "business-sites-env" of the overlay: API_URL, API_KEYCLOAK_ISSUER, STORAGE_ORIGINS
 #   - Secret "keycloak-clients" of the overlay: the site's KEYCLOAK_CLIENT_SECRET (ADR 0043)
+#   - Secret "<id>-web" of the overlay: REDIS_URL, SESSION_ENCRYPTION_KEY (customers, ADR 0049)
 #   - label role=business-site: the NetworkPolicies (components/network-policies) and the
 #     environment's patches (e.g. staging's local CA) select every site by it.
 apiVersion: kustomize.config.k8s.io/v1alpha1
@@ -20,6 +22,17 @@ replacements:
       - select: { kind: Deployment, name: site }
         fieldPaths:
           - spec.template.spec.containers.[name=web].env.[name=KEYCLOAK_CLIENT_SECRET].valueFrom.secretKeyRef.key
+  - source: { kind: ConfigMap, name: site, fieldPath: data.REALM }
+    targets:
+      - select: { kind: Deployment, name: site }
+        fieldPaths:
+          - spec.template.spec.containers.[name=web].env.[name=KEYCLOAK_ISSUER].value
+        options: { delimiter: '/realms/', index: 1 }
+  - source: { kind: ConfigMap, name: site, fieldPath: data.REDIS_KEY_PREFIX }
+    targets:
+      - select: { kind: Deployment, name: site }
+        fieldPaths:
+          - spec.template.spec.containers.[name=web].env.[name=REDIS_KEY_PREFIX].value
   - source: { kind: ConfigMap, name: site, fieldPath: data.APP }
     targets:
       # The path that holds the app's name: /app/apps/<app>/.next/cache
@@ -31,6 +44,7 @@ replacements:
         fieldPaths:
           - spec.template.spec.containers.[name=web].image
           - spec.template.spec.containers.[name=web].env.[name=KEYCLOAK_CLIENT_ID].value
+          - spec.template.spec.containers.[name=web].envFrom.1.secretRef.name
           - metadata.labels.app
           - spec.selector.matchLabels.app
           - spec.template.metadata.labels.app

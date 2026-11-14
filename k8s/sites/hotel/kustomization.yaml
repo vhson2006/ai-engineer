@@ -17,6 +17,12 @@ replacements:
       - select: { kind: HTTPRoute, name: hotel-web }
         fieldPaths:
           - spec.hostnames.0
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.AUTH_URL }
+    targets:
+      - select: { kind: Deployment, name: hotel-web }
+        fieldPaths:
+          - spec.template.spec.containers.[name=web].env.[name=KEYCLOAK_ISSUER].value
+        options: { delimiter: '/realms/', index: 0 }
   - source: { kind: ConfigMap, name: public-urls, fieldPath: data.HOTEL_URL }
     targets:
       - select: { kind: Deployment, name: hotel-web }

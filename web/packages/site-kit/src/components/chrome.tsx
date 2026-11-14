@@ -10,6 +10,7 @@ import { fullAddress, mapsHref } from '../business';
 import { href, type Locale } from '../locales';
 import type { BaseMessages } from '../messages';
 import type { Website } from '../website';
+import { AccountLink } from './account';
 
 export type { SectionLink };
 
@@ -59,6 +60,7 @@ export function SiteHeader({
             <div className="hidden xl:block">
               <LocaleSwitcher current={locale} locales={website.localeOptions} label={t.common.language} />
             </div>
+            <AccountLink t={t} locale={locale} className="hidden sm:inline-flex" />
             <a
               href={action.href}
               {...(action.external && { target: '_blank', rel: 'noopener noreferrer' })}
@@ -76,6 +78,7 @@ export function SiteHeader({
               footer={
                 <>
                   <LocaleToggle current={locale} locales={website.localeOptions} label={t.common.language} />
+                  <AccountLink t={t} locale={locale} className="w-full justify-center sm:hidden" />
                   <a href={business.phone.href} className={cn(buttonVariants({ size: 'lg' }), 'w-full rounded-button')}>
                     <Phone aria-hidden />
                     {format(t.common.call, { phone: business.phone.display })}

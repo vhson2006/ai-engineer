@@ -9,10 +9,13 @@
 #   realm.json              (base) realm nest-microservice: roles, clients web/admin-web, groups,
 #                           the admin-site sign-in flow. No people: a run would reset passwords.
 #   site-<id>.json          (k8s/sites/<id>/keycloak) a business site's client + service account
+#   customers-<id>.json     (k8s/sites/<id>/keycloak) realm site-<id>: the site's customers (ADR 0049)
 #   dev-cli.json            (components/keycloak-local) the password-grant client for curl tests
 #   otp.json, users.json    (components/keycloak-local) alice's one-time code, then the test users
 #                           (in that order, see below). otp.json is applied once: afterwards
 #                           Keycloak answers 409, not an error here.
+#   test-customers-<id>.json (components/keycloak-local) bob and carol, customers of site <id>; only
+#                           when that environment runs the site (its customers-<id>.json is here)
 #   master-config-cli.json  (prod) the master client this Job signs in with from then on
 #   master.json             (base) realm master, LAST: console Frontend URL, brute-force detection
 set -eu
@@ -54,6 +57,9 @@ run /config/realm.json realm
 for file in /config/site-*.json; do
   if [ -f "$file" ]; then run "$file" "$(basename "$file" .json)"; fi
 done
+for file in /config/customers-*.json; do
+  if [ -f "$file" ]; then run "$file" "$(basename "$file" .json)"; fi
+done
 run_if dev-cli.json dev-cli
 # otp.json BEFORE users.json: applying a user without `groups` (otp.json declares alice only for her
 # one-time code) REMOVES her groups. So users.json comes after, and its cache key carries otp.json's
@@ -64,6 +70,10 @@ fi
 if [ -f /config/users.json ]; then
   run /config/users.json "users-$(cksum < /config/otp.json 2>/dev/null | cut -d' ' -f1)"
 fi
+for file in /config/test-customers-*.json; do
+  id=${file#/config/test-customers-}
+  if [ -f "/config/customers-$id" ]; then run "$file" "$(basename "$file" .json)"; fi
+done
 run_if master-config-cli.json master-config-cli
 # Last: a NEW Frontend URL of realm master changes the issuer of master tokens, so the token this
 # run signed in with is refused right after the change (401 while it records its state). The second

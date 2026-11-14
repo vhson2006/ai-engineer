@@ -53,7 +53,7 @@ replacements:
         options: { create: true }
       - select: { kind: ConfigMap, name: business-sites-env }
         fieldPaths:
-          - data.KEYCLOAK_ISSUER
+          - data.API_KEYCLOAK_ISSUER # the sites' service account; their customers: KEYCLOAK_ISSUER
         options: { create: true }
       - select: { kind: ConfigMap, name: deployment-service-env }
         fieldPaths:

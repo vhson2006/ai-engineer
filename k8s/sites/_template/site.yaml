@@ -41,11 +41,23 @@ spec:
           envFrom:
             - configMapRef:
                 name: business-sites-env
+            # Its customers' sessions (ADR 0049): REDIS_URL (its own Redis/Valkey user, keys
+            # <app>:* only) and SESSION_ENCRYPTION_KEY. The Secret is named after the app.
+            - secretRef:
+                name: site
           env:
             # This site's own public URL (CSP, CSRF origin): written in from urls.env.
             - name: APP_URL
               value: https://site.set-by-sites-component.invalid
-            # Its own Keycloak client: client credentials, reads its articles (ADR 0032).
+            # The realm its customers sign in to (ADR 0049): AUTH_URL of urls.env (the site's
+            # component) + /realms/site-<id> (this template, REALM).
+            - name: KEYCLOAK_ISSUER
+              value: https://auth.set-by-sites-component.invalid/realms/set-by-template
+            - name: REDIS_KEY_PREFIX
+              value: 'set-by-template:'
+            # Its own Keycloak client, the same id and secret in both realms: client credentials
+            # in nest-microservice (API_KEYCLOAK_ISSUER) to read its articles (ADR 0032), and its
+            # customers' sign-in in site-<id>.
             - name: KEYCLOAK_CLIENT_ID
               value: site
             - name: KEYCLOAK_CLIENT_SECRET

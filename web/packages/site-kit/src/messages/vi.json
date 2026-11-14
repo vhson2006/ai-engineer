@@ -356,5 +356,29 @@
         }
       ]
     }
+  },
+  "account": {
+    "signIn": "Đăng nhập",
+    "signOut": "Đăng xuất",
+    "myAccount": "Tài khoản",
+    "loginTitle": "Đăng nhập",
+    "loginIntro": "Đăng nhập vào tài khoản {name} của bạn.",
+    "continue": "Tiếp tục",
+    "signedInAs": "Bạn đang đăng nhập với tên {name}.",
+    "accountTitle": "Tài khoản của tôi",
+    "accountIntro": "Tài khoản {name} của bạn.",
+    "signedOut": "Bạn chưa đăng nhập.",
+    "name": "Họ tên",
+    "email": "Email",
+    "username": "Tên đăng nhập",
+    "errors": {
+      "denied": "Bạn đã huỷ đăng nhập.",
+      "expired": "Phiên đăng nhập đã hết hạn. Vui lòng thử lại.",
+      "failed": "Không thể hoàn tất đăng nhập. Vui lòng thử lại.",
+      "forbidden": "Tài khoản này không đăng nhập được ở đây.",
+      "unavailable": "Hệ thống đăng nhập hiện không phản hồi. Vui lòng thử lại sau ít phút.",
+      "session_unavailable": "Hệ thống đăng nhập đang tạm gián đoạn. Vui lòng thử lại sau ít phút.",
+      "rate_limited": "Mạng của bạn đã thử đăng nhập quá nhiều lần. Vui lòng đợi vài phút rồi thử lại."
+    }
   }
 }

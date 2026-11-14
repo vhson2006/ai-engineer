@@ -10,6 +10,8 @@ configMapGenerator:
     literals:
       - APP=autoparts-web
       - CLIENT_SECRET_KEY=AUTOPARTS_WEB_CLIENT_SECRET
+      - REALM=site-autoparts
+      - 'REDIS_KEY_PREFIX=autoparts-web:'
 
 components:
   - ../../_template

@@ -6,7 +6,8 @@ import type { Locale } from './locales';
 
 /**
  * The proxy of a business site: the same three jobs as every app (CSRF origin check, language
- * routing, runtime security headers, ADR 0016). No sign-in, so no Keycloak origin in the CSP.
+ * routing, runtime security headers, ADR 0016). form-action allows the customers' realm
+ * (KEYCLOAK_ISSUER, ADR 0049): signing out is a form POST that redirects there.
  * Frames: the Google Maps embed of the contact section and YouTube embeds of articles (ADR 0040);
  * images: their thumbnails. The site's `config.matcher` stays in its own src/proxy.ts (Next.js
  * reads it statically).
@@ -19,6 +20,8 @@ export function siteProxy(routing: LocaleRouting<Locale>) {
     if (!appUrl) throw new Error('Missing environment variable APP_URL (see .env.example)');
     cached = securityHeaders({
       appUrl,
+      // The customers' realm (ADR 0049): signing out is a form POST that redirects there.
+      keycloakIssuer: process.env.KEYCLOAK_ISSUER,
       storageOrigins: (process.env.STORAGE_ORIGINS ?? '').split(/[\s,]+/).filter(Boolean),
       frameOrigins: ['https://www.google.com', 'https://www.youtube-nocookie.com'],
       imageOrigins: ['https://i.ytimg.com'],

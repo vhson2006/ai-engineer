@@ -20,7 +20,7 @@ export interface SecurityHeaderOptions {
   appUrl: string;
   /**
    * KEYCLOAK_ISSUER: logout is a form POST that redirects there (form-action applies to redirects).
-   * Omitted by a site without sign-in (e.g. nails-web): forms then post only to the site itself.
+   * Omitted by an app without sign-in: forms then post only to the app itself.
    */
   keycloakIssuer?: string;
   /** STORAGE_ORIGINS: object storage / CDN origins (presigned PUT uploads, images, inline files). */

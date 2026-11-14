@@ -65,7 +65,7 @@ are needed), listeners, settings, patches and secrets.
 |---|---|---|---|
 | Edge Gateway | NGINX Gateway Fabric `2.8.0` | Service `edge-nginx` (LoadBalancer) | `http://{www,api,auth}.localtest.me:8000` (no port-forward) |
 | KrakenD | `krakend:2.10.2` | `http://krakend.nest-microservice.svc.cluster.local:8080` | `http://localhost:8080` via port-forward only (health: `/__health`) |
-| Keycloak | `quay.io/keycloak/keycloak:26.4.7` | `http://keycloak.nest-microservice.svc.cluster.local:8080`, management `:9000` | `http://auth.localtest.me:8000` (app realm only); Admin Console `http://localhost:8180/admin` and management `http://localhost:9000` via port-forward |
+| Keycloak | `quay.io/keycloak/keycloak:26.4.7` | `http://keycloak.nest-microservice.svc.cluster.local:8080`, management `:9000` | `http://auth.localtest.me:8000` (realms `nest-microservice` and `site-*` only); Admin Console `http://localhost:8180/admin` and management `http://localhost:9000` via port-forward |
 | Postgres | `postgres:16-alpine` | `postgres.nest-microservice.svc.cluster.local:5432` | `localhost:5432` |
 | Redis | `redis:7-alpine` | `redis.nest-microservice.svc.cluster.local:6379` | `localhost:6379` |
 | NATS | `nats:2.10-alpine` | `nats://nats.nest-microservice.svc.cluster.local:4222` | `localhost:4222`, monitoring `http://localhost:8222` (JetStream: `/jsz`) |
@@ -171,7 +171,8 @@ fresh cluster and on a running one alike. **The same files in every environment*
 [`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
 groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
 [`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
-code, `dev-cli`); [`sites/<id>/keycloak/`](sites/) (a business site's client and service account, in
+code, `dev-cli`, the test customers `bob`/`carol` of each site's realm); [`sites/<id>/keycloak/`](sites/)
+(a business site's client and service account, and its customers' realm `site-<id>`, ADR 0049; in
 the environments that list it); prod adds `master-config-cli.json`. What differs per environment is
 only a value, written `$(env:NAME)` in the files: ConfigMap `public-urls` (the overlay's `urls.env`)
 (`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
@@ -316,7 +317,10 @@ overlay's `urls.env`. To run a site in an environment:
 1. `components:` of the overlay: `- ../../sites/<id>`;
 2. `urls.env`: `<ID>_HOST` and `<ID>_URL`;
 3. `images:`: `<id>-web` (and its entry in `images.json`, `environments` listing the overlay);
-4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`.
+4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`;
+5. Secret `<id>-web`: `REDIS_URL` (its own Redis/Valkey user, keys `<id>-web:*`; local:
+   `components/local-data/redis/users.acl`) and `SESSION_ENCRYPTION_KEY`: its customers' sessions
+   (ADR 0049).
 
 Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
 `role: business-site` (NetworkPolicies, the https-only route patch). Staging runs all nine
@@ -344,7 +348,7 @@ npm run staging:down       # delete the namespace WITH its data (fresh start); n
 |---|---|
 | https://www.staging.localtest.me | portfolio-web (production image) |
 | https://admin.staging.localtest.me | admin-web (alice: password + one-time code) |
-| https://auth.staging.localtest.me | Keycloak, app realm only |
+| https://auth.staging.localtest.me | Keycloak: realm `nest-microservice` and the sites' customers' realms `site-<id>` |
 | https://s3.staging.localtest.me | SeaweedFS (presigned uploads/downloads) |
 | https://&lt;site&gt;.staging.localtest.me | the nine business sites: nails, wine, laundry, sushi, travel, flowers, autoparts, hotel, spa |
 | http://*.staging.localtest.me:8001 | → 301 to https (port 80 is Windows') |
