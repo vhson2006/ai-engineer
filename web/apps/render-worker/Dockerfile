@@ -15,6 +15,7 @@ COPY apps/portfolio-web/package.json apps/portfolio-web/
 COPY packages/core/package.json packages/core/
 COPY packages/ui/package.json packages/ui/
 COPY packages/video/package.json packages/video/
+COPY packages/site-kit/package.json packages/site-kit/
 RUN npm ci -w render-worker --omit=dev
 
 FROM ${NODE_IMAGE} AS runtime
