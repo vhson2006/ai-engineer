@@ -41,28 +41,28 @@ components:
 images:
   - name: deployment-service
     newName: ghcr.io/vhson2006/ai-engineer/deployment-service
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
   - name: notification-service
     newName: ghcr.io/vhson2006/ai-engineer/notification-service
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
   - name: content-service
     newName: ghcr.io/vhson2006/ai-engineer/content-service
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
   - name: ai-service
     newName: ghcr.io/vhson2006/ai-engineer/ai-service
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
   - name: deployment-migrate
     newName: ghcr.io/vhson2006/ai-engineer/deployment-migrate
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
   - name: render-worker
     newName: ghcr.io/vhson2006/ai-engineer/render-worker
     newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
-    newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
+    newTag: 98744f206562c54040ee3755285b40696e00bcc1
 
 configMapGenerator:
   - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
