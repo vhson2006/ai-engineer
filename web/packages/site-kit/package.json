@@ -1,0 +1,42 @@
+{
+  "name": "@web/site-kit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "What every public business site shares (ADR 0042): business facts, languages (vi + en), SEO and JSON-LD, the articles pages (content-service, ADR 0032), legal pages, header, footer, contact, FAQ, sitemap, robots and the proxy. Each site keeps its own look, landing page and texts.",
+  "exports": {
+    "./theme.css": {
+      "style": "./src/theme.css",
+      "default": "./src/theme.css"
+    },
+    "./messages/en.json": "./src/messages/en.json",
+    "./messages/vi.json": "./src/messages/vi.json",
+    "./site": "./src/site.tsx",
+    "./og": "./src/og.tsx",
+    "./components/*": "./src/components/*.tsx",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@web/core": "*",
+    "@web/ui": "*",
+    "lucide-react": "^1.70.0",
+    "server-only": "^0.0.1"
+  },
+  "peerDependencies": {
+    "next": "16.4.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "typescript": "^5",
+    "vitest": "^5.1.0"
+  }
+}

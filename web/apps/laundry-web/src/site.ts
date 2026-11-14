@@ -1,3 +1,10 @@
+import { createSite } from '@web/site-kit/site';
+import { loadMessages } from '@/i18n/dictionaries';
+import { website } from '@/website';
+import coverShop from '../public/images/cover-shop.jpg';
+import machines from '../public/images/machines.jpg';
+import shelves from '../public/images/shelves.jpg';
+
 /**
  * The site's public origin, inlined at build time from SITE_URL (next.config.ts, ADR 0021). Every
  * absolute URL for search engines and link previews (Facebook, Zalo, TikTok…) is built from it.
@@ -5,28 +12,15 @@
 export const SITE_URL = process.env.SITE_URL ?? 'http://localhost:3400';
 
 /**
- * Legal pages: the same path in every language (like /bai-viet). Social platforms ask for these
- * URLs when an app or a login is registered (privacy policy, terms, data deletion instructions):
- * keep them stable.
+ * Giặt sấy SFaster on the business-site kit (ADR 0042): locale and dictionary of the page, SEO,
+ * articles from content-service (site `laundry`, ADR 0032) and the shared routes. Article covers
+ * when the admins chose none: a photo of the shop by topic key.
  */
-export const LEGAL_PATHS = {
-  privacy: '/chinh-sach-bao-mat',
-  terms: '/dieu-khoan-su-dung',
-  dataDeletion: '/xoa-du-lieu',
-} as const;
-export type LegalPage = keyof typeof LEGAL_PATHS;
-
-/** When the legal texts last changed: shown on the pages, in their metadata and in the sitemap. */
-export const LEGAL_UPDATED = '2026-11-12';
-
-/** Public pages that exist in every language under the same path (the sitemap adds the articles). */
-export const PUBLIC_PAGES = [
-  { path: '/', priority: 1, changeFrequency: 'monthly' },
-  { path: '/bai-viet', priority: 0.8, changeFrequency: 'weekly' },
-  { path: LEGAL_PATHS.privacy, priority: 0.2, changeFrequency: 'yearly' },
-  { path: LEGAL_PATHS.terms, priority: 0.2, changeFrequency: 'yearly' },
-  { path: LEGAL_PATHS.dataDeletion, priority: 0.2, changeFrequency: 'yearly' },
-] as const;
-
-/** Prerendered once per build: the sitemap's lastModified for the fixed pages. */
-export const BUILT_AT = new Date();
+export const site = createSite({
+  website,
+  siteUrl: SITE_URL,
+  loadMessages,
+  defaultImage: { url: '/images/og-default.jpg', width: 1200, height: 630 },
+  schemaImages: ['/images/machines.jpg', '/images/shelves.jpg'],
+  covers: { fallback: coverShop, byTopic: { tips: shelves, services: machines, shop: coverShop } },
+});

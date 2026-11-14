@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 686" width="1600" height="686">
+  <!-- Map of an article: the layout blocks laid side by side, in the order of this guide. -->
+  <rect width="1600" height="686" fill="#1f3a33"/>
+  <circle cx="1480" cy="90" r="160" fill="#4f7a6a" opacity="0.6"/>
+  <circle cx="110" cy="640" r="120" fill="#4f7a6a" opacity="0.5"/>
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#a8694f">
+    <!-- 1 lead -->
+    <g transform="translate(70 80)">
+      <rect width="260" height="240" rx="22" fill="#ffffff"/>
+      <rect x="26" y="34" width="190" height="20" rx="10" fill="#1f3a33"/>
+      <rect x="26" y="74" width="208" height="12" rx="6" fill="#56645d" opacity="0.4"/>
+      <rect x="26" y="96" width="180" height="12" rx="6" fill="#56645d" opacity="0.4"/>
+      <rect x="26" y="130" width="208" height="84" rx="14" fill="#e1ece6"/>
+      <rect x="26" y="130" width="8" height="84" rx="4" fill="#4f7a6a"/>
+      <rect x="48" y="150" width="120" height="12" rx="6" fill="#1f3a33"/>
+      <rect x="48" y="174" width="160" height="10" rx="5" fill="#56645d" opacity="0.4"/>
+    </g>
+    <text x="200" y="360" text-anchor="middle">1</text>
+    <!-- 2 cards -->
+    <g transform="translate(370 80)">
+      <rect width="260" height="240" rx="22" fill="#ffffff"/>
+      <g fill="#e1ece6"><rect x="20" y="34" width="66" height="172" rx="12"/><rect x="97" y="34" width="66" height="172" rx="12"/><rect x="174" y="34" width="66" height="172" rx="12"/></g>
+      <g fill="#4f7a6a"><rect x="28" y="44" width="50" height="40" rx="8"/><rect x="105" y="44" width="50" height="40" rx="8"/><rect x="182" y="44" width="50" height="40" rx="8"/></g>
+      <g fill="#56645d" opacity="0.45"><rect x="28" y="100" width="44" height="8" rx="4"/><rect x="105" y="100" width="44" height="8" rx="4"/><rect x="182" y="100" width="44" height="8" rx="4"/></g>
+    </g>
+    <text x="500" y="360" text-anchor="middle">2</text>
+    <!-- 3 steps -->
+    <g transform="translate(670 80)">
+      <rect width="260" height="240" rx="22" fill="#ffffff"/>
+      <line x1="48" y1="56" x2="48" y2="196" stroke="#ddd3c2" stroke-width="6"/>
+      <g fill="#4f7a6a"><circle cx="48" cy="56" r="20"/><circle cx="48" cy="126" r="20"/><circle cx="48" cy="196" r="20"/></g>
+      <g fill="#a8694f" font-size="18"><text x="48" y="63" text-anchor="middle">1</text><text x="48" y="133" text-anchor="middle">2</text><text x="48" y="203" text-anchor="middle">3</text></g>
+      <g fill="#56645d" opacity="0.45"><rect x="84" y="48" width="140" height="14" rx="7"/><rect x="84" y="118" width="120" height="14" rx="7"/><rect x="84" y="188" width="150" height="14" rx="7"/></g>
+    </g>
+    <text x="800" y="360" text-anchor="middle">3</text>
+    <!-- 4 image + text -->
+    <g transform="translate(970 80)">
+      <rect width="260" height="240" rx="22" fill="#ffffff"/>
+      <rect x="22" y="34" width="104" height="172" rx="14" fill="#4f7a6a"/>
+      <circle cx="98" cy="70" r="14" fill="#a8694f"/>
+      <path d="M22 206 l46 -64 l30 30 l28 -22 v56 z" fill="#1f3a33"/>
+      <rect x="140" y="64" width="96" height="14" rx="7" fill="#1f3a33"/>
+      <g fill="#56645d" opacity="0.4"><rect x="140" y="96" width="96" height="10" rx="5"/><rect x="140" y="116" width="80" height="10" rx="5"/><rect x="140" y="136" width="90" height="10" rx="5"/></g>
+    </g>
+    <text x="1100" y="360" text-anchor="middle">4</text>
+    <!-- 5 call to action -->
+    <g transform="translate(1270 80)">
+      <rect width="260" height="240" rx="22" fill="#a8694f"/>
+      <rect x="30" y="64" width="200" height="22" rx="11" fill="#1f3a33"/>
+      <rect x="30" y="102" width="170" height="12" rx="6" fill="#1f3a33" opacity="0.5"/>
+      <rect x="30" y="158" width="140" height="44" rx="22" fill="#4f7a6a"/>
+      <rect x="54" y="174" width="92" height="12" rx="6" fill="#ffffff"/>
+    </g>
+    <text x="1400" y="360" text-anchor="middle">5</text>
+  </g>
+  <!-- the reading line -->
+  <path d="M200 420 C 500 500, 1100 380, 1400 470" fill="none" stroke="#a8694f" stroke-width="6" stroke-dasharray="4 18" stroke-linecap="round"/>
+  <g fill="#ffffff" opacity="0.92">
+    <rect x="200" y="540" width="1200" height="18" rx="9" opacity="0.25"/>
+    <rect x="200" y="576" width="900" height="18" rx="9" opacity="0.25"/>
+  </g>
+</svg>

@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "title": "Kumo Sushi & Omakase: quầy omakase giữa Sài Gòn",
+    "description": "Quầy omakase mười hai ghế ở trung tâm Sài Gòn: cá theo mùa, gạo Koshihikari, từng miếng nigiri nắn tay. Mở trưa và tối từ thứ Ba đến Chủ nhật; đặt bàn qua điện thoại hoặc Zalo.",
+    "ogImageAlt": "Nigiri trên khay đá ở quầy Kumo Sushi"
+  },
+  "blog": {
+    "title": "Chuyện bên quầy",
+    "intro": "Cá của mùa, cách chúng tôi cắt và nêm, và cách thưởng thức một bữa omakase, từ các đầu bếp của Kumo.",
+    "metaTitle": "Bài viết: sushi, mùa cá và quầy omakase",
+    "metaDescription": "Cá theo mùa, gạo và kỹ thuật dao, cùng hướng dẫn trải nghiệm omakase, từ các đầu bếp của Kumo Sushi & Omakase.",
+    "latestIntro": "Chuyện về cá của mùa và tay nghề đằng sau từng miếng sushi.",
+    "ctaTitle": "Muốn một chỗ ở quầy?",
+    "ctaText": "Đặt trước một ngày qua điện thoại hoặc Zalo; chúng tôi giữ chỗ cho bạn 15 phút."
+  },
+  "footer": {
+    "tagline": "Mười hai ghế, một quầy gỗ hinoki, một bữa tối theo mùa."
+  },
+  "hours": {
+    "lunch": "Trưa, thứ Ba – Chủ nhật",
+    "dinner": "Tối, thứ Ba – Chủ nhật"
+  },
+  "nav": {
+    "top": "Trang chủ",
+    "menu": "Thực đơn",
+    "story": "Câu chuyện",
+    "omakase": "Omakase"
+  },
+  "hero": {
+    "eyebrow": "Omakase · Sài Gòn",
+    "title": "Mười hai ghế. Một quầy gỗ. Bữa tối theo mùa.",
+    "text": "Cá chọn mỗi sáng, cơm nêm bằng tay, từng miếng nigiri làm ngay trước mặt bạn và ăn ngay khi vừa đặt xuống.",
+    "reserve": "Đặt chỗ",
+    "viewMenu": "Xem thực đơn",
+    "closed": "Nghỉ thứ Hai",
+    "imageAlt": "Hàng nigiri trên khay đá ở quầy sushi gỗ sáng màu"
+  },
+  "food": {
+    "eyebrow": "Thực đơn",
+    "title": "Omakase, hoặc gọi món",
+    "intro": "Để đầu bếp chọn, hoặc tự chọn món bạn thích. Giá đã gồm VAT; cá trong ngày có thể làm thay đổi một vài món.",
+    "omakaseTitle": "Các set omakase",
+    "courses": "{count} món",
+    "signature": "Được chọn nhiều nhất",
+    "perPiece": "2 miếng",
+    "groups": {
+      "nigiri": "Nigiri",
+      "rolls": "Cuộn",
+      "drinks": "Sake & trà"
+    },
+    "omakase": {
+      "items": {
+        "hana": { "name": "Hana", "desc": "Omakase cho lần đầu: sashimi theo mùa, chín miếng nigiri, súp miso và tráng miệng." },
+        "kumo": { "name": "Kumo", "desc": "Set đầy đủ của đầu bếp: cá ủ, otoro, một món nóng và cuộn tay kết thúc." },
+        "counter": { "name": "Chef's counter", "desc": "Set dài nhất, chỉ ở các ghế đầu quầy: cá hiếm trong tuần và sake đi kèm." }
+      }
+    },
+    "nigiri": {
+      "items": {
+        "sake": { "name": "Sake", "desc": "Cá hồi khò nhẹ, một giọt yuzu." },
+        "hamachi": { "name": "Hamachi", "desc": "Cá cam với gừng mài và hành lá." },
+        "maguro": { "name": "Akami", "desc": "Thịt cá ngừ nạc, ướp xì dầu vài phút." },
+        "ebi": { "name": "Ebi", "desc": "Tôm ngọt, chín vừa tới." },
+        "unagi": { "name": "Unagi", "desc": "Lươn nướng quét sốt tare nhà làm." },
+        "otoro": { "name": "Otoro", "desc": "Bụng cá ngừ béo, chút wasabi." }
+      }
+    },
+    "rolls": {
+      "items": {
+        "california": { "name": "California", "desc": "Thịt cua, bơ, dưa leo, trứng cá tobiko." },
+        "spicyTuna": { "name": "Cá ngừ cay", "desc": "Cá ngừ băm, sốt mayo ớt, vụn tempura giòn." },
+        "dragon": { "name": "Dragon", "desc": "Lươn và dưa leo bên trong, vảy bơ bên ngoài." },
+        "kumo": { "name": "Cuộn Kumo", "desc": "Cá hồi, sò điệp và lá tía tô Nhật, khò lửa hoàn thiện." }
+      }
+    },
+    "drinks": {
+      "items": {
+        "junmai": { "name": "Sake Junmai", "desc": "Khô, thanh, bình 180 ml; dùng lạnh hoặc ấm." },
+        "umeshu": { "name": "Umeshu", "desc": "Rượu mơ dùng với đá." },
+        "matcha": { "name": "Matcha", "desc": "Đánh tay ngay tại quầy." },
+        "yuzu": { "name": "Soda yuzu", "desc": "Có ga, ngọt nhẹ, không cồn." }
+      }
+    }
+  },
+  "story": {
+    "eyebrow": "Câu chuyện",
+    "title": "Một căn phòng nhỏ cho một nghề lặng lẽ",
+    "paragraphs": [
+      "Kumo nghĩa là mây: thứ thay đổi mỗi ngày và chẳng bao giờ giống lần trước. Quầy của chúng tôi cũng vậy. Món phục vụ tuỳ vào chợ cá có gì vào buổi sáng hôm đó.",
+      "Chúng tôi nêm cơm bằng giấm đỏ, giữ cơm ở nhiệt độ cơ thể và nắn từng miếng bằng tay. Bạn ăn ngay khi miếng sushi vừa được đặt xuống, đúng như cách nó nên được thưởng thức."
+    ],
+    "facts": [
+      { "value": "12", "label": "ghế ở quầy" },
+      { "value": "6 giờ", "label": "đầu bếp có mặt ở chợ cá" },
+      { "value": "16", "label": "món trong set omakase Kumo" }
+    ],
+    "imageAlt": "Đôi tay đầu bếp nắn miếng nigiri cá ngừ trên thớt gỗ"
+  },
+  "omakase": {
+    "eyebrow": "Omakase",
+    "title": "“Xin để đầu bếp chọn”",
+    "intro": "Omakase là một cuộc trò chuyện với đầu bếp. Buổi tối sẽ diễn ra như sau.",
+    "steps": [
+      { "title": "Đặt chỗ", "text": "Gọi điện hoặc nhắn Zalo trước ít nhất một ngày, và cho chúng tôi biết bạn dị ứng hay kiêng món gì." },
+      { "title": "Ngồi ở quầy", "text": "Đầu bếp làm ngay trước mặt bạn. Cứ hỏi mọi điều: loại cá, cá từ đâu, vì sao là miếng này lúc này." },
+      { "title": "Từng miếng một", "text": "Mỗi miếng nigiri đã được nêm sẵn: không cần chấm thêm xì dầu. Ăn bằng tay hoặc đũa, trong một miếng." },
+      { "title": "Kết thúc bằng món ấm", "text": "Súp, cuộn tay, rồi tráng miệng và trà. Khoảng hai tiếng, không bao giờ vội." }
+    ],
+    "note": "Giờ bắt đầu omakase: 18:00 và 20:15. Vui lòng đến đúng giờ: những miếng đầu tiên được phục vụ cùng lúc."
+  },
+  "gallery": {
+    "title": "Bên trong Kumo",
+    "counter": "Quầy gỗ hinoki và những chiếc đèn lồng giấy",
+    "omakase": "Một lượt sashimi, nigiri và súp miso",
+    "sake": "Bình sake và chén với lá phong mùa thu"
+  },
+  "questions": {
+    "items": [
+      { "q": "Tôi có cần đặt trước không?", "a": "Với omakase thì có: trước ít nhất một ngày, qua điện thoại hoặc Zalo. Gọi món buổi trưa, bạn có thể ghé thẳng khi còn chỗ." },
+      { "q": "Nhà hàng có điều chỉnh món cho người dị ứng không?", "a": "Hãy báo khi đặt chỗ (hải sản có vỏ, gluten, cá sống…). Đầu bếp sẽ điều chỉnh set ở những món có thể thay đổi." },
+      { "q": "Có món chay không?", "a": "Chúng tôi chuẩn bị được omakase rau củ nếu bạn báo trước một ngày. Các món cuộn gọi lẻ cũng có phiên bản chay." },
+      { "q": "Có cần đặt cọc không?", "a": "Với set Chef's counter và nhóm từ sáu người trở lên, chúng tôi nhận đặt cọc khi bạn đặt chỗ; cách đặt cọc sẽ được hướng dẫn khi bạn gọi." },
+      { "q": "Tôi có thể dẫn trẻ em theo không?", "a": "Trẻ em được chào đón vào buổi trưa. Quầy omakase phù hợp với khách từ 12 tuổi." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Ghé Kumo",
+    "title": "Đặt một chỗ ở quầy",
+    "text": "Gọi điện hoặc nhắn Zalo để đặt chỗ; chúng tôi giữ chỗ cho bạn 15 phút.",
+    "note": "Nghỉ thứ Hai. Nhận gọi món cuối 30 phút trước giờ đóng cửa."
+  }
+}

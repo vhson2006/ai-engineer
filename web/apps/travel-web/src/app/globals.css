@@ -1,0 +1,57 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, the business-site kit, then this site's own look. */
+@import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
+
+/*
+ * Gió Mùa Travel: the sea off Đà Nẵng, a sunset over the rice terraces, warm sand.
+ * - `--brand` ocean teal: buttons, links.  - `--accent` sunset orange: labels, prices.
+ * - `--deep` night sea: dark bands and the footer.
+ * Generous rounded cards, bold geometric headings: open, sunny, on the move.
+ */
+:root {
+  --bg: #fbf7f0;
+  --surface: #ffffff;
+  --surface-2: #f3ece0;
+  --border: #e6dccb;
+  --fg: #10242e;
+  --muted: #4b5f68;
+  --subtle: #6c7f87;
+  --brand: #0b6e83;
+  --brand-hover: #085a6b;
+  --brand-fg: #ffffff;
+  --brand-soft: #dff1f4;
+  --brand-soft-fg: #075062;
+  --brand-strong: #0b3a4a;
+  --accent: #f2783a;
+  --accent-fg: #1d0d04;
+  --deep: #0b2a3a;
+  --deep-fg: #eef7f8;
+  --card-radius: 1.75rem;
+  --button-radius: 9999px;
+  --heading-weight: 700;
+  --heading-tracking: -0.025em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #071a24;
+    --surface: #0c2430;
+    --surface-2: #112e3c;
+    --border: #1d4153;
+    --fg: #e7f3f5;
+    --muted: #a5bfc6;
+    --subtle: #86a1a9;
+    --brand: #35b5cc;
+    --brand-hover: #5fc8da;
+    --brand-fg: #04161d;
+    --brand-soft: rgb(53 181 204 / 0.14);
+    --brand-soft-fg: #a8e3ed;
+    --brand-strong: #bfe9f0;
+    --accent: #ff9257;
+    --deep: #041219;
+  }
+}

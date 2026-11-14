@@ -1,9 +1,10 @@
-import { salon, type Price } from '@/content/salon';
-import { LOCALES, type Locale } from '@/i18n/locales';
+import type { Locale } from '@web/site-kit/locales';
+import type { Price } from '@/content/salon';
+import { website } from '@/website';
 
-/** "$59+" (en) / "59 $+" (vi): a menu price in the visitor's language. */
+/** "$59+" (en) / "59 $+" (vi): a menu price in the visitor's language (US dollars). Client-safe. */
 export function formatPrice(locale: Locale, price: Price): string {
-  const amount = new Intl.NumberFormat(LOCALES[locale].intl, {
+  const amount = new Intl.NumberFormat(website.intl(locale), {
     style: 'currency',
     currency: 'USD',
     currencyDisplay: 'narrowSymbol',
@@ -12,30 +13,14 @@ export function formatPrice(locale: Locale, price: Price): string {
   return price.plus ? `${amount}+` : amount;
 }
 
-/** "10:00" → "10:00 AM" (en-US) / "10:00" (vi-VN). The salon's local time, no time zone math. */
+/** "10:00" → "10:00 AM" (en-US) / "10:00" (vi-VN): the salon's local time, no leading zero in English. */
 export function formatTime(locale: Locale, hhmm: string): string {
   const [hours, minutes] = hhmm.split(':').map(Number);
-  return new Intl.DateTimeFormat(LOCALES[locale].intl, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(
+  return new Intl.DateTimeFormat(website.intl(locale), { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(
     new Date(Date.UTC(2000, 0, 1, hours, minutes)),
   );
 }
 
 export function formatHours(locale: Locale, open: string, close: string): string {
   return `${formatTime(locale, open)} – ${formatTime(locale, close)}`;
-}
-
-/**
- * A publication instant (ISO, from the API) as a date in the visitor's language, on the salon's
- * clock: "November 12, 2026" / "12 tháng 11, 2026".
- */
-export function formatInstantDate(locale: Locale, iso: string): string {
-  return new Intl.DateTimeFormat(LOCALES[locale].intl, { day: 'numeric', month: 'long', year: 'numeric', timeZone: salon.timeZone }).format(new Date(iso));
-}
-
-/** A calendar date "2026-01-01" (no time zone shift): "January 1, 2026" / "1 tháng 1, 2026". */
-export function formatDate(locale: Locale, isoDate: string): string {
-  const [year, month, day] = isoDate.split('-').map(Number);
-  return new Intl.DateTimeFormat(LOCALES[locale].intl, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(
-    new Date(Date.UTC(year, month - 1, day)),
-  );
 }

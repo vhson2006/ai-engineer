@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- "How to add it": the insert-block menu open, one entry chosen. -->
+  <rect width="800" height="600" fill="#e1ece6"/>
+  <circle cx="120" cy="500" r="80" fill="#4f7a6a" opacity="0.12"/>
+  <!-- button -->
+  <rect x="180" y="96" width="250" height="64" rx="16" fill="#a8694f"/>
+  <g transform="translate(206 112)" fill="none" stroke="#1f3a33" stroke-width="4">
+    <rect x="0" y="0" width="32" height="32" rx="6"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="12" y1="12" x2="12" y2="32"/>
+  </g>
+  <rect x="258" y="122" width="140" height="14" rx="7" fill="#1f3a33"/>
+  <!-- menu -->
+  <rect x="180" y="178" width="400" height="330" rx="22" fill="#ffffff" stroke="#ddd3c2" stroke-width="4"/>
+  <g fill="#56645d" opacity="0.45">
+    <rect x="212" y="212" width="190" height="14" rx="7"/>
+    <rect x="212" y="262" width="150" height="14" rx="7"/>
+    <rect x="212" y="412" width="170" height="14" rx="7"/>
+    <rect x="212" y="462" width="210" height="14" rx="7"/>
+  </g>
+  <rect x="196" y="300" width="368" height="74" rx="14" fill="#e1ece6"/>
+  <rect x="212" y="330" width="230" height="16" rx="8" fill="#1f3a33"/>
+  <circle cx="528" cy="337" r="18" fill="#4f7a6a"/>
+  <line x1="528" y1="327" x2="528" y2="347" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <line x1="518" y1="337" x2="538" y2="337" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <!-- pointer -->
+  <g transform="translate(470 350)">
+    <path d="M0 0 L0 92 L24 70 L44 116 L64 108 L44 62 L76 62 Z" fill="#1f3a33" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+</svg>

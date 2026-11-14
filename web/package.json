@@ -13,11 +13,18 @@
     "dev:nails": "npm run dev -w nails-web",
     "dev:wine": "npm run dev -w wine-web",
     "dev:laundry": "npm run dev -w laundry-web",
+    "dev:sushi": "npm run dev -w sushi-web",
+    "dev:travel": "npm run dev -w travel-web",
+    "dev:flowers": "npm run dev -w flowers-web",
+    "dev:autoparts": "npm run dev -w autoparts-web",
+    "dev:hotel": "npm run dev -w hotel-web",
+    "dev:spa": "npm run dev -w spa-web",
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "check": "npm run typecheck && npm run lint && npm test",
+    "check:sites": "node scripts/check-sites.mjs",
+    "check": "npm run check:sites && npm run typecheck && npm run lint && npm test",
     "icons": "node scripts/generate-icons.mjs"
   }
 }

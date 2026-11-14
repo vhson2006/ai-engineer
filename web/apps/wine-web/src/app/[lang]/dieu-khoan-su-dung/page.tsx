@@ -1,14 +1,6 @@
-import type { Metadata } from 'next';
-import { LegalDocument, legalMetadata } from '@/features/legal/legal-page';
-import { getLocale, getMessages } from '@/i18n/messages';
+import { site } from '@/site';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return legalMetadata(t, locale, 'terms');
-}
-
-/** Static, one page per language; the text is in the dictionaries (policies.terms). */
-export default async function TermsPage() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return <LegalDocument page="terms" t={t} locale={locale} />;
-}
+/** Static, one page per language; the text is this site's own (src/i18n/messages, legal.terms), the facts its business's. */
+const page = site.routes.legal('terms');
+export const generateMetadata = page.metadata;
+export default page.Page;

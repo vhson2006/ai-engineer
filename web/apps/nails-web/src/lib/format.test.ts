@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { formatDate, formatHours, formatInstantDate, formatPrice, formatTime } from './format';
+import { website } from '@/website';
+import { formatHours, formatPrice, formatTime } from './format';
 
 describe('menu formatting', () => {
   it('prices in US dollars, "+" for starting prices', () => {
@@ -16,12 +17,12 @@ describe('menu formatting', () => {
   });
 });
 
-describe('article dates', () => {
+describe("article dates (the kit, with this site's US options)", () => {
   it('formats a calendar date per language, without a time zone shift', () => {
-    expect(formatDate('en', '2026-11-10')).toBe('November 10, 2026');
-    expect(formatDate('vi', '2026-11-02')).toMatch(/^2 tháng 11,? 2026$/);
-    expect(formatDate('en', '2026-01-01')).toBe('January 1, 2026');
+    expect(website.date('en', '2026-11-10')).toBe('November 10, 2026');
+    expect(website.date('vi', '2026-11-02')).toMatch(/^2 tháng 11,? 2026$/);
+    expect(website.date('en', '2026-01-01')).toBe('January 1, 2026');
     // An instant late on Nov 12 in New York is already Nov 13 in UTC: the salon's date wins.
-    expect(formatInstantDate('en', '2026-11-13T03:00:00.000Z')).toBe('November 12, 2026');
+    expect(website.instantDate('en', '2026-11-13T03:00:00.000Z')).toBe('November 12, 2026');
   });
 });

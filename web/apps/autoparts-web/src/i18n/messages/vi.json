@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "title": "Pitlane Auto Parts: phụ tùng ô tô và lắp đặt tại Sài Gòn",
+    "description": "Phanh, lọc, dầu nhớt, ắc quy, giảm xóc và nhiều phụ tùng khác cho xe phổ thông, kèm lắp đặt tại xưởng. Gửi ảnh hoặc số VIN qua Zalo, chúng tôi kiểm tra đúng phụ tùng cho bạn.",
+    "ogImageAlt": "Đĩa phanh, cùm phanh, bugi và lọc dầu mới trên bàn làm việc tối màu"
+  },
+  "blog": {
+    "title": "Ghi chép từ xưởng",
+    "intro": "Khi nào thay má phanh, động cơ cần loại nhớt nào, và những câu hỏi khác từ xưởng sửa xe.",
+    "metaTitle": "Bài viết: bảo dưỡng ô tô và giải thích về phụ tùng",
+    "metaDescription": "Lịch bảo dưỡng, cách chọn má phanh, dầu nhớt, ắc quy và những bước kiểm tra đơn giản bạn tự làm được, từ Pitlane Auto Parts.",
+    "latestIntro": "Mẹo bảo dưỡng và giải thích về phụ tùng, không dùng thuật ngữ khó hiểu.",
+    "ctaTitle": "Chưa chắc phụ tùng nào vừa xe?",
+    "ctaText": "Gửi ảnh phụ tùng cũ hoặc số VIN qua Zalo: chúng tôi kiểm tra và báo giá đúng loại."
+  },
+  "footer": {
+    "tagline": "Đúng phụ tùng ngay lần đầu. Phụ tùng và lắp đặt cho xe phổ thông."
+  },
+  "hours": {
+    "weekdays": "Thứ Hai – Thứ Bảy",
+    "sunday": "Chủ nhật"
+  },
+  "nav": {
+    "top": "Trang chủ",
+    "categories": "Phụ tùng",
+    "catalog": "Danh mục",
+    "order": "Cách đặt hàng",
+    "workshop": "Xưởng"
+  },
+  "hero": {
+    "eyebrow": "Phụ tùng · lắp đặt · tư vấn",
+    "title": "Đúng phụ tùng ngay lần đầu",
+    "text": "Phanh, lọc, dầu nhớt, ắc quy và giảm xóc cho xe phổ thông. Gửi ảnh hoặc số VIN, chúng tôi kiểm tra phụ tùng có vừa xe không trước khi bạn trả tiền.",
+    "ask": "Hỏi qua Zalo",
+    "viewCatalog": "Xem danh mục",
+    "imageAlt": "Đĩa phanh, cùm phanh, bugi, lọc dầu và dây curoa cam mới trên bàn làm việc tối màu",
+    "points": ["Kiểm tra theo số VIN", "Lắp đặt tại xưởng", "Bảo hành rõ ràng cho mọi phụ tùng"]
+  },
+  "categories": {
+    "eyebrow": "Phụ tùng",
+    "title": "Chúng tôi có gì",
+    "intro": "Phụ tùng hao mòn và vật tư bảo dưỡng cho sedan, hatchback, SUV và xe tải nhẹ.",
+    "items": {
+      "brakes": { "name": "Phanh", "text": "Má phanh, đĩa, tang trống, dầu phanh" },
+      "filters": { "name": "Lọc", "text": "Lọc nhớt, gió, điều hoà, nhiên liệu" },
+      "oil": { "name": "Dầu & dung dịch", "text": "Nhớt máy, nhớt hộp số, dầu trợ lực" },
+      "battery": { "name": "Ắc quy", "text": "Ắc quy 12 V, đo kiểm và lắp đặt" },
+      "suspension": { "name": "Giảm xóc", "text": "Phuộc, rotuyn, cao su càng" },
+      "lighting": { "name": "Đèn", "text": "Bóng đèn, LED, đèn sương mù" },
+      "belts": { "name": "Dây curoa", "text": "Bộ curoa cam, curoa tổng" },
+      "cooling": { "name": "Làm mát", "text": "Két nước, nước làm mát, ống dẫn" }
+    }
+  },
+  "catalog": {
+    "eyebrow": "Danh mục",
+    "title": "Một số phụ tùng và giá",
+    "intro": "Một phần những gì đang có trên kệ. Giá đã gồm VAT; công lắp đặt báo riêng.",
+    "note": "Không thấy phụ tùng bạn cần? Phần lớn phụ tùng được đặt về trong 1–3 ngày làm việc.",
+    "labels": {
+      "all": "Tất cả",
+      "search": "Tìm phụ tùng",
+      "searchPlaceholder": "Phụ tùng hoặc loại xe, vd: phanh, SUV",
+      "part": "Phụ tùng",
+      "fits": "Dùng cho",
+      "price": "Giá",
+      "inStock": "Còn hàng",
+      "onOrder": "Đặt hàng (1–3 ngày)",
+      "empty": "Không có phụ tùng phù hợp. Hỏi chúng tôi qua Zalo: nhiều khả năng là có.",
+      "count": "{count} phụ tùng"
+    },
+    "items": {
+      "padsFront": { "name": "Má phanh trước (bộ)", "fits": "Sedan và hatchback 1.5–2.0 L" },
+      "discsFront": { "name": "Đĩa phanh trước (cặp)", "fits": "Sedan 1.5–2.0 L, SUV cỡ nhỏ" },
+      "oilFilter": { "name": "Lọc nhớt", "fits": "Đa số máy xăng đến 2.5 L" },
+      "airFilter": { "name": "Lọc gió động cơ", "fits": "Sedan, hatchback, SUV cỡ nhỏ" },
+      "cabinFilter": { "name": "Lọc gió điều hoà than hoạt tính", "fits": "Đa số xe đời 2012 trở về sau" },
+      "oil5w30": { "name": "Nhớt tổng hợp 5W-30, 4 L", "fits": "Máy xăng dùng nhớt 5W-30" },
+      "battery60": { "name": "Ắc quy 12 V 60 Ah", "fits": "Sedan và SUV cỡ nhỏ" },
+      "shocksFront": { "name": "Phuộc trước (cặp)", "fits": "SUV cỡ nhỏ và crossover" },
+      "ledH4": { "name": "Bóng đèn pha LED H4 (cặp)", "fits": "Xe dùng đèn pha H4" },
+      "timingKit": { "name": "Bộ curoa cam kèm bi tăng", "fits": "Máy xăng 1.5–1.8 L" },
+      "serpentine": { "name": "Dây curoa tổng", "fits": "Đa số máy 4 xi-lanh" },
+      "coolant": { "name": "Nước làm mát pha sẵn, 4 L", "fits": "Mọi loại động cơ" },
+      "radiator": { "name": "Két nước nhôm", "fits": "Sedan 1.5–2.0 L" }
+    }
+  },
+  "order": {
+    "eyebrow": "Cách đặt hàng",
+    "title": "Ba tin nhắn đến đúng phụ tùng",
+    "intro": "Phần lớn phụ tùng mua sai là do đoán. Chúng tôi kiểm tra trước.",
+    "steps": [
+      { "title": "Gửi ảnh hoặc số VIN", "text": "Qua Zalo: ảnh phụ tùng cũ, giấy đăng ký xe hoặc số VIN dưới kính lái." },
+      { "title": "Chúng tôi kiểm tra", "text": "Xác nhận đúng mã phụ tùng, giá và còn hàng hay cần đặt." },
+      { "title": "Nhận, giao hoặc lắp", "text": "Lấy tại cửa hàng, giao trong thành phố, hoặc đặt lịch lắp tại xưởng." }
+    ]
+  },
+  "workshop": {
+    "eyebrow": "Xưởng",
+    "title": "Lắp đặt trong lúc bạn chờ",
+    "intro": "Hai cầu nâng ngay cạnh cửa hàng. Phần lớn công việc mất chưa đến một giờ.",
+    "imageAlt": "Ô tô trên cầu nâng trong xưởng sạch sẽ với xe đẩy dụng cụ màu đỏ",
+    "from": "Từ {price}",
+    "free": "Miễn phí khi mua ắc quy",
+    "services": {
+      "oilChange": { "name": "Thay nhớt & lọc", "text": "Kèm kiểm tra 20 hạng mục." },
+      "brakes": { "name": "Thay má hoặc đĩa phanh", "text": "Cầu trước hoặc sau, kèm thử phanh." },
+      "battery": { "name": "Đo & lắp ắc quy", "text": "Kiểm tra luôn hệ thống sạc." },
+      "check": { "name": "Kiểm tra trước chuyến đi", "text": "Lốp, đèn, dung dịch, phanh, dây curoa." }
+    },
+    "warrantyTitle": "Bảo hành",
+    "warranty": ["Chỉ phụ tùng mới, có bảo hành của nhà sản xuất.", "Công lắp đặt bảo hành 3 tháng hoặc 5.000 km.", "Giữ lại phụ tùng cũ cho bạn xem, nếu bạn muốn."]
+  },
+  "questions": {
+    "items": [
+      { "q": "Làm sao biết phụ tùng có vừa xe tôi không?", "a": "Gửi chúng tôi số VIN hoặc ảnh giấy đăng ký xe và phụ tùng cũ. Chúng tôi kiểm tra đúng mã trước khi bạn mua." },
+      { "q": "Cửa hàng có giao hàng không?", "a": "Có, giao trong thành phố bằng xe máy ngay trong ngày với hàng có sẵn; phí tuỳ quãng đường." },
+      { "q": "Tôi có thể đổi trả phụ tùng không?", "a": "Phụ tùng chưa dùng, còn nguyên hộp được đổi trả trong 7 ngày kèm hoá đơn. Phụ tùng điện đã lắp không thể đổi trả." },
+      { "q": "Có cần đặt lịch xưởng không?", "a": "Nên đặt qua điện thoại hoặc Zalo; khi còn cầu nâng trống, bạn có thể ghé thẳng." },
+      { "q": "Cửa hàng bán phụ tùng chính hãng hay thay thế?", "a": "Cả hai. Chúng tôi giải thích khác biệt về giá và độ bền, bạn là người chọn." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Ghé cửa hàng",
+    "title": "Mang phụ tùng cũ đến, chúng tôi tìm đúng loại",
+    "text": "Đến quầy với phụ tùng cũ hoặc giấy tờ xe, hoặc gọi điện, nhắn Zalo trước.",
+    "note": "Xưởng: nhận xe cuối cùng một giờ trước giờ đóng cửa."
+  }
+}

@@ -1,0 +1,64 @@
+@import "tailwindcss";
+/* Shared design tokens and base styles, the business-site kit, then this site's own look. */
+@import "@web/ui/theme.css";
+@import "@web/ui/article-layout.css";
+@import "@web/site-kit/theme.css";
+@source "../../../../packages/ui/src";
+@source "../../../../packages/site-kit/src";
+
+/*
+ * Bông Florist: blush petals, sage leaves, cream paper and a deep plum ribbon.
+ * - `--brand` rose: buttons, links.  - `--accent` sage: labels, small highlights.
+ * - `--deep` plum: the footer and dark bands.
+ * Soft round shapes, an italic serif: hand-tied, a little romantic.
+ */
+:root {
+  --bg: #fcf7f2;
+  --surface: #ffffff;
+  --surface-2: #f6ece4;
+  --border: #ecdcd2;
+  --fg: #2f1d24;
+  --muted: #6b5560;
+  --subtle: #8c7680;
+  --brand: #c2456b;
+  --brand-hover: #a73859;
+  --brand-fg: #ffffff;
+  --brand-soft: #fbe4ea;
+  --brand-soft-fg: #8f2e4d;
+  --brand-strong: #4a2232;
+  --accent: #6d8a6a;
+  --accent-fg: #ffffff;
+  --deep: #3b1f2b;
+  --deep-fg: #fbefe9;
+  --card-radius: 2rem;
+  --button-radius: 9999px;
+  --heading-weight: 600;
+  --heading-tracking: -0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1116;
+    --surface: #23171d;
+    --surface-2: #2c1d25;
+    --border: #45303a;
+    --fg: #f7e9ee;
+    --muted: #c6aeb8;
+    --subtle: #a28c96;
+    --brand: #ec7d9e;
+    --brand-hover: #f39bb5;
+    --brand-fg: #2a0f19;
+    --brand-soft: rgb(236 125 158 / 0.14);
+    --brand-soft-fg: #f8c3d3;
+    --brand-strong: #fbe0e8;
+    --accent: #9cb898;
+    --accent-fg: #142012;
+    --deep: #120a0e;
+  }
+}
+
+/* Italic accent words in headings: "<em>" inside .display. */
+.display em {
+  font-style: italic;
+  color: var(--brand);
+}

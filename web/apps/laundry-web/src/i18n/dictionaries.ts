@@ -1,23 +1,21 @@
+import type { Locale } from '@web/site-kit/locales';
+import { mergeMessages, type Dictionary } from '@web/site-kit/messages';
 import type en from './messages/en.json';
-import type { Locale } from './locales';
 
-/** The shape of a dictionary: English is the reference, every other language must match it. */
-export type Messages = typeof en;
+/** This site's own words (English is the reference, every other language must match it). */
+export type SiteMessages = typeof en;
+/** The whole dictionary: the kit's strings (@web/site-kit/messages) and the site's own (its legal texts replace the kit's). */
+export type Messages = Dictionary<SiteMessages>;
 
 /**
- * One loader per language. `Promise<Messages>` makes TypeScript refuse a translation that lacks
- * a key; messages.test.ts also refuses extra or empty keys. Only the requested language is loaded,
- * on the server: dictionaries never reach the client bundle (client components get strings as props).
+ * One loader per language, on the server only (client components get strings as props).
+ * messages.test.ts refuses missing, extra or empty keys.
  */
 const dictionaries: Record<Locale, () => Promise<Messages>> = {
-  en: () => import('./messages/en.json').then((module) => module.default),
-  vi: () => import('./messages/vi.json').then((module) => module.default),
+  en: async () => mergeMessages((await import('@web/site-kit/messages/en.json')).default, (await import('./messages/en.json')).default),
+  vi: async () => mergeMessages((await import('@web/site-kit/messages/vi.json')).default, (await import('./messages/vi.json')).default),
 };
 
-/**
- * A dictionary by locale. Usable anywhere (Route Handlers, image routes, tests); pages use
- * getMessages() (messages.ts), which reads the locale from the route.
- */
 export function loadMessages(locale: Locale): Promise<Messages> {
   return dictionaries[locale]();
 }

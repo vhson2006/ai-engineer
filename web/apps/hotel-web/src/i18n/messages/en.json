@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Lantern House Hội An: boutique hotel near the old town",
+    "description": "Eighteen rooms around a lantern-lit courtyard and pool, a five-minute walk from Hội An's old town. Breakfast included, bicycles free; book by phone, Zalo or email.",
+    "ogImageAlt": "A yellow colonial-style hotel with silk lanterns reflected in its courtyard pool at dusk"
+  },
+  "blog": {
+    "title": "Letters from Hội An",
+    "intro": "Where to eat, when to see the lanterns, and slow days around the old town, from the Lantern House team.",
+    "metaTitle": "Articles: Hội An travel tips and local life",
+    "metaDescription": "Food, festivals, cycling routes and slow days in Hội An, from the team of Lantern House, a boutique hotel near the old town.",
+    "latestIntro": "Food, festivals and slow days around the old town.",
+    "ctaTitle": "Staying in Hội An?",
+    "ctaText": "Tell us your dates and how many guests: we reply with availability and the best rate, usually within the hour."
+  },
+  "footer": {
+    "tagline": "A small hotel of eighteen rooms, five minutes from the old town."
+  },
+  "hours": {
+    "reception": "Reception"
+  },
+  "nav": {
+    "top": "Home",
+    "rooms": "Rooms",
+    "amenities": "Amenities",
+    "location": "Location",
+    "policies": "Good to know"
+  },
+  "hero": {
+    "eyebrow": "Boutique hotel · Hội An",
+    "title": "Come home to lantern light",
+    "text": "Eighteen rooms around a courtyard pool, a five-minute walk from the old town. Breakfast under the frangipani, bicycles at the gate.",
+    "book": "Book a room",
+    "viewRooms": "See the rooms",
+    "imageAlt": "The hotel's yellow walls and silk lanterns reflected in the courtyard pool at dusk"
+  },
+  "rooms": {
+    "eyebrow": "Rooms",
+    "title": "Three ways to stay",
+    "intro": "Every room has air conditioning, a rain shower, quality linen and a view of the garden or the pool.",
+    "perNight": "per night",
+    "size": "{size} m²",
+    "guests": "Up to {count} guests",
+    "breakfast": "Breakfast included",
+    "book": "Ask for this room",
+    "items": {
+      "garden": {
+        "name": "Garden Twin",
+        "bed": "Two single beds",
+        "imageAlt": "Twin room with two white beds opening onto a garden terrace",
+        "features": ["Private garden terrace", "Bamboo blinds, quiet side", "Ideal for friends travelling together"]
+      },
+      "deluxe": {
+        "name": "Deluxe King",
+        "bed": "One king bed",
+        "imageAlt": "Deluxe room with a king bed, dark wood furniture and lantern lamps",
+        "features": ["Balcony over the courtyard", "Lantern lamps and dark-wood furniture", "Coffee and tea set"]
+      },
+      "suite": {
+        "name": "Lantern Suite",
+        "bed": "One king bed and a sofa bed",
+        "imageAlt": "Suite with rattan armchairs and a freestanding bathtub by a large window",
+        "features": ["Freestanding bathtub by the window", "Separate sitting area", "Evening turndown with local sweets"]
+      }
+    }
+  },
+  "amenities": {
+    "eyebrow": "Amenities",
+    "title": "Everything for slow days",
+    "intro": "Small enough to know your name, equipped like a bigger hotel.",
+    "poolAlt": "The turquoise pool among palm trees and wooden sun loungers",
+    "courtyardAlt": "The courtyard garden with tropical plants and hanging lanterns",
+    "items": [
+      { "title": "Courtyard pool", "text": "Open 7:00 to 21:00, towels by the loungers." },
+      { "title": "Breakfast included", "text": "Cao lầu, bánh mì, fruit and eggs your way, served until 10:30." },
+      { "title": "Free bicycles", "text": "Ride to the old town or the rice fields; maps at reception." },
+      { "title": "Airport transfer", "text": "Private car from Đà Nẵng airport, on request (fee)." },
+      { "title": "Fast Wi-Fi", "text": "Everywhere, including by the pool." },
+      { "title": "Laundry", "text": "Same-day laundry service, priced by the kilo." }
+    ]
+  },
+  "location": {
+    "eyebrow": "Location",
+    "title": "On a quiet street, close to everything",
+    "intro": "Far enough from the night market to sleep well, close enough to walk to dinner.",
+    "imageAlt": "Hội An's old town at night under strings of colourful silk lanterns",
+    "modes": {
+      "walk": "{minutes} min on foot",
+      "bike": "{minutes} min by bike",
+      "car": "{minutes} min by car"
+    },
+    "places": {
+      "oldTown": "Old town and the Japanese bridge",
+      "market": "Hội An central market",
+      "traQue": "Trà Quế vegetable village",
+      "anBang": "An Bàng beach",
+      "myson": "Mỹ Sơn sanctuary",
+      "airport": "Đà Nẵng airport"
+    }
+  },
+  "policies": {
+    "eyebrow": "Good to know",
+    "title": "Before you arrive",
+    "checkInLabel": "Check-in",
+    "checkOutLabel": "Check-out",
+    "from": "from {time}",
+    "until": "until {time}",
+    "items": [
+      { "title": "Booking", "text": "By phone, Zalo or email. We confirm in writing with the rate, what it includes and the cancellation terms." },
+      { "title": "Cancellation", "text": "The terms depend on the season and the rate; they are stated in your confirmation before you pay anything." },
+      { "title": "Children", "text": "Children under 6 stay free in their parents' room; a baby cot is available on request." },
+      { "title": "Pets and smoking", "text": "We cannot host pets. Smoking is allowed only in the garden, away from the rooms." }
+    ]
+  },
+  "questions": {
+    "items": [
+      { "q": "Can we check in early?", "a": "Whenever a room is ready, yes. Otherwise leave your luggage with us, enjoy the pool and breakfast, and we call you when the room is ready." },
+      { "q": "How do we get from the airport?", "a": "Đà Nẵng airport is about 45 minutes by car. We can arrange a private car on request; the price is confirmed when you book." },
+      { "q": "Is there parking?", "a": "Yes, for motorbikes and bicycles in the courtyard; for cars, a paid car park is two minutes away." },
+      { "q": "Do you organise tours?", "a": "Reception books cooking classes, lantern-making workshops, basket-boat rides and trips to Mỹ Sơn with trusted local partners." },
+      { "q": "Is breakfast always included?", "a": "Yes, for every room and every night." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Contact",
+    "title": "We'll keep a lantern lit for you",
+    "text": "Call, message us on Zalo or email with your dates: we reply with availability and the best rate.",
+    "note": "Reception is open day and night."
+  }
+}

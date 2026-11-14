@@ -1,5 +1,5 @@
 import { cn } from '@web/ui';
-import { winery } from '@/content/winery';
+import { business } from '@/content/business';
 
 /** The red seal with the gold "興" (hưng) character from the company's label and brochure. */
 export function Seal({ className }: { className?: string }) {
@@ -35,7 +35,7 @@ export function Logo({ tagline, tone = 'dark', className }: { tagline: string; t
             tone === 'light' ? 'text-gold-foil' : 'text-brand-strong',
           )}
         >
-          {winery.name}
+          {business.name}
         </span>
         <span className={cn('mt-1 block text-[0.65rem] font-semibold tracking-[0.24em] uppercase', tone === 'light' ? 'text-gold-light' : 'text-gold-text')}>
           {tagline}

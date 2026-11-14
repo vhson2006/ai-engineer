@@ -6,8 +6,9 @@ import { format } from '@web/core/i18n/format';
 import { cn } from '@web/ui';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@web/ui/dialog';
 import { pill } from '@/components/pill';
-import { LOCALES, type Locale } from '@/i18n/locales';
-import type { Messages } from '@/i18n/messages';
+import type { Locale } from '@web/site-kit/locales';
+import { website } from '@/website';
+import type { Messages } from '@/i18n/dictionaries';
 import { formatTime } from '@/lib/format';
 import type { BookingPreset } from './booking-provider';
 import { dayKey, nextDays, slotsFor, type HoursRow } from './slots';
@@ -60,7 +61,7 @@ export function BookingDialog({
 /** Mounted only while the dialog is open, so "today" is read in the browser, never on the server. */
 function BookingFlow({ data, preset }: { data: BookingData; preset?: BookingPreset }) {
   const t = data.labels;
-  const intl = LOCALES[data.locale].intl;
+  const intl = website.intl(data.locale);
   const [now] = useState(() => new Date());
   const days = useMemo(() => nextDays(now, DAYS_AHEAD), [now]);
   const presetService = preset?.service ? data.groups.flatMap((group) => group.services).find((item) => item.id === preset.service) : undefined;

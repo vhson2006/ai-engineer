@@ -5,20 +5,10 @@
     "ogImageAlt": "Envy Nails Spa of Wendell: the ENVY wordmark beside four nail looks on pastel tiles"
   },
   "common": {
-    "skipToContent": "Skip to content",
-    "language": "Language",
-    "callNow": "Call now",
-    "call": "Call {phone}",
     "viewMenu": "View full menu",
-    "from": "From {price}",
-    "or": "or",
-    "directions": "Get directions"
+    "or": "or"
   },
   "nav": {
-    "label": "Main",
-    "home": "Envy Nail Spa home",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
     "top": "Home",
     "gallery": "Gallery",
     "artists": "Artists",
@@ -27,202 +17,14 @@
     "visit": "Visit",
     "blog": "Blog"
   },
-  "hero": {
-    "eyebrow": "Nail salon · Wendell, NC 27591",
-    "title": "Elegance",
-    "titleAccent": "at your fingertips",
-    "text": "Experience the unique world of nails that are masterpieces and treatments that are strokes of elegance. Our expert technicians are artists, turning nail care into an art form.",
-    "signatureLabel": "Signature",
-    "signatureName": "Royal Herbal Detox Pedicure",
-    "featured": "Featured looks",
-    "slide": "Show look {number}",
-    "pause": "Pause slideshow",
-    "play": "Play slideshow"
-  },
-  "promise": {
-    "label": "Why guests choose Envy Nail Spa",
-    "items": {
-      "clean": {
-        "title": "Clean & sanitary",
-        "text": "Hygiene and sanitation taken seriously, every precaution, every guest."
-      },
-      "products": {
-        "title": "High-grade products",
-        "text": "Only branded, high-grade products for the best results and your safety."
-      },
-      "staff": {
-        "title": "Trained professionals",
-        "text": "Highly trained and qualified nail technicians you can trust."
-      },
-      "relax": {
-        "title": "Relaxing atmosphere",
-        "text": "A calm, green space to unwind while we take care of you."
-      }
-    }
-  },
-  "status": {
-    "open": "Taking guests now",
-    "closesAt": "Open until {time}",
-    "closed": "Closed right now",
-    "opensAt": "Opens {day} at {time}",
-    "today": "today",
-    "tomorrow": "tomorrow",
-    "checking": "Checking today’s hours…"
-  },
-  "gallery": {
-    "eyebrow": "Nail art gallery",
-    "title": "Pick a look. We’ll make it yours.",
-    "intro": "Looks to inspire your next set. Tap one for an estimate of time and price and its color palette, then book it.",
-    "filtersLabel": "Filter by style",
-    "all": "All",
-    "categories": {
-      "art": "Nail art",
-      "gems": "Gems & 3D",
-      "french": "French",
-      "minimal": "Classic & minimal"
-    },
-    "open": "See details",
-    "time": "Time",
-    "timeValue": "About {min}–{max} min",
-    "price": "Price",
-    "total": "Total from",
-    "palette": "Polish palette",
-    "estimate": "Times are estimates and prices depend on length, shape and condition: your nail tech confirms both before starting.",
-    "book": "Book this look",
-    "close": "Close",
-    "items": {
-      "floralStiletto": {
-        "name": "3D floral stilettos",
-        "text": "Long stiletto acrylics with sculpted orange blossoms on a blue marble base.",
-        "colors": [
-          "Sky marble",
-          "Tangerine",
-          "Pearl"
-        ]
-      },
-      "mintGoldFoil": {
-        "name": "Mint & gold foil",
-        "text": "Glossy mint gel with gold leaf flakes on two accent nails.",
-        "colors": [
-          "Mint",
-          "Gold leaf"
-        ]
-      },
-      "classicFrench": {
-        "name": "Classic French",
-        "text": "Natural pink base with crisp white tips.",
-        "colors": [
-          "Blush",
-          "White"
-        ]
-      },
-      "peacock": {
-        "name": "Peacock feather",
-        "text": "Pastel green with hand-painted feather lines and jewel accents.",
-        "colors": [
-          "Pistachio",
-          "Forest",
-          "Sapphire"
-        ]
-      },
-      "milkyPink": {
-        "name": "Milky pink",
-        "text": "Sheer milky pink gel on short square nails.",
-        "colors": [
-          "Milky pink",
-          "Porcelain"
-        ]
-      },
-      "butterBlossoms": {
-        "name": "Butter & blossoms",
-        "text": "Butter yellow with tiny painted flowers on accent nails.",
-        "colors": [
-          "Butter",
-          "Rose",
-          "Denim"
-        ]
-      },
-      "emeraldDots": {
-        "name": "White & emerald dots",
-        "text": "White gel with dotted emerald art and crystal accents.",
-        "colors": [
-          "White",
-          "Emerald",
-          "Crystal"
-        ]
-      },
-      "neonFrench": {
-        "name": "Neon glitter French",
-        "text": "A mix of classic and neon green glitter French tips.",
-        "colors": [
-          "Nude",
-          "Neon green",
-          "White"
-        ]
-      },
-      "mintConfetti": {
-        "name": "Mint & confetti",
-        "text": "Soft mint almonds with clear confetti accent nails.",
-        "colors": [
-          "Mint",
-          "Violet",
-          "Sunshine"
-        ]
-      },
-      "coralPedicure": {
-        "name": "Coral red mani & pedi",
-        "text": "A classic bright coral red on hands and toes.",
-        "colors": [
-          "Coral red"
-        ]
-      },
-      "greenApple": {
-        "name": "Green apple",
-        "text": "Glossy white with a hand-painted green apple accent.",
-        "colors": [
-          "White",
-          "Apple green"
-        ]
-      }
-    }
-  },
-  "artists": {
-    "eyebrow": "Meet the artists",
-    "title": "Three specialties, one team.",
-    "intro": "Tell us the look you want when you book: we’ll pair you with the tech who loves doing it most.",
-    "from": "Prices",
-    "book": "Book this specialty",
-    "items": {
-      "handPainted": {
-        "name": "Hand-painted detail",
-        "text": "Florals, fine lines, dots and custom designs painted freehand, nail by nail.",
-        "tags": [
-          "Freehand art",
-          "Multi-color",
-          "Custom designs"
-        ]
-      },
-      "sculpt": {
-        "name": "Sculpted sets",
-        "text": "Structure that lasts: Gel-X extensions, builder gel and BIAB, shaped to suit your hands.",
-        "tags": [
-          "Gel-X",
-          "Builder gel",
-          "Almond · coffin · stiletto"
-        ]
-      },
-      "effects": {
-        "name": "Blends & effects",
-        "text": "Ombre fades, aura glows, chrome and magnetic cat eye for finishes that shift with the light.",
-        "tags": [
-          "Ombre & aura",
-          "Chrome",
-          "Cat eye"
-        ]
-      }
-    }
-  },
   "menu": {
+    "label": "Main",
+    "home": "Envy Nail Spa home",
+    "open": "Open menu",
+    "close": "Close menu",
+    "articles": "Blog"
+  },
+  "services": {
     "eyebrow": "Menu",
     "title": "Services & prices",
     "intro": "Prices marked + start from the amount shown and depend on length, design and condition. Please confirm with your nail tech before your service.",
@@ -508,6 +310,201 @@
       }
     }
   },
+  "hero": {
+    "eyebrow": "Nail salon · Wendell, NC 27591",
+    "title": "Elegance",
+    "titleAccent": "at your fingertips",
+    "text": "Experience the unique world of nails that are masterpieces and treatments that are strokes of elegance. Our expert technicians are artists, turning nail care into an art form.",
+    "signatureLabel": "Signature",
+    "signatureName": "Royal Herbal Detox Pedicure",
+    "featured": "Featured looks",
+    "slide": "Show look {number}",
+    "pause": "Pause slideshow",
+    "play": "Play slideshow"
+  },
+  "promise": {
+    "label": "Why guests choose Envy Nail Spa",
+    "items": {
+      "clean": {
+        "title": "Clean & sanitary",
+        "text": "Hygiene and sanitation taken seriously, every precaution, every guest."
+      },
+      "products": {
+        "title": "High-grade products",
+        "text": "Only branded, high-grade products for the best results and your safety."
+      },
+      "staff": {
+        "title": "Trained professionals",
+        "text": "Highly trained and qualified nail technicians you can trust."
+      },
+      "relax": {
+        "title": "Relaxing atmosphere",
+        "text": "A calm, green space to unwind while we take care of you."
+      }
+    }
+  },
+  "status": {
+    "open": "Taking guests now",
+    "closesAt": "Open until {time}",
+    "closed": "Closed right now",
+    "opensAt": "Opens {day} at {time}",
+    "today": "today",
+    "tomorrow": "tomorrow",
+    "checking": "Checking today’s hours…"
+  },
+  "gallery": {
+    "eyebrow": "Nail art gallery",
+    "title": "Pick a look. We’ll make it yours.",
+    "intro": "Looks to inspire your next set. Tap one for an estimate of time and price and its color palette, then book it.",
+    "filtersLabel": "Filter by style",
+    "all": "All",
+    "categories": {
+      "art": "Nail art",
+      "gems": "Gems & 3D",
+      "french": "French",
+      "minimal": "Classic & minimal"
+    },
+    "open": "See details",
+    "time": "Time",
+    "timeValue": "About {min}–{max} min",
+    "price": "Price",
+    "total": "Total from",
+    "palette": "Polish palette",
+    "estimate": "Times are estimates and prices depend on length, shape and condition: your nail tech confirms both before starting.",
+    "book": "Book this look",
+    "close": "Close",
+    "items": {
+      "floralStiletto": {
+        "name": "3D floral stilettos",
+        "text": "Long stiletto acrylics with sculpted orange blossoms on a blue marble base.",
+        "colors": [
+          "Sky marble",
+          "Tangerine",
+          "Pearl"
+        ]
+      },
+      "mintGoldFoil": {
+        "name": "Mint & gold foil",
+        "text": "Glossy mint gel with gold leaf flakes on two accent nails.",
+        "colors": [
+          "Mint",
+          "Gold leaf"
+        ]
+      },
+      "classicFrench": {
+        "name": "Classic French",
+        "text": "Natural pink base with crisp white tips.",
+        "colors": [
+          "Blush",
+          "White"
+        ]
+      },
+      "peacock": {
+        "name": "Peacock feather",
+        "text": "Pastel green with hand-painted feather lines and jewel accents.",
+        "colors": [
+          "Pistachio",
+          "Forest",
+          "Sapphire"
+        ]
+      },
+      "milkyPink": {
+        "name": "Milky pink",
+        "text": "Sheer milky pink gel on short square nails.",
+        "colors": [
+          "Milky pink",
+          "Porcelain"
+        ]
+      },
+      "butterBlossoms": {
+        "name": "Butter & blossoms",
+        "text": "Butter yellow with tiny painted flowers on accent nails.",
+        "colors": [
+          "Butter",
+          "Rose",
+          "Denim"
+        ]
+      },
+      "emeraldDots": {
+        "name": "White & emerald dots",
+        "text": "White gel with dotted emerald art and crystal accents.",
+        "colors": [
+          "White",
+          "Emerald",
+          "Crystal"
+        ]
+      },
+      "neonFrench": {
+        "name": "Neon glitter French",
+        "text": "A mix of classic and neon green glitter French tips.",
+        "colors": [
+          "Nude",
+          "Neon green",
+          "White"
+        ]
+      },
+      "mintConfetti": {
+        "name": "Mint & confetti",
+        "text": "Soft mint almonds with clear confetti accent nails.",
+        "colors": [
+          "Mint",
+          "Violet",
+          "Sunshine"
+        ]
+      },
+      "coralPedicure": {
+        "name": "Coral red mani & pedi",
+        "text": "A classic bright coral red on hands and toes.",
+        "colors": [
+          "Coral red"
+        ]
+      },
+      "greenApple": {
+        "name": "Green apple",
+        "text": "Glossy white with a hand-painted green apple accent.",
+        "colors": [
+          "White",
+          "Apple green"
+        ]
+      }
+    }
+  },
+  "artists": {
+    "eyebrow": "Meet the artists",
+    "title": "Three specialties, one team.",
+    "intro": "Tell us the look you want when you book: we’ll pair you with the tech who loves doing it most.",
+    "from": "Prices",
+    "book": "Book this specialty",
+    "items": {
+      "handPainted": {
+        "name": "Hand-painted detail",
+        "text": "Florals, fine lines, dots and custom designs painted freehand, nail by nail.",
+        "tags": [
+          "Freehand art",
+          "Multi-color",
+          "Custom designs"
+        ]
+      },
+      "sculpt": {
+        "name": "Sculpted sets",
+        "text": "Structure that lasts: Gel-X extensions, builder gel and BIAB, shaped to suit your hands.",
+        "tags": [
+          "Gel-X",
+          "Builder gel",
+          "Almond · coffin · stiletto"
+        ]
+      },
+      "effects": {
+        "name": "Blends & effects",
+        "text": "Ombre fades, aura glows, chrome and magnetic cat eye for finishes that shift with the light.",
+        "tags": [
+          "Ombre & aura",
+          "Chrome",
+          "Cat eye"
+        ]
+      }
+    }
+  },
   "booking": {
     "open": "Book now",
     "title": "Book a visit",
@@ -634,16 +631,16 @@
     "website": "Website",
     "hours": "Business hours",
     "imageAlt": "Spa candle, essential oil, bath salts and rolled towels",
-    "days": {
-      "monThu": "Monday – Thursday",
-      "fri": "Friday",
-      "sat": "Saturday",
-      "sun": "Sunday"
-    },
     "policy": "Salon policy",
     "follow": "Follow us",
     "mapTitle": "Map: Envy Nails Spa, 2241 Treelight Way, Suite 102, Wendell, NC",
     "openMap": "Open in Google Maps"
+  },
+  "hours": {
+    "monThu": "Monday – Thursday",
+    "fri": "Friday",
+    "sat": "Saturday",
+    "sun": "Sunday"
   },
   "footer": {
     "tagline": "Clean, professional, high-quality nail care in Wendell, North Carolina.",
@@ -651,39 +648,23 @@
     "rights": "© {year} {name}. All rights reserved.",
     "legal": "Legal information"
   },
-  "articles": {
-    "playVideo": "Play the video",
-    "eyebrow": "Blog",
+  "blog": {
     "title": "Notes from the salon",
     "intro": "Nail care tips, a guide to our services and what to know before your visit, from Envy Nails Spa of Wendell.",
     "metaTitle": "Blog: nail care tips and salon notes",
     "metaDescription": "Nail care tips, a guide to acrylic, dip powder, Gel-X and BIAB, and what to know before your visit to Envy Nails Spa of Wendell.",
-    "home": "Home",
-    "breadcrumb": "Breadcrumb",
-    "all": "All",
-    "categoriesLabel": "Topics",
-    "categoryTitle": "{category}",
-    "categoryDescription": "Articles about {category} from Envy Nails Spa of Wendell.",
-    "featured": "Featured",
-    "readMore": "Read more",
-    "minutes": "{count} min read",
-    "latest": "From our blog",
     "latestIntro": "Tips to keep your nails looking good between visits, and answers before you book.",
-    "viewAll": "All articles",
-    "back": "Back to the blog",
-    "related": "Keep reading",
-    "empty": "No articles in this topic yet.",
     "ctaTitle": "Ready for fresh nails?",
-    "ctaText": "Book online in a minute, or call us for groups and special requests.",
-    "none": "No article has been published yet."
+    "ctaText": "Book online in a minute, or call us for groups and special requests."
   },
-  "notFound": {
-    "title": "Page not found",
-    "text": "The page you're looking for doesn't exist or has moved.",
-    "back": "Back to home"
+  "articles": {
+    "eyebrow": "Blog",
+    "categoryDescription": "Articles about {category} from Envy Nails Spa of Wendell.",
+    "latest": "From our blog",
+    "back": "Back to the blog"
   },
   "legal": {
-    "effective": "Effective date: {date}",
+    "updated": "Effective date: {date}",
     "contents": "Contents",
     "related": "See also",
     "links": {

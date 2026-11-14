@@ -8,7 +8,7 @@ const workspaceRoot = path.join(__dirname, '../..');
 // prerendered HTML. Local builds fall back to APP_URL.
 const siteUrl = (process.env.SITE_URL || process.env.APP_URL || 'http://localhost:3200').replace(/\/$/, '');
 
-// Read at runtime by the link preview images (src/features/og/og-card.tsx).
+// Read at runtime by the link preview images (src/og-card.tsx, drawn by @web/site-kit/og).
 const ogFiles = ['../../packages/ui/assets/fonts/*.ttf', './public/images/logo-envy.png', './public/images/gallery/*'];
 
 const securityHeaders = [
@@ -20,7 +20,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: 'standalone',
-  // Inlined at build time: the same value in prerendered pages and at runtime (src/site.ts).
+  // Inlined at build time: the same value in prerendered pages and at runtime (src/site.tsx).
   env: { SITE_URL: siteUrl },
   outputFileTracingRoot: workspaceRoot,
   outputFileTracingIncludes: {

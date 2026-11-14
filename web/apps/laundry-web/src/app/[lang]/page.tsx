@@ -21,14 +21,15 @@ import { JsonLd } from '@web/ui/json-ld';
 import { Reveal } from '@web/ui/reveal';
 import { MachineMark } from '@/components/logo';
 import { SectionHeading } from '@/components/section-heading';
-import { mapEmbedSrc, priceTableOrder, priceTables, shop, type PriceRow, type Unit } from '@/content/shop';
-import { ArticleGrid } from '@/features/articles/article-card';
-import { articlePaths, listArticles } from '@/features/articles/data';
+import { mapEmbedSrc } from '@web/site-kit/business';
+import { ArticleGrid } from '@web/site-kit/components/articles';
+import { formatVnd } from '@web/site-kit/format';
+import { href, type Locale } from '@web/site-kit/locales';
+import { business, hoursOf } from '@/content/business';
+import { priceTableOrder, priceTables, type PriceRow, type Unit } from '@/content/prices';
 import { Estimator } from '@/features/estimate/estimator';
-import { href, type Locale } from '@/i18n/locales';
-import { getLocale, getMessages, type Messages } from '@/i18n/messages';
-import { formatHours, formatVnd } from '@/lib/format';
-import { structuredData } from '@/seo';
+import type { Messages } from '@/i18n/dictionaries';
+import { site } from '@/site';
 import machines from '../../../public/images/machines.jpg';
 import shelves from '../../../public/images/shelves.jpg';
 
@@ -46,14 +47,14 @@ const sunPill = cn(buttonVariants({ size: 'lg' }), 'rounded-full bg-sun px-7 tex
 
 type Ctx = { t: Messages; locale: Locale; vnd: (amount: number) => string; unit: (unit: Unit) => string };
 
-/** One landing page, prerendered per language. Facts and prices: src/content/shop.ts. */
+/** One landing page, prerendered per language. Facts: src/content/business.ts, prices: src/content/prices.ts. */
 export default async function HomePage() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
+  const [t, locale] = await Promise.all([site.getMessages(), site.getLocale()]);
   const ctx: Ctx = { t, locale, vnd: (amount) => formatVnd(locale, amount), unit: (unit) => t.common.units[unit] };
   return (
     <>
       {/* The shop as a local business (address, phone, opening hours) for search engines. */}
-      <JsonLd data={structuredData(t, locale)} />
+      <JsonLd data={site.structuredData(t, locale)} />
       <Hero {...ctx} />
       <Highlights {...ctx} />
       <Reveal>
@@ -94,9 +95,9 @@ function Hero({ t, vnd, unit }: Ctx) {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-white/90">{t.hero.text}</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href={shop.phone.href} className={sunPill}>
+            <a href={business.phone.href} className={sunPill}>
               <Phone aria-hidden />
-              {format(t.common.call, { phone: shop.phone.display })}
+              {format(t.common.call, { phone: business.phone.display })}
             </a>
             <a href="#prices" className={cn(pill('secondary'), 'border-white/40 bg-white/10 text-white hover:bg-white/20')}>
               {t.common.viewPrices}
@@ -258,20 +259,20 @@ function Process({ t }: Ctx) {
 /* ─────────────────────────────── Latest articles ─────────────────────────────── */
 
 async function LatestArticles({ t, locale }: Ctx) {
-  const articles = (await listArticles(locale)).slice(0, 3);
+  const articles = (await site.latestArticles(locale)).slice(0, 3);
   if (articles.length === 0) return null;
   return (
     <section id="articles" className="py-14 sm:py-16">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.articles.latestIntro} />
-          <Link href={href(locale, articlePaths.index)} className={cn(pill('secondary'), 'shrink-0 self-start sm:self-auto')}>
+          <SectionHeading align="left" eyebrow={t.articles.eyebrow} title={t.articles.latest} intro={t.blog.latestIntro} />
+          <Link href={href(locale, site.website.paths.articles)} className={cn(pill('secondary'), 'shrink-0 self-start sm:self-auto')}>
             {t.articles.viewAll}
             <ArrowRight aria-hidden />
           </Link>
         </div>
         <div className="mt-10">
-          <ArticleGrid articles={articles} locale={locale} t={t} />
+          <ArticleGrid articles={articles} website={site.website} locale={locale} t={t} />
         </div>
       </Container>
     </section>
@@ -321,9 +322,9 @@ function Contact({ t, locale }: Ctx) {
                 <dl className="mt-1 divide-y divide-border">
                   {(['weekdays', 'weekend'] as const).map((days) => (
                     <div key={days} className="flex flex-wrap items-baseline justify-between gap-x-4 py-2">
-                      <dt className="font-medium">{t.contact[days]}</dt>
+                      <dt className="font-medium">{t.hours[days]}</dt>
                       <dd className="font-display text-2xl leading-tight font-extrabold text-brand-strong tabular-nums">
-                        {formatHours(locale, shop.hours[days])}
+                        {site.website.hours(locale, hoursOf(days))}
                       </dd>
                     </div>
                   ))}
@@ -335,16 +336,16 @@ function Contact({ t, locale }: Ctx) {
             <div className="mt-4 flex flex-col gap-5 rounded-[1.75rem] bg-brand-soft p-6 xl:flex-row xl:items-center xl:justify-between">
               <div>
                 <p className="text-xs font-bold tracking-[0.14em] text-cherry uppercase">{t.contact.phone}</p>
-                <a href={shop.phone.href} className="mt-1 block font-display text-3xl font-extrabold whitespace-nowrap text-brand-strong tabular-nums hover:underline">
-                  {shop.phone.display}
+                <a href={business.phone.href} className="mt-1 block font-display text-3xl font-extrabold whitespace-nowrap text-brand-strong tabular-nums hover:underline">
+                  {business.phone.display}
                 </a>
               </div>
               <div className="flex flex-wrap gap-3">
-                <a href={shop.phone.href} className={pill()}>
+                <a href={business.phone.href} className={pill()}>
                   <Phone aria-hidden />
                   {t.common.callNow}
                 </a>
-                <a href={shop.zaloHref} target="_blank" rel="noopener noreferrer" className={pill('secondary')}>
+                <a href={business.zaloHref} target="_blank" rel="noopener noreferrer" className={pill('secondary')}>
                   <MessageCircle aria-hidden />
                   {t.common.zalo}
                 </a>
@@ -357,7 +358,7 @@ function Contact({ t, locale }: Ctx) {
           <div className="relative isolate aspect-square overflow-hidden rounded-[1.75rem] bg-brand-soft shadow-xl ring-1 ring-black/5 lg:aspect-auto">
             <iframe
               title={t.contact.mapTitle}
-              src={mapEmbedSrc(locale)}
+              src={mapEmbedSrc(business, locale)}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="absolute inset-0 -z-10 size-full border-0"

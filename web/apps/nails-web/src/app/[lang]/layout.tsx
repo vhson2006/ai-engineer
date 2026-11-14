@@ -1,18 +1,18 @@
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { format } from '@web/core/i18n/format';
 import { SmoothScroll } from '@web/ui/smooth-scroll';
+import { SkipLink } from '@web/site-kit/components/chrome';
+import { LOCALE_CODES, type Locale } from '@web/site-kit/locales';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { menuTables, menuTabs, salon, type Price } from '@/content/salon';
 import { BookingProvider } from '@/features/booking/booking-provider';
 import type { BookingData } from '@/features/booking/booking-dialog';
 import { QuickBookingBar } from '@/features/booking/quick-bar';
-import { LOCALE_CODES, type Locale } from '@/i18n/locales';
-import { getLocale, getMessages, type Messages } from '@/i18n/messages';
+import type { Messages } from '@/i18n/dictionaries';
 import { formatPrice } from '@/lib/format';
-import { pageMetadata, samePath } from '@/seo';
-import { SITE_URL } from '@/site';
+import { site } from '@/site';
 import '../globals.css';
 
 // Ships Vietnamese glyphs (ạ, ế, ữ…); next/font self-hosts it (CSP: font-src 'self'). Heavy
@@ -28,16 +28,7 @@ export function generateStaticParams() {
 }
 
 /** The home page's metadata, and the defaults of every page (absolute URLs from SITE_URL). */
-export async function generateMetadata(): Promise<Metadata> {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
-  return {
-    metadataBase: new URL(SITE_URL),
-    ...pageMetadata({ t, locale, paths: samePath('/'), description: t.meta.description }),
-    title: { default: t.meta.title, template: `%s · ${salon.fullName}` },
-    applicationName: salon.fullName,
-    formatDetection: { telephone: false, address: false, email: false },
-  };
-}
+export const generateMetadata = site.layoutMetadata;
 
 export const viewport: Viewport = {
   themeColor: [
@@ -59,11 +50,11 @@ function bookingData(t: Messages, locale: Locale): BookingData {
       .filter((tab) => tab.bookable)
       .map((tab) => {
         const tableId = tab.tables[0];
-        const names = t.menu.tables[tableId].items as Record<string, string>;
+        const names = t.services.tables[tableId].items as Record<string, string>;
         const rows = menuTables[tableId] as { id: string; prices: (Price | null)[] }[];
         return {
           id: tab.id,
-          name: t.menu.tabs[tab.id],
+          name: t.services.tabs[tab.id],
           services: rows.map((row) => {
             const price = formatPrice(locale, row.prices[0] ?? { amount: 0 });
             return {
@@ -78,16 +69,11 @@ function bookingData(t: Messages, locale: Locale): BookingData {
 }
 
 export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
+  const [t, locale] = await Promise.all([site.getMessages(), site.getLocale()]);
   return (
     <html lang={locale} className={`${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
-        <a
-          href="#content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-surface-2 focus:px-4 focus:py-2"
-        >
-          {t.common.skipToContent}
-        </a>
+        <SkipLink t={t} className="focus:rounded-full focus:bg-surface-2" />
         <BookingProvider data={bookingData(t, locale)}>
           <SiteHeader />
           <main id="content" className="flex-1">

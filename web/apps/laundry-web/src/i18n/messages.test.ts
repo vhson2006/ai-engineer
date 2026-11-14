@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import en from './messages/en.json';
 import vi from './messages/vi.json';
-import { LOCALE_CODES } from './locales';
+import { LOCALE_CODES } from '@web/site-kit/locales';
 
 // Every language must have exactly the keys of en.json (the reference), with non-empty strings,
 // the same {placeholders}, and arrays of the same kind. Add a new language's file to this map.

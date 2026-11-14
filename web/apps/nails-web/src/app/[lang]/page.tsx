@@ -6,6 +6,9 @@ import { format } from '@web/core/i18n/format';
 import { cn } from '@web/ui';
 import { JsonLd } from '@web/ui/json-ld';
 import { Reveal } from '@web/ui/reveal';
+import type { ArticleSummary } from '@web/site-kit/articles';
+import { ArticleGrid } from '@web/site-kit/components/articles';
+import { href, type Locale } from '@web/site-kit/locales';
 import { Band } from '@/components/band';
 import { bento, GRID, STRONG, TINTS } from '@/components/bento';
 import { Monogram } from '@/components/logo';
@@ -25,17 +28,14 @@ import {
   type Price,
   type TableId,
 } from '@/content/salon';
-import { ArticleGrid } from '@/features/articles/article-card';
-import { articlePaths, latestArticles, type ArticleSummary } from '@/features/articles/data';
 import { BookButton } from '@/features/booking/booking-provider';
 import { Gallery, type GalleryLook } from '@/features/gallery/gallery';
 import { FeaturedCarousel } from '@/features/hero/featured-carousel';
 import { OpenStatusBadge } from '@/features/hero/open-status';
 import { MenuGrid, type MenuCard } from '@/features/menu/menu-grid';
-import { href, type Locale } from '@/i18n/locales';
-import { getLocale, getMessages, type Messages } from '@/i18n/messages';
+import type { Messages } from '@/i18n/dictionaries';
 import { formatHours, formatPrice } from '@/lib/format';
-import { structuredData } from '@/seo';
+import { site } from '@/site';
 import spaCandle from '../../../public/images/spa-candle.jpg';
 
 const PROMISE_ICONS: Record<keyof Messages['promise']['items'], { icon: LucideIcon; tint: string }> = {
@@ -49,16 +49,16 @@ type Ctx = { t: Messages; locale: Locale; price: (value: Price) => string };
 
 /** One landing page, prerendered per language. Facts and prices: src/content/salon.ts. */
 export default async function HomePage() {
-  const [t, locale] = await Promise.all([getMessages(), getLocale()]);
+  const [t, locale] = await Promise.all([site.getMessages(), site.getLocale()]);
   const ctx: Ctx = { t, locale, price: (value) => formatPrice(locale, value) };
   // The blog band only when there are articles (none yet, or the API is down: no empty band).
-  const articles = await latestArticles(locale, 3);
+  const articles = (await site.latestArticles(locale)).slice(0, 3);
   // Bands alternate white / pastel wash (the band stays put; only its content fades in). Each
   // band carries the id the menu scrolls to (src/components/site-header.tsx, same order).
   return (
     <>
       {/* The salon as a local business (address, phone, hours, booking) for search engines. */}
-      <JsonLd data={structuredData(t, locale)} />
+      <JsonLd data={site.structuredData(t, locale)} />
       {/* id="top": the menu's Home link. The huge scroll margin scrolls to the very top of the page. */}
       <Band id="top" tone="white" className="scroll-mt-[100vh] pt-2 sm:pt-2">
         <div className="space-y-3 sm:space-y-4">
@@ -108,14 +108,14 @@ function LatestArticles({ t, locale, articles }: Ctx & { articles: ArticleSummar
   return (
     <section aria-label={t.articles.latest}>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <SectionHeading eyebrow={t.articles.eyebrow} dot="bg-rose-strong" title={t.articles.latest} intro={t.articles.latestIntro} />
-        <Link href={href(locale, articlePaths.index)} className={pill('soft', 'md', 'shrink-0 self-start lg:self-auto')}>
+        <SectionHeading eyebrow={t.articles.eyebrow} dot="bg-rose-strong" title={t.articles.latest} intro={t.blog.latestIntro} />
+        <Link href={href(locale, site.website.paths.articles)} className={pill('soft', 'md', 'shrink-0 self-start lg:self-auto')}>
           {t.articles.viewAll}
           <ArrowUpRight aria-hidden />
         </Link>
       </div>
       <div className="mt-8">
-        <ArticleGrid articles={articles} locale={locale} t={t} />
+        <ArticleGrid articles={articles} website={site.website} locale={locale} t={t} />
       </div>
     </section>
   );
@@ -123,7 +123,7 @@ function LatestArticles({ t, locale, articles }: Ctx & { articles: ArticleSummar
 
 /** "Classic Manicure · Gel" for a menu line. */
 function lineName(t: Messages, ref: MenuRef) {
-  const table = t.menu.tables[ref.table];
+  const table = t.services.tables[ref.table];
   const name = (table.items as Record<string, string>)[ref.row];
   return table.columns.length > 1 ? `${name} · ${table.columns[ref.column ?? 0]}` : name;
 }
@@ -204,7 +204,7 @@ function Hero({ t, locale, price }: Ctx) {
         <dl className="mt-4 space-y-1.5 text-sm">
           {salon.hours.map((row) => (
             <div key={row.id} className="flex justify-between gap-3">
-              <dt className="text-muted">{t.visit.days[row.id]}</dt>
+              <dt className="text-muted">{t.hours[row.id]}</dt>
               <dd className="font-semibold whitespace-nowrap tabular-nums">{formatHours(locale, row.open, row.close)}</dd>
             </div>
           ))}
@@ -220,7 +220,7 @@ function Hero({ t, locale, price }: Ctx) {
         <div className="flex items-center justify-between gap-3">
           {royal && <span className="text-3xl font-extrabold tabular-nums">{price(royal)}</span>}
           <BookButton service="pedicure.royal" className={pill('ink', 'sm')}>
-            {t.menu.book}
+            {t.services.book}
             <ArrowUpRight aria-hidden />
           </BookButton>
         </div>
@@ -380,15 +380,15 @@ function Menu(ctx: Ctx) {
   const { t, price } = ctx;
   const cards: MenuCard[] = menuTabs.map((tab) => {
     const firstTable = tab.tables[0];
-    const names = t.menu.tables[firstTable].items as Record<string, string>;
+    const names = t.services.tables[firstTable].items as Record<string, string>;
     const rows = menuTables[firstTable] as { id: string; prices: (Price | null)[] }[];
     const total = tab.tables.reduce((count, id) => count + menuTables[id].length, 0);
     const teaser = rows.slice(0, 3).map((row) => ({ name: names[row.id], price: row.prices[0] ? price(row.prices[0]) : '–' }));
-    const note = (t.menu.notes as Partial<Record<string, string>>)[tab.id];
+    const note = (t.services.notes as Partial<Record<string, string>>)[tab.id];
     return {
       id: tab.id,
-      name: t.menu.tabs[tab.id],
-      blurb: t.menu.blurbs[tab.id],
+      name: t.services.tabs[tab.id],
+      blurb: t.services.blurbs[tab.id],
       from: format(t.common.from, { price: price(fromPrice(tab)) }),
       tint: TINTS[tab.tint],
       teaser,
@@ -405,19 +405,19 @@ function Menu(ctx: Ctx) {
     };
   });
   return (
-    <section aria-label={t.menu.title}>
-      <SectionHeading eyebrow={t.menu.eyebrow} dot="bg-baby-strong" title={t.menu.title} intro={t.menu.intro} />
+    <section aria-label={t.services.title}>
+      <SectionHeading eyebrow={t.services.eyebrow} dot="bg-baby-strong" title={t.services.title} intro={t.services.intro} />
       <div className="mt-8">
-        <MenuGrid cards={cards} labels={{ viewAll: t.menu.viewAll, more: t.menu.more, book: t.menu.book, close: t.menu.close }} />
+        <MenuGrid cards={cards} labels={{ viewAll: t.services.viewAll, more: t.services.more, book: t.services.book, close: t.services.close }} />
       </div>
     </section>
   );
 }
 
 function PriceTable({ tableId, showTitle, t, price }: Ctx & { tableId: TableId; showTitle: boolean }) {
-  const text = t.menu.tables[tableId];
+  const text = t.services.tables[tableId];
   const names = text.items as Record<string, string>;
-  const includes = (t.menu.includes as Partial<Record<string, Record<string, string[]>>>)[tableId];
+  const includes = (t.services.includes as Partial<Record<string, Record<string, string[]>>>)[tableId];
   const rows = menuTables[tableId] as { id: string; prices: (Price | null)[] }[];
   const multi = text.columns.length > 1;
   return (
@@ -427,7 +427,7 @@ function PriceTable({ tableId, showTitle, t, price }: Ctx & { tableId: TableId; 
         <thead className={cn(!multi && 'sr-only')}>
           <tr>
             <th scope="col" className="pb-2 text-left text-xs font-semibold text-muted">
-              {t.menu.service}
+              {t.services.service}
             </th>
             {text.columns.map((column) => (
               <th key={column} scope="col" className="w-20 pb-2 text-right text-xs font-semibold text-muted sm:w-24">
@@ -450,7 +450,7 @@ function PriceTable({ tableId, showTitle, t, price }: Ctx & { tableId: TableId; 
                   ) : (
                     <span className="text-muted">
                       <span aria-hidden>–</span>
-                      <span className="sr-only">{t.menu.notOffered}</span>
+                      <span className="sr-only">{t.services.notOffered}</span>
                     </span>
                   )}
                 </td>
@@ -601,7 +601,7 @@ function Visit({ t, locale }: Ctx) {
           <dl className="mt-5 space-y-3 text-sm">
             {salon.hours.map((row) => (
               <div key={row.id} className="rounded-2xl bg-white/70 px-4 py-3 dark:bg-white/10">
-                <dt className="text-xs text-muted">{t.visit.days[row.id]}</dt>
+                <dt className="text-xs text-muted">{t.hours[row.id]}</dt>
                 <dd className="mt-0.5 font-bold tabular-nums">{formatHours(locale, row.open, row.close)}</dd>
               </div>
             ))}

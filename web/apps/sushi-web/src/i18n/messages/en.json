@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "title": "Kumo Sushi & Omakase: omakase counter in Saigon",
+    "description": "A twelve-seat omakase counter in central Saigon: seasonal fish, Koshihikari rice, nigiri made one piece at a time. Lunch and dinner from Tuesday to Sunday; book by phone or Zalo.",
+    "ogImageAlt": "Nigiri on a slate board at the Kumo Sushi counter"
+  },
+  "blog": {
+    "title": "Notes from the counter",
+    "intro": "The fish of the season, how we cut and season it, and how to enjoy an omakase dinner, from Kumo's chefs.",
+    "metaTitle": "Articles: sushi, seasons and the omakase counter",
+    "metaDescription": "Seasonal fish, rice and knife work, and a guide to the omakase experience, from the chefs of Kumo Sushi & Omakase.",
+    "latestIntro": "Stories of the season's fish and the craft behind each piece.",
+    "ctaTitle": "A seat at the counter?",
+    "ctaText": "Book a day ahead by phone or Zalo; we hold your seats for 15 minutes."
+  },
+  "footer": {
+    "tagline": "Twelve seats, one hinoki counter, a dinner that follows the season."
+  },
+  "hours": {
+    "lunch": "Lunch, Tue – Sun",
+    "dinner": "Dinner, Tue – Sun"
+  },
+  "nav": {
+    "top": "Home",
+    "menu": "Menu",
+    "story": "Our story",
+    "omakase": "Omakase"
+  },
+  "hero": {
+    "eyebrow": "Omakase · Saigon",
+    "title": "Twelve seats. One counter. Dinner that follows the season.",
+    "text": "Fish chosen each morning, rice seasoned by hand, every piece of nigiri made in front of you and eaten the moment it is ready.",
+    "reserve": "Book a seat",
+    "viewMenu": "See the menu",
+    "closed": "Closed on Mondays",
+    "imageAlt": "A row of nigiri on a slate board at a pale wooden sushi counter"
+  },
+  "food": {
+    "eyebrow": "Menu",
+    "title": "Omakase, or à la carte",
+    "intro": "Let the chef choose, or pick your favourites. Prices include VAT; the fish of the day may change a dish.",
+    "omakaseTitle": "Omakase courses",
+    "courses": "{count} courses",
+    "signature": "Most chosen",
+    "perPiece": "2 pieces",
+    "groups": {
+      "nigiri": "Nigiri",
+      "rolls": "Rolls",
+      "drinks": "Sake & tea"
+    },
+    "omakase": {
+      "items": {
+        "hana": { "name": "Hana", "desc": "A first omakase: seasonal sashimi, nine pieces of nigiri, miso soup and dessert." },
+        "kumo": { "name": "Kumo", "desc": "The chef's full course: aged fish, otoro, a warm dish and a hand roll to finish." },
+        "counter": { "name": "Chef's counter", "desc": "The longest course, at the front seats only: rare fish of the week and a sake pairing." }
+      }
+    },
+    "nigiri": {
+      "items": {
+        "sake": { "name": "Sake", "desc": "Salmon, lightly torched, a drop of yuzu." },
+        "hamachi": { "name": "Hamachi", "desc": "Yellowtail with grated ginger and spring onion." },
+        "maguro": { "name": "Akami", "desc": "Lean tuna, marinated in soy for a few minutes." },
+        "ebi": { "name": "Ebi", "desc": "Sweet shrimp, cooked just through." },
+        "unagi": { "name": "Unagi", "desc": "Grilled eel brushed with our house tare." },
+        "otoro": { "name": "Otoro", "desc": "Fatty tuna belly, a touch of wasabi." }
+      }
+    },
+    "rolls": {
+      "items": {
+        "california": { "name": "California", "desc": "Crab, avocado, cucumber, tobiko." },
+        "spicyTuna": { "name": "Spicy tuna", "desc": "Chopped tuna, chilli mayo, crisp tempura bits." },
+        "dragon": { "name": "Dragon", "desc": "Eel and cucumber inside, avocado scales outside." },
+        "kumo": { "name": "Kumo roll", "desc": "Salmon, scallop and shiso, finished with the torch." }
+      }
+    },
+    "drinks": {
+      "items": {
+        "junmai": { "name": "Junmai sake", "desc": "Dry, clean, 180 ml carafe; served cool or warm." },
+        "umeshu": { "name": "Umeshu", "desc": "Plum liqueur on ice." },
+        "matcha": { "name": "Matcha", "desc": "Whisked at the counter." },
+        "yuzu": { "name": "Yuzu soda", "desc": "Sparkling, lightly sweet, no alcohol." }
+      }
+    }
+  },
+  "story": {
+    "eyebrow": "Our story",
+    "title": "A small room for a quiet craft",
+    "paragraphs": [
+      "Kumo means cloud: something that changes every day and never looks the same twice. So does our counter. What we serve depends on what the fish market had that morning.",
+      "We season the rice with red vinegar, keep it at body temperature and shape each piece by hand. You eat it the moment it is set down, the way it is meant to be."
+    ],
+    "facts": [
+      { "value": "12", "label": "seats at the counter" },
+      { "value": "6 am", "label": "the chefs at the fish market" },
+      { "value": "16", "label": "courses in the Kumo omakase" }
+    ],
+    "imageAlt": "A chef's hands pressing a piece of tuna nigiri on a wooden board"
+  },
+  "omakase": {
+    "eyebrow": "Omakase",
+    "title": "“I leave it to you”",
+    "intro": "Omakase is a conversation with the chef. Here is how the evening goes.",
+    "steps": [
+      { "title": "Book your seats", "text": "Call or message us on Zalo at least a day ahead, and tell us about allergies or what you don't eat." },
+      { "title": "Sit at the counter", "text": "The chef works in front of you. Ask anything: the fish, where it comes from, why this piece now." },
+      { "title": "One piece at a time", "text": "Each nigiri is already seasoned: no extra soy sauce needed. Eat it by hand or with chopsticks, in one bite." },
+      { "title": "Close with something warm", "text": "Soup, a hand roll, then dessert and tea. About two hours, never rushed." }
+    ],
+    "note": "Omakase seatings: 18:00 and 20:15. Please arrive on time: the first pieces are served together."
+  },
+  "gallery": {
+    "title": "Inside Kumo",
+    "counter": "The hinoki counter and its paper lanterns",
+    "omakase": "A course of sashimi, nigiri and miso soup",
+    "sake": "A sake carafe and cups with autumn maple leaves"
+  },
+  "questions": {
+    "items": [
+      { "q": "Do I need to book?", "a": "For omakase, yes: at least one day ahead, by phone or Zalo. À la carte at lunch, walk-ins are welcome when seats are free." },
+      { "q": "Can you cook around allergies?", "a": "Tell us when you book (shellfish, gluten, raw fish…). The chef adapts the course where the dish allows it." },
+      { "q": "Are there vegetarian options?", "a": "We can prepare a vegetable omakase with a day's notice. The à la carte rolls also have vegetable versions." },
+      { "q": "Is there a deposit?", "a": "For the Chef's counter course and groups of six or more, we ask for a deposit when you book; we explain how when you call." },
+      { "q": "Can I bring children?", "a": "Children are welcome at lunch. The omakase counter suits guests from 12 years old." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Find us",
+    "title": "Book a seat at the counter",
+    "text": "Call or message us on Zalo to book; we hold your seats for 15 minutes.",
+    "note": "Closed on Mondays. Last orders 30 minutes before closing."
+  }
+}

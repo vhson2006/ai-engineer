@@ -1,12 +1,11 @@
 import { cn } from '@web/ui';
-import { getMessages } from '@/i18n/messages';
+import type { Messages } from '@/i18n/dictionaries';
 
 /**
  * The mandatory warnings for alcoholic drinks (Vietnam's Law on Prevention and Control of Harmful
  * Effects of Alcohol, 2019): shown near every call to buy and in the footer.
  */
-export async function LegalNotice({ tone = 'dark', className }: { tone?: 'dark' | 'light'; className?: string }) {
-  const t = await getMessages();
+export function LegalNotice({ t, tone = 'dark', className }: { t: Messages; tone?: 'dark' | 'light'; className?: string }) {
   return (
     <p className={cn('flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold', tone === 'light' ? 'text-white/80' : 'text-muted', className)}>
       <span
@@ -18,8 +17,8 @@ export async function LegalNotice({ tone = 'dark', className }: { tone?: 'dark' 
       >
         18+
       </span>
-      <span>{t.legal.age}</span>
-      <span>{t.legal.drive}</span>
+      <span>{t.notices.age}</span>
+      <span>{t.notices.drive}</span>
     </p>
   );
 }

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- The media library: drop zone (optimized to WebP in 3 sizes) and a grid with one image chosen. -->
+  <defs>
+    <filter id="s" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1f3a33" flood-opacity="0.15"/>
+    </filter>
+    <clipPath id="t"><rect width="230" height="172" rx="14"/></clipPath>
+  </defs>
+  <rect width="1200" height="900" fill="#f6f1e9"/>
+  <circle cx="1100" cy="820" r="140" fill="#a8694f" opacity="0.3"/>
+  <g filter="url(#s)"><rect x="80" y="70" width="1040" height="760" rx="30" fill="#ffffff"/></g>
+  <rect x="120" y="110" width="320" height="22" rx="11" fill="#1f3a33"/>
+
+  <!-- drop zone -->
+  <rect x="120" y="160" width="960" height="190" rx="22" fill="#e1ece6" stroke="#4f7a6a" stroke-width="4" stroke-dasharray="14 10"/>
+  <g transform="translate(560 190)">
+    <path d="M16 70 a40 40 0 0 1 8 -79 a52 52 0 0 1 96 18 a32 32 0 0 1 -4 64 z" fill="#ffffff" stroke="#4f7a6a" stroke-width="6"/>
+    <line x1="60" y1="70" x2="60" y2="22" stroke="#1f3a33" stroke-width="8" stroke-linecap="round"/>
+    <path d="M40 40 l20 -20 l20 20" fill="none" stroke="#1f3a33" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- the three sizes the browser makes -->
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+    <rect x="410" y="290" width="110" height="38" rx="19" fill="#ffffff" stroke="#4f7a6a" stroke-width="3"/>
+    <text x="465" y="317" fill="#1f3a33">640</text>
+    <rect x="545" y="290" width="110" height="38" rx="19" fill="#ffffff" stroke="#4f7a6a" stroke-width="3"/>
+    <text x="600" y="317" fill="#1f3a33">1280</text>
+    <rect x="680" y="290" width="110" height="38" rx="19" fill="#ffffff" stroke="#4f7a6a" stroke-width="3"/>
+    <text x="735" y="317" fill="#1f3a33">1920</text>
+    <rect x="815" y="290" width="110" height="38" rx="19" fill="#4f7a6a"/>
+    <text x="870" y="317" fill="#ffffff">WebP</text>
+  </g>
+
+  <!-- grid -->
+  <g transform="translate(120 390)">
+    <g>
+      <g clip-path="url(#t)"><rect width="230" height="172" fill="#4f7a6a"/><circle cx="180" cy="44" r="22" fill="#a8694f"/><path d="M0 172 l70 -80 l50 50 l38 -30 l72 60 z" fill="#1f3a33"/></g>
+    </g>
+    <g transform="translate(243 0)">
+      <g clip-path="url(#t)"><rect width="230" height="172" fill="#a9cbbd"/><rect x="40" y="40" width="70" height="92" rx="10" fill="#ffffff"/><rect x="122" y="40" width="70" height="92" rx="10" fill="#ffffff"/><circle cx="75" cy="86" r="22" fill="#4f7a6a"/><circle cx="157" cy="86" r="22" fill="#4f7a6a"/></g>
+    </g>
+    <g transform="translate(486 0)">
+      <g clip-path="url(#t)"><rect width="230" height="172" fill="#a8694f"/><rect x="30" y="58" width="170" height="56" rx="12" fill="#4f7a6a"/><rect x="48" y="78" width="134" height="16" rx="8" fill="#a8694f"/></g>
+      <!-- chosen -->
+      <rect x="-6" y="-6" width="242" height="184" rx="18" fill="none" stroke="#a8694f" stroke-width="8"/>
+      <circle cx="206" cy="24" r="24" fill="#a8694f"/>
+      <path d="M194 24 l9 9 l16 -18" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(729 0)">
+      <g clip-path="url(#t)"><rect width="230" height="172" fill="#e1ece6"/><path d="M0 172 l90 -96 l70 70 l70 -40 v66 z" fill="#4f7a6a" opacity="0.6"/><circle cx="60" cy="48" r="20" fill="#a8694f"/></g>
+    </g>
+    <!-- labels -->
+    <g fill="#56645d" opacity="0.5">
+      <rect x="0" y="190" width="160" height="12" rx="6"/><rect x="243" y="190" width="140" height="12" rx="6"/>
+      <rect x="486" y="190" width="170" height="12" rx="6"/><rect x="729" y="190" width="120" height="12" rx="6"/>
+    </g>
+    <!-- copy URL buttons -->
+    <g fill="none" stroke="#56645d" stroke-width="3">
+      <rect x="196" y="186" width="16" height="18" rx="3"/><rect x="439" y="186" width="16" height="18" rx="3"/>
+      <rect x="682" y="186" width="16" height="18" rx="3"/><rect x="925" y="186" width="16" height="18" rx="3"/>
+    </g>
+  </g>
+  <g fill="#56645d" opacity="0.18">
+    <rect x="120" y="636" width="230" height="150" rx="14"/><rect x="363" y="636" width="230" height="150" rx="14"/>
+    <rect x="606" y="636" width="230" height="150" rx="14"/><rect x="849" y="636" width="230" height="150" rx="14"/>
+  </g>
+</svg>

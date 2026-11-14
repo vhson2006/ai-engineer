@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "Bông Florist: hoa tươi bó tay, giao trong ngày ở Sài Gòn",
+    "description": "Hoa tươi theo mùa, bó tay theo yêu cầu tại Quận 3 và giao trong ngày khắp Sài Gòn. Đặt qua điện thoại hoặc Zalo trước 17 giờ.",
+    "ogImageAlt": "Bó hoa mẫu đơn và hồng phấn trên bàn của tiệm hoa"
+  },
+  "blog": {
+    "title": "Chuyện bên bàn hoa",
+    "intro": "Hoa theo mùa, tặng gì cho từng dịp, và cách giữ bó hoa tươi lâu, từ những người cắm hoa của Bông.",
+    "metaTitle": "Bài viết: hoa, các dịp tặng hoa và cách chăm hoa",
+    "metaDescription": "Hoa theo mùa, gợi ý bó hoa cho từng dịp và mẹo giữ hoa cắt cành tươi lâu, từ Bông Florist ở Sài Gòn.",
+    "latestIntro": "Hoa theo mùa và vài mẹo nhỏ để hoa tươi lâu hơn.",
+    "ctaTitle": "Muốn gửi hoa hôm nay?",
+    "ctaText": "Nhắn Zalo cho chúng tôi dịp tặng và ngân sách; đặt trước 17 giờ để được giao trong ngày."
+  },
+  "footer": {
+    "tagline": "Hoa tươi, bó bằng tay, giao ngay trong ngày."
+  },
+  "hours": {
+    "daily": "Mỗi ngày"
+  },
+  "nav": {
+    "top": "Trang chủ",
+    "collections": "Bó hoa",
+    "occasions": "Dịp tặng",
+    "delivery": "Giao hoa",
+    "care": "Chăm hoa"
+  },
+  "hero": {
+    "eyebrow": "Tiệm hoa · Quận 3, Sài Gòn",
+    "title": "Hoa tươi, bó bằng tay,",
+    "titleAccent": "giao ngay hôm nay",
+    "text": "Mỗi sáng chúng tôi ra chợ chọn hoa và bó từng bó theo yêu cầu, cho sinh nhật, tình yêu, lời cảm ơn hay chẳng vì lý do gì.",
+    "order": "Đặt qua Zalo",
+    "browse": "Xem các bó hoa",
+    "imageAlt": "Bó hoa mẫu đơn, hồng vườn và bạch đàn trên bàn của tiệm hoa",
+    "badges": ["Giao trong ngày", "Thiệp viết tay", "Gửi ảnh trước khi giao"]
+  },
+  "collections": {
+    "eyebrow": "Bó hoa",
+    "title": "Ba bó hoa đặc trưng",
+    "intro": "Mỗi bó có ba cỡ. Hoa thay đổi theo mùa: chúng tôi giữ màu sắc và tinh thần của bó hoa.",
+    "sizes": { "s": "Nhỏ", "m": "Vừa", "l": "Lớn" },
+    "order": "Đặt bó này",
+    "custom": "Muốn một bó khác? Cho chúng tôi biết dịp tặng, màu sắc và ngân sách: chúng tôi thiết kế riêng cho bạn.",
+    "items": {
+      "blush": { "name": "Blush", "desc": "Hồng phấn, hồng chùm trắng và bạch đàn, gói giấy kem với ruy băng lụa.", "imageAlt": "Bó hồng phấn và hồng trắng gói giấy màu kem" },
+      "garden": { "name": "Garden", "desc": "Cẩm tú cầu trắng, mao lương và cúc La Mã, phóng khoáng như một buổi dạo vườn.", "imageAlt": "Bó hoa phong cách vườn với cẩm tú cầu trắng, mao lương và cúc La Mã" },
+      "sunny": { "name": "Sunny", "desc": "Hướng dương, hồng vàng và đồng tiền cam: một bó hoa biết mỉm cười.", "imageAlt": "Bó hướng dương, hồng vàng và đồng tiền cam gói giấy kraft" }
+    }
+  },
+  "occasions": {
+    "eyebrow": "Dịp tặng",
+    "title": "Hoa cho mọi khoảnh khắc",
+    "intro": "Cho chúng tôi biết hoa tặng ai: chúng tôi cùng bạn chọn hoa và tấm thiệp.",
+    "items": [
+      { "title": "Sinh nhật", "text": "Bó hoa tươi tắn, đầy đặn, kèm thiệp viết tay." },
+      { "title": "Tình yêu & kỷ niệm", "text": "Hoa hồng đủ sắc độ, hoặc loài hoa của buổi hẹn đầu tiên." },
+      { "title": "Khai trương", "text": "Kệ hoa và lẵng hoa để bàn mừng cửa hàng mới." },
+      { "title": "Tốt nghiệp", "text": "Bó hoa nhẹ, dễ cầm khi chụp ảnh." },
+      { "title": "Chia buồn", "text": "Hoa trắng và màu dịu, giao tế nhị." },
+      { "title": "Không cần lý do", "text": "Một bó nhỏ để nói lời cảm ơn, hoặc chẳng để nói gì." }
+    ]
+  },
+  "delivery": {
+    "eyebrow": "Giao hoa",
+    "title": "Giao trong ngày khắp Sài Gòn",
+    "intro": "Đặt trước {time} là giao ngay hôm nay; đơn đặt sau được giao vào sáng hôm sau.",
+    "zonesTitle": "Phí giao hoa",
+    "free": "Miễn phí",
+    "zones": {
+      "central": { "name": "Trung tâm", "areas": "Quận 1, Quận 3, Phú Nhuận" },
+      "inner": { "name": "Nội thành", "areas": "Quận 4, 5, 10, Bình Thạnh, Tân Bình" },
+      "outer": { "name": "Xa hơn", "areas": "Thủ Đức, Quận 7, Gò Vấp, Bình Tân" }
+    },
+    "notes": [
+      "Chúng tôi gửi ảnh bó hoa cho bạn trước khi rời tiệm.",
+      "Chọn khung giờ giao: sáng, chiều hoặc tối.",
+      "Giao bất ngờ: chúng tôi chỉ gọi người nhận khi đã đến trước cửa."
+    ]
+  },
+  "care": {
+    "eyebrow": "Chăm hoa",
+    "title": "Giữ bó hoa tươi lâu hơn",
+    "intro": "Bốn thói quen nhỏ giữ hoa cắt cành tươi một tuần hoặc lâu hơn.",
+    "imageAlt": "Hoa tulip tươi trong bình thuỷ tinh cạnh kéo cắt hoa trên bàn gỗ",
+    "tips": [
+      { "title": "Cắt lại cành", "text": "Cắt xéo 2 cm ở mỗi cành bằng kéo sắc ngay khi về nhà." },
+      { "title": "Nước sạch", "text": "Dùng bình sạch với nước mát, thay nước hai ngày một lần." },
+      { "title": "Không để lá ngập nước", "text": "Tỉa lá dưới mực nước: lá ngập sẽ úng và làm đục nước." },
+      { "title": "Chỗ thoáng mát", "text": "Đặt bình tránh nắng trực tiếp, quạt và đĩa trái cây." }
+    ]
+  },
+  "questions": {
+    "items": [
+      { "q": "Đặt hoa như thế nào?", "a": "Gọi điện hoặc nhắn Zalo cho chúng tôi bó hoa, cỡ, địa chỉ và giờ giao, cùng lời nhắn trên thiệp. Chúng tôi xác nhận giá và gửi thông tin thanh toán." },
+      { "q": "Tôi có chọn được từng loại hoa không?", "a": "Được, miễn là hoa đang vào mùa. Nếu chợ hết một loại hoa, chúng tôi gợi ý loại khác cùng màu trước khi bó." },
+      { "q": "Tiệm có giao ngoài Sài Gòn không?", "a": "Hiện tại chưa: chỉ giao trong thành phố, với mức phí như trên." },
+      { "q": "Tôi có thể nhận hoa tại tiệm không?", "a": "Tất nhiên. Đặt trước và bó hoa sẽ sẵn sàng đúng giờ bạn chọn." },
+      { "q": "Tiệm có nhận hoa cưới và sự kiện không?", "a": "Có: hoa cầm tay cô dâu, hoa bàn tiệc và trang trí. Liên hệ trước ít nhất hai tuần để nhận đề xuất." }
+    ]
+  },
+  "visit": {
+    "eyebrow": "Ghé tiệm",
+    "title": "Đến tiệm chọn hoa",
+    "text": "Tiệm mở cửa mỗi ngày. Ghé chọn từng cành, hoặc gọi điện, nhắn Zalo để đặt hoa.",
+    "note": "Giao trong ngày cho đơn đặt trước 17:00."
+  }
+}

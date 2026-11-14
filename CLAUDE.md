@@ -6,7 +6,7 @@ One repository (ADR 0015). This file is always loaded; each package's `CLAUDE.md
 | Part | What | Instructions |
 |---|---|---|
 | `nest-microservice/` | NestJS API: deployment-, notification-, content-service, ai-service (the only caller of AI providers, ADR 0036; images 0037), `libs/common` | `nest-microservice/CLAUDE.md` |
-| `web/` | Next.js BFF apps (portfolio, admin, nails, wine, laundry) + `@web/core`, `@web/ui`, `@web/video` (video studio compositions); `apps/render-worker` renders the studio's MP4s (ADR 0039) | `web/CLAUDE.md` |
+| `web/` | Next.js BFF apps (portfolio, admin; business sites nails, wine, laundry and the samples sushi, travel, flowers, autoparts, hotel, spa, all on `@web/site-kit`, ADRs 0042, 0045) + `@web/core`, `@web/ui`, `@web/video` (video studio compositions); `apps/render-worker` renders the studio's MP4s (ADR 0039) | `web/CLAUDE.md` |
 | `k8s/` | Kustomize for both: Gateway, KrakenD, Keycloak, NATS, data, apps, Alloy; dev/staging/prod | `k8s/README.md`, `.claude/rules/` |
 | `docs/adr/` | The one decision log. Client-sites target: ADRs 0025–0028 | read before undoing a decision |
 | `advanced-architecture/` | Separate reference repository | don't modify |
@@ -49,7 +49,6 @@ Browser ◀─ presigned URLs ─▶ object storage
 npm run k8s:up && npm run k8s:forward   # local stack (overlays/dev); keep the forward open
 npm run k8s:render                      # / k8s:render:prod, without applying
 npm run krakend:check
-npm run keycloak:admin-url && npm run keycloak:admin-otp   # once per fresh cluster / namespace
 npm run staging:build && npm run staging:up                # prod images locally, HTTPS (ADR 0018)
 ```
 API: `cd nest-microservice && npm run start:dev`. Web: `cd web && npm run dev` (admin: alice + dev

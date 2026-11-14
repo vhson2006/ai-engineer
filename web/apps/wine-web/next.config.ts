@@ -17,10 +17,10 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: 'standalone',
-  // Inlined at build time: the same value in prerendered pages and at runtime (src/site.ts).
+  // Inlined at build time: the same value in prerendered pages and at runtime (src/site.tsx).
   env: { SITE_URL: siteUrl },
   outputFileTracingRoot: workspaceRoot,
-  // The link preview images read these fonts at runtime (src/features/articles/og-card.tsx).
+  // The link preview cards read these fonts at runtime (@web/site-kit/og, drawn by src/og-card.tsx).
   outputFileTracingIncludes: {
     '/og/[image]': ['../../packages/ui/assets/fonts/*.ttf'],
     '/og/bai-viet/[lang]/[image]': ['../../packages/ui/assets/fonts/*.ttf'],

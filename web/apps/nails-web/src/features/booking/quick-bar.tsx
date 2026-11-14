@@ -3,7 +3,7 @@
 import { ArrowUpRight, ChevronDown, Phone, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { pill } from '@/components/pill';
-import type { Messages } from '@/i18n/messages';
+import type { Messages } from '@/i18n/dictionaries';
 import { useBooking } from './booking-provider';
 
 /**
