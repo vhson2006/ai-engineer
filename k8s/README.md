@@ -323,11 +323,30 @@ overlay's `urls.env`. To run a site in an environment:
    (ADR 0049).
 
 Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
-`role: business-site` (NetworkPolicies, the https-only route patch). Staging runs all nine
-(`https://<id>.staging.localtest.me`: each site 160 Mi requested, 384 Mi limit; give WSL 12 GB,
-`.wslconfig`); prod none yet (each real site needs its domain,
-certificate and DNS). Site images build without the API: their article pages fill in at runtime
+`role: business-site` (NetworkPolicies, the https-only route patch). Staging and prod run all
+nine (`https://<id>.staging.localtest.me`, `https://<id>.<domain>`: each site 160 Mi requested,
+384 Mi limit; staging: give WSL 12 GB, `.wslconfig`). Site images build without the API: their article pages fill in at runtime
 (ISR, about a minute; ADR 0047).
+
+### A business site on its own domain (later, client by client)
+
+A site's host is written once, in the overlay's `urls.env`: the route, `APP_URL`, its Keycloak
+redirect URIs and the `SITE_URL` its image is built with (`images.json` `siteUrl: "{<ID>_URL}"`) all
+read `<ID>_HOST` / `<ID>_URL`. To move `nails` from `nails.example.com` to `envynails.com` in prod:
+
+1. `overlays/prod/urls.env`: `NAILS_HOST=envynails.com`, `NAILS_URL=https://envynails.com`.
+2. DNS: the domain in DigitalOcean DNS (cert-manager's DNS-01 needs it there), `@` (and `www`) → the
+   Load Balancer's IP.
+3. TLS: a `Certificate` for `envynails.com` (+ `www`) from the same ClusterIssuer, and a Gateway
+   listener for it (`https-nails`, hostname `envynails.com`, that certificate; an `http` redirect for
+   the domain too), in `overlays/prod/gateway/`; the site's route attaches to that listener
+   (`sectionName`, a patch next to `routes-https.yaml`).
+4. Images → *Run workflow*: the site's image is rebuilt with its new `SITE_URL` (canonical, sitemap).
+5. Optional: the realm `site-nails` gets `frontendUrl` `https://auth.envynails.com` (ADR 0025) so
+   customers sign in on the brand's domain; until then they sign in at `auth.<domain>`.
+
+The old subdomain should answer `301` to the new domain (a route with a `RequestRedirect`) so links
+and search results follow.
 
 ## Local staging
 
@@ -410,7 +429,8 @@ the prod overlay by hand (the migration Job is an Argo CD PreSync hook).
 ```
 Internet ─▶ DO Load Balancer ─▶ edge-nginx (x2) ─┬─ https://www.example.com   ─▶ portfolio-web (x2)
            :80 → 301 to https, :443 TLS          ├─ https://admin.example.com ─▶ admin-web (x2, admins + OTP)
-           (wildcard cert, cert-manager)         └─ https://auth.example.com  ─▶ Keycloak (x2, app realm only)
+           (wildcard cert, cert-manager)         ├─ https://auth.example.com  ─▶ Keycloak (x2, staff + site realms)
+                                                 └─ https://<id>.example.com  ─▶ the nine business sites (x1 each)
 portfolio-web, admin-web ─▶ KrakenD (x2, PRIVATE: NetworkPolicy krakend-from-web) ─▶ deployment-service (x2)
 deployment-service, notification-service (x2) ─▶ NATS (in cluster)
 deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TLS─▶ DO managed Valkey (one user each)
@@ -438,8 +458,9 @@ image whose watched files changed since the commit it is tagged with in `overlay
 rebuilds all), pushes `ghcr.io/vhson2006/ai-engineer/<name>:<commit sha>` (private, like the
 repository; pods pull with the Secret `ghcr-pull`) and commits the new `newTag`s to `main` as
 `github-actions[bot]`. Actions → Images → *Run workflow* rebuilds all. The web apps bake their public
-origin in (ADR 0021): set the repository variable `PROD_DOMAIN` (e.g. `example.com` →
-`https://www.example.com`, `https://admin.example.com`). What the workflow runs:
+origin in (ADR 0021): `siteUrl` of `images.json` names a key of the environment's `urls.env`
+(`{WEB_URL}`, `{NAILS_URL}`…, `scripts/site-url.mjs`), so an address is written only there. What the
+workflow runs:
 
 ```bash
 # nest-microservice (context nest-microservice/), one target per image
@@ -456,8 +477,8 @@ All run as non-root with a read-only root filesystem; configuration comes from e
 
 1. **DigitalOcean**: DOKS cluster; the domain in DO DNS; managed Postgres with databases
    `deployment`, `notification`, `content`, `ai` and `keycloak` (one user each); managed Valkey with one ACL user
-   per web app (`web` on `~web:*`, `admin-web` on `~admin-web:*`, commands as in
-   `components/local-data/redis/users.acl`); an API token with domain read/write (for cert-manager).
+   per web app (`web` on `~web:*`, `admin-web` on `~admin-web:*`, and `<id>-web` on `~<id>-web:*` for
+   each business site; commands as in `components/local-data/redis/users.acl`); an API token with domain read/write (for cert-manager).
 2. **Cluster add-ons**:
    ```bash
    bash k8s/scripts/gateway-install.sh          # NGINX Gateway Fabric v2.8.0 + Gateway API CRDs
@@ -487,12 +508,13 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    R2 public domain), unset that variable, and set `STORAGE_PROVIDER` / `STORAGE_REGION` /
    `STORAGE_R2_ACCOUNT_ID`.
 5. **Replace placeholders**: `example.com` and the bucket names in `overlays/prod/urls.env` (the one
-   file with the environment's public addresses), the ClusterIssuer email, and set the
-   repository variable `PROD_DOMAIN`, then *Run workflow* on Images. The GitHub repository is
+   file with the environment's public addresses, the web images' too), the ClusterIssuer email,
+   then *Run workflow* on Images. The GitHub repository is
    private: give Argo CD read access (a deploy key or a read-only token, `argocd repo add`).
 6. `kubectl apply -k k8s/platform/prod`: ClusterIssuers, DNS token, Argo CD Application. Argo CD
    then syncs `overlays/prod`.
-7. **DNS**: `www`, `admin`, `auth` → the external IP of Service `edge-nginx` (no `api`: the API is private)
+7. **DNS**: `www`, `admin`, `auth` and the business sites' subdomains (`nails`, `wine`, …: or one
+   wildcard record `*`) → the external IP of Service `edge-nginx` (no `api`: the API is private)
    (`kubectl -n nest-microservice get svc edge-nginx`).
 8. **Keycloak, after the first sync**: the Job `keycloak-config` (PostSync hook, ADR 0043) has created
    both realms, the admin-site flow and realm `master`'s Frontend URL, signing in with the bootstrap

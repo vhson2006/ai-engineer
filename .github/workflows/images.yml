@@ -8,9 +8,8 @@
 # builds everything. Run it by hand (Actions → Images → Run workflow) to rebuild everything.
 #
 # Which images exist, how each is built and what it watches: k8s/images.json (the one list). The
-# web apps bake their public origin in at build time (SEO, ADR 0021): set the repository variable
-# PROD_DOMAIN (Settings → Secrets and variables → Actions → Variables), e.g. example.com for
-# https://www.example.com. Until then they use example.com, like the rest of the prod overlay.
+# web apps bake their public origin in at build time (SEO, ADR 0021), read from
+# k8s/overlays/prod/urls.env (k8s/scripts/site-url.mjs): the one file with prod's addresses.
 name: Images
 
 on:
@@ -53,7 +52,6 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           OWNER_REPO: ${{ github.repository }}
-          DOMAIN: ${{ vars.PROD_DOMAIN || 'example.com' }}
         run: |
           sha=$(git rev-parse HEAD)
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
@@ -63,9 +61,9 @@ jobs:
           # check of ci.yml. Changed since the commit prod runs (its newTag), with their group (the API
           # images share one commit: deployment-migrate must match deployment-service).
           if [ "$EVENT" = "workflow_dispatch" ]; then mode=--all; else mode=--since-deployed; fi
-          matrix=$(node k8s/scripts/images-plan.mjs "$mode" --env prod --domain "$DOMAIN" --registry "$registry")
-          if [ "$DOMAIN" = example.com ] && echo "$matrix" | grep -q 'SITE_URL='; then
-            echo "::warning::Repository variable PROD_DOMAIN is not set: the web apps are built for example.com"
+          matrix=$(node k8s/scripts/images-plan.mjs "$mode" --env prod --registry "$registry")
+          if echo "$matrix" | grep -q 'SITE_URL=https://[a-z.]*example\.com'; then
+            echo "::warning::k8s/overlays/prod/urls.env still uses example.com: the web apps are built for it"
           fi
           echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
           echo "any=$([ "$matrix" = "[]" ] && echo false || echo true)" >> "$GITHUB_OUTPUT"

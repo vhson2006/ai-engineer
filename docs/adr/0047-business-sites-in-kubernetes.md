@@ -1,6 +1,6 @@
 # 0047. Business sites in Kubernetes: one template, one folder per site
 
-- **Status:** Accepted, implemented (staging runs the nine sites; prod: none yet)
+- **Status:** Accepted, implemented (staging and prod run the nine sites, on subdomains)
 - **Date:** 2026-11-14
 - **Related:** 0042/0045 (the site kit), 0032 (site service accounts), 0043 (Keycloak as code),
   0046 (images), `k8s/sites/`, `k8s/overlays/<env>/urls.env`
@@ -36,9 +36,12 @@ site image could not be built in CI at all: `next build` read the articles from 
   `check:sites` keeps that setting in every site.
 - **Staging runs the nine sites** (`<id>.staging.localtest.me`; three until 2026-11-14, all nine since
   the content of every site is imported there, ADR 0044), built by
-  `staging:build` from `k8s/images.json` (`environments: ["staging"]`). **Prod runs none yet**: each
-  real site needs its own domain, certificate and DNS first (a Gateway listener per domain or a
-  certificate covering them), a decision per client.
+  `staging:build` from `k8s/images.json`. **Prod runs the same nine** (2026-11-14: staging rehearses
+  exactly prod), each on a subdomain of the main domain (`<id>.<domain>`, covered by the wildcard
+  certificate). A site's own domain comes later, client by client, as a `urls.env` change plus its
+  certificate, listener and DNS (k8s/README.md, "A business site on its own domain"); the host is
+  written only in `urls.env` (the route, `APP_URL`, Keycloak's redirects and the image's `SITE_URL`
+  all read it).
 
 ## Consequences
 

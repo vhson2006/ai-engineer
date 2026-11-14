@@ -18,7 +18,8 @@ the nine sites).
 ## Decision
 
 - **`k8s/images.json` is the one list**: per image its build context, Dockerfile, target, the app
-  and public origin of a Next.js image (`siteUrl`, `{domain}` = the environment's), what it watches
+  and public origin of a Next.js image (`siteUrl`: a key of the environment's `urls.env`, e.g.
+  `{NAILS_URL}`, since 2026-11-14), what it watches
   (path regex) and its `group` (the API images, built together from one commit). `images.yml`
   (prod) and `staging.sh` (local staging) build from it; `images-check.mjs` (CI, job k8s) refuses
   an overlay or a manifest that disagrees with it. The overlays keep their `images:` blocks
@@ -29,8 +30,9 @@ the nine sites).
   every Next.js image (one public origin per image). render-worker keeps its own Dockerfile
   (Debian, Chrome) with the same manifests stage. `web/.dockerignore` keeps `node_modules`,
   `.next` and env files out of the context.
-- The repository variable `PROD_DOMAIN` (was `PROD_SITE_URL`) gives the domain the web images are
-  built for.
+- The web images are built for the origin in the environment's `urls.env` (`siteUrl` names the key,
+  `k8s/scripts/site-url.mjs`); the repository variable `PROD_DOMAIN` it replaced (2026-11-14) is gone:
+  a host is written in one place.
 - **Which images to build is decided in one place, `k8s/scripts/images-plan.mjs`** (added
   2026-11-14): `images.yml` asks it for the images changed since the commit prod runs, and **a pull
   request builds the images it touches, without pushing** (job `images` of `ci.yml`): a broken

@@ -32,13 +32,15 @@ require_local_cluster() {
 }
 
 # The images: k8s/images.json (the one list, also read by .github/workflows/images.yml).
-# One line per image, "|"-separated: name, context, dockerfile, target, app, site URL ({domain} = this one).
-STAGING_DOMAIN=staging.localtest.me
+# One line per image, "|"-separated: name, context, dockerfile, target, app, site URL (from
+# overlays/staging/urls.env: k8s/scripts/site-url.mjs).
 images() {
-  node -e '
-    const { images } = require("./k8s/images.json");
-    for (const i of images.filter((i) => (i.environments ?? ["staging"]).includes("staging"))) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", (i.siteUrl ?? "").replace("{domain}", process.argv[1])].join("|"));
-  ' "$STAGING_DOMAIN"
+  node --input-type=module -e '
+    import { readFileSync } from "node:fs";
+    import { siteUrl } from "./k8s/scripts/site-url.mjs";
+    const { images } = JSON.parse(readFileSync("k8s/images.json", "utf8"));
+    for (const i of images.filter((i) => (i.environments ?? ["staging"]).includes("staging"))) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", siteUrl(i, "staging")].join("|"));
+  '
 }
 
 build() {
