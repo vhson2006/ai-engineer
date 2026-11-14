@@ -32,7 +32,7 @@ paths:
   own rule, and its own ACL user where the store has ACLs.
 
 ## Credentials (dev only, never reuse)
-- Keycloak: admin `admin`/`admin`, test users password `password`, client secret
+- Keycloak: admin `admin`/`admin`, test users password `Dev-Staging-2026!`, client secret
   `web-dev-secret`, `dev-cli` (password grant; absent from the prod realm).
 - Redis: ACL users only (`components/local-data/redis/users.acl`, default user off), one per app,
   limited to its prefix and GET/SET/DEL/GETDEL/INCR/EXPIRE/PING. Never the `admin` user in an app.

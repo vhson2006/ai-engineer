@@ -192,8 +192,8 @@ status() {
   kubectl -n "$NS" get pods,certificate 2>/dev/null || echo "staging is not deployed"
   cat <<MSG
 
-  https://www.staging.localtest.me    the site (sign in: bob / password)
-  https://admin.staging.localtest.me  the admin site (alice / password + one-time code, web/apps/admin-web/README.md)
+  https://www.staging.localtest.me    the site (sign in: bob / Dev-Staging-2026!)
+  https://admin.staging.localtest.me  the admin site (alice / Dev-Staging-2026! + one-time code; <site>-admin: one site)
   https://auth.staging.localtest.me   Keycloak (app realm)
   https://s3.staging.localtest.me     object storage (presigned URLs)
   Admin console: kubectl -n $NS port-forward svc/keycloak 8181:8080 → http://localhost:8181/admin

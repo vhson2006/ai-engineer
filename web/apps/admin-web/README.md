@@ -33,7 +33,7 @@ cd ../.. && npm install        # once, in web/
 npm run dev:admin              # in web/ (npm run dev starts both sites); Next on :3100 → http://admin.localtest.me:8000
 ```
 
-Sign in as **`alice`** / `password`, then the one-time code. alice has a **DEV-ONLY** OTP secret
+Sign in as **`alice`** / `Dev-Staging-2026!`, then the one-time code. alice has a **DEV-ONLY** OTP secret
 (dev and staging realms only, never prod). Add it to an authenticator app as a manual key:
 
 ```
@@ -42,7 +42,9 @@ MRSXMLLPNZWHSLLBNRUWGZJNN52HALLTMVRXEZLU      (TOTP, SHA-1, 6 digits, 30 s)
 
 or print the current code: `node -e "const c=require('crypto'),k=Buffer.from('dev-only-alice-otp-secret'),b=Buffer.alloc(8);b.writeBigUInt64BE(BigInt(Math.floor(Date.now()/30000)));const h=c.createHmac('sha1',k).update(b).digest(),o=h[19]&15;console.log(String((h.readUInt32BE(o)&0x7fffffff)%1e6).padStart(6,'0'))"`.
 
-Site admins (password only, no OTP): **`dana`** (Nails) and **`erin`** (Wine), password `password`.
+Site admins (password only, no OTP): **`<site>-admin`** for each of the nine sites (`nails-admin`,
+`wine-admin`, `laundry-admin`, `sushi-admin`, `travel-admin`, `flowers-admin`, `autoparts-admin`,
+`hotel-admin`, `spa-admin`), password `Dev-Staging-2026!`: each sees and manages only its site.
 `bob` and `carol` are refused by Keycloak right after their password (not administrators).
 Staging: https://admin.staging.localtest.me (same accounts).
 

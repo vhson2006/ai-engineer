@@ -1,4 +1,5 @@
-# LOCAL ONLY (dev, staging): Keycloak's test users (password "password"), alice's one-time code
+# LOCAL ONLY (dev, staging): Keycloak's test users (password "Dev-Staging-2026!"; alice, the
+# site admins <site>-admin, bob and carol: k8s/README.md#keycloak), alice's one-time code
 # and dev-cli (password grant for curl tests). Never in prod. Applied by Job keycloak-config.
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component

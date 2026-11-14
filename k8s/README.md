@@ -186,12 +186,12 @@ Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 | `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `$ADMIN_URL/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
 | `dev-cli` | **dev and staging only** (`components/keycloak-local`): password grant for curl tests |
 
-| Group | Roles | Test user (password `password`) |
+| Group | Roles | Test user (password `Dev-Staging-2026!`) |
 |---|---|---|
 | `viewers` | read | `carol` |
 | `developers` | read, write | `bob` |
 | `admins` | read, write, admin + `admin-web:admin`, `admin-web:superadmin`, `content:admin` | `alice` (also has a **dev-only OTP**: see `web/apps/admin-web/README.md`) |
-| `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `dana` (`/sites/nails`), `erin` (`/sites/wine`) |
+| `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `<site>-admin` for each of the nine sites (`nails-admin` in `/sites/nails`, `wine-admin` in `/sites/wine`…) |
 
 **Admin site sign-in** (ADRs 0019, 0030): the flow `browser-admin-otp` (in `realm.json`), bound to the
 client `admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
@@ -202,7 +202,7 @@ Get a token for testing (access token lives 5 minutes):
 
 ```bash
 TOKEN=$(curl -s http://auth.localtest.me:8000/realms/nest-microservice/protocol/openid-connect/token \
-  -d grant_type=password -d client_id=dev-cli -d username=bob -d password=password | jq -r .access_token)
+  -d grant_type=password -d client_id=dev-cli -d username=bob --data-urlencode 'password=Dev-Staging-2026!' | jq -r .access_token)
 ```
 
 Every token has `iss = http://auth.localtest.me:8000/realms/nest-microservice` (fixed by `KC_HOSTNAME` = `AUTH_URL` of `urls.env`),

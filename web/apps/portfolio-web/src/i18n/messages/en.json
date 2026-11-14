@@ -259,7 +259,7 @@
       "rate_limited": "Too many sign-in attempts from your network. Please wait a few minutes and try again."
     },
     "testAccounts": {
-      "title": "Local test accounts (password: password)",
+      "title": "Local test accounts (password: Dev-Staging-2026!)",
       "carol": "can read",
       "bob": "can create and edit their own",
       "alice": "admin"

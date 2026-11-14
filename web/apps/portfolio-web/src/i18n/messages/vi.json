@@ -259,7 +259,7 @@
       "rate_limited": "Mạng của bạn đã thử đăng nhập quá nhiều lần. Vui lòng đợi vài phút rồi thử lại."
     },
     "testAccounts": {
-      "title": "Tài khoản thử nghiệm (mật khẩu: password)",
+      "title": "Tài khoản thử nghiệm (mật khẩu: Dev-Staging-2026!)",
       "carol": "chỉ xem",
       "bob": "tạo và sửa deployment của mình",
       "alice": "quản trị viên"
