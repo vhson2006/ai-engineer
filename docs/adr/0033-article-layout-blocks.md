@@ -4,7 +4,7 @@
 - **Date:** 2026-11-11
 - **Related:** 0031 (extended by this ADR), 0006, `libs/common/src/contracts/content/content.types.ts`
   (`ARTICLE_HTML_TAGS`, `ARTICLE_HTML_CLASSES`), `apps/content-service/src/articles/article-html.ts`,
-  `web/packages/ui/src/article-layout.css`, `apps/content-service/scripts/seed-article-templates.ts`
+  `web/packages/ui/src/article-layout.css`, the content snapshot (ADR 0044)
 
 ## Context
 
@@ -24,8 +24,9 @@ database would skip the sanitizer the sites rely on, so the allow-list itself ha
 - `h2`/`h3` may carry an `id` (table of contents links `#id`).
 - The sites style the blocks with one shared stylesheet, `@web/ui/article-layout.css`, scoped to
   `.article-layout` and coloured through `--article-accent*` variables each site sets.
-- Templates enter the database **through the service** (ArticlesService: sanitizer, slugs, reading
-  time, outbox events), e.g. `seed-article-templates.ts`, never with raw SQL.
+- Templates enter the database **through the service's rules** (sanitizer, slugs, reading time,
+  outbox events), never with raw SQL. Since ADR 0044 they are part of the content snapshot
+  (`seed:content`), which applies the same sanitizer and events.
 
 ## Consequences
 

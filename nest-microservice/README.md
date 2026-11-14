@@ -26,8 +26,9 @@ npm install
 
 npm run migration:run     # prisma migrate deploy
 npm run start:dev         # nats:setup (JetStream streams, ADR 0024), then deployment-service :3001, notification-service :3002, content-service :3003
-npm run seed:article-templates   # optional: the writers' guide article of laundry (ADR 0033), published, vi + en
-#   -- nails|wine [--delete-others]  # another site (also creates its topics); --delete-others keeps only the template
+npm run seed:content -- --all     # optional: the sites' articles + images from the snapshot (ADR 0044), status kept
+#   -- sushi travel [--overwrite]   # some sites; --overwrite resets existing articles to the snapshot
+#   the snapshot is FIXED (2026-11-14): admin-site edits are not exported back; content:export only rebuilds it from scratch
 ```
 
 Then get a token from Keycloak and call the API **through KrakenD** (`localhost:8080`, from `k8s:forward`):
@@ -73,7 +74,7 @@ deployments, `alice` (admin) can change anyone's. No token → 401, missing role
 | http://www.localtest.me:8000 | portfolio-web (Next.js on your machine, through the Gateway) |
 | http://localhost:8080/__health | KrakenD health |
 | http://localhost:3001/docs | Swagger of deployment-service (direct, dev only; "Authorize" with a token) |
-| http://localhost:8180/admin | Keycloak Admin Console (`admin` / `admin`), private: port-forward only. Fresh cluster: run `npm run keycloak:admin-url` once at the repo root |
+| http://localhost:8180/admin | Keycloak Admin Console (`admin` / `admin`), private: port-forward only. Realms applied by the Job keycloak-config (ADR 0043) |
 | http://localhost:3001/health, http://localhost:3002/health | Service health checks |
 | http://localhost:3001/metrics, http://localhost:3002/metrics | Prometheus metrics (scraped by Grafana Alloy in the cluster, ADR 0023) |
 

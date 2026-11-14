@@ -1,0 +1,616 @@
+{
+  "site": {
+    "id": "laundry",
+    "name": "Giặt sấy SFaster",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "tips",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Laundry tips",
+          "slug": "laundry-tips"
+        },
+        {
+          "locale": "vi",
+          "name": "Mẹo giặt giũ",
+          "slug": "meo-giat-giu"
+        }
+      ]
+    },
+    {
+      "key": "services",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Services",
+          "slug": "services"
+        },
+        {
+          "locale": "vi",
+          "name": "Dịch vụ",
+          "slug": "dich-vu"
+        }
+      ]
+    },
+    {
+      "key": "shop",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Shop news",
+          "slug": "shop-news"
+        },
+        {
+          "locale": "vi",
+          "name": "Tin tiệm",
+          "slug": "tin-tiem"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "bf8c380c-78f3-476a-92ed-74876d2e189d",
+      "source": "ai",
+      "prompt": "A bright laundry room setting with several clean white cotton shirts hanging neatly on wooden hangers against a soft neutral background, natural daylight.",
+      "filename": "A bright laundry room setting with several clean white cotto.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 15420,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 35396,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 38848,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T12:16:59.770Z"
+    },
+    {
+      "id": "db1ff12d-24ff-42bc-94a2-aa4ffda5cc42",
+      "source": "ai",
+      "prompt": "A neat stack of crisp white freshly ironed cotton shirts sitting on a clean wooden table in soft morning sunlight.",
+      "filename": "A neat stack of crisp white freshly ironed cotton shirts sit.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 16512,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 39388,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 43996,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T12:16:59.792Z"
+    },
+    {
+      "id": "ed0799fa-2689-4cf5-bc6f-abd9b01d626e",
+      "source": "ai",
+      "prompt": "Natural cleaning ingredients such as freshly sliced lemons, white vinegar in a clear glass bottle, and baking soda in a ceramic bowl placed on a clean marble surface.",
+      "filename": "Natural cleaning ingredients such as freshly sliced lemons, .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 17872,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 42304,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 47298,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T12:16:59.813Z"
+    },
+    {
+      "id": "05b1e47d-3ca2-4167-8b9e-c9e71763fcd5",
+      "source": "ai",
+      "prompt": "A bright, clean professional dry cleaning and laundry interior with high-end suits and silk dresses neatly pressed and hung in garment covers, realistic lighting, no people, no logos",
+      "filename": "A bright, clean professional dry cleaning and laundry interi.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 33630,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 86450,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 96884,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:01:29.133Z"
+    },
+    {
+      "id": "9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69",
+      "source": "ai",
+      "prompt": "A close-up shot of elegant wool suit jackets, silk dresses, and fine garments hanging neatly on wooden hangers inside an organized, modern wardrobe with soft daylight, no people, no logos",
+      "filename": "A close-up shot of elegant wool suit jackets, silk dresses, .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 27164,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 65158,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 71706,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:01:29.146Z"
+    },
+    {
+      "id": "21931147-8397-4f6d-8afb-8eaa54c3d543",
+      "source": "ai",
+      "prompt": "A bright modern laundry room interior with organized wicker baskets labeled for whites, colors, and delicates, soft natural morning sunlight through a window, clean aesthetic, realistic photo.",
+      "filename": "A bright modern laundry room interior with organized wicker .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22666,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 69160,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 78890,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:05:25.155Z"
+    },
+    {
+      "id": "e195b740-8a45-44ac-885d-b2f5e8fe6569",
+      "source": "ai",
+      "prompt": "A close-up view of neat hands carefully organizing clean laundry into distinct piles of white, pastel, and dark fabrics on a natural wooden table, bright diffused daylight, realistic lifestyle photography.",
+      "filename": "A close-up view of neat hands carefully organizing clean lau.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22136,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 54632,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 59624,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:05:25.179Z"
+    },
+    {
+      "id": "90b144d2-cdac-4822-8289-167f1af403eb",
+      "source": "ai",
+      "prompt": "A bright and organized modern laundry basket filled with neatly folded pastel colored shirts and clothing, placed near a wooden shelf with natural daylight streaming through a window, clean aesthetic, realistic photography",
+      "filename": "A bright and organized modern laundry basket filled with nea.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 31726,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 89306,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 100396,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:07:28.001Z"
+    },
+    {
+      "id": "d1ac678d-8285-46c0-8d0e-5968d188ef23",
+      "source": "ai",
+      "prompt": "A close-up shot of hands using a damp soft cloth to gently blot a fresh coffee stain on a white cotton shirt placed over a wooden table, soft natural daylight, realistic photography",
+      "filename": "A close-up shot of hands using a damp soft cloth to gently b.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 17780,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 42678,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 48002,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:07:28.011Z"
+    },
+    {
+      "id": "d97f6a6e-b770-4103-beed-fe30ac43f44d",
+      "source": "ai",
+      "prompt": "A modern, bright laundromat interior with a clean row of stainless steel washing machines, soft natural lighting through a window, wooden counter, neatly stacked cotton towels, warm cozy aesthetic, realistic photography, no text, no logo.",
+      "filename": "A modern, bright laundromat interior with a clean row of sta.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 34686,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 89724,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 100974,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:08:49.716Z"
+    },
+    {
+      "id": "fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad",
+      "source": "ai",
+      "prompt": "A tidy, bright laundry counter in natural light. A basket of neatly folded clothes sits on the wooden table, with laundry equipment softly blurred in the background, clean and professional atmosphere, realistic photography, no people recognizable, no text, no logo.",
+      "filename": "A tidy, bright laundry counter in natural light. A basket of.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 25760,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 64994,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 72246,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:08:49.725Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "d670d73b-64e8-4c59-9479-664bb4bdf196",
+      "categoryKey": "shop",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-11T06:25:37.431Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the shop’s colours.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Prices and hours exactly as on the shop’s boards.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise what the shop hasn’t confirmed (delivery, turnaround).</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, machine wash / dry cleaning.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a person, a machine, a service.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call, message on Zalo or drop by.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the shop.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">SFaster sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu sắc của tiệm.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng giá và giờ như bảng giá, bảng giờ của tiệm.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa điều tiệm chưa xác nhận (giao nhận, thời gian trả đồ).</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, giặt máy / giặt hấp.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một người, một máy, một dịch vụ.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời gọi, gọi điện, nhắn Zalo hay ghé tiệm.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với tiệm.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của SFaster · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": [
+        {
+          "locale": "en",
+          "slug": "how-sfaster-prices-your-laundry"
+        },
+        {
+          "locale": "vi",
+          "slug": "gia-giat-say-duoc-tinh-the-nao"
+        }
+      ]
+    },
+    {
+      "id": "2a4736ff-02f3-410f-99df-8ffa1fd50d28",
+      "categoryKey": "tips",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "bf8c380c-78f3-476a-92ed-74876d2e189d",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T14:28:19.217Z",
+      "createdAt": "2026-11-13T12:17:11.476Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "How to Bleach and Whiten Clothes Effectively and Safely for Fabric",
+          "slug": "how-to-bleach-and-whiten-clothes-effectively-and-safely-for-fabric",
+          "excerpt": "Discover how to whiten clothes at home using natural ingredients that are safe for fabrics and keep your garments looking bright and new for longer.",
+          "coverAlt": "Pristine white clothes hanging neatly in a bright, naturally airy space.",
+          "body": "<p class=\"tpl-lead\">White clothes always offer an elegant, sophisticated look, but they are also the most prone to stains and discoloration. When unpleasant yellow stains appear on collars or underarms, using the right <strong>way to whiten clothes</strong> will restore their fresh look without damaging the fabric fibers.</p><h2>Why do white clothes easily turn yellow and dull?</h2><p>Before looking for a solution, it helps to understand why your clothes lose their color. The most common cause comes from body sweat and sebum that build up over time around underarms, collars, and backs. When these natural fats are exposed to air and bacteria, they oxidize and turn into dark yellow stains.</p><p>Additionally, using deodorants with aluminum salts combined with sweat creates a stubborn residue that binds tightly to fabric fibers. Detergent residue left behind from incomplete rinsing, washing whites together with colored clothes, or using hard, mineral-rich water can also quickly turn garments a dull gray.</p><figure class=\"tpl-wide\"><img src=\"{{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/640.webp 640w, {{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/1280.webp 1280w, {{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure><h2>Natural ingredients that safely whiten clothes</h2><p>Many people immediately think of bleach when they want to whiten clothes; however, this harsh chemical can easily weaken cotton fibers and fade natural colors. Instead, using <strong>ways to whiten clothes</strong> with gentle kitchen ingredients will deliver surprising results while remaining gentle on your skin.</p><section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>White vinegar</h3><p>Contains mild acetic acid that helps dissolve soap scum and mineral deposits while eliminating musty sweat odors on clothes without stiffening the fabric.</p></div><div class=\"tpl-item\"><h3>Fresh lemon</h3><p>Natural citric acid removes stains and brightens fabric tones naturally, leaving behind a clean, refreshing scent.</p></div><div class=\"tpl-item\"><h3>Baking soda</h3><p>Mildly alkaline, it helps break down stubborn grease and stains while softening wash water remarkably well.</p></div><div class=\"tpl-item\"><h3>Medical hydrogen peroxide</h3><p>A mild oxidizing compound that breaks down into water and oxygen, helping brighten underarm stains without fading the base fabric color.</p></div></section><h2>Step-by-step process to effectively whiten yellowed clothes</h2><p>To remove yellow stains without wearing yourself out with heavy scrubbing, you should follow a careful, multi-step process. Taking the time to soak and rinse properly protects your garments' durability much better.</p><section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Step 1: Spot treat stains</h3><p>Moisten the stained area with warm water, apply a paste of baking soda mixed with lemon juice directly onto the fabric, and let it sit for about 20 minutes.</p></div><div class=\"tpl-item\"><h3>Step 2: Fully submerge the garments</h3><p>Dissolve half a cup of white vinegar or baking soda in a basin of warm water, then soak all your white garments for one to two hours.</p></div><div class=\"tpl-item\"><h3>Step 3: Gently scrub</h3><p>Use a soft-bristled brush or your fingers to gently rub around the underarm and collar areas, avoiding heavy scrubbing that might pull the fabric weave out of shape.</p></div><div class=\"tpl-item\"><h3>Step 4: Wash and dry</h3><p>Wash the clothes again with regular laundry detergent, rinse all soap suds out thoroughly with clean water, and hang them to dry in a breezy spot with gentle sunlight.</p></div></section><figure class=\"tpl-wide\"><img src=\"{{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/640.webp 640w, {{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/1280.webp 1280w, {{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure><h2>Important notes to protect fabric fibers when whitening</h2><p>Whether using home remedies or specialized products, care is always key to extending the life of your garments. Different materials like silk, wool, linen, or cotton each have different tolerance levels for temperature and cleaning agents.</p><section class=\"tpl-callout tpl-warn\"><h3>Safety warnings when mixing laundry solutions</h3><p>Avoid mixing vinegar with chlorine bleach, as this chemical reaction can produce dangerous toxic fumes. Also, do not use boiling water on synthetic fabrics or underwear, as high temperatures will cause permanent shrinkage and warping.</p></section><p>Always check the care label inside your garments for maximum water temperatures and permitted laundry symbols. For delicate, high-end materials, test the solution on a small, hidden spot along the hem before applying it to the entire garment.</p><h2>Tips to keep clothes bright and fresh after every wash</h2><p>Prevention is always better than cure; adopting smart laundry habits will keep stains from forming in the first place. Separate your white clothes as soon as you take them off, and never leave sweaty clothes piled in a closed hamper for days.</p><ul><li><p>Thoroughly sort light-colored clothes from dark-colored clothes before putting them in the washer.</p></li><li><p>Wash garments right after heavy workouts to prevent sweat oxidation from bonding with fabric fibers.</p></li><li><p>Measure out just the right amount of detergent as recommended to avoid buildup of dulling residue.</p></li><li><p>Hang clothes in a dry place, taking advantage of natural sunlight to sanitize and maintain fabric brightness.</p></li></ul><section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>What should I do if yellow stains do not disappear after the first wash?</h3><p>You can repeat the soaking process with vinegar and baking soda once more, or soak with diluted hydrogen peroxide to break down tough organic bonds.</p></div><div class=\"tpl-item\"><h3>Can I use this natural whitening method every week?</h3><p>It is best not to overuse it. You should only deep-treat stains when they are clearly visible, or periodically once a month to maintain overall whiteness.</p></div></section><section class=\"tpl-cta\"><h3>Keep your clothes looking pristine with Giặt sấy SFaster</h3><p>If you are busy and want your clothes meticulously cared for, bright, clean, and fresh without the hassle, experience the convenient services at Giặt sấy SFaster today.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "How to whiten clothes effectively and safely at home",
+          "seoDescription": "A guide on how to safely whiten clothes and remove yellow stains at home using natural ingredients, protecting fabric fibers and keeping garments bright and fresh."
+        },
+        {
+          "locale": "vi",
+          "title": "Cách tẩy trắng đồ hiệu quả và an toàn cho sợi vải",
+          "slug": "cach-tay-trang-do-hieu-qua-va-an-toan-cho-soi-vai",
+          "excerpt": "Khám phá cách tẩy trắng đồ tại nhà bằng nguyên liệu tự nhiên, an toàn cho sợi vải và giúp quần áo luôn sáng mới dài lâu.",
+          "coverAlt": "Trang phục trắng tinh khôi được treo thẳng hàng trong không gian sáng thoáng tự nhiên.",
+          "body": "<p class=\"tpl-lead\">Quần áo trắng luôn mang lại vẻ ngoài lịch sự, tinh tế nhưng cũng là trang phục dễ bám bẩn và ngả màu nhất. Khi xuất hiện những vệt ố vàng khó chịu ở cổ áo hay nách áo, việc áp dụng đúng <strong>cách tẩy trắng đồ</strong> sẽ giúp trang phục khôi phục vẻ tinh tươm vốn có mà không làm tổn hại cấu trúc sợi vải.</p><h2>Vì sao quần áo trắng dễ bị ố vàng và xỉn màu?</h2><p>Trước khi tìm kiếm giải pháp, bạn cần hiểu rõ nguồn gốc khiến trang phục bị biến sắc. Nguyên nhân phổ biến nhất đến từ mồ hôi cơ thể và bã nhờn tích tụ lâu ngày ở nách áo, cổ áo và lưng. Khi các chất béo tự nhiên tiếp xúc với không khí và vi khuẩn, chúng sẽ bị oxy hóa và chuyển thành các vết ố màu vàng sẫm.</p><p>Bên cạnh đó, việc sử dụng lăn khử mùi chứa muối nhôm kết hợp cùng mồ hôi cũng tạo thành lớp cặn cứng đầu bám chặt vào từng thớ vải. Cặn bột giặt đọng lại do xả nước chưa sạch, thói quen giặt chung đồ trắng với đồ màu hoặc nguồn nước giặt nhiễm phèn cũng là lý do khiến trang phục ngả màu xám xịt nhanh chóng.</p><figure class=\"tpl-wide\"><img src=\"{{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/640.webp 640w, {{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/1280.webp 1280w, {{media}}/db1ff12d-24ff-42bc-94a2-aa4ffda5cc42/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure><h2>Các nguyên liệu tự nhiên giúp tẩy trắng quần áo an toàn</h2><p>Nhiều người thường nghĩ ngay đến nước javel khi muốn tẩy trắng, tuy nhiên chất tẩy hóa học mạnh này dễ khiến sợi cotton bị mủn và bay màu tự nhiên. Thay vào đó, áp dụng <strong>cách tẩy trắng đồ</strong> từ các nguyên liệu lành tính trong gian bếp sẽ mang lại kết quả bất ngờ mà vẫn thân thiện với làn da.</p><section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Giấm trắng</h3><p>Chứa axit axetic nhẹ giúp hòa tan cặn xà phòng, cặn khoáng và khử mùi mồ hôi ẩm mốc trên quần áo mà không làm cứng vải.</p></div><div class=\"tpl-item\"><h3>Chanh tươi</h3><p>Axit citric tự nhiên có tác dụng tẩy ố và nâng tông màu vải tự nhiên, đồng thời để lại hương thơm thanh mát dễ chịu.</p></div><div class=\"tpl-item\"><h3>Baking soda</h3><p>Có tính kiềm nhẹ, hỗ trợ đánh bật dầu mỡ, vết ố cứng đầu và làm mềm nước giặt vô cùng hiệu quả.</p></div><div class=\"tpl-item\"><h3>Oxy già y tế</h3><p>Hợp chất oxy hóa dịu nhẹ, phân tách thành nước và oxy, giúp làm sáng vết ố nách áo mà không làm phai màu nền vải.</p></div></section><h2>Quy trình từng bước tẩy trắng đồ bị ố vàng hiệu quả</h2><p>Để loại bỏ vết ố vàng mà không mất quá nhiều công sức vò mạnh tay, bạn nên thực hiện quy trình xử lý cẩn thận qua các giai đoạn rõ ràng. Việc kiên nhẫn ngâm xả đúng cách sẽ bảo vệ độ bền của quần áo tốt hơn nhiều lần.</p><section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Bước 1: Xử lý cục bộ vết ố</h3><p>Dùng nước ấm làm ẩm khu vực bị ố vàng, thoa trực tiếp hỗn hợp baking soda trộn cùng nước cốt chanh lên bề mặt vải và để yên khoảng 20 phút.</p></div><div class=\"tpl-item\"><h3>Bước 2: Ngâm ngập trang phục</h3><p>Hòa tan nửa cốc giấm trắng hoặc baking soda vào chậu nước ấm, sau đó ngâm toàn bộ trang phục trắng trong khoảng thời gian từ một đến hai giờ.</p></div><div class=\"tpl-item\"><h3>Bước 3: Vò nhẹ nhàng</h3><p>Dùng bàn chải lông mềm hoặc ngón tay chà nhẹ quanh vùng nách và cổ áo, tránh vò quá mạnh làm xô lệch đường dệt của sợi vải.</p></div><div class=\"tpl-item\"><h3>Bước 4: Giặt sạch và phơi khô</h3><p>Giặt lại quần áo với nước giặt thông thường, xả sạch bọt xà phòng hoàn toàn bằng nước sạch và phơi ở nơi thoáng gió, có ánh nắng dịu nhẹ.</p></div></section><figure class=\"tpl-wide\"><img src=\"{{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/640.webp 640w, {{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/1280.webp 1280w, {{media}}/ed0799fa-2689-4cf5-bc6f-abd9b01d626e/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure><h2>Những lưu ý quan trọng để bảo vệ sợi vải khi tẩy trắng</h2><p>Dù áp dụng mẹo vặt dân gian hay dùng các sản phẩm chuyên dụng, sự cẩn trọng luôn là yếu tố quyết định để giữ được tuổi thọ cho trang phục. Mỗi chất liệu vải như lụa, len, linen hay cotton đều có ngưỡng chịu đựng khác nhau đối với nhiệt độ và hóa chất tẩy rửa.</p><section class=\"tpl-callout tpl-warn\"><h3>Cảnh báo an toàn khi pha trộn dung dịch giặt</h3><p>Tránh trộn chung giấm ăn với thuốc tẩy clo vì phản ứng hóa học có thể sinh ra khí độc nguy hiểm. Đồng thời, không dùng nước sôi đối với các loại vải sợi tổng hợp hoặc đồ lót vì nhiệt độ cao sẽ khiến sợi co rút và biến dạng vĩnh viễn.</p></section><p>Luôn kiểm tra mác giặt gắn bên trong trang phục để nắm rõ nhiệt độ nước tối đa và các ký hiệu giặt ủi được phép sử dụng. Đối với các chất liệu cao cấp và nhạy cảm, bạn nên thử nghiệm dung dịch tẩy lên một góc khuất nhỏ ở gấu áo trước khi thoa lên toàn bộ trang phục.</p><h2>Bí quyết giữ quần áo luôn sáng mới sau mỗi lần giặt</h2><p>Phòng bệnh luôn tốt hơn chữa bệnh; việc xây dựng thói quen giặt giũ khoa học sẽ ngăn chặn vết ố hình thành ngay từ đầu. Bạn nên phân loại riêng đồ trắng ngay từ khi thay ra và tuyệt đối không dồn ứ quần áo ướt mồ hôi trong giỏ kín quá nhiều ngày.</p><ul><li><p>Phân loại triệt để quần áo màu sáng và quần áo sẫm màu trước khi đưa vào lồng giặt.</p></li><li><p>Giặt ngay trang phục sau khi vận động ra nhiều mồ hôi để ngăn chặn phản ứng oxy hóa bám dính vào thớ vải.</p></li><li><p>Đo lường lượng nước giặt vừa đủ theo khuyến cáo, tránh dùng quá liều gây tích tụ cặn bẩn xỉn màu.</p></li><li><p>Phơi đồ ở nơi khô ráo, tận dụng ánh nắng mặt trời tự nhiên để diệt khuẩn và duy trì độ sáng cho vải.</p></li></ul><section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên làm gì nếu vết ố vàng chưa biến mất sau lần tẩy đầu tiên?</h3><p>Bạn có thể lặp lại quy trình ngâm với giấm và baking soda thêm một lần nữa, hoặc ngâm cùng nước oxy già pha loãng để phân rã các liên kết hữu cơ khó trị.</p></div><div class=\"tpl-item\"><h3>Có thể dùng cách tẩy trắng tự nhiên này hàng tuần không?</h3><p>Không nên lạm dụng thường xuyên. Tốt nhất bạn chỉ nên thực hiện tẩy sâu khi vết ố xuất hiện rõ ràng hoặc định kỳ mỗi tháng một lần để duy trì độ trắng.</p></div></section><section class=\"tpl-cta\"><h3>Chăm sóc trang phục tinh tươm cùng Giặt sấy SFaster</h3><p>Nếu bạn bận rộn và muốn quần áo luôn được chăm sóc kỹ lưỡng, trắng sạch thơm tho mà không tốn công sức, hãy trải nghiệm dịch vụ tiện lợi tại Giặt sấy SFaster ngay hôm nay.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Cách tẩy trắng đồ hiệu quả, an toàn tại nhà",
+          "seoDescription": "Hướng dẫn cách tẩy trắng đồ an toàn, loại bỏ vết ố vàng tại nhà bằng nguyên liệu tự nhiên giúp bảo vệ sợi vải và giữ quần áo luôn sáng mới."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "225b38b3-9dbf-40c6-b4a5-ce0bb0b32f52",
+      "categoryKey": "tips",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:03:46.097Z",
+      "createdAt": "2026-11-13T16:59:54.268Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "How often should you wash blankets and bed linen to keep them properly clean?",
+          "slug": "how-often-should-you-wash-blankets-and-bed-linen-to-keep-them-properly-clean",
+          "excerpt": "Find out how often to clean your bedding properly and why washing blankets at a laundry shop is a convenient solution for busy people.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">The bedroom is a space to rest and relax after a long day at work, but it is also where dirt, sweat, and dead skin cells easily accumulate. Maintaining a regular <strong>blanket washing</strong> habit not only brings a fresh, pleasant feel, but also protects a healthy living space for the whole family.</p>\n<h2>How often to wash blankets and bedding to protect your health</h2>\n<p>Each item in your bedding set has a different level of contact and bacterial buildup. Pillowcases and bed sheets are surfaces in direct contact with your face and body every night, absorbing excess oil and natural sweat. Meanwhile, pillow inserts and comforters are usually covered more tightly, but still need periodic cleaning to avoid persistent musty odors deep inside the filling.</p>",
+          "readingMinutes": 1,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Chăn mền, ga gối nên giặt bao lâu một lần để chuẩn sạch?",
+          "slug": "chan-men-ga-goi-nen-giat-bao-lau-mot-lan-de-chuan-sach",
+          "excerpt": "Tìm hiểu tần suất vệ sinh chăn ga gối chuẩn sạch và lý do vì sao giặt chăn mền tại tiệm là giải pháp tiện lợi cho người bận rộn.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Phòng ngủ là không gian nghỉ ngơi thư giãn sau một ngày dài làm việc, nhưng đây cũng là nơi dễ tích tụ bụi bẩn, mồ hôi và tế bào chết. Việc duy trì thói quen <strong>giặt chăn mền</strong> định kỳ không chỉ mang lại cảm giác thơm tho, dễ chịu mà còn bảo vệ không gian sống trong lành cho cả gia đình.</p>\n<h2>Tần suất giặt chăn mền, ga gối chuẩn sạch để bảo vệ sức khỏe</h2>\n<p>Mỗi món đồ trong bộ chăn ga gối đệm đều có mức độ tiếp xúc và tích tụ vi khuẩn khác nhau. Vỏ gối và ga trải giường là những bề mặt tiếp xúc trực tiếp mỗi đêm với da mặt và cơ thể, hấp thụ lượng dầu thừa cùng mồ hôi tự nhiên. Trong khi đó, ruột gối và chăn đắp thường được bọc kín hơn nhưng vẫn cần vệ sinh định kỳ để tránh mùi ẩm mốc âm ỉ bên trong lõi bông.</p>",
+          "readingMinutes": 1,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "05dd6507-8af9-4f74-be6a-12baddbb972e",
+      "categoryKey": "services",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "05b1e47d-3ca2-4167-8b9e-c9e71763fcd5",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:05:48.638Z",
+      "createdAt": "2026-11-13T17:03:44.745Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "When should you choose dry cleaning over wet washing for your clothes?",
+          "slug": "when-should-you-choose-dry-cleaning-over-wet-washing-for-your-clothes",
+          "excerpt": "Clearly distinguish between dry cleaning and wet washing to help preserve the shape and durability of suits, ao dai, wool, and premium silk with Giặt sấy SFaster.",
+          "coverAlt": "A modern laundry space with premium garments neatly hung",
+          "body": "<p class=\"tpl-lead\">Sharp suits, graceful ao dai, and cozy wool sweaters are essential pieces that define a stylish, elegant look. However, caring for these high-end garments requires a proper understanding of materials and laundering techniques. Choosing <strong>dry cleaning</strong> at the right time is the secret to keeping your clothes looking brand new and perfectly shaped.</p>\n<h2>The concept of dry cleaning and its core differences from traditional wet washing</h2>\n<p>Many people mistakenly believe that cleaning always requires water and sudsy detergent. In fact, <strong>dry cleaning</strong> is a method of cleaning garments using specialized water-free solvents. This process removes dirt and greasy stains without saturating the fabric fibers, minimizing the risk of altering the physical properties of the material.</p>\n<p>In contrast, traditional wet washing combines water, strong detergents, and the spinning action of the washing drum. While this method is highly effective for everyday fabrics like cotton or synthetic fibers, it can easily damage delicate materials.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Cleaning solvents</h3><p>Specialized solvents dissolve stains and oils without causing fabric fibers to swell or lose their structure.</p></div><div class=\"tpl-item\"><h3>Mechanical action</h3><p>The gentle motion cycle avoids twisting or harsh rubbing, protecting the fabric weave and stitching.</p></div><div class=\"tpl-item\"><h3>Shape retention</h3><p>Maximizes protection for original dyes, structural interlinings, lapels, and the natural smooth sheen of the garment.</p></div></section>\n<h2>Common risks of wet washing delicate fabrics</h2>\n<p>When washed improperly with water, delicate fabrics react immediately to moisture and spin cycles. Water causes natural fibers to absorb excess moisture, leading to irreversible shrinkage. In addition, highly alkaline detergents can easily fade natural dyes, leaving fabric surfaces rough and frayed after just a few washes.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Shape damage warnings</h3><p>Soaking suits or blazers with internal canvas and shoulder pads will cause the fusing glue to peel, leading to bubbling on the fabric surface. Washing wool sweaters in water and hanging them on regular hangers will cause permanent stretching and misshaping.</p></section>\n<h2>Four types of garments you should definitely dry clean to maintain durability and beauty</h2>\n<p>To protect your investments in office attire and event outfits, you need to properly identify items that require the specialized care of <strong>dry cleaning</strong> instead of home wet washing.</p>\n<h3>1. Suits and office blazers</h3>\n<p>Suits are designed with a complex structure consisting of outer fabric, lining, chest canvas, and shoulder pads. Specialized dry-cleaning solvents clean every layer without shifting the garment's crisp, tailored shape.</p>\n<h3>2. Traditional ao dai and evening gowns</h3>\n<p>Ceremonial attire often combines materials like real silk, brocade, or intricate embroidery and beadwork. Wet washing with strong spinning can easily loosen beads, tear embroidered threads, and wrinkle luxurious fabrics.</p>\n<h3>3. Wool and cashmere garments</h3>\n<p>Wool fibers feature a natural scaly structure. When exposed to warm water and mechanical agitation, these scales interlock, causing shrinking and pilling. The <strong>dry cleaning</strong> method keeps wool fibers fluffy, soft, and true to their original size.</p>\n<h3>4. Natural silk clothing</h3>\n<p>Natural silk is very fragile when wet and prone to fading under the influence of regular laundry chemicals. A waterless cleaning process provides maximum protection for its characteristic sheen and smooth feel against the skin.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/1376.webp\" alt=\"Suits and premium shirts carefully stored on hangers\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/640.webp 640w, {{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/1280.webp 1280w, {{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>High-end garments need proper care to maintain their crisp, elegant look.</figcaption></figure>\n<h2>How to recognize garments that need dry cleaning from their care labels</h2>\n<p>Every authentic garment comes with a care tag on the inner side seam or back of the neck. Accurately reading these symbols is the first step toward avoiding unfortunate laundry mishaps.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Check the inner sewn label</h3><p>Look for the fabric tag stitched along the inside side seam of a top or the waistband of trousers to check the material composition.</p></div><div class=\"tpl-item\"><h3>Look for a circle symbol</h3><p>A circle symbol indicates a dry-cleaning process. If it contains the letter P or F, it provides instructions on the type of solvent to use.</p></div><div class=\"tpl-item\"><h3>Identify the \"Do Not Wash\" symbol</h3><p>When you see this text or a wash basin symbol with a cross over it, never put the item in a regular water washing machine.</p></div></section>\n<h2>Tips for caring for and preserving high-end clothing with Giặt sấy SFaster</h2>\n<p>In addition to choosing the right cleaning method, daily garment care plays a key role in extending the life of your wardrobe. For suits and wool coats, always use wooden hangers with wide shoulder contours to support the garment's shape, avoiding thin wire hangers that leave sharp indentations.</p>\n<p>After each wear, hang your clothes in a well-ventilated area to air out moisture before storing them in your closet. When garments have stubborn stains or need preparation for important events, entrusting them to the experienced team at <strong>Giặt sấy SFaster</strong> will give you total peace of mind regarding fabric quality and fit.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Does dry cleaning remove sweat odors from suits?</h3><p>Yes. The process uses specialized solvents that dissolve odor-causing compounds deep within the woven fibers without harming delicate fabrics.</p></div><div class=\"tpl-item\"><h3>Do clothes need to be dry cleaned after every single wear?</h3><p>Not necessarily after every wear. For suits or coats with light wear, you only need periodic cleaning or treatment when there are visible spots or dirt.</p></div><div class=\"tpl-item\"><h3>What should I do if my silk shirt gets stained at home?</h3><p>Do not scrub the stain with water or soap, as this can cause color bleeding. Bring the garment to a professional cleaner for safe, targeted spot treatment.</p></div></section>\n<section class=\"tpl-cta\"><h3>Caring for high-end clothing with Giặt sấy SFaster</h3><p>Let Giặt sấy SFaster be your partner in caring for and preserving the elegance of your favorite outfits every day.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "When should you choose dry cleaning instead of wet washing?",
+          "seoDescription": "Find out when to choose dry cleaning over wet washing for suits, ao dai, wool, and silk to maintain their perfect shape and long-lasting beauty with Giặt sấy SFaster."
+        },
+        {
+          "locale": "vi",
+          "title": "Khi nào nên chọn giặt hấp thay vì giặt nước cho trang phục?",
+          "slug": "khi-nao-nen-chon-giat-hap-thay-vi-giat-nuoc-cho-trang-phuc",
+          "excerpt": "Phân biệt rõ ràng giữa giặt hấp và giặt nước giúp bạn giữ vững form dáng, độ bền cho âu phục, áo dài, len và lụa cao cấp cùng Giặt sấy SFaster.",
+          "coverAlt": "Không gian giặt là hiện đại với trang phục cao cấp được treo phẳng phiu",
+          "body": "<p class=\"tpl-lead\">Những bộ âu phục chỉn chu, tà áo dài thướt tha hay chiếc áo len ấm áp là mảnh ghép không thể thiếu tạo nên phong thái lịch thiệp của người mặc. Tuy nhiên, việc chăm sóc các món đồ cao cấp này đòi hỏi sự hiểu biết đúng đắn về chất liệu và kỹ thuật giặt giũ. Lựa chọn phương pháp <strong>giặt hấp</strong> đúng thời điểm chính là bí quyết giúp trang phục luôn bền đẹp như mới và giữ trọn form dáng ban đầu.</p>\n<h2>Khái niệm giặt hấp và sự khác biệt cốt lõi với giặt nước truyền thống</h2>\n<p>Nhiều người thường nhầm lẫn rằng quá trình làm sạch luôn cần đến nước và xà phòng tạo bọt. Trên thực tế, <strong>giặt hấp</strong> là phương pháp làm sạch trang phục bằng dung môi chuyên dụng không chứa nước. Quá trình này giúp loại bỏ bụi bẩn, dầu mỡ bám dính mà không làm sợi vải bị ngậm nước, hạn chế tối đa nguy cơ làm biến đổi tính chất vật lý của sợi vải.</p>\n<p>Ngược lại, giặt nước truyền thống kết hợp giữa nước, chất tẩy rửa mạnh và chuyển động quay vắt của lồng giặt. Phương pháp này rất hiệu quả với các loại vải thường nhật như cotton hay sợi tổng hợp, nhưng lại là tác nhân dễ gây hại cho các chất liệu nhạy cảm.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Dung môi làm sạch</h3><p>Sử dụng dung môi chuyên biệt có khả năng hòa tan chất bẩn và dầu nhờn mà không làm sợi vải bị nở bung hay mất liên kết.</p></div><div class=\"tpl-item\"><h3>Tác động cơ học</h3><p>Quy trình chuyển động diễn ra êm dịu, không vò xoắn hay chà xát mạnh, bảo toàn cấu trúc sợi dệt và đường may.</p></div><div class=\"tpl-item\"><h3>Hiệu quả giữ dáng</h3><p>Bảo vệ tối đa màu nhuộm nguyên bản, lớp lót định hình, ve áo và bề mặt bóng mịn tự nhiên của trang phục.</p></div></section>\n<h2>Những rủi ro thường gặp khi giặt nước các chất liệu nhạy cảm</h2>\n<p>Khi giặt nước sai cách, các chất liệu nhạy cảm sẽ phản ứng ngay lập tức với độ ẩm và lực vắt. Nước khiến các sợi tự nhiên hút ẩm quá mức, dẫn đến hiện tượng co rút không thể phục hồi. Ngoài ra, bột giặt có độ kiềm cao dễ làm bay màu nhuộm tự nhiên, khiến bề mặt vải trở nên thô ráp, sờn xơ chỉ sau một vài lần giặt.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Cảnh báo hư hỏng form dáng</h3><p>Việc ngâm nước các bộ vest hoặc blazer có dựng mùng và đệm vai sẽ làm lớp keo định hình bị bong tróc, gây phồng rộp bề mặt vải. Áo len khi giặt nước và phơi móc thông thường sẽ bị chảy dão, biến dạng vĩnh viễn.</p></section>\n<h2>Bốn loại trang phục nhất định nên chọn giặt hấp để giữ độ bền đẹp</h2>\n<p>Để bảo vệ các khoản đầu tư cho tủ đồ công sở và trang phục sự kiện, bạn cần phân loại chính xác các món đồ đòi hỏi quy trình chăm sóc đặc thù bằng <strong>giặt hấp</strong> thay vì xử lý giặt ướt tại nhà.</p>\n<h3>1. Bộ vest và áo blazer công sở</h3>\n<p>Áo vest được thiết kế với cấu trúc phức tạp gồm vải chính, lớp lót, đệm ngực và đệm vai. Dung môi chuyên dụng trong quy trình hấp sấy sẽ làm sạch từng lớp vải mà không làm xô lệch lớp phom dáng cứng cáp vốn có.</p>\n<h3>2. Áo dài truyền thống và đầm dạ hội</h3>\n<p>Các thiết kế lễ phục thường kết hợp chất liệu tơ tằm, gấm hoặc chi tiết thêu đính cầu kỳ. Giặt ướt với lực vắt mạnh dễ làm bung hạt cườm, rách sợi thêu và nhăn nhúm bề mặt vải quý phái.</p>\n<h3>3. Trang phục từ sợi len và cashmere</h3>\n<p>Sợi len có cấu tạo lớp vảy tự nhiên. Khi gặp nước ấm và tác động cơ học, các vảy này sẽ móc chặt vào nhau gây co rút và xù lông. Phương pháp <strong>giặt hấp</strong> giúp sợi len giữ nguyên độ tơi xốp, mềm mại và kích thước ban đầu.</p>\n<h3>4. Quần áo lụa tơ tằm tự nhiên</h3>\n<p>Lụa tự nhiên rất yếu khi ướt và dễ bị phai màu dưới tác động của hóa chất giặt thông thường. Quy trình làm sạch không dùng nước bảo vệ tối đa ánh bóng đặc trưng và cảm giác mềm mượt trên da.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/1376.webp\" alt=\"Âu phục và áo sơ mi cao cấp được bảo quản cẩn thận trên móc treo\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/640.webp 640w, {{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/1280.webp 1280w, {{media}}/9cc70a02-f4da-4f49-bf5c-97c1a0a9cd69/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Trang phục chất liệu cao cấp cần được chăm sóc đúng cách để duy trì độ phẳng phiu và sự sang trọng.</figcaption></figure>\n<h2>Cách nhận biết trang phục cần giặt hấp qua nhãn mác hướng dẫn</h2>\n<p>Mỗi trang phục chính hãng đều đi kèm nhãn mác hướng dẫn chăm sóc (care tag) ở sườn áo hoặc sau gáy. Đọc hiểu chính xác các ký hiệu này là bước đầu tiên để tránh những sự cố giặt tẩy đáng tiếc.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Kiểm tra nhãn may bên trong</h3><p>Tìm kiếm thẻ vải may cố định ở đường sườn trong của thân áo hoặc cạp quần để nắm rõ thành phần sợi vải.</p></div><div class=\"tpl-item\"><h3>Tìm biểu tượng hình tròn</h3><p>Biểu tượng hình tròn thể hiện quy trình giặt khô. Nếu có thêm chữ cái P hoặc F bên trong, đó là chỉ dẫn về loại dung môi sử dụng.</p></div><div class=\"tpl-item\"><h3>Nhận diện ký hiệu cấm giặt nước</h3><p>Khi thấy dòng chữ này hoặc biểu tượng chậu nước có dấu gạch chéo, tuyệt đối không đưa đồ vào máy giặt nước thông thường.</p></div></section>\n<h2>Bí quyết chăm sóc và bảo quản quần áo cao cấp bền lâu cùng Giặt sấy SFaster</h2>\n<p>Bên cạnh việc lựa chọn đúng phương pháp làm sạch, cách thức bảo quản thường ngày cũng đóng vai trò then chốt trong việc duy trì tuổi thọ đồ dùng. Đối với vest và áo khoác dạ, hãy luôn sử dụng móc treo bằng gỗ có cầu vai dày để nâng đỡ dáng áo, tránh dùng móc kim loại mỏng làm hằn vết nhọn.</p>\n<p>Sau mỗi lần sử dụng, nên treo đồ nơi thoáng mát để bay bớt hơi ẩm trước khi cất vào tủ. Khi trang phục gặp phải vết bẩn cứng đầu hoặc cần chuẩn bị cho các sự kiện quan trọng, việc giao phó trang phục cho đội ngũ giàu kinh nghiệm tại <strong>Giặt sấy SFaster</strong> sẽ giúp bạn an tâm tuyệt đối về chất lượng sợi vải và phom dáng.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Giặt hấp có khử được mùi mồ hôi trên âu phục không?</h3><p>Có. Quy trình sử dụng dung môi chuyên biệt có khả năng hòa tan các hợp chất gây mùi bám sâu trong sợi dệt mà không làm tổn hại đến bề mặt vải cao cấp.</p></div><div class=\"tpl-item\"><h3>Có cần giặt hấp sau mỗi lần mặc đồ hay không?</h3><p>Không nhất thiết sau mỗi lần mặc. Với vest hay áo khoác ít bám bẩn, bạn chỉ cần làm sạch định kỳ hoặc khi trang phục có vết ố, dính bụi bẩn rõ rệt.</p></div><div class=\"tpl-item\"><h3>Nên làm gì khi áo lụa bị dính vết bẩn tại nhà?</h3><p>Không nên tự vò chà vết bẩn với nước hay xà phòng vì dễ làm loang màu. Hãy mang trang phục đến đơn vị chuyên nghiệp để được xử lý điểm bẩn cục bộ an toàn.</p></div></section>\n<section class=\"tpl-cta\"><h3>Chăm sóc trang phục cao cấp cùng Giặt sấy SFaster</h3><p>Hãy để Giặt sấy SFaster đồng hành cùng bạn trong việc nâng niu và giữ trọn nét thanh lịch cho những bộ trang phục yêu thích mỗi ngày.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Khi nào nên chọn giặt hấp thay vì giặt nước?",
+          "seoDescription": "Tìm hiểu khi nào nên giặt hấp thay vì giặt nước cho vest, áo dài, len và lụa để giữ form dáng chuẩn đẹp bền lâu cùng Giặt sấy SFaster."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "d9ff78f0-1dbe-4cd9-88cb-46611982c651",
+      "categoryKey": "tips",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "21931147-8397-4f6d-8afb-8eaa54c3d543",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:08:25.237Z",
+      "createdAt": "2026-11-13T17:05:57.059Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Tips for sorting clothes before washing to keep them durable and looking like new",
+          "slug": "tips-for-sorting-clothes-before-washing-to-keep-them-durable-and-looking-like-new",
+          "excerpt": "Learn how to sort clothes before washing by color, fabric, and soil level to keep your outfits colorfast, well-shaped, and fresh for longer.",
+          "coverAlt": "Neatly sorted laundry baskets in the laundry room",
+          "body": "<p class=\"tpl-lead\">Many people have the habit of stuffing all dirty clothes into the drum to save time. However, skipping the step of <strong>sorting clothes before washing</strong> is the leading cause of frayed fibers, shrunk shapes, and bled colors. With just a few minutes of smart sorting before pressing start, you can easily extend the lifespan of your family's wardrobe.</p>\n<h2>Why do you need to sort clothes before starting the washing machine?</h2>\n<p>Every garment is made from different woven fibers with distinct characteristics and mechanical durability. When you wash coarse, stiff items with soft, delicate fabrics, heavy friction inside the drum can fray, pill, or stretch out thin fibers. Additionally, mixing everything together lets dirt from workwear transfer onto loungewear or personal underwear.</p>\n<p>Moreover, the chemical reaction between detergent, water temperature, and unstable fabric dyes can easily lead to color bleeding disasters. A single dark shirt bleeding color can ruin your entire favorite load of whites.</p>\n<h2>A guide to accurately sorting laundry by color</h2>\n<p>Separating clothes by shade is the most fundamental rule for keeping them looking their best. A safe standard is dividing laundry into three main color groups: pure whites, light or pastel colors, and dark colors. Pure white items like office shirts and white t-shirts need to be washed separately with an appropriate cycle to prevent them from turning dull or dingy yellow over time.</p>\n<p>Dark shades such as black, navy, dark brown, or burgundy bleed dye very easily in the first few washes. These colors should be washed together in cold water to keep color particles locked into the fiber structure and prevent premature fading.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/640.webp 640w, {{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/1280.webp 1280w, {{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>If you buy a new brightly colored item and are unsure about its colorfastness, try soaking a corner of the fabric in a small bowl of soapy water. If the water changes color, you must hand-wash that garment separately or run it in a small load until it stops bleeding.</p>\n<h2>How to identify and group laundry by fabric type</h2>\n<p>Besides color, each type of fabric requires a different wash cycle and spin speed. Grouping similar fabrics together helps the washing machine optimize cleaning performance without damaging fiber surfaces.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Delicate fabrics</h3><p>Includes silk, chiffon, lace, wool, and underwear. These fabrics deform easily and require a gentle cycle, low spin speed, and mild liquid detergent.</p></div><div class=\"tpl-item\"><h3>Everyday fabrics</h3><p>Includes cotton knits, polyester synthetics, and linen used for t-shirts and loungewear. These can handle standard daily washing.</p></div><div class=\"tpl-item\"><h3>Heavy fabrics</h3><p>Includes denim jeans, heavy khakis, thick jackets, and cotton bath towels. They become very heavy when wet and need ample drum space and a strong spin cycle.</p></div></section>\n<h2>Sorting clothes based on actual dirtiness</h2>\n<p>Many people overlook the level of soiling when prepping laundry. In reality, lightly soiled office clothes only need a quick cycle with a moderate amount of detergent. Conversely, sweat-soaked gym wear, greasy kitchen aprons, or muddy kids' clothes require a thorough wash cycle and higher water temperatures to eliminate odor-causing bacteria.</p>\n<p>Washing lightly soiled items with heavily soiled ones allows dirt dissolved in the water to redeposit onto clean fabrics, making garments feel greasy and develop unpleasant musty odors.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Tips for pre-treating stains</h3><p>For stubborn stains like grease, sauces, or coffee, apply a small amount of liquid detergent directly to the stain and gently rub it before putting the item into the drum. This spot treatment helps remove stains quickly without having to increase the wash intensity for the entire load.</p></section>\n<h2>Important things to check before doing laundry</h2>\n<p>Before pressing the start button, a quick one-minute check will protect both your clothes and your laundry appliances from unexpected damage.</p>\n<ul class=\"tpl-check\"><li>Carefully check all pockets to remove tissues, keys, coins, or lighters.</li><li>Zip up all metal zippers and fasten bra hooks to prevent them from snagging other garments.</li><li>Turn printed shirts, jeans, and knitwear inside out to reduce friction that can peel prints or wear down the outer fabric.</li><li>Place underwear, socks, and garments with embellishments into mesh laundry bags.</li></ul>\n<h2>Frequently asked questions when preparing laundry</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Can office shirts be washed together with cotton t-shirts?</h3><p>You can certainly wash them together if they share the same light color group and are not heavily soiled, but be sure to put shirts in a laundry bag and select a gentle cycle to prevent crumpled collars and wrinkled fabric.</p></div><div class=\"tpl-item\"><h3>Can color catcher sheets completely replace sorting?</h3><p>Color catchers can absorb some loose dye particles in the water, but they cannot completely prevent intense color bleeding. The safest approach is still separating dark loads.</p></div><div class=\"tpl-item\"><h3>How should heavily sweated workout clothes be handled?</h3><p>You should give them a quick rinse with cold water, wring them out, and hang them in a ventilated area; avoid letting them sit in the laundry basket for days, as mold and bacteria multiply very quickly.</p></div></section>\n<section class=\"tpl-cta\"><h3>Smart garment care with SFaster</h3><p>Build the habit of sorting your laundry today so every outfit stays fresh, clean, and durable over time. Follow Giặt sấy SFaster for more useful home and clothing care tips every week.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Tips for sorting clothes before washing to keep them durable and looking like new",
+          "seoDescription": "A detailed guide on sorting clothes before washing by color, fabric, and dirt level to keep garments vibrant, fresh, clean, and snag-free with SFaster."
+        },
+        {
+          "locale": "vi",
+          "title": "Mẹo phân loại quần áo trước khi giặt giúp đồ luôn bền đẹp",
+          "slug": "meo-phan-loai-quan-ao-truoc-khi-giat-giup-do-luon-ben-dep",
+          "excerpt": "Học cách phân loại quần áo khi giặt theo màu sắc, chất liệu và độ bám bẩn để trang phục luôn bền màu, giữ phom dáng chuẩn và thơm tho dài lâu.",
+          "coverAlt": "Các giỏ quần áo đã được phân loại gọn gàng trong phòng giặt",
+          "body": "<p class=\"tpl-lead\">Nhiều người thường có thói quen dồn toàn bộ đồ bẩn vào lồng giặt để tiết kiệm thời gian. Tuy nhiên, việc bỏ qua bước <strong>phân loại quần áo khi giặt</strong> chính là nguyên nhân hàng đầu khiến sợi vải nhanh sờn rách, phom dáng bị co rút và màu sắc bị loang lổ. Chỉ với vài phút sắp xếp trang phục khoa học trước khi bấm máy, bạn hoàn toàn có thể kéo dài tuổi thọ cho tủ đồ của cả gia đình.</p>\n<h2>Vì sao cần phân loại quần áo trước khi bấm máy giặt?</h2>\n<p>Mỗi bộ trang phục đều được cấu tạo từ các loại sợi dệt khác nhau với đặc tính và độ bền cơ học riêng biệt. Khi giặt chung đồ thô cứng cùng những chất liệu mềm mỏng, lực ma sát lớn trong lồng giặt sẽ khiến sợi vải mỏng bị xước, xù lông hoặc giãn đứt. Ngoài ra, việc giặt lẫn lộn còn khiến bụi bẩn từ trang phục lao động bám ngược vào trang phục mặc ở nhà hay đồ lót cá nhân.</p>\n<p>Không chỉ vậy, sự tương tác hóa học giữa xà phòng, nhiệt độ nước và thuốc nhuộm vải chưa ổn định rất dễ gây ra thảm họa phai màu. Một chiếc áo sẫm màu bị thôi màu có thể làm hỏng toàn bộ mẻ đồ trắng yêu thích của bạn.</p>\n<h2>Hướng dẫn phân loại đồ giặt chuẩn xác theo tông màu</h2>\n<p>Tách đồ theo sắc độ là nguyên tắc cơ bản nhất để bảo vệ thẩm mỹ cho trang phục. Quy chuẩn an toàn là chia đồ giặt thành ba nhóm màu chính: nhóm đồ trắng tinh, nhóm màu sáng hoặc pastel, và nhóm màu tối. Nhóm đồ trắng tinh như sơ mi công sở, áo thun trắng cần được giặt riêng biệt với chế độ giặt phù hợp để tránh bị xỉn màu hay ố cháo lòng sau nhiều lần giặt.</p>\n<p>Đối với các gam màu tối như đen, xanh navy, nâu đậm hay đỏ đô, chúng rất dễ nhả màu trong những lần giặt đầu tiên. Nhóm màu này nên được giặt chung với nhau bằng nước lạnh để giữ hạt màu bám chắc vào cấu trúc sợi vải, tránh hiện tượng bạc màu sớm.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/640.webp 640w, {{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/1280.webp 1280w, {{media}}/e195b740-8a45-44ac-885d-b2f5e8fe6569/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Nếu bạn mua một món đồ mới có màu sắc rực rỡ và chưa rõ độ bền màu, hãy ngâm thử góc vải vào chậu nước nhỏ với xà phòng. Nếu nước đổi màu, bắt buộc phải giặt riêng trang phục đó bằng tay hoặc giặt riêng mẻ nhỏ cho đến khi hết thôi màu.</p>\n<h2>Cách nhận biết và chia nhóm đồ giặt theo chất liệu vải</h2>\n<p>Bên cạnh màu sắc, đặc tính của từng loại sợi dệt đòi hỏi chu trình giặt và tốc độ vắt khác nhau. Việc nhóm các chất liệu tương đồng lại với nhau giúp máy giặt phát huy tối đa hiệu quả làm sạch mà không làm tổn hại đến bề mặt sợi.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Nhóm chất liệu mỏng nhẹ</h3><p>Gồm lụa, voan, ren, len và đồ lót. Những chất liệu này dễ bị biến dạng, cần giặt chu trình nhẹ, tốc độ vắt thấp và dùng nước giặt dịu nhẹ.</p></div><div class=\"tpl-item\"><h3>Nhóm chất liệu thông thường</h3><p>Gồm vải thun cotton, sợi tổng hợp polyester, vải lanh dùng cho áo phông, đồ mặc nhà. Có thể chịu được lực giặt tiêu chuẩn hàng ngày.</p></div><div class=\"tpl-item\"><h3>Nhóm chất liệu dày dặn</h3><p>Gồm denim jean, kaki thô, áo khoác dày, khăn tắm bông. Trọng lượng khi ngấm nước rất nặng, cần không gian đảo trộn lớn và lực vắt mạnh.</p></div></section>\n<h2>Phân chia quần áo dựa trên mức độ bám bẩn thực tế</h2>\n<p>Nhiều người thường bỏ qua yếu tố mức độ bẩn khi chuẩn bị giặt. Thực tế, quần áo công sở ít bám bụi chỉ cần chu trình giặt nhanh với lượng chất giặt tẩy vừa phải. Ngược lại, đồ tập thể thao đẫm mồ hôi, đồ làm bếp dính dầu mỡ hay quần áo trẻ em dính bùn đất cần chu trình giặt kỹ và nhiệt độ nước cao hơn để tiêu diệt vi khuẩn gây mùi.</p>\n<p>Việc giặt chung đồ ít bẩn với đồ bám bẩn nặng sẽ khiến cặn bẩn hòa tan trong nước ngấm ngược vào các thớ vải sạch, làm trang phục trở nên nhờn rít và phát sinh mùi ẩm mốc khó chịu.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Mẹo xử lý trước vết bẩn</h3><p>Với các vết bẩn cứng đầu như dầu nhớt, nước sốt hay cà phê, bạn hãy thoa một ít nước giặt trực tiếp lên vết bẩn và vò nhẹ trước khi đưa vào lồng giặt. Thao tác xử lý cục bộ này giúp vết bẩn tan biến nhanh mà không cần tăng cường độ vắt của toàn bộ mẻ giặt.</p></section>\n<h2>Những lưu ý quan trọng cần kiểm tra trước khi giặt đồ</h2>\n<p>Trước khi bấm nút khởi động máy, một vài thao tác kiểm tra cơ bản trong vòng một phút sẽ bảo vệ cả trang phục lẫn thiết bị giặt sấy của bạn khỏi những hư hỏng bất ngờ.</p>\n<ul class=\"tpl-check\"><li>Kiểm tra kỹ các túi quần, túi áo để loại bỏ khăn giấy, chìa khóa, tiền kim loại hay bật lửa.</li><li>Kéo kín các khóa kéo kim loại và cài móc áo ngực để tránh làm xước rách các trang phục khác.</li><li>Lộn trái các loại áo in hình, quần jeans và đồ dệt kim để hạn chế cọ xát làm bong tróc hình in hoặc sờn mặt ngoài.</li><li>Đặt đồ lót, tất chân và các trang phục có phụ kiện đính kèm vào túi giặt lưới chuyên dụng.</li></ul>\n<h2>Giải đáp thắc mắc thường gặp khi chuẩn bị đồ giặt</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Có thể giặt chung áo sơ mi công sở với áo thun cotton không?</h3><p>Bạn hoàn toàn có thể kết hợp nếu chúng cùng nhóm màu sáng và không bám bẩn nặng, nhưng bắt buộc phải cho sơ mi vào túi giặt và chọn chế độ giặt nhẹ để tránh làm gãy cổ áo và nhăn vải.</p></div><div class=\"tpl-item\"><h3>Dùng giấy hút màu có thay thế hoàn toàn việc phân loại không?</h3><p>Giấy hút màu có thể giữ lại một phần hạt màu lơ lửng trong nước, nhưng không thể ngăn chặn hoàn toàn hiện tượng lem màu đậm. Cách an toàn nhất vẫn là tách riêng mẻ đồ sẫm màu.</p></div><div class=\"tpl-item\"><h3>Quần áo dính nhiều mồ hôi sau khi tập luyện nên xử lý thế nào?</h3><p>Bạn nên xả sơ bằng nước lạnh và vắt ráo rồi phơi tạm nơi thoáng khí, không nên ủ chung trong giỏ đồ bẩn nhiều ngày vì nấm mốc và vi khuẩn sẽ sinh sôi rất nhanh.</p></div></section>\n<section class=\"tpl-cta\"><h3>Chăm sóc trang phục thông minh cùng SFaster</h3><p>Tập thói quen phân loại đồ giặt ngay từ hôm nay để mỗi bộ trang phục luôn sạch thơm và bền đẹp theo năm tháng. Hãy theo dõi Giặt sấy SFaster để cập nhật thêm nhiều kinh nghiệm chăm sóc nhà cửa và quần áo hữu ích mỗi tuần.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Mẹo phân loại quần áo khi giặt giúp đồ luôn bền đẹp",
+          "seoDescription": "Hướng dẫn chi tiết cách phân loại quần áo khi giặt theo màu sắc, chất liệu và độ bẩn, giúp trang phục bền màu, sạch thơm và không sờn rách cùng SFaster."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "54200404-7f9b-485d-a40e-5efff9d1a6d4",
+      "categoryKey": "tips",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "90b144d2-cdac-4822-8289-167f1af403eb",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:09:27.754Z",
+      "createdAt": "2026-11-13T17:08:23.136Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Tips for removing common clothing stains before washing and drying",
+          "slug": "tips-for-removing-common-clothing-stains-before-washing-and-drying",
+          "excerpt": "A guide to pretreating coffee, grease, lipstick, and ink stains to protect fabric fibers and boost cleaning effectiveness at Giặt sấy SFaster.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">In the hustle and bustle of daily life, unexpected accidents like a drop of morning coffee on your shirt hem or grease spots during an office lunch are hard to avoid. Without timely treatment, these stains will quickly penetrate deep into the fibers and become stubborn. Proactively <strong>removing clothing stains</strong> at home before laundering not only saves time but also keeps your outfits looking durable and fresh as new.</p>\n<h2>Why is pretreating necessary before bringing clothes to be washed?</h2>\n<p>Many people have the habit of piling dirty clothes in a hamper and waiting for a full load before washing. However, the longer you wait, the more time dirt has to oxidize and bind tightly to the fabric structure. Once stains dry completely, even professional wash cycles require much more effort to clean thoroughly.</p>\n<p>Pretreating stains paves the way by loosening the bonds of adhering molecules without needing harsh scrubbing. As a result, the fabric avoids the risk of fraying, fiber damage, or fading inside the washing drum.</p>\n<h2>Tips for removing coffee and tea stains from clothes</h2>\n<p>Coffee and tea contain high levels of tannins, creating brownish or yellowish patches easily visible on light-colored fabrics. The method for <strong>removing clothing stains</strong> caused by these beverages should use cool water to prevent heat from setting the pigments.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Blot quickly</h3><p>Use a dry paper towel or cotton pad to gently press onto the surface to absorb excess liquid; never rub back and forth.</p></div><div class=\"tpl-item\"><h3>Flush with cold running water from the back</h3><p>Place the back of the stain under a stream of cold running water so the water pressure flushes tannins out instead of pushing them deeper.</p></div><div class=\"tpl-item\"><h3>Apply a softening solution</h3><p>Apply a little white vinegar diluted with warm water or mild liquid detergent onto the stained area, and let it sit for about five to ten minutes.</p></div><div class=\"tpl-item\"><h3>Rinse thoroughly</h3><p>Rinse thoroughly with cool water before sorting and placing the item in the basket with the rest of your laundry.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/640.webp 640w, {{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/1280.webp 1280w, {{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Quick ways to clean grease and food sauce stains</h2>\n<p>Cooking oil, butter, and food sauces are oil-based compounds that do not dissolve in water, leaving a greasy feel and dark marks. If washed only with regular water, grease stains will stubbornly linger and be hard to remove completely.</p>\n<p>The simplest solution is to use dish soap from your kitchen thanks to its powerful degreasing properties. Dab a few drops of mild dish soap directly onto the stain, rub gently with your fingertips until lather forms, then soak in warm water for about fifteen minutes before washing as usual. Baby powder or cornstarch is also a great lifesaver to sprinkle on the surface to absorb excess oil while at work.</p>\n<h2>Emergency treatment for ballpoint pen ink and lipstick stains</h2>\n<p>Ink from school pens, office ballpoint pens, and makeup lipstick are very common stains, yet among the hardest to remove because they contain oil-based solvents combined with concentrated pigments.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Ballpoint pen ink stains</h3><p>Apply medical rubbing alcohol or hand sanitizer lightly onto a cotton pad, then dab repeatedly from the outer edge inward toward the center until the ink gradually dissolves.</p></div><div class=\"tpl-item\"><h3>Cream lipstick stains</h3><p>Place a paper towel underneath, then gently dab rubbing alcohol or oil-free makeup remover from the back so the colored wax absorbs directly into the paper towel.</p></div><div class=\"tpl-item\"><h3>Powder makeup</h3><p>Apply a small amount of concentrated laundry gel directly onto the stained area, rub gently in circular motions with your fingertips, and let it rest for ten minutes before rinsing with cool water.</p></div></section>\n<h2>Important notes to avoid color fading and fabric damage</h2>\n<p>No matter how quickly you want to clean, preserving fabric durability remains the top priority. Every material—from cotton and silk to wool—has completely different heat tolerance and chemical reactions.</p>\n<p>Before using any cleaning solution, test a small amount on an inside hem or a hidden seam. Carefully read the care label on your clothing to choose the most suitable temperature and wash cycle.</p>\n<h2>Experience fresh, clean, and convenient laundry at Giặt sấy SFaster</h2>\n<p>After quick first-aid steps at home, all you need to do is entrust your garments to a professional service. <strong>Giặt sấy SFaster</strong> offers thoughtful clothing care, helping you cast aside all worries about musty odors or persistent stains after a busy day.</p>\n<p>With meticulous care for each separate load combined with modern drying technology, <strong>Giặt sấy SFaster</strong> ensures clothes for you and your loved ones are pampered, sanitized, wrinkle-free, and naturally fresh, ready for an energetic new day.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>How soon should stains be pretreated?</h3><p>You should blot away excess residue as soon as possible within the first fifteen to thirty minutes to prevent stains from soaking deep into the core of the fibers.</p></div><div class=\"tpl-item\"><h3>Should boiling water be used to soak stains on clothes?</h3><p>Hot water is only suitable for certain grease stains on thick cotton fabric; for blood, coffee, wine, or tea, hot water will set the stains permanently.</p></div><div class=\"tpl-item\"><h3>Do pretreated clothes need to be washed separately at the shop?</h3><p>It is best to wash them separately or place stained garments in a separate bag before dropping them off to prevent stains from bleeding onto other clean clothes.</p></div></section>\n<section class=\"tpl-cta\"><h3>Keep your clothes immaculate with Giặt sấy SFaster</h3><p>Don't let accidental stains disrupt your confident style. After quickly treating them with the tips above, bring your clothes to Giặt sấy SFaster to experience professional, fresh, clean, and worry-free garment care every day.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Effective tips for removing clothing stains before Giặt sấy SFaster",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Mẹo tẩy vết bẩn quần áo thường gặp trước khi giặt sấy",
+          "slug": "meo-tay-vet-ban-quan-ao-thuong-gap-truoc-khi-giat-say",
+          "excerpt": "Hướng dẫn cách xử lý sơ bộ vết cà phê, dầu mỡ, son và mực giúp bảo vệ sợi vải và tăng hiệu quả giặt sạch tại Giặt sấy SFaster.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Trong nhịp sống bận rộn hằng ngày, những tai nạn bất ngờ như giọt cà phê sáng rơi vào vạt áo hay vệt dầu mỡ trong bữa trưa công sở là điều khó tránh khỏi. Nếu không có phương pháp xử lý kịp thời, những vết bẩn này sẽ nhanh chóng ngấm sâu vào từng sợi vải và trở nên cứng đầu. Việc chủ động <strong>tẩy vết bẩn quần áo</strong> ngay tại nhà trước khi giặt không chỉ giúp tiết kiệm thời gian mà còn giữ cho trang phục luôn bền đẹp như mới.</p>\n<h2>Vì sao cần xử lý sơ bộ trước khi mang quần áo đi giặt?</h2>\n<p>Nhiều người có thói quen gom quần áo bẩn vào giỏ và chờ gom đủ một mẻ lớn mới mang đi giặt. Tuy nhiên, thời gian chờ đợi càng lâu thì chất bẩn càng có cơ hội oxy hóa, liên kết chặt chẽ với cấu trúc sợi dệt. Khi vết bẩn đã khô lại hoàn toàn, ngay cả quy trình giặt chuyên nghiệp cũng sẽ tốn nhiều công sức hơn để làm sạch triệt để.</p>\n<p>Tiền xử lý vết ố đóng vai trò như bước mở đường, làm lỏng liên kết của các phân tử bám dính mà không cần dùng lực chà xát quá mạnh. Nhờ đó, chất vải tránh được nguy cơ xơ rách, sờn chỉ hay bạc màu trong lồng giặt.</p>\n<h2>Mẹo tẩy vết bẩn quần áo do cà phê và nước trà</h2>\n<p>Cà phê và trà chứa hàm lượng tannin cao, tạo ra các mảng ố màu nâu hoặc vàng rất dễ nhận biết trên nền vải sáng. Biện pháp <strong>tẩy vết bẩn quần áo</strong> đối với nhóm đồ uống này cần được thực hiện bằng nước mát để hạn chế nhiệt độ làm chín sắc tố màu.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Thấm hút nhanh</h3><p>Dùng khăn giấy khô hoặc miếng bông gòn áp nhẹ lên bề mặt để hút bớt lượng chất lỏng dư thừa, tuyệt đối không lau qua lại.</p></div><div class=\"tpl-item\"><h3>Xả ngược dòng nước lạnh</h3><p>Đặt mặt sau của vết bẩn dưới vòi nước lạnh chảy đều để áp lực nước đẩy tannin ra ngoài thay vì để nước chảy ngược vào trong.</p></div><div class=\"tpl-item\"><h3>Thoa dung dịch làm mềm</h3><p>Thoa một ít giấm trắng pha loãng với nước ấm hoặc nước giặt nhẹ lên khu vực dính bẩn, để yên trong khoảng năm đến mười phút.</p></div><div class=\"tpl-item\"><h3>Xả sạch lại</h3><p>Xả sạch lại bằng nước mát trước khi phân loại và cho trang phục vào giỏ chuẩn bị giặt chung với các đồ khác.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/640.webp 640w, {{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/1280.webp 1280w, {{media}}/d1ac678d-8285-46c0-8d0e-5968d188ef23/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Cách làm sạch nhanh vết dầu mỡ và nước sốt thức ăn</h2>\n<p>Dầu ăn, bơ hay nước sốt đồ ăn là các hợp chất gốc dầu không tan trong nước, tạo cảm giác nhờn dính và rất dễ để lại vệt thâm sẫm màu. Nếu chỉ giặt bằng nước thông thường, vết loang dầu mỡ sẽ bám dai dẳng và khó bay sạch hoàn toàn.</p>\n<p>Giải pháp đơn giản nhất là tận dụng nước rửa chén có sẵn trong gian bếp nhờ đặc tính phân tách dầu cực mạnh. Bạn nhỏ trực tiếp vài giọt nước rửa chén dịu nhẹ lên vị trí bẩn, xoa nhẹ nhàng bằng đầu ngón tay cho đến khi bọt tan đều, sau đó ngâm khoảng mười lăm phút trong nước ấm trước khi mang đi giặt bình thường. Phấn rôm trẻ em hoặc bột bắp cũng là cứu cánh tuyệt vời để rắc lên bề mặt hút bớt dầu thừa khi bạn đang ở nơi làm việc.</p>\n<h2>Phương pháp xử lý khẩn cấp vết mực bút bi và vết son môi</h2>\n<p>Vết mực học sinh, mực bút bi công sở cùng son môi trang điểm là hai nhóm vết bẩn rất phổ biến nhưng lại khó xử lý bậc nhất do chứa dung môi gốc dầu kết hợp chất tạo màu đậm đặc.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Vết mực bút bi</h3><p>Dùng cồn y tế hoặc nước rửa tay khô xịt nhẹ lên miếng bông tẩy trang, sau đó dặm liên tục từ ngoài rìa vào tâm vết mực cho đến khi vết bẩn tan dần.</p></div><div class=\"tpl-item\"><h3>Vết son môi dạng kem</h3><p>Lót khăn giấy phía dưới, dùng cồn tẩy rửa hoặc nước tẩy trang không cồn dặm nhẹ từ phía sau để lớp sáp màu son thẩm thấu trực tiếp vào giấy lót.</p></div><div class=\"tpl-item\"><h3>Phấn trang điểm</h3><p>Thoa một lượng nhỏ gel giặt đậm đặc trực tiếp lên khu vực màu bám, xoa tròn nhẹ bằng ngón tay và để nghỉ mười phút trước khi xả nước mát.</p></div></section>\n<h2>Những lưu ý quan trọng để tránh làm phai màu và hư hại sợi vải</h2>\n<p>Dù mong muốn làm sạch nhanh đến đâu, việc bảo toàn độ bền của cấu trúc vải vẫn luôn là ưu tiên hàng đầu. Mỗi loại chất liệu từ cotton, lụa tơ tằm đến len dạ đều có mức độ chịu nhiệt và phản ứng hóa học hoàn toàn khác nhau.</p>\n<p>Trước khi sử dụng bất kỳ dung dịch làm sạch nào, bạn nên thử nghiệm một lượng nhỏ ở mặt trong của gấu áo hoặc đường may khuất. Hãy đọc kỹ nhãn hướng dẫn giặt ủi đính kèm trên quần áo để lựa chọn mức nhiệt và hình thức giặt phù hợp nhất.</p>\n<h2>Trải nghiệm giặt giũ sạch thơm và tiện lợi tại Giặt sấy SFaster</h2>\n<p>Sau các bước sơ cứu nhanh chóng tại nhà, việc còn lại của bạn chỉ đơn giản là gửi gắm trang phục cho dịch vụ chuyên nghiệp. <strong>Giặt sấy SFaster</strong> mang đến trải nghiệm làm sạch quần áo chu đáo, giúp bạn trút bỏ mọi lo âu về mùi ẩm mốc hay vết ố bám dai dẳng sau ngày dài bận rộn.</p>\n<p>Với quy trình chăm sóc tỉ mỉ từng mẻ vải riêng biệt kết hợp công nghệ sấy khô hiện đại, <strong>Giặt sấy SFaster</strong> đảm bảo quần áo của bạn và người thân luôn được nâng niu, sạch khuẩn, phẳng phiu và thơm mát tự nhiên sẵn sàng cho ngày mới năng động.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên xử lý sơ bộ vết bẩn trong khoảng thời gian bao lâu?</h3><p>Bạn nên thấm khô chất bẩn thừa càng sớm càng tốt trong vòng mười lăm đến ba mươi phút đầu để tránh chất bẩn ngấm sâu vào lõi sợi dệt.</p></div><div class=\"tpl-item\"><h3>Có nên dùng nước sôi để ngâm vết ố trên quần áo không?</h3><p>Nước nóng chỉ phù hợp với một số vết dầu mỡ trên vải cotton dày, còn đối với vết máu, cà phê, rượu hay trà thì nước nóng sẽ làm vết bẩn bám chặt vĩnh viễn.</p></div><div class=\"tpl-item\"><h3>Quần áo đã sơ chế có cần giặt riêng tại tiệm không?</h3><p>Nên giặt riêng hoặc bọc quần áo dính vết bẩn trong túi riêng trước khi gửi để tránh chất ố lem màu sang trang phục sạch khác.</p></div></section>\n<section class=\"tpl-cta\"><h3>Giữ trọn trang phục tinh tươm cùng Giặt sấy SFaster</h3><p>Đừng để những vết bẩn vô tình làm gián đoạn phong cách tự tin của bạn. Sau khi xử lý nhanh theo các mẹo trên, hãy mang trang phục đến Giặt sấy SFaster để trải nghiệm dịch vụ chăm sóc áo quần chuyên nghiệp, sạch thơm và thảnh thơi mỗi ngày.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Mẹo tẩy vết bẩn quần áo hiệu quả trước khi giặt sấy SFaster",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "a8d72666-89cb-4d6f-aca6-813713124fc9",
+      "categoryKey": "shop",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "d97f6a6e-b770-4103-beed-fe30ac43f44d",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:11:00.736Z",
+      "createdAt": "2026-11-13T17:09:36.024Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Laundromat drop-off tips: How to check your clothes properly",
+          "slug": "laundromat-drop-off-tips-how-to-check-your-clothes-properly",
+          "excerpt": "A detailed guide on how to check your clothes before dropping them off and after picking them up at the laundromat to keep them durable, looking great, and prevent loss.",
+          "coverAlt": "A modern laundromat space with rows of clean washing machines and tidy laundry baskets",
+          "body": "<p class=\"tpl-lead\">Using services at a <strong>laundromat</strong> is the ideal solution for busy people to save significant laundry time each week. However, to keep your clothes in good shape, maintain fabric durability, and avoid unwanted issues, checking your garments both before dropping them off and after picking them up is a crucial step you should not skip.</p>\n<h2>Why is checking clothes before and after washing so important?</h2>\n<p>Many people tend to stuff all their dirty laundry into a bag and take it straight to the <strong>laundromat</strong> without checking thoroughly. This habit carries risks of damaging fabric fibers, color bleeding, or losing valuable personal belongings.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Protect fabric fibers</h3><p>Promptly identify delicate fabrics that require special care to prevent shrinkage or loss of shape.</p></div><div class=\"tpl-item\"><h3>Prevent damage</h3><p>Completely remove sharp objects or important personal items left in pockets.</p></div><div class=\"tpl-item\"><h3>Stay in control</h3><p>Easily check item counts and conditions upon pickup to resolve any issues quickly.</p></div></section>\n<p>Building a two-way checking habit gives you greater peace of mind when entrusting your favorite outfits to professional cleaners.</p>\n<h2>Steps to check at home before taking your clothes to the laundromat</h2>\n<p>Spending about five minutes at home on simple preparations will help your load at the <strong>laundromat</strong> achieve optimal cleaning results.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Check and empty all pockets</h3><p>Check all inner and outer pockets of jackets and jeans by hand to ensure nothing is left behind.</p></div><div class=\"tpl-item\"><h3>Pre-sort your clothes</h3><p>Separate light-colored clothes from dark ones, and set aside delicate items that need gentle washing.</p></div><div class=\"tpl-item\"><h3>Fasten zippers and buttons</h3><p>Zip up clothing, button jackets, and unroll sleeve cuffs to prevent snagging and tearing during the wash cycle.</p></div><div class=\"tpl-item\"><h3>Note existing stains and defects</h3><p>Look for yellow stains, grease, or pre-existing frayed seams to inform the laundry staff specifically.</p></div></section>\n<p>In particular, leaving small items in pockets can cause serious consequences for both the washing drum and your entire laundry load.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Warning: Dangerous items left in pockets</h3><p>Lighters, safety pins, small scissors, lipsticks, or keys left in pockets can explode under dryer heat or tear fabrics. Crumbling tissues will also leave white lint all over dark clothing.</p></section>\n<h2>Important details to share with staff when dropping off clothes</h2>\n<p>When bringing clothes to the <strong>laundromat</strong>, clear communication with the intake staff is key to ensuring your clothes are handled properly.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/1376.webp\" alt=\"A customer discussing laundry details with staff at a clean drop-off counter\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/640.webp 640w, {{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/1280.webp 1280w, {{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Discussing garment conditions thoroughly at the counter helps the shop treat stains more accurately.</figcaption></figure>\n<p>Point out tough stains like collar grime, ink, or coffee so staff can pre-treat them before washing. In addition, if you have items made of wool, silk, or special fabrics that cannot withstand high drying temperatures, be sure to remind staff so they can apply the appropriate care cycle.</p>\n<h2>A thorough inspection process when picking up washed and dried clothes</h2>\n<p>When picking up your finished laundry bag from the <strong>laundromat</strong>, take a moment to do a quick check at the counter or inspect it as soon as you get home.</p>\n<ul class=\"tpl-check\"><li>Recount the number of items and cross-check with your receipt to make sure nothing was missed.</li><li>Check whether clothes are completely dry to prevent mildew inside folds.</li><li>Take a quick smell to ensure there is no lingering damp odor or unrinsed detergent.</li><li>Check stubborn stains again to see if they have been satisfactorily removed.</li><li>Inspect buttons, zippers, and the crispness of office attire.</li></ul>\n<h2>What to do if you notice an issue after laundering</h2>\n<p>Even though laundry shops always strive to be careful, unexpected issues like missing accessories, color bleeding, or frayed seams can occasionally happen. In these cases, staying calm and handling it methodically yields the best results.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Tips for handling complaints</h3><p>Take clear photos of the garment's condition in good lighting and contact the shop as soon as possible. Maintain a polite attitude and bring your receipt so you and the staff can find a satisfactory solution.</p></section>\n<p>Most professional shops have procedures in place to listen and help rewash items or provide intensive stain removal with care upon receiving timely feedback.</p>\n<section class=\"tpl-cta\"><h3>Care for your clothes the right way today</h3><p>Make a habit of thoroughly checking your clothes whenever using a laundromat so your and your family's garments stay fresh, neat, and durable over time.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Expert tips for safe and proper laundromat drop-offs",
+          "seoDescription": "Step-by-step guide to checking your clothes before bringing them to the laundromat and after picking them up to keep them neat, durable, and avoid damage or loss."
+        },
+        {
+          "locale": "vi",
+          "title": "Bí quyết gửi đồ tiệm giặt sấy: Kiểm tra đúng cách",
+          "slug": "bi-quyet-gui-do-tiem-giat-say-kiem-tra-dung-cach",
+          "excerpt": "Hướng dẫn chi tiết cách kiểm tra quần áo trước khi gửi và sau khi nhận tại tiệm giặt sấy giúp bảo vệ trang phục bền đẹp và tránh rủi ro thất lạc.",
+          "coverAlt": "Không gian tiệm giặt sấy hiện đại với dãy máy giặt sạch sẽ và các giỏ đồ ngăn nắp",
+          "body": "<p class=\"tpl-lead\">Sử dụng dịch vụ tại <strong>tiệm giặt sấy</strong> là giải pháp tối ưu giúp người bận rộn tiết kiệm đáng kể thời gian giặt giũ mỗi tuần. Tuy nhiên, để quần áo luôn giữ được phom dáng, độ bền sợi vải và tránh những rắc rối không mong muốn, việc rà soát trang phục cả trước khi gửi lẫn sau khi nhận là bước vô cùng quan trọng mà bạn không nên bỏ qua.</p>\n<h2>Vì sao việc kiểm tra đồ trước và sau khi giặt lại vô cùng quan trọng?</h2>\n<p>Nhiều người thường có thói quen gom toàn bộ quần áo bẩn vào túi rồi mang thẳng ra <strong>tiệm giặt sấy</strong> mà không kiểm tra kỹ lưỡng. Thói quen này tiềm ẩn rủi ro làm hỏng sợi vải, lem màu hoặc làm rơi rớt các tài sản giá trị cá nhân.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Bảo vệ sợi vải</h3><p>Phát hiện kịp thời các chất liệu nhạy cảm cần quy trình chăm sóc riêng biệt, tránh co rút hay mất dáng.</p></div><div class=\"tpl-item\"><h3>Ngăn ngừa hư hại</h3><p>Loại bỏ hoàn toàn các vật sắc nhọn hoặc đồ dùng cá nhân quan trọng còn sót lại trong các túi áo quần.</p></div><div class=\"tpl-item\"><h3>Chủ động kiểm soát</h3><p>Dễ dàng đối chiếu số lượng và hiện trạng đồ đạc ngay khi nhận lại để xử lý nhanh chóng nếu có phát sinh.</p></div></section>\n<p>Việc chủ động tạo thói quen kiểm tra hai chiều giúp bạn yên tâm hơn khi giao trang phục yêu thích cho các đơn vị làm sạch chuyên nghiệp.</p>\n<h2>Các bước rà soát cần làm tại nhà trước khi mang đồ ra tiệm giặt sấy</h2>\n<p>Dành ra khoảng năm phút tại nhà để thực hiện các bước chuẩn bị đơn giản sẽ giúp mẻ giặt tại <strong>tiệm giặt sấy</strong> đạt hiệu quả làm sạch tối ưu nhất.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Lục tìm và làm trống mọi túi</h3><p>Dùng tay rà soát toàn bộ các ngăn túi trong, túi ngoài của áo khoác, quần jean để đảm bảo không còn sót đồ vật.</p></div><div class=\"tpl-item\"><h3>Phân loại sơ bộ trang phục</h3><p>Tách riêng trang phục màu sáng và đồ đậm màu, đồng thời tách các món đồ có chất liệu mỏng manh cần giặt nhẹ.</p></div><div class=\"tpl-item\"><h3>Cố định khóa kéo và cúc áo</h3><p>Kéo kín khóa quần áo, cài khuy áo khoác và gỡ thẳng các nếp gấp ống tay áo để hạn chế mắc rách sợi vải khi lồng giặt quay.</p></div><div class=\"tpl-item\"><h3>Đánh dấu vết bẩn và lỗi có sẵn</h3><p>Quan sát các vết ố vàng, dầu mỡ hoặc đường chỉ sờn rách sẵn có để thông báo cụ thể cho đơn vị giặt ủi.</p></div></section>\n<p>Đặc biệt, việc bỏ quên những món đồ nhỏ trong túi quần áo có thể gây ra hậu quả nghiêm trọng đối với cả lồng giặt và toàn bộ mẻ đồ của bạn.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Cảnh báo vật dụng nguy hiểm trong túi quần áo</h3><p>Bật lửa, kim băng, kéo nhỏ, son môi hay chìa khóa bỏ quên trong túi có thể phát nổ dưới nhiệt độ máy sấy hoặc làm rách toạc vải. Giấy ăn tan vụn cũng sẽ bám dính trắng xóa lên toàn bộ trang phục tối màu.</p></section>\n<h2>Những thông tin quan trọng cần trao đổi với nhân viên khi gửi đồ</h2>\n<p>Khi mang đồ đến <strong>tiệm giặt sấy</strong>, sự trao đổi rõ ràng giữa bạn và nhân viên tiếp nhận là chìa khóa để quần áo được xử lý đúng kỹ thuật.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/1376.webp\" alt=\"Khách hàng đang trao đổi chi tiết về đồ giặt với nhân viên tại quầy giao nhận sạch sẽ\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/640.webp 640w, {{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/1280.webp 1280w, {{media}}/fe1f889f-36bd-4f8a-bbdd-3a03cc04d1ad/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Trao đổi kỹ tình trạng trang phục tại quầy giúp tiệm xử lý vết bẩn chính xác hơn.</figcaption></figure>\n<p>Hãy chỉ rõ những vị trí có vết ố khó làm sạch như cổ áo, vết mực hay vết cà phê để nhân viên xử lý sơ bộ trước khi cho vào máy. Ngoài ra, nếu có món đồ bằng vải len, lụa hoặc chất liệu đặc thù không chịu được nhiệt độ sấy cao, bạn cần nhắc nhở nhân viên lưu ý để áp dụng chế độ chăm sóc thích hợp.</p>\n<h2>Quy trình kiểm tra kỹ lưỡng khi nhận lại quần áo đã giặt sấy</h2>\n<p>Khi nhận lại túi đồ đã hoàn thiện từ <strong>tiệm giặt sấy</strong>, bạn nên bớt chút thời gian kiểm tra nhanh ngay tại quầy hoặc mở ra rà soát ngay khi vừa về đến nhà.</p>\n<ul class=\"tpl-check\"><li>Đếm lại số lượng quần áo và đối chiếu với phiếu hẹn để tránh bỏ quên đồ.</li><li>Kiểm tra xem trang phục đã khô hoàn toàn chưa, tránh tình trạng ẩm mốc bên trong nếp gấp.</li><li>Ngửi nhẹ mùi thơm để chắc chắn đồ không còn vương mùi ẩm hoặc mùi xà phòng chưa xả sạch.</li><li>Soi lại các vết bẩn cứng đầu xem đã được loại bỏ đạt yêu cầu hay chưa.</li><li>Xem xét lại hệ thống cúc áo, dây kéo và độ phẳng phiu của các trang phục công sở.</li></ul>\n<h2>Cách xử lý phù hợp nếu phát hiện trang phục gặp sự cố sau khi giặt</h2>\n<p>Dù các cơ sở giặt ủi luôn cố gắng cẩn thận, đôi khi sự cố ngoài ý muốn như thất lạc phụ kiện, lem màu hay sờn chỉ vẫn có thể xảy ra. Trong trường hợp này, giữ bình tĩnh và xử lý có phương pháp sẽ mang lại kết quả tốt nhất.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Bí quyết xử lý khi có khiếu nại</h3><p>Hãy chụp lại hình ảnh hiện trạng của trang phục trong điều kiện ánh sáng rõ ràng và liên hệ ngay với cửa hàng trong thời gian sớm nhất. Giữ thái độ nhã nhặn, mang kèm phiếu hẹn để cùng nhân viên tìm ra phương án hỗ trợ thỏa đáng.</p></section>\n<p>Hầu hết các đơn vị chuyên nghiệp đều có quy trình lắng nghe và hỗ trợ khách hàng giặt lại hoặc xử lý vết bẩn chuyên sâu một cách tận tâm khi nhận được phản hồi kịp thời.</p>\n<section class=\"tpl-cta\"><h3>Chăm sóc áo quần đúng cách ngay hôm nay</h3><p>Hãy rèn luyện thói quen rà soát trang phục chu đáo mỗi khi đến tiệm giặt sấy để quần áo của bạn và gia đình luôn thơm tho, phẳng phiu và bền lâu theo năm tháng.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Kinh nghiệm gửi đồ tiệm giặt sấy chuẩn và an toàn",
+          "seoDescription": "Hướng dẫn các bước kiểm tra quần áo trước khi mang đến tiệm giặt sấy và sau khi nhận về để giữ nếp đồ bền đẹp, tránh hư hỏng hoặc thất lạc."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

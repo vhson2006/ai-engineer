@@ -1,0 +1,523 @@
+{
+  "site": {
+    "id": "wine",
+    "name": "Khang Hưng Tửu",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "brand",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Brand",
+          "slug": "brand"
+        },
+        {
+          "locale": "vi",
+          "name": "Thương hiệu",
+          "slug": "thuong-hieu"
+        }
+      ]
+    },
+    {
+      "key": "craft",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Craft",
+          "slug": "craft"
+        },
+        {
+          "locale": "vi",
+          "name": "Sản xuất",
+          "slug": "san-xuat"
+        }
+      ]
+    },
+    {
+      "key": "serving",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "How to serve",
+          "slug": "how-to-serve"
+        },
+        {
+          "locale": "vi",
+          "name": "Cách thưởng thức",
+          "slug": "thuong-thuc"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 3,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    },
+    {
+      "key": "partners",
+      "position": 4,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Partners",
+          "slug": "partners"
+        },
+        {
+          "locale": "vi",
+          "name": "Hợp tác",
+          "slug": "hop-tac"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "295b6560-dc05-48fb-8b86-a548979a2a04",
+      "source": "ai",
+      "prompt": "A cozy, minimalist dining table setting with Vietnamese traditional ceramic cups, a small clay decanter, and assorted dry snacks on woven bamboo trays, soft ambient morning light, no people, no text, no branding.",
+      "filename": "A cozy, minimalist dining table setting with Vietnamese trad.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 35510,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 86706,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 97550,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:20:06.018Z"
+    },
+    {
+      "id": "cbf88b2b-d3cc-4edc-9432-8b047ae008f6",
+      "source": "ai",
+      "prompt": "A close-up photograph on a rustic dark wooden table showing a traditional Vietnamese ceramic liquor cup next to a small ceramic jar, warm natural daylight from a window, subtle steam from a distant dish, elegant culinary setup, no text, no human faces.",
+      "filename": "A close-up photograph on a rustic dark wooden table showing .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22824,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 54694,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 60972,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:20:06.027Z"
+    },
+    {
+      "id": "98241f89-44f5-48ca-a07e-4e91936c3473",
+      "source": "ai",
+      "prompt": "A traditional earthen ceramic jar and sealed glass jars of infused liquor resting on wooden shelves in a cool, dimly lit cellar, warm ambient light, clean and authentic Vietnamese traditional atmosphere, high resolution photography",
+      "filename": "A traditional earthen ceramic jar and sealed glass jars of i.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 43714,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 113174,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 129986,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:21:42.102Z"
+    },
+    {
+      "id": "7c184a55-824d-426c-94b9-bba53c93c895",
+      "source": "ai",
+      "prompt": "A clear glass jar filled with traditional herbs and clean clear alcohol sitting on a rustic wooden table, soft natural daylight, minimalist aesthetic, blurred background of a traditional room, professional product photography",
+      "filename": "A clear glass jar filled with traditional herbs and clean cl.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 22356,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 58462,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 66002,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T17:21:42.120Z"
+    },
+    {
+      "id": "64360500-e8f9-4d6f-9757-220122864129",
+      "source": "ai",
+      "prompt": "A top-down view of a warm wooden table set with elegant traditional ceramic tableware and small liquor cups, warm ambient restaurant lighting, clean minimalist composition, professional corporate photography, natural light, no text, no logo, no people.",
+      "filename": "A top-down view of a warm wooden table set with elegant trad.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 31150,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 93076,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 107934,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:28:40.025Z"
+    },
+    {
+      "id": "30034c6a-3fef-4fef-91c6-a75f6b714b0c",
+      "source": "ai",
+      "prompt": "An elegant, well-lit wooden shelf display inside a sophisticated traditional restaurant, featuring neat ceramic liquor bottles with minimalist labels, natural warm light, clean composition, no text, no logo, no recognizable people.",
+      "filename": "An elegant, well-lit wooden shelf display inside a sophistic.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 28714,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 77654,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 92426,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:28:40.050Z"
+    },
+    {
+      "id": "926c377e-f83f-43a0-941a-b32a98a77f3e",
+      "source": "ai",
+      "prompt": "A serene and elegant Vietnamese living room during Lunar New Year, wooden furniture, a blooming peach blossom branch, warm natural daylight pouring in, a refined wine gift box set neatly on the tea table, photorealistic, no text, no logo, no people.",
+      "filename": "A serene and elegant Vietnamese living room during Lunar New.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 56760,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 146688,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 164040,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:29:15.208Z"
+    },
+    {
+      "id": "134c9675-7bfb-48d5-a03e-4df61ebfe9c9",
+      "source": "ai",
+      "prompt": "A sophisticated wine gift box crafted from dark polished wood and red textured paper, sitting on a rustic wooden table with delicate peach blossoms in natural morning sunlight, cozy Vietnamese Tet atmosphere, no text, no logo, no recognizable face.",
+      "filename": "A sophisticated wine gift box crafted from dark polished woo.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 43252,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 117464,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 134928,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-13T23:29:15.223Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "ad594c3b-269a-4576-be1f-6870360522f7",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-12T09:28:19.550Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the winery’s red and gold.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Product names, prices and phone numbers exactly as on the labels and the winery’s materials.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Claim health benefits or cures, or address people under 18 (the law forbids it).</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, warm wine / jar wine, bottle / can.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a product, the infusion room, the showroom.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call to order, message on Zalo or visit the showroom.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the winery.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Khang Hưng Tửu sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu đỏ và vàng của hãng.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng tên sản phẩm, giá và số điện thoại như trên nhãn và tài liệu của hãng.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Viết về công dụng chữa bệnh, “bổ”, “tráng dương”, hay nhắm tới người dưới 18 tuổi (pháp luật cấm).</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, rượu hấp nóng / rượu cần, chai / can.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một sản phẩm, phòng ngâm tẩm, showroom.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gọi đặt hàng, nhắn Zalo hay ghé showroom.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với hãng.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Khang Hưng Tửu · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "13b20cdb-7d8a-4150-8ed2-11c56cada840",
+      "categoryKey": "serving",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "295b6560-dc05-48fb-8b86-a548979a2a04",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T17:22:34.500Z",
+      "createdAt": "2026-11-13T17:22:04.226Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "How to Savor Traditional Infused Liquor with Elegance and Authenticity",
+          "slug": "how-to-savor-traditional-infused-liquor-with-elegance-and-authenticity",
+          "excerpt": "Discover the art of savoring traditional infused liquor—from ideal temperatures and cup choices to pouring grace and perfect pairings with Khang Hưng Tửu.",
+          "coverAlt": "A traditional liquor tasting setting with ceramic cups and elegant pairings",
+          "body": "<p class=\"tpl-lead\">In the treasure trove of Vietnamese folk cuisine, rustic infused liquor is not merely a drink, but a symbol of meticulous care, patience, and bonding friendships. For adults aged 18 and older, the art of <strong>savoring infused liquor</strong> the right way requires an understanding of serving temperature, cup selection, the rhythm of raising a glass, and food pairings. Join the brand <strong>Khang Hưng Tửu</strong> in rediscovering these refined standards to fully appreciate this beautiful cultural tradition.</p>\n<h2>The ideal temperature to awaken the flavors of infused liquor</h2>\n<p>Each variety of infused liquor holds its own distinct layers of herbs, fruits, or sticky rice essence. The serving temperature plays a decisive role in bringing out or muting these unique characteristics. When served too cold, natural essences tend to contract, making it difficult to detect the inherent delicate aromas. Conversely, if the ambient temperature is too warm, alcohol evaporates quickly, creating a harsh, pungent heat that overpowers subtle, rustic undertones.</p>\n<p>Typically, a cool room temperature around 20 to 25 degrees Celsius provides the perfect condition for the alcohol to blend gently and spread evenly across the palate.</p>\n<h2>Choosing cups and glasses suited to traditional infused liquor</h2>\n<p>Drinkware does not just appeal to the eye; it sets the emotional tone of a gathering. Unlike modern Western drinks, traditional infused liquor is closely tied to materials deeply rooted in the Vietnamese countryside. The right vessel enhances the natural, glistening hues and retains lingering aromas around the rim.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Rustic ceramic cups</h3><p>Unglazed terracotta evokes nostalgia, softly holds herbal aromas, and feels cozy and familiar in hand.</p></div><div class=\"tpl-item\"><h3>Blue-and-white porcelain cups</h3><p>Smooth, lustrous glaze genuinely reflects the amber hues or deep reddish-brown tones of well-aged infused liquor.</p></div><div class=\"tpl-item\"><h3>Traditional small glass shot cups</h3><p>Ideal for a relaxed, modern style, offering a clear view of the smooth texture and rising beads of liquor as it is poured.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/1376.webp\" alt=\"Traditional ceramic cups and bottle set on a rustic wooden table\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/640.webp 640w, {{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/1280.webp 1280w, {{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Rustic ceramic cups preserve the elegant beauty of folk culinary art.</figcaption></figure>\n<h2>The art of pouring and slow sipping</h2>\n<p>A person's demeanor at the table reflects their respect for the drink and their companion. When <strong>savoring infused liquor</strong>, there is no place for rush. Traditional wisdom values a calm mind when pouring: a slender, steady stream allows tiny bubbles to gently rise without spilling over the rim.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>A leisurely pour</h3><p>Gently tilt the spout of the ceramic flask, keeping a steady distance so the stream caresses the inner rim of the cup, releasing its natural bouquet.</p></div><div class=\"tpl-item\"><h3>Savoring the aroma and color</h3><p>Pass the cup gently back and forth beneath your nose, inhaling softly to discover layers of botanicals and fruits nurtured over time.</p></div><div class=\"tpl-item\"><h3>Small sips</h3><p>Take very small sips, letting each rest on the tip of your tongue for a few seconds so the lingering sweetness and gentle warmth spread across your palate.</p></div><div class=\"tpl-item\"><h3>Embracing the finish</h3><p>Exhale gently through your nose after swallowing to appreciate the deep, warm aftertaste that traditional spirits leave behind.</p></div></section>\n<h2>Pairing suggestions to elevate every layer of flavor</h2>\n<p>Accompanying dishes are not just meant to fill the stomach; they balance and lift the rich, robust notes of infused liquor. A harmonious blend of the five flavors—sour, spicy, salty, sweet, and rich—creates a complete culinary experience, preventing palate fatigue or harshness.</p>\n<ul><li>Smoked dried meat or native beef jerky, with its savory depth and chewy texture, pairs wonderfully with the warming notes of herbal liquor.</li><li>Plain roasted seeds and nuts, like roasted lotus seeds, or crisp pickled scallion heads stimulate the palate and cleanse the throat between sips.</li><li>Charcoal-grilled fish dusted with rustic chili salt highlights the delicate, natural sweetness of wild fruit infusions.</li><li>Boiled pork belly served with shrimp paste and fresh herbs offers light, refreshing balance for family gatherings.</li></ul>\n<h2>Responsible enjoyment: Preserving culinary culture</h2>\n<p>The true essence of traditional culinary culture lies in moderation and elegance. Raising a cup of infused liquor is meant to spark heartfelt conversations and share warm memories around the table, never to compete or force drinks. Khang Hưng Tửu always encourages cherishing every gathering with mindfulness and civility.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>What is the proper way to drink infused liquor?</h3><p>Traditional infused liquor is best enjoyed slowly in small sips at a cool room temperature, paired with light, balanced bites.</p></div><div class=\"tpl-item\"><h3>Should infused liquor be kept in the refrigerator?</h3><p>It is best stored in a dry, ventilated place away from direct sunlight, kept at a stable room temperature to preserve its original aroma.</p></div><div class=\"tpl-item\"><h3>Who is legally permitted to enjoy infused liquor?</h3><p>Only individuals aged 18 and older are legally permitted to consume alcoholic beverages in accordance with Vietnamese law.</p></div></section>",
+          "readingMinutes": 4,
+          "seoTitle": "How to Savor Traditional Infused Liquor the Right Way",
+          "seoDescription": "A guide to savoring traditional infused liquor with finesse: choosing cups, managing temperatures, and finding the right pairings for adults with Khang Hưng Tửu."
+        },
+        {
+          "locale": "vi",
+          "title": "Cách Thưởng Thức Rượu Ngâm Truyền Thống Tinh Tế Đúng Điệu",
+          "slug": "cach-thuong-thuc-ruou-ngam-truyen-thong-tinh-te-dung-dieu",
+          "excerpt": "Khám phá nghệ thuật thưởng thức rượu ngâm truyền thống từ nhiệt độ, loại chén, phong thái rót cho đến món nhắm chuẩn vị cùng Khang Hưng Tửu.",
+          "coverAlt": "Không gian thưởng rượu truyền thống với chén gốm và món nhắm thanh tao",
+          "body": "<p class=\"tpl-lead\">Trong kho tàng ẩm thực dân gian Việt Nam, rượu ngâm mộc mạc không đơn thuần là một thức uống mà còn là biểu trưng cho sự tỉ mỉ, kiên nhẫn và gắn kết tình bằng hữu. Đối với người trưởng thành từ đủ 18 tuổi trở lên, nghệ thuật <strong>thưởng thức rượu ngâm</strong> đúng điệu đòi hỏi sự am hiểu từ nhiệt độ, cách chọn chén, nhịp điệu nâng ly cho tới việc kết hợp món ăn kèm. Cùng thương hiệu <strong>Khang Hưng Tửu</strong> tìm về những chuẩn mực tao nhã để cảm nhận trọn vẹn nét đẹp văn hóa truyền thống này.</p>\n<h2>Nhiệt độ lý tưởng để đánh thức hương vị rượu ngâm</h2>\n<p>Mỗi dòng rượu ngâm mang trong mình những tầng hương thảo mộc, hoa quả hay cốt nếp rất riêng biệt. Nhiệt độ phục vụ đóng vai trò quyết định trong việc khơi dậy hoặc làm lu mờ những nét đặc trưng ấy. Khi ở nhiệt độ quá lạnh, các tinh chất tự nhiên có xu hướng bị co cụm lại, khiến người dùng khó cảm nhận được hương thơm tinh tế vốn có. Ngược lại, nếu nhiệt độ môi trường quá cao, cồn sẽ bốc hơi nhanh chóng, tạo cảm giác cay nồng lấn át tầng vị mộc mạc.</p>\n<p>Thông thường, mức nhiệt độ phòng mát mẻ, dao động quanh khoảng hai mươi đến hai mươi lăm độ C, là điều kiện hoàn hảo nhất để chất men thẩm thấu nhẹ nhàng và lan tỏa đều đặn khi chạm vào vị giác.</p>\n<h2>Chọn ly và chén phù hợp với phong vị rượu ngâm truyền thống</h2>\n<p>Dụng cụ dùng rượu không chỉ ảnh hưởng đến thị giác mà còn định hình cung bậc cảm xúc của buổi hội ngộ. Khác với dòng thức uống hiện đại phương Tây, rượu ngâm truyền thống gắn liền với những chất liệu gần gũi với hồn quê đất Việt. Một vật chứa phù hợp sẽ giúp tôn vinh màu sắc sóng sánh tự nhiên và giữ được hương thơm đọng lại nơi miệng chén.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Chén gốm mộc mạc</h3><p>Chất liệu đất nung mang lại cảm giác hoài niệm, giữ hương thảo mộc êm dịu và tạo nét gần gũi, ấm cúng khi cầm trên tay.</p></div><div class=\"tpl-item\"><h3>Chén sứ men lam</h3><p>Chất men bóng mịn phản ánh chân thực sắc nước hổ phách hoặc ánh nâu đỏ của cốt rượu ngâm lâu năm.</p></div><div class=\"tpl-item\"><h3>Ly thủy tinh mắt trâu</h3><p>Thích hợp cho phong cách hiện đại nhẹ nhàng, giúp quan sát độ sánh mịn và tăm rượu chuyển động khi rót.</p></div></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/1376.webp\" alt=\"Bộ chén và bình rượu gốm truyền thống trên bàn gỗ mộc\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/640.webp 640w, {{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/1280.webp 1280w, {{media}}/cbf88b2b-d3cc-4edc-9432-8b047ae008f6/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Chén gốm mộc lưu giữ vẻ đẹp thanh nhã của nghệ thuật ẩm thực dân gian.</figcaption></figure>\n<h2>Nghệ thuật rót rượu và từng ngụm nhấp chậm rãi</h2>\n<p>Phong thái của người ngồi bên bàn tiệc thể hiện sự tôn trọng dành cho thức uống và người đối diện. Khi <strong>thưởng thức rượu ngâm</strong>, sự vội vã hoàn toàn không có chỗ. Người xưa quan niệm rót rượu phải tĩnh tâm, dòng chảy mảnh và đều để bọt khí li ti khẽ dâng lên mà không bắn tràn ra ngoài mép chén.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Rót rượu khoan thai</h3><p>Nghiêng nhẹ miệng bình gốm, giữ khoảng cách vừa phải để dòng chảy tiếp xúc nhẹ nhàng với thành chén, làm dậy hương thơm tự nhiên.</p></div><div class=\"tpl-item\"><h3>Thưởng thức hương sắc</h3><p>Đưa chén rượu qua lại cách mũi một khoảng ngắn, hít thở nhẹ để cảm nhận tầng hương cỏ cây, hoa trái ấp ủ qua thời gian.</p></div><div class=\"tpl-item\"><h3>Nhấp từng ngụm nhỏ</h3><p>Nhấp từng ngụm rất nhỏ, giữ lại trên đầu lưỡi vài giây để vị ngọt hậu và độ cay nhẹ lan tỏa đều khắp khoang miệng.</p></div><div class=\"tpl-item\"><h3>Cảm nhận hậu vị</h3><p>Thở nhẹ qua cánh mũi sau khi nuốt để cảm nhận dư vị nồng ấm sâu lắng mà cốt men truyền thống mang lại.</p></div></section>\n<h2>Gợi ý món nhắm tôn vinh từng tầng hương vị</h2>\n<p>Món nhắm đi kèm không đơn thuần chỉ để no bụng mà có nhiệm vụ cân bằng, nâng đỡ hương vị nồng đượm của rượu ngâm. Sự phối hợp hài hòa giữa ngũ vị chua, cay, mặn, ngọt và bùi sẽ tạo nên trải nghiệm ẩm thực trọn vẹn, tránh gây cảm giác ngấy hay khé cổ.</p>\n<ul><li>Thịt gác bếp hoặc khô bò bản địa với vị đậm đà, hơi dai, hòa quyện tuyệt vời cùng vị ấm nồng của rượu thảo mộc.</li><li>Các loại hạt quả sấy mộc như hạt sen nướng, củ kiệu muối giòn giúp kích thích dịch vị và làm sạch vòm họng giữa các lượt nhấp.</li><li>Cá nướng than hoa rắc chút muối ớt mộc mạc, tôn lên vị ngọt thanh đặc trưng của rượu ngâm từ trái cây rừng.</li><li>Thịt luộc chấm mắm tôm kèm đĩa rau thơm tươi non, mang lại sự cân bằng thanh đạm cho bữa tiệc sum họp gia đình.</li></ul>\n<h2>Thưởng thức có trách nhiệm: Giữ gìn nét đẹp văn hóa ẩm thực</h2>\n<p>Nét tinh túy của văn hóa ẩm thực xưa nằm ở sự chừng mực và thanh tao. Việc nâng chén rượu ngâm là để khởi đầu câu chuyện chân tình, cùng nhau san sẻ những kỷ niệm ấm áp bên bàn ăn chứ không phải để thi đua hay ép uổng số lượng. Khang Hưng Tửu luôn mong muốn gửi gắm thông điệp trân trọng từng khoảnh khắc gặp gỡ trong sự tỉnh táo và văn minh.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Uống rượu ngâm như thế nào là đúng cách?</h3><p>Rượu ngâm truyền thống ngon nhất khi được uống chậm rãi từng ngụm nhỏ ở nhiệt độ phòng mát mẻ, kèm theo những món ăn thanh đạm.</p></div><div class=\"tpl-item\"><h3>Rượu ngâm có nên để trong tủ lạnh không?</h3><p>Nên bảo quản rượu ở nơi khô thoáng, tránh ánh nắng mặt trời trực tiếp và giữ nhiệt độ phòng ổn định để cốt rượu giữ nguyên hương thơm.</p></div><div class=\"tpl-item\"><h3>Độ tuổi nào được phép thưởng thức rượu ngâm?</h3><p>Chỉ người từ đủ 18 tuổi trở lên mới được phép sử dụng đồ uống có cồn theo đúng quy định của pháp luật Việt Nam.</p></div></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Cách Thưởng Thức Rượu Ngâm Truyền Thống Đúng Điệu",
+          "seoDescription": "Hướng dẫn thưởng thức rượu ngâm truyền thống tinh tế: cách chọn ly chén, canh nhiệt độ và món nhắm phù hợp cho người trưởng thành cùng Khang Hưng Tửu."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "3e310e8c-a3b3-4812-a9a1-2769e171c760",
+      "categoryKey": "craft",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "98241f89-44f5-48ca-a07e-4e91936c3473",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:25:44.151Z",
+      "createdAt": "2026-11-13T17:22:10.765Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Standard Liquor Infusion Process: From Ingredient Selection to Aging",
+          "slug": "standard-liquor-infusion-process-from-ingredient-selection-to-aging",
+          "excerpt": "A detailed guide to the safe liquor infusion process, from ingredient selection and prep to aging time, for adults aged 18 and older.",
+          "coverAlt": "Unglazed ceramic jars and traditional infused liquor containers neatly arranged in a home cellar",
+          "body": "<p class=\"tpl-lead\">Liquor infusion is a longstanding culinary tradition that requires patience, subtlety, and technical know-how. To achieve a jar of infused liquor that is full-flavored and safe for adults aged 18 and older, one must strictly follow the <strong>liquor infusion process</strong> from selecting ingredients and cleaning to proper aging techniques.</p>\n<h2>Standards for selecting quality infusion ingredients and base liquor</h2>\n<p>The base liquor and infusion ingredients are the two core factors directly determining the batch's quality. The base liquor should be artisanal distilled white liquor or sticky rice liquor with a clear origin, ideally between 40 and 45 degrees alcohol by volume to effectively extract essences and naturally sanitize.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Distilled base liquor</h3><p>Prioritize traditional sticky rice liquor made with local yeast, 40 to 45 degrees alcohol, filtered of impurities and free from industrial alcohol.</p></div><div class=\"tpl-item\"><h3>Plant-based ingredients</h3><p>Choose fresh fruits or dried herbs of clear origin, free of bruises, rot, or mold.</p></div><div class=\"tpl-item\"><h3>Animal-based ingredients</h3><p>Carefully deodorize and prep with ginger wine before infusing, ensuring ingredients are fresh or properly dried according to standards.</p></div></section>\n<h2>How to choose and properly clean infusion jars</h2>\n<p>The container not only holds the liquor but also affects organic transformations over time. You should use <strong>unglazed ceramic jars</strong> or thick-walled, heavy-duty glass jars. Never use plastic jugs or metal containers, as high alcohol content can leach harmful substances from plastic or trigger metallic oxidation.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Tips for cleaning containers</h3><p>Before infusing, wash the jar thoroughly with warm diluted salt water, rinse with a layer of the same white liquor used for steeping, and invert to dry completely. Avoid leaving tap water inside, as it can cause scum and mold.</p></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/7c184a55-824d-426c-94b9-bba53c93c895/1376.webp\" alt=\"Glass jar of traditional herbal infused liquor placed on a wooden table\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/7c184a55-824d-426c-94b9-bba53c93c895/640.webp 640w, {{media}}/7c184a55-824d-426c-94b9-bba53c93c895/1280.webp 1280w, {{media}}/7c184a55-824d-426c-94b9-bba53c93c895/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Infusion jars must be thoroughly cleaned and sterilized before adding ingredients.</figcaption></figure>\n<h2>Steps to prepare and clean ingredients</h2>\n<p>Preparation determines the clarity and rustic flavor of the infused liquor. Excess water or remaining impurities on the ingredient surface are the main causes of sourness, cloudy scum, or spoilage.</p>\n<ul class=\"tpl-check\"><li>Rinse dirt and impurities from ingredients under a gentle stream of running water.</li><li>Trim away bruised stems, damaged peels, root debris, or any undesirable mucous film.</li><li>Let ingredients drain completely on a bamboo basket or well-ventilated tray before proceeding.</li><li>Lightly rinse the ingredients once with white liquor before arranging them in the jar.</li></ul>\n<h2>Step-by-step liquor infusion process to ensure rich flavor</h2>\n<p>Following a systematic <strong>liquor infusion process</strong> helps essences extract slowly and blend evenly with the base liquor without losing their inherent aroma and color.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Step 1: Arrange the ingredients</h3><p>Arrange ingredients in the jar in a logical order: place large roots or hard parts at the bottom, and soft leaves or berries on top.</p></div><div class=\"tpl-item\"><h3>Step 2: Submerge with liquor</h3><p>Pour the liquor slowly down the side of the jar, ensuring it completely covers the ingredients by at least 5 to 7 cm to prevent browning from air exposure.</p></div><div class=\"tpl-item\"><h3>Step 3: Secure and seal</h3><p>Use bamboo splints or an insert grate to keep ingredients from floating, then seal tightly with a rubber gasket or protective wrap.</p></div><div class=\"tpl-item\"><h3>Step 4: Label for tracking</h3><p>Label the outside of the jar with the ingredient type, base liquor strength, and infusion date to easily track aging time.</p></div></section>\n<h2>Aging time and storage conditions for infused liquor</h2>\n<p>Aging time largely depends on the texture of the ingredients. Soft fruits typically mature in 3 to 6 months, while tree roots, herbal tubers, or animal ingredients require 6 months to over 1 year to soften the harshness of the alcohol and achieve a smooth finish.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Storage warnings</h3><p>Store the jar in a cool, dry place at a steady temperature between 20 and 25 degrees C, away from direct sunlight. Never consume the liquor if you notice an unusual sour smell, thick moldy scum, or abnormal discoloration.</p></section>\n<h2>Notes on safe and responsible enjoyment</h2>\n<p>Infused liquor is a traditional beverage meant for appreciation; it is not medicine and does not cure diseases. Consumers should understand their own bodies and always prioritize civilized, moderate consumption.</p>\n<section class=\"tpl-summary\"><h3>Principles of responsible enjoyment</h3><ul class=\"tpl-check\"><li>Content and products are strictly intended for adults aged 18 and older.</li><li>Enjoy only in moderation during gatherings; do not drink excessively or regularly.</li><li>Never drive or operate machinery after consuming alcoholic beverages.</li><li>Pregnant women, breastfeeding mothers, or individuals with underlying medical conditions should not consume alcoholic beverages.</li></ul></section>\n<section class=\"tpl-cta\"><h3>Enjoy moderately, emphasize responsibility</h3><p>Khang Hưng Tửu always prioritizes safety, proper standards, and a mindful culinary culture. Follow the proper techniques to craft your ideal jar of liquor, and remember: If you drink alcohol, do not drive.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Technically standard and safe liquor infusion process",
+          "seoDescription": "Discover the safe, proper liquor infusion process from selecting ingredients to aging. A comprehensive guide for adults aged 18 and older."
+        },
+        {
+          "locale": "vi",
+          "title": "Quy trình ngâm rượu chuẩn: Từ chọn nguyên liệu đến ủ",
+          "slug": "quy-trinh-ngam-ruou-chuan-tu-chon-nguyen-lieu-den-u",
+          "excerpt": "Hướng dẫn chi tiết quy trình ngâm rượu an toàn từ khâu chọn nguyên liệu, sơ chế đến thời gian ủ cho người trưởng thành từ đủ 18 tuổi.",
+          "coverAlt": "Chum gốm sành và bình rượu ngâm truyền thống xếp ngay ngắn trong hầm rượu gia đình",
+          "body": "<p class=\"tpl-lead\">Ngâm rượu là nét văn hóa ẩm thực truyền thống lâu đời đòi hỏi sự kiên nhẫn, tinh tế và am hiểu về kỹ thuật. Để có được bình rượu ngâm trọn vẹn hương vị và an toàn cho người thưởng thức từ đủ 18 tuổi trở lên, người thực hiện cần tuân thủ nghiêm ngặt <strong>quy trình ngâm rượu</strong> từ khâu tuyển chọn nguyên vật liệu, làm sạch cho đến kỹ thuật ủ chuẩn mực.</p>\n<h2>Tiêu chuẩn chọn nguyên liệu ngâm và rượu nền đạt chuẩn</h2>\n<p>Rượu nền và nguyên liệu ngâm là hai yếu tố cốt lõi quyết định trực tiếp đến chất lượng mẻ rượu. Rượu nền cần phải là rượu trắng chưng cất thủ công hoặc rượu nếp có xuất xứ rõ ràng, nồng độ cồn lý tưởng dao động từ 40 đến 45 độ để đủ khả năng chiết xuất tinh chất và khử khuẩn tự nhiên.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Rượu nền chưng cất</h3><p>Ưu tiên rượu gạo nếp men ta truyền thống, độ cồn từ 40 đến 45 độ, đã được lắng lọc tạp chất và không chứa cồn công nghiệp.</p></div><div class=\"tpl-item\"><h3>Nguyên liệu thực vật</h3><p>Lựa chọn các loại hoa quả tươi ngon, thảo dược khô có nguồn gốc rõ ràng, không bị dập nát, thối rữa hay ẩm mốc.</p></div><div class=\"tpl-item\"><h3>Nguyên liệu động vật</h3><p>Cần sơ chế khử tanh kỹ lưỡng bằng rượu gừng trước khi đưa vào ngâm, đảm bảo nguồn gốc tươi sống hoặc đã sấy chuẩn kỹ thuật.</p></div></section>\n<h2>Cách chọn và vệ sinh bình ngâm đúng quy cách</h2>\n<p>Vật chứa không chỉ giữ rượu mà còn ảnh hưởng đến quá trình chuyển hóa chất hữu cơ trong suốt thời gian dài. Bạn nên sử dụng <strong>chum sành không tráng men</strong> hoặc bình thủy tinh chịu lực, thành dày. Tuyệt đối không sử dụng các loại can nhựa, bình kim loại vì nồng độ cồn cao có thể hòa tan các chất độc hại từ nhựa hoặc gây phản ứng oxy hóa kim loại.</p>\n<section class=\"tpl-callout tpl-tip\"><h3>Mẹo vệ sinh bình chứa</h3><p>Trước khi ngâm, hãy rửa sạch bình bằng nước nóng pha muối loãng, sau đó tráng lại bằng một lớp rượu trắng cùng loại dùng để ngâm rồi úp ngược cho ráo nước hoàn toàn. Tránh để đọng nước lã trong bình vì dễ gây váng mốc.</p></section>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/7c184a55-824d-426c-94b9-bba53c93c895/1376.webp\" alt=\"Bình thủy tinh ngâm rượu thảo mộc truyền thống đặt trên bàn gỗ\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/7c184a55-824d-426c-94b9-bba53c93c895/640.webp 640w, {{media}}/7c184a55-824d-426c-94b9-bba53c93c895/1280.webp 1280w, {{media}}/7c184a55-824d-426c-94b9-bba53c93c895/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Bình ngâm cần được vệ sinh sạch sẽ và tiệt trùng trước khi cho nguyên liệu vào.</figcaption></figure>\n<h2>Các bước sơ chế và làm sạch nguyên liệu</h2>\n<p>Khâu sơ chế quyết định độ trong suốt và hương vị mộc mạc của bình rượu. Nước thừa hay tạp chất còn sót lại trên bề mặt nguyên liệu là nguyên nhân chính khiến bình rượu bị chua, nổi váng đục hoặc biến chất.</p>\n<ul class=\"tpl-check\"><li>Rửa sạch bụi bẩn và tạp chất của nguyên liệu dưới vòi nước chảy nhẹ.</li><li>Cắt bỏ phần cuống dập, vỏ hỏng, cặn rễ hoặc màng nhầy không đạt yêu cầu.</li><li>Để nguyên liệu thật ráo nước trên rổ tre hoặc khay thoáng gió trước khi tiếp tục.</li><li>Tráng sơ nguyên liệu một lần qua rượu trắng trước khi xếp vào bình ngâm.</li></ul>\n<h2>Quy trình ngâm rượu từng bước đảm bảo hương vị</h2>\n<p>Việc thực hiện bài bản <strong>quy trình ngâm rượu</strong> giúp tinh chất chiết xuất từ từ, hòa quyện đồng đều cùng rượu nền mà không làm mất đi hương sắc vốn có.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Bước 1: Sắp xếp nguyên liệu</h3><p>Sắp xếp nguyên liệu vào bình theo trật tự hợp lý, củ rễ lớn hoặc phần cứng ở dưới, cành lá mềm hoặc quả mọng ở trên.</p></div><div class=\"tpl-item\"><h3>Bước 2: Rót rượu ngập</h3><p>Rót rượu từ từ men theo thành bình, đảm bảo lượng rượu ngập hoàn toàn nguyên liệu ít nhất 5 đến 7 centimet để tránh hiện tượng thâm đen do tiếp xúc không khí.</p></div><div class=\"tpl-item\"><h3>Bước 3: Cố định và niêm phong</h3><p>Dùng nẹp tre hoặc vỉ gài để cố định nguyên liệu không bị nổi lên, sau đó đậy kín nắp bằng gioăng cao su hoặc bọc màng bảo vệ.</p></div><div class=\"tpl-item\"><h3>Bước 4: Ghi nhãn theo dõi</h3><p>Dán nhãn ghi rõ loại nguyên liệu, nồng độ rượu nền và ngày ngâm bên ngoài bình để tiện theo dõi thời gian ủ chín.</p></div></section>\n<h2>Thời gian ủ và điều kiện bảo quản bình rượu ngâm</h2>\n<p>Thời gian ủ phụ thuộc lớn vào cấu trúc của nguyên liệu. Các loại hoa quả mềm thường đạt độ ngấu sau 3 đến 6 tháng, trong khi các loại rễ cây, củ thảo mộc hay động vật đòi hỏi thời gian từ 6 tháng đến hơn 1 năm để loại bỏ bớt vị gắt của cồn và đạt tới độ êm ái.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Cảnh báo bảo quản</h3><p>Bảo quản bình rượu ở nơi thoáng mát, nhiệt độ ổn định từ 20 đến 25 độ C, tránh ánh nắng mặt trời chiếu trực tiếp. Nếu thấy rượu có mùi chua lạ, nổi váng mốc dày hoặc màu sắc biến đổi bất thường, tuyệt đối không sử dụng.</p></section>\n<h2>Lưu ý thưởng thức có trách nhiệm và an toàn</h2>\n<p>Rượu ngâm là sản phẩm thưởng thức truyền thống, không phải là thuốc và không có tác dụng chữa bệnh. Người dùng cần hiểu rõ cơ địa bản thân và luôn đặt nguyên tắc thưởng thức văn minh, chừng mực lên hàng đầu.</p>\n<section class=\"tpl-summary\"><h3>Nguyên tắc thưởng thức văn minh</h3><ul class=\"tpl-check\"><li>Nội dung và sản phẩm chỉ dành cho người trưởng thành từ đủ 18 tuổi trở lên.</li><li>Chỉ thưởng thức với lượng vừa phải trong các dịp sum vầy, không uống quá mức hoặc uống thường xuyên.</li><li>Tuyệt đối không lái xe hoặc vận hành máy móc thiết bị sau khi đã sử dụng rượu bia.</li><li>Phụ nữ mang thai, người đang cho con bú hoặc người có bệnh lý nền tuyệt đối không sử dụng đồ uống có cồn.</li></ul></section>\n<section class=\"tpl-cta\"><h3>Thưởng thức điều độ, đề cao trách nhiệm</h3><p>Khang Hưng Tửu luôn đề cao sự an toàn, chuẩn mực và văn hóa ẩm thực tử tế. Hãy thực hiện đúng kỹ thuật để có được bình rượu ưng ý và nhớ rằng: Đã uống rượu bia thì không lái xe.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Quy trình ngâm rượu chuẩn kỹ thuật và an toàn",
+          "seoDescription": "Khám phá quy trình ngâm rượu an toàn, đúng kỹ thuật từ khâu chọn nguyên liệu đến ủ rượu. Hướng dẫn chỉn chu dành cho người từ đủ 18 tuổi."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "1365c5a2-03c3-43de-b90e-0f52988c14c2",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:26:26.612Z",
+      "createdAt": "2026-11-13T17:24:00.445Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "How to Store Wine and Spirits After Opening to Preserve Full Flavor",
+          "slug": "how-to-store-wine-and-spirits-after-opening-to-preserve-full-flavor",
+          "excerpt": "A detailed guide on how to store opened bottles to preserve their original flavor through temperature control, lighting management, and proper sealing techniques.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Enjoying fine drinks is an experience that calls for elegance and appreciation. Once a premium bottle is opened, preserving its delicate layers of aroma and flavor becomes a top priority. Understanding how to properly <strong>store your bottles</strong> after opening not only slows natural deterioration but also reflects a refined lifestyle that honors the master distillers' craft.</p>\n<h2>Why does flavor change easily after opening?</h2>\n<p>As soon as the bottle is uncorked, air rushes in and triggers the <strong>oxidation</strong> process. In the first few minutes, moderate oxygen contact helps the drink breathe and unlock hidden aromas. However, prolonged exposure breaks down delicate aromatic compounds, leaving the drink flat, dull, or sharply sour.</p>\n<h2>Ideal temperature and humidity control for storage</h2>\n<p>Temperature plays a decisive role in how quickly the liquid ages. An overly warm environment accelerates oxidation and evaporates light aromatic alcohol molecules, while temperatures that are too cold can cause natural compounds to precipitate. Therefore, maintaining a cool, steady temperature is a core rule in <strong>proper bottle storage</strong>.</p>\n<p>Ambient humidity should also be kept balanced. For bottles with natural corks, proper room humidity prevents the cork from drying out and cracking, keeping air from seeping in and spoiling the drink.</p>\n<h2>Keep away from sunlight and indoor heat sources</h2>\n<p>UV rays from sunlight and harsh fluorescent lighting can break down organic acids and tannins, altering colors and developing off-flavors. Opened bottles should always be kept in a cool, shaded spot, well away from windows or direct daytime sunlight.</p>\n<p>Aside from sunlight, common household heat sources like the top of the refrigerator, microwaves, stoves, or heat-emitting appliances should also be avoided. Constant temperature fluctuations in these spots cause the liquid to expand and contract, quickly degrading its structure.</p>\n<h2>Sealing techniques to minimize air in the bottle</h2>\n<p>The empty space inside a partially consumed bottle accelerates the drink's decline. Applying proper sealing techniques prevents fresh oxygen from entering and locks in the original aromas.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Clean the bottle rim</h3><p>Wipe the rim dry with a clean paper towel to remove leftover drips, preventing bacteria and mold from growing around the opening.</p></div><div class=\"tpl-item\"><h3>Replace the original stopper</h3><p>If the cork is intact, carefully press it firmly back into the neck. Avoid twisting with excessive force so cork crumbles do not fall into the bottle.</p></div><div class=\"tpl-item\"><h3>Pump out excess air</h3><p>Use a specialized vacuum pump to remove trapped air from the bottle before securing it with a rubber stopper.</p></div><div class=\"tpl-item\"><h3>Decant into a smaller bottle</h3><p>If only a small amount remains, pour it into a smaller, airtight glass bottle to minimize contact with oxygen.</p></div></section>\n<h2>Bottle position after opening: Upright or horizontal?</h2>\n<p>Before opening, storing bottles horizontally keeps corks moist so they do not shrink. However, once a bottle is open and headspace forms, this rule changes completely.</p>\n<p>For opened bottles, you should always <strong>store the bottle upright</strong>. This minimizes the surface area exposed to the remaining air inside, slowing oxidation and keeping flavors stable for longer.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Keep the bottle steady</h3><p>Avoid moving or shaking opened bottles frequently. Mechanical disruption increases molecular motion, speeding up the breakdown of natural aromas.</p></section>\n<h2>Important reminders for responsible drinking</h2>\n<p>Every drop is crafted with patience and artisan skill. Taking good care and <strong>storing your drinks</strong> thoughtfully is the first step toward a refined lifestyle. Always enjoy in moderation to appreciate every flavor nuance without compromising your clarity.</p>\n<p>Alcoholic beverages are intended strictly for adults aged <strong>18 and older</strong>. Always remember to drink responsibly: <strong>if you drink, do not drive</strong>, and choose safe transport after every gathering to protect yourself and the community.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>How long do opened bottles stay at their best?</h3><p>Opened bottles are best enjoyed within a short period depending on the type—typically a few days for lighter wines, and several weeks to a few months for well-sealed spirits.</p></div><div class=\"tpl-item\"><h3>Should you keep opened bottles in a regular refrigerator?</h3><p>Household refrigerators have low humidity, vibrate constantly, and food odors can cling to the stopper. You should only store bottles there temporarily for a few days if you lack a dedicated wine cooler.</p></div><div class=\"tpl-item\"><h3>How can you tell if an opened bottle has spoiled?</h3><p>If it develops a sharp vinegar smell, a damp cardboard odor, or turns an unusually murky brown, the structure has fully oxidized and lost its original quality.</p></div></section>\n<section class=\"tpl-cta\"><h3>Preserving delicate flavor in every drop</h3><p>Follow these storage methods so every pour remains a delightful experience, and always drink responsibly for the safety of yourself and those around you.</p></section>",
+          "readingMinutes": 4,
+          "seoTitle": "How to Store Opened Bottles to Keep Their Full Flavor",
+          "seoDescription": "Discover the proper ways to store opened bottles: controlling temperature, managing light, and sealing tightly to keep every drop flavorful."
+        },
+        {
+          "locale": "vi",
+          "title": "Cách bảo quản rượu sau khi mở nắp giữ trọn hương vị",
+          "slug": "cach-bao-quan-ruou-sau-khi-mo-nap-giu-tron-huong-vi",
+          "excerpt": "Hướng dẫn chi tiết cách bảo quản rượu sau khi mở nắp giúp lưu giữ trọn vẹn hương vị nguyên bản qua việc kiểm soát nhiệt độ, ánh sáng và kỹ thuật đóng nắp.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Thưởng thức rượu là một trải nghiệm đòi hỏi sự tao nhã và am tường. Khi một chai rượu hảo hạng được khơi mở, việc giữ gìn trọn vẹn những tầng hương sắc tinh tế trở thành mối bận tâm hàng đầu của người sành rượu. Hiểu rõ phương pháp <strong>bảo quản rượu</strong> sau khi mở nắp không chỉ giúp làm chậm quá trình suy giảm phẩm chất tự nhiên mà còn thể hiện phong cách thưởng thức văn minh, trân trọng công sức của những bậc thầy chưng cất.</p>\n<h2>Vì sao rượu dễ biến đổi hương vị sau khi mở nắp?</h2>\n<p>Ngay khi nút chai được tháo rời, không khí lập tức tràn vào bên trong và kích hoạt quá trình <strong>oxy hóa</strong>. Trong những phút đầu tiên, việc tiếp xúc với lượng oxy vừa phải có thể giúp rượu thở, bung tỏa những nốt hương tiềm ẩn. Tuy nhiên, nếu thời gian tiếp xúc kéo dài, quá trình này sẽ phá vỡ liên kết của các hợp chất thơm tinh tế, khiến vị rượu trở nên nhạt nhòa, phẳng lặng hoặc xuất hiện vị chua gắt.</p>\n<h2>Kiểm soát nhiệt độ và độ ẩm lý tưởng để bảo quản rượu</h2>\n<p>Nhiệt độ là yếu tố có tính quyết định đến tốc độ lão hóa của chất lỏng bên trong chai. Môi trường quá ấm sẽ đẩy nhanh quá trình oxy hóa và làm bay hơi các phân tử cồn nhẹ mang hương thơm, trong khi nhiệt độ quá thấp lại có thể làm lắng đọng các hợp chất tự nhiên. Do đó, duy trì một mức nhiệt độ mát mẻ và ổn định là nguyên tắc cốt lõi trong quy trình <strong>bảo quản rượu</strong>.</p>\n<p>Độ ẩm không khí xung quanh cũng cần được duy trì ở mức cân bằng. Đối với các loại chai sử dụng nút bần tự nhiên, độ ẩm phòng phù hợp sẽ ngăn nút chai bị khô nứt, từ đó hạn chế khe hở cho không khí lọt vào gây hư hỏng rượu.</p>\n<h2>Tránh xa ánh sáng mặt trời và các nguồn nhiệt trong nhà</h2>\n<p>Tia tử ngoại trong ánh sáng mặt trời và ánh sáng huỳnh quang mạnh có khả năng phá hủy các acid hữu cơ và tannin, làm biến đổi màu sắc cũng như phát sinh những mùi khó chịu. Do đó, các chai rượu sau khi mở nắp cần được đặt ở nơi râm mát, tránh xa cửa sổ hoặc các khu vực hứng trọn vẹn nắng chiếu ban ngày.</p>\n<p>Bên cạnh ánh nắng, những nguồn phát nhiệt vô hình trong gia đình như nóc tủ lạnh, lò vi sóng, bếp nấu hay thiết bị điện tử tỏa nhiệt cũng là nơi tối kỵ. Sự dao động nhiệt liên tục tại các vị trí này sẽ khiến rượu giãn nở, co ngót và nhanh chóng suy kiềm cấu trúc.</p>\n<h2>Kỹ thuật đậy kín nắp và hạn chế không khí lọt vào chai</h2>\n<p>Khoảng trống không khí bên trong chai sau khi đã sử dụng một phần chính là tác nhân đẩy nhanh quá trình xuống cấp của thức uống. Áp dụng kỹ thuật đóng nắp chuẩn xác giúp ngăn chặn nguồn dưỡng khí mới xâm nhập và khóa chặt các tầng hương nguyên bản.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Vệ sinh miệng chai</h3><p>Dùng khăn giấy sạch lau khô phần miệng chai để loại bỏ cặn rượu rớt lại, tránh tạo điều kiện cho vi khuẩn và nấm mốc phát triển quanh miệng chai.</p></div><div class=\"tpl-item\"><h3>Lắp lại nút đậy ban đầu</h3><p>Nếu nút bần còn nguyên vẹn, cẩn thận ấn chặt lại vào cổ chai. Tránh dùng lực xoắn quá mạnh làm vụn nút rơi vào trong lòng rượu.</p></div><div class=\"tpl-item\"><h3>Hút bớt lượng khí thừa</h3><p>Sử dụng dụng cụ hút chân không chuyên dụng để loại bỏ bớt phần không khí tồn đọng trong khoảng trống của chai trước khi khóa nắp cao su.</p></div><div class=\"tpl-item\"><h3>Chiết sang chai dung tích nhỏ</h3><p>Nếu lượng rượu còn lại quá ít, hãy rót sang một chai thủy tinh nhỏ hơn có nắp kín để giảm thiểu tối đa diện tích tiếp xúc với oxy.</p></div></section>\n<h2>Tư thế đặt chai rượu sau khi mở: Đặt đứng hay nằm ngang?</h2>\n<p>Khi chưa mở nắp, việc đặt nằm ngang thường được áp dụng cho chai nút bần nhằm giữ cho nút luôn ẩm ướt, không bị teo ngót. Tuy nhiên, một khi chai đã được khui và xuất hiện khoảng trống không khí, quy tắc này cần được thay đổi hoàn toàn.</p>\n<p>Đối với chai rượu đã mở, bạn nên luôn <strong>đặt chai đứng thẳng</strong>. Tư thế này giúp giảm thiểu diện tích bề mặt tiếp xúc trực tiếp giữa chất lỏng và lớp không khí còn sót lại bên trong chai, từ đó làm chậm tốc độ oxy hóa và giữ cho hương vị được ổn định lâu hơn.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Lưu ý về sự ổn định vị trí</h3><p>Tránh di chuyển hoặc rung lắc chai rượu thường xuyên sau khi đã mở nắp. Sự xáo trộn cơ học làm gia tăng động năng của các phân tử, đẩy nhanh quá trình phân rã hương thơm tự nhiên.</p></section>\n<h2>Những lưu ý quan trọng để thưởng thức rượu có trách nhiệm</h2>\n<p>Mỗi giọt rượu kết tinh từ sự kiên nhẫn của đất trời và bàn tay người nghệ nhân. Do đó, việc nâng niu và <strong>bảo quản rượu</strong> cẩn trọng chính là bước đầu của một lối sống tao nhã. Việc thưởng thức nên dừng ở mức độ vừa phải để cảm nhận trọn vẹn nét đẹp của hương vị mà không ảnh hưởng đến sự minh mẫn.</p>\n<p>Các sản phẩm chứa cồn chỉ dành riêng cho người trưởng thành từ <strong>18 tuổi trở lên</strong>. Hãy luôn ghi nhớ nguyên tắc thưởng thức có trách nhiệm: <strong>đã uống rượu bia thì không lái xe</strong>, luôn lựa chọn phương tiện di chuyển an toàn sau mỗi buổi gặp gỡ để bảo vệ bản thân và cộng đồng.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Rượu sau khi mở nắp giữ được hương vị tốt nhất trong bao lâu?</h3><p>Rượu sau khi mở nắp nên được dùng hết trong khoảng thời gian ngắn tùy từng loại, thông thường từ vài ngày đối với dòng vang nhẹ đến vài tuần hoặc vài tháng đối với các dòng rượu mạnh được đậy kín.</p></div><div class=\"tpl-item\"><h3>Có nên để chai rượu đã mở nắp trong tủ lạnh thông thường?</h3><p>Tủ lạnh gia đình có độ ẩm thấp và thường xuyên bị rung lắc, mùi thức ăn cũng có thể bám vào nút chai. Bạn chỉ nên bảo quản tạm thời trong vài ngày nếu không có tủ bảo quản chuyên dụng.</p></div><div class=\"tpl-item\"><h3>Làm thế nào để nhận biết rượu đã bị hỏng sau khi mở nắp?</h3><p>Nếu rượu chuyển sang mùi giấm chua nồng, mùi bìa carton ẩm hoặc màu sắc ngả sang nâu đục khác thường, đó là dấu hiệu cấu trúc rượu đã bị oxy hóa hoàn toàn và không còn giữ được chất lượng ban đầu.</p></div></section>\n<section class=\"tpl-cta\"><h3>Gìn giữ hương vị tinh tế trong từng giọt rượu</h3><p>Hãy áp dụng đúng các phương pháp bảo quản để mỗi lần nâng ly đều là một khoảnh khắc trọn vẹn, và luôn giữ trọn chuẩn mực thưởng thức có trách nhiệm vì sự an toàn của chính bạn và những người xung quanh.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Cách bảo quản rượu sau khi mở nắp giữ trọn vị",
+          "seoDescription": "Khám phá cách bảo quản rượu sau khi mở nắp chuẩn mực: kiểm soát nhiệt độ, ánh sáng và phương pháp đóng kín nắp giúp giữ trọn vẹn hương vị."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "2d813560-cceb-42d6-9341-fb3d0b8b464e",
+      "categoryKey": "partners",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "64360500-e8f9-4d6f-9757-220122864129",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:30:57.438Z",
+      "createdAt": "2026-11-13T23:30:11.460Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Distribution Partnership with Khang Hưng Tửu for Restaurants and Distributors",
+          "slug": "distribution-partnership-with-khang-hung-tuu-for-restaurants-and-distributors",
+          "excerpt": "Detailed information on criteria, processes, and partnership guidelines for restaurants and business partners looking to become Khang Hưng Tửu liquor distributors.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">In the food and beverage industry, choosing a reputable product source rich in tradition is key to creating a complete culinary experience for diners. Khang Hưng Tửu warmly welcomes and opens up sustainable partnership opportunities with F&amp;B businesses, restaurants, and organizations wishing to become official <strong>liquor distributors</strong> in the market.</p>\n<h2>Growth potential when partnering with Khang Hưng Tửu</h2>\n<p>The demand for traditional drinks with clear origins that celebrate culinary culture is increasingly embraced by diners. By joining the Khang Hưng Tửu partner network, businesses gain a well-curated choice to enrich their drink menu, catering to the socializing and entertaining needs of adult customers aged 18 and over.</p>\n<p>The partnership between our brand and each <strong>liquor distributor</strong> is built on mutual respect, a commitment to authentic product quality, and transparent collaboration aimed at long-term value.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/640.webp 640w, {{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/1280.webp 1280w, {{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Criteria for restaurants and partners wishing to become liquor distributors</h2>\n<p>To protect consumer rights and preserve brand reputation, Khang Hưng Tửu establishes clear standards to select suitable distribution partners who share our vision.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Transparent legal status</h3><p>Hold a valid business license and all necessary alcohol distribution or retail licenses in accordance with current legal regulations.</p></div><div class=\"tpl-item\"><h3>Suitable business model</h3><p>Operate in restaurants, traditional dining, or F&amp;B chains featuring well-appointed service spaces and an adult clientele.</p></div><div class=\"tpl-item\"><h3>Shared cultural values</h3><p>Align with our vision of civilized drinking culture, with a commitment to proper storage standards and responsible marketing practices.</p></div></section>\n<h2>Process and steps to establish a distribution partnership</h2>\n<p>Khang Hưng Tửu has developed a clear registration and onboarding process to make connecting as smooth as possible for both parties.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Submit registration information</h3><p>The restaurant or business representative submits company information, business model, and distribution needs through our official contact channels.</p></div><div class=\"tpl-item\"><h3>Discussion and evaluation</h3><p>The Khang Hưng Tửu partnership team reviews the application and conducts direct discussions to understand both parties' capabilities and orientation.</p></div><div class=\"tpl-item\"><h3>Agreement and signing</h3><p>Both parties discuss business cooperation terms, product storage standards, and agree on legal principles before signing the contract.</p></div><div class=\"tpl-item\"><h3>Activation and ongoing support</h3><p>Khang Hưng Tửu provides sample products, origin presentation materials, and ongoing support throughout the liquor distributor's operations.</p></div></section>\n<h2>Commitment to legal compliance and responsible drinking messages</h2>\n<p>The alcoholic beverage business demands strict adherence to state regulations as well as public health. Khang Hưng Tửu and our partners always prioritize high standards and a culture of responsible enjoyment.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Legal standards and social safety</h3><p>All <strong>liquor distributors</strong> and distribution partners must strictly avoid serving or selling products to individuals under 18. Always actively remind customers to enjoy responsibly and uphold the message: <strong>If you drink, do not drive</strong>.</p></section>\n<h2>Frequently asked questions from business partners</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>What requirements must a restaurant meet to order stock?</h3><p>The business must have a valid business license, facilities meeting proper beverage storage conditions, and a commitment to complying with customer age regulations.</p></div><div class=\"tpl-item\"><h3>What support does Khang Hưng Tửu provide for on-site service staff?</h3><p>Every partner liquor distributor receives full certificates of origin, detailed product information, and training materials to guide staff in standard service practices.</p></div><div class=\"tpl-item\"><h3>How long does it take to process a partnership registration?</h3><p>The evaluation and feedback period for partnership applications is typically prompt once all valid documents are received from the partner.</p></div></section>\n<h2>How to connect and explore partnership opportunities</h2>\n<p>Khang Hưng Tửu always welcomes open, transparent dialogue with restaurants, hotels, and F&amp;B businesses that share a passion for traditional culinary culture. We believe that shared service values and respect for the law form the solid foundation for a lasting partnership.</p>\n<section class=\"tpl-cta\"><h3>Partner with Khang Hưng Tửu</h3><p>Partners interested in becoming a <strong>liquor distributor</strong> or featuring Khang Hưng Tửu on your menu, please contact us through our official channels for detailed guidance.</p></section>",
+          "readingMinutes": 3,
+          "seoTitle": "Distribution Partnership with Khang Hưng Tửu for Restaurants and Distributors",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Hợp Tác Phân Phối Cùng Khang Hưng Tửu Cho Nhà Hàng Đại Lý",
+          "slug": "hop-tac-phan-phoi-cung-khang-hung-tuu-cho-nha-hang-dai-ly",
+          "excerpt": "Thông tin chi tiết về tiêu chí, quy trình và định hướng hợp tác dành cho các nhà hàng, đối tác kinh doanh có mong muốn trở thành đại lý rượu Khang Hưng Tửu.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Trong ngành dịch vụ ẩm thực và đồ uống, việc lựa chọn nguồn sản phẩm uy tín, đậm nét truyền thống là yếu tố quan trọng tạo nên trải nghiệm ẩm thực trọn vẹn cho thực khách. Khang Hưng Tửu trân trọng gửi lời chào và mở ra định hướng hợp tác bền vững cùng các đơn vị kinh doanh F&amp;B, các nhà hàng và tổ chức mong muốn trở thành <strong>đại lý rượu</strong> chính thức trên thị trường.</p>\n<h2>Tiềm năng phát triển khi hợp tác cùng Khang Hưng Tửu</h2>\n<p>Nhu cầu thưởng thức đồ uống truyền thống có nguồn gốc rõ ràng, tôn vinh nét đẹp văn hóa ẩm thực ngày càng được nhiều thực khách đón nhận. Khi gia nhập mạng lưới đối tác của Khang Hưng Tửu, đơn vị kinh doanh có thêm sự lựa chọn chỉn chu để làm phong phú thực đơn đồ uống, đáp ứng nhu cầu giao lưu, tiếp khách của đối tượng khách hàng trưởng thành từ đủ 18 tuổi trở lên.</p>\n<p>Sự đồng hành giữa thương hiệu và mỗi <strong>đại lý rượu</strong> được xây dựng dựa trên sự tôn trọng, cam kết chất lượng sản phẩm nguyên bản cùng tinh thần hợp tác minh bạch, hướng đến giá trị gắn kết dài lâu.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/640.webp 640w, {{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/1280.webp 1280w, {{media}}/30034c6a-3fef-4fef-91c6-a75f6b714b0c/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<h2>Tiêu chí dành cho nhà hàng và đối tác mong muốn trở thành đại lý rượu</h2>\n<p>Để bảo đảm quyền lợi của người tiêu dùng cũng như gìn giữ uy tín thương hiệu, Khang Hưng Tửu thiết lập các tiêu chuẩn rõ ràng nhằm lựa chọn đối tác phân phối phù hợp, cùng chung tầm nhìn.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Tư cách pháp lý minh bạch</h3><p>Có giấy phép kinh doanh hợp pháp và đầy đủ giấy phép phân phối, bán lẻ rượu theo đúng quy định hiện hành của pháp luật.</p></div><div class=\"tpl-item\"><h3>Mô hình kinh doanh phù hợp</h3><p>Kinh doanh trong lĩnh vực nhà hàng, ẩm thực truyền thống hoặc chuỗi F&amp;B có không gian dịch vụ chỉn chu và tệp khách hàng trưởng thành.</p></div><div class=\"tpl-item\"><h3>Chia sẻ giá trị văn hóa</h3><p>Đồng thuận với định hướng văn hóa thưởng thức văn minh, cam kết tuân thủ quy chuẩn bảo quản và các quy định tiếp thị có trách nhiệm.</p></div></section>\n<h2>Quy trình kết nối và các bước thiết lập quan hệ đối tác phân phối</h2>\n<p>Khang Hưng Tửu xây dựng quy trình tiếp nhận và xử lý hồ sơ đăng ký rõ ràng, tạo điều kiện thuận lợi nhất cho việc kết nối giữa hai bên.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Gửi thông tin đăng ký</h3><p>Đại diện nhà hàng hoặc đơn vị kinh doanh gửi thông tin doanh nghiệp, mô hình hoạt động và nhu cầu phân phối thông qua kênh liên hệ chính thức.</p></div><div class=\"tpl-item\"><h3>Trao đổi và thẩm định</h3><p>Đội ngũ phụ trách đối tác của Khang Hưng Tửu xem xét hồ sơ, tiến hành trao đổi trực tiếp để hiểu rõ năng lực và định hướng của hai bên.</p></div><div class=\"tpl-item\"><h3>Thống nhất và ký kết</h3><p>Hai bên thảo luận các điều khoản hợp tác kinh doanh, quy chuẩn bảo quản sản phẩm và thống nhất các nguyên tắc pháp lý trước khi ký hợp đồng.</p></div><div class=\"tpl-item\"><h3>Kích hoạt và đồng hành</h3><p>Khang Hưng Tửu tiến hành cung cấp sản phẩm mẫu, hỗ trợ tư liệu giới thiệu nguồn gốc và đồng hành trong quá trình vận hành của đại lý rượu.</p></div></section>\n<h2>Trách nhiệm tuân thủ quy định pháp luật và thông điệp uống có trách nhiệm</h2>\n<p>Kinh doanh đồ uống có cồn đòi hỏi sự nghiêm cẩn đặc biệt đối với các quy định của nhà nước cũng như sức khỏe cộng đồng. Khang Hưng Tửu cùng các đối tác luôn đặt tính chuẩn mực và văn hóa thưởng thức có trách nhiệm lên hàng đầu.</p>\n<section class=\"tpl-callout tpl-warn\"><h3>Quy chuẩn pháp lý và an toàn xã hội</h3><p>Các đơn vị là <strong>đại lý rượu</strong> và đối tác phân phối tuyệt đối không phục vụ hoặc bán sản phẩm cho người dưới 18 tuổi. Luôn chủ động nhắc nhở khách hàng thưởng thức có trách nhiệm và thực hiện nghiêm túc thông điệp: <strong>Đã uống rượu bia thì không lái xe</strong>.</p></section>\n<h2>Giải đáp các thắc mắc thường gặp của đối tác kinh doanh</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nhà hàng cần chuẩn bị những điều kiện gì để nhập hàng?</h3><p>Đơn vị kinh doanh cần có giấy phép kinh doanh, cơ sở vật chất bảo đảm điều kiện lưu trữ sản phẩm đồ uống và cam kết tuân thủ các quy định về độ tuổi của khách hàng.</p></div><div class=\"tpl-item\"><h3>Khang Hưng Tửu hỗ trợ gì cho nhân sự phục vụ tại điểm bán?</h3><p>Mỗi đại lý rượu khi hợp tác sẽ được cung cấp đầy đủ chứng từ xuất xứ, thông tin chi tiết về sản phẩm và các tài liệu hướng dẫn nhân viên phục vụ đúng chuẩn.</p></div><div class=\"tpl-item\"><h3>Thời gian xử lý hồ sơ đăng ký hợp tác kéo dài bao lâu?</h3><p>Thời gian thẩm định và phản hồi thông tin đăng ký hợp tác thường được xử lý nhanh chóng sau khi tiếp nhận đầy đủ hồ sơ hợp lệ từ phía đối tác.</p></div></section>\n<h2>Cách thức kết nối để bắt đầu trao đổi cơ hội hợp tác</h2>\n<p>Khang Hưng Tửu luôn chào đón những cuộc đối thoại cởi mở, minh bạch cùng các nhà hàng, khách sạn và các đơn vị F&amp;B có cùng đam mê với văn hóa ẩm thực truyền thống. Chúng tôi tin rằng sự đồng điệu về quan điểm phục vụ và sự tôn trọng pháp luật là nền tảng vững chắc nhất cho mối quan hệ cộng tác lâu dài.</p>\n<section class=\"tpl-cta\"><h3>Kết Nối Hợp Tác Cùng Khang Hưng Tửu</h3><p>Quý đối tác quan tâm đến cơ hội trở thành <strong>đại lý rượu</strong> hoặc mong muốn đưa Khang Hưng Tửu vào thực đơn phục vụ, vui lòng liên hệ qua các kênh thông tin chính thức của thương hiệu để nhận hướng dẫn chi tiết.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Hợp Tác Phân Phối Cùng Khang Hưng Tửu Cho Nhà Hàng Đại Lý",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "692482be-7a49-4e1f-a155-4f927f06589f",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "926c377e-f83f-43a0-941a-b32a98a77f3e",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-13T23:31:04.711Z",
+      "createdAt": "2026-11-13T23:30:18.131Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A Guide to Choosing Wine and Spirits as Elegant and Sophisticated Tet Gifts",
+          "slug": "a-guide-to-choosing-wine-and-spirits-as-elegant-and-sophisticated-tet-gifts",
+          "excerpt": "Discover a guide to selecting wine and spirits as Tet gifts for elders and partners, with refinement from packaging aesthetics to polite, proper gifting etiquette.",
+          "coverAlt": "A Vietnamese Tet living room setting featuring peach blossoms and an elegant gift box of wine and spirits on the tea table",
+          "body": "<p class=\"tpl-lead\">The Lunar New Year is a sacred time for Vietnamese people to express deep gratitude to parents and cultivate strong bonds with friends and partners. Among countless spring gifts, choosing <strong>wine or spirits as a Tet gift</strong> always carries a special meaning, symbolizing wishes for a lucky, smooth, and heartwarming new year. The guide below is intended for readers aged 18 and older, offering thoughtful perspectives on selecting and giving a gift filled with utmost respect.</p>\n<h2>The Cultural Meaning of Giving Wine and Spirits for a Joyful Tet Gathering</h2>\n<p>In the Vietnamese mindset, spring days are incomplete without a warm glass to treat distinguished guests beside the reunion feast. The New Year's drink is tied to traditions of wishing longevity, praying for peace, and deepening close friendships. When an exquisite bottle is opened, spring conversations become warmer, melting away daily distance to make way for the joy of reunion.</p>\n<blockquote class=\"tpl-pull\"><p>A spring gift is more than just material value; it is a bridge carrying sincere respect and wishes for a new year full of peace and prosperity.</p></blockquote>\n<p>Carrying deep cultural beauty, the custom of giving <strong>wine or spirits as a Tet gift</strong> requires the giver to understand the recipient's tastes and the gifting context. A carefully chosen bottle reflects thoughtfulness, finesse, and an understanding of the host's spring culinary palate.</p>\n<h2>Criteria for Choosing Suitable Tet Gift Bottles for Elders</h2>\n<p>For the elders in a family or clan, a Tet gift must put filial piety and respect first. Elders often treasure smooth, rustic flavors tied to memories and traditional tastes rather than flashy modern trends.</p>\n<ul class=\"tpl-check\"><li>Prioritize options with deep, gentle flavors, a well-rounded body, and a naturally sweet finish.</li><li>Clear, transparent origin from reputable producers with standard brewing and aging processes.</li><li>An elegant design with a traditional touch, avoiding overly intricate or loud, unconventional styles.</li><li>Complete and clear labeling so the recipient can easily store and enjoy it during spring days.</li></ul>\n<p>Meticulous care, from understanding taste to checking product origins, will help elders feel the sincere affection and filial respect of the younger generations every spring.</p>\n<h2>The Art of Choosing Elegant, Sophisticated Gifts for Partners</h2>\n<p>When selecting gifts for business partners or superiors, the gift serves as sincere thanks for their companionship throughout the past year while opening up prospects for strong future cooperation. Aesthetics, refined style, and brand message are key factors determining the value of this diplomatic gift.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Brand Prestige</h3><p>Choose a product line with a strong brand, demonstrating respect and the stature of the relationship.</p></div><div class=\"tpl-item\"><h3>Luxurious Design</h3><p>The bottle and gift box should feature elegant colors and clean lines that convey sophistication in a professional setting.</p></div><div class=\"tpl-item\"><h3>Meaningful Connection</h3><p>The wishes conveyed through the gift should aim for smooth success, longevity, and sustainable growth in the new journey.</p></div></section>\n<p>A proper gift for partners does not need to be flashy, but it must show absolute neatness, making a great impression from the very first glance.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/1376.webp\" alt=\"A luxurious Tet gift box of wine or spirits set on a rustic wooden table with spring peach blossoms\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/640.webp 640w, {{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/1280.webp 1280w, {{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Impeccable gift presentation creates an elegant impression on the recipient during early-year gatherings.</figcaption></figure>\n<h2>Important Notes on Packaging and Gift Boxes</h2>\n<p>The look of the gift is its first greeting to the recipient. A high-quality bottle without a worthy presentation will diminish the solemnity of the traditional Tet holiday. The gift box should be made of sturdy materials such as leather, wood, or premium fine art paper to protect the bottle safely during transport.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Packaging Check Tips</h3><p>Thoroughly inspect the bottle cap, label, and accompanying accessories before presenting the gift. The gift box must never be scratched, dented, or creased, ensuring full integrity and elegance when handed over to the recipient.</p></section>\n<p>The color of the gift box also carries auspicious feng shui meanings. Traditional shades such as deep red, bronze gold, or dark blue are often favored because they symbolize wealth, peace, and fresh spring vitality.</p>\n<h2>Etiquette and Proper Demeanor When Giving Tet Gifts</h2>\n<p>The ancients taught that the manner of giving is worth more than the gift itself. No matter how elaborately a gift is chosen, it is the giver's sincere demeanor and respect that leave the deepest mark in the recipient's heart.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Choose the Right Time</h3><p>Call ahead to arrange a relaxed meeting time, avoiding busy hours when the host is preparing year-end worship offerings.</p></div><div class=\"tpl-item\"><h3>Hand Over with Both Hands</h3><p>Always present the gift with both hands, along with warm eye contact, a pleasant smile, and auspicious new year wishes.</p></div><div class=\"tpl-item\"><h3>Modest Attitude</h3><p>Maintain a humble attitude and avoid dwelling on the material value of the gift to keep the recipient from feeling uncomfortable.</p></div></section>\n<p>A proper and respectful manner highlights the elegant culture of Vietnam, making the Tet gift an unforgettable memory in the first days of the new year.</p>\n<h2>Civilized Tet Enjoyment: Drink Responsibly and Safely</h2>\n<p>Tet is a time for bonding and family reunions, so the beauty of enjoying a drink is only complete when everyone embraces a spirit of moderation and responsibility. Drinks should only be sipped for toasts in harmony with the warm, cheerful atmosphere of the reunion table, never forced or abused.</p>\n<p>Above all, ensuring personal and community safety is always the top priority. Khang Hưng Tửu reminds our valued customers to strictly follow the message: <strong>If you drink, do not drive</strong>. Take the initiative to use public transport or arrange a ride so your spring outings remain peaceful and filled with the joy of reunion.</p>\n<section class=\"tpl-cta\"><h3>Pour Your Heart into Every Spring Gift</h3><p>Choosing a refined spring gift not only conveys sincere gratitude but also honors an elegant drinking culture. Join Khang Hưng Tửu in welcoming a civilized, warm, and safe spring with your loved ones.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Secrets to Choosing Elegant and Sophisticated Wine and Spirits as Tet Gifts",
+          "seoDescription": "A detailed guide on choosing wine and spirits as Tet gifts for partners and elders, ensuring elegance, civility, and traditional cultural beauty."
+        },
+        {
+          "locale": "vi",
+          "title": "Cẩm nang chọn rượu làm quà Tết trang trọng và tinh tế",
+          "slug": "cam-nang-chon-ruou-lam-qua-tet-trang-trong-va-tinh-te",
+          "excerpt": "Khám phá cẩm nang chọn rượu làm quà Tết cho người lớn tuổi và đối tác với sự tinh tế từ hình thức bao bì đến thái độ trao gửi lịch sự, chuẩn mực.",
+          "coverAlt": "Không gian phòng khách ngày Tết Việt Nam với cành đào và hộp quà biếu rượu sang trọng trên bàn trà",
+          "body": "<p class=\"tpl-lead\">Tết Nguyên đán là thời khắc thiêng liêng để người Việt bày tỏ lòng tri ân sâu sắc tới đấng sinh thành và xây đắp mối thâm giao cùng bạn hữu, đối tác. Trong muôn vàn thức quà xuân, việc lựa chọn <strong>rượu làm quà Tết</strong> luôn mang một ý vị đặc biệt, tượng trưng cho lời chúc khởi đầu năm mới may mắn, hanh thông và ấm áp nghĩa tình. Cẩm nang dưới đây dành riêng cho quý độc giả từ đủ 18 tuổi trở lên, gợi mở những góc nhìn chuẩn mực về cách chọn lựa và trao gửi món quà trọn vẹn sự tôn kính.</p>\n<h2>Ý nghĩa văn hóa của việc chọn rượu làm quà Tết sum vầy</h2>\n<p>Trong tâm thức người Việt, ngày xuân không thể thiếu chén nồng thết đãi khách quý bên mâm cỗ sum vầy. Chén rượu đầu năm gắn liền với truyền thống chúc thọ, cầu an và kết nối tình bằng hữu keo sơn. Khi mở một chai rượu thơm ngon, câu chuyện ngày xuân trở nên thân mật hơn, xua tan những khoảng cách thường nhật để nhường chỗ cho niềm hân hoan hội ngộ.</p>\n<blockquote class=\"tpl-pull\"><p>Món quà ngày xuân không dừng lại ở giá trị vật chất, mà là nhịp cầu chuyên chở tấm lòng thành kính và ước vọng về một năm mới trọn vẹn an khang.</p></blockquote>\n<p>Chính vì mang đậm nét đẹp văn hóa, phong tục dùng <strong>rượu làm quà Tết</strong> đòi hỏi người tặng phải thấu hiểu sở thích của người nhận và hoàn cảnh trao gửi. Một chai rượu được chọn lựa kỹ lưỡng thể hiện sự chu đáo, tinh tế và am hiểu phong vị ẩm thực ngày xuân của gia chủ.</p>\n<h2>Tiêu chí lựa chọn rượu biếu Tết phù hợp cho người lớn tuổi</h2>\n<p>Đối với các bậc cao niên trong gia đình hay dòng họ, món quà biếu Tết cần đặt chữ hiếu và sự kính trọng lên hàng đầu. Người lớn tuổi thường trân quý những thức vị êm dịu, mộc mạc gắn liền với hồi ức và phong vị cổ truyền hơn là những trào lưu hiện đại rực rỡ.</p>\n<ul class=\"tpl-check\"><li>Ưu tiên các dòng rượu có hương vị đượm đà, êm ái, cấu trúc tròn trịa và hậu vị ngọt hậu tự nhiên.</li><li>Nguồn gốc xuất xứ rõ ràng, minh bạch từ những nhà làm rượu danh tiếng với quy trình ủ nấu chuẩn mực.</li><li>Thiết kế trang nhã mang dáng dấp truyền thống, tránh các kiểu dáng quá cầu kỳ hoặc phá cách lòe loẹt.</li><li>Thông tin nhãn mác đầy đủ, chuẩn chỉnh để người nhận dễ dàng bảo quản và thưởng thức khi xuân về.</li></ul>\n<p>Sự quan tâm tỉ mỉ từ việc tìm hiểu khẩu vị đến nguồn cội của sản phẩm sẽ giúp người lớn tuổi cảm nhận được trọn vẹn tình cảm chân thành, hiếu kính của con cháu mỗi độ xuân về.</p>\n<h2>Nghệ thuật chọn rượu tặng đối tác trang trọng và tinh tế</h2>\n<p>Khi chọn quà biếu cho đối tác kinh doanh hoặc cấp trên, món quà đóng vai trò như một lời cảm ơn chân thành cho sự đồng hành suốt một năm qua, đồng thời mở ra kỳ vọng hợp tác bền chặt trong tương lai. Tính thẩm mỹ, phong cách lịch lãm và thông điệp thương hiệu là những yếu tố quyết định giá trị của món quà ngoại giao này.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Vị thế thương hiệu</h3><p>Lựa chọn dòng sản phẩm có thương hiệu vững chắc, minh chứng cho sự tôn trọng và tầm vóc của mối quan hệ.</p></div><div class=\"tpl-item\"><h3>Thiết kế sang trọng</h3><p>Chai rượu và hộp đựng cần sở hữu tông màu thanh lịch, đường nét dứt khoát, toát lên vẻ trang nhã nơi công sở.</p></div><div class=\"tpl-item\"><h3>Ý nghĩa gắn kết</h3><p>Lời chúc gửi gắm qua món quà nên hướng tới sự hanh thông, trường tồn và phát triển vững bền trong chặng đường mới.</p></div></section>\n<p>Một món quà biếu đối tác chuẩn mực không cần phô trương nhưng phải thể hiện được sự chỉn chu tuyệt đối, tạo ấn tượng tốt đẹp ngay từ ánh nhìn đầu tiên.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/1376.webp\" alt=\"Hộp quà Tết đựng rượu sang trọng đặt trên bàn gỗ mộc mạc cùng hoa đào ngày xuân\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/640.webp 640w, {{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/1280.webp 1280w, {{media}}/134c9675-7bfb-48d5-a03e-4df61ebfe9c9/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Hình thức quà biếu chỉn chu tạo nên ấn tượng trang trọng cho người nhận trong dịp sum họp đầu năm.</figcaption></figure>\n<h2>Những lưu ý quan trọng về hình thức bao bì và hộp quà</h2>\n<p>Hình thức của món quà chính là lời chào đầu tiên gửi đến người nhận. Một chai rượu chất lượng cao nếu thiếu đi lớp áo bảo vệ xứng tầm sẽ làm giảm bớt tính tôn nghiêm của ngày Tết cổ truyền. Hộp quà cần được làm từ chất liệu cứng cáp như da, gỗ hoặc giấy mỹ thuật cao cấp để bảo vệ chai rượu an toàn trong quá trình di chuyển.</p>\n<section class=\"tpl-callout tpl-note\"><h3>Lưu ý kiểm tra hình thức</h3><p>Hãy kiểm tra kỹ lưỡng nắp chai, nhãn mác và các phụ kiện đi kèm trước khi mang biếu. Hộp quà tuyệt đối không bị trầy xước, móp méo hay nhăn nheo, đảm bảo tính nguyên vẹn và trang nghiêm khi trao tay người nhận.</p></section>\n<p>Màu sắc của hộp quà cũng mang ý nghĩa phong thủy tốt lành. Các gam màu truyền thống như đỏ thắm, vàng đồng hoặc xanh thẫm thường được ưa chuộng vì biểu trưng cho tài lộc, bình an và sinh khí mùa xuân mới.</p>\n<h2>Phép lịch sự và thái độ chuẩn mực khi trao gửi quà biếu Tết</h2>\n<p>Cổ nhân từng dạy rằng của cho không bằng cách cho. Dù món quà được lựa chọn công phu đến đâu, chính phong thái chân thành và sự tôn trọng của người trao tặng mới là điều đọng lại sâu sắc nhất trong lòng người nhận.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Chọn thời điểm thích hợp</h3><p>Nên liên hệ hẹn trước thời gian gặp mặt thong thả, tránh ghé thăm vào những giờ bận rộn cúng kiếng tất niên của gia chủ.</p></div><div class=\"tpl-item\"><h3>Trao gửi bằng hai tay</h3><p>Luôn dùng hai tay trao quà kèm ánh mắt ấm áp, nụ cười nhã nhặn và lời chúc năm mới cát tường, may mắn.</p></div><div class=\"tpl-item\"><h3>Thái độ khiêm tốn</h3><p>Giữ thái độ khiêm nhường, không bàn luận sâu về giá trị vật chất để tránh làm người nhận cảm thấy ngại ngùng.</p></div></section>\n<p>Sự mực thước trong cung cách ứng xử sẽ làm sáng bừng nét văn hóa tao nhã của người Việt, giúp món quà Tết trở thành kỷ niệm khó phai trong những ngày đầu năm mới.</p>\n<h2>Thưởng thức ngày Tết văn minh: Uống có trách nhiệm và an toàn</h2>\n<p>Tết là dịp để gắn kết, sum họp gia đình, do đó nét đẹp thưởng rượu chỉ thực sự trọn vẹn khi mỗi người đều tuân thủ tinh thần thưởng thức có chừng mực và trách nhiệm. Rượu chỉ nên dùng để nhấp môi chúc tụng, hòa cùng không khí vui tươi, ấm áp của bàn tiệc đoàn viên, không nên ép uổng hay lạm dụng quá đà.</p>\n<p>Đặc biệt, bảo đảm an toàn cho bản thân và cộng đồng luôn là nguyên tắc hàng đầu. Khang Hưng Tửu luôn nhắc nhở quý khách hàng thực hiện nghiêm túc thông điệp: <strong>Đã uống rượu bia thì không lái xe</strong>. Hãy chủ động lựa chọn các phương tiện công cộng hoặc sắp xếp người đưa đón để những hành trình du xuân luôn bình an và trọn vẹn niềm vui sum họp.</p>\n<section class=\"tpl-cta\"><h3>Gửi trọn tâm tình trong từng món quà xuân</h3><p>Chọn một thức quà xuân tinh tế không chỉ gửi gắm trọn vẹn lòng tri ân mà còn tôn vinh nét văn hóa thưởng thức tao nhã. Hãy đồng hành cùng Khang Hưng Tửu đón một mùa xuân văn minh, ấm cúng và an toàn bên những người thân thương.</p></section>",
+          "readingMinutes": 7,
+          "seoTitle": "Bí quyết chọn rượu làm quà Tết trang trọng, tinh tế",
+          "seoDescription": "Hướng dẫn chi tiết cách chọn rượu làm quà Tết cho đối tác và người lớn tuổi, đảm bảo sự trang nhã, văn minh và nét đẹp văn hóa truyền thống."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

@@ -1,0 +1,464 @@
+{
+  "site": {
+    "id": "hotel",
+    "name": "Lantern House Hội An",
+    "locales": [
+      "vi",
+      "en"
+    ],
+    "defaultLocale": "vi"
+  },
+  "categories": [
+    {
+      "key": "hoi-an",
+      "position": 0,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Hội An",
+          "slug": "hoi-an"
+        },
+        {
+          "locale": "vi",
+          "name": "Hội An",
+          "slug": "hoi-an"
+        }
+      ]
+    },
+    {
+      "key": "stay",
+      "position": 1,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Your stay",
+          "slug": "your-stay"
+        },
+        {
+          "locale": "vi",
+          "name": "Lưu trú",
+          "slug": "luu-tru"
+        }
+      ]
+    },
+    {
+      "key": "guide",
+      "position": 2,
+      "translations": [
+        {
+          "locale": "en",
+          "name": "Guides",
+          "slug": "guides"
+        },
+        {
+          "locale": "vi",
+          "name": "Cẩm nang",
+          "slug": "cam-nang"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "c15dec9a-d638-4551-a6cb-1870a3ab12e3",
+      "source": "ai",
+      "prompt": "A panoramic street view of Hoi An ancient town at dusk, traditional wooden shop houses with glowing lanterns hanging from eaves, reflective wet stones, calm river, warm lantern lights, peaceful and authentic Vietnamese atmosphere, cinematic travel photography.",
+      "filename": "A panoramic street view of Hoi An ancient town at dusk, trad.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 49778,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 153686,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 179154,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:27:05.208Z"
+    },
+    {
+      "id": "17a52733-a788-41cf-bdbd-965647c5aee6",
+      "source": "ai",
+      "prompt": "A quiet narrow alley in Hoi An ancient town in soft morning sunlight, weathered yellow walls with green moss, cobblestone path, vibrant bougainvillea flowers hanging overhead, wooden window frames, peaceful atmosphere, realistic travel photography.",
+      "filename": "A quiet narrow alley in Hoi An ancient town in soft morning .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 67952,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 201082,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 232224,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:27:05.243Z"
+    },
+    {
+      "id": "37d1d925-28ac-4c3b-acc1-029bedf9abe3",
+      "source": "ai",
+      "prompt": "A panoramic close-up of a vibrant street food stall in Hoi An ancient town with bowls of Cao Lau noodles, sliced roast pork, herbs, and yellow savory chicken rice under warm glowing lanterns, photorealistic, cinematic lighting, 8k.",
+      "filename": "A panoramic close-up of a vibrant street food stall in Hoi A.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 66482,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 183712,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 209040,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:29:18.071Z"
+    },
+    {
+      "id": "73d986d2-ad4d-45c6-a798-dd94895ebc64",
+      "source": "ai",
+      "prompt": "A vintage bicycle parked by a rustic wooden fence along a lush green countryside path in Hoi An, soft golden morning sunlight, traditional Vietnamese rural landscape, warm peaceful atmosphere, realistic photography, no people.",
+      "filename": "A vintage bicycle parked by a rustic wooden fence along a lu.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 73694,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 226786,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 259490,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:38:50.648Z"
+    },
+    {
+      "id": "6cef35f5-a415-4635-945c-e220b839673f",
+      "source": "ai",
+      "prompt": "Lush green neat vegetable patches in a Vietnamese village garden, early morning sunlight filtering through mist, a rustic bamboo trellis and watering can nearby, authentic Hoi An countryside scenery, realistic photo, no people.",
+      "filename": "Lush green neat vegetable patches in a Vietnamese village ga.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 70532,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 223392,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 255244,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:38:50.693Z"
+    },
+    {
+      "id": "cf902e6c-ac8e-4813-bdc6-d3dbc3b660a2",
+      "source": "ai",
+      "prompt": "A panoramic twilight view of Hoi An ancient town during the full moon festival, vibrant warm glow from silk lanterns lining old shophouses, serene Hoai river with floating colorful paper flower lanterns, peaceful atmosphere, cinematic lighting, no people faces, no text",
+      "filename": "A panoramic twilight view of Hoi An ancient town during the .webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 46780,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 155666,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 187540,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:46:45.915Z"
+    },
+    {
+      "id": "2c821407-2cf0-45f4-984a-92b848ec81a5",
+      "source": "ai",
+      "prompt": "A serene night view of the Hoai River in Hoi An under the moonlight, illuminated by hundreds of glowing paper flower lanterns gently floating on the calm dark water, traditional wooden boats in the background with soft yellow light, cinematic atmosphere, authentic colors, no text, no recognizable faces",
+      "filename": "A serene night view of the Hoai River in Hoi An under the mo.webp",
+      "contentType": "image/webp",
+      "width": 1376,
+      "height": 768,
+      "variants": [
+        {
+          "size": 47618,
+          "width": 640,
+          "height": 357
+        },
+        {
+          "size": 132498,
+          "width": 1280,
+          "height": 714
+        },
+        {
+          "size": 153840,
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "createdAt": "2026-11-14T00:46:45.935Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "0550ebd6-442c-4bd1-8128-2a5304ee939d",
+      "categoryKey": "guide",
+      "status": "draft",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": null,
+      "createdAt": "2026-11-13T16:09:37.826Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "[Template] How to build an article with layout blocks",
+          "slug": "template-how-to-build-an-article",
+          "excerpt": "A sample for writers: every layout block (note box, cards, two columns, steps, image and text, questions…) with when to use it and how to add it in the admin site.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">This is a sample article. Each part below is a layout block of the admin site, and its own text explains when to use it and how to add it. Open this article in the admin site to see how it is built, then write yours the same way.</p>\n<h2>Starting an article</h2>\n<p>In the admin site, pick the site, then Articles → New article. Each language has its own tab (VI, EN): fill in the title, the address (made from the title), the summary and the text. The side panel holds the topic, the cover image and the save button. A draft may miss a language; publishing needs every language of the site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sketch of the article editor: language tabs, the toolbar with the Insert block button, the text and the cover panel\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>The \"Insert block\" button of the toolbar adds every block of this article. The ¶ / &lt;/&gt; switch moves between the visual editor and HTML.</figcaption></figure>\n<h2>The layout blocks</h2>\n<p>Put the cursor where the block should go, click \"Insert block\" and pick one: it appears with sample text for you to replace. In the editor each block is a dashed frame with its name; on the website it takes the hotel’s indigo and lantern amber.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Note box</h3>\n<p>For a side fact readers should know: what it applies to, a condition, where a figure comes from. Keep it short: a title and a sentence or two. Insert block → Note box.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"An article page with one block picked out by a magnifier\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Three cards: when</h3><p>When you have three (or six) equal items: three services, three benefits, three small steps.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"The Insert block menu open, one entry chosen\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>How to add it</h3><p>Insert block → Three cards. Each card has an image (optional), a title and a short paragraph.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"A light bulb: a small tip\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Tip</h3><p>Keep cards about the same length: a few words of title, a sentence or two of text.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Do</h3>\n<ul class=\"tpl-pros\">\n<li>One idea per paragraph, short sentences.</li>\n<li>A section heading (H2) for each main topic.</li>\n<li>Room rates, check-in times and amenities exactly as the hotel states them.</li>\n</ul>\n</div>\n<div>\n<h3>Don’t</h3>\n<ul class=\"tpl-cons\">\n<li>Paste text from other sites with odd formatting.</li>\n<li>Promise availability, upgrades or rates not yet confirmed.</li>\n<li>Stack heavy blocks with no text in between.</li>\n</ul>\n</div>\n</section>\n<p>The Two columns block above (Insert block → Two columns) suits comparisons: do / don’t, before / after, garden / pool view, high / low season.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Tip box</h3>\n<p>Advice that helps readers do better. In the editor: Enter after a styled paragraph (such as the lead) starts a plain one; \"Remove the block frame\" keeps the text but drops the frame, the bin deletes the whole block.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Warning box</h3>\n<p>For what readers easily get wrong or must avoid. A writer’s warning too: on save the server keeps only the allowed tags and blocks; images must come from the site’s media library (or the site’s own files), images from other sites are removed.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Key points</h3>\n<ul class=\"tpl-check\">\n<li>At the start or the end: the 3–5 most important points.</li>\n<li>One point per line, starting with a verb or a number.</li>\n<li>Insert block → Key points.</li>\n</ul>\n</section>\n<h2>Writing an article, step by step</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Pick the topic and the title</h3><p>The title says what readers get. The address is made from it; shorten it if it’s long.</p></div>\n<div class=\"tpl-item\"><h3>Write the summary and the lead</h3><p>The summary shows in article lists; the lead is the first paragraph, in larger type.</p></div>\n<div class=\"tpl-item\"><h3>Add the text and the blocks</h3><p>Split it with section headings (H2), and insert blocks where something should stand out.</p></div>\n<div class=\"tpl-item\"><h3>Add images</h3><p>The cover in the side panel; images in the text with the \"Choose or upload an image\" button of an image frame.</p></div>\n<div class=\"tpl-item\"><h3>Save, then publish</h3><p>Save drafts any time. Publish now or schedule it once every language is there.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"The media library: a drop zone (optimized to WebP 640, 1280, 1920) and an image grid, one image chosen\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Image and text</h2>\n<p>This block puts an image next to some text (Insert block → Image and text). Good for introducing a room, a corner of the old town, a breakfast dish.</p>\n<ul>\n<li>Click \"Choose or upload an image\" in the image frame to open the library.</li>\n<li>Uploaded images are optimized in your browser: WebP, 3 sizes, GPS position removed.</li>\n<li>Always fill in the image description (alt) for screen-reader users.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Map of an article: lead and note box, cards, steps, image and text, call to action\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Wide image with caption (Insert block → Wide image with caption): wider than the text column, for the best photo or a diagram. Write a one-sentence caption.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“A pull quote makes readers stop: pick one real, short line from a customer or the owner.”</p></blockquote>\n<h2>Questions</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>How do I remove a block?</h3><p>Put the cursor inside it: \"Remove the block frame\" keeps the text, the bin deletes the block.</p></div>\n<div class=\"tpl-item\"><h3>Can I edit the HTML?</h3><p>Yes: the &lt;/&gt; switch opens the HTML mode. On save the server keeps only the allowed tags and classes.</p></div>\n<div class=\"tpl-item\"><h3>Where does the cover go?</h3><p>In the side panel, \"Cover image\". Its description is set in each language tab.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Ready for your first article?</h3>\n<p>The call to action (Insert block → Call to action) closes the article: one line inviting readers to call, message on Zalo or email.</p>\n</section>\n<h2>Before publishing</h2>\n<ul>\n<li>Reread the title and the summary.</li>\n<li>Check prices, hours and the address with the hotel.</li>\n<li>Every image has a description (alt).</li>\n<li>Every language of the site is written.</li>\n<li>Look at the article on the website after publishing.</li>\n</ul>\n<p class=\"tpl-byline\">Lantern House Hội An sample article · Illustrations: the site’s SVG drawings</p>",
+          "readingMinutes": 4,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "[Mẫu] Hướng dẫn tạo bài viết với các khối bố cục",
+          "slug": "mau-huong-dan-tao-bai-viet",
+          "excerpt": "Bài mẫu cho người viết: từng khối bố cục (hộp ghi chú, thẻ, hai cột, các bước, ảnh và chữ, hỏi đáp…) kèm hướng dẫn khi nào dùng và cách thêm trong trang quản trị.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Bài này là một bài mẫu. Mỗi phần bên dưới là một khối bố cục có sẵn trong trang quản trị, và chính nội dung của khối giải thích khi nào nên dùng nó và cách thêm nó. Hãy mở bài này trong trang quản trị để xem cấu trúc, rồi viết bài của bạn theo cùng cách.</p>\n<h2>Bắt đầu một bài viết</h2>\n<p>Trong trang quản trị, chọn site rồi vào Bài viết → Bài viết mới. Mỗi ngôn ngữ có một thẻ riêng (VI, EN): điền tiêu đề, đường dẫn (tự tạo từ tiêu đề), đoạn tóm tắt và nội dung. Cột bên phải có chủ đề, ảnh bìa và nút lưu. Bài nháp có thể thiếu ngôn ngữ; muốn xuất bản thì phải đủ mọi ngôn ngữ của site.</p>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/editor.svg\" alt=\"Sơ đồ trình soạn thảo bài viết: thẻ ngôn ngữ, thanh công cụ với nút Chèn khối, nội dung và cột ảnh bìa\" width=\"1600\" height=\"900\" loading=\"lazy\" /><figcaption>Nút \"Chèn khối\" trên thanh công cụ thêm mọi khối trong bài này. Nút ¶ / &lt;/&gt; chuyển giữa chế độ Soạn thảo và HTML.</figcaption></figure>\n<h2>Các khối bố cục</h2>\n<p>Đặt con trỏ ở chỗ muốn thêm, bấm \"Chèn khối\" và chọn một khối: khối hiện ra với chữ mẫu để bạn thay. Trong trình soạn thảo, mỗi khối là một khung nét đứt có ghi tên; trên trang web nó hiện đúng màu chàm và vàng đèn lồng của khách sạn.</p>\n<section class=\"tpl-callout tpl-note\">\n<h3>Hộp ghi chú</h3>\n<p>Dùng cho một thông tin bên lề mà người đọc nên biết: phạm vi áp dụng, điều kiện, nguồn của số liệu. Viết ngắn, một tiêu đề và một hai câu. Thêm bằng Chèn khối → Hộp ghi chú.</p>\n</section>\n<section class=\"tpl-cards\">\n<div class=\"tpl-item\"><img src=\"/images/guide/card-when.svg\" alt=\"Trang bài viết với một khối được làm nổi bật bằng kính lúp\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Thẻ ba cột: khi nào dùng</h3><p>Khi có ba (hoặc sáu) mục ngang hàng: ba dịch vụ, ba lợi ích, ba bước nhỏ.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-insert.svg\" alt=\"Menu Chèn khối đang mở, một mục được chọn\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Cách thêm</h3><p>Chèn khối → Thẻ ba cột. Mỗi thẻ có một ảnh (tuỳ chọn), một tiêu đề và một đoạn ngắn.</p></div>\n<div class=\"tpl-item\"><img src=\"/images/guide/card-tip.svg\" alt=\"Bóng đèn sáng: một mẹo nhỏ\" width=\"800\" height=\"600\" loading=\"lazy\" /><h3>Mẹo</h3><p>Giữ các thẻ dài gần bằng nhau: tiêu đề vài chữ, nội dung một hai câu.</p></div>\n</section>\n<section class=\"tpl-cols\">\n<div>\n<h3>Nên</h3>\n<ul class=\"tpl-pros\">\n<li>Một ý chính cho mỗi đoạn, câu ngắn.</li>\n<li>Tiêu đề phần (H2) cho mỗi chủ đề lớn.</li>\n<li>Ghi đúng giá phòng, giờ nhận trả phòng và tiện ích như khách sạn công bố.</li>\n</ul>\n</div>\n<div>\n<h3>Không nên</h3>\n<ul class=\"tpl-cons\">\n<li>Dán chữ từ trang khác kèm định dạng lạ.</li>\n<li>Hứa còn phòng, nâng hạng hay giá chưa được xác nhận.</li>\n<li>Chèn liên tiếp nhiều khối nặng, không có chữ xen giữa.</li>\n</ul>\n</div>\n</section>\n<p>Khối Hai cột ở trên (Chèn khối → Hai cột) hợp để so sánh: nên / không nên, trước / sau, phòng hướng vườn / hướng hồ bơi, mùa cao / thấp điểm.</p>\n<section class=\"tpl-callout tpl-tip\">\n<h3>Hộp mẹo</h3>\n<p>Một lời khuyên giúp người đọc làm tốt hơn. Trong trình soạn thảo: Enter sau một đoạn có kiểu (như đoạn dẫn) sẽ tạo đoạn thường; nút \"Bỏ khung khối\" giữ lại chữ nhưng bỏ khung, nút thùng rác xoá cả khối.</p>\n</section>\n<section class=\"tpl-callout tpl-warn\">\n<h3>Hộp lưu ý</h3>\n<p>Cho điều người đọc dễ làm sai hoặc cần tránh. Lưu ý khi viết: khi lưu, máy chủ chỉ giữ các thẻ và khối được phép; ảnh phải là ảnh trong thư viện ảnh của site (hoặc ảnh có sẵn của site), ảnh dán từ trang khác sẽ bị bỏ.</p>\n</section>\n<section class=\"tpl-summary\">\n<h3>Điểm chính</h3>\n<ul class=\"tpl-check\">\n<li>Đặt ở đầu hoặc cuối bài: tóm tắt 3–5 ý quan trọng nhất.</li>\n<li>Mỗi dòng một ý, bắt đầu bằng động từ hoặc con số.</li>\n<li>Thêm bằng Chèn khối → Điểm chính.</li>\n</ul>\n</section>\n<h2>Các bước viết một bài</h2>\n<section class=\"tpl-steps\">\n<div class=\"tpl-item\"><h3>Chọn chủ đề và tiêu đề</h3><p>Tiêu đề nói rõ người đọc nhận được gì. Đường dẫn tự tạo từ tiêu đề; sửa nếu quá dài.</p></div>\n<div class=\"tpl-item\"><h3>Viết đoạn tóm tắt và đoạn dẫn</h3><p>Tóm tắt hiện ở danh sách bài; đoạn dẫn là đoạn đầu tiên của bài, chữ lớn hơn.</p></div>\n<div class=\"tpl-item\"><h3>Thêm nội dung và khối</h3><p>Chia bài bằng tiêu đề phần (H2), chèn khối khi cần làm nổi bật.</p></div>\n<div class=\"tpl-item\"><h3>Thêm ảnh</h3><p>Ảnh bìa ở cột phải; ảnh trong bài bằng nút \"Chọn hoặc tải ảnh\" của khung ảnh.</p></div>\n<div class=\"tpl-item\"><h3>Lưu, rồi xuất bản</h3><p>Lưu nháp bất cứ lúc nào. Xuất bản ngay hoặc hẹn giờ khi đã đủ mọi ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-split\">\n<div class=\"tpl-media\"><figure><img src=\"/images/guide/media-library.svg\" alt=\"Thư viện ảnh: vùng kéo thả ảnh (tối ưu thành WebP 640, 1280, 1920) và lưới ảnh, một ảnh đang được chọn\" width=\"1200\" height=\"900\" loading=\"lazy\" /></figure></div>\n<div class=\"tpl-body\">\n<h2>Ảnh và chữ</h2>\n<p>Khối này đặt một ảnh cạnh một đoạn chữ (Chèn khối → Ảnh và chữ). Hợp để giới thiệu một phòng, một góc phố cổ, một món ăn sáng.</p>\n<ul>\n<li>Bấm \"Chọn hoặc tải ảnh\" trong khung ảnh để mở thư viện.</li>\n<li>Ảnh tải lên được tối ưu ngay trên trình duyệt: WebP, 3 cỡ, xoá vị trí GPS.</li>\n<li>Luôn điền mô tả ảnh (alt) cho người dùng trình đọc màn hình.</li>\n</ul>\n</div>\n</section>\n<figure class=\"tpl-wide\"><img src=\"/images/guide/layout-map.svg\" alt=\"Sơ đồ một bài viết: đoạn dẫn và hộp ghi chú, thẻ, các bước, ảnh và chữ, lời kêu gọi\" width=\"1600\" height=\"686\" loading=\"lazy\" /><figcaption>Ảnh rộng có chú thích (Chèn khối → Ảnh rộng có chú thích): rộng hơn cột chữ, dùng cho ảnh đẹp nhất hoặc một sơ đồ. Viết chú thích một câu.</figcaption></figure>\n<blockquote class=\"tpl-pull\"><p>“Trích dẫn nổi bật làm người đọc dừng lại: chọn một câu thật, ngắn, của khách hoặc của chủ tiệm.”</p></blockquote>\n<h2>Hỏi đáp</h2>\n<section class=\"tpl-faq\">\n<div class=\"tpl-item\"><h3>Làm sao xoá hoặc bỏ một khối?</h3><p>Đặt con trỏ trong khối: \"Bỏ khung khối\" giữ chữ, nút thùng rác xoá cả khối.</p></div>\n<div class=\"tpl-item\"><h3>Tôi có sửa HTML được không?</h3><p>Có: nút &lt;/&gt; mở chế độ HTML. Máy chủ chỉ giữ thẻ và class được phép khi lưu.</p></div>\n<div class=\"tpl-item\"><h3>Ảnh bìa đặt ở đâu?</h3><p>Cột bên phải, mục \"Ảnh bìa\". Mô tả ảnh bìa nhập ở từng thẻ ngôn ngữ.</p></div>\n</section>\n<section class=\"tpl-cta\">\n<h3>Sẵn sàng viết bài đầu tiên?</h3>\n<p>Lời kêu gọi hành động (Chèn khối → Kêu gọi hành động) đặt cuối bài: một câu mời người đọc gọi điện, nhắn Zalo hay gửi email.</p>\n</section>\n<h2>Trước khi xuất bản</h2>\n<ul>\n<li>Đọc lại tiêu đề và đoạn tóm tắt.</li>\n<li>Kiểm tra giá, giờ, địa chỉ với khách sạn.</li>\n<li>Mọi ảnh đều có mô tả (alt).</li>\n<li>Mọi ngôn ngữ của site đều đã viết.</li>\n<li>Xem bài trên trang web sau khi xuất bản.</li>\n</ul>\n<p class=\"tpl-byline\">Bài mẫu của Lantern House Hội An · Ảnh minh hoạ: SVG của site</p>",
+          "readingMinutes": 5,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "a4429954-5405-4ea2-8ef1-6b56717a3225",
+      "categoryKey": "hoi-an",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "c15dec9a-d638-4551-a6cb-1870a3ab12e3",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:30:09.305Z",
+      "createdAt": "2026-11-14T00:27:30.456Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A full day of peaceful walking exploration in Hoi An Ancient Town",
+          "slug": "a-full-day-of-peaceful-walking-exploration-in-hoi-an-ancient-town",
+          "excerpt": "Suggested Hoi An Ancient Town walking itinerary strolling through mossy alleys and listening to the gentle rhythm of heritage from early dawn to glistening night.",
+          "coverAlt": "A tranquil view of Hoi An Ancient Town with lanterns and the poetic Hoai River at dusk",
+          "body": "<p class=\"tpl-lead\">Some destinations only truly open up when we walk them slowly on our own two feet. A full-day walking <strong>Hoi An Ancient Town itinerary</strong> will guide you through simple, rustic sounds, from early sunbeams by the quiet Hoai River to dusk tinting mossy tiled roofs in red and lanterns illuminating a sky full of nostalgia.</p>\n<h2>Crisp early morning: Greeting the sunrise and peaceful life along the Hoai River</h2>\n<p>When morning mist still lingers over the water and morning chimes softly echo from afar, Hoi An puts on its most pristine, shy charm. Starting your <strong>Hoi An Ancient Town itinerary</strong> at daybreak is a wonderful gift for souls who cherish serenity. Along the Hoai River, wooden boats rest quietly, reflected on the still water, the tranquil scene only gently stirred now and then by a boatman's oar starting a new day.</p>\n<p>Strolling along Bach Dang Street in the fresh air, you will come across steaming, fragrant street food baskets, elderly folks leisurely doing tai chi, and the rustic smiles of locals greeting one another for the new day. This moment brings pure stillness, completely detached from the rush of everyday life.</p>\n<h2>A leisurely morning: Strolling through yellow alleys and mossy tiled roofs</h2>\n<p>As golden sunshine begins to blanket the signature yellow-washed walls, the ancient town awakens with gentle vibrancy. This is the best time to wander through the winding alleys on Tran Phu, Nguyen Thai Hoc, or Hoang Van Thu Street. Each antique wooden house with intricately carved porches, each bougainvillea trellis casting shadows on red brick steps, seems to hold hundreds of years of history.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/1376.webp\" alt=\"A small yellow-walled alley bathed in early morning sunlight in Hoi An Ancient Town\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/640.webp 640w, {{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/1280.webp 1280w, {{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>The quiet yellow of mossy walls under morning light creates a uniquely charming character for the town on the Hoai River.</figcaption></figure>\n<p>Walking in this atmosphere, there is no need to rush with any plan. Let your footsteps guide you to admire green moss on yin-yang tiles, catch the subtle scent of aged wood from traditional houses, and capture frames filled with exquisite natural light.</p>\n<h2>Midday break: Finding a cool spot to listen to the ancient town's rhythm</h2>\n<p>Central Vietnam's midday heat can be intense, which is also when the ancient town slowly eases into a brief siesta. To keep your journey relaxed, pause at a rustic cafe nestled inside a traditional wooden pillar house.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Enjoy refreshing drinks</h3><p>Sip on cool herbal tea to melt away fatigue after a long morning of walking.</p></div><div class=\"tpl-item\"><h3>A quiet courtyard</h3><p>Enjoy the cool breeze drifting through a lush skylight courtyard, where natural light dances on antique patterned tiles.</p></div><div class=\"tpl-item\"><h3>Contemplate the slow pace</h3><p>Listen to the rustle of tree leaves and the gentle whisper of quiet streets with few passersby.</p></div></section>\n<h2>Romantic late afternoon: Sunset bathing tiled bridges and bougainvillea corners in gold</h2>\n<p>As the sun dips toward the horizon, twilight glazes the antique tiled roofs with gold, turning Hoi An into a poetic watercolor painting. Late afternoon is an ideal time to stroll toward curved bridges or wander along the breezy riverbank.</p>\n<blockquote class=\"tpl-pull\"><p>Hoi An at sunset is like a sweet memory box, where evening glow gilds every patch of moss and soothes the traveler's heart.</p></blockquote>\n<p>Vibrant clusters of pink and orange bougainvillea stand out against a blue sky slowly turning into shades of violet. Standing by the boat's edge watching the sparkling river mirror the sunset, you will truly understand why this little town captivates so many hearts.</p>\n<h2>Magical, glowing night: Drifting with candlelit paper lanterns and brilliant glow</h2>\n<p>As night falls, the ancient town transforms into its most splendid self. Thousands of lanterns in diverse shapes and colors light up porches all at once, casting a magical warm glow onto polished stone streets. By night, the Hoai River comes alive with wooden sightseeing boats and flickering lights drifting softly on the water.</p>\n<p>Releasing a small floating lantern into the river with your own hands, making a wish for peace, and watching the candle bob gently into the distance makes for a truly fulfilling end to the day. The tones of folk melodies and cheerful laughter mingling with the scent of incense in the night breeze create unforgettable memories.</p>\n<h2>Handy tips for a more fulfilling walking trip to explore Hoi An</h2>\n<p>To enjoy a smooth walking <strong>Hoi An Ancient Town itinerary</strong> and capture every moment, keep these small yet helpful tips in mind.</p>\n<ul class=\"tpl-check\"><li>Choose soft canvas shoes, sneakers, or comfortable sandals, as cobblestone and brick streets can tire your feet after hours of walking.</li><li>Wear breathable cotton or linen clothes in elegant shades to harmonize with the town's classic yellow tones.</li><li>Bring a conical hat or a small, lovely umbrella both for midday shade and as a natural photo prop.</li><li>The golden hour for crowd-free photos and the best lighting is from 6:00 to 7:30 in the morning.</li></ul>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Should you walk or rent a bicycle to tour the ancient town?</h3><p>Walking is by far the best way to explore every small alley, mossy step, and historic home that vehicles cannot easily reach.</p></div><div class=\"tpl-item\"><h3>Which season of the year is best for a walking tour of the town?</h3><p>The ideal time is from February to August, when the weather is dry, warm and sunny, with wonderfully clear sunsets.</p></div><div class=\"tpl-item\"><h3>Is it easy to get lost walking around Hoi An Ancient Town?</h3><p>The main streets in the ancient town run parallel to the Hoai River in an intuitive grid layout, so you can stroll with complete peace of mind without worrying about getting lost.</p></div></section>\n<section class=\"tpl-cta\"><h3>Take a restful stop at Lantern House Hội An</h3><p>After a day of wandering and tuning in to the ancient town's heartbeat, stop by Lantern House Hội An to rest, enjoy the serene atmosphere, and fully experience the subtle charm of this heritage land.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "A full-day walking itinerary in Hoi An Ancient Town",
+          "seoDescription": "Discover a Hoi An Ancient Town itinerary by walking slowly from early morning by the Hoai River until the streets light up with glowing, emotive flower lanterns."
+        },
+        {
+          "locale": "vi",
+          "title": "Trọn vẹn một ngày đi bộ khám phá phố cổ Hội An bình yên",
+          "slug": "tron-ven-mot-ngay-di-bo-kham-pha-pho-co-hoi-an-binh-yen",
+          "excerpt": "Gợi ý lịch trình phố cổ Hội An bằng đôi chân dạo bước qua ngõ rêu phong, lắng nghe nhịp thở dịu dàng của miền di sản từ ban mai đến đêm lung linh.",
+          "coverAlt": "Toàn cảnh góc phố cổ Hội An yên ả với đèn lồng và dòng sông Hoài thơ mộng lúc chập tối",
+          "body": "<p class=\"tpl-lead\">Có những vùng đất chỉ thực sự mở lòng khi ta chậm rãi chạm bước bằng đôi chân của chính mình. Một <strong>lịch trình phố cổ Hội An</strong> kéo dài trọn vẹn một ngày đi bộ sẽ dẫn lối bạn qua từng thanh âm bình dị, từ vệt nắng sớm bên dòng sông Hoài tĩnh lặng đến ráng chiều nhuộm đỏ mái ngói rêu phong và ánh đèn lồng thắp sáng cả một trời hoài niệm.</p>\n<h2>Sáng sớm tinh khôi: Đón bình minh và nhịp sống êm đềm bên dòng sông Hoài</h2>\n<p>Khi sương sớm còn vờn nhẹ trên mặt nước và tiếng chuông sớm đâu đó khẽ ngân nga, phố Hội khoác lên mình vẻ e ấp nguyên sơ nhất. Bắt đầu <strong>lịch trình phố cổ Hội An</strong> từ lúc bình minh hé rạng là món quà tuyệt diệu dành cho những tâm hồn trân quý sự an yên. Dọc bờ sông Hoài, những chiếc thuyền gỗ nằm lặng lẽ soi bóng dưới làn nước phẳng lặng, không gian tĩnh mịch chỉ chốc chốc khẽ rung rinh bởi mái chèo của người lái đò bắt đầu ngày mới.</p>\n<p>Tản bộ dọc đường Bạch Đằng trong bầu không khí trong lành, bạn sẽ bắt gặp hình ảnh những gánh hàng rong nghi ngút khói thơm, những cụ già thong thả tập dưỡng sinh và nụ cười mộc mạc của người dân bản xứ khi trao nhau lời chào ngày mới. Khoảnh khắc này mang lại sự tĩnh tại thuần khiết, tách biệt hoàn toàn với nhịp sống hối hả thường nhật.</p>\n<h2>Buổi sáng thảnh thơi: Dạo bước qua những con hẻm vàng và mái ngói rêu phong</h2>\n<p>Khi ánh nắng vàng ươm bắt đầu phủ đầy những bức tường quét vôi vàng đặc trưng, phố cổ bừng sáng một sức sống dịu dàng. Đây là thời điểm tuyệt vời nhất để bạn lạc bước qua những con ngõ nhỏ quanh co trên đường Trần Phú, Nguyễn Thái Học hay Hoàng Văn Thụ. Từng nếp nhà gỗ cổ kính với hàng hiên chạm khắc tinh xảo, từng giàn hoa giấy rủ bóng xuống thềm gạch đỏ đều như cất giữ những câu chuyện hàng trăm năm lịch sử.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/1376.webp\" alt=\"Con hẻm nhỏ tường vàng ngập nắng sớm tại phố cổ Hội An\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/640.webp 640w, {{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/1280.webp 1280w, {{media}}/17a52733-a788-41cf-bdbd-965647c5aee6/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /><figcaption>Màu vàng trầm mặc của những bức tường rêu phong dưới nắng mai tạo nên nét duyên dáng rất riêng của phố Hoài.</figcaption></figure>\n<p>Đi bộ trong không gian này, bạn không cần vội vã với bất kỳ kế hoạch nào. Hãy để bước chân dẫn lối ngắm nhìn rêu xanh bám trên từng phiến ngói âm dương, cảm nhận mùi hương gỗ thoang thoảng từ các nếp nhà xưa và lưu giữ lại những khung hình tràn ngập ánh sáng tự nhiên tuyệt mỹ.</p>\n<h2>Nghỉ chân ban trưa: Tìm góc quán mát lành để lắng nghe nhịp thở phố cổ</h2>\n<p>Buổi trưa miền Trung thường mang cái nắng hanh nồng, và đó cũng là lúc phố cổ chùng chình đi vào giấc nghỉ ngơi ngắn ngủi. Để tiếp tục hành trình một cách thư thái, hãy chọn dừng chân tại một góc quán mộc mạc ẩn mình trong nếp nhà rường truyền thống.</p>\n<section class=\"tpl-cards\"><div class=\"tpl-item\"><h3>Thưởng thức thức uống mát lành</h3><p>Nhấp từng ngụm nước lá thảo mộc mát rượi, xua tan cảm giác mỏi mệt sau buổi sáng dài dạo bước.</p></div><div class=\"tpl-item\"><h3>Khoảng sân trong yên ả</h3><p>Tận hưởng làn gió mát luồn qua giếng trời rợp bóng cây xanh, nơi ánh sáng tự nhiên nhảy múa trên nền gạch hoa cổ.</p></div><div class=\"tpl-item\"><h3>Chiêm nghiệm nhịp thở chậm</h3><p>Lắng nghe thanh âm rì rào của những tán lá và tiếng thì thầm dịu nhẹ của phố xá lúc vắng người qua lại.</p></div></section>\n<h2>Chiều buông lãng mạn: Hoàng hôn nhuộm vàng cầu ngói và những góc hoa giấy</h2>\n<p>Khi mặt trời lùi dần về phía chân trời, ánh tà dương dát vàng lên từng mái ngói cổ kính, biến Hội An thành một bức tranh thủy mặc đượm chất thơ. Buổi chiều tà là khoảng thời gian lý tưởng để bạn rảo bước về phía những cây cầu cong cong hay dạo quanh khu vực bờ kè lộng gió.</p>\n<blockquote class=\"tpl-pull\"><p>Hội An lúc hoàng hôn như chiếc hộp ký ức ngọt ngào, nơi ráng chiều dát vàng từng nếp rêu và ru êm lòng người lữ khách.</p></blockquote>\n<p>Những chùm hoa giấy rực rỡ sắc hồng, cam nổi bật trên nền trời xanh biếc dần chuyển sang sắc tím lam. Đứng bên mạn thuyền nhìn dòng sông lấp lánh phản chiếu ánh hoàng hôn, bạn sẽ cảm nhận sâu sắc vì sao thị trấn nhỏ bé này lại khiến biết bao trái tim phải xao xuyến khôn nguôi.</p>\n<h2>Đêm lung linh huyền ảo: Thả hồn theo dòng hoa đăng và ánh đèn lồng rực rỡ</h2>\n<p>Màn đêm buông xuống cũng là lúc phố cổ chuyển mình lộng lẫy nhất. Hàng ngàn chiếc đèn lồng đủ hình dáng, sắc màu đồng loạt thắp sáng các hiên nhà, hắt lên mặt đường đá bóng loáng thứ ánh sáng ấm áp diệu kỳ. Dòng sông Hoài đêm về trở nên sống động với những chiếc thuyền gỗ chở người dạo cảnh và những đóm sáng bập bùng trôi lững lờ.</p>\n<p>Tự tay thả một chiếc hoa đăng nhỏ xuống lòng sông, gửi gắm ước nguyện bình an và nhìn ngọn nến bồng bềnh trôi xa là trải nghiệm kết lại một ngày dài đầy trọn vẹn. Âm sắc của các làn điệu dân gian, tiếng cười nói rộn rã hòa cùng mùi hương trầm thoảng bay trong gió đêm tạo nên ký ức khó phai mờ.</p>\n<h2>Mẹo nhỏ bỏ túi để chuyến đi bộ khám phá Hội An thêm trọn vẹn</h2>\n<p>Để thực hiện một <strong>lịch trình phố cổ Hội An</strong> bằng đường bộ thật êm ái và lưu giữ trọn vẹn từng khoảnh khắc, bạn hãy lưu tâm đến một vài chi tiết nhỏ nhưng vô cùng hữu ích sau đây.</p>\n<ul class=\"tpl-check\"><li>Lựa chọn giày vải mềm, giày thể thao hoặc dép êm chân vì mặt đường lát đá và gạch có thể gây mỏi sau nhiều giờ đi bộ.</li><li>Chuẩn bị trang phục bằng chất liệu cotton, linen thoáng mát, mang gam màu trang nhã để hài hòa cùng sắc vàng cổ điển của phố.</li><li>Mang theo nón lá hoặc một chiếc ô nhỏ xinh vừa che nắng ban trưa, vừa làm đạo cụ chụp ảnh tự nhiên.</li><li>Khung giờ vàng để chụp ảnh vắng người và bắt trọn ánh sáng đẹp nhất là từ sáu giờ đến bảy giờ ba mươi phút sáng.</li></ul>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Nên đi bộ hay thuê xe đạp dạo phố cổ?</h3><p>Đi bộ hoàn toàn là cách tuyệt vời nhất để khám phá từng ngõ nhỏ, bậc thềm rêu phong và các nếp nhà cổ mà các phương tiện giao thông khó tiếp cận.</p></div><div class=\"tpl-item\"><h3>Mùa nào trong năm thích hợp nhất cho việc đi bộ ngắm phố?</h3><p>Thời điểm lý tưởng nhất là từ tháng hai đến tháng tám, khi thời tiết khô ráo, nắng ấm chan hòa và ráng chiều rất trong trẻo.</p></div><div class=\"tpl-item\"><h3>Đi bộ trong phố cổ Hội An có dễ bị lạc đường không?</h3><p>Các tuyến đường chính trong phố cổ chạy song song với dòng sông Hoài theo hình bàn cờ rất trực quan, nên bạn hoàn toàn yên tâm dạo bước mà không sợ lạc.</p></div></section>\n<section class=\"tpl-cta\"><h3>Dừng chân nghỉ ngơi tại Lantern House Hội An</h3><p>Sau một ngày rong ruổi lắng nghe từng nhịp đập của phố cổ, hãy ghé thăm Lantern House Hội An để nghỉ chân, thưởng thức không gian an tĩnh và cảm nhận trọn vẹn nét duyên thầm của miền di sản.</p></section>",
+          "readingMinutes": 7,
+          "seoTitle": "Lịch trình phố cổ Hội An trọn vẹn một ngày đi bộ",
+          "seoDescription": "Khám phá lịch trình phố cổ Hội An bằng cách đi bộ chậm rãi từ sớm mai bên sông Hoài đến khi phố lên đèn hoa đăng lung linh đầy cảm xúc."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "5757ad9d-57cc-45f9-baa8-8dbba6179dd9",
+      "categoryKey": "hoi-an",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "37d1d925-28ac-4c3b-acc1-029bedf9abe3",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:30:43.970Z",
+      "createdAt": "2026-11-14T00:30:08.927Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "What to Eat in Hoi An: A Culinary Guide to the Ancient Town Rich in Tradition",
+          "slug": "what-to-eat-in-hoi-an-a-culinary-guide-to-the-ancient-town-rich-in-tradition",
+          "excerpt": "Must-try delicacies in Hoi An from cao lau and chicken rice to sweet desserts, making for a memorable culinary journey with Lantern House Hội An.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Setting foot in this tranquil heritage land by the Hoai River, what enchants travelers is not only the mossy yellow walls or the vibrant lanterns glowing at night, but also the soul nestled within each rustic dish. If you are wondering <strong>what to eat in Hoi An</strong> to fully experience its flavors, let <strong>Lantern House Hội An</strong> take you on a stroll through small alleyways, listening to cultural stories told through the heartwarming tastes of this historic land.</p>\n<h2>Discover the Charm of Hoi An Cuisine</h2>\n<p>Hoi An cuisine is a wonderful crystallization of the rich history of a bustling international trading port and the warm, genuine nature of the Quang Nam people. Unpretentious in presentation, each local dish wins hearts with meticulous care in selecting fresh ingredients and traditional family recipes passed down through generations. The natural sweetness of vegetables, the subtle aroma of local herbs, and the spicy kick of chili jam come together to create an unforgettable culinary impression.</p>",
+          "readingMinutes": 1,
+          "seoTitle": "What to Eat in Hoi An? An Exquisite Hoi An Culinary Guide",
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Ăn gì ở Hội An: Cẩm nang ẩm thực phố cổ đượm vị truyền thống",
+          "slug": "an-gi-o-hoi-an-cam-nang-am-thuc-pho-co-duom-vi-truyen-thong",
+          "excerpt": "Gợi ý những món ngon không thể bỏ lỡ tại phố Hội từ cao lầu, cơm gà đến chè ngọt lành, giúp bạn có một hành trình ẩm thực đáng nhớ cùng Lantern House Hội An.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Đặt chân đến mảnh đất di sản trầm mặc bên dòng sông Hoài, điều níu chân người lữ khách không chỉ là những bức tường vàng rêu phong hay ánh đèn lồng rực rỡ khi đêm về, mà còn là linh hồn ẩn hiện trong từng món ăn mộc mạc. Nếu bạn đang băn khoăn tự hỏi <strong>ăn gì ở Hội An</strong> để cảm nhận trọn vẹn phong vị nơi này, hãy cùng <strong>Lantern House Hội An</strong> dạo bước qua từng góc phố nhỏ, lắng nghe câu chuyện văn hóa được kể bằng hương vị thân thương của đất kinh kỳ xưa.</p>\n<h2>Khám phá nét cuốn hút của ẩm thực phố Hội</h2>\n<p>Ẩm thực Hội An là sự kết tinh kỳ diệu giữa chiều sâu lịch sử của một thương cảng quốc tế sầm uất và nét chân chất, đôn hậu của con người xứ Quảng. Không cầu kỳ về hình thức bài trí, mỗi món ăn phố Hội chinh phục lòng người nhờ sự chăm chút tỉ mỉ trong cách chọn nguyên liệu tự nhiên cùng bí quyết gia truyền qua nhiều thế hệ. Vị ngọt thanh của rau củ, hương thơm dịu của thảo mộc bản địa hòa quyện cùng vị cay nồng của ớt rim tạo nên dấu ấn vị giác khó phai mờ.</p>",
+          "readingMinutes": 1,
+          "seoTitle": "Ăn gì ở Hội An? Cẩm nang ẩm thực phố Hội tinh tế",
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "92342cfb-4210-420d-9468-1519c8298acc",
+      "categoryKey": "stay",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": null,
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:41:12.630Z",
+      "createdAt": "2026-11-14T00:38:14.174Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Tips for choosing a hotel room near Hội An Ancient Town",
+          "slug": "tips-for-choosing-a-hotel-room-near-hoi-an-ancient-town",
+          "excerpt": "A guide to choosing boutique hotel rooms near Hội An Ancient Town for couples, families, and friends to fully enjoy their holiday.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Mossy tiled roofs, glowing lanterns, and a relaxed pace of life make Hội An a favorite destination for many travelers. Finding a <strong>hotel near Hội An Ancient Town</strong> not only makes strolling around effortless but also offers a peaceful retreat. To make the most of your stay, picking the right room type for your travel companions is essential.</p>\n<h2>The charm of a boutique stay near Hội An Ancient Town</h2>\n<p>Unlike massive resorts, boutique hotels offer an intimate feel thanks to their modest size and decor steeped in local culture. Every corner is thoughtfully curated with rustic materials like wood, ceramics, and woven rattan, creating a harmonious blend of traditional charm and modern touches.</p>\n<p>Moreover, being located close to the heart of the ancient town allows you to easily take an early morning stroll by the Hoài River or drop by famous local eateries at sunset without spending much time traveling.</p>",
+          "readingMinutes": 1,
+          "seoTitle": null,
+          "seoDescription": null
+        },
+        {
+          "locale": "vi",
+          "title": "Bí quyết chọn phòng khách sạn gần phố cổ Hội An",
+          "slug": "bi-quyet-chon-phong-khach-san-gan-pho-co-hoi-an",
+          "excerpt": "Kinh nghiệm chọn phòng nghỉ tại khách sạn boutique gần phố cổ Hội An phù hợp cho cặp đôi, gia đình và nhóm bạn để tận hưởng trọn vẹn kỳ nghỉ.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Những mái ngói rêu phong, ánh đèn lồng rực rỡ và nhịp sống chậm rãi luôn khiến phố Hội trở thành điểm dừng chân yêu thích của nhiều du khách. Việc tìm kiếm một <strong>khách sạn gần phố cổ Hội An</strong> không chỉ giúp việc tản bộ trở nên thuận tiện mà còn mang lại trải nghiệm nghỉ dưỡng thư thái. Để có một kỳ nghỉ thật trọn vẹn, việc lựa chọn đúng loại phòng phù hợp với đối tượng đồng hành là điều vô cùng quan trọng.</p>\n<h2>Sức hút của trải nghiệm lưu trú boutique gần phố cổ Hội An</h2>\n<p>Khác với những khu nghỉ dưỡng đồ sộ, mô hình khách sạn boutique mang lại cảm giác thân thuộc nhờ quy mô phòng vừa phải cùng lối bài trí mang đậm dấu ấn văn hóa bản địa. Từng góc nhỏ trong không gian thường được chăm chút bằng vật liệu mộc mạc như gỗ, gốm và mây tre đan, tạo nên sự giao thoa hài hòa giữa nét truyền thống và hơi thở hiện đại.</p>\n<p>Bên cạnh đó, vị trí gần trung tâm khu phố cổ cho phép du khách dễ dàng dạo bước ngắm nhìn dòng sông Hoài vào ban sớm hay ghé thăm các hàng quán ẩm thực trứ danh khi chiều buông mà không mất nhiều thời gian di chuyển.</p>",
+          "readingMinutes": 1,
+          "seoTitle": null,
+          "seoDescription": null
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "3f852459-e25c-4819-8d4e-6c65dcd42b36",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "73d986d2-ad4d-45c6-a798-dd94895ebc64",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T00:41:50.792Z",
+      "createdAt": "2026-11-14T00:41:05.496Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "Hội An Cycling Journey: Visiting Trà Quế and Catching the Breeze at An Bàng Beach",
+          "slug": "hoi-an-cycling-journey-visiting-tra-que-and-catching-the-breeze-at-an-bang-beach",
+          "excerpt": "Leisurely cycling through Hội An's lush green vegetable beds in Trà Quế, then catching the fresh, cool breeze along the peaceful, rustic shore of An Bàng Beach.",
+          "coverAlt": "A small bicycle parked along a lush village road in the outskirts of Hội An",
+          "body": "<p class=\"tpl-lead\">There is an immensely gentle Hội An that lies not behind the mossy yellow walls of the ancient town, but appears with every pedal turn along quiet suburban lanes. A <strong>cycling trip in Hội An</strong> to the fragrant Trà Quế vegetable village and unwinding by breezy An Bàng Beach will bring you moments of pure relief, far away from everyday hustle and bustle.</p>\n<h2>Why cycling in Hội An is an unmissable experience</h2>\n<p>Unlike the rush of urban life, Hội An feels made for a slower pace. Choosing a bicycle gives you the chance to feel the breeze brushing through your hair, hear birds hopping between bamboo branches, and catch the warm, gentle smiles of local women sitting on their porches.</p>\n<p>The terrain here is flat, with winding village paths connecting lush, tree-shaded hamlets. A <strong>Hội An cycling</strong> experience gives you the freedom to pause anywhere just to admire roadside wildflowers or breathe in the earthy scent of alluvial soil after a gentle rain.</p>\n<blockquote class=\"tpl-pull\"><p>Cycling is not just a way to get around; it is the key that opens emotional doors to connect deeply with Hội An's nature.</p></blockquote>\n<h2>Leisurely catching the morning sun on the way to Trà Quế vegetable village</h2>\n<p>When morning dew still clings to leaves and early sunlight paints the water golden, setting off on a small bicycle is the perfect choice. The road to Trà Quế vegetable village gradually leaves the bustling town behind, opening into an expansive space filled with rustling bamboo groves and calm waterways.</p>\n<p>Every pedal stroke brings a wonderfully relaxing feeling. With no blaring horns, only the rhythmic click of bicycle chains mingling with rustic morning greetings from villagers heading to the fields, it evokes a pure and heartwarming memory.</p>\n<h2>Experiencing refreshing greens and rustic life in Trà Quế</h2>\n<p>Stepping into Trà Quế vegetable village, you are greeted by endless stretches of lush, vibrant green. The village is famed for its traditional farming methods, fertilized with seaweed gathered from local freshwater lagoons, giving each herb its uniquely rich flavor.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6cef35f5-a415-4635-945c-e220b839673f/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6cef35f5-a415-4635-945c-e220b839673f/640.webp 640w, {{media}}/6cef35f5-a415-4635-945c-e220b839673f/1280.webp 1280w, {{media}}/6cef35f5-a415-4635-945c-e220b839673f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Park your bike by a hibiscus hedge and take a leisurely stroll along the smooth brown earthen paths. The fragrant scent of lemon basil, perilla, and scallions blended with moist soil fills the air with unexpected refreshment. Watching the farmers swiftly watering the beds with wooden ladles, you will understand how this land has preserved its gentle, rustic soul through the years.</p>\n<h2>Following rice-scented trails toward An Bàng Beach</h2>\n<p>Saying goodbye to the lush green vegetable beds, your ride continues past peaceful lagoons and rice fields. The road connecting the vegetable village to An Bàng Beach winds like a soft silk ribbon through a pastoral landscape.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>A fresh start</h3><p>Depart gently from the center along shaded small paths, welcoming the warm morning sun.</p></div><div class=\"tpl-item\"><h3>Stop at Trà Quế</h3><p>Wander among fragrant vegetable beds, breathe in herbal aromas, and appreciate the farmers' diligence.</p></div><div class=\"tpl-item\"><h3>Leisurely heading to the sea</h3><p>Ride across fragrant fields and embrace the increasingly salty sea breeze ahead.</p></div></section>\n<p>As you draw closer to the sea, the air becomes breezier. The fragrance of young rice gradually gives way to the distinct, salty tang of the ocean, coaxing your pedals to turn faster toward the crashing waves.</p>\n<h2>A peaceful pause by An Bàng's waves at dusk</h2>\n<p>An Bàng Beach unfolds before you with gently sloping sands and whistling casuarina trees. You can lean your bicycle against a shady tree trunk, kick off your shoes, and let your bare feet touch the cool, powdery sand.</p>\n<p>As sunset falls, the sea glistens as if plated in gold. Sitting quietly to listen to the crashing waves and watch round basket boats bobbing in the distance, all the day's fatigue seems to melt away, making room for complete peace of mind.</p>\n<h2>A few handy tips for a rewarding cycling trip</h2>\n<section class=\"tpl-callout tpl-tip\"><h3>Ideal time and attire</h3><p>You should start your journey in the early morning or mid-afternoon to avoid the harsh midday sun. Choose light, breathable clothing, wear a wide-brimmed hat, and do not forget a personal water bottle to stay hydrated along the way.</p></section>\n<p>A <strong>Hội An cycling</strong> trip is not a race to a destination, but a journey to savor every moment along the way. Keep a smile on your face and be ready to stop and greet the locals, as their warmth and hospitality are the most cherished gifts you will receive.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Is the cycling route to Trà Quế and An Bàng difficult?</h3><p>This route is very easy to ride, featuring flat village roads, few inclines, and minimal heavy traffic—ideal for anyone who loves taking things slow.</p></div><div class=\"tpl-item\"><h3>How much time should you spend on this trip?</h3><p>A leisurely morning or afternoon is the ideal amount of time to cycle, wander around the vegetable village, and unwind by the sea.</p></div><div class=\"tpl-item\"><h3>Can you stop and take breaks along the way?</h3><p>Along the way, there are plenty of rustic drink stalls beside lotus ponds or under bamboo shade. You can easily stop for a refreshing cold drink and a friendly chat with the locals.</p></div></section>\n<section class=\"tpl-cta\"><h3>See you on the roads of Hội An</h3><p>If you are looking for a warm haven to start your journeys across Hội An, Lantern House Hội An is always ready to welcome you with heartfelt warmth and tranquility.</p></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Cycling in Hội An: Experience Trà Quế and An Bàng Beach",
+          "seoDescription": "Discover rustic beauty while cycling through Hội An, visiting the verdant Trà Quế vegetable village, and watching the sunset over tranquil An Bàng Beach."
+        },
+        {
+          "locale": "vi",
+          "title": "Hành trình đạp xe Hội An: Ghé Trà Quế và đón gió biển An Bàng",
+          "slug": "hanh-trinh-dap-xe-hoi-an-ghe-tra-que-va-don-gio-bien-an-bang",
+          "excerpt": "Thong dong đạp xe Hội An qua những luống rau xanh mướt Trà Quế rồi đón làn gió mát lành bên bờ biển An Bàng thanh bình, mộc mạc.",
+          "coverAlt": "Chiếc xe đạp nhỏ đỗ bên con đường làng xanh mát tại vùng ngoại ô Hội An",
+          "body": "<p class=\"tpl-lead\">Có một Hội An rất đỗi dịu dàng không nằm sau những bức tường vàng rêu phong nơi phố cổ, mà ẩn hiện qua từng vòng quay xe lăn đều trên những lối nhỏ ngoại ô. Chuyến <strong>đạp xe Hội An</strong> tìm về làng rau Trà Quế thơm thảo và thả hồn bên bờ biển An Bàng lộng gió sẽ mang lại cho bạn những nhịp thở nhẹ nhõm, tách biệt hoàn toàn khỏi những xô bồ thường nhật.</p>\n<h2>Vì sao đạp xe Hội An là trải nghiệm không nên bỏ lỡ?</h2>\n<p>Khác với nhịp sống hối hả nơi đô thị, đất trời Hội An dường như sinh ra là để đón nhận những bước chân chậm rãi. Chọn phương tiện xe đạp, bạn có cơ hội cảm nhận từng làn gió vờn qua mái tóc, nghe rõ tiếng chim chuyền cành trong bụi tre và bắt gặp nụ cười hồn hậu của các bà, các mẹ bên hiên nhà.</p>\n<p>Địa hình nơi đây bằng phẳng, những con đường làng quanh co nối liền các thôn xóm rợp bóng cây xanh mát. Trải nghiệm <strong>đạp xe Hội An</strong> giúp bạn tự do dừng lại bất cứ nơi đâu chỉ để ngắm một luống hoa dại ven đường, hay lắng nghe mùi bùn đất phù sa ngai ngái bốc lên sau cơn mưa nhẹ.</p>\n<blockquote class=\"tpl-pull\"><p>Đạp xe không đơn thuần là phương tiện di chuyển, mà là chiếc chìa khóa mở ra cánh cửa cảm xúc để bạn kết nối sâu sắc cùng thiên nhiên phố Hội.</p></blockquote>\n<h2>Thảnh thơi đón nắng sớm trên đường về làng rau Trà Quế</h2>\n<p>Khi những giọt sương mai còn đọng trên kẽ lá và nắng sớm vừa ươm vàng mặt nước, xuất phát trên chiếc xe đạp nhỏ là lựa chọn tuyệt vời nhất. Con đường dẫn lối về làng rau Trà Quế tách dần khỏi sự nhộn nhịp của phố thị, mở ra khoảng không gian khoáng đạt với rặng tre rì rào và mương nước êm đềm.</p>\n<p>Mỗi nhịp đạp xe mang lại cảm giác thư thái lạ kỳ. Không tiếng còi xe inh ỏi, chỉ có âm thanh xích xe lách cách nhịp nhàng hòa cùng tiếng chào hỏi mộc mạc của người làng ra đồng sớm, gợi nhắc về một miền ký ức trong trẻo và thân thương.</p>\n<h2>Trải nghiệm sắc xanh dịu mát và nếp sống mộc mạc tại Trà Quế</h2>\n<p>Đặt chân đến làng rau Trà Quế, đón chào bạn là một màu xanh non mơn mởn trải dài tít tắp. Nơi đây nổi tiếng với phương thức canh tác truyền thống, bón bằng rong vớt từ đầm nước ngọt nên từng nhánh rau đều mang hương vị nồng đượm rất riêng.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/6cef35f5-a415-4635-945c-e220b839673f/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/6cef35f5-a415-4635-945c-e220b839673f/640.webp 640w, {{media}}/6cef35f5-a415-4635-945c-e220b839673f/1280.webp 1280w, {{media}}/6cef35f5-a415-4635-945c-e220b839673f/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Hãy dựng xe bên bờ rào râm bụt, thong thả dạo bước trên những lối đất nâu mịn. Mùi hương ngát đượm của húng é, tía tô, hành hoa quyện cùng mùi đất ẩm sực vào cánh mũi mang lại cảm giác sảng khoái bất ngờ. Nhìn đôi tay thoăn thoắt tưới nước bằng gáo gỗ của các bác nông dân, bạn sẽ hiểu vì sao mảnh đất này lại giữ được nét thuần hậu qua bao tháng năm.</p>\n<h2>Men theo triền đường thơm mùi lúa hướng ra biển An Bàng</h2>\n<p>Tạm biệt những luống rau xanh rì, hành trình tiếp tục đưa bánh xe lướt qua những triền đầm và cánh đồng lúa thanh bình. Cung đường nối từ làng rau ra biển An Bàng như dải lụa mềm uốn lượn giữa bức tranh thôn dã.</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Khởi đầu thanh tân</h3><p>Khởi hành nhẹ nhàng từ trung tâm theo những nhánh đường nhỏ rợp bóng mát, đón nắng sớm ấm áp.</p></div><div class=\"tpl-item\"><h3>Dừng chân Trà Quế</h3><p>Dạo bước giữa các luống rau thơm, hít hà hương thảo mộc và cảm nhận sự cần cù của người nông dân.</p></div><div class=\"tpl-item\"><h3>Thong dong hướng biển</h3><p>Băng qua triền ruộng thơm ngát, đón làn gió biển mằn mặn ngày một đậm đà phía trước.</p></div></section>\n<p>Càng về gần biển, không khí càng trở nên thoáng đãng hơn. Mùi thơm của lúa mới dần nhường chỗ cho vị mặn mòi nồng nàn đặc trưng của đại dương, thôi thúc từng vòng quay xe lăn nhanh hơn về phía bờ sóng vỗ.</p>\n<h2>Khoảng lặng thư giãn bên bờ sóng An Bàng buổi chiều tà</h2>\n<p>Biển An Bàng mở ra trước mắt với bờ cát thoai thoải và rặng phi lao vi vu trong gió. Bạn có thể tựa chiếc xe đạp dưới gốc phi lao râm mát, cởi bỏ đôi giày để đôi chân trần chạm vào bãi cát mịn màng mát rượi.</p>\n<p>Khi ánh hoàng hôn buông dần, mặt biển lấp lánh như được dát vàng. Ngồi lặng yên nghe tiếng sóng vỗ bờ, ngắm những chiếc thuyền thúng nhấp nhô xa xa, bao nhọc nhằn của chặng đường dường như tan biến hết, nhường chỗ cho sự an yên tròn đầy trong tâm hồn.</p>\n<h2>Một số lời khuyên bỏ túi cho hành trình đạp xe thêm trọn vẹn</h2>\n<section class=\"tpl-callout tpl-tip\"><h3>Thời điểm và trang phục lý tưởng</h3><p>Bạn nên bắt đầu chuyến đi vào sáng sớm hoặc đầu giờ chiều để tránh ánh nắng gắt gỏng giữa trưa. Hãy lựa chọn trang phục gọn nhẹ, chất liệu thấm hút mồ hôi, đội nón rộng vành và đừng quên chuẩn bị một bình nước cá nhân để bổ sung năng lượng suốt đường đi.</p></section>\n<p>Chuyến <strong>đạp xe Hội An</strong> không phải là một cuộc đua về đích đến, mà là hành trình tận hưởng từng khoảnh khắc trên đường. Hãy luôn giữ nụ cười và sẵn sàng dừng lại chào hỏi người dân bản địa, bởi sự hiếu khách của họ chính là món quà ấm áp nhất bạn nhận được.</p>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Tuyến đường đạp xe đến Trà Quế và An Bàng có khó đi không?</h3><p>Cung đường này rất dễ đi vì đường làng bằng phẳng, ít dốc và không quá đông xe cộ lớn, phù hợp cho hầu hết mọi người yêu thích sự chậm rãi.</p></div><div class=\"tpl-item\"><h3>Nên dành bao nhiêu thời gian cho chuyến đi này?</h3><p>Một buổi sáng hoặc một buổi chiều thảnh thơi là khoảng thời gian lý tưởng để bạn vừa đạp xe, vừa dạo chơi làng rau và nghỉ ngơi ngắm biển thoải mái.</p></div><div class=\"tpl-item\"><h3>Có thể dừng chân nghỉ ngơi dọc đường không?</h3><p>Dọc đường có rất nhiều quán nước mộc mạc bên hồ sen hoặc bóng tre. Bạn hoàn toàn có thể dừng chân thưởng thức ly nước mát lành và trò chuyện cùng người dân.</p></div></section>\n<section class=\"tpl-cta\"><h3>Hẹn gặp bạn trên những cung đường Hội An</h3><p>Nếu bạn đang tìm kiếm một khoảng trời an trú ấm áp để khởi đầu cho những chuyến rong ruổi phố Hội, Lantern House Hội An luôn sẵn sàng chào đón bạn bằng tất cả sự chân tình và bình yên.</p></section>",
+          "readingMinutes": 6,
+          "seoTitle": "Đạp xe Hội An: Trải nghiệm Trà Quế và biển An Bàng",
+          "seoDescription": "Khám phá nét đẹp bình dị khi đạp xe Hội An ghé thăm làng rau Trà Quế tươi xanh và ngắm hoàng hôn buông trên bãi biển An Bàng êm đềm."
+        }
+      ],
+      "redirects": []
+    },
+    {
+      "id": "24603aa6-f43e-44aa-84ce-0b3c3df97533",
+      "categoryKey": "guide",
+      "status": "published",
+      "featured": false,
+      "coverMediaId": "cf902e6c-ac8e-4813-bdc6-d3dbc3b660a2",
+      "scheduledAt": null,
+      "publishedAt": "2026-11-14T01:11:10.898Z",
+      "createdAt": "2026-11-14T00:48:39.387Z",
+      "translations": [
+        {
+          "locale": "en",
+          "title": "A Complete Guide to Releasing Floating Lanterns on Hoi An's Full Moon Night",
+          "slug": "a-complete-guide-to-releasing-floating-lanterns-on-hoi-an-s-full-moon-night",
+          "excerpt": "Discover the sparkling beauty and cultural significance of releasing lanterns on the Hoai River, leaving peaceful memories amidst Hoi An's full moon night.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">With every full moon, Hoi An dresses itself in a tranquil yet wondrously magical charm. Putting aside the rush of daily life, <strong>Hoi An's full moon night</strong> is a moment for travelers to reconnect with pure emotions, where the soft lantern glow blends into the gentle Hoai River to weave a poetic evening.</p>\n<h2>The special charm of Hoi An's full moon night as the lights turn on</h2>\n<p>As twilight settles over the moss-covered tiled roofs, the ancient town transforms with a completely different rhythm. Modern electric lights give way to countless colorful <strong>handmade lanterns</strong> hanging along antique eaves. Through the small alleys, the subtle scent of incense mingles with the unhurried footsteps of passersby, creating a nostalgic, cozy atmosphere.</p>\n<p>The most magical highlight of Hoi An's nightscape is the sparkling reflection on the water. The bright full moon reflects on the river, blending with the vibrant colors of the town on both banks, making <strong>Hoi An's full moon night</strong> an unforgettable visual and soulful experience for anyone visiting.</p>\n<h2>The humanistic meaning behind the lantern floating custom on the Hoai River</h2>\n<p>Releasing floating lanterns has long been a cultural and spiritual beauty closely tied to the people of Quang Nam. Each small lantern, made of simple paper embracing a flickering candle, symbolizes the flame of faith and purity. As the lantern drifts downstream, the person releasing it sends along heartfelt wishes, praying for peace and well-being for their family and themselves.</p>\n<blockquote class=\"tpl-pull\"><p>Each floating petal drifting gently on the water is a prayer for peace sent toward the future, lighting up hope in the heart of every traveler.</p></blockquote>\n<p>More than just a tourist activity, releasing lanterns is also a way to practice letting go. Watching the glittering light slowly drift away brings a sense of relief, helping us shed daily worries and open our hearts to deep serenity in the heart of this heritage town.</p>\n<h2>The golden hour and best vantage points to view the floating lanterns</h2>\n<p>Dusk, just as sunset fades and the town lights up, is the ideal moment to begin admiring the river. At this time, the sky shifts into a deep blue, accentuating the shimmering trails of candles and lanterns stretching far into the distance.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/640.webp 640w, {{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/1280.webp 1280w, {{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>If you wish to take in a panoramic view of the glittering river without the crowds, embankment sections farther from the central bridge or the second floor of riverside heritage houses are prime spots. Looking down from above, the water looks like a glowing galaxy drifting peacefully through the quiet ancient town.</p>\n<h2>Steps to release a floating lantern and make a wish</h2>\n<p>To make your lantern release truly meaningful and memorable, follow these thoughtful steps:</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Choose a simple floating lantern</h3><p>Pick a skillfully folded handmade paper lantern in your favorite color from the friendly vendors along the riverbank.</p></div><div class=\"tpl-item\"><h3>Light the candle with sincere intent</h3><p>Shield the small candle from the wind to light it, hold the lantern with both hands, and close your eyes to make a wish for peace and good fortune.</p></div><div class=\"tpl-item\"><h3>Gently release the lantern into the water</h3><p>Lean close to the water's edge or use a dedicated lowering pole to set the lantern down gently, keeping the paper petals dry.</p></div><div class=\"tpl-item\"><h3>Watch your wishing lantern drift away</h3><p>Take a few moments to watch the candle drift away with the current, feeling a sense of peace spread through your mind.</p></div></section>\n<h2>Tips for fully enjoying Hoi An's full moon night</h2>\n<p>Since the ancient town tends to get quite crowded during the full moon, approaching the evening with patience and care will make your experience much more relaxing and enjoyable.</p>\n<ul class=\"tpl-check\"><li>Wear comfortable clothes and flat or lightweight walking shoes to easily stroll along the historic cobblestone streets.</li><li>Always stay mindful of safety when moving near embankments or stepping on and off wooden boats along the Hoai River.</li><li>Only use lanterns made entirely of natural paper to protect the water environment of this heritage river.</li><li>Avoid pushing, keep order, and respect the quiet atmosphere of the historic houses and fellow sightseers.</li></ul>\n<h2>Frequently asked questions when visiting the ancient town on full moon nights</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>When does Hoi An's full moon night take place during the month?</h3><p>The ancient town turns off electric lights and illuminates lanterns starting at dusk on the 14th and 15th days of each lunar month, creating its signature romantic setting.</p></div><div class=\"tpl-item\"><h3>Do you have to take a boat to release floating lanterns?</h3><p>You can easily release lanterns from the river steps or opt for a ride on a rustic wooden boat to enjoy floating gently under the moonlit waters.</p></div><div class=\"tpl-item\"><h3>How can you avoid the crowds when watching the lanterns?</h3><p>Head to the Hoai River area around sunset to find an uncrowded spot, and keep an eye on your personal belongings while walking around.</p></div></section>",
+          "readingMinutes": 4,
+          "seoTitle": "Tips for the Best Lantern Floating Experience on Hoi An's Full Moon Night",
+          "seoDescription": "A guide to strolling through the ancient town and releasing lanterns on Hoi An's full moon night, featuring prime viewing spots, meaningful insights, and practical tips for your trip."
+        },
+        {
+          "locale": "vi",
+          "title": "Trọn Vẹn Trải Nghiệm Thả Hoa Đăng Đêm Rằm Hội An",
+          "slug": "tron-ven-trai-nghiem-tha-hoa-dang-dem-ram-hoi-an",
+          "excerpt": "Khám phá vẻ đẹp lung linh và ý nghĩa văn hóa của tục thả hoa đăng sông Hoài, để lại kỷ niệm an yên trong không gian đêm rằm Hội An.",
+          "coverAlt": null,
+          "body": "<p class=\"tpl-lead\">Mỗi dịp trăng tròn ghé qua, phố Hội lại khoác lên mình tấm áo trầm mặc mà huyền ảo lạ kỳ. Tạm gác lại nhịp sống vội vã, <strong>đêm rằm Hội An</strong> là khoảnh khắc người lữ khách tìm về với những rung cảm nguyên sơ, nơi ánh sáng dịu êm của đèn lồng hòa vào dòng sông Hoài êm ả để dệt nên một đêm thi ca đầy chất thơ.</p>\n<h2>Sức hút đặc biệt của đêm rằm phố Hội khi lên đèn</h2>\n<p>Khi ráng chiều buông xuống bên mái ngói rêu phong, không gian phố cổ bắt đầu chuyển mình trong một nhịp thở hoàn toàn khác. Những ánh đèn điện hiện đại dần nhường chỗ cho muôn vàn chiếc <strong>đèn lồng thủ công</strong> rực rỡ sắc màu treo dọc các mái hiên cổ kính. Khắp các ngõ nhỏ, hương trầm thoang thoảng quyện cùng tiếng bước chân thong dong của dòng người tản bộ tạo nên bầu không khí hoài niệm, ấm cúng.</p>\n<p>Điểm nhấn kỳ diệu nhất trong bức tranh phố Hội chính là sự phản chiếu lung linh trên mặt nước. Trăng rằm vằng vặc soi bóng xuống dòng sông, kết hợp cùng sắc màu rực rỡ của phố thị hai bên bờ, biến <strong>đêm rằm Hội An</strong> thành một trải nghiệm thị giác và tâm hồn khó phai mờ đối với bất kỳ ai từng ghé qua.</p>\n<h2>Ý nghĩa nhân văn của phong tục thả đèn hoa đăng trên sông Hoài</h2>\n<p>Tục thả hoa đăng từ lâu đã trở thành một nét đẹp tâm linh và văn hóa gắn liền mật thiết với người dân xứ Quảng. Mỗi chiếc đèn nhỏ nhắn làm từ giấy mộc mạc, ôm lấy một ngọn nến le lói, tượng trưng cho ngọn lửa của niềm tin và sự thuần khiết. Khi ngọn đèn được thả xuôi dòng nước, người thả gửi gắm vào đó những tâm niệm thiện lành, cầu mong bình an cho gia đình và bản thân.</p>\n<blockquote class=\"tpl-pull\"><p>Mỗi cánh hoa đăng trôi nhẹ trên dòng nước là một lời nguyện cầu an yên gửi gắm đến tương lai, thắp sáng niềm hy vọng trong lòng mỗi người lữ khách.</p></blockquote>\n<p>Hơn cả một hoạt động du lịch, việc thả đèn hoa đăng còn là cách con người thực hành sự buông bỏ. Ngắm nhìn đóa hoa sáng lấp lánh chầm chậm rời xa tầm tay mang lại cảm giác nhẹ nhõm, giúp ta trút bỏ bớt những muộn phiền thường nhật để mở lòng đón nhận sự an tĩnh sâu lắng giữa lòng di sản.</p>\n<h2>Thời điểm vàng và góc ngắm hoa đăng rực rỡ nhất</h2>\n<p>Khoảng thời gian chạng vạng khi ánh hoàng hôn vừa tắt và phố vừa lên đèn là thời khắc lý tưởng nhất để bắt đầu chiêm ngưỡng dòng sông. Lúc này, bầu trời chuyển dần sang màu lam thẫm, làm nổi bật những vệt sáng lấp lánh của nến và đèn lồng trải dài bất tận.</p>\n<figure class=\"tpl-wide\"><img src=\"{{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/1376.webp\" alt=\"\" width=\"1376\" height=\"768\" loading=\"lazy\" srcset=\"{{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/640.webp 640w, {{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/1280.webp 1280w, {{media}}/2c821407-2cf0-45f4-984a-92b848ec81a5/1376.webp 1376w\" sizes=\"(min-width: 768px) 48rem, 100vw\" /></figure>\n<p>Nếu bạn muốn tận hưởng toàn cảnh dòng sông lấp lánh mà không phải chen chúc, những đoạn bờ kè xa dần trung tâm cầu hay tầng hai của các ngôi nhà cổ ven sông là vị trí vô cùng đắc địa. Từ trên cao nhìn xuống, dòng nước tựa như dải ngân hà rực sáng trôi êm đềm giữa lòng phố cổ tĩnh mịch.</p>\n<h2>Các bước thả đèn hoa đăng gửi gắm ước nguyện</h2>\n<p>Để trải nghiệm thả hoa đăng diễn ra ý nghĩa và trọn vẹn cảm xúc nhất, bạn có thể thực hiện theo những bước gợi ý tinh tế sau đây:</p>\n<section class=\"tpl-steps\"><div class=\"tpl-item\"><h3>Chọn chiếc đèn hoa đăng mộc mạc</h3><p>Tìm cho mình chiếc đèn giấy thủ công gấp khéo léo với màu sắc bạn yêu thích từ những người bán mộc mạc ven bờ sông.</p></div><div class=\"tpl-item\"><h3>Thắp nến và giữ tâm thành kính</h3><p>Che chắn gió để thắp sáng ngọn nến nhỏ, giữ hoa đăng bằng cả hai tay và nhắm mắt lại để gửi gắm lời ước nguyện bình an, may mắn.</p></div><div class=\"tpl-item\"><h3>Nhẹ nhàng thả hoa đăng xuống nước</h3><p>Cúi mình sát mép nước hoặc dùng thanh thả đèn chuyên dụng để đưa đóa hoa xuống nước thật êm, tránh làm ướt cánh giấy.</p></div><div class=\"tpl-item\"><h3>Dõi theo ngọn đèn ước nguyện</h3><p>Dành vài phút đứng lại ngắm nhìn ngọn nến trôi xa dần cùng dòng chảy, cảm nhận sự an yên lan tỏa trong tâm trí.</p></div></section>\n<h2>Những lưu ý giúp bạn tận hưởng trọn vẹn đêm rằm Hội An</h2>\n<p>Vì lượng người đổ về phố cổ vào ngày trăng tròn thường khá đông, việc chuẩn bị một tâm thế chậm rãi và cẩn trọng sẽ giúp buổi tối của bạn trở nên thảnh thơi và trọn vẹn hơn rất nhiều.</p>\n<ul class=\"tpl-check\"><li>Lựa chọn trang phục thoải mái, mang giày đế bệt hoặc giày đi bộ nhẹ nhàng để dễ dàng dạo bước qua các cung đường lát đá cổ kính.</li><li>Luôn chú ý an toàn khi di chuyển sát bờ kè hoặc khi bước lên xuống các mạn thuyền gỗ bên dòng sông Hoài.</li><li>Chỉ sử dụng hoa đăng làm hoàn toàn từ chất liệu giấy tự nhiên để bảo vệ môi trường nước của dòng sông di sản.</li><li>Hạn chế chen lấn, giữ trật tự và tôn trọng không gian thanh tịnh của các nếp nhà cổ cũng như những người cùng tham gia ngắm cảnh.</li></ul>\n<h2>Giải đáp thắc mắc thường gặp khi dạo phố cổ ngày rằm</h2>\n<section class=\"tpl-faq\"><div class=\"tpl-item\"><h3>Đêm rằm Hội An thường diễn ra vào thời gian nào trong tháng?</h3><p>Không gian phố cổ tắt điện và thắp sáng lồng đèn thường bắt đầu từ chập tối vào các ngày 14 và 15 âm lịch hàng tháng, tạo nên khung cảnh lãng mạn đặc trưng.</p></div><div class=\"tpl-item\"><h3>Có nhất thiết phải đi thuyền mới có thể thả đèn hoa đăng?</h3><p>Bạn hoàn toàn có thể thả đèn từ các bậc thềm ven sông hoặc chọn ngồi trên những chiếc thuyền gỗ mộc để trải nghiệm cảm giác bềnh bồng giữa dòng nước trăng soi.</p></div><div class=\"tpl-item\"><h3>Làm thế nào để tránh tình trạng quá đông đúc khi xem hoa đăng?</h3><p>Bạn nên đến khu vực sông Hoài từ lúc hoàng hôn buông xuống để tìm được chỗ đứng thông thoáng, đồng thời luôn để mắt đến tư trang cá nhân khi dạo bước.</p></div></section>",
+          "readingMinutes": 5,
+          "seoTitle": "Kinh Nghiệm Thả Hoa Đăng Đêm Rằm Hội An Đẹp Nhất",
+          "seoDescription": "Cẩm nang dạo phố cổ và thả hoa đăng đêm rằm Hội An với những góc ngắm đẹp, gợi ý ý nghĩa và lưu ý thiết thực cho chuyến đi."
+        }
+      ],
+      "redirects": []
+    }
+  ]
+}

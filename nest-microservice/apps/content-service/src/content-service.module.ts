@@ -23,7 +23,7 @@ import { SitesModule } from './sites/sites.module';
 import { StudioModule } from './studio/studio.module';
 import { ArticleDraftsModule } from './article-drafts/article-drafts.module';
 
-/** The service's environment (validated at startup; also used by scripts/seed-article-templates.ts). */
+/** The service's environment (validated at startup; also used by the scripts: seed-content.ts, export-content.ts). */
 export const CONTENT_ENV_SCHEMA = Joi.object({
   NATS_URL: Joi.string().uri().required(),
   // Logging (registerLogging): json for Loki, pretty for local reading.
