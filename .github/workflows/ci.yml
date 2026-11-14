@@ -33,7 +33,7 @@ jobs:
       images: ${{ steps.images.outputs.matrix }}
       images_any: ${{ steps.images.outputs.any }}
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - id: diff
@@ -78,7 +78,7 @@ jobs:
       run:
         working-directory: nest-microservice
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
       - uses: actions/setup-node@v5.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -100,7 +100,7 @@ jobs:
       run:
         working-directory: web
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
       - uses: actions/setup-node@v5.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -115,7 +115,7 @@ jobs:
     if: needs.changes.outputs.k8s == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
       - name: The image list agrees with the overlays and manifests (k8s/images.json)
         run: node k8s/scripts/images-check.mjs
       - name: Staging and prod have the same settings (explained exceptions aside)
@@ -145,7 +145,7 @@ jobs:
       matrix:
         include: ${{ fromJSON(needs.changes.outputs.images) }}
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
       - uses: docker/setup-buildx-action@v3.10.0
       - uses: docker/build-push-action@v6.15.0
         with:

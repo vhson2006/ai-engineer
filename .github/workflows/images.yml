@@ -45,7 +45,7 @@ jobs:
       matrix: ${{ steps.plan.outputs.matrix }}
       any: ${{ steps.plan.outputs.any }}
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
@@ -84,7 +84,7 @@ jobs:
       matrix:
         include: ${{ fromJSON(needs.plan.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           ref: ${{ needs.plan.outputs.sha }}
       - uses: docker/setup-buildx-action@v3.10.0
@@ -116,7 +116,7 @@ jobs:
     permissions:
       contents: write # push the tag commit to main (a GITHUB_TOKEN push starts no workflow: no loop)
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           ref: main
           fetch-depth: 0
