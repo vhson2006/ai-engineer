@@ -37,7 +37,8 @@ real Chrome before deciding:
   platform's name, a redirect URI per realm and environment.
 - **Registration and verification by Keycloak's link** (`verifyEmail`); an unverified account cannot
   sign in. **Forgot password by Keycloak's link**, never a code: a code is typed into the screen of
-  whoever asked for it, so a scammer who asked could get the owner to read it out.
+  whoever asked for it, so a scammer who asked could get the owner to read it out. The activation
+  link works 1 hour (customers open that mail later), the reset link 15 minutes.
 - **Passkeys** (WebAuthn passwordless) are added and deleted by a signed-in, therefore verified,
   customer: account console or `kc_action=webauthn-register-passwordless`. Adding or deleting a
   credential and linking Google require a recent sign-in.

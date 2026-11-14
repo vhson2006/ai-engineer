@@ -24,6 +24,10 @@
   "verifyEmail": true,
   "resetPasswordAllowed": true,
   "duplicateEmailsAllowed": false,
+  "actionTokenGeneratedByUserLifespan": 900,
+  "attributes": {
+    "actionTokenGeneratedByUserLifespan.verify-email": "3600"
+  },
   "rememberMe": false,
   "loginTheme": "customers",
   "emailTheme": "customers",

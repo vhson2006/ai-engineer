@@ -210,6 +210,10 @@ patches:
       verifyEmail: true,
       resetPasswordAllowed: true,
       duplicateEmailsAllowed: false,
+      // How long the e-mailed links work: 15 min (password reset and every other), 1 h to activate
+      // (customers open that mail later; a longer life widens ADR 0050's accepted risk).
+      actionTokenGeneratedByUserLifespan: 900,
+      attributes: { 'actionTokenGeneratedByUserLifespan.verify-email': '3600' },
       rememberMe: false,
       // Keycloak's pages and e-mails with ADR 0050's warnings (base/keycloak/theme-customers).
       loginTheme: 'customers',
