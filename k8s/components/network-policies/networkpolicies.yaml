@@ -6,6 +6,7 @@
 #   portfolio-web, admin-web ─▶ krakend :8080  (server-side API calls; tokens never leave the server)
 #   krakend ─▶ deployment-service :3001, content-service :3003
 #   krakend, deployment-service, content-service ─▶ keycloak :8080   (JWKS)
+#   keycloak-config (Job) ─▶ keycloak :8080   (applies the realms, ADR 0043)
 #   keycloak ◀─▶ keycloak (all ports)         (cluster cache between replicas)
 #   deployment-service, notification-service, content-service, ai-service, render-worker, nats-setup (Job) ─▶ nats :4222
 #
@@ -153,6 +154,9 @@ spec:
         - podSelector:
             matchLabels:
               app: content-service
+        - podSelector:
+            matchLabels:
+              app: keycloak-config # Job: applies the realms (ADR 0043)
       ports:
         - port: 8080
           protocol: TCP

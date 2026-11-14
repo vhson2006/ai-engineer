@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          args: ['start', '--import-realm']
+          args: ['start']
           env:
             - name: KC_HOSTNAME
               value: https://auth.staging.localtest.me

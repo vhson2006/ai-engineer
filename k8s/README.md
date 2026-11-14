@@ -69,9 +69,8 @@ A new environment = a new `overlays/<env>/` with its own settings, patches and s
 ```bash
 kubectl config current-context        # make sure you are on the local cluster (e.g. docker-desktop)
 npm run k8s:up                        # installs NGINX Gateway Fabric once, then kubectl apply -k k8s/overlays/dev
+                                      # (and the Job keycloak-config: the realms, ADR 0043)
 npm run k8s:status                    # wait until all 6 pods are Running 1/1 (Keycloak: ~1-2 min)
-npm run keycloak:admin-url             # once per fresh cluster: Keycloak admin console (ADR 0004)
-npm run keycloak:admin-otp             # once per fresh cluster: admin site = admins; superadmins + OTP (ADRs 0019, 0030)
 npm run k8s:forward                   # Postgres/Redis/NATS for the apps + admin UIs (Ctrl+C to stop)
 ```
 
@@ -151,13 +150,20 @@ If KrakenD answers but returns errors for `/api/...`, check that `npm run start:
 
 | What | Where |
 |---|---|
-| Admin Console (private, port-forward) | http://localhost:8180/admin (user `admin` / `admin`, realm `master`; once per fresh cluster: `npm run keycloak:admin-url`, which also enables brute-force detection on `master`) |
+| Admin Console (private, port-forward) | http://localhost:8180/admin (user `admin` / `admin`, realm `master`; its Frontend URL and brute-force detection come from `keycloak/master.json`) |
 | Realm `nest-microservice` | http://auth.localtest.me:8000/realms/nest-microservice/.well-known/openid-configuration |
 | JWKS (public keys) | `.../realms/nest-microservice/protocol/openid-connect/certs` (from the cluster: `http://keycloak.nest-microservice.svc.cluster.local:8080/...`) |
 | Management (health, metrics) | http://localhost:9000/health/ready, http://localhost:9000/metrics |
 | Account console (end users) | http://auth.localtest.me:8000/realms/nest-microservice/account |
 
-The realm is imported from [`keycloak/realm-nest-microservice.json`](overlays/dev/keycloak/realm-nest-microservice.json):
+**Configuration as code (ADR 0043).** Everything below comes from the files of
+[`overlays/<env>/keycloak/`](overlays/dev/keycloak/), applied by the Job `keycloak-config`
+(keycloak-config-cli) on every `npm run k8s:up` / `staging:up` / Argo CD sync, on a fresh cluster and
+on a running one alike: `realm.json` (realm `nest-microservice`: roles, clients, groups, service
+accounts, the admin-site sign-in flow; no people), `users.json` + `otp.json` (dev/staging test users,
+alice's one-time code), `master.json` (realm `master`). Change Keycloak by changing these files, not
+the console: a field of a managed object that the file doesn't set is reset at the next deploy.
+Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 
 | Clients | Purpose |
 |---|---|
@@ -173,11 +179,10 @@ The realm is imported from [`keycloak/realm-nest-microservice.json`](overlays/de
 | `admins` | read, write, admin + `admin-web:admin`, `admin-web:superadmin`, `content:admin` | `alice` (also has a **dev-only OTP**: see `web/apps/admin-web/README.md`) |
 | `site-admins` (+ a `/sites/<id>` group) | `admin-web:admin`, `content:read/write/publish` on their sites (ADR 0030) | `dana` (`/sites/nails`), `erin` (`/sites/wine`) |
 
-**Admin site sign-in** (ADRs 0019, 0030): `npm run keycloak:admin-otp`, once per fresh cluster (after
-`k8s:up`; `staging:up` runs it), creates the flow `browser-admin-otp` and binds it to the client
-`admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
+**Admin site sign-in** (ADRs 0019, 0030): the flow `browser-admin-otp` (in `realm.json`), bound to the
+client `admin-web` only: password, then users without `admin-web:admin` are refused ("Deny access"),
 then the one-time code for `admin-web:superadmin` only (a superadmin without OTP is made to set it up). portfolio-web keeps the
-realm's default flow. Re-running it rebuilds the flow (idempotent).
+realm's default flow.
 
 Get a token for testing (access token lives 5 minutes):
 
@@ -191,13 +196,14 @@ even when Keycloak is reached from inside the cluster or through the port-forwar
 The admin console uses its own URL (`KC_HOSTNAME_ADMIN=http://localhost:8180`), which is never
 published on the Gateway. Its login runs on realm `master`, whose **Frontend URL must be
 `http://localhost:8180`** too, otherwise the console hangs (it would log in through
-`auth.localtest.me`, where the Gateway answers 404 for `master`). Set once per fresh cluster:
-`npm run keycloak:admin-url` (stored in Keycloak's database; the app realm is untouched). Verifiers (KrakenD, services) must use that
+`auth.localtest.me`, where the Gateway answers 404 for `master`): `master.json`, applied last by the
+Job (the new issuer invalidates its token, so it repeats that run once). Verifiers (KrakenD, services) must use that
 issuer, and may fetch the JWKS through the in-cluster URL.
 
-**The realm JSON is imported only when the realm doesn't exist.** Changes made in the Admin Console
-are stored in Postgres (database `keycloak`) and survive restarts. To re-import after editing the
-JSON: delete the realm in the Admin Console, then `kubectl -n nest-microservice rollout restart deploy/keycloak`.
+People are not configuration: users created in the console (and their passwords, OTP) stay in
+Postgres (database `keycloak`). The test users of `users.json` get the file's passwords back when that
+file changes. A public site (ADR 0042) = its group `/sites/<id>`, client `<id>-web` and service account
+in `realm.json` of each environment.
 
 ## Object storage (uploaded files)
 
@@ -431,14 +437,15 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    then syncs `overlays/prod`.
 7. **DNS**: `www`, `admin`, `auth` → the external IP of Service `edge-nginx` (no `api`: the API is private)
    (`kubectl -n nest-microservice get svc edge-nginx`).
-8. **Keycloak, after the first start**: first `npm run keycloak:admin-url` (kubectl context = prod;
-   realm `master` Frontend URL → `http://localhost:8180`, needs the bootstrap admin, so before
-   removing it). The realm has no client secret in git. Admin console:
+8. **Keycloak, after the first sync**: the Job `keycloak-config` (PostSync hook, ADR 0043) has created
+   both realms, the admin-site flow and realm `master`'s Frontend URL, signing in with the bootstrap
+   admin, and the master client `keycloak-config-cli` (secret entry
+   `nest-microservice-prod-keycloak-config-cli`: create it BEFORE the first sync) it uses from then on.
+   The realm has no client secret in git: admin console
    `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin,
    clients `web` and `admin-web` → Credentials → copy each secret into its secret manager entry
-   (`KEYCLOAK_CLIENT_SECRET`); `npm run keycloak:admin-otp` (admin site: admins only + OTP, ADR
-   0019; before removing the bootstrap admin too); create real named admins in `master` with OTP required, enable
-   brute-force detection on `master`, then remove the bootstrap admin.
+   (`KEYCLOAK_CLIENT_SECRET`); create real named admins in `master` with OTP required, then remove
+   the bootstrap admin (the next sync signs in as `keycloak-config-cli`).
 
 Check: `kubectl get certificate,externalsecret -n nest-microservice` (Ready=True),
 `curl -I http://www.example.com` (301 to https). `https://api.example.com` must NOT answer: the API is

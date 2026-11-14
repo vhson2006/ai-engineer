@@ -136,6 +136,24 @@
         },
         {
           "name": "laundry"
+        },
+        {
+          "name": "sushi"
+        },
+        {
+          "name": "travel"
+        },
+        {
+          "name": "flowers"
+        },
+        {
+          "name": "autoparts"
+        },
+        {
+          "name": "hotel"
+        },
+        {
+          "name": "spa"
         }
       ]
     }
@@ -265,7 +283,10 @@
             "introspection.token.claim": "true"
           }
         }
-      ]
+      ],
+      "authenticationFlowBindingOverrides": {
+        "browser": "browser-admin-otp"
+      }
     },
     {
       "clientId": "dev-cli",
@@ -319,68 +340,130 @@
       ]
     }
   ],
-  "users": [
+  "authenticationFlows": [
     {
-      "username": "alice",
-      "email": "alice@example.com",
-      "firstName": "Alice",
-      "lastName": "Admin",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
+      "alias": "browser-admin-otp",
+      "description": "Admins only; superadmins also a one-time code (client admin-web, ADRs 0019, 0030)",
+      "providerId": "basic-flow",
+      "topLevel": true,
+      "builtIn": false,
+      "authenticationExecutions": [
         {
-          "type": "password",
-          "value": "password",
-          "temporary": false
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-cookie",
+          "requirement": "ALTERNATIVE",
+          "priority": 10
         },
         {
-          "type": "otp",
-          "userLabel": "dev authenticator (DEV ONLY secret, README)",
-          "secretData": "{\"value\":\"dev-only-alice-otp-secret\"}",
-          "credentialData": "{\"subType\":\"totp\",\"digits\":6,\"counter\":0,\"period\":30,\"algorithm\":\"HmacSHA1\"}"
+          "authenticatorFlow": true,
+          "requirement": "ALTERNATIVE",
+          "priority": 20,
+          "flowAlias": "browser-admin-otp-forms",
+          "userSetupAllowed": false
         }
-      ],
-      "groups": [
-        "/admins"
       ]
     },
     {
-      "username": "bob",
-      "email": "bob@example.com",
-      "firstName": "Bob",
-      "lastName": "Developer",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
+      "alias": "browser-admin-otp-forms",
+      "description": "Password, admin role, one-time code",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
         {
-          "type": "password",
-          "value": "password",
-          "temporary": false
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-username-password-form",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "CONDITIONAL",
+          "priority": 20,
+          "flowAlias": "browser-admin-otp-non-admins",
+          "userSetupAllowed": false
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "CONDITIONAL",
+          "priority": 30,
+          "flowAlias": "browser-admin-otp-superadmins",
+          "userSetupAllowed": false
         }
-      ],
-      "groups": [
-        "/developers",
-        "/sites/nails"
       ]
     },
     {
-      "username": "carol",
-      "email": "carol@example.com",
-      "firstName": "Carol",
-      "lastName": "Viewer",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
+      "alias": "browser-admin-otp-non-admins",
+      "description": "Refuse users without admin-web.admin",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
         {
-          "type": "password",
-          "value": "password",
-          "temporary": false
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "conditional-user-role",
+          "authenticatorConfig": "browser-admin-otp-not-admin",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "deny-access-authenticator",
+          "authenticatorConfig": "browser-admin-otp-deny-message",
+          "requirement": "REQUIRED",
+          "priority": 20
         }
-      ],
-      "groups": [
-        "/viewers",
-        "/sites/nails"
       ]
+    },
+    {
+      "alias": "browser-admin-otp-superadmins",
+      "description": "One-time code for admin-web.superadmin",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "conditional-user-role",
+          "authenticatorConfig": "browser-admin-otp-superadmin",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-otp-form",
+          "requirement": "REQUIRED",
+          "priority": 20
+        }
+      ]
+    }
+  ],
+  "authenticatorConfig": [
+    {
+      "alias": "browser-admin-otp-not-admin",
+      "config": {
+        "condUserRole": "admin-web.admin",
+        "negate": "true"
+      }
+    },
+    {
+      "alias": "browser-admin-otp-superadmin",
+      "config": {
+        "condUserRole": "admin-web.superadmin",
+        "negate": "false"
+      }
+    },
+    {
+      "alias": "browser-admin-otp-deny-message",
+      "config": {
+        "denyErrorMessage": "This account is not an administrator. / Tài khoản này không phải quản trị viên."
+      }
     }
   ]
 }

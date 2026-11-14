@@ -11,7 +11,7 @@ If the owning service, the HTTP method/status, the request/response fields, or *
 ## 1. Contract — `libs/common/src/contracts/<resource>/`
 1. Add input DTO classes with `class-validator` + `@ApiProperty` (bounded lengths, `@IsIn` for enums).
 2. Add or extend the response interface in `<resource>.types.ts` (ISO date strings).
-3. New permission? Add it to `<RESOURCE>_ROLES` (`<resource>.roles.ts`) **and** to the realm (`k8s/overlays/dev/keycloak/realm-nest-microservice.json` for new setups; Admin Console for the running Keycloak), then assign it to the right groups.
+3. New permission? Add it to `<RESOURCE>_ROLES` (`<resource>.roles.ts`) **and** to the realm (`k8s/overlays/<env>/keycloak/realm.json` for new setups; Admin Console for the running Keycloak), then assign it to the right groups.
 4. If other services should react, add an event subject to `<RESOURCE>_EVENTS` (`events.<resource>.<past-tense-verb>`) and an event class in `<resource>.events.ts`.
 5. Export through the barrels. Only make **backward-compatible** changes (see `.claude/rules/contracts.md`).
 

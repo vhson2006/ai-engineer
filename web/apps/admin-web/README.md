@@ -14,7 +14,7 @@ Browser ──session-id cookie──▶ admin.<domain> ─▶ admin-web (Next.j
 
 | Lock | Where |
 |---|---|
-| Keycloak browser flow `browser-admin-otp`, bound to the client `admin-web` only: password, then **users without `admin-web:admin` are refused**, then, for `admin-web:superadmin` only, the **one-time code** (a superadmin without OTP must set it up first) | `npm run keycloak:admin-otp` (repo root), once per fresh cluster |
+| Keycloak browser flow `browser-admin-otp`, bound to the client `admin-web` only: password, then **users without `admin-web:admin` are refused**, then, for `admin-web:superadmin` only, the **one-time code** (a superadmin without OTP must set it up first) | `realm.json` of each environment (`k8s/overlays/<env>/keycloak/`), applied by the Job keycloak-config (ADR 0043) |
 | The app itself refuses a token without the role (`KEYCLOAK_REQUIRED_ROLE=admin-web:admin`), at sign-in AND on every token refresh: removing the role ends the session within minutes | `@web/core/auth/session` |
 | Sessions: 8 h idle, 7 days at most (client settings of `admin-web`, ADR 0035; was 15 min / 8 h) | realm JSON |
 
@@ -24,8 +24,8 @@ so an administrator always knows which site they're on.
 
 ## Run it (dev)
 
-Requires the stack (root README): `npm run k8s:up`, `npm run keycloak:admin-otp` (once per fresh
-cluster), `npm run k8s:forward`, and `npm run start:dev` in `nest-microservice/`.
+Requires the stack (root README): `npm run k8s:up` (also applies the sign-in flow, ADR 0043),
+`npm run k8s:forward`, and `npm run start:dev` in `nest-microservice/`.
 
 ```bash
 cp .env.example .env.local     # in this folder; set SESSION_ENCRYPTION_KEY (command in the file)

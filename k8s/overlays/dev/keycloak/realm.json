@@ -136,6 +136,24 @@
         },
         {
           "name": "laundry"
+        },
+        {
+          "name": "sushi"
+        },
+        {
+          "name": "travel"
+        },
+        {
+          "name": "flowers"
+        },
+        {
+          "name": "autoparts"
+        },
+        {
+          "name": "hotel"
+        },
+        {
+          "name": "spa"
         }
       ]
     }
@@ -269,7 +287,10 @@
             "introspection.token.claim": "true"
           }
         }
-      ]
+      ],
+      "authenticationFlowBindingOverrides": {
+        "browser": "browser-admin-otp"
+      }
     },
     {
       "clientId": "dev-cli",
@@ -329,6 +350,252 @@
       "publicClient": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "laundry-web-dev-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "sushi-web",
+      "name": "sushi-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "sushi-web-dev-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "travel-web",
+      "name": "travel-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "travel-web-dev-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "flowers-web",
+      "name": "flowers-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "flowers-web-dev-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "autoparts-web",
+      "name": "autoparts-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "autoparts-web-dev-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "hotel-web",
+      "name": "hotel-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "hotel-web-dev-secret",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "protocolMappers": [
+        {
+          "name": "audience-content-api",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "content-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "groups",
+            "full.path": "true",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "spa-web",
+      "name": "spa-web server (public site): service account that READS the site's published content (ADR 0032)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "spa-web-dev-secret",
       "standardFlowEnabled": false,
       "implicitFlowEnabled": false,
       "directAccessGrantsEnabled": false,
@@ -448,106 +715,6 @@
   ],
   "users": [
     {
-      "username": "alice",
-      "email": "alice@example.com",
-      "firstName": "Alice",
-      "lastName": "Admin",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
-        {
-          "type": "password",
-          "value": "password",
-          "temporary": false
-        },
-        {
-          "type": "otp",
-          "userLabel": "dev authenticator (DEV ONLY secret, README)",
-          "secretData": "{\"value\":\"dev-only-alice-otp-secret\"}",
-          "credentialData": "{\"subType\":\"totp\",\"digits\":6,\"counter\":0,\"period\":30,\"algorithm\":\"HmacSHA1\"}"
-        }
-      ],
-      "groups": [
-        "/admins"
-      ]
-    },
-    {
-      "username": "bob",
-      "email": "bob@example.com",
-      "firstName": "Bob",
-      "lastName": "Developer",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
-        {
-          "type": "password",
-          "value": "password",
-          "temporary": false
-        }
-      ],
-      "groups": [
-        "/developers",
-        "/sites/nails"
-      ]
-    },
-    {
-      "username": "carol",
-      "email": "carol@example.com",
-      "firstName": "Carol",
-      "lastName": "Viewer",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
-        {
-          "type": "password",
-          "value": "password",
-          "temporary": false
-        }
-      ],
-      "groups": [
-        "/viewers",
-        "/sites/nails"
-      ]
-    },
-    {
-      "username": "dana",
-      "email": "dana@example.com",
-      "firstName": "Dana",
-      "lastName": "Site admin",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
-        {
-          "type": "password",
-          "value": "password",
-          "temporary": false
-        }
-      ],
-      "groups": [
-        "/site-admins",
-        "/sites/nails"
-      ]
-    },
-    {
-      "username": "erin",
-      "email": "erin@example.com",
-      "firstName": "Erin",
-      "lastName": "Site admin",
-      "enabled": true,
-      "emailVerified": true,
-      "credentials": [
-        {
-          "type": "password",
-          "value": "password",
-          "temporary": false
-        }
-      ],
-      "groups": [
-        "/site-admins",
-        "/sites/wine"
-      ]
-    },
-    {
       "username": "service-account-laundry-web",
       "enabled": true,
       "serviceAccountClientId": "laundry-web",
@@ -558,6 +725,84 @@
       },
       "groups": [
         "/sites/laundry"
+      ]
+    },
+    {
+      "username": "service-account-sushi-web",
+      "enabled": true,
+      "serviceAccountClientId": "sushi-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/sushi"
+      ]
+    },
+    {
+      "username": "service-account-travel-web",
+      "enabled": true,
+      "serviceAccountClientId": "travel-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/travel"
+      ]
+    },
+    {
+      "username": "service-account-flowers-web",
+      "enabled": true,
+      "serviceAccountClientId": "flowers-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/flowers"
+      ]
+    },
+    {
+      "username": "service-account-autoparts-web",
+      "enabled": true,
+      "serviceAccountClientId": "autoparts-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/autoparts"
+      ]
+    },
+    {
+      "username": "service-account-hotel-web",
+      "enabled": true,
+      "serviceAccountClientId": "hotel-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/hotel"
+      ]
+    },
+    {
+      "username": "service-account-spa-web",
+      "enabled": true,
+      "serviceAccountClientId": "spa-web",
+      "clientRoles": {
+        "content-api": [
+          "content:read"
+        ]
+      },
+      "groups": [
+        "/sites/spa"
       ]
     },
     {
@@ -585,6 +830,132 @@
       "groups": [
         "/sites/wine"
       ]
+    }
+  ],
+  "authenticationFlows": [
+    {
+      "alias": "browser-admin-otp",
+      "description": "Admins only; superadmins also a one-time code (client admin-web, ADRs 0019, 0030)",
+      "providerId": "basic-flow",
+      "topLevel": true,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-cookie",
+          "requirement": "ALTERNATIVE",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "ALTERNATIVE",
+          "priority": 20,
+          "flowAlias": "browser-admin-otp-forms",
+          "userSetupAllowed": false
+        }
+      ]
+    },
+    {
+      "alias": "browser-admin-otp-forms",
+      "description": "Password, admin role, one-time code",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-username-password-form",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "CONDITIONAL",
+          "priority": 20,
+          "flowAlias": "browser-admin-otp-non-admins",
+          "userSetupAllowed": false
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "CONDITIONAL",
+          "priority": 30,
+          "flowAlias": "browser-admin-otp-superadmins",
+          "userSetupAllowed": false
+        }
+      ]
+    },
+    {
+      "alias": "browser-admin-otp-non-admins",
+      "description": "Refuse users without admin-web.admin",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "conditional-user-role",
+          "authenticatorConfig": "browser-admin-otp-not-admin",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "deny-access-authenticator",
+          "authenticatorConfig": "browser-admin-otp-deny-message",
+          "requirement": "REQUIRED",
+          "priority": 20
+        }
+      ]
+    },
+    {
+      "alias": "browser-admin-otp-superadmins",
+      "description": "One-time code for admin-web.superadmin",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "conditional-user-role",
+          "authenticatorConfig": "browser-admin-otp-superadmin",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-otp-form",
+          "requirement": "REQUIRED",
+          "priority": 20
+        }
+      ]
+    }
+  ],
+  "authenticatorConfig": [
+    {
+      "alias": "browser-admin-otp-not-admin",
+      "config": {
+        "condUserRole": "admin-web.admin",
+        "negate": "true"
+      }
+    },
+    {
+      "alias": "browser-admin-otp-superadmin",
+      "config": {
+        "condUserRole": "admin-web.superadmin",
+        "negate": "false"
+      }
+    },
+    {
+      "alias": "browser-admin-otp-deny-message",
+      "config": {
+        "denyErrorMessage": "This account is not an administrator. / Tài khoản này không phải quản trị viên."
+      }
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "realm": "master",
+  "attributes": {
+    "frontendUrl": "http://localhost:8180"
+  },
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "maxDeltaTimeSeconds": 43200,
+  "quickLoginCheckMilliSeconds": 1000,
+  "minimumQuickLoginWaitSeconds": 60,
+  "clients": [
+    {
+      "clientId": "keycloak-config-cli",
+      "name": "keycloak-config-cli: the Job that applies the Keycloak configuration (ADR 0043)",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:KEYCLOAK_CONFIG_CLI_SECRET)",
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-keycloak-config-cli",
+      "enabled": true,
+      "serviceAccountClientId": "keycloak-config-cli",
+      "realmRoles": [
+        "admin"
+      ]
+    }
+  ]
+}

@@ -65,9 +65,10 @@ configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-realm # no test users, no dev-cli, no client secret (see k8s/README.md)
+  - name: keycloak-config # no test users, no dev-cli, no client secret (see k8s/README.md); Job keycloak-config (ADR 0043)
     files:
-      - keycloak/realm-nest-microservice.json
+      - keycloak/master.json
+      - keycloak/realm.json
   - name: deployment-service-env
     envs:
       - env/deployment-service.env

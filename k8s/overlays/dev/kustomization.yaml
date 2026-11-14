@@ -30,9 +30,12 @@ configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-realm # imported on Keycloak's first start only
+  - name: keycloak-config # applied on every k8s:up by Job keycloak-config (ADR 0043)
     files:
-      - keycloak/realm-nest-microservice.json
+      - keycloak/master.json
+      - keycloak/realm.json
+      - keycloak/users.json # test users (password "password")
+      - keycloak/otp.json # alice's dev one-time code
 
 patches:
   - path: patches/gateway.yaml # *.localtest.me, port 8000

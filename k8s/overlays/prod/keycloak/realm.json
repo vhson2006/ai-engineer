@@ -136,6 +136,24 @@
         },
         {
           "name": "laundry"
+        },
+        {
+          "name": "sushi"
+        },
+        {
+          "name": "travel"
+        },
+        {
+          "name": "flowers"
+        },
+        {
+          "name": "autoparts"
+        },
+        {
+          "name": "hotel"
+        },
+        {
+          "name": "spa"
         }
       ]
     }
@@ -263,7 +281,136 @@
             "introspection.token.claim": "true"
           }
         }
+      ],
+      "authenticationFlowBindingOverrides": {
+        "browser": "browser-admin-otp"
+      }
+    }
+  ],
+  "authenticationFlows": [
+    {
+      "alias": "browser-admin-otp",
+      "description": "Admins only; superadmins also a one-time code (client admin-web, ADRs 0019, 0030)",
+      "providerId": "basic-flow",
+      "topLevel": true,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-cookie",
+          "requirement": "ALTERNATIVE",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "ALTERNATIVE",
+          "priority": 20,
+          "flowAlias": "browser-admin-otp-forms",
+          "userSetupAllowed": false
+        }
       ]
+    },
+    {
+      "alias": "browser-admin-otp-forms",
+      "description": "Password, admin role, one-time code",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-username-password-form",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "CONDITIONAL",
+          "priority": 20,
+          "flowAlias": "browser-admin-otp-non-admins",
+          "userSetupAllowed": false
+        },
+        {
+          "authenticatorFlow": true,
+          "requirement": "CONDITIONAL",
+          "priority": 30,
+          "flowAlias": "browser-admin-otp-superadmins",
+          "userSetupAllowed": false
+        }
+      ]
+    },
+    {
+      "alias": "browser-admin-otp-non-admins",
+      "description": "Refuse users without admin-web.admin",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "conditional-user-role",
+          "authenticatorConfig": "browser-admin-otp-not-admin",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "deny-access-authenticator",
+          "authenticatorConfig": "browser-admin-otp-deny-message",
+          "requirement": "REQUIRED",
+          "priority": 20
+        }
+      ]
+    },
+    {
+      "alias": "browser-admin-otp-superadmins",
+      "description": "One-time code for admin-web.superadmin",
+      "providerId": "basic-flow",
+      "topLevel": false,
+      "builtIn": false,
+      "authenticationExecutions": [
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "conditional-user-role",
+          "authenticatorConfig": "browser-admin-otp-superadmin",
+          "requirement": "REQUIRED",
+          "priority": 10
+        },
+        {
+          "authenticatorFlow": false,
+          "userSetupAllowed": false,
+          "authenticator": "auth-otp-form",
+          "requirement": "REQUIRED",
+          "priority": 20
+        }
+      ]
+    }
+  ],
+  "authenticatorConfig": [
+    {
+      "alias": "browser-admin-otp-not-admin",
+      "config": {
+        "condUserRole": "admin-web.admin",
+        "negate": "true"
+      }
+    },
+    {
+      "alias": "browser-admin-otp-superadmin",
+      "config": {
+        "condUserRole": "admin-web.superadmin",
+        "negate": "false"
+      }
+    },
+    {
+      "alias": "browser-admin-otp-deny-message",
+      "config": {
+        "denyErrorMessage": "This account is not an administrator. / Tài khoản này không phải quản trị viên."
+      }
     }
   ]
 }

@@ -1,7 +1,8 @@
 # What every environment runs: edge Gateway + routes, KrakenD (API gateway), Keycloak (identity).
 # Not deployable on its own: an overlay (overlays/<env>) adds the environment's values:
 #   - ConfigMap "krakend-settings"  (KrakenD settings/env.json: issuer, JWKS, backends)
-#   - ConfigMap "keycloak-realm", Secrets "keycloak-admin" / "keycloak-db"
+#   - ConfigMap "keycloak-config" (master.json, realm.json[, users.json, otp.json]: ADR 0043),
+#     Secrets "keycloak-admin" / "keycloak-db" (prod also "keycloak-config-cli")
 #   - host names and listeners of the Gateway, Keycloak's KC_HOSTNAME
 #   - data stores (dev: components/local-data; elsewhere: managed services)
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -19,12 +20,16 @@ resources:
   - krakend/service.yaml
   - keycloak/deployment.yaml
   - keycloak/service.yaml
+  - keycloak/config-job.yaml # keycloak-config-cli: applies ConfigMap keycloak-config (ADR 0043)
   - gateway/gateway.yaml
   - gateway/routes.yaml
 
 # KrakenD Flexible Configuration -> ConfigMaps with a content hash in their names, so every change
 # rolls the KrakenD pods on `npm run k8s:up`.
 configMapGenerator:
+  - name: keycloak-config-sync # the Job's script
+    files:
+      - keycloak/config-sync.sh
   - name: krakend-config
     files:
       - krakend/config/krakend.tmpl

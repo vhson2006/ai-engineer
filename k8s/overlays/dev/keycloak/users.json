@@ -1,0 +1,99 @@
+{
+  "realm": "nest-microservice",
+  "users": [
+    {
+      "username": "alice",
+      "email": "alice@example.com",
+      "firstName": "Alice",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/admins"
+      ]
+    },
+    {
+      "username": "bob",
+      "email": "bob@example.com",
+      "firstName": "Bob",
+      "lastName": "Developer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/developers",
+        "/sites/nails"
+      ]
+    },
+    {
+      "username": "carol",
+      "email": "carol@example.com",
+      "firstName": "Carol",
+      "lastName": "Viewer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/viewers",
+        "/sites/nails"
+      ]
+    },
+    {
+      "username": "dana",
+      "email": "dana@example.com",
+      "firstName": "Dana",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/nails"
+      ]
+    },
+    {
+      "username": "erin",
+      "email": "erin@example.com",
+      "firstName": "Erin",
+      "lastName": "Site admin",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/site-admins",
+        "/sites/wine"
+      ]
+    }
+  ]
+}
