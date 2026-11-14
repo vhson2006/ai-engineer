@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { ARTICLE_BLOCK_TYPES, ARTICLE_LENGTH_WORDS } from '@app/common';
+import { ARTICLE_BLOCK_ITEMS, ARTICLE_BLOCK_TYPES, ARTICLE_LENGTH_WORDS } from '@app/common';
 import { ProviderRefusedError } from '../../translation/providers/translation-provider';
 import {
   briefStart,
@@ -24,6 +24,10 @@ const BRIEF_SCHEMA = {
   required: ['prompt', 'outline'],
 };
 
+/** "3 to 6 items", from the layout's rules (ARTICLE_BLOCK_ITEMS). */
+const items = (type: keyof typeof ARTICLE_BLOCK_ITEMS) =>
+  `${ARTICLE_BLOCK_ITEMS[type].min} to ${ARTICLE_BLOCK_ITEMS[type].max} items`;
+
 const ARTICLE_SCHEMA = {
   type: 'object',
   properties: {
@@ -43,6 +47,7 @@ const ARTICLE_SCHEMA = {
           text: { type: 'string' },
           items: {
             type: 'array',
+            maxItems: Math.max(...Object.values(ARTICLE_BLOCK_ITEMS).map((rule) => rule.max)),
             items: {
               type: 'object',
               properties: { title: { type: 'string' }, text: { type: 'string' } },
@@ -84,7 +89,7 @@ export function articleInstruction(request: ArticleRequest): string {
   const rules = request.rules.length ? `Site rules: ${request.rules.join(' ')}` : '';
   return [
     `You write a web article in ${language}, following the brief and the outline in the input, about ${words} words. The answer is JSON: the article as a list of blocks, never HTML or markdown headings.`,
-    'Blocks: "lead" (the opening paragraph: text), "paragraph" (text), "heading" (a section title, H2: text), "subheading" (H3: text), "list" and "checklist" (items with text), "quote" (a short striking sentence: text; never a made-up customer quote), "note" / "tip" / "warn" (a box: title + text), "summary" (key points: title + items), "steps" (title + text per item), "cards" (2 to 6 items: title + text), "faq" (questions and answers: item title = question, text = answer), "cta" (the closing call to action: title + text), "image" (prompt + alt + caption).',
+    `Blocks: "lead" (the opening paragraph: text), "paragraph" (text), "heading" (a section title, H2: text), "subheading" (H3: text), "list" and "checklist" (${items('list')} with text), "quote" (a short striking sentence: text; never a made-up customer quote), "note" / "tip" / "warn" (a box: title + text), "summary" (key points: title + ${items('summary')}), "steps" (${items('steps')}: title + text each), "cards" (EXACTLY 3 or 6 items: title + text; they sit three per row, so never 2, 4 or 5), "faq" (${items('faq')}: item title = question, text = answer), "cta" (the closing call to action: title + text), "image" (prompt + alt + caption).`,
     'Start with one "lead". Use every outline heading, in order, as a "heading" block, each followed by paragraphs and, where it helps, ONE layout block (a box, steps, cards, a list, key points). Use 3 to 6 layout blocks in all, varied, never two in a row. End with "faq" if useful, then one "cta".',
     'In any text, **bold** marks a few key words; no other markup, no emoji.',
     inText

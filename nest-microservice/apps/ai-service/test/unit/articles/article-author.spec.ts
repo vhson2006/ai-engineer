@@ -1,4 +1,5 @@
 import {
+  fitItems,
   normalizeArticle,
   normalizeBrief,
   type ArticleRequest,
@@ -77,6 +78,21 @@ describe('[article-author] (unit)', () => {
         { title: 'T', blocks: [{ type: 'image', prompt: 'p' }] },
       ),
     ).toBeNull();
+  });
+
+  it('cards fill whole rows of three; too few become a list; every block at most its maximum', () => {
+    const card = (n: number) =>
+      Array.from({ length: n }, (_, i) => ({ title: `T${i}`, text: `t${i}` }));
+    expect(fitItems('cards', card(3))?.items).toHaveLength(3);
+    expect(fitItems('cards', card(4))?.items).toHaveLength(3); // never a lonely 4th card
+    expect(fitItems('cards', card(5))?.items).toHaveLength(3);
+    expect(fitItems('cards', card(7))?.items).toHaveLength(6);
+    expect(fitItems('cards', card(2))).toEqual({
+      type: 'list',
+      items: [{ text: '**T0**: t0' }, { text: '**T1**: t1' }],
+    });
+    expect(fitItems('steps', card(8))?.items).toHaveLength(6);
+    expect(fitItems('faq', [])).toBeNull();
   });
 
   it('the instructions forbid invented facts, carry the rules, the length and the image plan', () => {

@@ -25,6 +25,8 @@ about a real business.
      brand kit; wine: never prices) and the site's rules are put in by the system.
   3. **The article:** ai-service writes it as **blocks** (lead, paragraphs, headings, lists, tip /
      note / warning boxes, key points, steps, cards, FAQ, quote, call to action, images), never HTML.
+     Blocks with items fit the layout (`ARTICLE_BLOCK_ITEMS`: cards 3 or 6, a row of three; steps, FAQ
+     3–6; key points 3–5): the model is told, ai-service enforces it on the answer.
      content-service turns them into the editor's HTML (the shapes of `layoutBlockHtml`), sanitizes
      it like any body, and saves a **draft** article. Nothing is ever published by itself.
 - **Images:** the cover first, then the images of the text, each a 16:9 AI image of the media

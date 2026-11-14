@@ -1,4 +1,5 @@
 import {
+  ARTICLE_BLOCK_ITEMS,
   ARTICLE_BLOCK_TYPES,
   ARTICLE_MAX_BLOCKS,
   ARTICLE_MAX_OUTLINE,
@@ -75,14 +76,28 @@ export function normalizeBrief(
 }
 
 const TYPES = new Set<string>(ARTICLE_BLOCK_TYPES);
-const WITH_ITEMS = new Set<ArticleBlockType>([
-  'list',
-  'checklist',
-  'summary',
-  'steps',
-  'cards',
-  'faq',
-]);
+type WithItems = keyof typeof ARTICLE_BLOCK_ITEMS;
+const WITH_ITEMS = new Set<ArticleBlockType>(Object.keys(ARTICLE_BLOCK_ITEMS) as WithItems[]);
+
+/**
+ * Items as the layout needs them (ARTICLE_BLOCK_ITEMS): at most `max`; cards in whole rows of
+ * three (extras dropped). Cards too few for one row become a list with bold titles, so the page
+ * never shows a lonely card.
+ */
+export function fitItems(
+  type: WithItems,
+  items: { title?: string; text: string }[],
+): Pick<ArticleBlock, 'type' | 'items'> | null {
+  const rule = ARTICLE_BLOCK_ITEMS[type];
+  let kept = items.slice(0, rule.max);
+  if (rule.multipleOf) kept = kept.slice(0, kept.length - (kept.length % rule.multipleOf));
+  if (kept.length >= (rule.multipleOf ? rule.min : 1)) return { type, items: kept };
+  if (type !== 'cards' || !items.length) return null;
+  return {
+    type: 'list',
+    items: items.map((i) => ({ text: i.title ? `**${i.title}**: ${i.text}` : i.text })),
+  };
+}
 
 /**
  * The article in the contract's shape: known block types only, each with what it needs (empty
@@ -114,10 +129,11 @@ export function normalizeArticle(
           const itemTitle = str(i.title, 200);
           return itemText ? { ...(itemTitle && { title: itemTitle }), text: itemText } : null;
         })
-        .filter((item): item is NonNullable<typeof item> => item !== null)
-        .slice(0, 12);
-      if (!items.length) continue;
-      block.items = items;
+        .filter((item): item is NonNullable<typeof item> => item !== null);
+      const fitted = fitItems(type as WithItems, items);
+      if (!fitted) continue;
+      block.type = fitted.type;
+      block.items = fitted.items;
     } else if (type === 'image') {
       const prompt = str(b.prompt, 1000);
       if (!prompt || images >= inText) continue;

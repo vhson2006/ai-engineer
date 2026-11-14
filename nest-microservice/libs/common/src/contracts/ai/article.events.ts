@@ -79,6 +79,23 @@ export const ARTICLE_BLOCK_TYPES = [
 ] as const;
 export type ArticleBlockType = (typeof ARTICLE_BLOCK_TYPES)[number];
 
+/**
+ * How many items each block with items may have, so it fits the editor's layout (ADR 0033,
+ * `@web/ui/article-layout.css`): cards sit three per row, so 3 or 6 (a 4th would sit alone on a
+ * new row). The AI is told these numbers and ai-service enforces them on its answer.
+ */
+export const ARTICLE_BLOCK_ITEMS: Record<
+  'list' | 'checklist' | 'summary' | 'steps' | 'cards' | 'faq',
+  { min: number; max: number; multipleOf?: number }
+> = {
+  list: { min: 2, max: 8 },
+  checklist: { min: 2, max: 8 },
+  summary: { min: 3, max: 5 },
+  steps: { min: 3, max: 6 },
+  cards: { min: 3, max: 6, multipleOf: 3 },
+  faq: { min: 3, max: 6 },
+};
+
 const LOCALE = /^[a-z]{2}(-[A-Z]{2})?$/;
 
 export class ArticleIdea {
