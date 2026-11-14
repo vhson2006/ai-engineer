@@ -172,11 +172,22 @@ fresh cluster and on a running one alike. **The same files in every environment*
 [`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
 groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
 [`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
-code, `dev-cli`, the test customers `bob`/`carol` of each site's realm); [`sites/<id>/keycloak/`](sites/)
-(a business site's client and service account, and its customers' realm `site-<id>`, ADR 0049; in
+code, `dev-cli`, the test customers `bob@example.com`/`carol@example.com` of each site's realm); [`sites/<id>/keycloak/`](sites/)
+(a business site's client and service account, and its customers' realm `site-<id>`, ADRs 0049, 0050; in
 the environments that list it); prod adds `master-config-cli.json`. What differs per environment is
 only a value, written `$(env:NAME)` in the files: ConfigMap `public-urls` (the overlay's `urls.env`)
-(`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
+(`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`), Secret `keycloak-clients` (client secrets) and
+Secret `keycloak-customer-auth` (the customers' realms' `SMTP_*` and `GOOGLE_*`).
+
+**Customers' accounts** (ADR 0050): they register with their e-mail (it is their username), activate
+it and reset their password by the link Keycloak e-mails, and sign in with Google (never linked at
+sign-in: a signed-in customer links it from the account) or a passkey. Keycloak sends every e-mail.
+In dev and staging they land in **Mailpit** ([`components/mailpit`](components/mailpit/)): dev
+`http://localhost:8025` (`npm run k8s:forward`), staging `kubectl -n nest-staging port-forward
+svc/mailpit 8026:8025`. Google is off there until you put your own client in the git-ignored
+`k8s/.keycloak-local.env` ([`keycloak-local.env.example`](keycloak-local.env.example)): `k8s:up` /
+`staging:up` turn it into Secret `keycloak-local`, which the Job reads last (it can also send real
+mail through Gmail). Prod: the secret manager entry `nest-microservice-prod-keycloak-customer-auth`.
 Change Keycloak by changing these files, not the console: a field of a managed object that the file
 doesn't set is reset at the next deploy.
 Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
@@ -327,7 +338,10 @@ fails on):
 4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`;
 5. Secret `<id>-web`: `REDIS_URL` (its own Redis/Valkey user, keys `<id>-web:*`; local:
    `components/local-data/redis/users.acl`) and `SESSION_ENCRYPTION_KEY`: its customers' sessions
-   (ADR 0049); `components/keycloak-local/kustomization.yaml` lists its `test-customers-<id>.json`.
+   (ADR 0049); `components/keycloak-local/kustomization.yaml` lists its `test-customers-<id>.json`;
+6. in Google Cloud (not checked here): the OAuth client's redirect URI for its realm,
+   `<AUTH_URL>/realms/site-<id>/broker/google/endpoint`, per environment that signs in with Google
+   (ADR 0050).
 
 Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
 `role: business-site` (NetworkPolicies, the https-only route patch). Staging and prod run all

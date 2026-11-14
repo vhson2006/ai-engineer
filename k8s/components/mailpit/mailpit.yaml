@@ -1,0 +1,97 @@
+# Mailpit: catches every e-mail Keycloak sends in dev and staging (ADR 0050): customers' activation
+# and password-reset links. Nothing leaves the cluster. Read them in its UI through a port-forward:
+#   dev:     npm run k8s:forward → http://localhost:8025
+#   staging: kubectl -n nest-staging port-forward svc/mailpit 8026:8025 → http://localhost:8026
+# Keycloak signs in with any user and password (SMTP_* of Secret keycloak-customer-auth), like with
+# the real provider. Messages live in a temporary database (/tmp, emptyDir): a restart empties the inbox.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailpit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailpit
+  template:
+    metadata:
+      labels:
+        app: mailpit
+    spec:
+      automountServiceAccountToken: false
+      enableServiceLinks: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: mailpit
+          image: axllent/mailpit:v1.21
+          env:
+            - name: MP_SMTP_AUTH_ACCEPT_ANY # Keycloak always authenticates (smtpServer.auth)
+              value: 'true'
+            - name: MP_SMTP_AUTH_ALLOW_INSECURE # ...over plain SMTP inside the cluster
+              value: 'true'
+            - name: MP_MAX_MESSAGES
+              value: '500'
+          ports:
+            - name: smtp
+              containerPort: 1025
+            - name: ui
+              containerPort: 8025
+          readinessProbe:
+            tcpSocket:
+              port: smtp
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 128Mi
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+      volumes:
+        - name: tmp # its temporary database
+          emptyDir:
+            sizeLimit: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailpit
+spec:
+  selector:
+    app: mailpit
+  ports:
+    - name: smtp
+      port: 1025
+      targetPort: smtp
+    - name: ui
+      port: 8025
+      targetPort: ui
+---
+# Only Keycloak sends mail. The UI is reached by port-forward, which doesn't go through the pod network.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mailpit-from-keycloak
+spec:
+  podSelector:
+    matchLabels:
+      app: mailpit
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: keycloak
+      ports:
+        - port: 1025
+          protocol: TCP

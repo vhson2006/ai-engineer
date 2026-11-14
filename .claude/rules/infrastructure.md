@@ -33,7 +33,9 @@ paths:
 
 ## Credentials (dev only, never reuse)
 - Keycloak: admin `admin`/`admin`, test users password `Dev-Staging-2026!`, client secret
-  `web-dev-secret`, `dev-cli` (password grant; absent from the prod realm).
+  `web-dev-secret`, `dev-cli` (password grant; absent from the prod realm). Customers' e-mail goes to
+  Mailpit (`components/mailpit`), Google off; a developer's own Google client or Gmail: only in the
+  git-ignored `k8s/.keycloak-local.env` (Secret `keycloak-local`, dev/staging), never in a committed file.
 - Redis: ACL users only (`components/local-data/redis/users.acl`, default user off), one per app,
   limited to its prefix and GET/SET/DEL/GETDEL/INCR/EXPIRE/PING. Never the `admin` user in an app.
 - NATS has no credentials in dev and `k8s/`; elsewhere enable auth through env.

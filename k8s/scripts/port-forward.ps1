@@ -6,7 +6,8 @@ $forwards = @(
   @{ svc = 'nats';     ports = @('4222:4222', '8222:8222') },
   @{ svc = 'krakend';  ports = @('8080:8080') },
   @{ svc = 'seaweedfs'; ports = @('8333:8333') },
-  @{ svc = 'keycloak'; ports = @('8180:8080', '9000:9000') }
+  @{ svc = 'keycloak'; ports = @('8180:8080', '9000:9000') },
+  @{ svc = 'mailpit';  ports = @('8025:8025') }
 )
 
 # Kills the kubectl port-forwards of THIS script: Stop-Job doesn't kill kubectl.exe, and orphans
@@ -52,6 +53,7 @@ Write-Host 'KrakenD       http://localhost:8080  (the API: private, like in prod
 Write-Host 'Keycloak      http://localhost:8180/admin  (admin console, private), management http://localhost:9000'
 Write-Host 'Postgres      localhost:5432   Redis localhost:6379   NATS localhost:4222 (monitor http://localhost:8222)'
 Write-Host 'S3 (files)    http://localhost:8333  (SeaweedFS)'
+Write-Host "Mail          http://localhost:8025  (Mailpit: every e-mail Keycloak sends, e.g. activation links)"
 Write-Host 'Press Ctrl+C to stop.'
 try { while ($true) { $jobs | Receive-Job; Start-Sleep -Seconds 1 } }
 finally { $jobs | Stop-Job; $jobs | Remove-Job -Force; Stop-Forwards }

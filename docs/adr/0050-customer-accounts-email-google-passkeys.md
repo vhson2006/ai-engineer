@@ -1,6 +1,7 @@
 # 0050. Customers' accounts: e-mail and password, Google, passkeys; never linked at sign-in; Keycloak sends the e-mails
 
-- **Status:** Accepted, not implemented
+- **Status:** Accepted, partly implemented: the realms' settings, e-mail and Google (off until an
+  environment has a Google client). Not yet: the theme, the deletion of unverified accounts.
 - **Date:** 2026-11-14
 - **Related:** 0025 (a realm per site), 0049 (customers sign in: this adds registration, recovery,
   Google and passkeys), 0043 (Keycloak as code), 0010 (tokens never in the browser), 0004

@@ -145,6 +145,7 @@ up() {
   kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
   kubectl -n "$NS" create configmap local-ca --from-file=ca.crt="$CA_FILE" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
   kubectl -n "$NS" delete job db-migrate nats-setup keycloak-config content-import --ignore-not-found >/dev/null # a Job's template is immutable
+  keycloak_local_secret "$NS" # k8s/.keycloak-local.env, if you have one (local.sh)
   # Content-addressed tags: a node that already has local/<img>:staging keeps its OLD copy
   # (IfNotPresent), so each build is deployed as local/<img>:<image id>; a rebuild changes the tag,
   # which also rolls the Deployments.

@@ -2,7 +2,7 @@
   "realm": "site-hotel",
   "users": [
     {
-      "username": "bob",
+      "username": "bob@example.com",
       "email": "bob@example.com",
       "firstName": "Bob",
       "lastName": "Customer",
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "username": "carol",
+      "username": "carol@example.com",
       "email": "carol@example.com",
       "firstName": "Carol",
       "lastName": "Customer",

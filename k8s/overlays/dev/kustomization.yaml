@@ -28,6 +28,7 @@ components:
   - ../../components/local-data # Postgres, Redis in the cluster
   - ../../components/nats
   - ../../components/keycloak-local # test users, alice's one-time code, dev-cli
+  - ../../components/mailpit # the inbox of Keycloak's e-mails (http://localhost:8025, k8s:forward)
   # The business sites' Keycloak clients (the sites themselves run on this machine in dev).
   - ../../sites/autoparts/keycloak
   - ../../sites/flowers/keycloak

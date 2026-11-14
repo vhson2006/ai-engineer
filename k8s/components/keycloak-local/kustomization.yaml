@@ -1,8 +1,18 @@
 # LOCAL ONLY (dev, staging): Keycloak's test users (password "Dev-Staging-2026!"; alice, the
 # site admins <site>-admin, bob and carol: k8s/README.md#keycloak), alice's one-time code
 # and dev-cli (password grant for curl tests). Never in prod. Applied by Job keycloak-config.
+# Also a developer's own values: Secret "keycloak-local", made by k8s:up / staging:up from the
+# git-ignored k8s/.keycloak-local.env (k8s/keycloak-local.env.example), read LAST by the Job so its
+# keys override the overlay's (e.g. a real Google client); absent without that file.
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
+
+patches:
+  - target: { kind: Job, name: keycloak-config }
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom/-
+        value: { secretRef: { name: keycloak-local, optional: true } }
 
 configMapGenerator:
   - name: keycloak-config

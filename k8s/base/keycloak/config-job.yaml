@@ -3,7 +3,10 @@
 # and prod add theirs, see config-sync.sh) to Keycloak, then exits. The files are the same in every
 # environment; the environment gives the values they reference as $(env:NAME): ConfigMap
 # "public-urls" (the overlay's urls.env: WEB_URL, ADMIN_URL, KEYCLOAK_CONSOLE_URL…) and Secret "keycloak-clients"
-# (WEB_CLIENT_SECRET, ADMIN_WEB_CLIENT_SECRET, the sites' <SITE>_WEB_CLIENT_SECRET). The ONE way realm settings reach Keycloak: a fresh cluster gets its realm
+# (WEB_CLIENT_SECRET, ADMIN_WEB_CLIENT_SECRET, the sites' <SITE>_WEB_CLIENT_SECRET), Secret
+# "keycloak-customer-auth" (the customers' realms' SMTP_* and GOOGLE_*, ADR 0050) and, in dev and
+# staging only, Secret "keycloak-local" (components/keycloak-local: a developer's own values, last so
+# they win). The ONE way realm settings reach Keycloak: a fresh cluster gets its realm
 # from it (Keycloak no longer imports a realm at start), a running one gets every change. No script
 # with kcadm, no "imported only when the realm doesn't exist".
 #
@@ -69,6 +72,8 @@ spec:
                 name: public-urls
             - secretRef:
                 name: keycloak-clients
+            - secretRef:
+                name: keycloak-customer-auth # SMTP_*, GOOGLE_*: the customers' realms (ADR 0050)
           volumeMounts:
             - name: config
               mountPath: /config

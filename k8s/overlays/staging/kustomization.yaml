@@ -44,6 +44,7 @@ components:
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
   - ../../components/keycloak-local # test users, alice's one-time code, dev-cli (local only)
+  - ../../components/mailpit # the inbox of Keycloak's e-mails (local only)
   # The business sites staging runs (k8s/sites/<id>: app, Keycloak client, host from urls.env).
   - ../../sites/autoparts
   - ../../sites/flowers

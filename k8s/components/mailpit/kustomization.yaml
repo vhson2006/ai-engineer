@@ -1,0 +1,7 @@
+# LOCAL ONLY (dev, staging): Mailpit, the inbox of every e-mail Keycloak sends (ADR 0050). Prod sends
+# through the real provider (Secret keycloak-customer-auth) and leaves this component out.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - mailpit.yaml

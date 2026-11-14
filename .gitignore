@@ -10,6 +10,8 @@
 /k8s/.krakend-rendered.*.json
 # Grafana Cloud credentials for the local staging (k8s/grafana-cloud.env.example)
 /k8s/.grafana-cloud.env
+# A developer's own Keycloak values for dev / local staging (k8s/keycloak-local.env.example)
+/k8s/.keycloak-local.env
 # Local staging CA certificate (exported by npm run staging:up; public cert only)
 /k8s/.local-ca.crt
 

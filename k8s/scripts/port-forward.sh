@@ -4,7 +4,7 @@
 # Ctrl+C stops all forwards.
 set -u
 NS=nest-microservice
-SVCS='postgres|redis|nats|krakend|seaweedfs|keycloak'
+SVCS='postgres|redis|nats|krakend|seaweedfs|keycloak|mailpit'
 
 # Kills the kubectl port-forwards of THIS script (left over by a previous run, or ours on exit).
 # On Windows (Git Bash) killing the shell doesn't kill kubectl.exe: the orphans keep holding the
@@ -60,11 +60,13 @@ forward nats 4222:4222 8222:8222 &
 forward krakend 8080:8080 &
 forward seaweedfs 8333:8333 &
 forward keycloak 8180:8080 9000:9000 &
+forward mailpit 8025:8025 &
 cat <<'MSG'
 Gateway       http://www.localtest.me:8000  http://auth.localtest.me:8000  (no forward needed)
 KrakenD       http://localhost:8080  (the API: private, like in prod; portfolio-web's API_URL)
 Keycloak      http://localhost:8180/admin  (admin console, private), management http://localhost:9000
 Postgres      localhost:5432   Redis localhost:6379   NATS localhost:4222 (monitor http://localhost:8222)
 S3 (files)    http://localhost:8333  (SeaweedFS; buckets dev-public-files, dev-private-files)
+Mail          http://localhost:8025  (Mailpit: every e-mail Keycloak sends, e.g. activation links)
 MSG
 wait
