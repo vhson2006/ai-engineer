@@ -59,8 +59,11 @@ paths:
   writes it into the Gateway, the routes and the apps' settings. Never a host name or a public URL
   in a manifest, a patch or an env file. HSTS is the `HSTS` line of `urls.env`, raised step by step
   (ADR 0048): never includeSubDomains, never preload.
-- **A business site in Kubernetes = `k8s/sites/<id>`** from the shared template (ADR 0047), listed by
-  the overlay: never a hand-written Deployment for a site. Rules select sites by `role: business-site`.
+- **A business site in Kubernetes = an entry of `k8s/sites/sites.json`** (ADR 0047): `npm run
+  sites:generate` writes its folder `k8s/sites/<id>` (template, Keycloak client, customers' realm
+  with realm.json's security settings) and its test customers; never edit those files by hand, never
+  a hand-written Deployment for a site. `npm run k8s:check` (`sites.mjs --check`) refuses drift and
+  lists what an environment still lacks. Rules select sites by `role: business-site`.
 - Stateful pieces: StatefulSets with a PVC; prod StorageClass `reclaimPolicy: Retain` + backups.
 - Before `npm run k8s:up`: `npm run k8s:render` (and `:prod`), `npm run krakend:check`,
   `kubectl diff -k k8s/overlays/dev`. Never apply the prod overlay by hand (Argo CD, ADR 0009).

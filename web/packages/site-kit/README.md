@@ -40,6 +40,12 @@ of `npm run check`) refuses a site that copies what the kit does.
   `--button-radius`, `--heading-*`, `--font-heading`), and the class hooks of the kit's pages:
   `.article-masthead`, `.article-cover`, `.article-cta`, `.topic-chip`, `.article-body`.
 
+## A new site
+
+Its app here (`apps/<id>-web`, the files above; `npm run check:sites` lists what is missing), then its
+entry in `k8s/sites/sites.json` and `npm run sites:generate` at the repo root: its Kubernetes folder,
+Keycloak client and customers' realm (k8s/README.md, "Business sites").
+
 ## Changing the kit
 
 - A change here reaches every site: run `npm run check` (all workspaces) and look at two sites

@@ -183,8 +183,8 @@ Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 | Clients | Purpose |
 |---|---|
 | `deployments-api` | Resource server: owns the roles `deployment:read`, `deployment:write`, `deployment:admin`; it's the token audience |
-| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `$WEB_URL/*`: `http://www.localtest.me:8000/*` in dev) |
-| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `$ADMIN_URL/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
+| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect exactly `$WEB_URL/auth/callback`: `http://www.localtest.me:8000/auth/callback` in dev, the one URL the app uses) |
+| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect exactly `$ADMIN_URL/auth/callback`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
 | `dev-cli` | **dev and staging only** (`components/keycloak-local`): password grant for curl tests |
 
 | Group | Roles | Test user (password `Dev-Staging-2026!`) |
@@ -310,17 +310,25 @@ kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statef
 ## Business sites (ADR 0047)
 
 Every business site runs from one template, [`sites/_template`](sites/_template/): a Deployment,
-a Service and a route, the same for all. A site's folder `sites/<id>/` only names it (`app/`: its
-app and client-secret key; `keycloak/`: its Keycloak client) and takes its host and URL from the
-overlay's `urls.env`. To run a site in an environment:
+a Service and a route, the same for all. **The sites are listed once, in
+[`sites/sites.json`](sites/sites.json)** (id, name, languages, dev port). `npm run sites:generate`
+([`scripts/sites.mjs`](scripts/sites.mjs)) writes each site's folder `sites/<id>/` from it (`app/`:
+its names for the template; `keycloak/`: its client in `nest-microservice` and its customers' realm
+`site-<id>`, whose security settings are read from `base/keycloak/realm.json`) and its test
+customers in `components/keycloak-local`. Those files are never edited by hand: `npm run k8s:check`
+(CI) refuses one that differs.
 
-1. `components:` of the overlay: `- ../../sites/<id>`;
-2. `urls.env`: `<ID>_HOST` and `<ID>_URL`;
-3. `images:`: `<id>-web` (and its entry in `images.json`, `environments` listing the overlay);
+A new site: its app in `web/apps/<id>-web` (on `@web/site-kit`), an entry in `sites.json`, then
+`npm run sites:generate`, which prints what the environments still lack (the same list `k8s:check`
+fails on):
+
+1. `components:` of the overlay: `- ../../sites/<id>` (dev: `- ../../sites/<id>/keycloak`);
+2. `urls.env`: `<ID>_HOST` and `<ID>_URL` (dev: `<ID>_URL=http://localhost:<dev port>`);
+3. `images.json` (`siteUrl: "{<ID>_URL}"`) and `images:` of the overlays: `<id>-web`;
 4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`;
 5. Secret `<id>-web`: `REDIS_URL` (its own Redis/Valkey user, keys `<id>-web:*`; local:
    `components/local-data/redis/users.acl`) and `SESSION_ENCRYPTION_KEY`: its customers' sessions
-   (ADR 0049).
+   (ADR 0049); `components/keycloak-local/kustomization.yaml` lists its `test-customers-<id>.json`.
 
 Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
 `role: business-site` (NetworkPolicies, the https-only route patch). Staging and prod run all

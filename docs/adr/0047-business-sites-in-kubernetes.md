@@ -23,6 +23,11 @@ site image could not be built in CI at all: `next build` read the articles from 
   - `kustomization.yaml` (a Component): the two, plus its host and URL from the overlay's
     `urls.env` (`<ID>_HOST`, `<ID>_URL`).
   An environment runs a site by listing `../../sites/<id>`, its image, and its client secret.
+- **One list, generated folders** (2026-11-14): the sites are listed once in `k8s/sites/sites.json`;
+  `npm run sites:generate` (`k8s/scripts/sites.mjs`) writes every site's folder and its test
+  customers, the customers' realm taking its security settings from `realm.json`. CI
+  (`sites.mjs --check`) refuses a generated file edited by hand and an environment missing a site's
+  settings: nine near-identical copies can no longer drift.
 - **Shared per environment**: ConfigMap `business-sites-env` (API URL; the issuer and storage
   origins come from `urls.env`), Secret `keycloak-clients` (the client secrets, ADR 0043), label
   `role: business-site` selected by the NetworkPolicies (edge → sites, sites → KrakenD), the
@@ -45,8 +50,8 @@ site image could not be built in CI at all: `next build` read the articles from 
 
 ## Consequences
 
-- A site in an environment = one folder (generated once from the template) and four lines in the
-  overlay. CI renders every site on its own and checks the images list.
+- A site in an environment = an entry in `sites.json` (its folder generated) and the lines
+  `sites:generate` lists for the overlay. CI renders every site on its own and checks the images list.
 - A newly published or edited article shows up within about a minute (the cache's revalidation),
   as before; nothing invalidates it on publish yet (`revalidateTag` of `content:<siteId>` on the
   article events would).

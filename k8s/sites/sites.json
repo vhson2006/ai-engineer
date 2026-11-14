@@ -1,0 +1,14 @@
+{
+  "$comment": "The business sites (ADRs 0042, 0045, 0047, 0049): the ONE list. npm run sites:generate writes each site's folder k8s/sites/<id>/ (app, Keycloak client, customers' realm) and its test customers from it and from k8s/sites/_template; npm run k8s:check (CI) refuses a generated file that differs, and an environment that misses a site's settings. A new site: an entry here, npm run sites:generate, then the steps it prints.",
+  "sites": [
+    { "id": "nails", "name": "Envy Nails Spa of Wendell", "locales": ["en", "vi"], "defaultLocale": "en", "devPort": 3200 },
+    { "id": "wine", "name": "Khang Hưng Tửu", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3300 },
+    { "id": "laundry", "name": "Giặt sấy SFaster", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3400 },
+    { "id": "sushi", "name": "Kumo Sushi & Omakase", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3500 },
+    { "id": "travel", "name": "Gió Mùa Travel", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3600 },
+    { "id": "flowers", "name": "Bông Florist", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3700 },
+    { "id": "autoparts", "name": "Pitlane Auto Parts", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3800 },
+    { "id": "hotel", "name": "Lantern House Hội An", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 3900 },
+    { "id": "spa", "name": "An Nhiên Spa", "locales": ["vi", "en"], "defaultLocale": "vi", "devPort": 4000 }
+  ]
+}

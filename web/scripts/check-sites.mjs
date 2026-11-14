@@ -59,6 +59,9 @@ for (const name of sites) {
     for (const [module, instead] of FORBIDDEN_IMPORTS) {
       if (text.includes(`'${module}'`)) problems.push(`${name}: ${relative(root, file)} imports ${module} (use ${instead})`);
     }
+    // A site's own header (instead of the kit's SiteHeader / SiteShell) keeps the customers' account
+    // link (ADR 0049): signing in must be reachable on every site.
+    if (/<header[\s>]/.test(text) && !text.includes('<AccountLink')) problems.push(`${name}: ${relative(root, file)} has its own <header> without <AccountLink> (@web/site-kit/components/account)`);
   }
   if (!readFileSync(join(root, 'src/proxy.ts'), 'utf8').includes('siteProxy(')) problems.push(`${name}: src/proxy.ts must be the kit's siteProxy(website.routing)`);
   // Built in CI without the private API, run on a read-only filesystem: the ISR pages regenerated

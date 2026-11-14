@@ -120,6 +120,8 @@ jobs:
         run: node k8s/scripts/images-check.mjs
       - name: Staging and prod have the same settings (explained exceptions aside)
         run: node k8s/scripts/env-parity.mjs
+      - name: Business sites match k8s/sites/sites.json (generated files, every environment)
+        run: node k8s/scripts/sites.mjs --check
       - name: Render every business site on its own (k8s/sites/<id>/app)
         run: for site in k8s/sites/*/app; do kubectl kustomize "$site" > /dev/null && echo "ok $site"; done
       - name: Render every overlay (kubectl kustomize)
