@@ -62,4 +62,6 @@ paths:
 - Scripts run from the repo root, `.sh` files through `node k8s/scripts/sh.mjs <script>` (on
   Windows `bash` is often WSL, without kubectl). `port-forward.sh` / `.ps1` keep their watchdog.
 - Local staging (ADR 0018) mirrors prod: after a prod manifest change, check `npm run staging:up`.
+  A setting added to one environment's env files goes to the other too, or into `ONLY` of
+  `k8s/scripts/env-parity.mjs` with its reason (CI: `npm run k8s:check`).
   Shared pieces live in `components/`; staging gets only tiny patches.

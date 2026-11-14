@@ -409,7 +409,7 @@ deployment-service, Keycloak ─TLS─▶ DO managed Postgres     web apps ─TL
 ### Images
 
 **The one list of images: [`images.json`](images.json)** (how each is built, what it watches,
-the web apps' public origin). CI (`npm run images:check`) checks that the overlays' `images:` and the
+the web apps' public origin). CI (`npm run k8s:check`) checks that the overlays' `images:` and the
 manifests agree with it; `staging:build` and the workflow below build from it.
 
 Built by CI, not by hand: after CI passes on `main`, `.github/workflows/images.yml` builds every

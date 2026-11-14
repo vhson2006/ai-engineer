@@ -57,9 +57,10 @@ OTP, `web/apps/admin-web/README.md`).
 ## CI
 
 `ci.yml` runs per changed part the package commands (api: lint, format, test, integration, build; web:
-`check`; k8s: `images-check.mjs`, render every overlay + `krakend-check.sh`); required check `ci-ok`.
+`check`; k8s: `images-check.mjs`, `env-parity.mjs`, render every site and overlay + `krakend-check.sh`;
+a pull request also builds the images it touches, without pushing: `images-plan.mjs`); required check `ci-ok`.
 A new package or check goes into it in the same change. The images: ONE list, `k8s/images.json`,
-read by `images.yml` (builds changed images to GHCR and commits their `newTag` in
+read by `images-plan.mjs` for `images.yml` (builds changed images to GHCR and commits their `newTag` in
 `k8s/overlays/prod/kustomization.yaml`: never edit those lines by hand) and `staging:build`. A new
 image = an entry there + its manifest + an `images:` entry in overlays prod (`newTag: placeholder`,
 never another image's sha: the next run builds it and writes the real tag) and staging. Every

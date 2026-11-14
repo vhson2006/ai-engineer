@@ -30,6 +30,8 @@ jobs:
       api: ${{ steps.diff.outputs.api }}
       web: ${{ steps.diff.outputs.web }}
       k8s: ${{ steps.diff.outputs.k8s }}
+      images: ${{ steps.images.outputs.matrix }}
+      images_any: ${{ steps.images.outputs.any }}
     steps:
       - uses: actions/checkout@v5.0.0
         with:
@@ -55,6 +57,17 @@ jobs:
           # KrakenD forwards what the web app sends (root CLAUDE.md rule 6): k8s/ is rendered and
           # validated as well when the contracts or the web API helpers change.
           echo "k8s=$(has "^k8s/|^nest-microservice/libs/common/src/contracts/|^web/packages/core/src/api/|^web/Dockerfile$|^web/apps/[^/]+/package\.json$|$ci")" >> "$GITHUB_OUTPUT"
+      # A pull request builds the images its change touches (no push): a broken Dockerfile or
+      # build fails here, not after the merge (where images.yml would leave prod on the old tags).
+      - id: images
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          matrix=$(node k8s/scripts/images-plan.mjs --since "$BASE_SHA")
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "any=$([ "$matrix" = "[]" ] && echo false || echo true)" >> "$GITHUB_OUTPUT"
+          echo "images to build: $matrix"
 
   api:
     name: API (nest-microservice)
@@ -105,6 +118,8 @@ jobs:
       - uses: actions/checkout@v5.0.0
       - name: The image list agrees with the overlays and manifests (k8s/images.json)
         run: node k8s/scripts/images-check.mjs
+      - name: Staging and prod have the same settings (explained exceptions aside)
+        run: node k8s/scripts/env-parity.mjs
       - name: Render every business site on its own (k8s/sites/<id>/app)
         run: for site in k8s/sites/*/app; do kubectl kustomize "$site" > /dev/null && echo "ok $site"; done
       - name: Render every overlay (kubectl kustomize)
@@ -120,9 +135,30 @@ jobs:
           chmod a+w k8s # the KrakenD container writes the rendered JSON there
           for overlay in dev staging prod; do bash k8s/scripts/krakend-check.sh "$overlay"; done
 
+  images:
+    name: Image ${{ matrix.name }} (build, no push)
+    needs: changes
+    if: needs.changes.outputs.images_any == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.changes.outputs.images) }}
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - uses: docker/setup-buildx-action@v3.10.0
+      - uses: docker/build-push-action@v6.15.0
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.file }}
+          target: ${{ matrix.target }}
+          build-args: ${{ matrix.args }}
+          push: false
+          cache-from: type=gha,scope=${{ matrix.name }}
+
   ci-ok:
     name: ci-ok
-    needs: [changes, api, web, k8s]
+    needs: [changes, api, web, k8s, images]
     if: always()
     runs-on: ubuntu-latest
     steps:

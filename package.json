@@ -11,7 +11,7 @@
     "k8s:status": "kubectl -n nest-microservice get pods,svc,pvc,gateway,httproute",
     "k8s:forward": "node k8s/scripts/sh.mjs k8s/scripts/port-forward.sh",
     "krakend:check": "node k8s/scripts/sh.mjs k8s/scripts/krakend-check.sh",
-    "images:check": "node k8s/scripts/images-check.mjs",
+    "k8s:check": "node k8s/scripts/images-check.mjs && node k8s/scripts/env-parity.mjs",
     "staging:build": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh build",
     "staging:up": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh up",
     "staging:status": "node k8s/scripts/sh.mjs k8s/scripts/staging.sh status",
