@@ -18,18 +18,8 @@ CERT_MANAGER_VERSION=v1.21.3 # same as production (k8s/README.md)
 CA_FILE=k8s/.local-ca.crt    # git-ignored: the CA certificate only (never the key)
 GRAFANA_ENV=k8s/.grafana-cloud.env # git-ignored: Grafana Cloud credentials (k8s/grafana-cloud.env.example)
 
-say() { printf '\n\033[1m▸ %s\033[0m\n' "$*"; }
-
-# Safety: everything here assumes the LOCAL cluster. Never run it against another context.
-require_local_cluster() {
-  local ctx
-  ctx=$(kubectl config current-context)
-  if [ "$ctx" != "docker-desktop" ] && [ "${STAGING_ALLOW_CONTEXT:-}" != "$ctx" ]; then
-    echo "Refusing: kubectl context is '$ctx', not 'docker-desktop'." >&2
-    echo "Local staging only runs on the local cluster (STAGING_ALLOW_CONTEXT=$ctx to override)." >&2
-    exit 1
-  fi
-}
+# say, require_local_cluster (never another kubectl context), stop_namespace.
+source k8s/scripts/local.sh
 
 # The images: k8s/images.json (the one list, also read by .github/workflows/images.yml).
 # One line per image, "|"-separated: name, context, dockerfile, target, app, site URL (from
@@ -125,11 +115,8 @@ wake_gateway() { # namespace
 
 stop() {
   require_local_cluster
-  if ! kubectl get namespace "$NS" >/dev/null 2>&1; then echo "No staging to stop."; exit 0; fi
   say "Stopping staging (namespace $NS): every pod to 0, its volumes and data KEPT"
-  kubectl -n "$NS" scale deploy,statefulset --all --replicas=0 >/dev/null
-  # Finished Jobs (migrations, streams, Keycloak configuration): staging:up runs them again.
-  kubectl -n "$NS" delete job --all --ignore-not-found >/dev/null
+  stop_namespace "$NS"
   say "Bringing dev back"
   bash k8s/scripts/up.sh
   echo "Staging stopped; npm run staging:up resumes it with the same data (npm run staging:down deletes it)."
@@ -138,7 +125,7 @@ stop() {
 scale_dev_down() {
   if kubectl get ns "$DEV_NS" >/dev/null 2>&1; then
     say "Scaling dev ($DEV_NS) to 0 to free memory (data kept; npm run k8s:up restores it)"
-    kubectl -n "$DEV_NS" scale deploy,statefulset --all --replicas=0 >/dev/null
+    stop_namespace "$DEV_NS"
   fi
 }
 

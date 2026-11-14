@@ -14,7 +14,7 @@ Requires Docker Desktop with Kubernetes, Node.js 20+.
 
 ```bash
 npm run k8s:up                    # Gateway, KrakenD, Keycloak (+ its realms, ADR 0043), Postgres, Redis, NATS, S3
-npm run k8s:forward               # keep this terminal open
+npm run k8s:forward               # keep this terminal open (npm run k8s:stop: stop the stack, data kept)
 
 cd nest-microservice && cp .env.example .env && npm install && npm run migration:run && npm run start:dev
 cd web && npm install && npm run dev   # both sites (once before: cp .env.example .env.local in apps/portfolio-web and apps/admin-web)

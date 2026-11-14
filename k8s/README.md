@@ -81,6 +81,7 @@ npm run k8s:up                        # installs NGINX Gateway Fabric once, then
                                       # (and the Job keycloak-config: the realms, ADR 0043)
 npm run k8s:status                    # wait until all 6 pods are Running 1/1 (Keycloak: ~1-2 min)
 npm run k8s:forward                   # Postgres/Redis/NATS for the apps + admin UIs (Ctrl+C to stop)
+npm run k8s:stop                      # stop it, data KEPT (volumes); k8s:up resumes it. Refuses any context but docker-desktop
 ```
 
 `k8s:forward` reconnects by itself when a pod is replaced (rollout, restart): a watchdog compares the
@@ -297,15 +298,13 @@ kubectl -n nest-microservice exec -it postgres-0 -- psql -U postgres -d deployme
 kubectl -n nest-microservice exec -it redis-0 -- redis-cli --user admin --pass admin-dev-redis-password
 kubectl -n nest-microservice rollout restart statefulset/nats
 
-npm run k8s:down    # delete everything, INCLUDING the PVCs (data is lost)
+npm run k8s:stop    # every pod to 0, data KEPT (Postgres, Redis, NATS, SeaweedFS volumes); k8s:up resumes it
+npm run k8s:down    # DELETES everything, INCLUDING the PVCs: articles, images, Keycloak users and alice's OTP are lost
 ```
 
-To stop the infrastructure but keep the data, scale it to 0 instead of deleting it:
-
-```bash
-kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statefulset/nats deployment/krakend deployment/keycloak deployment/edge-nginx --replicas=0
-kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statefulset/nats deployment/krakend deployment/keycloak deployment/edge-nginx --replicas=1
-```
+`k8s:stop` stops the cluster only: the API (`npm run start:dev`), the web apps (`npm run dev`) and
+`npm run k8s:forward` run on your machine and stop with Ctrl+C. Like the staging commands, it refuses
+any kubectl context but `docker-desktop` (dev and prod share the namespace name).
 
 ## Business sites (ADR 0047)
 
