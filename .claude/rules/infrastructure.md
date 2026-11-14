@@ -47,6 +47,9 @@ paths:
   Argo CD sync. Change the files, never the console or a kcadm script; never one environment's copy
   of a realm; no people in `realm.json`. prod still needs, once: named admins in `master`, then the
   bootstrap admin removed.
+- Content is not bootstrap state either (ADR 0044): staging and prod get the sites' snapshot from
+  the Job `content-import` (each site's version once, table `content_imports`); dev:
+  `npm run seed:content -- --all`. Never content created by hand to make an environment usable.
 - `npm run k8s:down` deletes the namespace and its PVCs (all data).
 
 ## Changes

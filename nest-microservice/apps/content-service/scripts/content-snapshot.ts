@@ -5,10 +5,14 @@
  *                            old slugs) and the media rows they use
  *   media/<id>/<width>.<ext> every stored size of those images (the bucket's own bytes)
  * Ids are kept, so a restored image has the same storage key and the bodies stay valid.
+ * `version` of content.json: the Job content-import imports each version of a site once (table
+ * content_imports); raise it to have the deploys import the site's new articles.
  */
 import { join } from 'node:path';
 
-export const SNAPSHOT_DIR = join(__dirname, '..', 'seed', 'content');
+/** The image of the Job content-import sets CONTENT_SNAPSHOT_DIR (its own layout, Dockerfile). */
+export const SNAPSHOT_DIR =
+  process.env.CONTENT_SNAPSHOT_DIR ?? join(__dirname, '..', 'seed', 'content');
 
 /** Stands for the site's media prefix (MediaUrls.sitePrefix) in a body: `{{media}}/<id>/640.webp`. */
 export const MEDIA_PLACEHOLDER = '{{media}}/';
@@ -58,6 +62,8 @@ export interface SnapshotArticle {
 }
 
 export interface SiteSnapshot {
+  /** Raised when the snapshot of the site changes: deploys import each version once. */
+  version: number;
   site: { id: string; name: string; locales: string[]; defaultLocale: string };
   categories: SnapshotCategory[];
   media: SnapshotMedia[];

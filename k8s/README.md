@@ -34,7 +34,8 @@ k8s/
 │   ├── local-data/              # Postgres, Redis (ACL users), SeaweedFS (S3 for files) in the cluster: dev, staging
 │   ├── keycloak-local/          # Keycloak test users, alice's OTP, dev-cli: dev, staging
 │   ├── nats/                    # NATS (single instance): dev and prod
-│   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster: staging, prod
+│   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster,
+│   │                            #   Jobs nats-setup and content-import (the sites' content, ADR 0044): staging, prod
 │   ├── network-policies/        # default deny + allowed flows: staging and prod
 │   └── observability/           # Grafana Alloy → Grafana Cloud (metrics, logs, traces; ADR 0023): staging and prod
 ├── overlays/
@@ -331,7 +332,7 @@ local CA through cert-manager (as in prod with Let's Encrypt).
 
 ```bash
 npm run staging:build      # docker build the 5 images (local/<name>:staging); no registry needed
-npm run staging:up         # NGF, cert-manager, local CA, CoreDNS rule, dev → 0, apply, migrate, wait, admin OTP flow
+npm run staging:up         # NGF, cert-manager, local CA, CoreDNS rule, dev → 0, apply, migrate, realms, content, wait
 npm run staging:trust-ca   # once: import the CA (Windows asks to confirm); restart the browser
 npm run staging:status
 npm run staging:stop       # stop it, KEEP its data, bring dev back; staging:up resumes it
@@ -351,6 +352,9 @@ npm run staging:down       # delete the namespace WITH its data (fresh start); n
   other domain). The certificate (no key) is exported to `k8s/.local-ca.crt` (git-ignored).
 - **In-cluster DNS**: a CoreDNS rule maps `*.staging.localtest.me` to the staging Gateway, so pods
   reach Keycloak and S3 through the same HTTPS URLs as browsers (public DNS does this in prod).
+- **Content**: a fresh staging gets the nine sites, their articles and images from the Job
+  `content-import` (ADR 0044), as prod does; each site's snapshot version once, so `staging:stop`
+  / `staging:up` keep what you changed. `staging:down` starts over.
 - **Rebuild after a code change**: `npm run staging:build && npm run staging:up` (restarts the apps).
 - `staging.sh` refuses any kubectl context other than `docker-desktop`.
 - **Telemetry (optional)**: `cp k8s/grafana-cloud.env.example k8s/.grafana-cloud.env` (git-ignored),
@@ -490,6 +494,11 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin:
    create real named admins in `master` with OTP required, then remove the bootstrap admin (the next
    sync signs in as `keycloak-config-cli`).
+
+9. **Content, after the first sync**: the Job `content-import` (PostSync hook, ADR 0044) has
+   imported the nine sites, their topics, articles (status kept) and images into the managed
+   database and Spaces (URLs on the CDN), once per site and snapshot version: later syncs skip them,
+   and what the admins change stays. Follow it: `kubectl -n nest-microservice logs job/content-import`.
 
 Check: `kubectl get certificate,externalsecret -n nest-microservice` (Ready=True),
 `curl -I http://www.example.com` (301 to https). `https://api.example.com` must NOT answer: the API is

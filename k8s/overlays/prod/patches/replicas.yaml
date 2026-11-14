@@ -90,6 +90,25 @@ spec:
           secret:
             secretName: db-ca
 ---
+# The Job content-import runs with content-service's settings: the same verified TLS.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: content-import
+spec:
+  template:
+    spec:
+      containers:
+        - name: content-import
+          volumeMounts:
+            - name: db-ca
+              mountPath: /etc/db-ca
+              readOnly: true
+      volumes:
+        - name: db-ca
+          secret:
+            secretName: db-ca
+---
 # Same verified TLS for ai-service (env/ai-service.env).
 apiVersion: apps/v1
 kind: Deployment

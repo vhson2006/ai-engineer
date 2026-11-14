@@ -155,7 +155,7 @@ up() {
   say "Deploying k8s/overlays/staging into $NS"
   kubectl create namespace "$NS" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
   kubectl -n "$NS" create configmap local-ca --from-file=ca.crt="$CA_FILE" --dry-run=client -o yaml | kubectl apply -f - >/dev/null
-  kubectl -n "$NS" delete job db-migrate nats-setup keycloak-config --ignore-not-found >/dev/null # a Job's template is immutable
+  kubectl -n "$NS" delete job db-migrate nats-setup keycloak-config content-import --ignore-not-found >/dev/null # a Job's template is immutable
   # Content-addressed tags: a node that already has local/<img>:staging keeps its OLD copy
   # (IfNotPresent), so each build is deployed as local/<img>:<image id>; a rebuild changes the tag,
   # which also rolls the Deployments.
@@ -176,6 +176,8 @@ up() {
   kubectl -n "$NS" rollout status deploy/keycloak --timeout=600s
   # The realms (app realm, admin-site sign-in flow, realm master's admin URL): ADR 0043.
   kubectl -n "$NS" wait job/keycloak-config --for=condition=Complete --timeout=900s
+  # The content snapshot, each site's version once (ADR 0044): the sites, articles and images.
+  kubectl -n "$NS" wait job/content-import --for=condition=Complete --timeout=900s
   kubectl -n "$NS" rollout status deploy/krakend deploy/deployment-service deploy/notification-service deploy/content-service deploy/ai-service deploy/portfolio-web deploy/admin-web deploy/render-worker --timeout=300s
   kubectl -n "$NS" rollout status deploy -l role=business-site --timeout=300s # k8s/sites
   kubectl -n "$NS" wait certificate --all --for=condition=Ready --timeout=180s

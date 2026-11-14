@@ -73,11 +73,14 @@ EXPOSE 3004
 CMD ["node", "dist/apps/ai-service/main"]
 
 # ---- migrate: prisma migrate deploy (needs the Prisma CLI, a dev dependency) --------------------
-# Also carries nats-setup (the one owner of the JetStream streams, ADR 0024): same image, the Job
-# `nats-setup` overrides the command.
+# Also carries nats-setup (the one owner of the JetStream streams, ADR 0024) and content-import
+# (the content snapshot, ADR 0044): same image, their Jobs override the command.
 FROM deps AS migrate
 ENV NODE_ENV=production
 COPY --from=build /app/dist/apps/nats-setup ./dist/apps/nats-setup
+COPY --from=build /app/dist/apps/content-import ./dist/apps/content-import
+COPY apps/content-service/seed/content ./seed/content
+ENV CONTENT_SNAPSHOT_DIR=/app/seed/content
 # Numeric uid (= the image's "node" user): Kubernetes can only enforce runAsNonRoot with a
 # numeric USER ("node" → CreateContainerConfigError). Found by the local staging (ADR 0018).
 USER 1000:1000

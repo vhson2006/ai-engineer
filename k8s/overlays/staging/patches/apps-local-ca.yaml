@@ -116,3 +116,22 @@ spec:
         - name: local-ca
           configMap:
             name: local-ca
+---
+# The Job content-import uploads the snapshot's images to https://s3.staging.localtest.me too.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: content-import
+spec:
+  template:
+    spec:
+      containers:
+        - name: content-import
+          volumeMounts:
+            - name: local-ca
+              mountPath: /etc/local-ca
+              readOnly: true
+      volumes:
+        - name: local-ca
+          configMap:
+            name: local-ca
