@@ -39,15 +39,15 @@
         },
         "gateway": {
           "name": "Edge gateway",
-          "text": "Cổng công khai duy nhất: định tuyến các host www, admin và auth."
+          "text": "Lối vào công khai duy nhất: www, admin, auth và chín business site, HTTPS kèm HSTS."
         },
         "bff": {
           "name": "Next.js BFF",
-          "text": "Trang render phía server và Server Actions: phần code duy nhất gọi API."
+          "text": "Các app Next.js render ở server (site này, trang admin, chín business site trên một bộ kit): nơi duy nhất gọi API."
         },
         "keycloak": {
           "name": "Keycloak",
-          "text": "Đăng nhập OpenID Connect; quản trị viên cần mật khẩu và OTP."
+          "text": "OpenID Connect: nhân viên đăng nhập bằng mật khẩu, quản trị viên thêm OTP; mỗi business site có realm riêng cho khách của mình."
         },
         "redis": {
           "name": "Redis",
@@ -59,7 +59,7 @@
         },
         "api": {
           "name": "NestJS API",
-          "text": "Xác minh JWT lần nữa, kiểm tra vai trò và quyền sở hữu, ghi dữ liệu qua Prisma."
+          "text": "Các service NestJS (nội dung, media, studio video…): kiểm tra JWT lần nữa, áp quyền và quy tắc theo site, ghi qua Prisma."
         },
         "postgres": {
           "name": "PostgreSQL",
@@ -69,13 +69,17 @@
           "name": "NATS JetStream",
           "text": "Giao mỗi sự kiện từ outbox ít nhất một lần."
         },
-        "notify": {
-          "name": "Thông báo",
-          "text": "Nhận sự kiện qua inbox idempotent: không việc gì bị xử lý hai lần."
-        },
         "storage": {
           "name": "Object storage",
           "text": "File đi thẳng giữa trình duyệt và storage bằng presigned URL."
+        },
+        "ai": {
+          "name": "Dịch vụ AI",
+          "text": "Nơi duy nhất gọi nhà cung cấp AI (Gemini): viết nháp bài, tạo ảnh và dịch, rồi trả kết quả bằng sự kiện."
+        },
+        "render": {
+          "name": "Render video",
+          "text": "Render clip của studio video bằng Chrome headless, như các job JetStream, và lưu file MP4."
         }
       }
     },
@@ -84,10 +88,16 @@
       "platformLabel": "Nền tảng đứng sau trang này",
       "sitesEyebrow": "Website mẫu",
       "sitesTitle": "Website cho doanh nghiệp địa phương",
-      "sitesIntro": "Các site mẫu dựng từ menu, bảng hiệu và hình ảnh thật của từng cửa hàng: song ngữ, ưu tiên điện thoại, tải nhanh.",
-      "sample": "Mẫu",
+      "sitesIntro": "Chín site song ngữ, ưu tiên điện thoại, cùng một bộ kit: ba site dựng từ thực đơn, bảng hiệu và hình ảnh của doanh nghiệp thật, sáu site mẫu theo ngành.",
+      "sample": "Bản demo",
       "caseStudy": "Case study",
-      "viewCode": "Mã nguồn"
+      "viewCode": "Mã nguồn",
+      "realTitle": "Dựng từ doanh nghiệp thật",
+      "realIntro": "Thực đơn, bảng giá và tờ rơi thật được biến thành site song ngữ, nhanh. Là bản trình diễn, không phải dự án khách hàng trả phí.",
+      "templatesTitle": "Mẫu theo ngành",
+      "templatesIntro": "Sáu doanh nghiệp hư cấu trên cùng bộ site-kit: một ngành mới là một giao diện và lời văn mới, không phải một codebase mới.",
+      "template": "Mẫu ngành",
+      "liveDemo": "Xem demo"
     },
     "project": {
       "openDashboard": "Mở bảng điều khiển trực tiếp"
@@ -121,7 +131,9 @@
       "Nút gọi, Zalo & bản đồ",
       "SEO cơ bản & ảnh xem trước khi chia sẻ",
       "Tên miền riêng & HTTPS",
-      "Dùng được bằng bàn phím và trình đọc màn hình"
+      "Dùng được bằng bàn phím và trình đọc màn hình",
+      "Blog tự quản lý, có AI viết nháp và dịch",
+      "Đăng nhập cho khách, sẵn sàng cho đặt lịch hoặc đơn hàng"
     ],
     "cta": "Trao đổi về website của bạn"
   },
@@ -223,26 +235,110 @@
           "Tên sản phẩm giữ nguyên như bản in ở mọi ngôn ngữ; phần còn lại được dịch"
         ]
       },
-      "wedding": {
-        "name": "Hải Sơn & Trúc Giang",
-        "kind": "Thiệp cưới online",
-        "category": "Sự kiện",
-        "summary": "Website thiệp cưới có đếm ngược, ngày âm lịch, thêm vào lịch và album ảnh.",
-        "brief": "Thiệp giấy không có ảnh, bản đồ hay đếm ngược, và khách hay làm mất. Thiệp này nằm ở một đường link: mọi thứ khách cần, bằng tiếng Việt hoặc tiếng Anh.",
+      "sushi": {
+        "name": "Kumo Sushi & Omakase",
+        "kind": "Nhà hàng omakase · Sài Gòn",
+        "category": "Nhà hàng",
+        "summary": "Một site trầm, tĩnh cho quầy omakase mười hai ghế: set omakase, gọi món lẻ và cách một buổi tối diễn ra.",
+        "brief": "Nhà hàng cao cấp bán trải nghiệm chứ không bán danh sách món. Site phải tạo không khí ngay từ màn hình đầu, giải thích một buổi omakase diễn ra thế nào và khiến việc đặt chỗ là bước tự nhiên tiếp theo.",
         "features": [
-          "Hero toàn màn hình với đồng hồ đếm ngược đến giờ khai tiệc",
-          "Lời mời theo văn phong thiệp cưới Việt, ngày âm lịch được tính tự động",
-          "Thẻ lễ thành hôn và tiệc cưới có bản đồ, nút Google Calendar và Apple/Outlook (.ics)",
-          "Dòng thời gian chuyện tình yêu và album masonry có lightbox dùng được bằng bàn phím",
-          "Riêng tư theo link: không hiện trên công cụ tìm kiếm"
+          "Set omakase và thực đơn gọi lẻ từ dữ liệu có kiểu",
+          "Buổi tối được kể từng bước, từ lúc đến tới miếng cuối cùng",
+          "Thư viện ảnh, hỏi đáp, giờ mở cửa theo buổi và nút đặt chỗ ở mọi nơi"
         ],
         "decisions": [
-          "Mọi ngày giờ theo giờ Việt Nam bất kể thiết bị của khách, có test bao phủ",
-          "Ngày âm lịch lấy từ lịch Trung Hoa của Intl cộng tên năm can chi (Bính Ngọ)",
-          "Đồng hồ đếm ngược hiện placeholder trên server rồi mới điền sau khi hydrate: không lệch trên trang prerender"
+          "Xây trên bộ site-kit dùng chung: SEO, trang pháp lý, bài viết, ngôn ngữ và đăng nhập đến từ một package, không sao chép",
+          "Doanh nghiệp hư cấu: mọi tên, số điện thoại và hình ảnh đều là mẫu, chân trang ghi rõ điều đó",
+          "Bài viết được soạn và quản lý trong trang admin (AI viết nháp, dịch máy) và hiện lên site trong khoảng một phút"
+        ]
+      },
+      "travel": {
+        "name": "Gió Mùa Travel",
+        "kind": "Tour nhóm nhỏ · Đà Nẵng",
+        "category": "Du lịch",
+        "summary": "Tour có giá rõ ràng: bao gồm gì, không bao gồm gì, và chuyến đi được lên kế hoạch ra sao.",
+        "brief": "Người mua tour so sánh bằng giá và niềm tin. Mỗi tour ghi rõ thời lượng, số khách và giá, cùng những gì bao gồm và không bao gồm, để không có bất ngờ khi thanh toán.",
+        "features": [
+          "Thẻ tour có thời lượng, số khách và giá",
+          "Bao gồm và không bao gồm đặt cạnh nhau",
+          "Vì sao chọn chúng tôi, cách đặt tour, hỏi đáp và liên hệ qua điện thoại hoặc Zalo"
+        ],
+        "decisions": [
+          "Xây trên bộ site-kit dùng chung: SEO, trang pháp lý, bài viết, ngôn ngữ và đăng nhập đến từ một package, không sao chép",
+          "Doanh nghiệp hư cấu: mọi tên, số điện thoại và hình ảnh đều là mẫu, chân trang ghi rõ điều đó",
+          "Bài viết được soạn và quản lý trong trang admin (AI viết nháp, dịch máy) và hiện lên site trong khoảng một phút"
+        ]
+      },
+      "flowers": {
+        "name": "Bông Florist",
+        "kind": "Tiệm hoa · Quận 3, Sài Gòn",
+        "category": "Bán lẻ",
+        "summary": "Bó hoa ba cỡ, phí giao theo khu vực và mẹo giữ hoa tươi, trên tông hồng và xanh lá dịu.",
+        "brief": "Khách đặt hoa thường gấp và trên điện thoại. Cỡ hoa, giá và phí giao phải đọc được trong một cái nhìn, và đặt hàng chỉ cách một lần chạm.",
+        "features": [
+          "Bó hoa ba cỡ kèm giá",
+          "Phí giao theo khu vực và giờ chốt giao trong ngày",
+          "Dịp tặng, cách giữ hoa và hỏi đáp"
+        ],
+        "decisions": [
+          "Xây trên bộ site-kit dùng chung: SEO, trang pháp lý, bài viết, ngôn ngữ và đăng nhập đến từ một package, không sao chép",
+          "Doanh nghiệp hư cấu: mọi tên, số điện thoại và hình ảnh đều là mẫu, chân trang ghi rõ điều đó",
+          "Bài viết được soạn và quản lý trong trang admin (AI viết nháp, dịch máy) và hiện lên site trong khoảng một phút"
+        ]
+      },
+      "autoparts": {
+        "name": "Pitlane Auto Parts",
+        "kind": "Phụ tùng ô tô & xưởng lắp · Sài Gòn",
+        "category": "Ô tô",
+        "summary": "Danh mục lọc ngay trên trình duyệt, tìm kiếm không dấu, và kiểm tra lắp vừa trước khi trả tiền.",
+        "brief": "Khách tìm theo phụ tùng và dòng xe, thường gõ không dấu. Danh mục phải lọc nhanh trên điện thoại, và cửa hàng muốn kiểm tra phụ tùng có vừa xe trước khi nhận tiền.",
+        "features": [
+          "Danh mục theo nhóm, lọc tức thì",
+          "Tìm kiếm không dấu (“ma phanh” ra “má phanh”), có test",
+          "Cách đặt hàng bằng ảnh hoặc số VIN, xưởng lắp và bảo hành"
+        ],
+        "decisions": [
+          "Xây trên bộ site-kit dùng chung: SEO, trang pháp lý, bài viết, ngôn ngữ và đăng nhập đến từ một package, không sao chép",
+          "Doanh nghiệp hư cấu: mọi tên, số điện thoại và hình ảnh đều là mẫu, chân trang ghi rõ điều đó",
+          "Bài viết được soạn và quản lý trong trang admin (AI viết nháp, dịch máy) và hiện lên site trong khoảng một phút"
+        ]
+      },
+      "hotel": {
+        "name": "Lantern House Hội An",
+        "kind": "Khách sạn boutique · Hội An",
+        "category": "Lưu trú",
+        "summary": "Mười tám phòng quanh hồ bơi giữa sân: phòng, tiện nghi, khu lân cận và nội quy.",
+        "brief": "Khách chọn khách sạn qua phòng, vị trí và chính sách. Mọi điều khách hỏi trước khi đặt (diện tích phòng, giờ nhận trả phòng, gần đó có gì) đều nằm trên một trang, bằng hai ngôn ngữ.",
+        "features": [
+          "Phòng kèm diện tích, loại giường và giá",
+          "Tiện nghi và địa điểm lân cận kèm thời gian đi bộ",
+          "Nhận phòng, trả phòng, chính sách, hỏi đáp và liên hệ đặt phòng"
+        ],
+        "decisions": [
+          "Xây trên bộ site-kit dùng chung: SEO, trang pháp lý, bài viết, ngôn ngữ và đăng nhập đến từ một package, không sao chép",
+          "Doanh nghiệp hư cấu: mọi tên, số điện thoại và hình ảnh đều là mẫu, chân trang ghi rõ điều đó",
+          "Bài viết được soạn và quản lý trong trang admin (AI viết nháp, dịch máy) và hiện lên site trong khoảng một phút"
+        ]
+      },
+      "spa": {
+        "name": "An Nhiên Spa",
+        "kind": "Day spa · Thủ Đức",
+        "category": "Chăm sóc",
+        "summary": "Liệu trình kèm thời lượng, gói dịch vụ và những gì chờ bạn khi đến, trên tông màu đất dịu.",
+        "brief": "Spa bán sự thư thái và niềm tin. Liệu trình ghi rõ thời lượng và giá, các gói dễ so sánh, và khách lần đầu biết trước điều gì diễn ra trước, trong và sau buổi chăm sóc.",
+        "features": [
+          "Liệu trình kèm thời lượng và giá",
+          "Các gói để so sánh",
+          "Buổi chăm sóc của bạn và lưu ý, hỏi đáp và đặt lịch"
+        ],
+        "decisions": [
+          "Xây trên bộ site-kit dùng chung: SEO, trang pháp lý, bài viết, ngôn ngữ và đăng nhập đến từ một package, không sao chép",
+          "Doanh nghiệp hư cấu: mọi tên, số điện thoại và hình ảnh đều là mẫu, chân trang ghi rõ điều đó",
+          "Bài viết được soạn và quản lý trong trang admin (AI viết nháp, dịch máy) và hiện lên site trong khoảng một phút"
         ]
       }
-    }
+    },
+    "template": "Mẫu theo ngành: doanh nghiệp hư cấu trên bộ site-kit dùng chung"
   },
   "login": {
     "title": "Đăng nhập",
@@ -439,14 +535,15 @@
     ],
     "project": {
       "name": "Nền tảng microservice với các website BFF",
-      "summary": "Repository đứng sau trang này, do tôi tự thiết kế và xây dựng: các microservice NestJS sau gateway KrakenD riêng tư, định danh bằng Keycloak, PostgreSQL, sự kiện NATS JetStream và sáu website Next.js theo mô hình BFF, tất cả chạy trên Kubernetes với GitOps và telemetry.",
+      "summary": "Repository đứng sau site này, tự thiết kế và xây dựng: các microservice NestJS sau KrakenD gateway nội bộ, định danh Keycloak, PostgreSQL, sự kiện NATS JetStream, một dịch vụ AI dùng Gemini, và mười một app Next.js (site này, trang admin nhiều site, chín business site trên một bộ kit), tất cả chạy trên Kubernetes với GitOps và telemetry.",
       "points": [
-        "JWT được xác minh ở gateway và lần nữa ở từng service (RS256 + JWKS); token không bao giờ tới trình duyệt",
-        "Phân quyền theo vai trò cộng quy tắc sở hữu “chỉ người tạo hoặc admin”; trang quản trị yêu cầu mật khẩu + OTP",
-        "Sự kiện at-least-once: transactional outbox, JetStream và inbox idempotent",
-        "Làm mới token single-flight, file tải thẳng từ trình duyệt lên storage",
-        "CI cho mọi pull request, image lên GHCR, GitOps với Argo CD và telemetry Grafana",
-        "24 bản ghi quyết định kiến trúc (ADR) và quy ước viết sẵn mà cả người lẫn AI coding agent đều tuân theo"
+        "JWT được kiểm tra ở gateway và lần nữa trong từng service (RS256 + JWKS); token không bao giờ tới trình duyệt",
+        "Trang admin nhiều site: superadmin dùng mật khẩu + OTP, admin của site chỉ quản lý site của mình",
+        "AI chạy thật: viết nháp bài dạng block, tạo ảnh có hạn mức theo tháng, dịch máy, đi qua một service duy nhất",
+        "Chín business site trên một bộ kit dùng chung, mỗi site có realm đăng nhập riêng cho khách, CI kiểm tra để không lệch nhau",
+        "Sự kiện ít nhất một lần: transactional outbox, JetStream và inbox idempotent; studio video render theo hàng đợi",
+        "CI build đúng phần pull request chạm tới, image lên GHCR, GitOps với Argo CD, telemetry Grafana và cảnh báo chứng chỉ hết hạn",
+        "Gần 50 bản ghi quyết định kiến trúc và quy ước thành văn mà cả người lẫn AI coding agent cùng tuân theo"
       ]
     },
     "experience": [

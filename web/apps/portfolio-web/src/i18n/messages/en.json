@@ -39,15 +39,15 @@
         },
         "gateway": {
           "name": "Edge gateway",
-          "text": "The one public entry: routes the www, admin and auth hosts."
+          "text": "The one public entry: www, admin, auth and the nine business sites, HTTPS with HSTS."
         },
         "bff": {
           "name": "Next.js BFF",
-          "text": "Server-rendered pages and Server Actions: the only code that calls the API."
+          "text": "Server-rendered Next.js apps (this site, the admin site, nine business sites on one kit): the only code that calls the API."
         },
         "keycloak": {
           "name": "Keycloak",
-          "text": "OpenID Connect sign-in; administrators need a password and an OTP."
+          "text": "OpenID Connect: staff sign in with a password, admins add an OTP; each business site has its own realm for its customers."
         },
         "redis": {
           "name": "Redis",
@@ -59,7 +59,7 @@
         },
         "api": {
           "name": "NestJS API",
-          "text": "Verifies the JWT again, enforces roles and ownership, writes through Prisma."
+          "text": "NestJS services (content, media, video studio…): verify the JWT again, enforce roles and the site rule, write through Prisma."
         },
         "postgres": {
           "name": "PostgreSQL",
@@ -69,13 +69,17 @@
           "name": "NATS JetStream",
           "text": "Delivers every event from the outbox at least once."
         },
-        "notify": {
-          "name": "Notifications",
-          "text": "Consumes events through an idempotent inbox: nothing is handled twice."
-        },
         "storage": {
           "name": "Object storage",
           "text": "File bytes go straight between browser and storage with presigned URLs."
+        },
+        "ai": {
+          "name": "AI service",
+          "text": "The only caller of AI providers (Gemini): writes article drafts, generates images and translates, then answers by event."
+        },
+        "render": {
+          "name": "Video renderer",
+          "text": "Renders the video studio’s clips with headless Chrome, as JetStream jobs, and stores the MP4s."
         }
       }
     },
@@ -84,10 +88,16 @@
       "platformLabel": "The platform behind this site",
       "sitesEyebrow": "Sample websites",
       "sitesTitle": "Websites for local businesses",
-      "sitesIntro": "Sample sites built from each business’s real menu, signage and photos: bilingual, mobile-first and fast.",
+      "sitesIntro": "Nine bilingual, mobile-first sites on one shared kit: three built from real businesses’ menus, signage and photos, six industry templates.",
       "sample": "Sample",
       "caseStudy": "Case study",
-      "viewCode": "Source code"
+      "viewCode": "Source code",
+      "realTitle": "Built from real businesses",
+      "realIntro": "Their real menus, price boards and brochures turned into fast, bilingual sites. Demonstrations, not paid client work.",
+      "templatesTitle": "Industry templates",
+      "templatesIntro": "Six fictional businesses on the same site kit: a new industry is a new look and new words, not a new codebase.",
+      "template": "Template",
+      "liveDemo": "Live demo"
     },
     "project": {
       "openDashboard": "Open the live dashboard"
@@ -121,7 +131,9 @@
       "Click-to-call, Zalo & map",
       "SEO basics & link previews",
       "Your own domain & HTTPS",
-      "Accessible by keyboard and screen readers"
+      "Accessible by keyboard and screen readers",
+      "A blog you manage yourself, with AI drafts and translation",
+      "Customer sign-in, ready for bookings or orders"
     ],
     "cta": "Talk about your website"
   },
@@ -223,26 +235,110 @@
           "Product names kept as printed in every language; everything else translated"
         ]
       },
-      "wedding": {
-        "name": "Hải Sơn & Trúc Giang",
-        "kind": "Online wedding invitation",
-        "category": "Events",
-        "summary": "A wedding invitation website with countdown, lunar date, add-to-calendar and a photo album.",
-        "brief": "A paper invitation can’t show photos, a map or a countdown, and guests lose it. This invitation lives at a link: everything a guest needs, in Vietnamese or English.",
+      "sushi": {
+        "name": "Kumo Sushi & Omakase",
+        "kind": "Omakase restaurant · Saigon",
+        "category": "Restaurant",
+        "summary": "A dark, quiet site for a twelve-seat omakase counter: courses, à la carte and the evening explained.",
+        "brief": "A high-end restaurant sells an experience, not a dish list. The site has to set the mood in one screen, explain how an omakase evening works and make booking the obvious next step.",
         "features": [
-          "Full-screen hero with a live countdown to the reception",
-          "Traditional invitation wording with the lunar date (âm lịch) computed automatically",
-          "Ceremony and reception cards with map, Google Calendar and Apple/Outlook (.ics) buttons",
-          "Our story timeline and a masonry album with a keyboard-friendly lightbox",
-          "Private by link: hidden from search engines"
+          "Omakase courses and à la carte menu from typed data",
+          "The evening explained step by step, from arrival to the last piece",
+          "Gallery, FAQ, opening hours per service and a booking call to action everywhere"
         ],
         "decisions": [
-          "All dates in Vietnam time whatever the guest’s device says, covered by tests",
-          "Lunar date from Intl’s Chinese calendar plus the can chi year name (Bính Ngọ)",
-          "The countdown renders placeholders on the server and fills in after hydration: no mismatch on a prerendered page"
+          "Built on the shared site kit: SEO, legal pages, articles, languages and sign-in come from one package, not a copy",
+          "A fictional business: every name, number and photo is invented, and the footer says so",
+          "Articles are written and managed in the admin site (AI drafts, machine translation) and appear within a minute"
+        ]
+      },
+      "travel": {
+        "name": "Gió Mùa Travel",
+        "kind": "Small-group tour operator · Đà Nẵng",
+        "category": "Travel",
+        "summary": "Tours with clear prices: what is included, what is not, and how a trip is planned.",
+        "brief": "Tour buyers compare on price and trust. Each tour shows its duration, group size and price, with exactly what is included and excluded, so there are no surprises at checkout.",
+        "features": [
+          "Tour cards with duration, group size and price",
+          "Includes and excludes listed side by side",
+          "Why us, how booking works, FAQ and contact by phone or Zalo"
+        ],
+        "decisions": [
+          "Built on the shared site kit: SEO, legal pages, articles, languages and sign-in come from one package, not a copy",
+          "A fictional business: every name, number and photo is invented, and the footer says so",
+          "Articles are written and managed in the admin site (AI drafts, machine translation) and appear within a minute"
+        ]
+      },
+      "flowers": {
+        "name": "Bông Florist",
+        "kind": "Flower shop · District 3, Saigon",
+        "category": "Retail",
+        "summary": "Bouquets in three sizes, delivery fees by area and care tips, in a soft rose and sage palette.",
+        "brief": "Customers order flowers in a hurry, often on a phone. Sizes, prices and delivery fees have to be readable at a glance, with ordering one tap away.",
+        "features": [
+          "Bouquets in three sizes with their prices",
+          "Delivery fees by area and same-day cut-off times",
+          "Occasions, flower care and FAQ"
+        ],
+        "decisions": [
+          "Built on the shared site kit: SEO, legal pages, articles, languages and sign-in come from one package, not a copy",
+          "A fictional business: every name, number and photo is invented, and the footer says so",
+          "Articles are written and managed in the admin site (AI drafts, machine translation) and appear within a minute"
+        ]
+      },
+      "autoparts": {
+        "name": "Pitlane Auto Parts",
+        "kind": "Car parts & fitting workshop · Saigon",
+        "category": "Automotive",
+        "summary": "A catalogue filtered in the browser, with accent-insensitive search, and a fit check before you pay.",
+        "brief": "Buyers search by part and car model, often without Vietnamese accents. The catalogue has to be fast to filter on a phone, and the shop wants to check the fit before taking payment.",
+        "features": [
+          "Catalogue by category with instant filtering",
+          "Accent-insensitive search (“ma phanh” finds “má phanh”), covered by tests",
+          "How to order with a photo or VIN, workshop and warranty"
+        ],
+        "decisions": [
+          "Built on the shared site kit: SEO, legal pages, articles, languages and sign-in come from one package, not a copy",
+          "A fictional business: every name, number and photo is invented, and the footer says so",
+          "Articles are written and managed in the admin site (AI drafts, machine translation) and appear within a minute"
+        ]
+      },
+      "hotel": {
+        "name": "Lantern House Hội An",
+        "kind": "Boutique hotel · Hội An",
+        "category": "Hospitality",
+        "summary": "Eighteen rooms around a courtyard pool: rooms, amenities, the neighbourhood and the house rules.",
+        "brief": "Hotel guests decide on rooms, location and policies. Everything a guest asks before booking (room sizes, check-in times, what is nearby) is on one page, in two languages.",
+        "features": [
+          "Rooms with size, beds and price",
+          "Amenities and places nearby with walking times",
+          "Check-in, check-out and policies, FAQ and booking contacts"
+        ],
+        "decisions": [
+          "Built on the shared site kit: SEO, legal pages, articles, languages and sign-in come from one package, not a copy",
+          "A fictional business: every name, number and photo is invented, and the footer says so",
+          "Articles are written and managed in the admin site (AI drafts, machine translation) and appear within a minute"
+        ]
+      },
+      "spa": {
+        "name": "An Nhiên Spa",
+        "kind": "Day spa · Thủ Đức",
+        "category": "Wellness",
+        "summary": "Treatments with their durations, packages and what to expect on your visit, in calm earth tones.",
+        "brief": "A spa sells calm and trust. Treatments show duration and price, packages are easy to compare, and first-time guests learn what happens before, during and after their visit.",
+        "features": [
+          "Treatments with duration and price",
+          "Packages to compare",
+          "Your visit and etiquette, FAQ and booking"
+        ],
+        "decisions": [
+          "Built on the shared site kit: SEO, legal pages, articles, languages and sign-in come from one package, not a copy",
+          "A fictional business: every name, number and photo is invented, and the footer says so",
+          "Articles are written and managed in the admin site (AI drafts, machine translation) and appear within a minute"
         ]
       }
-    }
+    },
+    "template": "Industry template: a fictional business on the shared site kit"
   },
   "login": {
     "title": "Sign in",
@@ -439,14 +535,15 @@
     ],
     "project": {
       "name": "Microservice platform with BFF websites",
-      "summary": "The repository behind this site, designed and built alone: NestJS microservices behind a private KrakenD gateway, Keycloak identity, PostgreSQL, NATS JetStream events and six Next.js BFF websites, all on Kubernetes with GitOps and telemetry.",
+      "summary": "The repository behind this site, designed and built alone: NestJS microservices behind a private KrakenD gateway, Keycloak identity, PostgreSQL, NATS JetStream events, an AI service on Gemini, and eleven Next.js apps (this site, a multi-site admin, nine business sites on one kit), all on Kubernetes with GitOps and telemetry.",
       "points": [
         "JWTs verified at the gateway and again in each service (RS256 + JWKS); tokens never reach the browser",
-        "Role-based access plus “only the creator or an admin” ownership rules; admin site behind password + OTP",
-        "At-least-once events: transactional outbox, JetStream and an idempotent inbox",
-        "Single-flight token refresh, file uploads straight from browser to storage",
-        "CI on every pull request, images to GHCR, Argo CD GitOps and Grafana telemetry",
-        "24 architecture decision records and written conventions that people and AI coding agents both follow"
+        "A multi-site admin: superadmins with password + OTP, site admins limited to their own site",
+        "AI in production: article drafts as blocks, image generation with a monthly quota, machine translation, through one service",
+        "Nine business sites on one shared kit, each with its own customers’ sign-in realm, checked in CI so they can’t drift",
+        "At-least-once events: transactional outbox, JetStream and an idempotent inbox; a video studio rendered by queue",
+        "CI builds what a pull request touches, images to GHCR, Argo CD GitOps, Grafana telemetry and certificate-expiry alerts",
+        "Nearly 50 architecture decision records and written conventions that people and AI coding agents both follow"
       ]
     },
     "experience": [

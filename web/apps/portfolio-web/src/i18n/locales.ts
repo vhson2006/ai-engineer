@@ -29,7 +29,7 @@ export const LOCALE_OPTIONS = LOCALE_CODES.map((code) => ({ code, name: LOCALES[
 export const ROUTING: LocaleRouting<Locale> = {
   locales: LOCALE_CODES,
   defaultLocale: DEFAULT_LOCALE,
-  bypass: ['/auth/', '/files/'],
+  bypass: ['/auth/', '/files/', '/demo/'],
   // A first visit always lands on DEFAULT_LOCALE, not the browser's language. The cookie keeps the
   // default name: the /auth/* handlers read it (@web/core/auth/routes.ts).
   detectLanguage: false,

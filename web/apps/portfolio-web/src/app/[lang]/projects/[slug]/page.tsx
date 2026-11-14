@@ -6,7 +6,7 @@ import { format } from '@web/core/i18n/format';
 import { Container, buttonVariants, cn } from '@web/ui';
 import { Reveal } from '@web/ui/reveal';
 import { profile } from '@/content/profile';
-import { findProject, projects, sourceUrl } from '@/content/projects';
+import { demoPath, findProject, projects, sourceUrl } from '@/content/projects';
 import { inkLink, SectionHeading } from '@/features/editorial/section-heading';
 import { BrowserFrame, PhoneFrame } from '@/features/projects/device-frames';
 import { href } from '@/i18n/locales';
@@ -48,25 +48,23 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
             <p className="mt-4 text-xl leading-relaxed text-pretty text-muted">{text.summary}</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            {project.demoUrl && (
-              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants(), 'rounded-full')}>
-                {t.projects.liveDemo}
-                <ArrowUpRight aria-hidden />
-              </a>
-            )}
+            <a href={demoPath(project)} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants(), 'rounded-full')}>
+              {t.projects.liveDemo}
+              <ArrowUpRight aria-hidden />
+            </a>
             <a href={sourceUrl(project)} target="_blank" rel="noopener noreferrer" className={inkLink}>
               {t.projects.viewCode}
               <ArrowUpRight aria-hidden className="size-4" />
             </a>
           </div>
         </div>
-        <p className="mt-6 font-mono text-[11px] tracking-widest text-subtle uppercase">{t.projects.sample}</p>
+        <p className="mt-6 font-mono text-[11px] tracking-widest text-subtle uppercase">{project.group === 'template' ? t.projects.template : t.projects.sample}</p>
 
         <div className="relative mt-12">
           <BrowserFrame
             image={project.desktop}
             alt={format(t.projects.desktopAlt, { name: text.name })}
-            url={project.demoUrl?.replace(/^https?:\/\//, '') ?? project.source}
+            url={project.source}
             sizes="(min-width: 1152px) 1100px, 94vw"
             priority
             className="lg:mr-28"

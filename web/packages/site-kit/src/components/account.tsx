@@ -15,23 +15,24 @@ export const LOGIN_PATH = '/login';
  * both open the account page. The rest of the page stays prerendered: only this part reads the
  * session cookie, streamed in after it (Suspense), so the page itself is never made dynamic.
  */
-export function AccountLink({ t, locale, className }: { t: BaseMessages; locale: Locale; className?: string }) {
-  const signIn = <AccountAnchor href={href(locale, LOGIN_PATH)} label={t.account.signIn} className={className} />;
+export function AccountLink({ t, locale, className, labelClassName }: { t: BaseMessages; locale: Locale; className?: string; labelClassName?: string }) {
+  const signIn = <AccountAnchor href={href(locale, LOGIN_PATH)} label={t.account.signIn} title={t.account.signIn} className={className} labelClassName={labelClassName} />;
   return (
     <Suspense fallback={signIn}>
-      <AccountState t={t} locale={locale} className={className} signIn={signIn} />
+      <AccountState t={t} locale={locale} className={className} labelClassName={labelClassName} signIn={signIn} />
     </Suspense>
   );
 }
 
-async function AccountState({ t, locale, className, signIn }: { t: BaseMessages; locale: Locale; className?: string; signIn: React.ReactNode }) {
+async function AccountState({ t, locale, className, labelClassName, signIn }: { t: BaseMessages; locale: Locale; className?: string; labelClassName?: string; signIn: React.ReactNode }) {
   const user = await getSessionUser().catch(() => null); // session store down: shown as signed out
   if (!user) return signIn;
   const first = user.name.split(/\s+/)[0] || user.username;
-  return <AccountAnchor href={href(locale, ACCOUNT_PATH)} label={first} title={t.account.myAccount} className={className} />;
+  return <AccountAnchor href={href(locale, ACCOUNT_PATH)} label={first} title={t.account.myAccount} className={className} labelClassName={labelClassName} />;
 }
 
-function AccountAnchor({ href: target, label, title, className }: { href: string; label: string; title?: string; className?: string }) {
+/** `labelClassName`: e.g. `xl:max-2xl:sr-only` where the header has no room (the icon stays, the label is still read out). */
+function AccountAnchor({ href: target, label, title, className, labelClassName }: { href: string; label: string; title?: string; className?: string; labelClassName?: string }) {
   return (
     <Link
       href={target}
@@ -39,12 +40,12 @@ function AccountAnchor({ href: target, label, title, className }: { href: string
       // Not prefetched: the account pages are per visitor.
       prefetch={false}
       className={cn(
-        'inline-flex items-center gap-2 rounded-button px-3 py-2 text-sm font-medium text-fg hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand',
+        'inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-button px-3 py-2 text-sm font-medium text-fg hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand',
         className,
       )}
     >
       <UserRound aria-hidden className="size-4" />
-      <span>{label}</span>
+      <span className={labelClassName}>{label}</span>
     </Link>
   );
 }
