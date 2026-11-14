@@ -1,6 +1,9 @@
-# Keycloak configuration as code (ADR 0043): keycloak-config-cli applies the environment's files
-# (ConfigMap "keycloak-config": master.json, realm.json, dev/staging users.json and otp.json) to
-# Keycloak, then exits. The ONE way realm settings reach Keycloak: a fresh cluster gets its realm
+# Keycloak configuration as code (ADR 0043): keycloak-config-cli applies the files of ConfigMap
+# "keycloak-config" (base: realm.json, master.json; components keycloak-local / keycloak-sites and
+# prod add theirs, see config-sync.sh) to Keycloak, then exits. The files are the same in every
+# environment; the environment gives the values they reference as $(env:NAME): ConfigMap
+# "keycloak-config-env" (WEB_URL, ADMIN_URL, KEYCLOAK_CONSOLE_URL) and Secret "keycloak-clients"
+# (WEB_CLIENT_SECRET, ADMIN_WEB_CLIENT_SECRET, the sites' <SITE>_WEB_CLIENT_SECRET). The ONE way realm settings reach Keycloak: a fresh cluster gets its realm
 # from it (Keycloak no longer imports a realm at start), a running one gets every change. No script
 # with kcadm, no "imported only when the realm doesn't exist".
 #
@@ -42,6 +45,9 @@ spec:
               value: http://keycloak:8080
             - name: JAVA_TOOL_OPTIONS
               value: -XX:MaxRAMPercentage=75 -Djava.io.tmpdir=/tmp
+            # $(env:NAME) in every file; an undefined name fails the run (never an empty value).
+            - name: IMPORT_VARSUBSTITUTION_ENABLED
+              value: 'true'
             - name: KC_BOOTSTRAP_ADMIN_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -58,6 +64,11 @@ spec:
                   name: keycloak-config-cli
                   key: KEYCLOAK_CONFIG_CLI_SECRET
                   optional: true # prod only
+          envFrom:
+            - configMapRef:
+                name: keycloak-config-env
+            - secretRef:
+                name: keycloak-clients
           volumeMounts:
             - name: config
               mountPath: /config

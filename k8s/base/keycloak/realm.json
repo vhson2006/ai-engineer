@@ -187,21 +187,22 @@
       "enabled": true,
       "publicClient": false,
       "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:WEB_CLIENT_SECRET)",
       "standardFlowEnabled": true,
       "implicitFlowEnabled": false,
       "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": false,
       "redirectUris": [
-        "https://www.example.com/*"
+        "$(env:WEB_URL)/*"
       ],
       "webOrigins": [
-        "https://www.example.com"
+        "$(env:WEB_URL)"
       ],
       "attributes": {
         "client.session.idle.timeout": "1800",
         "client.session.max.lifespan": "36000",
         "pkce.code.challenge.method": "S256",
-        "post.logout.redirect.uris": "https://www.example.com/*"
+        "post.logout.redirect.uris": "$(env:WEB_URL)/*"
       },
       "fullScopeAllowed": true,
       "protocolMappers": [
@@ -225,19 +226,20 @@
       "enabled": true,
       "publicClient": false,
       "clientAuthenticatorType": "client-secret",
+      "secret": "$(env:ADMIN_WEB_CLIENT_SECRET)",
       "standardFlowEnabled": true,
       "implicitFlowEnabled": false,
       "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": false,
       "redirectUris": [
-        "https://admin.example.com/*"
+        "$(env:ADMIN_URL)/*"
       ],
       "webOrigins": [
-        "https://admin.example.com"
+        "$(env:ADMIN_URL)"
       ],
       "attributes": {
         "pkce.code.challenge.method": "S256",
-        "post.logout.redirect.uris": "https://admin.example.com/*",
+        "post.logout.redirect.uris": "$(env:ADMIN_URL)/*",
         "client.session.idle.timeout": "28800",
         "client.session.max.lifespan": "604800"
       },

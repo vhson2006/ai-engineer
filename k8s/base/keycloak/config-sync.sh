@@ -1,17 +1,19 @@
 #!/bin/sh
-# Keycloak configuration as code (ADR 0043): applies the environment's files (ConfigMap
-# "keycloak-config", mounted on /config) to the running Keycloak with keycloak-config-cli. The ONE
-# way realm settings reach Keycloak, on a fresh cluster and on a running one alike. Each file is
-# its own run with its own cache key: keycloak-config-cli stores one checksum per realm and key, and
-# skips a run whose file has not changed.
-#   master.json  realm master, applied LAST: Frontend URL of the admin console, brute-force
-#                detection (prod: the keycloak-config-cli client this Job signs in with). $(env:...).
-#   realm.json   realm nest-microservice: roles, clients, groups, service accounts, the admin-site
-#                sign-in flow. No people: a run would reset their passwords.
-#   users.json   dev/staging test users (passwords from the file). Re-applied only when the file
-#                changes: then the test passwords are reset to the file's.
-#   otp.json     the dev/staging one-time code of alice. Applied once; afterwards Keycloak answers
-#                409 (she already has one), which is not an error here.
+# Keycloak configuration as code (ADR 0043): applies the files of ConfigMap "keycloak-config"
+# (mounted on /config) to the running Keycloak with keycloak-config-cli. The ONE way realm settings
+# reach Keycloak, on a fresh cluster and on a running one alike. Every environment shares the same
+# files; what differs comes from the environment (ConfigMap "keycloak-config-env": URLs; Secret
+# "keycloak-clients": client secrets), substituted where a file says $(env:NAME). Each file is its
+# own run with its own cache key: keycloak-config-cli stores one checksum per realm and key, and
+# skips a run whose file has not changed; a run never deletes what another file created.
+#   realm.json              (base) realm nest-microservice: roles, clients web/admin-web, groups,
+#                           the admin-site sign-in flow. No people: a run would reset passwords.
+#   sites.json              (components/keycloak-sites) the business sites' clients + service accounts
+#   dev-cli.json            (components/keycloak-local) the password-grant client for curl tests
+#   users.json, otp.json    (components/keycloak-local) test users; alice's one-time code. otp.json
+#                           is applied once: afterwards Keycloak answers 409, not an error here.
+#   master-config-cli.json  (prod) the master client this Job signs in with from then on
+#   master.json             (base) realm master, LAST: console Frontend URL, brute-force detection
 set -eu
 JAR=/app/keycloak-config-cli.jar
 : "${KEYCLOAK_URL:?}"
@@ -43,14 +45,20 @@ run() { # file, cache key, extra options
   IMPORT_FILES_LOCATIONS="$file" IMPORT_CACHE_KEY="$key" java -jar "$JAR" "$@"
 }
 
+run_if() { # file, cache key: only when the environment has that file
+  if [ -f "/config/$1" ]; then run "/config/$1" "$2"; fi
+}
+
 run /config/realm.json realm
-if [ -f /config/users.json ]; then run /config/users.json users; fi
+run_if sites.json sites
+run_if dev-cli.json dev-cli
+run_if users.json users
 if [ -f /config/otp.json ]; then
   run /config/otp.json otp || echo "otp.json not applied: alice already has a one-time code (Keycloak 409)"
 fi
+run_if master-config-cli.json master-config-cli
 # Last: a NEW Frontend URL of realm master changes the issuer of master tokens, so the token this
 # run signed in with is refused right after the change (401 while it records its state). The second
 # run signs in again (new issuer), finds the realm as configured and records it.
-run /config/master.json master --import.var-substitution.enabled=true ||
-  run /config/master.json master --import.var-substitution.enabled=true
+run /config/master.json master || run /config/master.json master
 echo "Keycloak configuration applied"

@@ -156,21 +156,26 @@ If KrakenD answers but returns errors for `/api/...`, check that `npm run start:
 | Management (health, metrics) | http://localhost:9000/health/ready, http://localhost:9000/metrics |
 | Account console (end users) | http://auth.localtest.me:8000/realms/nest-microservice/account |
 
-**Configuration as code (ADR 0043).** Everything below comes from the files of
-[`overlays/<env>/keycloak/`](overlays/dev/keycloak/), applied by the Job `keycloak-config`
-(keycloak-config-cli) on every `npm run k8s:up` / `staging:up` / Argo CD sync, on a fresh cluster and
-on a running one alike: `realm.json` (realm `nest-microservice`: roles, clients, groups, service
-accounts, the admin-site sign-in flow; no people), `users.json` + `otp.json` (dev/staging test users,
-alice's one-time code), `master.json` (realm `master`). Change Keycloak by changing these files, not
-the console: a field of a managed object that the file doesn't set is reset at the next deploy.
+**Configuration as code (ADR 0043).** Everything below comes from files applied by the Job
+`keycloak-config` (keycloak-config-cli) on every `npm run k8s:up` / `staging:up` / Argo CD sync, on a
+fresh cluster and on a running one alike. **The same files in every environment**:
+[`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
+groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
+[`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
+code, `dev-cli`); [`components/keycloak-sites/`](components/keycloak-sites/) (dev: the business sites'
+clients and service accounts); prod adds `master-config-cli.json`. What differs per environment is
+only a value, written `$(env:NAME)` in the files: ConfigMap `keycloak-config-env` of the overlay
+(`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
+Change Keycloak by changing these files, not the console: a field of a managed object that the file
+doesn't set is reset at the next deploy.
 Follow a run: `kubectl -n nest-microservice logs -f job/keycloak-config`.
 
 | Clients | Purpose |
 |---|---|
 | `deployments-api` | Resource server: owns the roles `deployment:read`, `deployment:write`, `deployment:admin`; it's the token audience |
-| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `http://www.localtest.me:8000/*` and `http://localhost:3000/*`) |
-| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `http://admin.localtest.me:8000/*`, `http://localhost:3100/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
-| `dev-cli` | **Dev only**: password grant for curl tests |
+| `web` | portfolio-web (confidential, Authorization Code + PKCE, secret `web-dev-secret`, redirect `$WEB_URL/*`: `http://www.localtest.me:8000/*` in dev) |
+| `admin-web` | admin-web (same, secret `admin-web-dev-secret`, redirect `$ADMIN_URL/*`); owns the roles `admin` (may sign in) and `superadmin` (every site, system pages, OTP); sessions 8 h idle / 7 days max (ADR 0035; realm SSO the same, `web` keeps 30 min / 10 h); browser flow **`browser-admin-otp`** |
+| `dev-cli` | **dev and staging only** (`components/keycloak-local`): password grant for curl tests |
 
 | Group | Roles | Test user (password `password`) |
 |---|---|---|
@@ -202,8 +207,9 @@ issuer, and may fetch the JWKS through the in-cluster URL.
 
 People are not configuration: users created in the console (and their passwords, OTP) stay in
 Postgres (database `keycloak`). The test users of `users.json` get the file's passwords back when that
-file changes. A public site (ADR 0042) = its group `/sites/<id>`, client `<id>-web` and service account
-in `realm.json` of each environment.
+file changes. A public site (ADR 0042) = its group `/sites/<id>` in `realm.json` and its client `<id>-web`
+and service account in `components/keycloak-sites/sites.json` (secret `<ID>_WEB_CLIENT_SECRET` in the
+environment's Secret `keycloak-clients`).
 
 ## Object storage (uploaded files)
 
@@ -441,11 +447,12 @@ All run as non-root with a read-only root filesystem; configuration comes from e
    both realms, the admin-site flow and realm `master`'s Frontend URL, signing in with the bootstrap
    admin, and the master client `keycloak-config-cli` (secret entry
    `nest-microservice-prod-keycloak-config-cli`: create it BEFORE the first sync) it uses from then on.
-   The realm has no client secret in git: admin console
-   `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin,
-   clients `web` and `admin-web` → Credentials → copy each secret into its secret manager entry
-   (`KEYCLOAK_CLIENT_SECRET`); create real named admins in `master` with OTP required, then remove
-   the bootstrap admin (the next sync signs in as `keycloak-config-cli`).
+   The clients `web` and `admin-web` already have the secrets of the entries `…-portfolio-web` /
+   `…-admin-web` (`KEYCLOAK_CLIENT_SECRET`, random values you chose in step 3: the Job sets them,
+   Secret `keycloak-clients`). Admin console
+   `kubectl -n nest-microservice port-forward svc/keycloak 8180:8080` → http://localhost:8180/admin:
+   create real named admins in `master` with OTP required, then remove the bootstrap admin (the next
+   sync signs in as `keycloak-config-cli`).
 
 Check: `kubectl get certificate,externalsecret -n nest-microservice` (Ready=True),
 `curl -I http://www.example.com` (301 to https). `https://api.example.com` must NOT answer: the API is

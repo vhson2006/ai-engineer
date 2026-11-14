@@ -24,7 +24,7 @@ Specific to this app:
   Articles come from content-service, site `travel`, with this server's service account (Keycloak
   client `travel-web`, ADR 0032). Topics: destinations, tips, guide (keys = fallback covers in `src/site.ts`),
   seeded with the writers' guide and the sample articles by
-  `npm run seed:content -- travel` in nest-microservice (snapshot `apps/content-service/seed/content/travel/`, ADR 0044), which also creates the site. Keycloak: `realm.json` of each environment, applied on deploy (ADR 0043).
+  `npm run seed:content -- travel` in nest-microservice (snapshot `apps/content-service/seed/content/travel/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/components/keycloak-sites/sites.json`, applied on deploy (ADR 0043).
 - Photos in `public/images/` (hero, ha-long, ha-giang, hoi-an, phu-quoc; `og-default.jpg` 1200×630 from the hero) were generated
   with Gemini (AI_GEMINI_IMAGE_MODEL of ai-service): no text, logos or identifiable people. The
   writers' guide drawings (`images/guide/`, `images/placeholder/`) are laundry's, recoloured.

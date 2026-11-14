@@ -40,6 +40,7 @@ components:
   - ../../components/apps
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
+  - ../../components/keycloak-local # test users, alice's one-time code, dev-cli (local only)
 
 # Built by `npm run staging:build` (Docker Desktop's cluster sees the local image store). The tag
 # `staging` is replaced at deploy time by the image id (staging.sh), so a rebuild is always picked up.
@@ -73,12 +74,11 @@ configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-config # dev realm with the staging URLs (test users, dev-cli: local only); Job keycloak-config (ADR 0043)
-    files:
-      - keycloak/master.json
-      - keycloak/realm.json
-      - keycloak/users.json
-      - keycloak/otp.json
+  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
+    literals:
+      - WEB_URL=https://www.staging.localtest.me
+      - ADMIN_URL=https://admin.staging.localtest.me
+      - KEYCLOAK_CONSOLE_URL=http://localhost:8181
   - name: deployment-service-env
     envs:
       - env/deployment-service.env

@@ -65,10 +65,15 @@ configMapGenerator:
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-config # no test users, no dev-cli, no client secret (see k8s/README.md); Job keycloak-config (ADR 0043)
+  - name: keycloak-config # + the master client the Job signs in with (ADR 0043); no test users, no dev-cli
+    behavior: merge
     files:
-      - keycloak/master.json
-      - keycloak/realm.json
+      - keycloak/master-config-cli.json
+  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
+    literals:
+      - WEB_URL=https://www.example.com
+      - ADMIN_URL=https://admin.example.com
+      - KEYCLOAK_CONSOLE_URL=http://localhost:8180
   - name: deployment-service-env
     envs:
       - env/deployment-service.env

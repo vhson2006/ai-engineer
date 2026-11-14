@@ -37,9 +37,10 @@ times breaks the web rule "shared code lives in packages/, never copied between 
   Vietnamese first (ADR 0038), one language cookie per site.
 - **Admin side**: each site is a content-service site (`POST /api/content/sites`, created by the
   seed when missing), Keycloak group `/sites/<id>`, confidential client `<id>-web` with a service
-  account in that group with `content:read` (dev realm; staging/prod get the groups now, the
-  clients when a site is deployed). Articles, topics, media library, AI images and studio work in
-  the admin site as for the first three. the Job keycloak-config applies them on the next deploy (ADR 0043); `npm run seed:content -- <id>` (ADR 0044) creates the site, its topics, the
+  account in that group with `content:read` (groups in the shared realm; the clients in
+  `k8s/components/keycloak-sites`, used by dev now and by an environment once a site is deployed
+  there). Articles, topics, media library, AI images and studio work in the admin site as for the
+  first three. The Job keycloak-config applies them on the next deploy (ADR 0043); `npm run seed:content -- <id>` (ADR 0044) creates the site, its topics, the
   writers' guide and the sample articles with their images.
 - **The six sites are samples**: fictional businesses (names, addresses, `0900 000 x0x` numbers,
   `.example` emails, prices). The footer says so (`business.sample`). Their photos were made with

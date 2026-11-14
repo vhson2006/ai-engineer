@@ -24,7 +24,7 @@ Specific to this app:
   Articles come from content-service, site `hotel`, with this server's service account (Keycloak
   client `hotel-web`, ADR 0032). Topics: hoi-an, stay, guide (keys = fallback covers in `src/site.ts`),
   seeded with the writers' guide and the sample articles by
-  `npm run seed:content -- hotel` in nest-microservice (snapshot `apps/content-service/seed/content/hotel/`, ADR 0044), which also creates the site. Keycloak: `realm.json` of each environment, applied on deploy (ADR 0043).
+  `npm run seed:content -- hotel` in nest-microservice (snapshot `apps/content-service/seed/content/hotel/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/components/keycloak-sites/sites.json`, applied on deploy (ADR 0043).
 - Photos in `public/images/` (hero, courtyard, room-garden, room-deluxe, room-suite, pool, old-town; `og-default.jpg` 1200×630 from the hero) were generated
   with Gemini (AI_GEMINI_IMAGE_MODEL of ai-service): no text, logos or identifiable people. The
   writers' guide drawings (`images/guide/`, `images/placeholder/`) are laundry's, recoloured.
