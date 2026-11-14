@@ -4,15 +4,13 @@
  */
 export const SITE_URL = process.env.SITE_URL ?? 'http://www.localtest.me:8000';
 
-/** Public, indexable pages (each exists in every language). Private pages are never listed. */
+/**
+ * Public, indexable pages (each exists in every language). Private pages are never listed. The
+ * case studies are added from src/content/projects.ts (app/sitemap.ts): one list of projects.
+ */
 export const PUBLIC_PAGES = [
   { path: '/', priority: 1, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
-  // Case studies (src/content/projects.ts).
-  { path: '/projects/nails', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/projects/laundry', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/projects/wine', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/projects/wedding', priority: 0.6, changeFrequency: 'monthly' },
 ] as const;
 
 /**

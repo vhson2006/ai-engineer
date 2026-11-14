@@ -36,6 +36,10 @@ spec:
             - name: http
               containerPort: 3000
           envFrom:
+            # The environment's public addresses (urls.env): <ID>_URL of each business site, where
+            # /demo/<id> redirects (the portfolio's live demos). First: the app's own env wins.
+            - configMapRef:
+                name: public-urls
             - configMapRef:
                 name: portfolio-web-env
             - secretRef:

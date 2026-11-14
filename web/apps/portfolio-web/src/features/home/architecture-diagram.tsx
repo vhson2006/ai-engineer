@@ -3,7 +3,7 @@
 import { useId, useState } from 'react';
 import { cn } from '@web/ui';
 
-export type NodeId = 'browser' | 'gateway' | 'bff' | 'keycloak' | 'redis' | 'krakend' | 'api' | 'postgres' | 'nats' | 'notify' | 'storage';
+export type NodeId = 'browser' | 'gateway' | 'bff' | 'keycloak' | 'redis' | 'krakend' | 'api' | 'postgres' | 'nats' | 'ai' | 'render' | 'storage';
 
 /** Centre of each box in the 560 × 410 drawing. The request path runs down the middle column. */
 const NODES: Record<NodeId, { x: number; y: number }> = {
@@ -14,10 +14,11 @@ const NODES: Record<NodeId, { x: number; y: number }> = {
   storage: { x: 470, y: 170 },
   redis: { x: 90, y: 240 },
   krakend: { x: 280, y: 240 },
+  render: { x: 470, y: 240 },
   api: { x: 280, y: 310 },
   nats: { x: 470, y: 310 },
   postgres: { x: 280, y: 380 },
-  notify: { x: 470, y: 380 },
+  ai: { x: 470, y: 380 },
 };
 
 const EDGES: { from: NodeId; to: NodeId; dashed?: boolean }[] = [
@@ -29,8 +30,10 @@ const EDGES: { from: NodeId; to: NodeId; dashed?: boolean }[] = [
   { from: 'krakend', to: 'api' },
   { from: 'api', to: 'postgres' },
   { from: 'api', to: 'nats' },
-  { from: 'nats', to: 'notify' },
+  { from: 'nats', to: 'ai' },
+  { from: 'nats', to: 'render' },
   { from: 'browser', to: 'storage', dashed: true },
+  { from: 'render', to: 'storage', dashed: true },
 ];
 
 const W = 136;
@@ -38,7 +41,7 @@ const H = 36;
 
 /**
  * The platform behind this site, drawn: a request travels down the middle column, an event leaves
- * the API through NATS. Hover, focus or tap a box to read its job (caption below, announced).
+ * the API through NATS for the AI service (Gemini) and the video renderer. Hover, focus or tap a box to read its job (caption below, announced).
  * Fully rendered on the server; the dots stop for visitors who prefer reduced motion (globals.css).
  */
 export function ArchitectureDiagram({

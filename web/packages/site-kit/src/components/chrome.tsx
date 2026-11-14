@@ -60,7 +60,7 @@ export function SiteHeader({
             <div className="hidden xl:block">
               <LocaleSwitcher current={locale} locales={website.localeOptions} label={t.common.language} />
             </div>
-            <AccountLink t={t} locale={locale} className="hidden sm:inline-flex" />
+            <AccountLink t={t} locale={locale} className="hidden sm:inline-flex" labelClassName="xl:max-2xl:sr-only" />
             <a
               href={action.href}
               {...(action.external && { target: '_blank', rel: 'noopener noreferrer' })}
