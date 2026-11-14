@@ -45,8 +45,14 @@ components:
   - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
   - ../../components/keycloak-local # test users, alice's one-time code, dev-cli (local only)
   # The business sites staging runs (k8s/sites/<id>: app, Keycloak client, host from urls.env).
+  - ../../sites/autoparts
+  - ../../sites/flowers
+  - ../../sites/hotel
   - ../../sites/laundry
   - ../../sites/nails
+  - ../../sites/spa
+  - ../../sites/sushi
+  - ../../sites/travel
   - ../../sites/wine
   - ../../components/https # LAST: https-only routes + HSTS (urls.env), https listener host
 
@@ -78,11 +84,29 @@ images:
   - name: admin-web
     newName: local/admin-web
     newTag: staging
+  - name: autoparts-web
+    newName: local/autoparts-web
+    newTag: staging
+  - name: flowers-web
+    newName: local/flowers-web
+    newTag: staging
+  - name: hotel-web
+    newName: local/hotel-web
+    newTag: staging
   - name: laundry-web
     newName: local/laundry-web
     newTag: staging
   - name: nails-web
     newName: local/nails-web
+    newTag: staging
+  - name: spa-web
+    newName: local/spa-web
+    newTag: staging
+  - name: sushi-web
+    newName: local/sushi-web
+    newTag: staging
+  - name: travel-web
+    newName: local/travel-web
     newTag: staging
   - name: wine-web
     newName: local/wine-web

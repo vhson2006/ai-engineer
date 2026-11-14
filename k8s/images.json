@@ -9,8 +9,14 @@
     { "name": "portfolio-web", "context": "web", "dockerfile": "web/Dockerfile", "app": "portfolio-web", "siteUrl": "https://www.{domain}", "watch": "^web/(Dockerfile|packages/|apps/portfolio-web/|package(-lock)?\\.json|tsconfig)" },
     { "name": "admin-web", "context": "web", "dockerfile": "web/Dockerfile", "app": "admin-web", "siteUrl": "https://admin.{domain}", "watch": "^web/(Dockerfile|packages/|apps/admin-web/|package(-lock)?\\.json|tsconfig)" },
     { "name": "render-worker", "context": "web", "dockerfile": "web/apps/render-worker/Dockerfile", "watch": "^web/(packages/video/|apps/render-worker/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "autoparts-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "autoparts-web", "siteUrl": "https://autoparts.{domain}", "watch": "^web/(Dockerfile|packages/|apps/autoparts-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "flowers-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "flowers-web", "siteUrl": "https://flowers.{domain}", "watch": "^web/(Dockerfile|packages/|apps/flowers-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "hotel-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "hotel-web", "siteUrl": "https://hotel.{domain}", "watch": "^web/(Dockerfile|packages/|apps/hotel-web/|package(-lock)?\\.json|tsconfig)" },
     { "name": "laundry-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "laundry-web", "siteUrl": "https://laundry.{domain}", "watch": "^web/(Dockerfile|packages/|apps/laundry-web/|package(-lock)?\\.json|tsconfig)" },
     { "name": "nails-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "nails-web", "siteUrl": "https://nails.{domain}", "watch": "^web/(Dockerfile|packages/|apps/nails-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "spa-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "spa-web", "siteUrl": "https://spa.{domain}", "watch": "^web/(Dockerfile|packages/|apps/spa-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "sushi-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "sushi-web", "siteUrl": "https://sushi.{domain}", "watch": "^web/(Dockerfile|packages/|apps/sushi-web/|package(-lock)?\\.json|tsconfig)" },
+    { "name": "travel-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "travel-web", "siteUrl": "https://travel.{domain}", "watch": "^web/(Dockerfile|packages/|apps/travel-web/|package(-lock)?\\.json|tsconfig)" },
     { "name": "wine-web", "environments": ["staging"], "context": "web", "dockerfile": "web/Dockerfile", "app": "wine-web", "siteUrl": "https://wine.{domain}", "watch": "^web/(Dockerfile|packages/|apps/wine-web/|package(-lock)?\\.json|tsconfig)" }
   ]
 }

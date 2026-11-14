@@ -319,8 +319,9 @@ overlay's `urls.env`. To run a site in an environment:
 4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`.
 
 Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
-`role: business-site` (NetworkPolicies, the https-only route patch). Staging runs nails, wine and
-laundry (`https://<id>.staging.localtest.me`); prod none yet (each real site needs its domain,
+`role: business-site` (NetworkPolicies, the https-only route patch). Staging runs all nine
+(`https://<id>.staging.localtest.me`: each site 160 Mi requested, 384 Mi limit; give WSL 12 GB,
+`.wslconfig`); prod none yet (each real site needs its domain,
 certificate and DNS). Site images build without the API: their article pages fill in at runtime
 (ISR, about a minute; ADR 0047).
 
@@ -345,6 +346,7 @@ npm run staging:down       # delete the namespace WITH its data (fresh start); n
 | https://admin.staging.localtest.me | admin-web (alice: password + one-time code) |
 | https://auth.staging.localtest.me | Keycloak, app realm only |
 | https://s3.staging.localtest.me | SeaweedFS (presigned uploads/downloads) |
+| https://&lt;site&gt;.staging.localtest.me | the nine business sites: nails, wine, laundry, sushi, travel, flowers, autoparts, hotel, spa |
 | http://*.staging.localtest.me:8001 | → 301 to https (port 80 is Windows') |
 | `kubectl -n nest-staging port-forward svc/keycloak 8181:8080` | admin console http://localhost:8181/admin |
 
@@ -356,6 +358,10 @@ npm run staging:down       # delete the namespace WITH its data (fresh start); n
   `content-import` (ADR 0044), as prod does; each site's snapshot version once, so `staging:stop`
   / `staging:up` keep what you changed. `staging:down` starts over.
 - **Rebuild after a code change**: `npm run staging:build && npm run staging:up` (restarts the apps).
+- **Memory**: staging's limits add up to about 12 GB (the nine sites, Keycloak, render-worker…),
+  and Docker Desktop's nodes all share ONE WSL VM (each node reports the whole VM: Kubernetes never
+  sees the shortage, Linux kills pods, exit 137). WSL takes half the RAM by default: set it in
+  `%USERPROFILE%\.wslconfig` (`[wsl2]` / `memory=12GB` / `swap=4GB`), `wsl --shutdown`, restart Docker.
 - `staging.sh` refuses any kubectl context other than `docker-desktop`.
 - **Telemetry (optional)**: `cp k8s/grafana-cloud.env.example k8s/.grafana-cloud.env` (git-ignored),
   fill in your Grafana Cloud stack (the file says where each value is), then `npm run staging:up`.
