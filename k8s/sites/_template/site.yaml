@@ -1,0 +1,122 @@
+# One business site (Next.js standalone, :3000). Names and the app are written in by the
+# replacements of kustomization.yaml; the host name and APP_URL by the site's component
+# (k8s/sites/<id>, from the overlay's urls.env).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site
+  labels:
+    app: site
+    role: business-site
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: site
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: site
+        role: business-site
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: ghcr-pull
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: web
+          image: site
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: business-sites-env
+          env:
+            # This site's own public URL (CSP, CSRF origin): written in from urls.env.
+            - name: APP_URL
+              value: https://site.set-by-sites-component.invalid
+            # Its own Keycloak client: client credentials, reads its articles (ADR 0032).
+            - name: KEYCLOAK_CLIENT_ID
+              value: site
+            - name: KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-clients
+                  key: SITE_WEB_CLIENT_SECRET
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 160Mi
+            limits:
+              memory: 384Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ['ALL']
+          volumeMounts:
+            - name: next-cache # the only path Next writes to at runtime
+              mountPath: /app/apps/site/.next/cache
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: next-cache
+          emptyDir:
+            sizeLimit: 256Mi
+        - name: tmp
+          emptyDir:
+            sizeLimit: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: site
+  labels:
+    app: site
+    role: business-site
+spec:
+  selector:
+    app: site
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: site
+  labels:
+    role: business-site
+spec:
+  parentRefs:
+    - name: edge
+  hostnames:
+    - site.set-by-sites-component.invalid
+  rules:
+    - matches:
+        - path: { type: PathPrefix, value: / }
+      backendRefs:
+        - name: site
+          port: 3000

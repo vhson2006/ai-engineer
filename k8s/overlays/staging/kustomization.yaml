@@ -44,6 +44,10 @@ components:
   - ../../components/network-policies
   - ../../components/observability # Alloy → Grafana Cloud; scaled to 0 without k8s/.grafana-cloud.env
   - ../../components/keycloak-local # test users, alice's one-time code, dev-cli (local only)
+  # The business sites staging runs (k8s/sites/<id>: app, Keycloak client, host from urls.env).
+  - ../../sites/laundry
+  - ../../sites/nails
+  - ../../sites/wine
 
 # The images of k8s/images.json (CI checks this block against it), built by `npm run staging:build`
 # (Docker Desktop's cluster sees the local image store). The tag
@@ -72,6 +76,15 @@ images:
     newTag: staging
   - name: admin-web
     newName: local/admin-web
+    newTag: staging
+  - name: laundry-web
+    newName: local/laundry-web
+    newTag: staging
+  - name: nails-web
+    newName: local/nails-web
+    newTag: staging
+  - name: wine-web
+    newName: local/wine-web
     newTag: staging
 
 configMapGenerator:
@@ -102,6 +115,10 @@ configMapGenerator:
   - name: admin-web-env
     envs:
       - env/admin-web.env
+  - name: business-sites-env # every business site (KEYCLOAK_ISSUER, STORAGE_ORIGINS: urls.env)
+    literals:
+      - API_URL=http://krakend.nest-staging.svc.cluster.local:8080
+      - NODE_EXTRA_CA_CERTS=/etc/local-ca/ca.crt
   - name: alloy-env
     literals:
       - CLUSTER_NAME=staging-local
@@ -111,6 +128,14 @@ patches:
     target:
       kind: HTTPRoute
       name: ^(www|admin|auth)$
+  - path: patches/routes-https.yaml # the business sites' routes too (k8s/sites)
+    target:
+      kind: HTTPRoute
+      labelSelector: role=business-site
   - path: patches/keycloak.yaml # production mode `start`, https hostname
   - path: patches/apps-local-ca.yaml # apps trust the local CA (calls to https://auth / https://s3)
+  - path: patches/sites-local-ca.yaml # the business sites too (their token from https://auth)
+    target:
+      kind: Deployment
+      labelSelector: role=business-site
   - path: patches/seaweedfs-cors.yaml # browsers on https://www.staging.localtest.me may PUT

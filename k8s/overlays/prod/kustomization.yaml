@@ -105,6 +105,10 @@ patches:
     target:
       kind: HTTPRoute
       name: ^(www|admin|auth)$
+  - path: patches/routes-https.yaml # the business sites' routes too (k8s/sites)
+    target:
+      kind: HTTPRoute
+      labelSelector: role=business-site
   - path: patches/keycloak.yaml # production mode, 2 replicas, managed DB over TLS
   - target: # managed Postgres: the database and user are created once, by hand (README)
       kind: Deployment

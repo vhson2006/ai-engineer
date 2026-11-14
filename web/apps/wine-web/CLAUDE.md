@@ -56,7 +56,7 @@ Specific to this app:
 - No order form yet: ordering is by phone/Zalo. A form = `/new-form`, never a client-side submit.
 - The article templates gallery (`/bai-viet/mau`) was removed (2026-11-14, ADR 0045): writers use
   the seeded guide article and the admin site's layout blocks.
-- Not deployed yet: no Dockerfile, k8s manifests or Gateway route.
+- Deployment: `k8s/sites/wine` (ADR 0047: the shared template; image from `web/Dockerfile`), run by local staging (`https://wine.staging.localtest.me`); not in prod yet.
 
 `npm run dev` (http://localhost:3300), `npm test`, `npm run typecheck`, `npm run lint`:
 from this folder or from `web/` (`npm run dev:wine`).

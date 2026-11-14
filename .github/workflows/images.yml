@@ -78,7 +78,7 @@ jobs:
           changed_names=()
           while IFS=$'\t' read -r name watch; do
             if [ "$(changed "$name" "$watch")" = true ]; then changed_names+=("$name"); fi
-          done < <(jq -r '.images[] | [.name, .watch] | @tsv' k8s/images.json)
+          done < <(jq -r '.images[] | select((.environments // ["prod"]) | index("prod")) | [.name, .watch] | @tsv' k8s/images.json)
           changed_json=$(printf '%s\n' "${changed_names[@]}" | jq -R 'select(. != "")' | jq -sc .)
           echo "changed: $changed_json"
           if [ "$DOMAIN" = example.com ] && jq -e --argjson c "$changed_json" '[.images[] | select(.siteUrl and (.name as $n | $c | index($n)))] | length > 0' k8s/images.json >/dev/null; then

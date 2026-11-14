@@ -24,13 +24,13 @@ Specific to this app:
   Articles come from content-service, site `spa`, with this server's service account (Keycloak
   client `spa-web`, ADR 0032). Topics: wellness, treatments, guide (keys = fallback covers in `src/site.ts`),
   seeded with the writers' guide and the sample articles by
-  `npm run seed:content -- spa` in nest-microservice (snapshot `apps/content-service/seed/content/spa/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/components/keycloak-sites/sites.json`, applied on deploy (ADR 0043).
+  `npm run seed:content -- spa` in nest-microservice (snapshot `apps/content-service/seed/content/spa/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/sites/spa/keycloak`, applied on deploy (ADR 0043).
 - Photos in `public/images/` (hero, lounge, massage, ritual, facial; `og-default.jpg` 1200×630 from the hero) were generated
   with Gemini (AI_GEMINI_IMAGE_MODEL of ai-service): no text, logos or identifiable people. The
   writers' guide drawings (`images/guide/`, `images/placeholder/`) are laundry's, recoloured.
 - Languages: Vietnamese (default, ADR 0038) and English; cookie `spa_locale`. Prices in VND.
 - No booking form: phone, Zalo and email. A form = `/new-form`, then extend the kit's legal texts.
-- Not deployed yet: no Dockerfile, k8s manifests or Gateway route.
+- Deployment: `k8s/sites/spa` (ADR 0047: the shared template; image from `web/Dockerfile`); not run by any environment yet.
 
 `npm run dev` (http://localhost:4000), `npm test`, `npm run typecheck`, `npm run lint`: from this
 folder or from `web/` (`npm run dev:spa`).

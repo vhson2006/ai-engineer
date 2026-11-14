@@ -28,7 +28,16 @@ components:
   - ../../components/local-data # Postgres, Redis in the cluster
   - ../../components/nats
   - ../../components/keycloak-local # test users, alice's one-time code, dev-cli
-  - ../../components/keycloak-sites # the business sites run on the host in dev
+  # The business sites' Keycloak clients (the sites themselves run on this machine in dev).
+  - ../../sites/autoparts/keycloak
+  - ../../sites/flowers/keycloak
+  - ../../sites/hotel/keycloak
+  - ../../sites/laundry/keycloak
+  - ../../sites/nails/keycloak
+  - ../../sites/spa/keycloak
+  - ../../sites/sushi/keycloak
+  - ../../sites/travel/keycloak
+  - ../../sites/wine/keycloak
 
 configMapGenerator:
   - name: public-urls # this environment's public addresses: urls.env (components/public-urls)

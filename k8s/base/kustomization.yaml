@@ -31,7 +31,7 @@ resources:
 # rolls the KrakenD pods on `npm run k8s:up`.
 configMapGenerator:
   # The Keycloak configuration, the same files in every environment (ADR 0043). Test users and
-  # dev-cli: components/keycloak-local; the business sites' clients: components/keycloak-sites.
+  # dev-cli: components/keycloak-local; a business site's client: k8s/sites/<id>/keycloak.
   - name: keycloak-config
     files:
       - keycloak/realm.json

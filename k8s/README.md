@@ -33,7 +33,6 @@ k8s/
 ├── components/
 │   ├── local-data/              # Postgres, Redis (ACL users), SeaweedFS (S3 for files) in the cluster: dev, staging
 │   ├── keycloak-local/          # Keycloak test users, alice's OTP, dev-cli: dev, staging
-│   ├── keycloak-sites/          # the business sites' Keycloak clients: where the sites run (dev)
 │   ├── nats/                    # NATS (single instance): dev and prod
 │   ├── apps/                    # deployment-service, notification-service, content-service, the web apps IN the cluster: staging, prod
 │   ├── network-policies/        # default deny + allowed flows: staging and prod
@@ -50,6 +49,8 @@ k8s/
 │   └── prod/                    # DOKS, deployed by Argo CD: HTTPS, External Secrets, migration Job,
 │                                #   2 replicas + PDBs + spread, NetworkPolicies (see "Production" below)
 ├── platform/prod/               # cluster-level, applied once: ClusterIssuers, DNS token, Argo CD Application
+├── sites/                       # the business sites (ADR 0047): _template + one folder per site
+│                                #   (app/ names, keycloak/ client, host from urls.env); an overlay lists ../../sites/<id>
 ├── images.json                  # THE list of images (CI builds, staging builds, images-check.mjs)
 └── scripts/                     # up.sh, staging.sh, gateway-install.sh, krakend-check.sh, images-check.mjs, port-forward.{sh,ps1}
 
@@ -169,8 +170,8 @@ fresh cluster and on a running one alike. **The same files in every environment*
 [`base/keycloak/realm.json`](base/keycloak/realm.json) (realm `nest-microservice`: roles, clients,
 groups, the admin-site sign-in flow; no people) and `master.json` (realm `master`);
 [`components/keycloak-local/`](components/keycloak-local/) (dev, staging: test users, alice's one-time
-code, `dev-cli`); [`components/keycloak-sites/`](components/keycloak-sites/) (dev: the business sites'
-clients and service accounts); prod adds `master-config-cli.json`. What differs per environment is
+code, `dev-cli`); [`sites/<id>/keycloak/`](sites/) (a business site's client and service account, in
+the environments that list it); prod adds `master-config-cli.json`. What differs per environment is
 only a value, written `$(env:NAME)` in the files: ConfigMap `public-urls` (the overlay's `urls.env`)
 (`WEB_URL`, `ADMIN_URL`, `KEYCLOAK_CONSOLE_URL`) and Secret `keycloak-clients` (client secrets).
 Change Keycloak by changing these files, not the console: a field of a managed object that the file
@@ -215,8 +216,8 @@ issuer, and may fetch the JWKS through the in-cluster URL.
 People are not configuration: users created in the console (and their passwords, OTP) stay in
 Postgres (database `keycloak`). The test users of `users.json` get the file's passwords back when that
 file changes. A public site (ADR 0042) = its group `/sites/<id>` in `realm.json` and its client `<id>-web`
-and service account in `components/keycloak-sites/sites.json` (secret `<ID>_WEB_CLIENT_SECRET` in the
-environment's Secret `keycloak-clients`).
+and service account in `sites/<id>/keycloak/` (secret `<ID>_WEB_CLIENT_SECRET` in the environment's
+Secret `keycloak-clients`).
 
 ## Object storage (uploaded files)
 
@@ -303,6 +304,24 @@ To stop the infrastructure but keep the data, scale it to 0 instead of deleting 
 kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statefulset/nats deployment/krakend deployment/keycloak deployment/edge-nginx --replicas=0
 kubectl -n nest-microservice scale statefulset/postgres statefulset/redis statefulset/nats deployment/krakend deployment/keycloak deployment/edge-nginx --replicas=1
 ```
+
+## Business sites (ADR 0047)
+
+Every business site runs from one template, [`sites/_template`](sites/_template/): a Deployment,
+a Service and a route, the same for all. A site's folder `sites/<id>/` only names it (`app/`: its
+app and client-secret key; `keycloak/`: its Keycloak client) and takes its host and URL from the
+overlay's `urls.env`. To run a site in an environment:
+
+1. `components:` of the overlay: `- ../../sites/<id>`;
+2. `urls.env`: `<ID>_HOST` and `<ID>_URL`;
+3. `images:`: `<id>-web` (and its entry in `images.json`, `environments` listing the overlay);
+4. Secret `keycloak-clients`: `<ID>_WEB_CLIENT_SECRET`.
+
+Shared by every site of an environment: ConfigMap `business-sites-env` (API URL), the label
+`role: business-site` (NetworkPolicies, the https-only route patch). Staging runs nails, wine and
+laundry (`https://<id>.staging.localtest.me`); prod none yet (each real site needs its domain,
+certificate and DNS). Site images build without the API: their article pages fill in at runtime
+(ISR, about a minute; ADR 0047).
 
 ## Local staging
 

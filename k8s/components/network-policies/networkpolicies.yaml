@@ -2,8 +2,10 @@
 # Allowed flows (everything else is dropped):
 #
 #   Internet ─▶ edge-nginx :80/:443
-#   edge-nginx ─▶ portfolio-web :3000, admin-web :3000, keycloak :8080  (KrakenD is NOT reachable from the edge)
-#   portfolio-web, admin-web ─▶ krakend :8080  (server-side API calls; tokens never leave the server)
+#   edge-nginx ─▶ portfolio-web :3000, admin-web :3000, business sites :3000, keycloak :8080
+#                 (KrakenD is NOT reachable from the edge)
+#   portfolio-web, admin-web, business sites ─▶ krakend :8080  (server-side API calls; tokens never
+#                 leave the server). Business sites: every pod labelled role=business-site (k8s/sites).
 #   krakend ─▶ deployment-service :3001, content-service :3003
 #   krakend, deployment-service, content-service ─▶ keycloak :8080   (JWKS)
 #   keycloak-config (Job) ─▶ keycloak :8080   (applies the realms, ADR 0043)
@@ -72,6 +74,25 @@ spec:
         - port: 3000
           protocol: TCP
 ---
+# Every business site (k8s/sites/_template), by its label: a new site needs no rule of its own.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: business-sites-from-edge
+spec:
+  podSelector:
+    matchLabels:
+      role: business-site
+  policyTypes: ['Ingress']
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              gateway.networking.k8s.io/gateway-name: edge
+      ports:
+        - port: 3000
+          protocol: TCP
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -91,6 +112,9 @@ spec:
         - podSelector:
             matchLabels:
               app: admin-web
+        - podSelector:
+            matchLabels:
+              role: business-site # their own service accounts: published articles only (ADR 0032)
       ports:
         - port: 8080
           protocol: TCP

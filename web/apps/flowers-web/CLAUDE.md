@@ -24,13 +24,13 @@ Specific to this app:
   Articles come from content-service, site `flowers`, with this server's service account (Keycloak
   client `flowers-web`, ADR 0032). Topics: care, occasions, guide (keys = fallback covers in `src/site.ts`),
   seeded with the writers' guide and the sample articles by
-  `npm run seed:content -- flowers` in nest-microservice (snapshot `apps/content-service/seed/content/flowers/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/components/keycloak-sites/sites.json`, applied on deploy (ADR 0043).
+  `npm run seed:content -- flowers` in nest-microservice (snapshot `apps/content-service/seed/content/flowers/`, ADR 0044), which also creates the site. Keycloak: its client and service account in `k8s/sites/flowers/keycloak`, applied on deploy (ADR 0043).
 - Photos in `public/images/` (hero, workshop, bouquet-blush, bouquet-garden, bouquet-sunny, care; `og-default.jpg` 1200×630 from the hero) were generated
   with Gemini (AI_GEMINI_IMAGE_MODEL of ai-service): no text, logos or identifiable people. The
   writers' guide drawings (`images/guide/`, `images/placeholder/`) are laundry's, recoloured.
 - Languages: Vietnamese (default, ADR 0038) and English; cookie `flowers_locale`. Prices in VND.
 - No booking form: phone, Zalo and email. A form = `/new-form`, then extend the kit's legal texts.
-- Not deployed yet: no Dockerfile, k8s manifests or Gateway route.
+- Deployment: `k8s/sites/flowers` (ADR 0047: the shared template; image from `web/Dockerfile`); not run by any environment yet.
 
 `npm run dev` (http://localhost:3700), `npm test`, `npm run typecheck`, `npm run lint`: from this
 folder or from `web/` (`npm run dev:flowers`).

@@ -36,7 +36,7 @@ STAGING_DOMAIN=staging.localtest.me
 images() {
   node -e '
     const { images } = require("./k8s/images.json");
-    for (const i of images) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", (i.siteUrl ?? "").replace("{domain}", process.argv[1])].join("|"));
+    for (const i of images.filter((i) => (i.environments ?? ["staging"]).includes("staging"))) console.log([i.name, i.context, i.dockerfile, i.target ?? "", i.app ?? "", (i.siteUrl ?? "").replace("{domain}", process.argv[1])].join("|"));
   ' "$STAGING_DOMAIN"
 }
 

@@ -42,7 +42,7 @@ paths:
 ## Bootstrap state outside git (redo after a fresh cluster or a recreated namespace)
 - Keycloak's configuration is NOT bootstrap state any more (ADR 0043): realms `nest-microservice` and
   `master` come from the same files in every environment (`base/keycloak/`, components
-  `keycloak-local` and `keycloak-sites`), with each environment's values (`public-urls`,
+  `keycloak-local`, and each site's `k8s/sites/<id>/keycloak`), with each environment's values (`public-urls`,
   Secret `keycloak-clients`), applied by the Job `keycloak-config` on every k8s:up / staging:up /
   Argo CD sync. Change the files, never the console or a kcadm script; never one environment's copy
   of a realm; no people in `realm.json`. prod still needs, once: named admins in `master`, then the
@@ -54,6 +54,8 @@ paths:
   `overlays/<env>/urls.env` (ConfigMap `public-urls`): Keycloak, KrakenD and the Job read it,
   `components/public-urls(-tls)` writes it into the Gateway, the routes and the apps' settings. Never
   a host name or a public URL in a manifest, a patch or an env file.
+- **A business site in Kubernetes = `k8s/sites/<id>`** from the shared template (ADR 0047), listed by
+  the overlay: never a hand-written Deployment for a site. Rules select sites by `role: business-site`.
 - Stateful pieces: StatefulSets with a PVC; prod StorageClass `reclaimPolicy: Retain` + backups.
 - Before `npm run k8s:up`: `npm run k8s:render` (and `:prod`), `npm run krakend:check`,
   `kubectl diff -k k8s/overlays/dev`. Never apply the prod overlay by hand (Argo CD, ADR 0009).

@@ -1,0 +1,24 @@
+# Khang Hưng Tửu in an environment: list this component in the overlay. It brings the site
+# (app/: Deployment, Service, route), its Keycloak client (keycloak/) and writes its public address
+# from the overlay's urls.env: WINE_HOST (the route) and WINE_URL (APP_URL). The overlay also needs
+# the image wine-web in `images:` and WINE_WEB_CLIENT_SECRET in Secret "keycloak-clients".
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - app
+
+components:
+  - keycloak
+
+replacements:
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WINE_HOST }
+    targets:
+      - select: { kind: HTTPRoute, name: wine-web }
+        fieldPaths:
+          - spec.hostnames.0
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WINE_URL }
+    targets:
+      - select: { kind: Deployment, name: wine-web }
+        fieldPaths:
+          - spec.template.spec.containers.[name=web].env.[name=APP_URL].value

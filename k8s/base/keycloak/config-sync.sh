@@ -8,7 +8,7 @@
 # skips a run whose file has not changed; a run never deletes what another file created.
 #   realm.json              (base) realm nest-microservice: roles, clients web/admin-web, groups,
 #                           the admin-site sign-in flow. No people: a run would reset passwords.
-#   sites.json              (components/keycloak-sites) the business sites' clients + service accounts
+#   site-<id>.json          (k8s/sites/<id>/keycloak) a business site's client + service account
 #   dev-cli.json            (components/keycloak-local) the password-grant client for curl tests
 #   users.json, otp.json    (components/keycloak-local) test users; alice's one-time code. otp.json
 #                           is applied once: afterwards Keycloak answers 409, not an error here.
@@ -50,7 +50,9 @@ run_if() { # file, cache key: only when the environment has that file
 }
 
 run /config/realm.json realm
-run_if sites.json sites
+for file in /config/site-*.json; do
+  if [ -f "$file" ]; then run "$file" "$(basename "$file" .json)"; fi
+done
 run_if dev-cli.json dev-cli
 run_if users.json users
 if [ -f /config/otp.json ]; then

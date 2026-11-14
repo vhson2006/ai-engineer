@@ -105,6 +105,8 @@ jobs:
       - uses: actions/checkout@v5.0.0
       - name: The image list agrees with the overlays and manifests (k8s/images.json)
         run: node k8s/scripts/images-check.mjs
+      - name: Render every business site on its own (k8s/sites/<id>/app)
+        run: for site in k8s/sites/*/app; do kubectl kustomize "$site" > /dev/null && echo "ok $site"; done
       - name: Render every overlay (kubectl kustomize)
         run: |
           for overlay in dev staging prod; do

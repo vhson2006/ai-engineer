@@ -1,0 +1,11 @@
+# hotel (sample): its Keycloak client hotel-web and service account (group /sites/hotel, content:read;
+# ADR 0032), applied by the Job keycloak-config. Its secret: HOTEL_WEB_CLIENT_SECRET of the overlay's
+# Secret "keycloak-clients". Dev lists only this part (the sites run on the developer's machine).
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+configMapGenerator:
+  - name: keycloak-config
+    behavior: merge
+    files:
+      - site-hotel.json
