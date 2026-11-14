@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "eslint": "^10",
     "eslint-config-next": "16.4.5",
     "jsdom": "^31.0.0",
     "typescript": "^5",
