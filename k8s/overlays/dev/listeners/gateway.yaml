@@ -15,31 +15,7 @@ spec:
     - name: http
       protocol: HTTP
       port: 8000
-      hostname: '*.localtest.me'
+      hostname: '*.set-by-public-urls.invalid' # components/public-urls: WILDCARD_HOST
       allowedRoutes:
         namespaces:
           from: Same
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: auth
-spec:
-  hostnames:
-    - auth.localtest.me
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: www
-spec:
-  hostnames:
-    - www.localtest.me
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: admin
-spec:
-  hostnames:
-    - admin.localtest.me

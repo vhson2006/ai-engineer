@@ -1,0 +1,7 @@
+# This environment's Gateway listeners (ports, TLS, issuer). A component so that it is applied
+# BEFORE components/public-urls, which then writes the host names (urls.env).
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+patches:
+  - path: gateway.yaml

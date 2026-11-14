@@ -1,7 +1,7 @@
 # Keycloak like prod: production mode `start` (strict hostname, no dev defaults), behind the
-# Gateway's TLS. Tokens get iss = https://auth.staging.localtest.me/realms/<realm>.
+# Gateway's TLS. Tokens get iss = <AUTH_URL of urls.env>/realms/<realm>.
 # Admin console (never published): kubectl -n nest-staging port-forward svc/keycloak 8181:8080
-# → http://localhost:8181/admin (realm master's Frontend URL: npm run staging:up sets it).
+# → http://localhost:8181/admin. Host names: urls.env.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -12,8 +12,3 @@ spec:
       containers:
         - name: keycloak
           args: ['start']
-          env:
-            - name: KC_HOSTNAME
-              value: https://auth.staging.localtest.me
-            - name: KC_HOSTNAME_ADMIN
-              value: http://localhost:8181

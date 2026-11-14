@@ -20,10 +20,6 @@ spec:
         - name: keycloak
           args: ['start']
           env:
-            - name: KC_HOSTNAME
-              value: https://auth.example.com
-            - name: KC_HOSTNAME_ADMIN
-              value: http://localhost:8180
             - name: KC_DB_URL
               value: null
               valueFrom:

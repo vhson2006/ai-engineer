@@ -35,6 +35,9 @@ resources:
   - networkpolicies-local-data.yaml
 
 components:
+  - listeners # this environment's Gateway listeners (before public-urls)
+  - ../../components/public-urls # urls.env -> Gateway, routes, apps' settings
+  - ../../components/public-urls-tls # urls.env -> https listener, redirect
   - ../../components/local-data
   - ../../components/nats
   - ../../components/apps
@@ -72,14 +75,12 @@ images:
     newTag: staging
 
 configMapGenerator:
+  - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
+    envs:
+      - urls.env
   - name: krakend-settings
     files:
       - krakend/settings/env.json
-  - name: keycloak-config-env # the values of the shared Keycloak files (ADR 0043)
-    literals:
-      - WEB_URL=https://www.staging.localtest.me
-      - ADMIN_URL=https://admin.staging.localtest.me
-      - KEYCLOAK_CONSOLE_URL=http://localhost:8181
   - name: deployment-service-env
     envs:
       - env/deployment-service.env
@@ -106,7 +107,6 @@ configMapGenerator:
       - CLUSTER_NAME=staging-local
 
 patches:
-  - path: patches/gateway.yaml # https on 443 (local CA), http 8001 → redirect, *.staging.localtest.me
   - path: patches/routes-https.yaml # www, admin, auth on https only, HSTS
     target:
       kind: HTTPRoute

@@ -2,7 +2,7 @@
 # Keycloak configuration as code (ADR 0043): applies the files of ConfigMap "keycloak-config"
 # (mounted on /config) to the running Keycloak with keycloak-config-cli. The ONE way realm settings
 # reach Keycloak, on a fresh cluster and on a running one alike. Every environment shares the same
-# files; what differs comes from the environment (ConfigMap "keycloak-config-env": URLs; Secret
+# files; what differs comes from the environment (ConfigMap "public-urls": the URLs of urls.env; Secret
 # "keycloak-clients": client secrets), substituted where a file says $(env:NAME). Each file is its
 # own run with its own cache key: keycloak-config-cli stores one checksum per realm and key, and
 # skips a run whose file has not changed; a run never deletes what another file created.

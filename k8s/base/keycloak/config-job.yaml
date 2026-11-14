@@ -2,7 +2,7 @@
 # "keycloak-config" (base: realm.json, master.json; components keycloak-local / keycloak-sites and
 # prod add theirs, see config-sync.sh) to Keycloak, then exits. The files are the same in every
 # environment; the environment gives the values they reference as $(env:NAME): ConfigMap
-# "keycloak-config-env" (WEB_URL, ADMIN_URL, KEYCLOAK_CONSOLE_URL) and Secret "keycloak-clients"
+# "public-urls" (the overlay's urls.env: WEB_URL, ADMIN_URL, KEYCLOAK_CONSOLE_URL…) and Secret "keycloak-clients"
 # (WEB_CLIENT_SECRET, ADMIN_WEB_CLIENT_SECRET, the sites' <SITE>_WEB_CLIENT_SECRET). The ONE way realm settings reach Keycloak: a fresh cluster gets its realm
 # from it (Keycloak no longer imports a realm at start), a running one gets every change. No script
 # with kcadm, no "imported only when the realm doesn't exist".
@@ -66,7 +66,7 @@ spec:
                   optional: true # prod only
           envFrom:
             - configMapRef:
-                name: keycloak-config-env
+                name: public-urls
             - secretRef:
                 name: keycloak-clients
           volumeMounts:

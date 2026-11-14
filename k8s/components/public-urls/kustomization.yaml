@@ -1,0 +1,101 @@
+# The public addresses of an environment are written ONCE, in overlays/<env>/urls.env (ConfigMap
+# "public-urls"). Keycloak, KrakenD and the Job keycloak-config read that ConfigMap directly; these
+# rules copy its values where Kubernetes can't read a variable: the Gateway's listeners, the routes,
+# and the apps' settings. A target absent from an environment is skipped.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+replacements:
+  # The Gateway's http listener (the https one and the redirect: components/public-urls-tls).
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WILDCARD_HOST }
+    targets:
+      - select: { kind: Gateway, name: edge }
+        fieldPaths:
+          - spec.listeners.[name=http].hostname
+  # One host per public route.
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.AUTH_HOST }
+    targets:
+      - select: { kind: HTTPRoute, name: auth }
+        fieldPaths:
+          - spec.hostnames.0
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WEB_HOST }
+    targets:
+      - select: { kind: HTTPRoute, name: www }
+        fieldPaths:
+          - spec.hostnames.0
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.ADMIN_HOST }
+    targets:
+      - select: { kind: HTTPRoute, name: admin }
+        fieldPaths:
+          - spec.hostnames.0
+  # The apps' settings (staging, prod: components/apps). The keys are created: the env files leave them out.
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WEB_URL }
+    targets:
+      - select: { kind: ConfigMap, name: portfolio-web-env }
+        fieldPaths:
+          - data.APP_URL
+        options: { create: true }
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.ADMIN_URL }
+    targets:
+      - select: { kind: ConfigMap, name: admin-web-env }
+        fieldPaths:
+          - data.APP_URL
+        options: { create: true }
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.KEYCLOAK_ISSUER }
+    targets:
+      - select: { kind: ConfigMap, name: portfolio-web-env }
+        fieldPaths:
+          - data.KEYCLOAK_ISSUER
+        options: { create: true }
+      - select: { kind: ConfigMap, name: admin-web-env }
+        fieldPaths:
+          - data.KEYCLOAK_ISSUER
+        options: { create: true }
+      - select: { kind: ConfigMap, name: business-sites-env }
+        fieldPaths:
+          - data.KEYCLOAK_ISSUER
+        options: { create: true }
+      - select: { kind: ConfigMap, name: deployment-service-env }
+        fieldPaths:
+          - data.AUTH_ISSUER
+        options: { create: true }
+      - select: { kind: ConfigMap, name: content-service-env }
+        fieldPaths:
+          - data.AUTH_ISSUER
+        options: { create: true }
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.PUBLIC_FILES_URL }
+    targets:
+      - select: { kind: ConfigMap, name: deployment-service-env }
+        fieldPaths:
+          - data.STORAGE_PUBLIC_BASE_URL
+        options: { create: true }
+      - select: { kind: ConfigMap, name: content-service-env }
+        fieldPaths:
+          - data.STORAGE_PUBLIC_BASE_URL
+        options: { create: true }
+      - select: { kind: ConfigMap, name: ai-service-env }
+        fieldPaths:
+          - data.STORAGE_PUBLIC_BASE_URL
+        options: { create: true }
+      - select: { kind: ConfigMap, name: render-worker-env }
+        fieldPaths:
+          - data.STORAGE_PUBLIC_BASE_URL
+        options: { create: true }
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WEB_STORAGE_ORIGINS }
+    targets:
+      - select: { kind: ConfigMap, name: portfolio-web-env }
+        fieldPaths:
+          - data.STORAGE_ORIGINS
+        options: { create: true }
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.ADMIN_STORAGE_ORIGINS }
+    targets:
+      - select: { kind: ConfigMap, name: admin-web-env }
+        fieldPaths:
+          - data.STORAGE_ORIGINS
+        options: { create: true }
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.SITES_STORAGE_ORIGINS }
+    targets:
+      - select: { kind: ConfigMap, name: business-sites-env }
+        fieldPaths:
+          - data.STORAGE_ORIGINS
+        options: { create: true }

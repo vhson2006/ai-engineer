@@ -3,7 +3,8 @@ paths:
   - 'k8s/base/krakend/**'
   - 'k8s/overlays/*/krakend/**'
   - 'k8s/base/gateway/**'
-  - 'k8s/overlays/*/patches/gateway.yaml'
+  - 'k8s/overlays/*/listeners/**'
+  - 'k8s/overlays/*/urls.env'
   - 'k8s/overlays/*/networkpolicies.yaml'
   - 'k8s/scripts/port-forward.*'
 ---
@@ -17,7 +18,7 @@ KrakenD routes, checks tokens and rate-limits; no business logic. It is private 
 |---|---|
 | `k8s/base/krakend/config/krakend.tmpl` | Every endpoint |
 | `k8s/base/krakend/config/templates/endpoint.tmpl` | One endpoint's security: token check + rate limits |
-| `k8s/overlays/<env>/krakend/settings/env.json` | `auth.*` (issuer, JWKS, default audience), `services.<name>`, `ratelimit.read/write`, `log_level` |
+| `k8s/overlays/<env>/krakend/settings/env.json` | `auth.*` (JWKS, default audience), `services.<name>`, `ratelimit.read/write`, `log_level`; the issuer is `KEYCLOAK_ISSUER` of `k8s/overlays/<env>/urls.env` (env var from ConfigMap public-urls) |
 
 ## Endpoints
 - One object per method + path; public path = backend path; `"output_encoding": "no-op"` and

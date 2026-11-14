@@ -1,0 +1,15 @@
+# With HTTPS (staging, prod): the host names of the https listener and of the http -> https
+# redirect route, from urls.env (as components/public-urls does for the rest). List it after the
+# environment's listeners component.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+replacements:
+  - source: { kind: ConfigMap, name: public-urls, fieldPath: data.WILDCARD_HOST }
+    targets:
+      - select: { kind: Gateway, name: edge }
+        fieldPaths:
+          - spec.listeners.[name=https].hostname
+      - select: { kind: HTTPRoute, name: https-redirect }
+        fieldPaths:
+          - spec.hostnames.0

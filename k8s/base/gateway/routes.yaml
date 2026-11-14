@@ -1,6 +1,6 @@
 # Host-based routes on the "edge" Gateway (gateway.yaml). Anything that matches no rule gets 404
 # from nginx, so only what is listed here is reachable from outside the cluster.
-# Host names are placeholders: each overlay patches them (overlays/<env>/patches/gateway.yaml).
+# Host names: overlays/<env>/urls.env, written in by components/public-urls.
 #
 # KrakenD has NO route on purpose: the API is private. Only the web apps' servers call it, inside
 # the cluster (prod NetworkPolicy krakend-from-web). Never add an api.<domain> route here.
@@ -12,7 +12,7 @@ spec:
   parentRefs:
     - name: edge
   hostnames:
-    - auth.example.com
+    - auth.set-by-public-urls.invalid # components/public-urls: AUTH_HOST
   rules:
     # Keycloak's recommended public paths, narrowed to OUR realm: login pages, token, certs (JWKS),
     # logout, userinfo, account. /admin, /realms/master, /metrics and /health stay private.
@@ -31,7 +31,7 @@ spec:
   parentRefs:
     - name: edge
   hostnames:
-    - www.example.com
+    - www.set-by-public-urls.invalid # components/public-urls: WEB_HOST
   rules:
     - matches:
         - path: { type: PathPrefix, value: / }
@@ -49,7 +49,7 @@ spec:
   parentRefs:
     - name: edge
   hostnames:
-    - admin.example.com
+    - admin.set-by-public-urls.invalid # components/public-urls: ADMIN_HOST
   rules:
     - matches:
         - path: { type: PathPrefix, value: / }
