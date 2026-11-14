@@ -70,37 +70,37 @@ images:
     newTag: 474c1b2f069bcb634178e73ba80782c389b99fef
   - name: portfolio-web
     newName: ghcr.io/vhson2006/ai-engineer/portfolio-web
-    newTag: 98744f206562c54040ee3755285b40696e00bcc1
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: admin-web
     newName: ghcr.io/vhson2006/ai-engineer/admin-web
-    newTag: 98744f206562c54040ee3755285b40696e00bcc1
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: autoparts-web
     newName: ghcr.io/vhson2006/ai-engineer/autoparts-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: flowers-web
     newName: ghcr.io/vhson2006/ai-engineer/flowers-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: hotel-web
     newName: ghcr.io/vhson2006/ai-engineer/hotel-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: laundry-web
     newName: ghcr.io/vhson2006/ai-engineer/laundry-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: nails-web
     newName: ghcr.io/vhson2006/ai-engineer/nails-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: spa-web
     newName: ghcr.io/vhson2006/ai-engineer/spa-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: sushi-web
     newName: ghcr.io/vhson2006/ai-engineer/sushi-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: travel-web
     newName: ghcr.io/vhson2006/ai-engineer/travel-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
   - name: wine-web
     newName: ghcr.io/vhson2006/ai-engineer/wine-web
-    newTag: placeholder
+    newTag: 6b51641afbc18925f838b5a7a930cb337f0895f0
 
 configMapGenerator:
   - name: public-urls # this environment's public addresses: urls.env (components/public-urls)
